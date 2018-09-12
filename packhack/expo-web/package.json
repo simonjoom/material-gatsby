@@ -1,0 +1,38 @@
+{
+  "name": "expo-web",
+  "description": "Expo for Web",
+  "main": "dist/index.js",
+  "files": [
+    "dist",
+    "jest",
+    "src",
+    "!**/__tests__"
+  ],
+  "dependencies": {
+    "react-native-vector-icons": "^4.5.0",
+    "moment": "^2.20.1",
+    "moment-timezone": "^0.5.14",
+    "ua-parser-js": "^0.7.17"
+  },
+  "peerDependencies": {
+    "react": "16.x.x",
+    "react-dom": "16.x.x"
+  },
+  "author": "Ron Arts",
+  "license": "BSD-3-Clause",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/raarts/expo-web.git"
+  },
+  "tags": [
+    "react"
+  ],
+  "keywords": [
+    "react",
+    "react-native",
+    "react-native-web",
+    "expo",
+    "web"
+  ],
+  "version": "0.0.14"
+}
