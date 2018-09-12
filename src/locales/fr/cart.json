@@ -1,0 +1,13 @@
+{
+  "your_cart": "Votre panier",
+  "continue": "Continuer",
+  "see_product": "Voir le produit",
+  "remove_product": "Retirer le produit",
+  "sub_total": "Sous-total",
+  "total_price": "Montant total",
+  "product_deleted": "Produit supprimé. Veuillez le retirer de votre panier.",
+  "product_not_available": "Produit plus disponible. Veuillez le retirer de votre panier.",
+  "invalid_cart_title": "Panier invalide",
+  "invalid_cart_deleted": "Votre panier contient des produits qui ont été retiré de la vente par votre boutique.\n Veuillez les enlever de votre panier avant de continuer.",
+  "invalid_cart_not_available": "Votre panier contient des produits qui ne sont plus disponible dans leurs configurations.\n Veuillez les enlever de votre panier avant de continuer."
+}

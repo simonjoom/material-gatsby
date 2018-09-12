@@ -28,17 +28,22 @@ export default class TagTemplate extends React.Component {
 }
 
 export const pageQuery = graphql`
-  query TagPage($tag: String) {
+  query TagPage($tag: String,$lng: String!) {
     allMarkdownRemark(
       limit: 1000
       sort: { fields: [fields___date], order: DESC }
-      filter: { frontmatter: { tags: { in: [$tag] } } }
+      filter: {
+        fields: { lng: { eq: $lng } }
+        frontmatter: { tags: { in: [$tag] } }
+      }
     ) {
       totalCount
       edges {
         node {
           fields {
+            lng
             slug
+            type
             date
           }
           excerpt

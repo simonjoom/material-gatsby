@@ -1,6 +1,7 @@
 const path = require("path");
 const _ = require("lodash");
 const moment = require("moment");
+const crypto = require("crypto");
 const siteConfig = require("./data/SiteConfig");
 require("babel-polyfill");
 
@@ -48,22 +49,59 @@ function addSiblingNodes(createNodeField) {
   }
 }
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions;
-  const { internal: { mediaType }, sourceInstanceName } = node
+exports.onCreateNode = async ({ node, actions, loadNodeContent, getNode }) => {
+  const { createNode, createNodeField, createParentChildLink } = actions;
+  const {
+    internal: { mediaType },
+    sourceInstanceName
+  } = node;
   let slug;
-  
+
   if (
     node.internal.type === `File` &&
-    sourceInstanceName === `posts` &&
+    sourceInstanceName === `locale` &&
+    mediaType === `application/json`
+  ) {
+    const content = await loadNodeContent(node);
+    const data = JSON.stringify(JSON.parse(content), undefined, "");
+    const contentDigest = crypto
+      .createHash(`md5`)
+      .update(data)
+      .digest(`hex`);
+    const localeNode = {
+      id: `${node.id} >>> Locale`,
+      children: [],
+      parent: node.id,
+      internal: { content, contentDigest, type: `Locale` },
+      lng: node.relativeDirectory,
+      ns: node.name,
+      data
+    }; 
+    localeNode.fileAbsolutePath = node.absolutePath;
+    createNode(localeNode);
+    createParentChildLink({ parent: node, child: localeNode });
+  }
+  if (
+    node.internal.type === `File` &&
+    sourceInstanceName === `content` &&
     mediaType === `text/markdown`
   ) {
-    console.log("debugMarkdown",node)
-  
+    const [type, lng, dir] = node.relativeDirectory.split(`/`);
+    //console.log("trace", lng, type, dir);
+    //const name = dir.substr(dir.indexOf(` `) + 1, dir.length)
+    // const prefix = lng === config.defaultLocale ? `` : `/${lng}`
+    createNodeField({ node, name: `lng`, value: lng });
+    // createNodeField({ node, name: `slug`, value: slug })
+    createNodeField({ node, name: `type`, value: type });
   }
+
   if (node.internal.type === "MarkdownRemark") {
     const fileNode = getNode(node.parent);
-    console.log("MarkdownRemark",fileNode)
+    const {
+      fields: { lng, type }
+    } = fileNode;
+    console.log("MarkdownRemark", lng, type);
+
     const parsedFilePath = path.parse(fileNode.relativePath);
     if (
       Object.prototype.hasOwnProperty.call(node, "frontmatter") &&
@@ -93,6 +131,8 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         });
       }
     }
+    createNodeField({ node, name: `lng`, value: lng });
+    createNodeField({ node, name: `type`, value: type });
     createNodeField({ node, name: "slug", value: slug });
     postNodes.push(node);
   }
@@ -117,7 +157,10 @@ exports.createPages = ({ graphql, actions }) => {
       graphql(
         `
           {
-            allMarkdownRemark {
+            allMarkdownRemark (
+              sort: { order: DESC, fields: [frontmatter___date] }
+              limit: 1000
+            ) {
               edges {
                 node {
                   fileAbsolutePath
@@ -126,7 +169,9 @@ exports.createPages = ({ graphql, actions }) => {
                     category
                   }
                   fields {
+                    lng
                     slug
+                    type
                   }
                 }
               }
@@ -139,51 +184,101 @@ exports.createPages = ({ graphql, actions }) => {
           console.log(result.errors);
           reject(result.errors);
         }
+        let tagSets = [];
+        let categorySets = [];
+        let langs = [];
+        // const tagSet = new Set();
+        // const categorySet = new Set();
+        result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+          console.log(node.fields.type);
+          let lng = node.fields.lng;
+          if (!tagSets[lng]) tagSets[lng] = new Set();
+          if (!categorySets[lng]) categorySets[lng] = new Set();
+          if (!langs[lng]) langs.push(lng);
+          switch (node.fields.type) {
+            case `post`:
+              if (node.frontmatter.tags) {
+                node.frontmatter.tags.forEach(tag => {
+                  tagSets[lng].add(tag);
+                });
+              }
 
-        const tagSet = new Set();
-        const categorySet = new Set();
-        result.data.allMarkdownRemark.edges.forEach(edge => {
-          if (edge.node.frontmatter.tags) {
-            edge.node.frontmatter.tags.forEach(tag => {
-              tagSet.add(tag);
+              if (node.frontmatter.category) {
+                categorySets[lng].add(node.frontmatter.category);
+              }
+
+              createPage({
+                path: node.fields.slug,
+                component: postPage,
+                context: node.fields
+              });
+          }
+        });
+
+        langs.forEach(lng => {
+          const tagList = Array.from(tagSets[lng]);
+          tagList.forEach(tag => {
+            createPage({
+              path: `/tags_${lng}/${_.kebabCase(tag)}/`,
+              component: tagPage,
+              context: {
+                tag,
+                lng
+              }
             });
-          }
-
-          if (edge.node.frontmatter.category) {
-            categorySet.add(edge.node.frontmatter.category);
-          }
-
-          createPage({
-            path: edge.node.fields.slug,
-            component: postPage,
-            context: {
-              slug: edge.node.fields.slug
-            }
           });
-        });
-
-        const tagList = Array.from(tagSet);
-        tagList.forEach(tag => {
-          createPage({
-            path: `/tags/${_.kebabCase(tag)}/`,
-            component: tagPage,
-            context: {
-              tag
-            }
-          });
-        });
-
-        const categoryList = Array.from(categorySet);
-        categoryList.forEach(category => {
-          createPage({
-            path: `/categories/${_.kebabCase(category)}/`,
-            component: categoryPage,
-            context: {
-              category
-            }
+          const categoryList = Array.from(categorySets[lng]);
+          categoryList.forEach(category => {
+            createPage({
+              path: `/categories_${lng}/${_.kebabCase(category)}/`,
+              component: categoryPage,
+              context: {
+                category,
+                lng
+              }
+            });
           });
         });
       })
     );
+  });
+};
+
+const router = {
+  "/": {
+    fr: "/fr/",
+    en: "/"
+  },
+  "/about/": {
+    fr: "/a-notre-sujet/",
+    en: "/about/"
+  }
+};
+const config = { locales: ["fr", "en", "pt", "ru", "uk"], defaultLocale: "en" };
+
+exports.onCreatePage = async ({ page, actions }) => {
+  const { createPage, deletePage } = actions;
+
+  const route = router[page.path];
+  if (!route) {
+    return;
+  }
+
+  const { locales, defaultLocale } = config;
+
+  const oldPage = Object.assign({}, page);
+  deletePage(oldPage);
+  const newPage = {};
+  locales.forEach(locale => {
+    if (route[locale]) {
+      newPage.component = page.component;
+      newPage.path = route[locale];
+      newPage.context = {
+        lng: locale,
+        slug: newPage.path,
+        route
+      };
+      createPage(newPage);
+    }
   });
 };

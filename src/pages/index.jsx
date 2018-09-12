@@ -1,6 +1,7 @@
 import React from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
+import { translate } from "utils/i18n";
 import Layout from "../layout";
 import PostListing from "../components/PostListing";
 import SEO from "../components/SEO";
@@ -16,26 +17,31 @@ class Index extends React.Component {
             <title>{config.siteTitle}</title>
             <link rel="canonical" href={`${config.siteUrl}`} />
           </Helmet>
-          <SEO postEdges={postEdges} />
+          <SEO postEdges={postEdges} translate={this.props.t} />
           <PostListing postEdges={postEdges} />
         </div>
       </Layout>
     );
   }
 }
-
-export default Index;
+export default translate(["Index", "common"])(Index);
 
 export const pageQuery = graphql`
-  query IndexQuery {
+  query IndexQuery($lng: String!) {
+    locales: allLocale(filter: { lng: { eq: $lng }, ns: { eq: "Index" } }) {
+      ...LocaleFragment
+    }
     allMarkdownRemark(
       limit: 2000
+      filter: { fields: { lng: { eq: $lng } } }
       sort: { fields: [fields___date], order: DESC }
     ) {
       edges {
         node {
           fields {
+            lng
             slug
+            type
             date
           }
           excerpt

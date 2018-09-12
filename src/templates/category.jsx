@@ -1,11 +1,12 @@
 import React from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
+import { translate } from "utils/i18n";
 import PostListing from "../components/PostListing";
 import Layout from "../layout";
 import config from "../../data/SiteConfig";
 
-export default class CategoryTemplate extends React.Component {
+class CategoryTemplate extends React.Component {
   render() {
     const { category } = this.props.pageContext;
     const postEdges = this.props.data.allMarkdownRemark.edges;
@@ -31,8 +32,13 @@ export default class CategoryTemplate extends React.Component {
   }
 }
 
+export default translate(["Category", "common"])(CategoryTemplate);
+
 export const pageQuery = graphql`
-  query CategoryPage($category: String) {
+  query CategoryPage($category: String,$lng: String!) {
+    locales: allLocale(filter: { lng: { eq: $lng } }) {
+      ...LocaleFragment
+    }
     allMarkdownRemark(
       limit: 1000
       sort: { fields: [fields___date], order: DESC }
@@ -42,7 +48,9 @@ export const pageQuery = graphql`
       edges {
         node {
           fields {
-            slug
+                    lng
+                    slug
+                    type
             date
           }
           excerpt

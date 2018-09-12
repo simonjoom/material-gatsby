@@ -1,6 +1,7 @@
 import React from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
+import { translate } from "utils/i18n";
 import Card from "react-md/lib/Cards";
 import CardText from "react-md/lib/Cards/CardText";
 import Layout from "../layout";
@@ -16,7 +17,7 @@ import config from "../../data/SiteConfig";
 import "./b16-tomorrow-dark.css";
 import "./post.scss";
 
-export default class PostTemplate extends React.Component {
+class PostTemplate extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -44,6 +45,7 @@ export default class PostTemplate extends React.Component {
   render() {
     const { mobile } = this.state;
     const { slug } = this.props.pageContext;
+    console.log("postthis",this.props);
     const expanded = !mobile;
     const postOverlapClass = mobile ? "post-overlap-mobile" : "post-overlap";
     const postNode = this.props.data.markdownRemark;
@@ -63,7 +65,7 @@ export default class PostTemplate extends React.Component {
             <title>{`${post.title} | ${config.siteTitle}`}</title>
             <link rel="canonical" href={`${config.siteUrl}${post.id}`} />
           </Helmet>
-          <SEO postPath={slug} postNode={postNode} postSEO />
+          <SEO postPath={slug} postNode={postNode} postSEO translate={this.props.t}/>
           <PostCover
             postNode={postNode}
             coverHeight={coverHeight}
@@ -102,9 +104,14 @@ export default class PostTemplate extends React.Component {
   }
 }
 
-export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+export default translate(["Post", "common"])(PostTemplate);
+
+export const pageQuery = graphql` 
+  query BlogPostBySlug($slug: String!,$lng: String!) {
+    locales: allLocale(filter: { lng: { eq: $lng } }) {
+      ...LocaleFragment
+    }
+    markdownRemark(fields: { slug: { eq: $slug },lng: { eq: $lng } }) {
       html
       timeToRead
       excerpt
@@ -121,6 +128,7 @@ export const pageQuery = graphql`
         prevTitle
         prevSlug
         slug
+        lng
         date
       }
     }

@@ -7,6 +7,7 @@ import "./About.scss";
 
 class About extends Component {
   render() {
+    const { translate } = this.props;
     return (
       <div className="about-container md-grid mobile-fix">
         <Card className="md-grid md-cell--8">
@@ -17,7 +18,9 @@ class About extends Component {
               alt={config.userName}
             />
             <CardText>
-              <p className="about-text md-body-1">{config.userDescription}</p>
+              <p className="about-text md-body-1">
+                {translate("UserDescription")}
+              </p>
             </CardText>
             <UserLinks labeled config={config} />
           </div>

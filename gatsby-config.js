@@ -34,7 +34,14 @@ module.exports = {
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        name: "posts",
+        name: "locale",
+        path: `${__dirname}/src/locales`,
+      }
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "content",
         path: `${__dirname}/content`
       }
     },
@@ -136,7 +143,7 @@ module.exports = {
         setup(ref) {
           const ret = ref.query.site.siteMetadata.rssMetadata;
           ret.allMarkdownRemark = ref.query.allMarkdownRemark;
-          ret.generator = "GatsbyJS Material Starter";
+          ret.generator = "SkiScool";
           return ret;
         },
         query: `
