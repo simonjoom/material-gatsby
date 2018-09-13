@@ -83,7 +83,7 @@ class PostTemplate extends React.Component {
           <View className="rowlink">
             {postList.map(post => (
               <Link style={{ textDecoration: "none" }} to={post.path} className="Menulink">
-              <i class="mr1 fa fa-lg fa-circle-o"/>
+              <i className="mr1 fa fa-lg fa-circle-o"/>
                 {post.title}
               </Link>
             ))}

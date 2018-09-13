@@ -1,5 +1,10 @@
 @import "../layout/theme.scss";
 $phone-status-bar-height: 24px - 12px;
+
+img {
+    vertical-align: middle;
+}
+
 .rowlink {
   flex-direction: row;
   padding: 10px;
