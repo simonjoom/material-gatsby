@@ -4,19 +4,22 @@ import {
   GooglePlusShareButton,
   LinkedinShareButton,
   TwitterShareButton,
-  TelegramShareButton,
-  RedditShareButton,
   FacebookShareCount,
   GooglePlusShareCount,
   LinkedinShareCount,
-  RedditShareCount,
   FacebookIcon,
   TwitterIcon,
-  TelegramIcon,
   GooglePlusIcon,
-  LinkedinIcon,
-  RedditIcon
+  LinkedinIcon
 } from "react-share";
+/*
+import {
+RedditIcon,
+TelegramIcon,
+RedditShareCount,
+TelegramShareButton,
+RedditShareButton,
+} from "react-share";*/
 import urljoin from "url-join";
 import config from "../../../data/SiteConfig";
 import "./SocialLinks.scss";
@@ -34,12 +37,6 @@ class SocialLinks extends Component {
 
     return (
       <div className="social-links">
-        <RedditShareButton url={url} title={post.title}>
-          <RedditIcon round size={iconSize} />
-          <RedditShareCount url={url}>
-            {count => renderShareCount(count)}
-          </RedditShareCount>
-        </RedditShareButton>
         <TwitterShareButton url={url} title={post.title}>
           <TwitterIcon round size={iconSize} />
         </TwitterShareButton>
@@ -65,12 +62,19 @@ class SocialLinks extends Component {
             {count => renderShareCount(count)}
           </LinkedinShareCount>
         </LinkedinShareButton>
-        <TelegramShareButton url={url}>
-          <TelegramIcon round size={iconSize} />
-        </TelegramShareButton>
       </div>
     );
   }
 }
 
 export default SocialLinks;
+
+/*        <RedditShareButton url={url} title={post.title}>
+          <RedditIcon round size={iconSize} />
+          <RedditShareCount url={url}>
+            {count => renderShareCount(count)}
+          </RedditShareCount>
+        </RedditShareButton>
+        <TelegramShareButton url={url}>
+          <TelegramIcon round size={iconSize} />
+        </TelegramShareButton>*/
