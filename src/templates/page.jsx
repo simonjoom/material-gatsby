@@ -46,6 +46,8 @@ class PostTemplate extends React.Component {
     const { slug } = this.props.pageContext;
     console.log("postthis", this.props);
     const expanded = !mobile;
+
+    //generate Menu from allMarkdownRemark
     const postEdges = this.props.data.allMarkdownRemark.edges;
     let postList = [];
     postEdges.forEach(postEdge => {
@@ -56,7 +58,9 @@ class PostTemplate extends React.Component {
         title
       });
     });
+    ///
 
+    //render current markdownRemark
     const postNode = this.props.data.markdownRemark;
     const post = postNode.frontmatter;
     if (!post.id) {
@@ -66,6 +70,7 @@ class PostTemplate extends React.Component {
       post.category_id = config.postDefaultCategoryID;
     }
     const title = this.props.t(post.title);
+    //render current markdownRemark
     return (
       <Layout location={this.props.location}>
         <LanguageSwitcher />
