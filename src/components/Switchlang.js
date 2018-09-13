@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import classNames from "classnames";
 import { translate } from "react-i18next";
+import { push } from "gatsby"
 
 class LanguageSwitcher extends Component {
   constructor(props) {
@@ -17,7 +18,11 @@ class LanguageSwitcher extends Component {
 
   handleChangeLanguage(lng) {
     const { i18n } = this.props;
-    i18n.changeLanguage(lng);
+    //console.log(this.props.route)
+    //i18n.changeLanguage(lng);
+    console.log("this.props.route[lng]",this.props.route[lng])
+    push(this.props.route[lng])
+    return false;
   }
 
   renderLanguageChoice({ code, label }) {

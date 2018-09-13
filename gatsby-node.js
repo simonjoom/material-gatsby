@@ -1,6 +1,6 @@
 const path = require("path");
 const _ = require("lodash");
-const fs = require('fs-extra')
+const fs = require("fs-extra");
 const moment = require("moment");
 const crypto = require("crypto");
 const siteConfig = require("./data/SiteConfig");
@@ -15,7 +15,7 @@ const router = {
     uk: "/uk/",
     pt: "/pt/",
     cn: "/cn/"
-  },  
+  },
   "/blog/": {
     fr: "/fr/blog/",
     en: "/blog/",
@@ -23,6 +23,14 @@ const router = {
     uk: "/uk/blog/",
     pt: "/pt/blog/",
     cn: "/cn/blog/"
+  },
+  "/concept": {
+    fr: "/fr/concept",
+    en: "/concept/",
+    ru: "/ru/concept/",
+    uk: "/uk/concept/",
+    pt: "/pt/concept/",
+    cn: "/cn/concept/"
   },
   "/contact": {
     fr: "/fr/contact",
@@ -55,15 +63,7 @@ const router = {
     uk: "/uk/jumpsuit/",
     pt: "/pt/jumpsuit/",
     cn: "/cn/jumpsuit/"
-  },
-  "/about": {
-    fr: "/about/fr/",
-    en: "/about/",
-    ru: "/ru/about/",
-    uk: "/uk/about/",
-    pt: "/pt/about/",
-    cn: "/cn/about/"
-  },
+  }, 
   "/skipass": {
     fr: "/Articles/Forfait-de-ski/",
     en: "/Articles/SkiPass/",
@@ -227,7 +227,7 @@ exports.onCreateNode = async ({
     } = fileNode;
     console.log("MarkdownRemark", lng, type);
 
-    const parsedFilePath = path.parse(fileNode.relativePath); 
+    const parsedFilePath = path.parse(fileNode.relativePath);
     if (
       Object.prototype.hasOwnProperty.call(node, "frontmatter") &&
       Object.prototype.hasOwnProperty.call(node.frontmatter, "title")
@@ -239,7 +239,7 @@ exports.onCreateNode = async ({
       slug = `/${parsedFilePath.name}/`;
     } else {
       slug = `/${parsedFilePath.dir}/`;
-    } 
+    }
 
     if (Object.prototype.hasOwnProperty.call(node, "frontmatter")) {
       if (Object.prototype.hasOwnProperty.call(node.frontmatter, "slug"))
@@ -264,13 +264,14 @@ exports.onCreateNode = async ({
     }
     createNodeField({ node, name: `lng`, value: lng });
     createNodeField({ node, name: `type`, value: type });
+    createNodeField({ node, name: "slugbase", value: slug });
     createNodeField({ node, name: "slug", value: slugfin });
     postNodes.push(node);
   }
 };
 
 exports.setFieldsOnGraphQLNodeType = ({ type, actions }) => {
-  console.log("setFieldsOnGraphQLNodeType",type)
+  console.log("setFieldsOnGraphQLNodeType", type);
   const { name } = type;
   const { createNodeField } = actions;
   if (name === "MarkdownRemark") {
@@ -291,8 +292,7 @@ exports.createPages = ({ graphql, actions }) => {
         `
           {
             allMarkdownRemark(
-              sort: { order: DESC, fields: [frontmatter___date] }
-              limit: 1000
+              sort: { order: DESC, fields: [frontmatter___date] } 
             ) {
               edges {
                 node {
@@ -305,6 +305,7 @@ exports.createPages = ({ graphql, actions }) => {
                   fields {
                     lng
                     slug
+                    slugbase
                     type
                   }
                 }
@@ -350,10 +351,14 @@ exports.createPages = ({ graphql, actions }) => {
               });
               break;
             case `pages`:
+              const route = router[node.fields.slugbase];
+              if(!route)
+              console.warn("routepages not defined from ",node.fields.slug)
               createPage({
                 path: node.fields.slug,
                 component: pagePage,
                 context: {
+                  route,
                   id: node.id,
                   ...node.fields
                 }
@@ -394,7 +399,7 @@ exports.onCreatePage = async ({ page, actions }) => {
   const { createPage, deletePage } = actions;
 
   const route = router[page.path];
-  console.log("route",page.path);
+  console.log("route", page.path);
   if (!route) {
     return;
   }

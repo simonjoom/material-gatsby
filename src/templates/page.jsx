@@ -39,11 +39,11 @@ class PostTemplate extends React.Component {
     } else {
       this.setState({ mobile: true });
     }
-  }
+  } 
 
   render() {
     const { mobile } = this.state;
-    const { slug } = this.props.pageContext;
+    const { slug, route } = this.props.pageContext;
     console.log("postthis", this.props);
     const expanded = !mobile;
 
@@ -52,7 +52,7 @@ class PostTemplate extends React.Component {
     let postList = [];
     postEdges.forEach(postEdge => {
       //console.log("testslug", postEdge.node.fields.slug);
-    const title = this.props.t(postEdge.node.frontmatter.title);
+      const title = this.props.t(postEdge.node.frontmatter.title);
       postList.push({
         path: postEdge.node.fields.slug,
         title
@@ -73,7 +73,7 @@ class PostTemplate extends React.Component {
     //render current markdownRemark
     return (
       <Layout location={this.props.location}>
-        <LanguageSwitcher />
+        <LanguageSwitcher route={route} />
         <div className="post-page md-grid md-grid--no-spacing">
           <Helmet>
             <title>{`${title} | ${config.siteTitle}`}</title>
@@ -81,7 +81,9 @@ class PostTemplate extends React.Component {
           </Helmet>
 
           {postList.map(post => (
-            <Link style={{ textDecoration: "none" }} to={post.path}>{post.title}</Link>
+            <Link style={{ textDecoration: "none" }} to={post.path}>
+              {post.title}
+            </Link>
           ))}
           <SEO
             postPath={slug}
