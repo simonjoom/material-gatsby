@@ -1,6 +1,7 @@
 import React from "react";
 import Helmet from "react-helmet";
 import { graphql, Link } from "gatsby";
+import { View } from "react-native";
 import { translate } from "utils/i18n";
 import Card from "react-md/lib/Cards";
 import CardText from "react-md/lib/Cards/CardText";
@@ -39,7 +40,7 @@ class PostTemplate extends React.Component {
     } else {
       this.setState({ mobile: true });
     }
-  } 
+  }
 
   render() {
     const { mobile } = this.state;
@@ -79,12 +80,37 @@ class PostTemplate extends React.Component {
             <title>{`${title} | ${config.siteTitle}`}</title>
             <link rel="canonical" href={`${config.siteUrl}${post.id}`} />
           </Helmet>
-
-          {postList.map(post => (
-            <Link style={{ textDecoration: "none" }} to={post.path}>
-              {post.title}
-            </Link>
-          ))}
+          <View className="rowlink">
+            {postList.map(post => (
+              <Link style={{ textDecoration: "none" }} to={post.path} className="Menulink">
+              <i class="mr1 fa fa-lg fa-circle-o"/>
+                {post.title}
+              </Link>
+            ))}
+          </View>
+          {slug == "/" && (
+            <View className="rowlink">
+              <Link
+                primary
+                activeStyle={{
+                  color: "#ef6091"
+                }}
+                className="rounded mb1 link1 boxshad"
+                to="/Map"
+                title="map courchevel meribel val-thorens"
+              >
+                Map <i className="fa fa-map-signs fa-2x" />
+              </Link>
+              <Link
+                className="ml2 rounded link2 boxshad"
+                to="/Instructors"
+                title="ski instructors courchevel meribel val-thorens"
+              >
+                Instructors
+                <i className="fa fa-magic fa-2x" />
+              </Link>
+            </View>
+          )}
           <SEO
             postPath={slug}
             postNode={postNode}

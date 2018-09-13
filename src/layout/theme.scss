@@ -1,14 +1,28 @@
-@import '~react-md/src/scss/react-md';
-$md-primary-color: $md-grey-400;
-$md-secondary-color: $md-red-800;
+@import "~react-md/src/scss/react-md";
+
+.boxshad {
+  box-shadow: 0 1px 5px 0 rgba(255, 205, 155, 0.6),
+    0 2px 2px 0 rgba(255, 200, 255, 0.64),
+    0 3px 1px -2px rgba(240, 150, 120, 0.62);
+}
+
+.boxshadblack {
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 3px 1px -2px rgba(0, 0, 0, 0.12);
+}
+
+$md-primary-color: #5c6bc0;
+$md-secondary-color:#ccff90;
+//$md-grey-400;
+//$md-secondary-color: $md-red-800;
 $md-tertiary-color: $md-grey-300;
 
 .main-container,
 .darker-background {
-    background-color: $md-tertiary-color;
+  background-color: $md-tertiary-color;
 }
 
 a:link {
-    color: $md-secondary-color;
-    text-decoration: none;
+  color: $md-primary-color;
+  text-decoration: none;
 }
