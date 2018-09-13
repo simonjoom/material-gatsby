@@ -107,11 +107,11 @@ class PostTemplate extends React.Component {
 export default translate(["Post", "common"])(PostTemplate);
 
 export const pageQuery = graphql` 
-  query BlogPostBySlug($slug: String!,$lng: String!) {
+  query BlogPostBySlug($id: String!,$lng: String!) {
     locales: allLocale(filter: { lng: { eq: $lng } }) {
       ...LocaleFragment
     }
-    markdownRemark(fields: { slug: { eq: $slug },lng: { eq: $lng } }) {
+    markdownRemark(id: { eq: $id }) {
       html
       timeToRead
       excerpt

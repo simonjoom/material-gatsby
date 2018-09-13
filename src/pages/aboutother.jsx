@@ -5,10 +5,12 @@ import { graphql } from "gatsby";
 import { translate } from "utils/i18n";
 import Layout from "../layout";
 import About from "../components/About";
+import PostPreview from "../components/PostPreview";
 import SiteConfig from "../../data/SiteConfig";
 
 class AboutPage extends Component {
-  render() {
+  render() { 
+
     const { slug } = this.props.pageContext;
     const siteUrl = this.props.t("siteUrl");
     console.log(slug);
@@ -18,7 +20,7 @@ class AboutPage extends Component {
           <Helmet>
             <title>{`About | ${SiteConfig.siteTitle}`}</title>
             <link rel="canonical" href={`${siteUrl}${slug}`} />
-          </Helmet>
+          </Helmet> 
           <About translate={this.props.t} />
         </View>
       </Layout>
@@ -33,8 +35,11 @@ export const query = graphql`
   query Aboutlng($lng: String!) {
     locales: allLocale(filter: { lng: { eq: $lng }, ns: { eq: "About" } }) {
       ...LocaleFragment
-    }
+    } 
   }
 `;
 
 //export default AboutPage;
+/* allMarkdownRemark(
+    filter: { fields: { lng: { eq: $lng }, slug: { eq: $slug } } }
+    ) {*/

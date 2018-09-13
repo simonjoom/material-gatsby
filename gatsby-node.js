@@ -6,7 +6,80 @@ const siteConfig = require("./data/SiteConfig");
 require("babel-polyfill");
 
 const postNodes = [];
-
+const router = {
+  "/": {
+    fr: "/fr/",
+    en: "/"
+  },
+  "/aboutother/": {
+    fr: "/about/",
+    en: "/about/",
+    ru: "/about/",
+    uk: "/about/",
+    pt: "/about/",
+    cn: "/about/"
+  },
+  "/skipass": {
+    fr: "/Articles/Forfait-de-ski/",
+    en: "/Articles/SkiPass/",
+    ru: "/Articles/Ски-пасс/",
+    uk: "/Articles/Ски-пас/",
+    pt: "/pt/Articles/SkiPass/",
+    cn: "/cn/Articles/SkiPass/",
+  },
+  "/meribel": {
+    fr: "/fr/Articles/Meribel/",
+    en: "/en/Articles/Meribel/",
+    ru: "/ru/Articles/Meribel/",
+    uk: "/uk/Articles/Meribel/",
+    pt: "/pt/Articles/Meribel/",
+    cn: "/cn/Articles/Meribel/"
+  },
+  "/menuires": {
+    fr: "/fr/Articles/Menuires/",
+    en: "/en/Articles/Menuires/",
+    ru: "/ru/Articles/Menuires/",
+    uk: "/uk/Articles/Menuires/",
+    pt: "/pt/Articles/Menuires/",
+    cn: "/cn/Articles/Menuires/"
+  },
+  "/courchevel": {
+    fr: "/fr/Articles/Courchevel/",
+    en: "/en/Articles/Courchevel/",
+    ru: "/ru/Articles/Courchevel/",
+    uk: "/uk/Articles/Courchevel/",
+    pt: "/pt/Articles/Courchevel/",
+    cn: "/cn/Articles/Courchevel/"
+  },
+  "/valthorens": {
+    fr: "/fr/Articles/Valthorens/",
+    en: "/en/Articles/Valthorens/",
+    ru: "/ru/Articles/Valthorens/",
+    uk: "/uk/Articles/Valthorens/",
+    pt: "/pt/Articles/Valthorens/",
+    cn: "/cn/Articles/Valthorens/"
+  },
+  "/latania": {
+    fr: "/fr/Articles/Tania/",
+    en: "/en/Articles/Tania/",
+    ru: "/ru/Articles/Tania/",
+    uk: "/uk/Articles/Tania/",
+    pt: "/pt/Articles/Tania/",
+    cn: "/cn/Articles/Tania/"
+  },
+  "/about": {
+    fr: "/L_ecole_de_ski/",
+    en: "/en/About_Skiscool/",
+    ru: "/Около_Skiscool/",
+    uk: "/про_Skiscool/",
+    pt: "/pt/About_Skiscool/",
+    cn: "/cn/About_Skiscool/"
+  }
+};
+const config = {
+  locales: ["fr", "en", "pt", "ru", "uk", "cn"],
+  defaultLocale: "en"
+};
 function addSiblingNodes(createNodeField) {
   postNodes.sort(
     ({ frontmatter: { date: date1 } }, { frontmatter: { date: date2 } }) => {
@@ -49,7 +122,13 @@ function addSiblingNodes(createNodeField) {
   }
 }
 
-exports.onCreateNode = async ({ node, actions, loadNodeContent, getNode }) => {
+exports.onCreateNode = async ({
+  node,
+  actions,
+  loadNodeContent,
+  getNode,
+  createNodeId
+}) => {
   const { createNode, createNodeField, createParentChildLink } = actions;
   const {
     internal: { mediaType },
@@ -76,7 +155,8 @@ exports.onCreateNode = async ({ node, actions, loadNodeContent, getNode }) => {
       lng: node.relativeDirectory,
       ns: node.name,
       data
-    }; 
+    };
+    console.log("testttt", node.name);
     localeNode.fileAbsolutePath = node.absolutePath;
     createNode(localeNode);
     createParentChildLink({ parent: node, child: localeNode });
@@ -131,9 +211,15 @@ exports.onCreateNode = async ({ node, actions, loadNodeContent, getNode }) => {
         });
       }
     }
+
+    let slugfin;
+    if (router[slug]) slugfin = router[slug][lng];
+    if (!slugfin) {
+      slugfin = slug;
+    }
     createNodeField({ node, name: `lng`, value: lng });
     createNodeField({ node, name: `type`, value: type });
-    createNodeField({ node, name: "slug", value: slug });
+    createNodeField({ node, name: "slug", value: slugfin });
     postNodes.push(node);
   }
 };
@@ -157,12 +243,13 @@ exports.createPages = ({ graphql, actions }) => {
       graphql(
         `
           {
-            allMarkdownRemark (
+            allMarkdownRemark(
               sort: { order: DESC, fields: [frontmatter___date] }
               limit: 1000
             ) {
               edges {
                 node {
+                  id
                   fileAbsolutePath
                   frontmatter {
                     tags
@@ -190,7 +277,7 @@ exports.createPages = ({ graphql, actions }) => {
         // const tagSet = new Set();
         // const categorySet = new Set();
         result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-          console.log(node.fields.type);
+          console.log(node.fields);
           let lng = node.fields.lng;
           if (!tagSets[lng]) tagSets[lng] = new Set();
           if (!categorySets[lng]) categorySets[lng] = new Set();
@@ -205,12 +292,14 @@ exports.createPages = ({ graphql, actions }) => {
 
               if (node.frontmatter.category) {
                 categorySets[lng].add(node.frontmatter.category);
-              }
-
+              } 
               createPage({
                 path: node.fields.slug,
                 component: postPage,
-                context: node.fields
+                context: {
+                  id: node.id,
+                  ...node.fields
+                }
               });
           }
         });
@@ -244,33 +333,21 @@ exports.createPages = ({ graphql, actions }) => {
   });
 };
 
-const router = {
-  "/": {
-    fr: "/fr/",
-    en: "/"
-  },
-  "/about/": {
-    fr: "/a-notre-sujet/",
-    en: "/about/"
-  }
-};
-const config = { locales: ["fr", "en", "pt", "ru", "uk"], defaultLocale: "en" };
-
 exports.onCreatePage = async ({ page, actions }) => {
   const { createPage, deletePage } = actions;
 
   const route = router[page.path];
+  console.log(page.path);
   if (!route) {
     return;
   }
-
   const { locales, defaultLocale } = config;
-
-  const oldPage = Object.assign({}, page);
-  deletePage(oldPage);
+  let oldPage = Object.assign({}, page);
   const newPage = {};
   locales.forEach(locale => {
     if (route[locale]) {
+      if (oldPage) deletePage(oldPage);
+      oldPage = null;
       newPage.component = page.component;
       newPage.path = route[locale];
       newPage.context = {

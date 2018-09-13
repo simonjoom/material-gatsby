@@ -10,6 +10,7 @@ import config from "../../data/SiteConfig";
 class Index extends React.Component {
   render() {
     const postEdges = this.props.data.allMarkdownRemark.edges;
+    console.log("postEdges",postEdges)
     return (
       <Layout location={this.props.location} title="Home">
         <div className="index-container">

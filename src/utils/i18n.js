@@ -91,17 +91,6 @@ lang=lng;
 export function translate(ns = ["common"]) {
   return function Wrapper(WrappedComponent) {
     const Extended = t(ns, { i18n, wait: process.browser })(WrappedComponent);
-    Extended.getInitialProps = async ctx => {
-      const composedInitialProps = WrappedComponent.getInitialProps
-        ? await WrappedComponent.getInitialProps(ctx)
-        : {};
-      const i18nInitialProps = ctx.req ? i18n.getInitialProps(ctx.req, ns) : {};
-
-      return {
-        ...composedInitialProps,
-        ...i18nInitialProps
-      };
-    };
     return withLocales(Extended);
 
     //return withLocales(t(ns, options)(WrappedComponent));
