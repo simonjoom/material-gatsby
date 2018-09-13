@@ -49,12 +49,11 @@ class PostTemplate extends React.Component {
     const postEdges = this.props.data.allMarkdownRemark.edges;
     let postList = [];
     postEdges.forEach(postEdge => {
-      console.log("testslug", postEdge.node.fields.slug);
-
+      //console.log("testslug", postEdge.node.fields.slug);
     const title = this.props.t(postEdge.node.frontmatter.title);
       postList.push({
         path: postEdge.node.fields.slug,
-        title: `${title}`
+        title
       });
     });
 
@@ -77,7 +76,7 @@ class PostTemplate extends React.Component {
           </Helmet>
 
           {postList.map(post => (
-            <Link style={{ textDecoration: "none" }} to={post.path}>{title}</Link>
+            <Link style={{ textDecoration: "none" }} to={post.path}>{post.title}</Link>
           ))}
           <SEO
             postPath={slug}

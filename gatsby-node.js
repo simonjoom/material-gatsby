@@ -24,6 +24,38 @@ const router = {
     pt: "/pt/blog/",
     cn: "/cn/blog/"
   },
+  "/contact": {
+    fr: "/fr/contact",
+    en: "/contact/",
+    ru: "/ru/contact/",
+    uk: "/uk/contact/",
+    pt: "/pt/contact/",
+    cn: "/cn/contact/"
+  },
+  "/instructor": {
+    fr: "/fr/instructor/",
+    en: "/instructor/",
+    ru: "/ru/instructor/",
+    uk: "/uk/instructor/",
+    pt: "/pt/instructor/",
+    cn: "/cn/instructor/"
+  },
+  "/hotels": {
+    fr: "/fr/hotels/",
+    en: "/hotels/",
+    ru: "/ru/hotels/",
+    uk: "/uk/hotels/",
+    pt: "/pt/hotels/",
+    cn: "/cn/hotels/"
+  },
+  "/jumpsuit": {
+    fr: "/jumpsuit/fr/",
+    en: "/jumpsuit/",
+    ru: "/ru/jumpsuit/",
+    uk: "/uk/jumpsuit/",
+    pt: "/pt/jumpsuit/",
+    cn: "/cn/jumpsuit/"
+  },
   "/about": {
     fr: "/about/fr/",
     en: "/about/",
@@ -195,7 +227,7 @@ exports.onCreateNode = async ({
     } = fileNode;
     console.log("MarkdownRemark", lng, type);
 
-    const parsedFilePath = path.parse(fileNode.relativePath);
+    const parsedFilePath = path.parse(fileNode.relativePath); 
     if (
       Object.prototype.hasOwnProperty.call(node, "frontmatter") &&
       Object.prototype.hasOwnProperty.call(node.frontmatter, "title")
@@ -207,7 +239,7 @@ exports.onCreateNode = async ({
       slug = `/${parsedFilePath.name}/`;
     } else {
       slug = `/${parsedFilePath.dir}/`;
-    }
+    } 
 
     if (Object.prototype.hasOwnProperty.call(node, "frontmatter")) {
       if (Object.prototype.hasOwnProperty.call(node.frontmatter, "slug"))
