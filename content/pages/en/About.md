@@ -1,5 +1,5 @@
 ---
-title: "Escola de esqui Skiscool"
+title: "Ski School"
 cover: "starter-logo-1024.png"
 category: "skischool"
 slug: "about"

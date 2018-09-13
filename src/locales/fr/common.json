@@ -1,6 +1,7 @@
 {
   "siteUrl":"https://www.skiscool.fr",
   "login": "Connexion",
+  "Ski School":"Ecole de ski",
   "logout": "Déconnexion",
   "forgot_password": "Vous n'avez plus accès à votre compte ?",
   "description_resort": "description resort",

@@ -2,15 +2,22 @@ import React from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import { translate } from "utils/i18n";
+import { Link } from "gatsby";
 import Layout from "../layout";
-import PostListing from "../components/PostListing";
-import SEO from "../components/SEO";
 import config from "../../data/SiteConfig";
 
 class Index extends React.Component {
   render() {
     const postEdges = this.props.data.allMarkdownRemark.edges;
-    console.log("postEdges",postEdges)
+    let postList = [];
+    postEdges.forEach(postEdge => {
+      console.log("testslug",postEdge.node.fields.slug)
+      postList.push({
+        path: postEdge.node.fields.slug,
+        title: postEdge.node.frontmatter.title
+      });
+    });
+
     return (
       <Layout location={this.props.location} title="Home">
         <div className="index-container">
@@ -18,8 +25,9 @@ class Index extends React.Component {
             <title>{config.siteTitle}</title>
             <link rel="canonical" href={`${config.siteUrl}`} />
           </Helmet>
-          <SEO postEdges={postEdges} translate={this.props.t} />
-          <PostListing postEdges={postEdges} />
+          {postList.map(post => (
+            <Link style={{ textDecoration: "none" }} to={post.path} />
+          ))}
         </div>
       </Layout>
     );
@@ -34,24 +42,19 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       limit: 2000
-      filter: { fields: { lng: { eq: $lng } } }
+      filter: { fields: { lng: { eq: $lng }, type: { eq: "pages" } } }
       sort: { fields: [fields___date], order: DESC }
     ) {
       edges {
         node {
-          fields {
-            lng
-            slug
-            type
-            date
-          }
-          excerpt
+          html
           timeToRead
+          excerpt
+          fields {
+            slug
+          }
           frontmatter {
             title
-            tags
-            cover
-            date
           }
         }
       }

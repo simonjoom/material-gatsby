@@ -1,5 +1,6 @@
 const path = require("path");
 const _ = require("lodash");
+const fs = require('fs-extra')
 const moment = require("moment");
 const crypto = require("crypto");
 const siteConfig = require("./data/SiteConfig");
@@ -9,15 +10,27 @@ const postNodes = [];
 const router = {
   "/": {
     fr: "/fr/",
-    en: "/"
+    en: "/",
+    ru: "/ru/",
+    uk: "/uk/",
+    pt: "/pt/",
+    cn: "/cn/"
+  },  
+  "/blog/": {
+    fr: "/fr/blog/",
+    en: "/blog/",
+    ru: "/ru/blog/",
+    uk: "/uk/blog/",
+    pt: "/pt/blog/",
+    cn: "/cn/blog/"
   },
-  "/aboutother/": {
-    fr: "/about/",
+  "/about": {
+    fr: "/about/fr/",
     en: "/about/",
-    ru: "/about/",
-    uk: "/about/",
-    pt: "/about/",
-    cn: "/about/"
+    ru: "/ru/about/",
+    uk: "/uk/about/",
+    pt: "/pt/about/",
+    cn: "/cn/about/"
   },
   "/skipass": {
     fr: "/Articles/Forfait-de-ski/",
@@ -25,7 +38,7 @@ const router = {
     ru: "/Articles/Ски-пасс/",
     uk: "/Articles/Ски-пас/",
     pt: "/pt/Articles/SkiPass/",
-    cn: "/cn/Articles/SkiPass/",
+    cn: "/cn/Articles/SkiPass/"
   },
   "/meribel": {
     fr: "/fr/Articles/Meribel/",
@@ -225,6 +238,7 @@ exports.onCreateNode = async ({
 };
 
 exports.setFieldsOnGraphQLNodeType = ({ type, actions }) => {
+  console.log("setFieldsOnGraphQLNodeType",type)
   const { name } = type;
   const { createNodeField } = actions;
   if (name === "MarkdownRemark") {
@@ -236,6 +250,7 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
 
   return new Promise((resolve, reject) => {
+    const pagePage = path.resolve("src/templates/page.jsx");
     const postPage = path.resolve("src/templates/post.jsx");
     const tagPage = path.resolve("src/templates/tag.jsx");
     const categoryPage = path.resolve("src/templates/category.jsx");
@@ -292,10 +307,20 @@ exports.createPages = ({ graphql, actions }) => {
 
               if (node.frontmatter.category) {
                 categorySets[lng].add(node.frontmatter.category);
-              } 
+              }
               createPage({
                 path: node.fields.slug,
                 component: postPage,
+                context: {
+                  id: node.id,
+                  ...node.fields
+                }
+              });
+              break;
+            case `pages`:
+              createPage({
+                path: node.fields.slug,
+                component: pagePage,
                 context: {
                   id: node.id,
                   ...node.fields
@@ -337,7 +362,7 @@ exports.onCreatePage = async ({ page, actions }) => {
   const { createPage, deletePage } = actions;
 
   const route = router[page.path];
-  console.log(page.path);
+  console.log("route",page.path);
   if (!route) {
     return;
   }
@@ -358,4 +383,12 @@ exports.onCreatePage = async ({ page, actions }) => {
       createPage(newPage);
     }
   });
+};
+
+exports.onPostBootstrap = () => {
+  console.log("Copying locales");
+  fs.copySync(
+    path.join(__dirname, "/src/locales"),
+    path.join(__dirname, "/public/locales")
+  );
 };

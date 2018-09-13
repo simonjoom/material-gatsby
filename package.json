@@ -33,6 +33,7 @@
     "gatsby-transformer-sharp": "next",
     "i18next": "^11.9.0",
     "i18next-browser-languagedetector": "^2.2.3",
+    "i18next-xhr-backend": "^1.5.1",
     "lodash": "^4.17.10",
     "moment": "^2.22.2",
     "netlify-cms": "^1.9.2",

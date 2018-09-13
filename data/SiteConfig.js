@@ -1,5 +1,5 @@
 module.exports = {
-  siteTitle: "Gatsby Material Starter", // Site title.
+  siteTitle: "SkiScool", // Site title.
   siteTitleShort: "GM Starter", // Short site title for homescreen (PWA). Preferably should be under 12 characters to prevent truncation.
   siteTitleAlt: "GatsbyJS Material Starter", // Alternative site title for SEO.
   siteLogo: "/logos/logo-1024.png", // Logo used for SEO and manifest.
@@ -10,7 +10,7 @@ module.exports = {
   siteRss: "/rss.xml", // Path to the RSS file.
   siteFBAppID: "1825356251115265", // FB Application ID for using app insights
   siteGATrackingID: "UA-47311644-4", // Tracking code ID for google analytics.
-  disqusShortname: "https-vagr9k-github-io-gatsby-material-starter", // Disqus shortname.
+  disqusShortname: "https-www-skiscool-com.disqus.com", // Disqus shortname.
   postDefaultCategoryID: "Tech", // Default category for posts.
   dateFromFormat: "YYYY-MM-DD", // Date format used in the frontmatter.
   dateFormat: "DD/MM/YYYY", // Date format for display.
