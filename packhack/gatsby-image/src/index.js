@@ -191,10 +191,7 @@ class GatsbyImage extends React.Component {
       density = descriptors[7] || 1
       if (width && width < maxWidth) {
         continue
-      }
-      if (height && height < maxHeight) {
-        continue
-      }
+      } 
       if (density && density > maxDensity) {
         continue
       }
@@ -281,7 +278,8 @@ class GatsbyImage extends React.Component {
       image.width = srcImage.width
       image.height = srcImage.height
 
-      const srcFront = image.tracedSVG || image.base64
+      const srcFront = image.tracedSVG 
+      //|| image.base64 not good
       const bgStyle = {
         backgroundColor: bgColor,
         position: `absolute`,
@@ -294,11 +292,14 @@ class GatsbyImage extends React.Component {
       }
       var isconstrained = width !== '100%' && width
       // The outer div is necessary to reset the z-index to 0.
+       /*   style={{
+            height: presentationHeight ? presentationHeight : 'auto',
+            width: width !== '100%' ? srcImage.width : '100%',
+          }}*/
       return (
         <div
           style={{
-            height: presentationHeight ? presentationHeight : 'auto',
-            width: width !== '100%' ? srcImage.width : '100%',
+          width: '100%'
           }}
         >
           {bgColor && <View title={title} style={bgStyle} />}
@@ -311,7 +312,7 @@ class GatsbyImage extends React.Component {
               title={title}
               defaultSource={srcFront}
               source={src}
-              srcSet={!isconstrained ? srcSet : false}
+              srcSet={srcSet}
               sizes={image.sizes}
               styleAccessibilityImage={imagePlaceholderStyle}
               styleImage={imageStyle}

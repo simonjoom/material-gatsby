@@ -24,6 +24,22 @@ const router = {
     pt: "/pt/blog/",
     cn: "/cn/blog/"
   },
+  "/instructor": {
+    fr: "/fr/instructor/",
+    en: "/instructor/",
+    ru: "/ru/instructor/",
+    uk: "/uk/instructor/",
+    pt: "/pt/instructor/",
+    cn: "/cn/instructor/"
+  },
+  "/instructor/": {
+    fr: "/fr/instructor/",
+    en: "/instructor/",
+    ru: "/ru/instructor/",
+    uk: "/uk/instructor/",
+    pt: "/pt/instructor/",
+    cn: "/cn/instructor/"
+  },
   "/concept": {
     fr: "/fr/concept",
     en: "/concept/",
@@ -40,14 +56,6 @@ const router = {
     pt: "/pt/contact/",
     cn: "/cn/contact/"
   },
-  "/instructor": {
-    fr: "/fr/instructor/",
-    en: "/instructor/",
-    ru: "/ru/instructor/",
-    uk: "/uk/instructor/",
-    pt: "/pt/instructor/",
-    cn: "/cn/instructor/"
-  },
   "/hotels": {
     fr: "/fr/hotels/",
     en: "/hotels/",
@@ -63,7 +71,7 @@ const router = {
     uk: "/uk/jumpsuit/",
     pt: "/pt/jumpsuit/",
     cn: "/cn/jumpsuit/"
-  }, 
+  },
   "/skipass": {
     fr: "/Articles/Forfait-de-ski/",
     en: "/Articles/SkiPass/",
@@ -200,8 +208,7 @@ exports.onCreateNode = async ({
       lng: node.relativeDirectory,
       ns: node.name,
       data
-    };
-    console.log("testttt", node.name);
+    }; 
     localeNode.fileAbsolutePath = node.absolutePath;
     createNode(localeNode);
     createParentChildLink({ parent: node, child: localeNode });
@@ -225,7 +232,7 @@ exports.onCreateNode = async ({
     const {
       fields: { lng, type }
     } = fileNode;
-   // console.log("MarkdownRemark", lng, type);
+    // console.log("MarkdownRemark", lng, type);
 
     const parsedFilePath = path.parse(fileNode.relativePath);
     if (
@@ -259,33 +266,38 @@ exports.onCreateNode = async ({
 
     let slugfin;
     if (router[slug]) slugfin = router[slug][lng];
+
+    if (type === "instructor")
+      slugfin = slugfin + _.kebabCase(node.frontmatter.title) +"/";
+
     if (!slugfin) {
       slugfin = slug;
     }
+
     createNodeField({ node, name: `lng`, value: lng });
     createNodeField({ node, name: `type`, value: type });
     createNodeField({ node, name: "slugbase", value: slug });
     createNodeField({ node, name: "slug", value: slugfin });
-    if(type!=="pages")
-    postNodes.push(node);
+    if (type !== "pages") postNodes.push(node);
   }
 };
 
 exports.setFieldsOnGraphQLNodeType = ({ type, actions }) => {
- // console.log("setFieldsOnGraphQLNodeType", type);
+  // console.log("setFieldsOnGraphQLNodeType", type);
   const { name } = type;
-  const { createNodeField } = actions;  
-  if (name === "MarkdownRemark") { 
+  const { createNodeField } = actions;
+  if (name === "MarkdownRemark") {
     addSiblingNodes(createNodeField);
   }
 };
 
 exports.createPages = ({ graphql, actions }) => {
-  const { createPage,deleteNode } = actions;
+  const { createPage, deleteNode } = actions;
 
   return new Promise((resolve, reject) => {
     const pagePage = path.resolve("src/templates/page.jsx");
     const postPage = path.resolve("src/templates/post.jsx");
+    const instructorPage = path.resolve("src/templates/instructor.jsx");
     const tagPage = path.resolve("src/templates/tag.jsx");
     const categoryPage = path.resolve("src/templates/category.jsx");
     resolve(
@@ -293,15 +305,18 @@ exports.createPages = ({ graphql, actions }) => {
         `
           {
             allMarkdownRemark(
-              sort: { order: DESC, fields: [frontmatter___date] } 
+              sort: { order: DESC, fields: [frontmatter___date] }
             ) {
               edges {
                 node {
                   id
                   fileAbsolutePath
                   frontmatter {
-                    tags
+                    title
+                    cover
+                    date
                     category
+                    tags
                   }
                   fields {
                     lng
@@ -325,14 +340,14 @@ exports.createPages = ({ graphql, actions }) => {
         let langs = [];
         // const tagSet = new Set();
         // const categorySet = new Set();
-        result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-         // console.log(node.fields);
+        result.data.allMarkdownRemark.edges.forEach(({ node }) => { 
           let lng = node.fields.lng;
           if (!tagSets[lng]) tagSets[lng] = new Set();
           if (!categorySets[lng]) categorySets[lng] = new Set();
           if (!langs[lng]) langs.push(lng);
           switch (node.fields.type) {
             case `post`:
+            case `instructor`:
               if (node.frontmatter.tags) {
                 node.frontmatter.tags.forEach(tag => {
                   tagSets[lng].add(tag);
@@ -344,7 +359,8 @@ exports.createPages = ({ graphql, actions }) => {
               }
               createPage({
                 path: node.fields.slug,
-                component: postPage,
+                component:
+                  node.fields.type == "post" ? postPage : instructorPage,
                 context: {
                   id: node.id,
                   ...node.fields
@@ -353,12 +369,14 @@ exports.createPages = ({ graphql, actions }) => {
               break;
             case `pages`:
               const route = router[node.fields.slugbase];
-              if(!route||(router[node.fields.slug]&&node.fields.slug!=="/")){
-                 
-              console.warn("routepages not defined from ",node.fields.slug)
-            return;  
-            }
-            console.log(node.fields.slug)
+              if (
+                !route ||
+                (router[node.fields.slug] && node.fields.slug !== "/")
+              ) {
+                console.warn("routepages not defined from ", node.fields.slug);
+                return;
+              }
+              
               createPage({
                 path: node.fields.slug,
                 component: pagePage,
@@ -404,10 +422,11 @@ exports.onCreatePage = async ({ page, actions }) => {
   const { createPage, deletePage } = actions;
 
   const route = router[page.path];
-  console.log("route", page.path);
   if (!route) {
+    console.warn("no route", page.path);
     return;
   }
+
   const { locales, defaultLocale } = config;
   let oldPage = Object.assign({}, page);
   const newPage = {};
@@ -415,6 +434,7 @@ exports.onCreatePage = async ({ page, actions }) => {
     if (route[locale]) {
       if (oldPage) deletePage(oldPage);
       oldPage = null;
+      
       newPage.component = page.component;
       newPage.path = route[locale];
       newPage.context = {

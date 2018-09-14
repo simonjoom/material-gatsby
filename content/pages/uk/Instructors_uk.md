@@ -2,7 +2,7 @@
 title: "Ski Instructors"
 cover: "starter-logo-1024.png"
 category: "ski instructor"
-slug: "instructor"
+slug: "instructorpage"
 tags:
     - ski instructor
     - courchevel

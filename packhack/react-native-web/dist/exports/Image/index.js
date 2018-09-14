@@ -218,11 +218,12 @@ function (_Component) {
         var _this$state$layout = _this.state.layout,
             height = _this$state$layout.height,
             width = _this$state$layout.width;
-
-        if (naturalHeight && naturalWidth && height && width) {
+ 
+        if (naturalHeight && naturalWidth>50 && height && width) {
+        console.log("_getBackgroundSize")
           if (window && _this.props.srcSet) {
             var mywidth = _this.srcset(_this.props.srcSet, width, height).width; 
-     		if (mywidth > naturalWidth) window.location.reload();
+     		//if (mywidth > naturalWidth) window.location.reload();
           }
 
           var scaleFactor = Math.min(1, width / naturalWidth, height / naturalHeight);
@@ -406,7 +407,7 @@ function (_Component) {
 
     delete flatStyle.overlayColor;
     delete flatStyle.resizeMode; // Accessibility image allows users to trigger the browser's image context menu
-
+console.log(displayImageUri)
     var hiddenImage = displayImageUri ? (0, _createElement.default)('img', {
       alt: accessibilityLabel || '',
       draggable: draggable || false,

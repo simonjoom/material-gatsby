@@ -18,12 +18,14 @@ class PostListing extends React.Component {
     return postList;
   }
   render() {
+    const size=this.props.size||"12"
+    const sizebig=this.props.sizebig||"8"
     const postList = this.getPostList();
     return (
       <div className="md-grid md-grid--no-spacing md-cell--middle">
-        <div className="md-grid md-cell--8 mobile-fix">
+        <div className={`md-grid md-cell--${sizebig} mobile-fix`}>
           {postList.map(post => (
-            <PostPreview key={post.title} postInfo={post} />
+            <PostPreview key={post.title} postInfo={post} size={size} />
           ))}
         </div>
       </div>

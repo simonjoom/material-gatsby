@@ -6,10 +6,12 @@ import "./PostCover.scss";
 class PostCover extends Component {
   render() {
     const { fileEdges, postNode, coverHeight, coverClassName } = this.props;
+    
     const post = postNode.frontmatter ? postNode.frontmatter : postNode;
+    if (!post.cover) return null;
     const coverNodeList = fileEdges.filter(fileNode => {
       if (fileNode.node.childImageSharp === null) return false;
-
+ 
       if (
         fileNode.node.absolutePath.indexOf(
           path.join("/static/assets/", post.cover)
@@ -18,14 +20,12 @@ class PostCover extends Component {
         return true;
 
       return false;
-    });
-
-    if (coverNodeList.length === 1) {
+    });  
+    if (coverNodeList && coverNodeList.length === 1) {
       return (
         <Img
           fluid={coverNodeList[0].node.childImageSharp.fluid}
-          outerWrapperClassName={coverClassName}
-          style={{ height: coverHeight, width: "100%" }}
+          height="100%"
         />
       );
     }

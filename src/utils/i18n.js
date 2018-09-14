@@ -69,7 +69,7 @@ export function withLocales(WrappedComponent) {
   return class extends Component {
     componentWillMount() {
       console.log("withLocales",this.props.data)
-      if (this.props.data.locales) {
+      if (this.props.data&&this.props.data.locales) {
         let lang;
         this.props.data.locales.edges.forEach(({ node }) => {
           const { lng, ns, data } = node;

@@ -1,12 +1,18 @@
 @import "../layout/theme.scss";
 $phone-status-bar-height: 24px - 12px;
 
-img {
-    vertical-align: middle;
+@media (min-width: 840px) {
+  .md-grid {
+    max-width: 840px;
+    margin: 0 auto !important;
+  }
 }
-.flex-end{
-    flex:1;
-    align-self: flex-end;
+img {
+  vertical-align: middle;
+}
+.flex-end {
+  flex: 1;
+  align-self: flex-end;
 }
 .rowlink {
   flex-direction: row;
@@ -29,11 +35,12 @@ img {
   background-color: $md-primary-color;
   color: $md-secondary-color !important;
 }
-.link2 { 
+.link2 {
   background-color: $md-secondary-color;
-  color: $md-primary-color  !important;
+  color: $md-primary-color !important;
 }
 .post-page {
+  margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;

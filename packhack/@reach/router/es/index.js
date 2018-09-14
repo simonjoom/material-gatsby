@@ -396,7 +396,7 @@ var FocusHandlerImpl = function (_React$Component2) {
     return React.createElement(
       Comp,
       _extends({
-        style: _extends({ outline: "none",display:"flex",flexGrow: 1,
+        style: _extends({ outline: "none",flexGrow: 1,
     flexShrink: 1 }, style),
         tabIndex: "-1",
         role: role,

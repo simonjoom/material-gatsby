@@ -1,6 +1,7 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+ 
 
 exports.__esModule = true;
 exports.default = void 0;
@@ -186,7 +187,7 @@ function (_React$Component) {
       if (!mxH || mxH === '100%') maxHeight = window.innerHeight > 0 ? window.innerHeight : screen.height;else maxHeight = mxH;
       maxDensity = window.devicePixelRatio;
     }
-
+    
     var candidates = images.split(',');
     if (candidates.length == 0) return false;
     var filename, width, height, density;
@@ -203,11 +204,7 @@ function (_React$Component) {
 
       if (width && width < maxWidth) {
         continue;
-      }
-
-      if (height && height < maxHeight) {
-        continue;
-      }
+      } 
 
       if (density && density > maxDensity) {
         continue;
@@ -268,7 +265,7 @@ function (_React$Component) {
 
     if (fluid) {
       var image = fluid; // var Pattern = /\(max-width: (.*)px\).*vw, (.*)px/
-
+ 
       var srcImage, src, srcSet, presentationHeight, Pattern, match;
 
       if (height) {
@@ -304,11 +301,13 @@ function (_React$Component) {
         srcImage = this.srcset(image.srcSet, width, height, image.aspectRatio);
         srcSet = image.srcSet;
       }
-
+      
       src = srcImage.result;
       image.width = srcImage.width;
+      
       image.height = srcImage.height;
-      var srcFront = image.tracedSVG || image.base64;
+      var srcFront = image.tracedSVG 
+      //|| image.base64; not good change size of image
       var bgStyle = {
         backgroundColor: bgColor,
         position: "absolute",
@@ -323,8 +322,7 @@ function (_React$Component) {
 
       return _react.default.createElement("div", {
         style: {
-          height: presentationHeight ? presentationHeight : 'auto',
-          width: width !== '100%' ? srcImage.width : '100%'
+          width: '100%'
         },
         __source: {
           fileName: _jsxFileName,
@@ -352,7 +350,7 @@ function (_React$Component) {
         title: title,
         defaultSource: srcFront,
         source: src,
-        srcSet: !isconstrained ? srcSet : false,
+        srcSet: srcSet,
         sizes: image.sizes,
         styleAccessibilityImage: imagePlaceholderStyle,
         styleImage: imageStyle,
@@ -434,6 +432,6 @@ Image.propTypes = {
               }}
 }*/
 
-
+//var _default = (0, _applyNativeMethods.default)(GatsbyImage);
 var _default = GatsbyImage;
 exports.default = _default;

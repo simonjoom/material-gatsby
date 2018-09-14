@@ -34,7 +34,14 @@ class queryWrapper extends Component {
                       owner
                     }
                     fluid(maxWidth: 1240) {
-                      ...GatsbyImageSharpFluid
+                      base64
+                      tracedSVG
+                      aspectRatio
+                      src
+                      srcSet
+                      sizes
+                      srcWebp
+                      srcSetWebp
                       originalName
                     }
                   }
@@ -43,7 +50,9 @@ class queryWrapper extends Component {
             }
           }
         `}
-        render={data => (
+        render={data => {
+          console.log("render",data)
+          return(
           <PostCover
             fileEdges={data.allFile.edges}
             postNode={postNode}
@@ -51,6 +60,7 @@ class queryWrapper extends Component {
             coverClassName={coverClassName}
           />
         )}
+          }
       />
     );
   }
