@@ -41,14 +41,70 @@ function (_Component) {
   };
 
   function Modal(props) {
-    return _Component.call(this, props) || this;
-    /*  this.state = {
-        animationSlide: null,
-        animationFade: null,
-        styleFade: { display: props.visible ? 'flex' : 'none' },
-        opacityFade: new Animated.Value(0),
-        slideTranslation: new Animated.Value(0),
-      };*/
+    var _this;
+
+    _this = _Component.call(this, props) || this;
+
+    _this.animateFadeIn = function (callback) {
+      if (_this.state.animationFade) {
+        _this.state.animationFade.stop();
+      }
+
+      var animationFade = _Animated.default.timing(_this.state.opacityFade, {
+        toValue: 1,
+        duration: 300
+      });
+
+      _this.setState({
+        animationFade: animationFade
+      }, function () {
+        requestAnimationFrame(function () {
+          _this.setState({
+            styleFade: {
+              display: 'flex'
+            }
+          }, function () {
+            return _this.state.animationFade.start(callback);
+          });
+        });
+      });
+    };
+
+    _this.animateFadeOut = function (callback) {
+      if (_this.state.animationFade) {
+        _this.state.animationFade.stop();
+      }
+
+      var animationFade = _Animated.default.timing(_this.state.opacityFade, {
+        toValue: 0,
+        duration: 300
+      });
+
+      _this.setState({
+        animationFade: animationFade
+      }, function () {
+        requestAnimationFrame(function () {
+          _this.state.animationFade.start(function () {
+            _this.setState({
+              styleFade: {
+                display: 'none'
+              }
+            }, callback);
+          });
+        });
+      });
+    };
+
+    _this.state = {
+      animationSlide: null,
+      animationFade: null,
+      styleFade: {
+        display: props.visible ? 'flex' : 'none'
+      },
+      opacityFade: new _Animated.default.Value(0),
+      slideTranslation: new _Animated.default.Value(0)
+    };
+    return _this;
   }
 
   var _proto = Modal.prototype;
@@ -74,6 +130,8 @@ function (_Component) {
       ariaHiddenInstances += 1;
       ariaAppHider.hide(appElement);
     }
+
+    this.animateFadeIn(onShow);
     /*
         if (animationType === 'slide') {
           this.animateSlideIn(onShow);
@@ -82,7 +140,6 @@ function (_Component) {
         } else {
           onShow();
         }*/
-
   };
 
   _proto.handleClose = function handleClose() {
@@ -91,6 +148,7 @@ function (_Component) {
         onDismiss = _this$props2.onDismiss,
         ariaHideApp = _this$props2.ariaHideApp,
         appElement = _this$props2.appElement;
+    this.animateFadeOut(onDismiss);
     /*
         if (animationType === 'slide') {
           this.animateSlideOut(onDismiss);
@@ -108,63 +166,12 @@ function (_Component) {
         ariaAppHider.show(appElement);
       }
     }
-  };
+  }; // Fade Animation Implementation
+
+
+  // End of Fade Animation Implementation
+
   /*
-    // Fade Animation Implementation
-    animateFadeIn = (callback) => {
-      if (this.state.animationFade) {
-        this.state.animationFade.stop();
-      }
-  
-      const animationFade = Animated.timing(this.state.opacityFade, {
-        toValue: 1,
-        duration: 300,
-      });
-  
-      this.setState(
-        {
-          animationFade,
-        },
-        () => {
-          requestAnimationFrame(() => {
-            this.setState({ styleFade: { display: 'flex' } }, () =>
-              this.state.animationFade.start(callback)
-            );
-          });
-        }
-      );
-    };
-  
-    animateFadeOut = (callback) => {
-      if (this.state.animationFade) {
-        this.state.animationFade.stop();
-      }
-  
-      const animationFade = Animated.timing(this.state.opacityFade, {
-        toValue: 0,
-        duration: 300,
-      });
-  
-      this.setState(
-        {
-          animationFade,
-        },
-        () => {
-          requestAnimationFrame(() => {
-            this.state.animationFade.start(() => {
-              this.setState(
-                {
-                  styleFade: { display: 'none' },
-                },
-                callback
-              );
-            });
-          });
-        }
-      );
-    };
-    // End of Fade Animation Implementation
-  
     // Slide Animation Implementation
     animateSlideIn = (callback) => {
       if (this.state.animationSlide) {
@@ -221,33 +228,35 @@ function (_Component) {
       );
     };*/
   // End of Slide Animation Implementation
-
-
   _proto.getAnimationStyle = function getAnimationStyle() {
     var _this$props3 = this.props,
         visible = _this$props3.visible,
         animationType = _this$props3.animationType;
     var styleFade = this.state.styleFade;
-    /*  if (animationType === 'slide') {
-        return [
-          {
-            transform: [
-              {
-                translateY: this.state.slideTranslation.interpolate({
-                  inputRange: [0, 1],
-                  outputRange: [Dimensions.get('window').height, 0],
-                  extrapolate: 'clamp',
-                }),
-              },
-            ],
-          },
-          styleFade,
-        ];
-      }
-      if (animationType === 'fade') {
-        return [{ opacity: this.state.opacityFade }, styleFade];
-      }
-    */
+    /* 
+       if (animationType === 'slide') {
+         return [
+           {
+             transform: [
+               {
+                 translateY: this.state.slideTranslation.interpolate({
+                   inputRange: [0, 1],
+                   outputRange: [Dimensions.get('window').height, 0],
+                   extrapolate: 'clamp',
+                 }),
+               },
+             ],
+           },
+           styleFade,
+         ];
+       }
+       */
+
+    if (animationType === 'fade') {
+      return [{
+        opacity: this.state.opacityFade
+      }, styleFade];
+    }
 
     return [_styles.default[visible ? 'visible' : 'hidden']];
   };
@@ -258,7 +267,10 @@ function (_Component) {
         children = _this$props4.children;
     var transparentStyle = transparent ? _styles.default.bgTransparent : _styles.default.bgNotTransparent;
     var animationStyle = this.getAnimationStyle();
-    return _react.default.createElement(_Portal.default, null, children);
+    return _react.default.createElement(_Portal.default, null, _react.default.createElement(_Animated.default.View, {
+      "aria-modal": "true",
+      style: [_styles.default.baseStyle, transparentStyle, animationStyle]
+    }, children));
   };
 
   return Modal;

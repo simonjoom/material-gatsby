@@ -74,7 +74,7 @@ class PostTemplate extends React.Component {
     //render current markdownRemark
     return (
       <Layout location={this.props.location}>
-        <LanguageSwitcher route={route} />
+        <LanguageSwitcher route={route} className="flex-end"/>
         <div className="post-page md-grid md-grid--no-spacing">
           <Helmet>
             <title>{`${title} | ${config.siteTitle}`}</title>

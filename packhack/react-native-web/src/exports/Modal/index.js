@@ -30,13 +30,13 @@ export default class Modal extends Component {
   constructor(props) {
     super(props);
 
-  /*  this.state = {
+  this.state = {
       animationSlide: null,
       animationFade: null,
       styleFade: { display: props.visible ? 'flex' : 'none' },
       opacityFade: new Animated.Value(0),
       slideTranslation: new Animated.Value(0),
-    };*/
+    };
   }
 
   componentDidMount() {
@@ -55,6 +55,7 @@ export default class Modal extends Component {
       ariaHiddenInstances += 1;
       ariaAppHider.hide(appElement);
     }
+      this.animateFadeIn(onShow);
 /*
     if (animationType === 'slide') {
       this.animateSlideIn(onShow);
@@ -67,6 +68,7 @@ export default class Modal extends Component {
 
   handleClose() {
     const { animationType, onDismiss, ariaHideApp, appElement } = this.props;
+      this.animateFadeOut(onDismiss);
 /*
     if (animationType === 'slide') {
       this.animateSlideOut(onDismiss);
@@ -84,7 +86,7 @@ export default class Modal extends Component {
       }
     }
   }
-/*
+ 
   // Fade Animation Implementation
   animateFadeIn = (callback) => {
     if (this.state.animationFade) {
@@ -139,7 +141,7 @@ export default class Modal extends Component {
     );
   };
   // End of Fade Animation Implementation
-
+/*
   // Slide Animation Implementation
   animateSlideIn = (callback) => {
     if (this.state.animationSlide) {
@@ -199,9 +201,9 @@ export default class Modal extends Component {
 
   getAnimationStyle() {
     const { visible, animationType } = this.props;
-    const { styleFade } = this.state;
-
-  /*  if (animationType === 'slide') {
+  const { styleFade } = this.state;
+ /* 
+    if (animationType === 'slide') {
       return [
         {
           transform: [
@@ -217,10 +219,11 @@ export default class Modal extends Component {
         styleFade,
       ];
     }
+    */
     if (animationType === 'fade') {
       return [{ opacity: this.state.opacityFade }, styleFade];
     }
-*/
+
     return [styles[visible ? 'visible' : 'hidden']];
   }
 
@@ -234,7 +237,12 @@ export default class Modal extends Component {
 
     return (
       <ModalPortal>
+      	<Animated.View
+          aria-modal="true"
+          style={[styles.baseStyle, transparentStyle, animationStyle]}
+        >
           {children}
+        </Animated.View>
       </ModalPortal>
     );
   }

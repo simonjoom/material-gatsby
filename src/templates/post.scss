@@ -4,7 +4,10 @@ $phone-status-bar-height: 24px - 12px;
 img {
     vertical-align: middle;
 }
-
+.flex-end{
+    flex:1;
+    align-self: flex-end;
+}
 .rowlink {
   flex-direction: row;
   padding: 10px;

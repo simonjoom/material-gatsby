@@ -8,6 +8,7 @@ var whitelist = {
   accessibilityLiveRegion: true,
   accessibilityRole: true,
   accessibilityTraits: true,
+  tabIndex: true,
   accessible: true,
   children: true,
   disabled: true,
