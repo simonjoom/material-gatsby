@@ -225,7 +225,7 @@ exports.onCreateNode = async ({
     const {
       fields: { lng, type }
     } = fileNode;
-    console.log("MarkdownRemark", lng, type);
+   // console.log("MarkdownRemark", lng, type);
 
     const parsedFilePath = path.parse(fileNode.relativePath);
     if (
@@ -266,21 +266,22 @@ exports.onCreateNode = async ({
     createNodeField({ node, name: `type`, value: type });
     createNodeField({ node, name: "slugbase", value: slug });
     createNodeField({ node, name: "slug", value: slugfin });
+    if(type!=="pages")
     postNodes.push(node);
   }
 };
 
 exports.setFieldsOnGraphQLNodeType = ({ type, actions }) => {
-  console.log("setFieldsOnGraphQLNodeType", type);
+ // console.log("setFieldsOnGraphQLNodeType", type);
   const { name } = type;
-  const { createNodeField } = actions;
-  if (name === "MarkdownRemark") {
+  const { createNodeField } = actions;  
+  if (name === "MarkdownRemark") { 
     addSiblingNodes(createNodeField);
   }
 };
 
 exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions;
+  const { createPage,deleteNode } = actions;
 
   return new Promise((resolve, reject) => {
     const pagePage = path.resolve("src/templates/page.jsx");
@@ -325,7 +326,7 @@ exports.createPages = ({ graphql, actions }) => {
         // const tagSet = new Set();
         // const categorySet = new Set();
         result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-          console.log(node.fields);
+         // console.log(node.fields);
           let lng = node.fields.lng;
           if (!tagSets[lng]) tagSets[lng] = new Set();
           if (!categorySets[lng]) categorySets[lng] = new Set();
@@ -352,8 +353,12 @@ exports.createPages = ({ graphql, actions }) => {
               break;
             case `pages`:
               const route = router[node.fields.slugbase];
-              if(!route)
+              if(!route||(router[node.fields.slug]&&node.fields.slug!=="/")){
+                 
               console.warn("routepages not defined from ",node.fields.slug)
+            return;  
+            }
+            console.log(node.fields.slug)
               createPage({
                 path: node.fields.slug,
                 component: pagePage,

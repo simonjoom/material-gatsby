@@ -2,7 +2,7 @@
 title: "Hotel"
 cover: "starter-logo-1024.png"
 category: "hotel"
-slug: "hotel"
+slug: "hotels"
 tags:
     - hotel
     - courchevel
