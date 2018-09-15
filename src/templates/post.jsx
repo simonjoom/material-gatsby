@@ -23,8 +23,9 @@ class PostTemplate extends React.Component {
     this.state = {
       mobile: true
     };
-    this.handleResize = this.handleResize.bind(this);
+    //this.handleResize = this.handleResize.bind(this);
   }
+  /*
   componentDidMount() {
     this.handleResize();
     window.addEventListener("resize", this.handleResize);
@@ -41,11 +42,11 @@ class PostTemplate extends React.Component {
       this.setState({ mobile: true });
     }
   }
-
+*/
   render() {
     const { mobile } = this.state;
-    const { slug } = this.props.pageContext;
-    console.log("postthis",this.props);
+    const { slug, lng } = this.props.pageContext;
+    console.log("postthis", this.props);
     const expanded = !mobile;
     const postOverlapClass = mobile ? "post-overlap-mobile" : "post-overlap";
     const postNode = this.props.data.markdownRemark;
@@ -65,19 +66,22 @@ class PostTemplate extends React.Component {
             <title>{`${post.title} | ${config.siteTitle}`}</title>
             <link rel="canonical" href={`${config.siteUrl}${post.id}`} />
           </Helmet>
-          <SEO postPath={slug} postNode={postNode} postSEO translate={this.props.t}/>
+          <SEO
+            postPath={slug}
+            postNode={postNode}
+            postSEO
+            translate={this.props.t}
+          />
           <PostCover
             postNode={postNode}
             coverHeight={coverHeight}
             coverClassName="md-grid md-cell--9 post-cover"
           />
-          <div
-            className={`md-grid md-cell--9 post-page-contents mobile-fix ${postOverlapClass}`}
-          >
+          <div className={`md-grid md-cell--9 post-page-contents mobile-fix`}>
             <Card className="md-grid md-cell md-cell--12 post">
               <CardText className="post-body">
                 <h1 className="md-display-2 post-header">{post.title}</h1>
-                <PostInfo postNode={postNode} />
+                <PostInfo postNode={postNode} lang={lng} />
                 <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
               </CardText>
               <div className="post-meta">
@@ -106,8 +110,8 @@ class PostTemplate extends React.Component {
 
 export default translate(["Post", "common"])(PostTemplate);
 
-export const pageQuery = graphql` 
-  query BlogPostBySlug($id: String!,$lng: String!) {
+export const pageQuery = graphql`
+  query BlogPostBySlug($id: String!, $lng: String!) {
     locales: allLocale(filter: { lng: { eq: $lng } }) {
       ...LocaleFragment
     }

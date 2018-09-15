@@ -22,16 +22,15 @@ class PostTemplate extends React.Component {
     super(props);
     this.state = {
       mobile: true
-    }; 
+    };
   }
- 
 
   render() {
     const { mobile } = this.state;
-    const { slug } = this.props.pageContext;
-    console.log("postthis", this.props);
+    const { slug, lng } = this.props.pageContext;
+    console.log("postthis", lng);
     const expanded = !mobile;
-   // const postOverlapClass = mobile ? "post-overlap-mobile" : "post-overla";
+    // const postOverlapClass = mobile ? "post-overlap-mobile" : "post-overla";
     const postNode = this.props.data.markdownRemark;
     const post = postNode.frontmatter;
     if (!post.id) {
@@ -41,7 +40,7 @@ class PostTemplate extends React.Component {
       post.category_id = config.postDefaultCategoryID;
     }
 
-    const coverHeight = mobile ? 180 : 350; 
+    const coverHeight = mobile ? 180 : 350;
     return (
       <Layout location={this.props.location}>
         <div className="post-page md-grid">
@@ -62,14 +61,11 @@ class PostTemplate extends React.Component {
               coverClassName="md-grid md-cell--9 post-cover"
             />
           )}
-          <div
-            className="md-grid post-page-contents mobile-fix"
-          >
+          <div className="md-grid post-page-contents mobile-fix">
             <Card className="md-grid md-cell md-cell--12 post">
               <CardText className="post-body">
-          
                 <h1 className="md-display-2 post-header">{post.title}</h1>
-                <PostInfo postNode={postNode} />
+                <PostInfo postNode={postNode} lang={lng} />
                 <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
               </CardText>
               <div className="post-meta">

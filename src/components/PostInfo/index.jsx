@@ -10,7 +10,7 @@ import "./PostInfo.scss";
 
 class PostInfo extends Component {
   render() {
-    const { postNode } = this.props;
+    const { postNode, lang } = this.props;
     const post = postNode.frontmatter;
     return (
       <div className="post-info">
@@ -23,7 +23,7 @@ class PostInfo extends Component {
         />
         <Link
           className="category-link"
-          to={`/categories/${_.kebabCase(post.category)}`}
+          to={`/categories_${lang}/${_.kebabCase(post.category)}`}
         >
           <CardTitle
             avatar={

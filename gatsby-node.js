@@ -6,6 +6,16 @@ const crypto = require("crypto");
 const siteConfig = require("./data/SiteConfig");
 require("babel-polyfill");
 
+const arraymenu = [
+  "/",
+  "/about",
+  "/jumpsuit",
+  "/concept", 
+  "/contact",
+  "/hotels"
+];
+const arraygallery = ["/", "/about", "/concept"];
+
 const postNodes = [];
 const router = {
   "/": {
@@ -14,7 +24,7 @@ const router = {
     ru: "/ru/",
     uk: "/uk/",
     pt: "/pt/",
-    cn: "/cn/"
+    ch: "/cn/"
   },
   "/blog/": {
     fr: "/fr/blog/",
@@ -22,7 +32,7 @@ const router = {
     ru: "/ru/blog/",
     uk: "/uk/blog/",
     pt: "/pt/blog/",
-    cn: "/cn/blog/"
+    ch: "/cn/blog/"
   },
   "/instructor": {
     fr: "/fr/instructor/",
@@ -30,7 +40,7 @@ const router = {
     ru: "/ru/instructor/",
     uk: "/uk/instructor/",
     pt: "/pt/instructor/",
-    cn: "/cn/instructor/"
+    ch: "/cn/instructor/"
   },
   "/instructor/": {
     fr: "/fr/instructor/",
@@ -38,7 +48,7 @@ const router = {
     ru: "/ru/instructor/",
     uk: "/uk/instructor/",
     pt: "/pt/instructor/",
-    cn: "/cn/instructor/"
+    ch: "/cn/instructor/"
   },
   "/concept": {
     fr: "/fr/concept",
@@ -46,7 +56,7 @@ const router = {
     ru: "/ru/concept/",
     uk: "/uk/concept/",
     pt: "/pt/concept/",
-    cn: "/cn/concept/"
+    ch: "/cn/concept/"
   },
   "/contact": {
     fr: "/fr/contact",
@@ -54,7 +64,7 @@ const router = {
     ru: "/ru/contact/",
     uk: "/uk/contact/",
     pt: "/pt/contact/",
-    cn: "/cn/contact/"
+    ch: "/cn/contact/"
   },
   "/hotels": {
     fr: "/fr/hotels/",
@@ -62,7 +72,7 @@ const router = {
     ru: "/ru/hotels/",
     uk: "/uk/hotels/",
     pt: "/pt/hotels/",
-    cn: "/cn/hotels/"
+    ch: "/cn/hotels/"
   },
   "/jumpsuit": {
     fr: "/jumpsuit/fr/",
@@ -70,7 +80,7 @@ const router = {
     ru: "/ru/jumpsuit/",
     uk: "/uk/jumpsuit/",
     pt: "/pt/jumpsuit/",
-    cn: "/cn/jumpsuit/"
+    ch: "/cn/jumpsuit/"
   },
   "/skipass": {
     fr: "/Articles/Forfait-de-ski/",
@@ -78,7 +88,7 @@ const router = {
     ru: "/Articles/Ски-пасс/",
     uk: "/Articles/Ски-пас/",
     pt: "/pt/Articles/SkiPass/",
-    cn: "/cn/Articles/SkiPass/"
+    ch: "/cn/Articles/SkiPass/"
   },
   "/meribel": {
     fr: "/fr/Articles/Meribel/",
@@ -86,7 +96,7 @@ const router = {
     ru: "/ru/Articles/Meribel/",
     uk: "/uk/Articles/Meribel/",
     pt: "/pt/Articles/Meribel/",
-    cn: "/cn/Articles/Meribel/"
+    ch: "/cn/Articles/Meribel/"
   },
   "/menuires": {
     fr: "/fr/Articles/Menuires/",
@@ -94,7 +104,7 @@ const router = {
     ru: "/ru/Articles/Menuires/",
     uk: "/uk/Articles/Menuires/",
     pt: "/pt/Articles/Menuires/",
-    cn: "/cn/Articles/Menuires/"
+    ch: "/cn/Articles/Menuires/"
   },
   "/courchevel": {
     fr: "/fr/Articles/Courchevel/",
@@ -102,7 +112,7 @@ const router = {
     ru: "/ru/Articles/Courchevel/",
     uk: "/uk/Articles/Courchevel/",
     pt: "/pt/Articles/Courchevel/",
-    cn: "/cn/Articles/Courchevel/"
+    ch: "/cn/Articles/Courchevel/"
   },
   "/valthorens": {
     fr: "/fr/Articles/Valthorens/",
@@ -110,7 +120,7 @@ const router = {
     ru: "/ru/Articles/Valthorens/",
     uk: "/uk/Articles/Valthorens/",
     pt: "/pt/Articles/Valthorens/",
-    cn: "/cn/Articles/Valthorens/"
+    ch: "/cn/Articles/Valthorens/"
   },
   "/latania": {
     fr: "/fr/Articles/Tania/",
@@ -118,7 +128,7 @@ const router = {
     ru: "/ru/Articles/Tania/",
     uk: "/uk/Articles/Tania/",
     pt: "/pt/Articles/Tania/",
-    cn: "/cn/Articles/Tania/"
+    ch: "/cn/Articles/Tania/"
   },
   "/about": {
     fr: "/L_ecole_de_ski/",
@@ -126,11 +136,11 @@ const router = {
     ru: "/Около_Skiscool/",
     uk: "/про_Skiscool/",
     pt: "/pt/About_Skiscool/",
-    cn: "/cn/About_Skiscool/"
+    ch: "/cn/About_Skiscool/"
   }
 };
 const config = {
-  locales: ["fr", "en", "pt", "ru", "uk", "cn"],
+  locales: ["fr", "en", "pt", "ru", "uk", "ch"],
   defaultLocale: "en"
 };
 function addSiblingNodes(createNodeField) {
@@ -208,7 +218,7 @@ exports.onCreateNode = async ({
       lng: node.relativeDirectory,
       ns: node.name,
       data
-    }; 
+    };
     localeNode.fileAbsolutePath = node.absolutePath;
     createNode(localeNode);
     createParentChildLink({ parent: node, child: localeNode });
@@ -268,10 +278,25 @@ exports.onCreateNode = async ({
     if (router[slug]) slugfin = router[slug][lng];
 
     if (type === "instructor")
-      slugfin = slugfin + _.kebabCase(node.frontmatter.title) +"/";
+      slugfin = slugfin + _.kebabCase(node.frontmatter.title) + "/";
 
     if (!slugfin) {
       slugfin = slug;
+    }
+
+      console.log("pages", slug);
+    if (type === "pages") {
+      createNodeField({
+        node,
+        name: `inmenu`,
+        value: arraymenu.includes(slug)
+      });
+
+      createNodeField({
+        node,
+        name: `carousel`,
+        value: arraygallery.includes(slug)
+      });
     }
 
     createNodeField({ node, name: `lng`, value: lng });
@@ -320,8 +345,10 @@ exports.createPages = ({ graphql, actions }) => {
                   }
                   fields {
                     lng
-                    slug
                     slugbase
+                    slug
+                    inmenu
+                    carousel
                     type
                   }
                 }
@@ -340,7 +367,7 @@ exports.createPages = ({ graphql, actions }) => {
         let langs = [];
         // const tagSet = new Set();
         // const categorySet = new Set();
-        result.data.allMarkdownRemark.edges.forEach(({ node }) => { 
+        result.data.allMarkdownRemark.edges.forEach(({ node }) => {
           let lng = node.fields.lng;
           if (!tagSets[lng]) tagSets[lng] = new Set();
           if (!categorySets[lng]) categorySets[lng] = new Set();
@@ -373,10 +400,10 @@ exports.createPages = ({ graphql, actions }) => {
                 !route ||
                 (router[node.fields.slug] && node.fields.slug !== "/")
               ) {
-                console.warn("routepages not defined from ", node.fields.slug);
+                console.warn("routepages not defined from ",node.fields.slugbase, node.fields.slug);
                 return;
               }
-              
+
               createPage({
                 path: node.fields.slug,
                 component: pagePage,
@@ -434,7 +461,7 @@ exports.onCreatePage = async ({ page, actions }) => {
     if (route[locale]) {
       if (oldPage) deletePage(oldPage);
       oldPage = null;
-      
+
       newPage.component = page.component;
       newPage.path = route[locale];
       newPage.context = {

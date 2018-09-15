@@ -23,8 +23,9 @@ class PostTemplate extends React.Component {
     this.state = {
       mobile: true
     };
-    this.handleResize = this.handleResize.bind(this);
+    //this.handleResize = this.handleResize.bind(this);
   }
+  /*
   componentDidMount() {
     this.handleResize();
     window.addEventListener("resize", this.handleResize);
@@ -40,11 +41,11 @@ class PostTemplate extends React.Component {
     } else {
       this.setState({ mobile: true });
     }
-  }
+  }*/
 
   render() {
     const { mobile } = this.state;
-    const { slug, route } = this.props.pageContext;
+    const { slug, route, lng } = this.props.pageContext;
     console.log("postthis", this.props);
     const expanded = !mobile;
 
@@ -54,10 +55,11 @@ class PostTemplate extends React.Component {
     postEdges.forEach(postEdge => {
       //console.log("testslug", postEdge.node.fields.slug);
       const title = this.props.t(postEdge.node.frontmatter.title);
-      postList.push({
-        path: postEdge.node.fields.slug,
-        title
-      });
+      if (postEdge.node.fields.inmenu)
+        postList.push({
+          path: postEdge.node.fields.slug,
+          title
+        });
     });
     ///
 
@@ -74,7 +76,7 @@ class PostTemplate extends React.Component {
     //render current markdownRemark
     return (
       <Layout location={this.props.location}>
-        <LanguageSwitcher route={route} className="flex-end"/>
+        <LanguageSwitcher route={route} className="flex-end" />
         <div className="post-page md-grid md-grid--no-spacing">
           <Helmet>
             <title>{`${title} | ${config.siteTitle}`}</title>
@@ -82,8 +84,12 @@ class PostTemplate extends React.Component {
           </Helmet>
           <View className="rowlink">
             {postList.map(post => (
-              <Link style={{ textDecoration: "none" }} to={post.path} className="Menulink">
-              <i className="mr1 fa fa-lg fa-circle-o"/>
+              <Link
+                style={{ textDecoration: "none" }}
+                to={post.path}
+                className="Menulink"
+              >
+                <i className="mr1 fa fa-lg fa-circle-o" />
                 {post.title}
               </Link>
             ))}
@@ -120,7 +126,7 @@ class PostTemplate extends React.Component {
           <Card className="md-grid md-cell md-cell--12 post">
             <CardText className="post-body">
               <h1 className="md-display-2 post-header">{title}</h1>
-              <PostInfo postNode={postNode} />
+              <PostInfo postNode={postNode} lang={lng} />
               <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
             </CardText>
             <div className="post-meta">
@@ -163,6 +169,8 @@ export const pageQuery = graphql`
         tags
       }
       fields {
+        inmenu
+        carousel
         slug
         lng
         date
@@ -179,6 +187,8 @@ export const pageQuery = graphql`
           timeToRead
           excerpt
           fields {
+            inmenu
+            carousel
             slug
           }
           frontmatter {
