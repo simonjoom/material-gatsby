@@ -1,7 +1,7 @@
 import React from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
-import Layout from "../layout";
+import { NoStaticRun as Layout} from "../layout";
 import PostListing from "../components/PostListing";
 import config from "../../data/SiteConfig";
 
@@ -9,11 +9,14 @@ export default class TagTemplate extends React.Component {
   render() {
     const { tag } = this.props.pageContext;
     const postEdges = this.props.data.allMarkdownRemark.edges;
-
     return (
       <Layout
         location={this.props.location}
         title={`Tagged in ${tag.charAt(0).toUpperCase() + tag.slice(1)}`}
+        route={route}
+        t={this.props.t}
+        lng={lng}
+        postEdges={postEdges}
       >
         <div className="tag-container">
           <Helmet>

@@ -9,11 +9,10 @@ import Layout from "../layout";
 import UserInfo from "../components/UserInfo";
 import Disqus from "../components/Disqus";
 import PostTags from "../components/PostTags";
-import LanguageSwitcher from "../components/Switchlang";
 import PostInfo from "../components/PostInfo";
 import SocialLinks from "../components/SocialLinks";
 import SEO from "../components/SEO";
-import config from "../../data/SiteConfig";
+import SiteConfig from "../../data/SiteConfig";
 import "./b16-tomorrow-dark.css";
 import "./post.scss";
 
@@ -23,45 +22,13 @@ class PostTemplate extends React.Component {
     this.state = {
       mobile: true
     };
-    //this.handleResize = this.handleResize.bind(this);
   }
-  /*
-  componentDidMount() {
-    this.handleResize();
-    window.addEventListener("resize", this.handleResize);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.handleResize);
-  }
-
-  handleResize() {
-    if (window.innerWidth >= 640) {
-      this.setState({ mobile: false });
-    } else {
-      this.setState({ mobile: true });
-    }
-  }*/
 
   render() {
     const { mobile } = this.state;
     const { slug, route, lng } = this.props.pageContext;
     console.log("postthis", this.props);
     const expanded = !mobile;
-
-    //generate Menu from allMarkdownRemark
-    const postEdges = this.props.data.allMarkdownRemark.edges;
-    let postList = [];
-    postEdges.forEach(postEdge => {
-      //console.log("testslug", postEdge.node.fields.slug);
-      const title = this.props.t(postEdge.node.frontmatter.title);
-      if (postEdge.node.fields.inmenu)
-        postList.push({
-          path: postEdge.node.fields.slug,
-          title
-        });
-    });
-    ///
 
     //render current markdownRemark
     const postNode = this.props.data.markdownRemark;
@@ -70,30 +37,22 @@ class PostTemplate extends React.Component {
       post.id = slug;
     }
     if (!post.category_id) {
-      post.category_id = config.postDefaultCategoryID;
+      post.category_id = SiteConfig.postDefaultCategoryID;
     }
     const title = this.props.t(post.title);
     //render current markdownRemark
     return (
-      <Layout location={this.props.location}>
-        <LanguageSwitcher route={route} className="flex-end" />
+      <Layout
+        location={this.props.location}
+        route={route}
+        t={this.props.t}
+        lng={lng}
+      >
         <div className="post-page md-grid md-grid--no-spacing">
           <Helmet>
-            <title>{`${title} | ${config.siteTitle}`}</title>
-            <link rel="canonical" href={`${config.siteUrl}${post.id}`} />
+            <title>{`${title} | ${SiteConfig.siteTitle}`}</title>
+            <link rel="canonical" href={`${SiteConfig.siteUrl}${post.id}`} />
           </Helmet>
-          <View className="rowlink">
-            {postList.map(post => (
-              <Link
-                style={{ textDecoration: "none" }}
-                to={post.path}
-                className="Menulink"
-              >
-                <i className="mr1 fa fa-lg fa-circle-o" />
-                {post.title}
-              </Link>
-            ))}
-          </View>
           {slug == "/" && (
             <View className="rowlink">
               <Link
@@ -140,7 +99,7 @@ class PostTemplate extends React.Component {
           </Card>
           <UserInfo
             className="md-grid md-cell md-cell--12"
-            config={config}
+            config={SiteConfig}
             expanded={expanded}
           />
           <Disqus postNode={postNode} expanded={expanded} />
@@ -174,27 +133,6 @@ export const pageQuery = graphql`
         slug
         lng
         date
-      }
-    }
-    allMarkdownRemark(
-      limit: 2000
-      filter: { fields: { lng: { eq: $lng }, type: { eq: "pages" } } }
-      sort: { fields: [fields___date], order: DESC }
-    ) {
-      edges {
-        node {
-          html
-          timeToRead
-          excerpt
-          fields {
-            inmenu
-            carousel
-            slug
-          }
-          frontmatter {
-            title
-          }
-        }
       }
     }
   }

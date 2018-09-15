@@ -7,7 +7,8 @@ $phone-status-bar-height: 24px - 12px;
     margin: 0 auto !important;
   }
 }
-img {
+img {    
+  max-width: 100%;
   vertical-align: middle;
 }
 .flex-end {

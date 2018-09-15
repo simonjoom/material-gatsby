@@ -77,7 +77,7 @@ class PostTemplate extends React.Component {
             coverHeight={coverHeight}
             coverClassName="md-grid md-cell--9 post-cover"
           />
-          <div className={`md-grid md-cell--9 post-page-contents mobile-fix`}>
+          <div className="md-grid md-cell--9 post-page-contents mobile-fix">
             <Card className="md-grid md-cell md-cell--12 post">
               <CardText className="post-body">
                 <h1 className="md-display-2 post-header">{post.title}</h1>

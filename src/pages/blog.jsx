@@ -9,9 +9,15 @@ import config from "../../data/SiteConfig";
 
 class Index extends React.Component {
   render() {
-    const postEdges = this.props.data.allMarkdownRemark.edges; 
+    const { slug, lng, route } = this.props.pageContext;
+    const postEdges = this.props.data.allMarkdownRemark.edges;
     return (
-      <Layout location={this.props.location} title="Home">
+      <Layout
+        location={this.props.location}
+        route={route}
+        t={this.props.t}
+        lng={lng}
+      >
         <div className="index-container">
           <Helmet>
             <title>{config.siteTitle}</title>
@@ -33,7 +39,10 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       limit: 2000
-      filter: { fields: { lng: { eq: $lng }, type: { eq: "post" } } }
+      filter: {
+        fields: { lng: { eq: $lng }, type: { eq: "post" } }
+        frontmatter: { title: { ne: "default" } }
+      }
       sort: { fields: [fields___date], order: DESC }
     ) {
       edges {
