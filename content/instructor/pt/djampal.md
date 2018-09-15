@@ -1,7 +1,7 @@
 ---
-title: "Elodie"
+title: "Djampal"
 category: "profile"
-cover: "instructor/images/elodie.jpg"
+cover: "instructor/images/djampal.jpg"
 slug: "instructor"
 tags:
     - ski instructor
@@ -11,8 +11,8 @@ tags:
 
 date: "2018-07-02"
 ---
-### Elodie descrição
-Elodie é um instrutor de esqui competente, ele está trabalhando com ESF 1850 como um freelancer e fala fluentemente russo, a Skiscool o contratou em muitos momentos e seus clientes estavam sempre satisfeitos com sua jornada com ele.
+### Djampal descrição
+Djampal é um instrutor de esqui competente, ele está trabalhando com ESF 1850 como um freelancer e fala fluentemente russo, a Skiscool o contratou em muitos momentos e seus clientes estavam sempre satisfeitos com sua jornada com ele.
 
 * Inglês, russo, francês.
 * 10 anos de experiência em ensino e coaching.
@@ -22,4 +22,4 @@ Elodie é um instrutor de esqui competente, ele está trabalhando com ESF 1850 c
 
 `Você terá todos os serviços convenientes, como prioridade nos elevadores, correção de vídeo, recomendações para comprar ou alugar seu equipamento, assistência para planejar sua estadia, reservar um hotel, restaurante e toda a ajuda necessária para obter o melhor de sua estada.`
 
-### Elodie preços 
+### Djampal preços

@@ -1,6 +1,7 @@
 ---
-title: "Maxime"
+title: "Florian"
 category: "profile"
+cover: "instructor/images/florian.jpg"
 slug: "instructor"
 tags:
     - ski instructor
@@ -11,8 +12,8 @@ tags:
 date: "2018-07-02"
 ---
 
-### Maxime descrição
-Maxime é um instrutor de esqui competente, ele está trabalhando com ESF 1650 como um freelancer e fala fluentemente russo, a Skiscool o contratou em muitos momentos e seus clientes estavam sempre satisfeitos com sua jornada com ele.
+### Florian descrição
+Florian é um instrutor de esqui competente, ele está trabalhando com ESF 1650 como um freelancer e fala fluentemente russo, a Skiscool o contratou em muitos momentos e seus clientes estavam sempre satisfeitos com sua jornada com ele.
 
 * Inglês, russo, francês.
 * 10 anos de experiência em ensino e coaching.
@@ -22,4 +23,4 @@ Maxime é um instrutor de esqui competente, ele está trabalhando com ESF 1650 c
 
 `Você terá todos os serviços convenientes, como prioridade nos elevadores, correção de vídeo, recomendações para comprar ou alugar seu equipamento, assistência para planejar sua estadia, reservar um hotel, restaurante e toda a ajuda necessária para obter o melhor de sua estada.`
 
-### Maxime preços
+### Florian preços

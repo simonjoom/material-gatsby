@@ -1,7 +1,7 @@
 ---
-title: "Olivier"
+title: "Florian"
 category: "profile"
-cover: "instructor/images/olivier.jpg"
+cover: "instructor/images/florian.jpg"
 slug: "instructor"
 tags:
     - ski instructor
@@ -12,12 +12,12 @@ tags:
 date: "2018-07-02"
 ---
 
-### Olivier's description
-Olivier is a competent ski instructor, he speaks a bit of russian, Skiscool hired him at many time and his customers was everytimes satisfied of their journey.
+### Florian's description
+A passion, a pleasure. We are privileged to be able to practice it in our valley.
+It's not only a sport but also a way to find yourself in a unique environment, in contact with nature.
+Skiing well requires a lot of patience and perseverance.
 
-Teaching, progression, discovery, off-piste, competition ... Any age, any level.
-Perfect knowledge of the ski area of the 3 valleys.
-Former high level skier, I will be able to make you discover or rediscover the ski and the ski area in complete safety.
+Florian is a competent ski instructor, he speaks fluently english, Skiscool hired him at many time and his customers was everytime satisfied of their journey. 
 
 * English, French speaking.
 * 10 years experience in teaching and coaching. 
@@ -28,7 +28,7 @@ Former high level skier, I will be able to make you discover or rediscover the s
 
 `You will get all the convenient services such as priority at the lifts, video-correcting, recommendations to buy or rent your equipment, assistance to plan your stay, book a hotel, restaurant and all the help you might need to get the best from your stay.`,
 
-### Olivier's Prices
+### Florian's Prices
 
 
 

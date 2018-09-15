@@ -1,6 +1,7 @@
 ---
 title: "Laure"
 category: "profile"
+cover: "instructor/images/laure.jpg"
 slug: "instructor"
 tags:
     - ski instructor

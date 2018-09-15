@@ -1,6 +1,7 @@
 ---
 title: "Elodie"
 category: "profile"
+cover: "instructor/images/elodie.jpg"
 slug: "instructor"
 tags:
     - ski instructor

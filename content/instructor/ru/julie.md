@@ -1,6 +1,7 @@
 ---
 title: "Julie"
 category: "profile"
+cover: "instructor/images/julie.jpg"
 slug: "instructor"
 tags:
     - ski instructor

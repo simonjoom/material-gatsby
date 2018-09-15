@@ -1,6 +1,7 @@
 ---
-title: "Maxime"
+title: "Florian"
 category: "profile"
+cover: "instructor/images/florian.jpg"
 slug: "instructor"
 tags:
     - ski instructor
@@ -12,12 +13,12 @@ date: "2018-07-02"
 ---
 
  
-### Description de Maxime
-Le ski ? Une passion, un plaisir. Nous sommes privilégiés de pouvoir le pratiquer dans notre commune.   
+### Description de Florian
+Le ski est une passion, un plaisir. Nous sommes privilégiés de pouvoir le pratiquer dans notre commune.   
 C'est non seulement un sport mais aussi un moyen de se retrouver dans un environnement à part, au contact de la nature. 
 Bien skier demande beaucoup de patience et de persévérance.  
 
-Maxime est un moniteur de ski expérimenté, Skiscool a pu, à plusieurs reprise travailler avec lui pour ses clients russes. Ses compétences de la langue et de l'enseignement est un atout inestimable.  
+Florian est un moniteur de ski expérimenté, Skiscool a pu, à plusieurs reprise travailler avec lui pour ses clients russes. Ses compétences de la langue et de l'enseignement est un atout inestimable.  
 
 * Un des plus haut niveau de qualification au monde, BEES (Brevet d'Etat d'Educateur Sportif option Ski Alpin), Obtenu à l'ENSA (Ecole Nationale de Ski et d'Alpinisme) de Chamonix.
 * Plus de 10 ans d'expérience dans l'enseignement du ski et la formation de moniteurs.
@@ -26,5 +27,5 @@ Maxime est un moniteur de ski expérimenté, Skiscool a pu, à plusieurs reprise
 * Développement de la confiance et de la technique, auprès de tous types de publics. 
 * Bonus vos aventures en vidéo HD gravées sur CD !
 
-### Tarifs de Maxime
+### Tarifs de Florian
 Voir directement avec le moniteur

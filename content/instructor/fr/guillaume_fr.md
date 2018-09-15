@@ -1,6 +1,7 @@
 ---
 title: "Guillaume"
 category: "profile"
+cover: "instructor/images/guillaume.jpg"
 slug: "instructor"
 tags:
     - ski instructor
