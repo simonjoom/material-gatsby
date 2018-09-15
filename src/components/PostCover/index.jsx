@@ -5,11 +5,16 @@ import PostCover from "./PostCoverComponent";
 class queryWrapper extends Component {
   render() {
     const { postNode, coverHeight, coverClassName } = this.props;
+    console.log("render");
     return (
       <StaticQuery
         query={graphql`
           query CoverQuery {
-            allFile {
+            allFile(
+          filter: {
+        absolutePath:{regex:"/(assets)\/.*\\.jpg$/"}
+          }
+            ) {
               edges {
                 node {
                   id
@@ -33,7 +38,7 @@ class queryWrapper extends Component {
                       type
                       owner
                     }
-                    fluid(maxWidth: 1240) {
+                    fluid(maxWidth: 1300) {
                       base64
                       tracedSVG
                       aspectRatio
@@ -51,16 +56,15 @@ class queryWrapper extends Component {
           }
         `}
         render={data => {
-          console.log("render",data)
-          return(
-          <PostCover
-            fileEdges={data.allFile.edges}
-            postNode={postNode}
-            coverHeight={coverHeight}
-            coverClassName={coverClassName}
-          />
-        )}
-          }
+          return (
+            <PostCover
+              fileEdges={data.allFile.edges}
+              postNode={postNode}
+              coverHeight={coverHeight}
+              coverClassName={coverClassName}
+            />
+          );
+        }}
       />
     );
   }

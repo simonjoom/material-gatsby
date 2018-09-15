@@ -1,15 +1,14 @@
 backend:
   name: github # Refer to https://www.netlifycms.org/docs/authentication-backends/ for auth backend list and instructions
   branch: master # Branch to update
-  repo: vagr9k/gatsby-material-starter # Repo for pushing new commits. Make sure to replace with your repo!
+  repo: simonjoom/material-gatsby # Repo for pushing new commits. Make sure to replace with your repo!
 
 media_folder: static/assets
 public_folder: assets
-
 collections:
-  - name: blog
-    label: "Post"
-    folder: "content"
+  - name: blogen
+    label: "Post/en"
+    folder: "content/post/en"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}.md"
     fields:
@@ -20,3 +19,147 @@ collections:
       - {label: "Category", name: "category", widget: "string"}
       - {label: "Tags", name: "tags", widget: "list"}
       - {label: "Body", name: "body", widget: "markdown"}
+  - name: blogfr
+    label: "Post/fr"
+    folder: "content/post/fr"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}.md"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Cover Image", name: "cover", widget: "image"}
+      - {label: "Slug", name: "slug", widget: "string"}
+      - {label: "Category", name: "category", widget: "string"}
+      - {label: "Tags", name: "tags", widget: "list"}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: blogpt
+    label: "Post/pt"
+    folder: "content/post/pt"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}.md"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Cover Image", name: "cover", widget: "image"}
+      - {label: "Slug", name: "slug", widget: "string"}
+      - {label: "Category", name: "category", widget: "string"}
+      - {label: "Tags", name: "tags", widget: "list"}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: blogru
+    label: "Post/ru"
+    folder: "content/post/ru"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}.md"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Cover Image", name: "cover", widget: "image"}
+      - {label: "Slug", name: "slug", widget: "string"}
+      - {label: "Category", name: "category", widget: "string"}
+      - {label: "Tags", name: "tags", widget: "list"}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: bloguk
+    label: "Post/uk"
+    folder: "content/post/uk"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}.md"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Cover Image", name: "cover", widget: "image"}
+      - {label: "Slug", name: "slug", widget: "string"}
+      - {label: "Category", name: "category", widget: "string"}
+      - {label: "Tags", name: "tags", widget: "list"}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: blogch
+    label: "Post/ch"
+    folder: "content/post/ch"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}.md"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Cover Image", name: "cover", widget: "image"}
+      - {label: "Slug", name: "slug", widget: "string"}
+      - {label: "Category", name: "category", widget: "string"}
+      - {label: "Tags", name: "tags", widget: "list"}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: instructoren
+    label: "Instructor/en"
+    folder: "content/instructor/en"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}.md"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Cover Image", name: "cover", widget: "image"}
+      - {label: "Slug", name: "slug", widget: "string"}
+      - {label: "Category", name: "category", widget: "string"}
+      - {label: "Tags", name: "tags", widget: "list"}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: instructor
+    label: "Instructor/fr"
+    folder: "content/instructor/fr"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}.md"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Cover Image", name: "cover", widget: "image"}
+      - {label: "Slug", name: "slug", widget: "string"}
+      - {label: "Category", name: "category", widget: "string"}
+      - {label: "Tags", name: "tags", widget: "list"}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: instructorpt
+    label: "Instructor/pt"
+    folder: "content/instructor/pt"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}.md"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Cover Image", name: "cover", widget: "image"}
+      - {label: "Slug", name: "slug", widget: "string"}
+      - {label: "Category", name: "category", widget: "string"}
+      - {label: "Tags", name: "tags", widget: "list"}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: instructorru
+    label: "Instructor/ru"
+    folder: "content/instructor/ru"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}.md"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Cover Image", name: "cover", widget: "image"}
+      - {label: "Slug", name: "slug", widget: "string"}
+      - {label: "Category", name: "category", widget: "string"}
+      - {label: "Tags", name: "tags", widget: "list"}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: instructoruk
+    label: "Instructor/uk"
+    folder: "content/instructor/uk"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}.md"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Cover Image", name: "cover", widget: "image"}
+      - {label: "Slug", name: "slug", widget: "string"}
+      - {label: "Category", name: "category", widget: "string"}
+      - {label: "Tags", name: "tags", widget: "list"}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: instructorch
+    label: "Instructor/ch"
+    folder: "content/instructor/ch"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}.md"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Cover Image", name: "cover", widget: "image"}
+      - {label: "Slug", name: "slug", widget: "string"}
+      - {label: "Category", name: "category", widget: "string"}
+      - {label: "Tags", name: "tags", widget: "list"}
+      - {label: "Body", name: "body", widget: "markdown"}
+

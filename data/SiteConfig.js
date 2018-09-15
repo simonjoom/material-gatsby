@@ -1,7 +1,7 @@
 module.exports = {
   siteTitle: "SkiScool", // Site title.
   siteTitleShort: "GM Starter", // Short site title for homescreen (PWA). Preferably should be under 12 characters to prevent truncation.
-  siteTitleAlt: "GatsbyJS Material Starter", // Alternative site title for SEO.
+  siteTitleAlt: "SKi School courchevel", // Alternative site title for SEO.
   siteLogo: "/logos/logo-1024.png", // Logo used for SEO and manifest.
   siteUrl: "https://cdn.skiscool.com", // Domain of your website without pathPrefix.
   pathPrefix: "/", // Prefixes all links. For cases when deployed to example.github.io/gatsby-material-starter/.
@@ -23,7 +23,7 @@ module.exports = {
   userLinks: [
     {
       label: "GitHub",
-      url: "https://github.com/Vagr9K/gatsby-material-starter",
+      url: "https://github.com/simonjoom/material-gatsby",
       iconClassName: "fa fa-github"
     },
     {

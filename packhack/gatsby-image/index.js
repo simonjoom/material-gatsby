@@ -189,23 +189,22 @@ function (_React$Component) {
     }
     
     var candidates = images.split(',');
-    if (candidates.length == 0) return false;
-    var filename, width, height, density;
-
+    if (candidates.length == 0) return false
+    var widthresultabs=10000;
     for (var i = 0; i < candidates.length; i++) {
       // The following regular expression was created based on the rules
       // in the srcset W3C specification available at:
       // http://www.w3.org/html/wg/drafts/srcset/w3c-srcset/
       var descriptors = candidates[i].match(/^\s*([^\s]+)\s*(\s(\d+)w)?\s*(\s(\d+)h)?\s*(\s(\d+)x)?\s*$/);
       filename = descriptors[1];
-      width = descriptors[3] || false;
+      width = parseInt(descriptors[3],10) || false;
       if (width) height = width * ratio;
-      density = descriptors[7] || 1;
-
-      if (width && width < maxWidth) {
+      density = descriptors[7] || 1; 
+      if (width && Math.abs(width-maxWidth)<widthresultabs){ 
+      widthresult=width;
+      widthresultabs=Math.abs(width-maxWidth);
         continue;
       } 
-
       if (density && density > maxDensity) {
         continue;
       }

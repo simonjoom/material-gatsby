@@ -1,7 +1,7 @@
 ---
-title: "christian"
+title: "Bertrand"
 category: "profile"
-cover: "instructor/images/christian.jpg"
+cover: "instructor/images/bertrand.jpg"
 slug: "instructor"
 tags:
     - ski instructor
