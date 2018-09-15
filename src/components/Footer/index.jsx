@@ -16,29 +16,34 @@ class Footer extends Component {
     }
     return (
       <footer className={fixedFooter ? "footer footer-fixed" : "footer"}>
-        {userLinks ? <UserLinks config={config} labeled /> : null}
+        
 
         <View className="notice-container">
-          <Text>
-            <i className="fa fa-mobile" /> Call Us: +33 6 75 505209{" "}
-            <i className="fa fa-phone" />
-          </Text>
-          <div className="c1 c5 c2 py2 fit center mx-auto">
+          <View className = "contact-us">
+            <Text className="contact-item">
+            <i className="fa fa-phone" /> Call Us: +33 6 75 505209{" "}
+            </Text>
+            <Text className="contact-item">
+            <i className="fa fa-envelope" /> e-mail us: abc@xyz
+            </Text>
+          </View>
+          
+          <div className="c1 c5 c2 py2 fit center mx-auto image-section-one">
             <img src="https://skiscool.com/dist/baton1024.jpg" />
             <img src="https://skiscool.com/dist/tripadvisor.jpg" />
           </div>
           <div
             id="ime"
-            className="flex flex-wrap justify-center relative py2 fit center mx-auto"
+            className="flex flex-wrap justify-center relative py2 fit center mx-auto image-section-two"
           >
             <img src="https://skiscool.com/dist/pic/courchevel.jpg" />
             <img src="https://skiscool.com/dist/pic/apogee.jpg" />
             <img src="https://skiscool.com/dist/pic/davidcintract.jpg" />
-          </div>
-
-          <div className="copyright">
-            <h4>{copyright}</h4>
-          </div>
+          </div>  
+        </View>
+        
+        <div className="bottom-section">
+          {userLinks ? <UserLinks config={config} labeled /> : null}
 
           <div className="rss">
             <Link to={url}>
@@ -57,7 +62,13 @@ class Footer extends Component {
               .
             </h4>
           </div>
-        </View>
+
+          <div className="copyright">
+            <h4>{copyright}</h4>
+          </div>
+        </div>
+        
+
       </footer>
     );
   }

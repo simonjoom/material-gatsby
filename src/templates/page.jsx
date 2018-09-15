@@ -15,6 +15,7 @@ import SEO from "../components/SEO";
 import SiteConfig from "../../data/SiteConfig";
 import "./b16-tomorrow-dark.css";
 import "./post.scss";
+import FrontCarousel from "../components/FrontCarousel/FrontCarousel"
 
 class PostTemplate extends React.Component {
   constructor(props) {
@@ -82,27 +83,31 @@ class PostTemplate extends React.Component {
             postSEO
             translate={this.props.t}
           />
+          <Card className="md-grid md-cell md-cell--12 carousel">
+            <FrontCarousel/>
+          </Card>
+
           <Card className="md-grid md-cell md-cell--12 post">
             <CardText className="post-body">
               <h1 className="md-display-2 post-header">{title}</h1>
-              <PostInfo postNode={postNode} lang={lng} />
+              {/* <PostInfo postNode={postNode} lang={lng} /> */}
               <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
             </CardText>
-            <div className="post-meta">
+            {/* <div className="post-meta">
               <PostTags tags={post.tags} />
               <SocialLinks
                 postPath={slug}
                 postNode={postNode}
                 mobile={this.state.mobile}
               />
-            </div>
+            </div> */}
           </Card>
-          <UserInfo
+          {/* <UserInfo
             className="md-grid md-cell md-cell--12"
             config={SiteConfig}
             expanded={expanded}
           />
-          <Disqus postNode={postNode} expanded={expanded} />
+          <Disqus postNode={postNode} expanded={expanded} /> */}
         </div>
       </Layout>
     );
