@@ -1,13 +1,13 @@
 import React from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
-import { NoStaticRun as Layout} from "../layout";
+import Layout from "../layout";
 import PostListing from "../components/PostListing";
 import config from "../../data/SiteConfig";
 
 export default class TagTemplate extends React.Component {
   render() {
-    const { tag } = this.props.pageContext;
+    const { tag, route, lng } = this.props.pageContext;
     const postEdges = this.props.data.allMarkdownRemark.edges;
     return (
       <Layout
@@ -16,7 +16,6 @@ export default class TagTemplate extends React.Component {
         route={route}
         t={this.props.t}
         lng={lng}
-        postEdges={postEdges}
       >
         <div className="tag-container">
           <Helmet>
@@ -31,7 +30,7 @@ export default class TagTemplate extends React.Component {
 }
 
 export const pageQuery = graphql`
-  query TagPage($tag: String,$lng: String!) {
+  query TagPage($tag: String, $lng: String!) {
     allMarkdownRemark(
       limit: 1000
       sort: { fields: [fields___date], order: DESC }

@@ -1,6 +1,6 @@
 ---
 title: "Philippe"
-category: "profile"
+category: "profile_ch"
 slug: "instructor"
 cover: "instructor/images/philippe.jpg"
 tags:

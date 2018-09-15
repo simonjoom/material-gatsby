@@ -1,6 +1,6 @@
 ---
 title: "default"
-category: "profile"
+category: "profile_fr"
 slug: "instructor"
 tags:
     - ski instructor

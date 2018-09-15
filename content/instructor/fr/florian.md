@@ -1,6 +1,6 @@
 ---
 title: "Florian"
-category: "profile"
+category: "profile_fr"
 cover: "instructor/images/florian.jpg"
 slug: "instructor"
 tags:

@@ -45,7 +45,7 @@ class PostTemplate extends React.Component {
 */
   render() {
     const { mobile } = this.state;
-    const { slug, lng } = this.props.pageContext;
+    const { slug, route,lng } = this.props.pageContext;
     console.log("postthis", this.props);
     const expanded = !mobile;
     const postOverlapClass = mobile ? "post-overlap-mobile" : "post-overlap";
@@ -60,7 +60,12 @@ class PostTemplate extends React.Component {
 
     const coverHeight = mobile ? 180 : 350;
     return (
-      <Layout location={this.props.location}>
+      <Layout
+        location={this.props.location}
+        route={route}
+        t={this.props.t}
+        lng={lng}
+      >
         <div className="post-page md-grid md-grid--no-spacing">
           <Helmet>
             <title>{`${post.title} | ${config.siteTitle}`}</title>

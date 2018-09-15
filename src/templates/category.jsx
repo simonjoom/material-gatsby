@@ -3,21 +3,21 @@ import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import { translate } from "utils/i18n";
 import PostListing from "../components/PostListing";
-import { NoStaticRun as Layout} from "../layout";
+import Layout from "../layout";
 import config from "../../data/SiteConfig";
 
 class CategoryTemplate extends React.Component {
-  render() { 
-    const { category,lng,route } = this.props.pageContext;
+  render() {
+    const { category, lng, route } = this.props.pageContext;
     const postEdges = this.props.data.allMarkdownRemark.edges;
+    console.log("category",category,postEdges)
     return (
       <Layout
         location={this.props.location}
-        title={category.charAt(0).toUpperCase() + category.slice(1)} 
+        title={category.charAt(0).toUpperCase() + category.slice(1)}
         route={route}
         t={this.props.t}
         lng={lng}
-        postEdges={postEdges}
       >
         <div className="category-container">
           <Helmet>
@@ -26,7 +26,7 @@ class CategoryTemplate extends React.Component {
             </title>
             <link
               rel="canonical"
-              href={`${config.siteUrl}/categories/${category}`}
+              href={`${config.siteUrl}/categories_${lng}/${category}`}
             />
           </Helmet>
           <PostListing postEdges={postEdges} />
@@ -39,7 +39,7 @@ class CategoryTemplate extends React.Component {
 export default translate(["Category", "common"])(CategoryTemplate);
 
 export const pageQuery = graphql`
-  query CategoryPage($category: String,$lng: String!) {
+  query CategoryPage($category: String, $lng: String!) {
     locales: allLocale(filter: { lng: { eq: $lng } }) {
       ...LocaleFragment
     }
@@ -52,9 +52,9 @@ export const pageQuery = graphql`
       edges {
         node {
           fields {
-                    lng
-                    slug
-                    type
+            lng
+            slug
+            type
             date
           }
           excerpt

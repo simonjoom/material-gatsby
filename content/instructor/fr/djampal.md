@@ -1,6 +1,6 @@
 ---
 title: "Djampal"
-category: "profile"
+category: "profile_fr"
 cover: "instructor/images/djampal.jpg"
 slug: "instructor"
 tags:

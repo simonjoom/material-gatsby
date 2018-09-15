@@ -1,6 +1,6 @@
 ---
 title: "Olivier"
-category: "profile"
+category: "profile_en"
 cover: "instructor/images/olivier.jpg"
 slug: "instructor"
 tags:

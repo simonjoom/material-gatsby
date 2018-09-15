@@ -1,6 +1,7 @@
 ---
 title: "Mathilde"
-category: "profile"
+category: "profile_ch"
+cover: "instructor/images/mono_female.jpg"
 slug: "instructor"
 tags:
     - ski instructor

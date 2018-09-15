@@ -1,6 +1,6 @@
 ---
 title: "Christo"
-category: "profile"
+category: "profile_ru"
 cover: "instructor/images/christo.jpg"
 slug: "instructor"
 tags:

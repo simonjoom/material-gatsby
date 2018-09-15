@@ -1,6 +1,6 @@
 ---
 title: "Simon"
-category: "profile"
+category: "profile_fr"
 cover: "instructor/images/simon.jpg"
 slug: "instructor"
 tags:

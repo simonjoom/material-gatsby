@@ -1,6 +1,6 @@
 ---
 title: "Guillaume"
-category: "profile"
+category: "profile_pt"
 cover: "instructor/images/guillaume.jpg"
 slug: "instructor"
 tags:

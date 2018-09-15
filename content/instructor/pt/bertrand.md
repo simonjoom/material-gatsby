@@ -1,6 +1,6 @@
 ---
 title: "Bertrand"
-category: "profile"
+category: "profile_pt"
 cover: "instructor/images/bertrand.jpg"
 slug: "instructor"
 tags:

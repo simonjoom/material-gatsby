@@ -1,6 +1,6 @@
 ---
 title: "Méderick"
-category: "profile"
+category: "profile_fr"
 cover: "instructor/images/mederick.jpg"
 slug: "instructor"
 tags:

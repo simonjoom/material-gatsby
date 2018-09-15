@@ -1,6 +1,6 @@
 ---
 title: "Thomas"
-category: "profile"
+category: "profile_ch"
 cover: "instructor/images/thomas.jpg"
 slug: "instructor"
 tags:

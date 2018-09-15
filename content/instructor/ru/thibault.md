@@ -1,6 +1,6 @@
 ---
 title: "Thibault"
-category: "profile"
+category: "profile_ru"
 slug: "instructor"
 tags:
     - ski instructor

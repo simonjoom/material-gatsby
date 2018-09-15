@@ -1,6 +1,6 @@
 ---
 title: "Pascal"
-category: "profile"
+category: "profile_ch"
 slug: "instructor"
 cover: "instructor/images/pascal.jpg"
 tags:

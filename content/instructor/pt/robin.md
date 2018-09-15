@@ -1,6 +1,6 @@
 ---
 title: "Robin"
-category: "profile"
+category: "profile_pt"
 cover: "instructor/images/robin.jpg"
 slug: "instructor"
 tags:

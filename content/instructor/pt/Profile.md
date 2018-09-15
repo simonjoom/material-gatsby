@@ -1,6 +1,6 @@
 ---
 title: "default"
-category: "profile"
+category: "profile_pt"
 slug: "instructor"
 tags:
     - instructor de esqui

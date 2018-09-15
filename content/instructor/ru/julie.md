@@ -1,6 +1,6 @@
 ---
 title: "Julie"
-category: "profile"
+category: "profile_ru"
 cover: "instructor/images/julie.jpg"
 slug: "instructor"
 tags:

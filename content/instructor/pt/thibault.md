@@ -1,6 +1,6 @@
 ---
 title: "Thibault"
-category: "profile"
+category: "profile_pt"
 cover: "instructor/images/thibault.jpg"
 slug: "instructor"
 tags:

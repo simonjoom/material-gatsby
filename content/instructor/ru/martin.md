@@ -1,6 +1,6 @@
 ---
 title: "Martin"
-category: "profile"
+category: "profile_ru"
 cover: "instructor/images/martin.jpg"
 slug: "instructor"
 tags:

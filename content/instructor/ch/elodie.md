@@ -1,6 +1,6 @@
 ---
 title: "Elodie"
-category: "profile"
+category: "profile_ch"
 cover: "instructor/images/elodie.jpg"
 slug: "instructor"
 tags:

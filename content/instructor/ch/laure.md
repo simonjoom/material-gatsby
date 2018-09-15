@@ -1,6 +1,6 @@
 ---
 title: "Laure"
-category: "profile"
+category: "profile_ch"
 cover: "instructor/images/laure.jpg"
 slug: "instructor"
 tags:
