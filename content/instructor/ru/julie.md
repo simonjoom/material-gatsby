@@ -11,11 +11,16 @@ tags:
 date: "2018-07-02"
 ---
 
-### Description %User%
-%User% is a competent ski instructor, she was working with ESF 1650. She speaks fluently english, skiscool worked with her many time and his customers was everytimes satisfied of their journey with her.
+### Laure описание
+Один из наиболее признанных дипломов в мире BEES (Государственный диплом международного образца горнолыжных инструкторов), полученный в ENSA (Национальная школа горнолыжного спорта и альпинизма) в Шамони.
 
-Snowboard World champion, I began to ski at the age of 18 months in Meribel.  
-I was lucky to grow up in 3 Valleys which I know by heart. I above all like sliding, doing pizza or going fast, on the green or black tracks ...  
-I like sharing my passion with the largest number. In ski or in snowboard, beginners to experts, the children or the adults, on tracks or in off-piste skiing, ski touring, my pleasure is to see your smile and enjoying your time on the snow!!!
+* Russian speaker.
+* Более чем 10-летний опыт в преподавании лыжного спорта и в подготовке инструкторов.
+* Доскональное знание местности (трассы, подъемники, рестораны ...) и приоритетный пропуск к подъемникам.
+* Организация пребывания клиентов &quot;под ключ&quot;.
+* Формирование у обучаемых уверенности в себе и обучение технике катания, работа с клиентами любого возраста и уровня подготовки.
+* В качестве бонуса Вы получите съемку ваших занятий в формате HD на карте памяти!
 
-### %User% Prices
+`Вы получите выгоду от всех практических услуг, таких как приоритет для подъемников, видео-коррекция, советы по покупке или аренде вашего оборудования, помощь в планировании вашего пребывания, забронировать гостиницу, ресторан и всю помощь, с которой вы может потребоваться получить максимум от вашего пребывания.`
+
+### Laure Цены

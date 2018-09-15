@@ -11,8 +11,8 @@ tags:
 date: "2018-07-02"
 ---
 
-### Description %User%
-%User% is a competent ski instructor, he was working with ESF 1650 . She speaks fluently english, skiscool hired him at many time and his customers was everytimes satisfied of their journey with her.
+### Laure's Description
+Laure is a competent ski instructor, he was working with ESF 1650 . She speaks fluently english, skiscool hired him at many time and his customers was everytimes satisfied of their journey with her.
 
 In the 3 Valleys, (Courchevel, Meribel or Val Thorens) I request for a minimum of 3 full days.
 Deeply winter for skiing !!!
@@ -25,4 +25,4 @@ Coaching for Company Seminar also(price on request). I like the Alpe d'Huez stat
 At Meribel I also offers accommodation in guest room has 13km of tracks see: Room to Rent Bourgdoisan
 
  
-### %User% Prices
+### Laure Prices

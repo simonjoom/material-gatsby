@@ -12,24 +12,20 @@ tags:
 date: "2018-07-02"
 ---
 
+### Pascal's description
+Pascal is a Ski Instructor, Moutain Guide, Coachings
 
-### %User%'s description
-%User% is a Ski Instructor, Moutain Guide, Coachings
+Um dos primeiros Freerider na França, Pascal irá guiá-lo pelos Alpes com paixão, profissionalismo e perfeito conhecimento da biodiversidade, do meio ambiente e das técnicas de treinamento.
+Seguir as suas pistas fará com que descubra uma verdadeira experiência de freeride.
+Seja qual for o seu nível, Pascal vai se adaptar com grande prazer e isso mesmo se você for um iniciante.
+Eu falo fluentemente inglês :)
+ 
+* Inglês, russo, francês.
+* 10 anos de experiência em ensino e coaching.
+* Orientação, com amplo conhecimento das Três Vales, prioridade em todos os teleféricos.
+* Organização flexível do seu tempo de esqui.
+* Confiança e desenvolvimento de técnica com qualquer tipo de público.
 
-One of the first Freerider in France, Pascal will guide you through the Alps with passion, professionnalism and perfect knowledges of the biodiversity, the environnement and training technics. 
-Following his tracks will make you discover a true freeride experience.
-What ever your level is, Pascal will adapt himself with great pleasure and that even if you are a beginner..
-I speaks fluently english :)
+`Você terá todos os serviços convenientes, como prioridade nos elevadores, correção de vídeo, recomendações para comprar ou alugar seu equipamento, assistência para planejar sua estadia, reservar um hotel, restaurante e toda a ajuda necessária para obter o melhor de sua estada.`
 
-* English, Russian, French speaking.
-* 10 years experience in teaching and coaching. 
-* Guiding, with extensive knowledge of the Three Vallees, priority at all ski lifts.
-* Flexible organization of your ski time.
-* Confidence and technique development with any type of public.
-
-`You will get all the convenient services such as priority at the lifts, video-correcting, recommendations to buy or rent your equipment, assistance to plan your stay, book a hotel, restaurant and all the help you might need to get the best from your stay.`,
-
-### %User%'s Prices
-
-
-
+### Pascal preços

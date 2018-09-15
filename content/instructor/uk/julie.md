@@ -11,11 +11,17 @@ tags:
 date: "2018-07-02"
 ---
 
-### Description %User%
-%User% is a competent ski instructor, she was working with ESF 1650. She speaks fluently english, skiscool worked with her many time and his customers was everytimes satisfied of their journey with her.
+### Julie опис
+Одним из наиболее высококвалифицированным в мире, BEES (Sportsman Educator Государственное патентное), Получено ENSA (Национальная школа горнолыжного спорта и альпинизма) в Шамони.
 
-Snowboard World champion, I began to ski at the age of 18 months in Meribel.  
-I was lucky to grow up in 3 Valleys which I know by heart. I above all like sliding, doing pizza or going fast, on the green or black tracks ...  
-I like sharing my passion with the largest number. In ski or in snowboard, beginners to experts, the children or the adults, on tracks or in off-piste skiing, ski touring, my pleasure is to see your smile and enjoying your time on the snow!!!
+* Russian speaker.
+* За 10-летний опыт работы в преподавании лыжного спорта и подготовки наблюдателей..
+* Доскональное знание лыжной области (трассы, подъемники, рестораны ...) и приоритетный пропуск к лифтам.
+* Организация 100% Карта.
+* Развитие доверия и технологии, со всеми типами общественности.
+* Бонус ваши HD видео приключения в карте памяти!
 
-### %User% Prices
+`Ви отримаєте переваги від усіх практичних послуг, таких як пріоритет підйомників, відео-корекція, поради щодо купівлі або оренди вашого обладнання, допомога в плануванні вашого перебування, резервування готелю, ресторану та всієї допомоги, яку ви може знадобитися отримати найкраще з вашого перебування.`
+
+### Julie ціни
+

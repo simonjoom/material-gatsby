@@ -12,8 +12,8 @@ tags:
 date: "2018-07-02"
 ---
 
-### %User%'s description
-%User% is a competent ski instructor, he speaks portugueuse, Skiscool hired him at many time and his customers was everytime satisfied of their journey.
+### Martin's description
+Martin is a competent ski instructor, he speaks portugueuse, Skiscool hired him at many time and his customers was everytime satisfied of their journey.
 
 * English, Portuguese, French speaking.
 * 10 years experience in teaching and coaching. 
@@ -24,7 +24,7 @@ date: "2018-07-02"
 
 `You will get all the convenient services such as priority at the lifts, video-correcting, recommendations to buy or rent your equipment, assistance to plan your stay, book a hotel, restaurant and all the help you might need to get the best from your stay.`,
 
-### %User%'s Prices
+### Martin's Prices
 
 
 

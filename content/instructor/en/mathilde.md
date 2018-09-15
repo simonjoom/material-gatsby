@@ -11,8 +11,14 @@ tags:
 date: "2018-07-02"
 ---
 
-### %User%'s description
-%User% is a competent ski instructor, she speaks fluently english, Skiscool hired her at many time and her customers was everytimes satisfied of their journey. 
+### Mathilde's description
+
+Instructor for 8 years, she started skiing very young.
+Very attached to her station, Courchevel is for her a unique place where she can relax.
+
+The teaching of alpine skiing, like snowboarding, requires a lot of experience
+Moniteur at ESF Courchevel 1850 since 2010 after ten years in the Sports Club, skiing is my passion. It is a playful and attractive sport. I am so happy to be able to transmit and share my know-how ...
+The 3 Valleys is an exceptional ski area which I can not do without. I will be delighted to discover it while teaching alpine skiing and snowboarding, with joy, dynamism, enthusiasm and skill.
 
 * English, French speaking.
 * 9 years experience in teaching and coaching. 
@@ -23,7 +29,7 @@ date: "2018-07-02"
 
 `You will get all the convenient services such as priority at the lifts, video-correcting, recommendations to buy or rent your equipment, assistance to plan your stay, book a hotel, restaurant and all the help you might need to get the best from your stay.`,
 
-### %User%'s Prices
+### Mathilde's Prices
 
 
 

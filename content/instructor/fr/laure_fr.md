@@ -11,10 +11,8 @@ tags:
 date: "2018-07-02"
 ---
 
-### Description de %User%
-%User% est une monitrice de ski expérimenté, Skiscool a pu, à plusieurs reprise travailler avec elle pour différents clients. Ses compétences de la langue et de l'enseignement est un atout inestimable.  
+### Description de Laure
 
-%User% 
 VOTRE MONITRICE EST CHAMPIONNE OLYMPIQUE!!
 Carrière de haut niveau en ski et snowboard depuis mon arrivée à l'alpe d'Huez.  
 Dans les meilleures junior françaises en ski puis changement radical pour le snowboard. Je fais Une carrière de haut niveau de plus de 15ans et remporte tous les titres.  
@@ -27,5 +25,11 @@ Pour les 3 vallées (Courchevel, Méribel et Val Thorens), je souhaite un minimu
 Vivement l'hiver pour la glisse!
 A bientot
 
+* Un des plus haut niveau de qualification au monde, BEES (Brevet d'Etat d'Educateur Sportif option Ski Alpin), Obtenu à l'ENSA (Ecole Nationale de Ski et d'Alpinisme) de Chamonix.
+* Plus de 10 ans d'expérience dans l'enseignement du ski et la formation de moniteurs.
+* Une connaissance approfondie du domaine skiable (pistes, remontées, restaurants...) et le passage prioritaire aux remontées mécaniques. 
+* Organisation 100% à la carte. 
+* Développement de la confiance et de la technique, auprès de tous types de publics. 
+* Bonus vos aventures en vidéo HD gravées sur CD !
 
-### Tarifs de %User%
+### Tarifs de Laure 

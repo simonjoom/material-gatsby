@@ -11,20 +11,15 @@ tags:
 
 date: "2018-07-02"
 ---
+### Christo descrição
+Christo é um instrutor de esqui competente, ele está trabalhando com ESF 1850 como um freelancer e fala fluentemente russo, a Skiscool o contratou em muitos momentos e seus clientes estavam sempre satisfeitos com sua jornada com ele.
 
-### %User%'s description
-%User% is a competent ski instructor, he speaks fluently russian, Skiscool hired him at many time and his customers was everytime satisfied of their journey,
+* Inglês, russo, francês.
+* 10 anos de experiência em ensino e coaching.
+* Orientação, com amplo conhecimento das Três Vales, prioridade em todos os teleféricos.
+* Organização flexível do seu tempo de esqui.
+* Confiança e desenvolvimento de técnica com qualquer tipo de público.
 
-* English, Russian, French speaking.
-* 10 years experience in teaching and coaching. 
-* Guiding, with extensive knowledge of the Three Vallees, priority at all ski lifts.
-* Flexible organization of your ski time.
-* Confidence and technique development with any type of public.
-* Free bonus Your adventures recorded in full HD videos !
+`Você terá todos os serviços convenientes, como prioridade nos elevadores, correção de vídeo, recomendações para comprar ou alugar seu equipamento, assistência para planejar sua estadia, reservar um hotel, restaurante e toda a ajuda necessária para obter o melhor de sua estada.`
 
-`You will get all the convenient services such as priority at the lifts, video-correcting, recommendations to buy or rent your equipment, assistance to plan your stay, book a hotel, restaurant and all the help you might need to get the best from your stay.`,
-
-### %User%'s Prices
-
-
-
+### Christo preços

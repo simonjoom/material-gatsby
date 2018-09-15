@@ -12,8 +12,8 @@ tags:
 date: "2018-07-02"
 ---
 
-### %User%'s description
-%User% Thomas parle anglais et russe couramment, Il a travaillé pour l'esf pendant 7 ans avant de se décider à devenir indépendant. 
+### Thomas description
+Thomas parle anglais et russe couramment, Il a travaillé pour l'esf pendant 7 ans avant de se décider à devenir indépendant. 
 
 Thomas connaît les pistes de Courchevel mieux que personne puisqu’il y est née !   
 
@@ -29,4 +29,4 @@ Comme la plupart des enfants du pays, il commence rapidement la compétition pui
 `Vous bénéficierez de tous les services pratiques comme la priorité aux remontées mécaniques, la vidéo-correction,<br/> des conseils pour acheter ou louer votre matériel, de l'assistance pour planifier votre séjour, réserver un hôtel, un restaurant et toute l'aide dont vous pourriez avoir besoin pour retirer le meilleur de votre séjour.`,
 
 
-### %User%'s Prices
+### Thomas tarifs

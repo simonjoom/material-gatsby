@@ -11,18 +11,17 @@ tags:
 date: "2018-07-02"
 ---
 
-### Description %User%
-%User% is a competent ski instructor, he was working with ESF 1650 . She speaks fluently english, skiscool hired him at many time and his customers was everytimes satisfied of their journey with her.
 
-In the 3 Valleys, (Courchevel, Meribel or Val Thorens) I request for a minimum of 3 full days.
-Deeply winter for skiing !!!
-See you soon
+### Laure опис
+Одним из наиболее высококвалифицированным в мире, BEES (Sportsman Educator Государственное патентное), Получено ENSA (Национальная школа горнолыжного спорта и альпинизма) в Шамони.
 
-I'm a high-level career of over 15 years and won all the titles.  
-France Champion, European, World champion.  
-I give skiing and Snowboard lessons from 1 to 4 people(equivalent level).   
-Coaching for Company Seminar also(price on request). I like the Alpe d'Huez station and the 3 Valleys!
-At Meribel I also offers accommodation in guest room has 13km of tracks see: Room to Rent Bourgdoisan
+* Russian speaker.
+* За 10-летний опыт работы в преподавании лыжного спорта и подготовки наблюдателей..
+* Доскональное знание лыжной области (трассы, подъемники, рестораны ...) и приоритетный пропуск к лифтам.
+* Организация 100% Карта.
+* Развитие доверия и технологии, со всеми типами общественности.
+* Бонус ваши HD видео приключения в карте памяти!
 
- 
-### %User% Prices
+`Ви отримаєте переваги від усіх практичних послуг, таких як пріоритет підйомників, відео-корекція, поради щодо купівлі або оренди вашого обладнання, допомога в плануванні вашого перебування, резервування готелю, ресторану та всієї допомоги, яку ви може знадобитися отримати найкраще з вашого перебування.`
+
+### Laure ціни

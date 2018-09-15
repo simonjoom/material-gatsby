@@ -13,23 +13,18 @@ date: "2018-07-02"
 ---
 
 
-### %User%'s description
-%User% is a Ski Instructor, Moutain Guide, Coachings
+### Pascal опис
+Одним из наиболее высококвалифицированным в мире, BEES (Sportsman Educator Государственное патентное), Получено ENSA (Национальная школа горнолыжного спорта и альпинизма) в Шамони.
 
-One of the first Freerider in France, Pascal will guide you through the Alps with passion, professionnalism and perfect knowledges of the biodiversity, the environnement and training technics. 
-Following his tracks will make you discover a true freeride experience.
-What ever your level is, Pascal will adapt himself with great pleasure and that even if you are a beginner..
-I speaks fluently english :)
+* Russian speaker.
+* За 10-летний опыт работы в преподавании лыжного спорта и подготовки наблюдателей..
+* Доскональное знание лыжной области (трассы, подъемники, рестораны ...) и приоритетный пропуск к лифтам.
+* Организация 100% Карта.
+* Развитие доверия и технологии, со всеми типами общественности.
+* Бонус ваши HD видео приключения в карте памяти!
 
-* English, Russian, French speaking.
-* 10 years experience in teaching and coaching. 
-* Guiding, with extensive knowledge of the Three Vallees, priority at all ski lifts.
-* Flexible organization of your ski time.
-* Confidence and technique development with any type of public.
+`Ви отримаєте переваги від усіх практичних послуг, таких як пріоритет підйомників, відео-корекція, поради щодо купівлі або оренди вашого обладнання, допомога в плануванні вашого перебування, резервування готелю, ресторану та всієї допомоги, яку ви може знадобитися отримати найкраще з вашого перебування.`
 
-`You will get all the convenient services such as priority at the lifts, video-correcting, recommendations to buy or rent your equipment, assistance to plan your stay, book a hotel, restaurant and all the help you might need to get the best from your stay.`,
-
-### %User%'s Prices
-
+### Pascal ціни
 
 

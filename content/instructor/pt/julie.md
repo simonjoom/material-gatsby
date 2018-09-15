@@ -11,11 +11,15 @@ tags:
 date: "2018-07-02"
 ---
 
-### Description %User%
-%User% is a competent ski instructor, she was working with ESF 1650. She speaks fluently english, skiscool worked with her many time and his customers was everytimes satisfied of their journey with her.
+### Julie descrição
+Julie é um instrutor de esqui competente, ele está trabalhando com ESF 1850 como um freelancer e fala fluentemente russo, a Skiscool o contratou em muitos momentos e seus clientes estavam sempre satisfeitos com sua jornada com ele.
 
-Snowboard World champion, I began to ski at the age of 18 months in Meribel.  
-I was lucky to grow up in 3 Valleys which I know by heart. I above all like sliding, doing pizza or going fast, on the green or black tracks ...  
-I like sharing my passion with the largest number. In ski or in snowboard, beginners to experts, the children or the adults, on tracks or in off-piste skiing, ski touring, my pleasure is to see your smile and enjoying your time on the snow!!!
+* Inglês, russo, francês.
+* 10 anos de experiência em ensino e coaching.
+* Orientação, com amplo conhecimento das Três Vales, prioridade em todos os teleféricos.
+* Organização flexível do seu tempo de esqui.
+* Confiança e desenvolvimento de técnica com qualquer tipo de público.
 
-### %User% Prices
+`Você terá todos os serviços convenientes, como prioridade nos elevadores, correção de vídeo, recomendações para comprar ou alugar seu equipamento, assistência para planejar sua estadia, reservar um hotel, restaurante e toda a ajuda necessária para obter o melhor de sua estada.`
+
+### Julie preços 

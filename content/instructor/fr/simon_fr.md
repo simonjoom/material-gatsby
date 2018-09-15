@@ -12,8 +12,8 @@ tags:
 date: "2018-07-02"
 ---
 
-### Description de %User%
-%User% est un moniteur de ski expérimenté, Skiscool a pu, à plusieurs reprise travailler avec lui pour ses clients russes. Ses compétences de la langue et de l'enseignement est un atout inestimable.  
+### Description de Simon
+Simon est un moniteur de ski expérimenté, Skiscool a pu, à plusieurs reprise travailler avec lui pour ses clients russes. Ses compétences de la langue et de l'enseignement est un atout inestimable.  
 
 * Un des plus haut niveau de qualification au monde, BEES (Brevet d'Etat d'Educateur Sportif option Ski Alpin), Obtenu à l'ENSA (Ecole Nationale de Ski et d'Alpinisme) de Chamonix.
 * Plus de 10 ans d'expérience dans l'enseignement du ski et la formation de moniteurs.
@@ -23,4 +23,4 @@ date: "2018-07-02"
 * Bonus vos aventures en vidéo HD dans une carte mémoire!
 
 
-### Tarifs de %User%
+### Tarifs de Simon

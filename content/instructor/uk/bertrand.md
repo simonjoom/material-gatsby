@@ -12,15 +12,17 @@ tags:
 date: "2018-07-02"
 ---
 
-### %User%'s description
-%User% is a competent ski instructor, he is working with ESF 1850 like a freelance and speaks fluently russian, Skiscool hired him at many time and his customers was everytimes satisfied of their journey with him.
 
-* English, Russian, French speaking.
-* 10 years experience in teaching and coaching. 
-* Guiding, with extensive knowledge of the Three Vallees, priority at all ski lifts.
-* Flexible organization of your ski time.
-* Confidence and technique developpement with any type of public.
+### Bertrand опис
+Одним из наиболее высококвалифицированным в мире, BEES (Sportsman Educator Государственное патентное), Получено ENSA (Национальная школа горнолыжного спорта и альпинизма) в Шамони.
 
-`You will get all the convenient services such as priority at the lifts, video-correcting, recommendations to buy or rent your equipment, assistance to plan your stay, book a hotel, restaurant and all the help you might need to get the best from your stay.`,
+* Russian speaker.
+* За 10-летний опыт работы в преподавании лыжного спорта и подготовки наблюдателей..
+* Доскональное знание лыжной области (трассы, подъемники, рестораны ...) и приоритетный пропуск к лифтам.
+* Организация 100% Карта.
+* Развитие доверия и технологии, со всеми типами общественности.
+* Бонус ваши HD видео приключения в карте памяти!
 
-### %User%'s Prices
+`Ви отримаєте переваги від усіх практичних послуг, таких як пріоритет підйомників, відео-корекція, поради щодо купівлі або оренди вашого обладнання, допомога в плануванні вашого перебування, резервування готелю, ресторану та всієї допомоги, яку ви може знадобитися отримати найкраще з вашого перебування.`
+
+### Bertrand ціни

@@ -11,8 +11,8 @@ tags:
 date: "2018-07-02"
 ---
 
-### Description %User%
-%User% is a competent ski instructor, she was working with ESF 1650 . She speaks fluently english, skiscool hired her at many time and his customers was everytimes satisfied of their journey with her.
+### Elodie's description 
+Elodie is a competent ski instructor, she was working with ESF 1650 . She speaks fluently english, skiscool hired her at many time and his customers was everytimes satisfied of their journey with her.
 
 , Skiscool a pu, à plusieurs reprise travailler avec elle pour différents clients. Ses compétences de la langue et de l'enseignement est un atout inestimable.  
 
@@ -26,4 +26,4 @@ Service and quality specialist, I customize my services to your needs.
  
  `You will get all the convenient services such as priority at the lifts, video-correcting, recommendations to buy or rent your equipment, assistance to plan your stay, book a hotel, restaurant and all the help you might need to get the best from your stay.`,
 
-### %User% Prices
+### Elodie Prices

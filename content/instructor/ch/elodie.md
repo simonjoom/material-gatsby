@@ -11,19 +11,15 @@ tags:
 date: "2018-07-02"
 ---
 
-### Description %User%
-%User% is a competent ski instructor, she was working with ESF 1650 . She speaks fluently english, skiscool hired her at many time and his customers was everytimes satisfied of their journey with her.
+### Description Elodie
+是一个有能力且能够胜任的滑雪教练，说着一口流利的英语口语，是一个自由职滑雪教练,  多次受到%company%邀请出任滑雪教练，学员对他的好评一如既往的给力
 
-, Skiscool a pu, à plusieurs reprise travailler avec elle pour différents clients. Ses compétences de la langue et de l'enseignement est un atout inestimable.  
+* %langspoken% 
+* 十年执教经验.
+* 在Three Vallees 有丰富的导引经验，尤其是上山吊椅（运送滑雪学员）这一领域..
+* 灵活组织你的滑雪时间.
+* 在各种公众场合都有绝对的自信和技术保障.
 
-Service and quality specialist, I customize my services to your needs.
- 
- * English, Russian, French speaking.
- * 10 years experience in teaching and coaching. 
- * Guiding, with extensive knowledge of the Three Vallees, priority at all ski lifts.
- * Flexible organization of your ski time.
- * Confidence and technique development with any type of public.
- 
- `You will get all the convenient services such as priority at the lifts, video-correcting, recommendations to buy or rent your equipment, assistance to plan your stay, book a hotel, restaurant and all the help you might need to get the best from your stay.`,
+`选择Elodie教练，你就选择了相当便捷有保障的服务，Elodie会让你优先使用吊椅，视频录制剪辑，购买或者租用装备的建议等等。这样都是为了最好的体验做准备.`
+### Elodie Prices
 
-### %User% Prices

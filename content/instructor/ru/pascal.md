@@ -13,23 +13,19 @@ date: "2018-07-02"
 ---
 
 
-### %User%'s description
-%User% is a Ski Instructor, Moutain Guide, Coachings
+### Pascal описание
+Один из наиболее признанных дипломов в мире BEES (Государственный диплом международного образца горнолыжных инструкторов), полученный в ENSA (Национальная школа горнолыжного спорта и альпинизма) в Шамони.
 
-One of the first Freerider in France, Pascal will guide you through the Alps with passion, professionnalism and perfect knowledges of the biodiversity, the environnement and training technics. 
-Following his tracks will make you discover a true freeride experience.
-What ever your level is, Pascal will adapt himself with great pleasure and that even if you are a beginner..
-I speaks fluently english :)
+* Russian speaker.
+* Более чем 10-летний опыт в преподавании лыжного спорта и в подготовке инструкторов.
+* Доскональное знание местности (трассы, подъемники, рестораны ...) и приоритетный пропуск к подъемникам.
+* Организация пребывания клиентов &quot;под ключ&quot;.
+* Формирование у обучаемых уверенности в себе и обучение технике катания, работа с клиентами любого возраста и уровня подготовки.
+* В качестве бонуса Вы получите съемку ваших занятий в формате HD на карте памяти!
 
-* English, Russian, French speaking.
-* 10 years experience in teaching and coaching. 
-* Guiding, with extensive knowledge of the Three Vallees, priority at all ski lifts.
-* Flexible organization of your ski time.
-* Confidence and technique development with any type of public.
+`Вы получите выгоду от всех практических услуг, таких как приоритет для подъемников, видео-коррекция, советы по покупке или аренде вашего оборудования, помощь в планировании вашего пребывания, забронировать гостиницу, ресторан и всю помощь, с которой вы может потребоваться получить максимум от вашего пребывания.`
 
-`You will get all the convenient services such as priority at the lifts, video-correcting, recommendations to buy or rent your equipment, assistance to plan your stay, book a hotel, restaurant and all the help you might need to get the best from your stay.`,
-
-### %User%'s Prices
+### Pascal Цены
 
 
 

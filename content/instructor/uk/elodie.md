@@ -11,19 +11,16 @@ tags:
 date: "2018-07-02"
 ---
 
-### Description %User%
-%User% is a competent ski instructor, she was working with ESF 1650 . She speaks fluently english, skiscool hired her at many time and his customers was everytimes satisfied of their journey with her.
+### Elodie опис
+Одним из наиболее высококвалифицированным в мире, BEES (Sportsman Educator Государственное патентное), Получено ENSA (Национальная школа горнолыжного спорта и альпинизма) в Шамони.
 
-, Skiscool a pu, à plusieurs reprise travailler avec elle pour différents clients. Ses compétences de la langue et de l'enseignement est un atout inestimable.  
+* Russian speaker.
+* За 10-летний опыт работы в преподавании лыжного спорта и подготовки наблюдателей..
+* Доскональное знание лыжной области (трассы, подъемники, рестораны ...) и приоритетный пропуск к лифтам.
+* Организация 100% Карта.
+* Развитие доверия и технологии, со всеми типами общественности.
+* Бонус ваши HD видео приключения в карте памяти!
 
-Service and quality specialist, I customize my services to your needs.
- 
- * English, Russian, French speaking.
- * 10 years experience in teaching and coaching. 
- * Guiding, with extensive knowledge of the Three Vallees, priority at all ski lifts.
- * Flexible organization of your ski time.
- * Confidence and technique development with any type of public.
- 
- `You will get all the convenient services such as priority at the lifts, video-correcting, recommendations to buy or rent your equipment, assistance to plan your stay, book a hotel, restaurant and all the help you might need to get the best from your stay.`,
+`Ви отримаєте переваги від усіх практичних послуг, таких як пріоритет підйомників, відео-корекція, поради щодо купівлі або оренди вашого обладнання, допомога в плануванні вашого перебування, резервування готелю, ресторану та всієї допомоги, яку ви може знадобитися отримати найкраще з вашого перебування.`
 
-### %User% Prices
+### Elodie ціни
