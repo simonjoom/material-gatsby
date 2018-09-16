@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import klass from './cssClasses';
 import CSSTranslate from './CSSTranslate';
 import Swipe from 'react-easy-swipe';
-import Thumbs from './Thumbs';
+//import Thumbs from './Thumbs';
 import * as customPropTypes from './customPropTypes';
 
 const noop = () => {};
@@ -48,7 +48,6 @@ class Carousel extends Component {
         showIndicators: true,
         showArrows: true,
         showStatus:true,
-        showThumbs:true,
         infiniteLoop: false,
         selectedItem: 0,
         axis: 'horizontal',
@@ -285,9 +284,9 @@ class Carousel extends Component {
             wrapperSize: isHorizontal ? itemSize * Children.count(this.props.children) : itemSize
         });
 
-        if (this.thumbsRef) {
+      /*  if (this.thumbsRef) {
             this.thumbsRef.updateSizes();
-        }
+        }*/
     }
 
     setMountState = () => {
@@ -534,7 +533,7 @@ class Carousel extends Component {
 
         return <p className="carousel-status">{this.props.statusFormatter(this.state.selectedItem + 1, Children.count(this.props.children))}</p>;
     }
-
+/*
     renderThumbs () {
         if (!this.props.showThumbs || Children.count(this.props.children) === 0) {
             return null
@@ -546,7 +545,7 @@ class Carousel extends Component {
             </Thumbs>
         );
     }
-
+*/
     render () {
         if (!this.props.children || Children.count(this.props.children) === 0) {
             return null;
@@ -646,11 +645,10 @@ class Carousel extends Component {
                     { this.renderControls() }
                     { this.renderStatus() }
                 </div>
-                { this.renderThumbs() }
             </div>
         );
 
     }
 }
-
+//               { this.renderThumbs() }
 export default Carousel;
