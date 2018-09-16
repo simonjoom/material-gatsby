@@ -15,7 +15,7 @@ import SEO from "../components/SEO";
 import SiteConfig from "../../data/SiteConfig";
 import "./b16-tomorrow-dark.css";
 import "./post.scss";
-import FrontCarousel from "../components/FrontCarousel/FrontCarousel"
+// import FrontCarousel from "../components/FrontCarousel/FrontCarousel"
 
 class PostTemplate extends React.Component {
   constructor(props) {
@@ -36,6 +36,9 @@ class PostTemplate extends React.Component {
     const post = postNode.frontmatter;
     if (carousel && post.cover) {
       carouselList = post.cover.split(",");
+    }
+    if (!carousel && post.cover) {
+      carouselList[0] = post.cover;
     }
     
     if (!post.id) {
@@ -88,9 +91,9 @@ class PostTemplate extends React.Component {
             postSEO
             translate={this.props.t}
           />
-          <Card className="md-grid md-cell md-cell--12 carousel">
+          {/* <Card className="md-grid md-cell md-cell--12 carousel">
             <FrontCarousel/>
-          </Card>
+          </Card> */}
 
           <Card className="md-grid md-cell md-cell--12 post">
             <CardText className="post-body">

@@ -1,7 +1,7 @@
 import React from "react";
 import Img from "gatsby-image";
 import { graphql, StaticQuery } from "gatsby"; 
-import Carousel from "./carousel";
+import Carousel from "./carousel"; 
 import "./carousel.css"; 
 
 const FrontCarousel = ({ dataList }) => { 
@@ -54,7 +54,7 @@ const FrontCarousel = ({ dataList }) => {
               }
             }
           `}
-      render={data => {
+      render={data => { 
         const MapImg = dataList.map((el, ind) => {
           const FileNode = data.allFile.edges.find(function(element) {
               console.log(element.node.absolutePath.indexOf("/static/assets/"+ el)!== -1)
