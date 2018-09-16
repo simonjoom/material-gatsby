@@ -65,7 +65,9 @@ class MainNavLayout extends React.Component {
     );
   }
 }
-const NoStaticRun = ({ children, route, t, lng, carouselList, postEdges }) => {
+
+/*
+const NoStaticRun = ({ children, route, t, lng, carouselList, postEdges,background }) => {
   const postList = [];
   postEdges.forEach(postEdge => {
     let title;
@@ -96,7 +98,7 @@ const NoStaticRun = ({ children, route, t, lng, carouselList, postEdges }) => {
   );
 };
 
-export { NoStaticRun };
+export { NoStaticRun };*/
 
 const StaticRun = ({ children, route, t, lng, carouselList }) => (
   <StaticQuery
