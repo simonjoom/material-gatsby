@@ -1,12 +1,3 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _ExecutionEnvironment = _interopRequireDefault(require("fbjs/lib/ExecutionEnvironment"));
-
 /**
  * Copyright (c) 2016-present, Nicolas Gallagher.
  * Copyright (c) 2015-present, Facebook, Inc.
@@ -16,6 +7,9 @@ var _ExecutionEnvironment = _interopRequireDefault(require("fbjs/lib/ExecutionEn
  *
  * 
  */
+
+import ExecutionEnvironment from 'fbjs/lib/ExecutionEnvironment';
+
 var doLeftAndRightSwapInRTL = true;
 var isPreferredLanguageRTL = false;
 var isRTLAllowed = true;
@@ -25,12 +19,11 @@ var isRTL = function isRTL() {
   if (isRTLForced) {
     return true;
   }
-
   return isRTLAllowed && isPreferredLanguageRTL;
 };
 
 var onDirectionChange = function onDirectionChange() {
-  if (_ExecutionEnvironment.default.canUseDOM) {
+  if (ExecutionEnvironment.canUseDOM) {
     if (document.documentElement && document.documentElement.setAttribute) {
       document.documentElement.setAttribute('dir', isRTL() ? 'rtl' : 'ltr');
     }
@@ -57,11 +50,9 @@ var I18nManager = {
   get doLeftAndRightSwapInRTL() {
     return doLeftAndRightSwapInRTL;
   },
-
   get isRTL() {
     return isRTL();
   }
-
 };
-var _default = I18nManager;
-exports.default = _default;
+
+export default I18nManager;

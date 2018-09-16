@@ -6,8 +6,9 @@ import Layout from "../layout";
 import PostListing from "../components/PostListing";
 import SEO from "../components/SEO";
 import config from "../../data/SiteConfig";
+import "../articleApp.scss";
 
-class Index extends React.Component {
+class Blog extends React.Component {
   render() {
     const { slug, lng, route } = this.props.pageContext;
     const postEdges = this.props.data.allMarkdownRemark.edges;
@@ -24,13 +25,13 @@ class Index extends React.Component {
             <link rel="canonical" href={`${config.siteUrl}`} />
           </Helmet>
           <SEO postEdges={postEdges} translate={this.props.t} />
-          <PostListing postEdges={postEdges} />
+          <PostListing postEdges={postEdges} width={"100%"} sizebig={12} size={12}/>
         </div>
       </Layout>
     );
   }
 }
-export default translate(["Index", "common"])(Index);
+export default translate(["Index", "common"])(Blog);
 
 export const pageQuery = graphql`
   query BlogQuery($lng: String!) {

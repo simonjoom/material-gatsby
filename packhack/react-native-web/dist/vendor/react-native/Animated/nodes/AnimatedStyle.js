@@ -9,58 +9,46 @@
  */
 'use strict';
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-exports.__esModule = true;
-exports.default = void 0;
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
+import AnimatedNode from './AnimatedNode';
+import AnimatedTransform from './AnimatedTransform';
+import AnimatedWithChildren from './AnimatedWithChildren';
+import NativeAnimatedHelper from '../NativeAnimatedHelper';
+import StyleSheet from '../../../../exports/StyleSheet';
 
-var _AnimatedNode = _interopRequireDefault(require("./AnimatedNode"));
+var flattenStyle = StyleSheet.flatten;
 
-var _AnimatedTransform = _interopRequireDefault(require("./AnimatedTransform"));
-
-var _AnimatedWithChildren2 = _interopRequireDefault(require("./AnimatedWithChildren"));
-
-var _NativeAnimatedHelper = _interopRequireDefault(require("../NativeAnimatedHelper"));
-
-var _StyleSheet = _interopRequireDefault(require("../../../../exports/StyleSheet"));
-
-var flattenStyle = _StyleSheet.default.flatten;
-
-var AnimatedStyle =
-/*#__PURE__*/
-function (_AnimatedWithChildren) {
-  (0, _inheritsLoose2.default)(AnimatedStyle, _AnimatedWithChildren);
+var AnimatedStyle = function (_AnimatedWithChildren) {
+  _inherits(AnimatedStyle, _AnimatedWithChildren);
 
   function AnimatedStyle(style) {
-    var _this;
+    _classCallCheck(this, AnimatedStyle);
 
-    _this = _AnimatedWithChildren.call(this) || this;
+    var _this = _possibleConstructorReturn(this, _AnimatedWithChildren.call(this));
+
     style = flattenStyle(style) || {};
-
     if (style.transform) {
-      style = (0, _extends2.default)({}, style, {
-        transform: new _AnimatedTransform.default(style.transform)
+      style = Object.assign({}, style, {
+        transform: new AnimatedTransform(style.transform)
       });
     }
-
     _this._style = style;
     return _this;
-  } // Recursively get values for nested styles (like iOS's shadowOffset)
+  }
+
+  // Recursively get values for nested styles (like iOS's shadowOffset)
 
 
-  var _proto = AnimatedStyle.prototype;
-
-  _proto._walkStyleAndGetValues = function _walkStyleAndGetValues(style) {
+  AnimatedStyle.prototype._walkStyleAndGetValues = function _walkStyleAndGetValues(style) {
     var updatedStyle = {};
-
     for (var key in style) {
       var value = style[key];
-
-      if (value instanceof _AnimatedNode.default) {
+      if (value instanceof AnimatedNode) {
         if (!value.__isNative) {
           // We cannot use value of natively driven nodes this way as the value we have access from
           // JS may not be up to date.
@@ -73,83 +61,73 @@ function (_AnimatedWithChildren) {
         updatedStyle[key] = value;
       }
     }
-
     return updatedStyle;
   };
 
-  _proto.__getValue = function __getValue() {
+  AnimatedStyle.prototype.__getValue = function __getValue() {
     return this._walkStyleAndGetValues(this._style);
-  }; // Recursively get animated values for nested styles (like iOS's shadowOffset)
+  };
+
+  // Recursively get animated values for nested styles (like iOS's shadowOffset)
 
 
-  _proto._walkStyleAndGetAnimatedValues = function _walkStyleAndGetAnimatedValues(style) {
+  AnimatedStyle.prototype._walkStyleAndGetAnimatedValues = function _walkStyleAndGetAnimatedValues(style) {
     var updatedStyle = {};
-
     for (var key in style) {
       var value = style[key];
-
-      if (value instanceof _AnimatedNode.default) {
+      if (value instanceof AnimatedNode) {
         updatedStyle[key] = value.__getAnimatedValue();
       } else if (value && !Array.isArray(value) && typeof value === 'object') {
         // Support animating nested values (for example: shadowOffset.height)
         updatedStyle[key] = this._walkStyleAndGetAnimatedValues(value);
       }
     }
-
     return updatedStyle;
   };
 
-  _proto.__getAnimatedValue = function __getAnimatedValue() {
+  AnimatedStyle.prototype.__getAnimatedValue = function __getAnimatedValue() {
     return this._walkStyleAndGetAnimatedValues(this._style);
   };
 
-  _proto.__attach = function __attach() {
+  AnimatedStyle.prototype.__attach = function __attach() {
     for (var key in this._style) {
       var value = this._style[key];
-
-      if (value instanceof _AnimatedNode.default) {
+      if (value instanceof AnimatedNode) {
         value.__addChild(this);
       }
     }
   };
 
-  _proto.__detach = function __detach() {
+  AnimatedStyle.prototype.__detach = function __detach() {
     for (var key in this._style) {
       var value = this._style[key];
-
-      if (value instanceof _AnimatedNode.default) {
+      if (value instanceof AnimatedNode) {
         value.__removeChild(this);
       }
     }
-
     _AnimatedWithChildren.prototype.__detach.call(this);
   };
 
-  _proto.__makeNative = function __makeNative() {
+  AnimatedStyle.prototype.__makeNative = function __makeNative() {
     _AnimatedWithChildren.prototype.__makeNative.call(this);
-
     for (var key in this._style) {
       var value = this._style[key];
-
-      if (value instanceof _AnimatedNode.default) {
+      if (value instanceof AnimatedNode) {
         value.__makeNative();
       }
     }
   };
 
-  _proto.__getNativeConfig = function __getNativeConfig() {
+  AnimatedStyle.prototype.__getNativeConfig = function __getNativeConfig() {
     var styleConfig = {};
-
     for (var styleKey in this._style) {
-      if (this._style[styleKey] instanceof _AnimatedNode.default) {
+      if (this._style[styleKey] instanceof AnimatedNode) {
         styleConfig[styleKey] = this._style[styleKey].__getNativeTag();
-      } // Non-animated styles are set using `setNativeProps`, no need
+      }
+      // Non-animated styles are set using `setNativeProps`, no need
       // to pass those as a part of the node config
-
     }
-
-    _NativeAnimatedHelper.default.validateStyles(styleConfig);
-
+    NativeAnimatedHelper.validateStyles(styleConfig);
     return {
       type: 'style',
       style: styleConfig
@@ -157,7 +135,6 @@ function (_AnimatedWithChildren) {
   };
 
   return AnimatedStyle;
-}(_AnimatedWithChildren2.default);
+}(AnimatedWithChildren);
 
-var _default = AnimatedStyle;
-exports.default = _default;
+export default AnimatedStyle;

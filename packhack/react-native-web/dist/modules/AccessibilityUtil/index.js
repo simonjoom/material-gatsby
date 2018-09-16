@@ -1,16 +1,3 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _isDisabled = _interopRequireDefault(require("./isDisabled"));
-
-var _propsToAccessibilityComponent = _interopRequireDefault(require("./propsToAccessibilityComponent"));
-
-var _propsToAriaRole = _interopRequireDefault(require("./propsToAriaRole"));
-
 /**
  * Copyright (c) 2017-present, Nicolas Gallagher.
  *
@@ -19,10 +6,15 @@ var _propsToAriaRole = _interopRequireDefault(require("./propsToAriaRole"));
  *
  * 
  */
+
+import isDisabled from './isDisabled';
+import propsToAccessibilityComponent from './propsToAccessibilityComponent';
+import propsToAriaRole from './propsToAriaRole';
+
 var AccessibilityUtil = {
-  isDisabled: _isDisabled.default,
-  propsToAccessibilityComponent: _propsToAccessibilityComponent.default,
-  propsToAriaRole: _propsToAriaRole.default
+  isDisabled: isDisabled,
+  propsToAccessibilityComponent: propsToAccessibilityComponent,
+  propsToAriaRole: propsToAriaRole
 };
-var _default = AccessibilityUtil;
-exports.default = _default;
+
+export default AccessibilityUtil;

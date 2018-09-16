@@ -1,12 +1,3 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _NativeEventEmitter = _interopRequireDefault(require("../../vendor/react-native/NativeEventEmitter"));
-
 /**
  * Copyright (c) 2016-present, Nicolas Gallagher.
  *
@@ -15,5 +6,6 @@ var _NativeEventEmitter = _interopRequireDefault(require("../../vendor/react-nat
  *
  * 
  */
-var _default = _NativeEventEmitter.default;
-exports.default = _default;
+
+import NativeEventEmitter from '../../vendor/react-native/NativeEventEmitter';
+export default NativeEventEmitter;

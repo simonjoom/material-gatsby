@@ -1,12 +1,3 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _VirtualizedList = _interopRequireDefault(require("../../vendor/react-native/VirtualizedList"));
-
 /**
  * Copyright (c) 2016-present, Nicolas Gallagher.
  *
@@ -15,5 +6,6 @@ var _VirtualizedList = _interopRequireDefault(require("../../vendor/react-native
  *
  * 
  */
-var _default = _VirtualizedList.default;
-exports.default = _default;
+
+import VirtualizedList from '../../vendor/react-native/VirtualizedList';
+export default VirtualizedList;

@@ -1,12 +1,3 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _UnimplementedView = _interopRequireDefault(require("../../modules/UnimplementedView"));
-
 /**
  * Copyright 2017-present, Nicolas Gallagher
  *
@@ -15,5 +6,6 @@ var _UnimplementedView = _interopRequireDefault(require("../../modules/Unimpleme
  *
  * 
  */
-var _default = _UnimplementedView.default;
-exports.default = _default;
+
+import UnimplementedView from '../../modules/UnimplementedView';
+export default UnimplementedView;

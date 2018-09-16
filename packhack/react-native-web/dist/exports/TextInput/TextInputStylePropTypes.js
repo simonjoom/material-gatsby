@@ -1,16 +1,3 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
-var _TextStylePropTypes = _interopRequireDefault(require("../Text/TextStylePropTypes"));
-
-var _propTypes = require("prop-types");
-
 /**
  * Copyright (c) 2015-present, Nicolas Gallagher.
  *
@@ -19,9 +6,13 @@ var _propTypes = require("prop-types");
  *
  * 
  */
-var TextInputStylePropTypes = (0, _extends2.default)({}, _TextStylePropTypes.default, {
+
+import TextStylePropTypes from '../Text/TextStylePropTypes';
+import { oneOf } from 'prop-types';
+
+var TextInputStylePropTypes = Object.assign({}, TextStylePropTypes, {
   /* @platform web */
-  resize: (0, _propTypes.oneOf)(['none', 'vertical', 'horizontal', 'both'])
+  resize: oneOf(['none', 'vertical', 'horizontal', 'both'])
 });
-var _default = TextInputStylePropTypes;
-exports.default = _default;
+
+export default TextInputStylePropTypes;

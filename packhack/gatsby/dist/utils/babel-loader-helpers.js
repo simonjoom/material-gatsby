@@ -65,6 +65,7 @@ fallbackPlugins.push(babel.createConfigItem([resolve(`@babel/plugin-transform-fl
     type: `plugin`
   }));
   
+  
   fallbackPresets.push(babel.createConfigItem([resolve(`@babel/preset-env`), {
     loose: true,
     modules: false,

@@ -1,16 +1,3 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _normalizeColor = _interopRequireDefault(require("../../modules/normalizeColor"));
-
-var _normalizeValue = _interopRequireDefault(require("./normalizeValue"));
-
-var _resolveShadowValue = _interopRequireDefault(require("./resolveShadowValue"));
-
 /**
  * Copyright (c) 2016-present, Nicolas Gallagher.
  *
@@ -19,6 +6,10 @@ var _resolveShadowValue = _interopRequireDefault(require("./resolveShadowValue")
  *
  * @noflow
  */
+
+import normalizeColor from '../../modules/normalizeColor';
+import normalizeValue from './normalizeValue';
+import resolveShadowValue from './resolveShadowValue';
 
 /**
  * The browser implements the CSS cascade, where the order of properties is a
@@ -30,6 +21,7 @@ var _resolveShadowValue = _interopRequireDefault(require("./resolveShadowValue")
  * React Native's supported shortform properties (e.g. `padding`) to their
  * longfrom equivalents.
  */
+
 var emptyObject = {};
 var styleShortFormProperties = {
   borderColor: ['borderTopColor', 'borderRightColor', 'borderBottomColor', 'borderLeftColor'],
@@ -46,6 +38,7 @@ var styleShortFormProperties = {
   paddingVertical: ['paddingTop', 'paddingBottom'],
   writingDirection: ['direction']
 };
+
 var colorProps = {
   backgroundColor: true,
   borderColor: true,
@@ -55,6 +48,7 @@ var colorProps = {
   borderLeftColor: true,
   color: true
 };
+
 var borderWidthProps = {
   borderWidth: true,
   borderTopWidth: true,
@@ -62,6 +56,7 @@ var borderWidthProps = {
   borderBottomWidth: true,
   borderLeftWidth: true
 };
+
 var monospaceFontStack = 'monospace, monospace';
 var systemFontStack = 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif';
 
@@ -70,48 +65,53 @@ var alphaSortProps = function alphaSortProps(propsArray) {
     if (a < b) {
       return -1;
     }
-
     if (a > b) {
       return 1;
     }
-
     return 0;
   });
 };
 
-var defaultOffset = {
-  height: 0,
-  width: 0
-};
+var defaultOffset = { height: 0, width: 0 };
+
 /**
  * Shadow
  */
 
 var resolveShadow = function resolveShadow(resolvedStyle, style) {
   var boxShadow = style.boxShadow;
-  var shadow = (0, _resolveShadowValue.default)(style);
-  resolvedStyle.boxShadow = boxShadow ? boxShadow + ", " + shadow : shadow;
+
+  var shadow = resolveShadowValue(style);
+  resolvedStyle.boxShadow = boxShadow ? boxShadow + ', ' + shadow : shadow;
 };
+
 /**
  * Text Decoration
  */
-
 
 var resolveTextDecoration = function resolveTextDecoration(resolvedStyle, style) {
   var textDecorationColor = style.textDecorationColor,
       textDecorationLine = style.textDecorationLine,
       textDecorationStyle = style.textDecorationStyle;
-  var color = (0, _normalizeColor.default)(textDecorationColor) || '';
-  var lineStyle = textDecorationStyle || '';
+
+  var color = normalizeColor(textDecorationColor);
 
   if (textDecorationLine) {
-    resolvedStyle.textDecoration = (textDecorationLine + " " + lineStyle + " " + color).trim();
+    // use 'text-decoration' for browsers that support CSS2 text-decoration (e.g., IE, Edge)
+    resolvedStyle.textDecoration = textDecorationLine;
+
+    if (textDecorationColor) {
+      resolvedStyle.textDecorationColor = color;
+    }
+    if (textDecorationStyle) {
+      resolvedStyle.textDecorationStyle = textDecorationStyle;
+    }
   }
 };
+
 /**
  * Text Shadow
  */
-
 
 var resolveTextShadow = function resolveTextShadow(resolvedStyle, style) {
   var textShadowColor = style.textShadowColor,
@@ -122,68 +122,68 @@ var resolveTextShadow = function resolveTextShadow(resolvedStyle, style) {
       height = _ref.height,
       width = _ref.width;
 
-  var offsetX = (0, _normalizeValue.default)(null, width);
-  var offsetY = (0, _normalizeValue.default)(null, height);
-  var blurRadius = (0, _normalizeValue.default)(null, textShadowRadius || 0);
-  var color = (0, _normalizeColor.default)(textShadowColor);
+  var offsetX = normalizeValue(null, width);
+  var offsetY = normalizeValue(null, height);
+  var blurRadius = normalizeValue(null, textShadowRadius || 0);
+  var color = normalizeColor(textShadowColor);
 
   if (color && (height !== 0 || width !== 0)) {
-    resolvedStyle.textShadow = offsetX + " " + offsetY + " " + blurRadius + " " + color;
+    resolvedStyle.textShadow = offsetX + ' ' + offsetY + ' ' + blurRadius + ' ' + color;
   }
 };
+
 /**
  * Transform
  */
+
 // { scale: 2 } => 'scale(2)'
 // { translateX: 20 } => 'translateX(20px)'
-
-
 var mapTransform = function mapTransform(transform) {
   var type = Object.keys(transform)[0];
-  var value = (0, _normalizeValue.default)(type, transform[type]);
-  return type + "(" + value + ")";
-}; // [1,2,3,4,5,6] => 'matrix3d(1,2,3,4,5,6)'
+  var value = normalizeValue(type, transform[type]);
+  return type + '(' + value + ')';
+};
 
-
+// [1,2,3,4,5,6] => 'matrix3d(1,2,3,4,5,6)'
 var convertTransformMatrix = function convertTransformMatrix(transformMatrix) {
   var matrix = transformMatrix.join(',');
-  return "matrix3d(" + matrix + ")";
+  return 'matrix3d(' + matrix + ')';
 };
 
 var resolveTransform = function resolveTransform(resolvedStyle, style) {
   var transform = style.transform;
-
   if (Array.isArray(style.transform)) {
     transform = style.transform.map(mapTransform).join(' ');
   } else if (style.transformMatrix) {
     transform = convertTransformMatrix(style.transformMatrix);
   }
-
   resolvedStyle.transform = transform;
 };
+
 /**
  * Reducer
  */
-
 
 var createReducer = function createReducer(style, styleProps) {
   var hasResolvedShadow = false;
   var hasResolvedTextDecoration = false;
   var hasResolvedTextShadow = false;
+
   return function (resolvedStyle, prop) {
-    var value = (0, _normalizeValue.default)(prop, style[prop]); // Make sure the default border width is explicitly set to '0' to avoid
+    var value = normalizeValue(prop, style[prop]);
+
+    // Make sure the default border width is explicitly set to '0' to avoid
     // falling back to any unwanted user-agent styles.
-
     if (borderWidthProps[prop]) {
-      value = value == null ? (0, _normalizeValue.default)(null, 0) : value;
-    } // Normalize color values
+      value = value == null ? normalizeValue(null, 0) : value;
+    }
 
-
+    // Normalize color values
     if (colorProps[prop]) {
-      value = (0, _normalizeColor.default)(value);
-    } // Ignore everything else with a null value
+      value = normalizeColor(value);
+    }
 
-
+    // Ignore everything else with a null value
     if (value == null) {
       return resolvedStyle;
     }
@@ -198,39 +198,36 @@ var createReducer = function createReducer(style, styleProps) {
         {
           break;
         }
+
       // TODO: remove once this issue is fixed
       // https://github.com/rofrischmann/inline-style-prefixer/issues/159
-
       case 'backgroundClip':
         {
           if (value === 'text') {
             resolvedStyle.backgroundClip = value;
             resolvedStyle.WebkitBackgroundClip = value;
           }
-
           break;
         }
 
       case 'display':
         {
-          resolvedStyle.display = value; // A flex container in React Native has these defaults which should be
+          resolvedStyle.display = value;
+          // A flex container in React Native has these defaults which should be
           // set only if there is no otherwise supplied flex style.
-
           if (style.display === 'flex' && style.flex == null) {
             if (style.flexShrink == null) {
               resolvedStyle.flexShrink = 0;
             }
-
             if (style.flexBasis == null) {
               resolvedStyle.flexBasis = 'auto';
             }
           }
-
           break;
         }
+
       // The 'flex' property value in React Native must be a positive integer,
       // 0, or -1.
-
       case 'flex':
         {
           if (value > 0) {
@@ -246,7 +243,6 @@ var createReducer = function createReducer(style, styleProps) {
             resolvedStyle.flexShrink = 1;
             resolvedStyle.flexBasis = 'auto';
           }
-
           break;
         }
 
@@ -261,7 +257,6 @@ var createReducer = function createReducer(style, styleProps) {
           } else {
             resolvedStyle.fontFamily = value;
           }
-
           break;
         }
 
@@ -270,7 +265,6 @@ var createReducer = function createReducer(style, styleProps) {
           if (Array.isArray(value) && value.length > 0) {
             resolvedStyle.fontVariant = value.join(' ');
           }
-
           break;
         }
 
@@ -282,7 +276,6 @@ var createReducer = function createReducer(style, styleProps) {
           if (!hasResolvedShadow) {
             resolveShadow(resolvedStyle, style);
           }
-
           hasResolvedShadow = true;
           break;
         }
@@ -300,7 +293,6 @@ var createReducer = function createReducer(style, styleProps) {
           if (!hasResolvedTextDecoration) {
             resolveTextDecoration(resolvedStyle, style);
           }
-
           hasResolvedTextDecoration = true;
           break;
         }
@@ -312,7 +304,6 @@ var createReducer = function createReducer(style, styleProps) {
           if (!hasResolvedTextShadow) {
             resolveTextShadow(resolvedStyle, style);
           }
-
           hasResolvedTextShadow = true;
           break;
         }
@@ -327,7 +318,6 @@ var createReducer = function createReducer(style, styleProps) {
       default:
         {
           var longFormProperties = styleShortFormProperties[prop];
-
           if (longFormProperties) {
             longFormProperties.forEach(function (longForm, i) {
               // The value of any longform property in the original styles takes
@@ -350,7 +340,6 @@ var createReactDOMStyle = function createReactDOMStyle(style) {
   if (!style) {
     return emptyObject;
   }
-
   var styleProps = Object.keys(style);
   var sortedStyleProps = alphaSortProps(styleProps);
   var reducer = createReducer(style, styleProps);
@@ -358,5 +347,4 @@ var createReactDOMStyle = function createReactDOMStyle(style) {
   return resolvedStyle;
 };
 
-var _default = createReactDOMStyle;
-exports.default = _default;
+export default createReactDOMStyle;
