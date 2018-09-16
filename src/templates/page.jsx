@@ -33,8 +33,7 @@ class PostTemplate extends React.Component {
     let background;
     //render current markdownRemark
     const postNode = this.props.data.markdownRemark;
-    const post = postNode.frontmatter;
-    console.log("test",postNode.rawMarkdownBody,post.title)
+    const post = postNode.frontmatter; 
     if (carousel && post.cover) {
       carouselList = post.cover.split(",");
     }
@@ -120,11 +119,11 @@ class PostTemplate extends React.Component {
 export default translate(["Index","common"])(PostTemplate);
 
 export const pageQuery = graphql`
-  query PagesBySlug($id: String!, $lng: String!) {
+  query PagesBySlug($slug: String!, $lng: String!) {
     locales: allLocale(filter: { lng: { eq: $lng } }) {
       ...LocaleFragment
     }
-    markdownRemark(id: { eq: $id }) {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       timeToRead
       excerpt
@@ -147,5 +146,5 @@ export const pageQuery = graphql`
   }
 `;
 
-
+//markdownRemark(id: { eq: $id }) {
 //<PostInfo postNode={postNode} lang={lng} />

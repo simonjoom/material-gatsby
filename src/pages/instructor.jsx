@@ -12,7 +12,6 @@ class Index extends React.Component {
     const { lng, route } = this.props.pageContext;
     console.log("Index", lng, route);
     const postEdges = this.props.data.allMarkdownRemark.edges;
-    console.log("renderindex", postEdges);
     return (
       <Layout
         location={this.props.location}
@@ -45,10 +44,11 @@ export const pageQuery = graphql`
         fields: { lng: { eq: $lng }, type: { eq: "instructor" } }
         frontmatter: { title: { ne: "default" } }
       }
-      sort: { fields: [fields___date], order: DESC }
+      sort: { fields: [frontmatter___date], order: DESC }
     ) {
       edges {
         node {
+          html
           fields {
             lng
             slug
