@@ -20,12 +20,9 @@ class MainNavLayout extends React.Component {
       <Navigation config={config} LocalTitle={this.props.title}>
         <Helmet>
           <meta name="description" content={config.siteDescription} />
-        </Helmet>
-<<<<<<< HEAD
+        </Helmet> 
         {carouselList &&
           carouselList.length > 0 && <FrontCarousel dataList={carouselList} />}
-=======
->>>>>>> parent of 8c25a09... created tab for menu
         <LanguageSwitcher route={route} className="flex-end" />
         <View className="rowlink">
           {postList.map(post => (

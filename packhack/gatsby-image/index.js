@@ -187,6 +187,7 @@ function (_React$Component) {
       if (!mxH || mxH === '100%') maxHeight = window.innerHeight > 0 ? window.innerHeight : screen.height;else maxHeight = mxH;
       maxDensity = window.devicePixelRatio;
     }
+    var filename,density,height,width,widthresult,widthresultabs,filenameresult;
     
     var candidates = images.split(',');
     if (candidates.length == 0) return false
@@ -196,28 +197,31 @@ function (_React$Component) {
       // in the srcset W3C specification available at:
       // http://www.w3.org/html/wg/drafts/srcset/w3c-srcset/
       var descriptors = candidates[i].match(/^\s*([^\s]+)\s*(\s(\d+)w)?\s*(\s(\d+)h)?\s*(\s(\d+)x)?\s*$/);
-      filename = descriptors[1];
+      filename = descriptors[1]; 
       width = parseInt(descriptors[3],10) || false;
-      if (width) height = width * ratio;
+      //if (width) height = width * ratio;
       density = descriptors[7] || 1; 
       if (width && Math.abs(width-maxWidth)<widthresultabs){ 
       widthresult=width;
+      height = width * ratio;
+      filenameresult=filename;
       widthresultabs=Math.abs(width-maxWidth);
         continue;
       } 
+      
       if (density && density > maxDensity) {
         continue;
       }
 
       return {
-        result: filename,
+        result: filenameresult,
         width: widthresult,
         height: height
       };
     }
 
     return {
-      result: filename,
+      result: filenameresult,
       width: widthresult,
       height: height
     };
