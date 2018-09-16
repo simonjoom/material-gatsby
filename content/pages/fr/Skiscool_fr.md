@@ -1,6 +1,6 @@
 ---
 title: "Ski School"
-cover: "starter-logo-1024.png"
+cover: "mainpage.jpg"
 category: "skischool"
 slug: ""
 tags:

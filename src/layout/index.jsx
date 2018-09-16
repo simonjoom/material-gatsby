@@ -23,6 +23,7 @@ class MainNavLayout extends React.Component {
         </Helmet> 
         {carouselList &&
           carouselList.length > 0 && <FrontCarousel dataList={carouselList} />}
+
         <LanguageSwitcher route={route} className="flex-end" />
         <View className="rowlink">
           {postList.map(post => (
@@ -42,7 +43,9 @@ class MainNavLayout extends React.Component {
     );
   }
 }
-const NoStaticRun = ({ children, route, t, lng, carouselList, postEdges }) => {
+
+/*
+const NoStaticRun = ({ children, route, t, lng, carouselList, postEdges,background }) => {
   const postList = [];
   postEdges.forEach(postEdge => {
     let title;
@@ -73,7 +76,7 @@ const NoStaticRun = ({ children, route, t, lng, carouselList, postEdges }) => {
   );
 };
 
-export { NoStaticRun };
+export { NoStaticRun };*/
 
 const StaticRun = ({ children, route, t, lng, carouselList }) => (
   <StaticQuery
