@@ -45,7 +45,7 @@ class PostTemplate extends React.Component {
 */
   render() {
     const { mobile } = this.state;
-    const { slug, route,lng } = this.props.pageContext;
+    const { slug, route, lng } = this.props.pageContext;
     console.log("postthis", this.props);
     const expanded = !mobile;
     const postOverlapClass = mobile ? "post-overlap-mobile" : "post-overlap";
@@ -116,11 +116,11 @@ class PostTemplate extends React.Component {
 export default translate(["Post", "common"])(PostTemplate);
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($id: String!, $lng: String!) {
+  query BlogPostBySlug($slug: String!, $lng: String!) {
     locales: allLocale(filter: { lng: { eq: $lng } }) {
       ...LocaleFragment
     }
-    markdownRemark(id: { eq: $id }) {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       timeToRead
       excerpt
