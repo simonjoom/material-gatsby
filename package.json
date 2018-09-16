@@ -6,6 +6,7 @@
   "dependencies": {
     "@babel/plugin-transform-flow-strip-types": "^7.0.0",
     "babel-polyfill": "^6.26.0",
+    "babel-loader":"8.0.2",
     "font-awesome": "^4.7.0",
     "gatsby": "2.0.0-rc.25",
     "gatsby-image": "next",
