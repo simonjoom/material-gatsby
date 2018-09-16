@@ -9,6 +9,8 @@ import LanguageSwitcher from "../components/Switchlang";
 import { router } from "../config";
 import "./index.scss";
 import "./global.scss";
+import Toolbar from 'react-md/lib/Toolbars'
+import './toolbar.scss'
 
 class MainNavLayout extends React.Component {
   render() {
@@ -19,7 +21,30 @@ class MainNavLayout extends React.Component {
         <Helmet>
           <meta name="description" content={config.siteDescription} />
         </Helmet>
-        <LanguageSwitcher route={route} className="flex-end" />
+        
+        <Toolbar className="toolbar-main" >
+          <div className="toolbar-container">
+            <div className="rowlink toolbar-menu">
+            {postList.map(post => (
+              <Link
+                key={post.path}
+                style={{ textDecoration: "none" }}
+                to={post.path}
+                className="Menulink toolbar-link"
+              >
+                {/* <i className="mr1 fa fa-lg fa-circle-o" /> */}
+                {post.title}
+              </Link>
+            ))}
+            </div>
+
+              <LanguageSwitcher route={route} className="flex-end" />
+            
+          </div>
+          
+        </Toolbar>
+
+        {/* <LanguageSwitcher route={route} className="flex-end" />
         <View className="rowlink">
           {postList.map(post => (
             <Link
@@ -32,7 +57,7 @@ class MainNavLayout extends React.Component {
               {post.title}
             </Link>
           ))}
-        </View>
+        </View> */}
         {children}
       </Navigation>
     );
