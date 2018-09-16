@@ -211,14 +211,14 @@ function (_React$Component) {
 
       return {
         result: filename,
-        width: width,
+        width: widthresult,
         height: height
       };
     }
 
     return {
       result: filename,
-      width: width,
+      width: widthresult,
       height: height
     };
   };

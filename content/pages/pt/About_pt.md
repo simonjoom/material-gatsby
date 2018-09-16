@@ -1,6 +1,6 @@
 ---
 title: "Ski School"
-cover: "starter-logo-1024.png"
+cover: "carousel/1.jpg,carousel/2.jpg,carousel/3.jpg,carousel/4.jpg,carousel/5.jpg,carousel/6.jpg"
 category: "skischool"
 slug: "about"
 tags:
@@ -12,7 +12,7 @@ tags:
 date: "2018-07-02"
 ---
 
-<div class="h1"> SkiScool</div>
+## SkiScool
 
 * Os instrutores por trás de sua criação querem um sistema diferente;
 * Um que recebe jovens instrutores envolvidos e desenvolve para atender às necessidades dos clientes.
@@ -20,16 +20,16 @@ date: "2018-07-02"
 
 ---
 
-<div class="h2"> Por que é melhor reservar o seu instrutor com SkiScool? </div>
+## Por que é melhor reservar o seu instrutor com SkiScool? 
 
-<p class="ml3">Encontrar o seu instrutor de esqui é uma tarefa difícil, porque um monte de instrutores de esqui na estância de esqui são estagiários inexperientes.  
+
+Encontrar o seu instrutor de esqui é uma tarefa difícil, porque um monte de instrutores de esqui na estância de esqui são estagiários inexperientes.  
 Confie em nós; Seleccionamos os nossos profissionais entre todas as escolas francesas de esqui de acordo com as suas qualificações, a sua competência e o seu nível linguístico.  
-</br>
-Com Skiscool, você seleciona e reserva seu ski-coach no melhor valor.</p>
 
-![ski lessons courchevel](https://skiscool.com/dist/skilessons.jpg){.block .mx-auto .rounded}
+Com Skiscool, você seleciona e reserva seu ski-coach no melhor valor. 
 
-<div class="ml3">
+![ski lessons courchevel](https://skiscool.com/dist/skilessons.jpg)
+ 
 
 ### Preços
 
@@ -55,10 +55,6 @@ Uma ampla escolha de guia de montanha para tirar o máximo proveito dos 3 vales.
 
 ***Portanto, você evitará a armadilha do estagiário.*** 
 Entre Em Contato Conosco! Durante a época baixa e alta, quebrar as taxas: você não terá nenhuma taxa de escola para pagar conosco.
- 
-</div>
+  
 
 Obrigado e prazer em conhecê-lo em breve nas encostas dos 3 Vales!
-
-
- **++Um instrutor com SkiScool?++{.table-cell .text-decoration-none} ![not have a bad time](https://skiscool.com/dist/pictures/instructorgood.jpg){.p1}**{.h1 .table}

@@ -220,11 +220,11 @@ function (_Component) {
             width = _this$state$layout.width;
  
         if (naturalHeight && naturalWidth>50 && height && width) {
-        console.log("_getBackgroundSize")
+       /* console.log("_getBackgroundSize")
           if (window && _this.props.srcSet) {
             var mywidth = _this.srcset(_this.props.srcSet, width, height).width; 
      		//if (mywidth > naturalWidth) window.location.reload();
-          }
+          }*/
 
           var scaleFactor = Math.min(1, width / naturalWidth, height / naturalHeight);
           var x = Math.ceil(scaleFactor * naturalWidth);
