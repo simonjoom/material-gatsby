@@ -1,12 +1,3 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _UIManager = _interopRequireDefault(require("../UIManager"));
-
 /**
  * Copyright (c) 2016-present, Nicolas Gallagher.
  *
@@ -15,9 +6,12 @@ var _UIManager = _interopRequireDefault(require("../UIManager"));
  *
  * @noflow
  */
+
+import UIManager from '../UIManager';
+
 // NativeModules shim
 var NativeModules = {
-  UIManager: _UIManager.default
+  UIManager: UIManager
 };
-var _default = NativeModules;
-exports.default = _default;
+
+export default NativeModules;

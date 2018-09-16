@@ -1,17 +1,8 @@
-"use strict";
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
-
-var _View = _interopRequireDefault(require("../../exports/View"));
-
-var _react = _interopRequireWildcard(require("react"));
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
@@ -22,40 +13,44 @@ var _react = _interopRequireWildcard(require("react"));
  * 
  */
 
+import View from '../../exports/View';
+import React, { Component } from 'react';
+
 /**
  * Common implementation for a simple stubbed view.
  */
-
 /* eslint-disable react/prop-types */
-var UnimplementedView =
-/*#__PURE__*/
-function (_Component) {
-  (0, _inheritsLoose2.default)(UnimplementedView, _Component);
+
+var UnimplementedView = function (_Component) {
+  _inherits(UnimplementedView, _Component);
 
   function UnimplementedView() {
-    return _Component.apply(this, arguments) || this;
+    _classCallCheck(this, UnimplementedView);
+
+    return _possibleConstructorReturn(this, _Component.apply(this, arguments));
   }
 
-  var _proto = UnimplementedView.prototype;
-
-  _proto.setNativeProps = function setNativeProps() {// Do nothing.
+  UnimplementedView.prototype.setNativeProps = function setNativeProps() {
+    // Do nothing.
     // This method is required in order to use this view as a Touchable* child.
     // See ensureComponentIsNative.js for more info
   };
 
-  _proto.render = function render() {
-    return _react.default.createElement(_View.default, {
-      style: [unimplementedViewStyles, this.props.style]
-    }, this.props.children);
+  UnimplementedView.prototype.render = function render() {
+    return React.createElement(
+      View,
+      { style: [unimplementedViewStyles, this.props.style] },
+      this.props.children
+    );
   };
 
   return UnimplementedView;
-}(_react.Component);
+}(Component);
 
 var unimplementedViewStyles = process.env.NODE_ENV !== 'production' ? {
   alignSelf: 'flex-start',
   borderColor: 'red',
   borderWidth: 1
 } : {};
-var _default = UnimplementedView;
-exports.default = _default;
+
+export default UnimplementedView;

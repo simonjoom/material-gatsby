@@ -146,8 +146,12 @@ const StaticRun = ({ children, route, t, lng, carouselList }) => (
       });
       ///
       postList.push({
-        path: router["/instructor"][lng],
+        path: router["/instructor/"][lng],
         title: t("instructor")
+      });
+      postList.push({
+        path: router["/blog/"][lng],
+        title: t("blog")
       });
       return (
         <MainNavLayout

@@ -109,3 +109,4 @@ export const localeFragment = graphql`
     }
   }
 `;
+console.log('this is i18n' + i18n)

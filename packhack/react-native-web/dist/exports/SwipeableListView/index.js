@@ -1,12 +1,3 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _SwipeableListView = _interopRequireDefault(require("../../vendor/react-native/SwipeableListView"));
-
 /**
  * Copyright (c) 2016-present, Nicolas Gallagher.
  *
@@ -15,5 +6,6 @@ var _SwipeableListView = _interopRequireDefault(require("../../vendor/react-nati
  *
  * 
  */
-var _default = _SwipeableListView.default;
-exports.default = _default;
+
+import SwipeableListView from '../../vendor/react-native/SwipeableListView';
+export default SwipeableListView;

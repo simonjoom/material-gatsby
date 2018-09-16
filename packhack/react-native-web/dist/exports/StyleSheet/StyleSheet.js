@@ -1,16 +1,3 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _StyleSheetValidation = _interopRequireDefault(require("./StyleSheetValidation"));
-
-var _ReactNativePropRegistry = _interopRequireDefault(require("../../modules/ReactNativePropRegistry"));
-
-var _flattenStyle = _interopRequireDefault(require("./flattenStyle"));
-
 /**
  * Copyright (c) 2016-present, Nicolas Gallagher.
  *
@@ -19,6 +6,11 @@ var _flattenStyle = _interopRequireDefault(require("./flattenStyle"));
  *
  * @noflow
  */
+
+import StyleSheetValidation from './StyleSheetValidation';
+import ReactNativePropRegistry from '../../modules/ReactNativePropRegistry';
+import flattenStyle from './flattenStyle';
+
 var absoluteFillObject = {
   position: 'absolute',
   left: 0,
@@ -26,8 +18,7 @@ var absoluteFillObject = {
   top: 0,
   bottom: 0
 };
-
-var absoluteFill = _ReactNativePropRegistry.default.register(absoluteFillObject);
+var absoluteFill = ReactNativePropRegistry.register(absoluteFillObject);
 
 var StyleSheet = {
   absoluteFill: absoluteFill,
@@ -43,17 +34,16 @@ var StyleSheet = {
     var result = {};
     Object.keys(styles).forEach(function (key) {
       if (process.env.NODE_ENV !== 'production') {
-        _StyleSheetValidation.default.validateStyle(key, styles);
+        StyleSheetValidation.validateStyle(key, styles);
       }
-
-      var id = styles[key] && _ReactNativePropRegistry.default.register(styles[key]);
-
+      var id = styles[key] && ReactNativePropRegistry.register(styles[key]);
       result[key] = id;
     });
     return result;
   },
-  flatten: _flattenStyle.default,
+
+  flatten: flattenStyle,
   hairlineWidth: 1
 };
-var _default = StyleSheet;
-exports.default = _default;
+
+export default StyleSheet;

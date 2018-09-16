@@ -35,6 +35,7 @@ class PostTemplate extends React.Component {
     //render current markdownRemark
     const postNode = this.props.data.markdownRemark;
     const post = postNode.frontmatter;
+    console.log("test",postNode.html)
     if (carousel && post.cover) {
       carouselList = post.cover.split(",");
     }
@@ -123,7 +124,7 @@ class PostTemplate extends React.Component {
   }
 }
 
-export default translate(["common"])(PostTemplate);
+export default translate(["Index","common"])(PostTemplate);
 
 export const pageQuery = graphql`
   query PagesBySlug($id: String!, $lng: String!) {

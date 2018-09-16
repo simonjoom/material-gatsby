@@ -190,8 +190,8 @@ function () {
       switch (stage) {
         case `develop`:
           configPlugins = configPlugins.concat([plugins.hotModuleReplacement(), plugins.noEmitOnErrors(),plugins.define({
-      __DEV__: false,
-      __PROD__: true,
+      __DEV__: true,
+      __PROD__: false,
     }), new FriendlyErrorsWebpackPlugin({
             clearConsole: false
           })]);
@@ -199,14 +199,6 @@ function () {
 
         case `build-javascript`:
           {
-            // Minify Javascript only if needed.
-            configPlugins = program.noUglify ? configPlugins : configPlugins.concat([plugins.uglify({
-              uglifyOptions: {
-                compress: {
-                  drop_console: false
-                }
-              }
-            })]);
             configPlugins = configPlugins.concat([plugins.extractText(),plugins.define({
       __DEV__: false,
       __PROD__: true,
@@ -369,9 +361,8 @@ function () {
 
       return {
         // Use the program's extension list (generated via the
-        // 'resolvableExtensions' API hook).
-        //extensions: [...program.extensions],
-        extensions: [
+        // 'resolvableExtensions' API hook).       
+         extensions: [
         '.web.js',
         '.mjs',
         '.ts',
@@ -389,9 +380,7 @@ function () {
         // modules. But also make it possible to install modules within the src
         // directory if you need to install a specific version of a module for a
         // part of your site.
-        modules: [directoryPath(path.join(`node_modules`)), `node_modules`, // This is head scratching - without it css modules in production will fail
-        // to find module with relative path
-        `./`],
+        modules: [directoryPath(path.join(`node_modules`)), `node_modules`,`./`],
         alias: {
           gatsby$: directoryPath(path.join(`.cache`, `gatsby-browser-entry.js`)),
           // Using directories for module resolution is mandatory because
@@ -401,7 +390,7 @@ function () {
           "core-js": path.dirname(require.resolve(`core-js/package.json`)),
           "react-hot-loader": path.dirname(require.resolve(`react-hot-loader/package.json`)),
           "react-lifecycles-compat": directoryPath(`.cache/react-lifecycles-compat.js`),
-           "create-react-context": directoryPath(`.cache/create-react-context.js`),
+          "create-react-context": directoryPath(`.cache/create-react-context.js`),  
            "lodash":"lodash-es",
         'react-native-vector-icons/FontAwesome':
           'expo-web/dist/exports/FontAwesome',
@@ -451,7 +440,6 @@ function () {
       // https://github.com/defunctzombie/package-browser-field-spec); setting
       // the target tells webpack which file to include, ie. browser vs main.
       target: stage === `build-html` || stage === `develop-html` ? `node` : `web`,
-      profile: stage === `production`,
       devtool: getDevtool(),
       // Turn off performance hints as we (for now) don't want to show the normal
       // webpack output anywhere.
@@ -474,7 +462,8 @@ function () {
         splitChunks: {
           name: false
         },
-        minimize: !program.noUglify
+        minimizer: [// TODO: maybe this option should be noMinimize?
+        !program.noUglify && plugins.minifyJs(), plugins.minifyCss()].filter(Boolean)
       };
     }
 

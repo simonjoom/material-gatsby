@@ -13,7 +13,7 @@ date: "2018-07-02"
 <div class="edito-wrapper station">
 <div class="banner-station">
   <div class="banner-station-logo">
- <img src="%HOST%/dist/resortfiles/la-tania.png" alt="La Tania">
+ <img src="assets/resortfiles/la-tania.png" alt="La Tania">
   </div> </div>
 <h3 class="main-title-1 h-margin-bottom-0">La Tania</h1>
 <div class="rich-text">
@@ -51,7 +51,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="%HOST%/dist/resortfiles/latania-stationpietonne.jpg" alt="一个步行胜地，你只要走一步就可以了">
+<img src="assets/resortfiles/latania-stationpietonne.jpg" alt="一个步行胜地，你只要走一步就可以了">
 </div>
  <div class="col">
 <div class="pl2 rich-text">  <p>为了保持对环境的关注和你的舒适，拉塔尼亚是一个步行胜地。把你的车停在两个自由的地方之一(在冬天和夏天)，忘掉时间，和家人或朋友一起享受你的假期。在这里，我们尽最大努力让你的生活更轻松，因此所有的商店和服务都在步行的距离之内。</p>
@@ -63,7 +63,7 @@ date: "2018-07-02"
  <div class="o-actu fullWidth">
   <div class="grid-noGutter-equalHeight_sm-1">
  <div class="col">
-<img src="%HOST%/dist/resortfiles/latania-connexion.jpg" alt="Une connexion 3 Vallées skis aux pieds">
+<img src="assets/resortfiles/latania-connexion.jpg" alt="Une connexion 3 Vallées skis aux pieds">
  </div>
  <div class="col">
 <div class="pl2 rich-text">  <p>我们的度假胜地很完美:有2个滑雪电梯，你可以在你选择的山谷里滑雪，Courchevel, Meribel地区，甚至是整个Les 3 Vallees地区。</p>
@@ -75,7 +75,7 @@ date: "2018-07-02"
  <div class="o-actu fullWidth">
   <div class="grid-noGutter-equalHeight_sm-1">
  <div class="col">
-<img src="%HOST%/dist/resortfiles/latania-lefarcon.jpg" alt="Régalez-vous au Farçon : restaurant gastronomique étoilé Michelin">
+<img src="assets/resortfiles/latania-lefarcon.jpg" alt="Régalez-vous au Farçon : restaurant gastronomique étoilé Michelin">
  </div>
  <div class="col">
 <div class="pl2 rich-text">  <p>自2006年以来，米其林星级厨师朱利安·马切特(Julien Machet)为你提供了富有创意和慷慨的美食，利用他在市场上的发现、自然提供的东西，以及他自己的遭遇，使用一种自然的烹饪方法。今年冬天，他将继续他的“加曲独特”菜单:他用相同的原料为先生、女士和孩子们创造不同的菜肴。</p>
@@ -87,7 +87,7 @@ date: "2018-07-02"
  <div class="o-actu fullWidth">
   <div class="grid-noGutter-equalHeight_sm-1">
  <div class="col">
-<img src="%HOST%/dist/resortfiles/57e4e0b210e4c_latania-skiforet.jpg" alt="Skiez dans la forêt">
+<img src="assets/resortfiles/57e4e0b210e4c_latania-skiforet.jpg" alt="Skiez dans la forêt">
  </div>
  <div class="col">
 <div class="pl2 rich-text">  <p>享受退货的斜坡在一个美丽的云杉林心La Tania.</p>
@@ -99,7 +99,7 @@ date: "2018-07-02"
  <div class="o-actu fullWidth">
   <div class="grid-noGutter-equalHeight_sm-1">
  <div class="col">
-<img src="%HOST%/dist/resortfiles/latania-chalet.jpg" alt="一个温暖的小屋面积从行人中心步行三分钟">
+<img src="assets/resortfiles/latania-chalet.jpg" alt="一个温暖的小屋面积从行人中心步行三分钟">
  </div>
  <div class="col">
 <div class="pl2 rich-text">  <p>在这个温暖而地道的小木屋里，你一到就会觉得很自在!你会发现高质量的好处按摩池、水疗、桑拿、电影院,健身房间,烹饪服务…所有实惠价格均在Les 3山谷。</p>
@@ -111,7 +111,7 @@ date: "2018-07-02"
  <div class="o-actu fullWidth">
   <div class="grid-noGutter-equalHeight_sm-1">
  <div class="col">
-<img src="%HOST%/dist/resortfiles/latania-raquette.jpg" alt="的teppes清算，风光与和平的保证！">
+<img src="assets/resortfiles/latania-raquette.jpg" alt="的teppes清算，风光与和平的保证！">
  </div>
  <div class="col">
 <div class="pl2 rich-text"> <p>穿上你的雪鞋，在30分钟内到达这个美丽的地方，就在云杉森林的中心。</p>
@@ -122,7 +122,7 @@ date: "2018-07-02"
  <div class="o-actu fullWidth">
   <div class="grid-noGutter-equalHeight_sm-1">
  <div class="col">
-<img src="%HOST%/dist/resortfiles/latania-garderie.jpg" alt="幼儿园来照顾你的孩子">
+<img src="assets/resortfiles/latania-garderie.jpg" alt="幼儿园来照顾你的孩子">
  </div>
  <div class="col">
 <div class="pl2 rich-text"><p>幼儿园欢迎四个月至5岁的幼儿，并提供室内和户外活动的选择。开放时间5天或一整天都有可能，午餐也可能是免费或付费</p>
@@ -134,7 +134,7 @@ date: "2018-07-02"
  <div class="o-actu fullWidth">
   <div class="grid-noGutter-equalHeight_sm-1">
  <div class="col">
-<img src="%HOST%/dist/resortfiles/latania-airdejeux.jpg" alt="免费儿童游乐场">
+<img src="assets/resortfiles/latania-airdejeux.jpg" alt="免费儿童游乐场">
  </div>
  <div class="col">
 <div class="pl2 rich-text">  <p>3岁以下儿童，需由父母或成人监护。/p>

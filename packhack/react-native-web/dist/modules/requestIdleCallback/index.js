@@ -1,10 +1,3 @@
-"use strict";
-
-exports.__esModule = true;
-exports.cancelIdleCallback = exports.default = void 0;
-
-var _ExecutionEnvironment = require("fbjs/lib/ExecutionEnvironment");
-
 /**
  * Copyright (c) 2015-present, Nicolas Gallagher.
  *
@@ -13,6 +6,9 @@ var _ExecutionEnvironment = require("fbjs/lib/ExecutionEnvironment");
  *
  * 
  */
+
+import { canUseDOM } from 'fbjs/lib/ExecutionEnvironment';
+
 var _requestIdleCallback = function _requestIdleCallback(cb, options) {
   return setTimeout(function () {
     var start = Date.now();
@@ -23,16 +19,17 @@ var _requestIdleCallback = function _requestIdleCallback(cb, options) {
       }
     });
   }, 1);
-}; // $FlowFixMe (TimeoutID type is not recognized by eslint)
+};
 
-
+// $FlowFixMe (TimeoutID type is not recognized by eslint)
 var _cancelIdleCallback = function _cancelIdleCallback(id) {
   clearTimeout(id);
 };
 
-var isSupported = _ExecutionEnvironment.canUseDOM && typeof window.requestIdleCallback !== 'undefined';
+var isSupported = canUseDOM && typeof window.requestIdleCallback !== 'undefined';
+
 var requestIdleCallback = isSupported ? window.requestIdleCallback : _requestIdleCallback;
 var cancelIdleCallback = isSupported ? window.cancelIdleCallback : _cancelIdleCallback;
-exports.cancelIdleCallback = cancelIdleCallback;
-var _default = requestIdleCallback;
-exports.default = _default;
+
+export default requestIdleCallback;
+export { cancelIdleCallback };

@@ -1,15 +1,4 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _ExecutionEnvironment = require("fbjs/lib/ExecutionEnvironment");
-
-var _debounce = _interopRequireDefault(require("debounce"));
-
-var _invariant = _interopRequireDefault(require("fbjs/lib/invariant"));
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
  * Copyright (c) 2015-present, Nicolas Gallagher.
@@ -20,7 +9,12 @@ var _invariant = _interopRequireDefault(require("fbjs/lib/invariant"));
  *
  * 
  */
-var win = _ExecutionEnvironment.canUseDOM ? window : {
+
+import { canUseDOM } from 'fbjs/lib/ExecutionEnvironment';
+import debounce from 'debounce';
+import invariant from 'fbjs/lib/invariant';
+
+var win = canUseDOM ? window : {
   devicePixelRatio: undefined,
   innerHeight: undefined,
   innerWidth: undefined,
@@ -29,23 +23,24 @@ var win = _ExecutionEnvironment.canUseDOM ? window : {
     width: undefined
   }
 };
+
 var dimensions = {};
 var listeners = {};
 
-var Dimensions =
-/*#__PURE__*/
-function () {
-  function Dimensions() {}
+var Dimensions = function () {
+  function Dimensions() {
+    _classCallCheck(this, Dimensions);
+  }
 
   Dimensions.get = function get(dimension) {
-    (0, _invariant.default)(dimensions[dimension], "No dimension set for key " + dimension);
+    invariant(dimensions[dimension], 'No dimension set for key ' + dimension);
     return dimensions[dimension];
   };
 
   Dimensions.set = function set(initialDimensions) {
     if (initialDimensions) {
-      if (_ExecutionEnvironment.canUseDOM) {
-        (0, _invariant.default)(false, 'Dimensions cannot be set in the browser');
+      if (canUseDOM) {
+        invariant(false, 'Dimensions cannot be set in the browser');
       } else {
         dimensions.screen = initialDimensions.screen;
         dimensions.window = initialDimensions.window;
@@ -60,6 +55,7 @@ function () {
       scale: win.devicePixelRatio || 1,
       width: win.innerWidth
     };
+
     dimensions.screen = {
       fontScale: 1,
       height: win.screen.height,
@@ -90,10 +86,11 @@ function () {
   return Dimensions;
 }();
 
-exports.default = Dimensions;
+export default Dimensions;
+
 
 Dimensions._update();
 
-if (_ExecutionEnvironment.canUseDOM) {
-  window.addEventListener('resize', (0, _debounce.default)(Dimensions._update, 16), false);
+if (canUseDOM) {
+  window.addEventListener('resize', debounce(Dimensions._update, 16), false);
 }

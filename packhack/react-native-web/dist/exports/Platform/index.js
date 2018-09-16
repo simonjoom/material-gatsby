@@ -1,8 +1,3 @@
-"use strict";
-
-exports.__esModule = true;
-exports.default = void 0;
-
 /**
  * Copyright (c) 2016-present, Nicolas Gallagher.
  * Copyright (c) 2015-present, Facebook, Inc.
@@ -12,11 +7,12 @@ exports.default = void 0;
  *
  * 
  */
+
 var Platform = {
   OS: 'web',
   select: function select(obj) {
     return 'web' in obj ? obj.web : obj.default;
   }
 };
-var _default = Platform;
-exports.default = _default;
+
+export default Platform;

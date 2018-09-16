@@ -2,6 +2,7 @@ const config = require("./data/SiteConfig");
 const urljoin = require("url-join");
 
 const regexExcludeRobots = /^(?!\/(dev-404-page|404|offline-plugin-app-shell-fallback|tags|categories)).*$/;
+//    "gatsby-plugin-offline",
 
 module.exports = {
   pathPrefix: config.pathPrefix,
@@ -136,7 +137,6 @@ module.exports = {
         ]
       }
     },
-    "gatsby-plugin-offline",
     {
       resolve: "gatsby-plugin-feed",
       options: {

@@ -32,7 +32,7 @@ class Index extends React.Component {
     );
   }
 }
-export default translate(["Instructor", "common"])(Index);
+export default translate(["Index", "common"])(Index);
 
 export const pageQuery = graphql`
   query InstructorQuery($lng: String!) {

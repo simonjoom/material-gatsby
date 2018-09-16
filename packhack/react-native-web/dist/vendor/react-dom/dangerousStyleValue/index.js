@@ -1,12 +1,3 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _unitlessNumbers = _interopRequireDefault(require("../../../modules/unitlessNumbers"));
-
 /* eslint-disable */
 
 /**
@@ -17,6 +8,8 @@ var _unitlessNumbers = _interopRequireDefault(require("../../../modules/unitless
  *
  * From React 16.0.0
  */
+
+import isUnitlessNumber from '../../../modules/unitlessNumbers';
 
 /**
  * Convert a value into the proper css writable value. The style name `name`
@@ -37,18 +30,17 @@ function dangerousStyleValue(name, value, isCustomProperty) {
   // This is not an XSS hole but instead a potential CSS injection issue
   // which has lead to a greater discussion about how we're going to
   // trust URLs moving forward. See #2115901
-  var isEmpty = value == null || typeof value === 'boolean' || value === '';
 
+  var isEmpty = value == null || typeof value === 'boolean' || value === '';
   if (isEmpty) {
     return '';
   }
 
-  if (!isCustomProperty && typeof value === 'number' && value !== 0 && !(_unitlessNumbers.default.hasOwnProperty(name) && _unitlessNumbers.default[name])) {
+  if (!isCustomProperty && typeof value === 'number' && value !== 0 && !(isUnitlessNumber.hasOwnProperty(name) && isUnitlessNumber[name])) {
     return value + 'px'; // Presumes implicit 'px' suffix for unitless numbers
   }
 
   return ('' + value).trim();
 }
 
-var _default = dangerousStyleValue;
-exports.default = _default;
+export default dangerousStyleValue;

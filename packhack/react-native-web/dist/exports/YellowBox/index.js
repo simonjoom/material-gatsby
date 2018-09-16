@@ -1,15 +1,8 @@
-"use strict";
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-exports.__esModule = true;
-exports.default = void 0;
-
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
-
-var _react = _interopRequireDefault(require("react"));
-
-var _UnimplementedView = _interopRequireDefault(require("../../modules/UnimplementedView"));
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
  * Copyright (c) 2016-present, Nicolas Gallagher.
@@ -19,25 +12,26 @@ var _UnimplementedView = _interopRequireDefault(require("../../modules/Unimpleme
  *
  * 
  */
-var YellowBox =
-/*#__PURE__*/
-function (_React$Component) {
-  (0, _inheritsLoose2.default)(YellowBox, _React$Component);
+
+import React from 'react';
+import UnimplementedView from '../../modules/UnimplementedView';
+
+var YellowBox = function (_React$Component) {
+  _inherits(YellowBox, _React$Component);
 
   function YellowBox() {
-    return _React$Component.apply(this, arguments) || this;
+    _classCallCheck(this, YellowBox);
+
+    return _possibleConstructorReturn(this, _React$Component.apply(this, arguments));
   }
 
   YellowBox.ignoreWarnings = function ignoreWarnings() {};
 
-  var _proto = YellowBox.prototype;
-
-  _proto.render = function render() {
-    return _react.default.createElement(_UnimplementedView.default, this.props);
+  YellowBox.prototype.render = function render() {
+    return React.createElement(UnimplementedView, this.props);
   };
 
   return YellowBox;
-}(_react.default.Component);
+}(React.Component);
 
-var _default = YellowBox;
-exports.default = _default;
+export default YellowBox;

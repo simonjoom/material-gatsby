@@ -12,7 +12,7 @@ date: "2018-07-02"
 
 <div class="edito-wrapper station"><div class="banner-station">
 <div class="banner-station-logo">
-   <img src="%HOST%/dist/resortfiles/meribel.png" alt="Méribel">
+   <img src="assets/resortfiles/meribel.png" alt="Méribel">
 </div>
 </div>
 <h3 class="main-title-1 h-margin-bottom-0">Méribel</h1>
@@ -50,7 +50,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
    <div class="grid-noGutter-equalHeight_sm-1">
  <div class="col">
-<img src="%HOST%/dist/resortfiles/meribel-familycool.jpg" alt="Family Cool">
+<img src="assets/resortfiles/meribel-familycool.jpg" alt="Family Cool">
  </div>
    <div class="col">
 <div class="pl2 rich-text">
@@ -65,7 +65,7 @@ date: "2018-07-02"
  <div class="o-actu fullWidth">
  <div class="grid-noGutter-equalHeight-reverse_sm-1">
 <div class="col">
-<img src="%HOST%/dist/resortfiles/meribel-lesinuits.jpg" alt="">
+<img src="assets/resortfiles/meribel-lesinuits.jpg" alt="">
 </div>
 <div class="col">
    <div class="pl2 rich-text">
@@ -81,7 +81,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
    <div class="grid-noGutter-equalHeight_sm-1">
  <div class="col">
-<img src="%HOST%/dist/resortfiles/meribel-lekrin.jpg" alt="L'Ekrin">
+<img src="assets/resortfiles/meribel-lekrin.jpg" alt="L'Ekrin">
  </div>
    <div class="col">
 <div class="pl2 rich-text">
@@ -97,7 +97,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
    <div class="grid-noGutter-equalHeight_sm-1">
  <div class="col">
-<img src="%HOST%/dist/resortfiles/meribel-yp.jpg" alt="Yéti Park">
+<img src="assets/resortfiles/meribel-yp.jpg" alt="Yéti Park">
  </div>
    <div class="col">
 <div class="pl2 rich-text">
@@ -116,7 +116,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
    <div class="grid-noGutter-equalHeight_sm-1">
  <div class="col">
-<img src="%HOST%/dist/resortfiles/meribel-fd.jpg" alt="La Folie Douce">
+<img src="assets/resortfiles/meribel-fd.jpg" alt="La Folie Douce">
  </div>
    <div class="col">
 <div class="pl2 rich-text">
@@ -134,7 +134,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
    <div class="grid-noGutter-equalHeight_sm-1">
  <div class="col">
-<img src="%HOST%/dist/resortfiles/meribel-roc.jpg" alt="Roc de fer Panorama">
+<img src="assets/resortfiles/meribel-roc.jpg" alt="Roc de fer Panorama">
  </div>
    <div class="col">
 <div class="pl2 rich-text">
@@ -153,7 +153,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
    <div class="grid-noGutter-equalHeight_sm-1">
  <div class="col">
-<img src="%HOST%/dist/resortfiles/meribel-parco.jpg" alt="Parc Olympique">
+<img src="assets/resortfiles/meribel-parco.jpg" alt="Parc Olympique">
  </div>
    <div class="col">
 <div class="pl2 rich-text">
@@ -170,7 +170,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
    <div class="grid-noGutter-equalHeight_sm-1">
  <div class="col">
-<img src="%HOST%/dist/resortfiles/meribel-cb.jpg" alt="Le Clos Bernard">
+<img src="assets/resortfiles/meribel-cb.jpg" alt="Le Clos Bernard">
  </div>
    <div class="col">
 <div class="pl2 rich-text">
@@ -186,7 +186,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
    <div class="grid-noGutter-equalHeight_sm-1">
  <div class="col">
-<img src="%HOST%/dist/resortfiles/meribel-mv.jpg" alt="Mont Vallon">
+<img src="assets/resortfiles/meribel-mv.jpg" alt="Mont Vallon">
  </div>
    <div class="col">
 <div class="pl2 rich-text">
@@ -202,7 +202,7 @@ date: "2018-07-02"
 
 <div class="grid-noGutter-equalHeight_sm-1">
   <div class="col">
- <img src="%HOST%/dist/resortfiles/meribel-db.jpg"
+ <img src="assets/resortfiles/meribel-db.jpg"
  alt="Vertical Xperience">
   </div>
   <div class="col">
@@ -217,7 +217,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
    <div class="grid-noGutter-equalHeight_sm-1">
  <div class="col">
-<img src="%HOST%/dist/resortfiles/meribel-ep.jpg" alt="Element Park">
+<img src="assets/resortfiles/meribel-ep.jpg" alt="Element Park">
  </div>
    <div class="col">
 <div class="pl2 rich-text">
@@ -236,7 +236,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
    <div class="grid-noGutter-equalHeight_sm-1">
  <div class="col">
-<img src="%HOST%/dist/resortfiles/meribel-da.jpg" alt="DC Area 43">
+<img src="assets/resortfiles/meribel-da.jpg" alt="DC Area 43">
  </div>
    <div class="col">
 <div class="pl2 rich-text">

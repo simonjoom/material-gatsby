@@ -81,6 +81,7 @@ class TextInput extends Component<*> {
     clearTextOnFocus: bool,
     defaultValue: string,
     editable: bool,
+    inputAccessoryViewID: string,
     keyboardType: oneOf([
       'default',
       'email-address',
@@ -142,7 +143,7 @@ class TextInput extends Component<*> {
     editable: true,
     keyboardType: 'default',
     multiline: false,
-    numberOfLines: 2,
+    numberOfLines: 1,
     secureTextEntry: false,
     style: emptyObject
   };
@@ -174,6 +175,8 @@ class TextInput extends Component<*> {
     const {
       autoCorrect,
       editable,
+      /* eslint-disable */
+      inputAccessoryViewID,
       keyboardType,
       multiline,
       numberOfLines,

@@ -9,31 +9,20 @@
  */
 'use strict';
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+import EventEmitter from './EventEmitter';
+import EventEmitterWithHolding from './EventEmitterWithHolding';
+import EventHolder from './EventHolder';
+import EventValidator from './EventValidator';
 
-exports.__esModule = true;
-exports.default = void 0;
-
-var _EventEmitter = _interopRequireDefault(require("./EventEmitter"));
-
-var _EventEmitterWithHolding = _interopRequireDefault(require("./EventEmitterWithHolding"));
-
-var _EventHolder = _interopRequireDefault(require("./EventHolder"));
-
-var _EventValidator = _interopRequireDefault(require("./EventValidator"));
-
-var _invariant = _interopRequireDefault(require("fbjs/lib/invariant"));
-
-var _keyOf = _interopRequireDefault(require("fbjs/lib/keyOf"));
-
+import invariant from 'fbjs/lib/invariant';
 /* $FlowFixMe(>=0.54.0 site=react_native_oss) This comment suppresses an error
  * found when Flow v0.54 was deployed. To see the error delete this comment and
  * run Flow. */
-var __DEV__ = process.env.NODE_ENV !== 'production';
+import keyOf from 'fbjs/lib/keyOf';
 
-var TYPES_KEY = (0, _keyOf.default)({
-  __types: true
-});
+var __DEV__ = process.env.NODE_ENV !== 'production';
+var TYPES_KEY = keyOf({ __types: true });
+
 /**
  * API to setup an object or constructor to be able to emit data events.
  *
@@ -55,21 +44,22 @@ var TYPES_KEY = (0, _keyOf.default)({
  * mixInEventEmitter(Singleton, {lonely: true});
  * Singleton.emit('lonely', true);
  */
-
 function mixInEventEmitter(cls, types) {
-  (0, _invariant.default)(types, 'Must supply set of valid event types'); // If this is a constructor, write to the prototype, otherwise write to the
+  invariant(types, 'Must supply set of valid event types');
+
+  // If this is a constructor, write to the prototype, otherwise write to the
   // singleton object.
-
   var target = cls.prototype || cls;
-  (0, _invariant.default)(!target.__eventEmitter, 'An active emitter is already mixed in');
+
+  invariant(!target.__eventEmitter, 'An active emitter is already mixed in');
+
   var ctor = cls.constructor;
-
   if (ctor) {
-    (0, _invariant.default)(ctor === Object || ctor === Function, 'Mix EventEmitter into a class, not an instance');
-  } // Keep track of the provided types, union the types if they already exist,
+    invariant(ctor === Object || ctor === Function, 'Mix EventEmitter into a class, not an instance');
+  }
+
+  // Keep track of the provided types, union the types if they already exist,
   // which allows for prototype subclasses to provide more types.
-
-
   if (target.hasOwnProperty(TYPES_KEY)) {
     Object.assign(target.__types, types);
   } else if (target.__types) {
@@ -77,7 +67,6 @@ function mixInEventEmitter(cls, types) {
   } else {
     target.__types = types;
   }
-
   Object.assign(target, EventEmitterMixin);
 }
 
@@ -85,47 +74,55 @@ var EventEmitterMixin = {
   emit: function emit(eventType, a, b, c, d, e, _) {
     return this.__getEventEmitter().emit(eventType, a, b, c, d, e, _);
   },
+
   emitAndHold: function emitAndHold(eventType, a, b, c, d, e, _) {
     return this.__getEventEmitter().emitAndHold(eventType, a, b, c, d, e, _);
   },
+
   addListener: function addListener(eventType, listener, context) {
     return this.__getEventEmitter().addListener(eventType, listener, context);
   },
+
   once: function once(eventType, listener, context) {
     return this.__getEventEmitter().once(eventType, listener, context);
   },
+
   addRetroactiveListener: function addRetroactiveListener(eventType, listener, context) {
     return this.__getEventEmitter().addRetroactiveListener(eventType, listener, context);
   },
+
   addListenerMap: function addListenerMap(listenerMap, context) {
     return this.__getEventEmitter().addListenerMap(listenerMap, context);
   },
+
   addRetroactiveListenerMap: function addRetroactiveListenerMap(listenerMap, context) {
     return this.__getEventEmitter().addListenerMap(listenerMap, context);
   },
+
   removeAllListeners: function removeAllListeners() {
     this.__getEventEmitter().removeAllListeners();
   },
+
   removeCurrentListener: function removeCurrentListener() {
     this.__getEventEmitter().removeCurrentListener();
   },
+
   releaseHeldEventType: function releaseHeldEventType(eventType) {
     this.__getEventEmitter().releaseHeldEventType(eventType);
   },
+
   __getEventEmitter: function __getEventEmitter() {
     if (!this.__eventEmitter) {
-      var emitter = new _EventEmitter.default();
-
+      var emitter = new EventEmitter();
       if (__DEV__) {
-        emitter = _EventValidator.default.addValidation(emitter, this.__types);
+        emitter = EventValidator.addValidation(emitter, this.__types);
       }
 
-      var holder = new _EventHolder.default();
-      this.__eventEmitter = new _EventEmitterWithHolding.default(emitter, holder);
+      var holder = new EventHolder();
+      this.__eventEmitter = new EventEmitterWithHolding(emitter, holder);
     }
-
     return this.__eventEmitter;
   }
 };
-var _default = mixInEventEmitter;
-exports.default = _default;
+
+export default mixInEventEmitter;

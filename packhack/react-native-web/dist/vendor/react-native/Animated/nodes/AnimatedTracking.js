@@ -9,61 +9,47 @@
  */
 'use strict';
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-exports.__esModule = true;
-exports.default = void 0;
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
+import AnimatedValue from './AnimatedValue';
+import AnimatedNode from './AnimatedNode';
+import { generateNewAnimationId, shouldUseNativeDriver } from '../NativeAnimatedHelper';
 
-var _AnimatedValue = _interopRequireDefault(require("./AnimatedValue"));
-
-var _AnimatedNode2 = _interopRequireDefault(require("./AnimatedNode"));
-
-var _NativeAnimatedHelper = require("../NativeAnimatedHelper");
-
-var AnimatedTracking =
-/*#__PURE__*/
-function (_AnimatedNode) {
-  (0, _inheritsLoose2.default)(AnimatedTracking, _AnimatedNode);
+var AnimatedTracking = function (_AnimatedNode) {
+  _inherits(AnimatedTracking, _AnimatedNode);
 
   function AnimatedTracking(value, parent, animationClass, animationConfig, callback) {
-    var _this;
+    _classCallCheck(this, AnimatedTracking);
 
-    _this = _AnimatedNode.call(this) || this;
+    var _this = _possibleConstructorReturn(this, _AnimatedNode.call(this));
+
     _this._value = value;
     _this._parent = parent;
     _this._animationClass = animationClass;
     _this._animationConfig = animationConfig;
-    _this._useNativeDriver = (0, _NativeAnimatedHelper.shouldUseNativeDriver)(animationConfig);
+    _this._useNativeDriver = shouldUseNativeDriver(animationConfig);
     _this._callback = callback;
-
     _this.__attach();
-
     return _this;
   }
 
-  var _proto = AnimatedTracking.prototype;
-
-  _proto.__makeNative = function __makeNative() {
+  AnimatedTracking.prototype.__makeNative = function __makeNative() {
     this.__isNative = true;
-
     this._parent.__makeNative();
-
     _AnimatedNode.prototype.__makeNative.call(this);
-
     this._value.__makeNative();
   };
 
-  _proto.__getValue = function __getValue() {
+  AnimatedTracking.prototype.__getValue = function __getValue() {
     return this._parent.__getValue();
   };
 
-  _proto.__attach = function __attach() {
+  AnimatedTracking.prototype.__attach = function __attach() {
     this._parent.__addChild(this);
-
     if (this._useNativeDriver) {
       // when the tracking starts we need to convert this node to a "native node"
       // so that the parent node will be made "native" too. This is necessary as
@@ -74,29 +60,26 @@ function (_AnimatedNode) {
     }
   };
 
-  _proto.__detach = function __detach() {
+  AnimatedTracking.prototype.__detach = function __detach() {
     this._parent.__removeChild(this);
-
     _AnimatedNode.prototype.__detach.call(this);
   };
 
-  _proto.update = function update() {
-    this._value.animate(new this._animationClass((0, _extends2.default)({}, this._animationConfig, {
+  AnimatedTracking.prototype.update = function update() {
+    this._value.animate(new this._animationClass(Object.assign({}, this._animationConfig, {
       toValue: this._animationConfig.toValue.__getValue()
     })), this._callback);
   };
 
-  _proto.__getNativeConfig = function __getNativeConfig() {
-    var animation = new this._animationClass((0, _extends2.default)({}, this._animationConfig, {
+  AnimatedTracking.prototype.__getNativeConfig = function __getNativeConfig() {
+    var animation = new this._animationClass(Object.assign({}, this._animationConfig, {
       // remove toValue from the config as it's a ref to Animated.Value
       toValue: undefined
     }));
-
     var animationConfig = animation.__getNativeAnimationConfig();
-
     return {
       type: 'tracking',
-      animationId: (0, _NativeAnimatedHelper.generateNewAnimationId)(),
+      animationId: generateNewAnimationId(),
       animationConfig: animationConfig,
       toValue: this._parent.__getNativeTag(),
       value: this._value.__getNativeTag()
@@ -104,7 +87,6 @@ function (_AnimatedNode) {
   };
 
   return AnimatedTracking;
-}(_AnimatedNode2.default);
+}(AnimatedNode);
 
-var _default = AnimatedTracking;
-exports.default = _default;
+export default AnimatedTracking;

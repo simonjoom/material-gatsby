@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { kebabCase } from "lodash";
-import i18next from "utils/i18n";
+import i18next from "src/utils/i18n";
 import { Link } from "gatsby";
 import Chip from "react-md/lib/Chips";
 import "./PostTags.scss";

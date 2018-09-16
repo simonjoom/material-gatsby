@@ -1,12 +1,3 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _ReactNativeStyleResolver = _interopRequireDefault(require("./ReactNativeStyleResolver"));
-
 /**
  * Copyright (c) 2016-present, Nicolas Gallagher.
  *
@@ -15,6 +6,7 @@ var _ReactNativeStyleResolver = _interopRequireDefault(require("./ReactNativeSty
  *
  * 
  */
-var styleResolver = new _ReactNativeStyleResolver.default();
-var _default = styleResolver;
-exports.default = _default;
+
+import ReactNativeStyleResolver from './ReactNativeStyleResolver';
+var styleResolver = new ReactNativeStyleResolver();
+export default styleResolver;

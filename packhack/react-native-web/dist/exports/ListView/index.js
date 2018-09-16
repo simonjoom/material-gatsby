@@ -1,12 +1,3 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _ListView = _interopRequireDefault(require("../../vendor/react-native/ListView"));
-
 /**
  * Copyright (c) 2016-present, Nicolas Gallagher.
  *
@@ -15,5 +6,6 @@ var _ListView = _interopRequireDefault(require("../../vendor/react-native/ListVi
  *
  * 
  */
-var _default = _ListView.default;
-exports.default = _default;
+
+import ListView from '../../vendor/react-native/ListView';
+export default ListView;

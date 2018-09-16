@@ -6,15 +6,15 @@ var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runt
 
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 
-const os = require(`os`);
-
 const autoprefixer = require(`autoprefixer`);
 
 const flexbugs = require(`postcss-flexbugs-fixes`);
 
-const UglifyPlugin = require(`uglifyjs-webpack-plugin`);
+const TerserPlugin = require(`terser-webpack-plugin`);
 
 const MiniCssExtractPlugin = require(`mini-css-extract-plugin`);
+
+const OptimizeCssAssetsPlugin = require(`optimize-css-assets-webpack-plugin`);
 
 const builtinPlugins = require(`./webpack-plugins`);
 
@@ -99,13 +99,10 @@ function () {
         };
       },
       postcss: (options = {}) => {
-        let cssnano = options.cssnano,
-            _plugins = options.plugins,
+        let _plugins = options.plugins,
             _options$browsers = options.browsers,
             browsers = _options$browsers === void 0 ? supportedBrowsers : _options$browsers,
-            _options$minimize = options.minimize,
-            minimize = _options$minimize === void 0 ? PRODUCTION : _options$minimize,
-            postcssOpts = (0, _objectWithoutPropertiesLoose2.default)(options, ["cssnano", "plugins", "browsers", "minimize"]);
+            postcssOpts = (0, _objectWithoutPropertiesLoose2.default)(options, ["plugins", "browsers"]);
         return {
           loader: require.resolve(`postcss-loader`),
           options: Object.assign({
@@ -113,10 +110,10 @@ function () {
             sourceMap: !PRODUCTION,
             plugins: loader => {
               _plugins = (typeof _plugins === `function` ? _plugins(loader) : _plugins) || [];
-              return [minimize && require(`cssnano`)(cssnano), flexbugs, autoprefixer({
+              return [flexbugs, autoprefixer({
                 browsers,
                 flexbox: `no-2009`
-              }), ..._plugins].filter(Boolean);
+              }), ..._plugins];
             }
           }, postcssOpts)
         };
@@ -142,12 +139,6 @@ function () {
         return {
           options,
           loader: require.resolve(`./babel-loader`)
-        };
-      },
-      jsx: options => {
-        return {
-          options,
-          loader: require.resolve(`./babel-loaderx`)
         };
       },
       eslint: (schema = ``) => {
@@ -327,23 +318,25 @@ function () {
      * to parallelize the work to save time. Generally only add in Production
      */
 
-    plugins.uglify = (_ref3 = {}) => {
-      let uglifyOptions = _ref3.uglifyOptions,
-          options = (0, _objectWithoutPropertiesLoose2.default)(_ref3, ["uglifyOptions"]);
-      return new UglifyPlugin(Object.assign({
+    plugins.minifyJs = (_ref3 = {}) => {
+      let terserOptions = _ref3.terserOptions,
+          options = (0, _objectWithoutPropertiesLoose2.default)(_ref3, ["terserOptions"]);
+      return new TerserPlugin(Object.assign({
         cache: true,
-        parallel: os.cpus().length - 1,
+        parallel: true,
         exclude: /\.min\.js/,
         sourceMap: true,
-        uglifyOptions: Object.assign({
+        terserOptions: Object.assign({
           compress: {
             drop_console: true
           },
           ecma: 8,
           ie8: false
-        }, uglifyOptions)
+        }, terserOptions)
       }, options));
     };
+
+    plugins.minifyCss = (options = {}) => new OptimizeCssAssetsPlugin(options);
     /**
      * Extracts css requires into a single file;
      * includes some reasonable defaults
