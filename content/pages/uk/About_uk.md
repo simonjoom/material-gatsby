@@ -1,6 +1,6 @@
 ---
 title: "Ski School"
-cover: "starter-logo-1024.png"
+cover: "carousel/1.jpg,carousel/2.jpg,carousel/3.jpg,carousel/4.jpg,carousel/5.jpg,carousel/6.jpg"
 category: "skischool"
 slug: "about"
 tags:
@@ -26,9 +26,9 @@ date: "2018-07-02"
    Довіртеся нам; ми вибираємо наші серед всіх професіоналів французьких лижних шкіл відповідно до їх кваліфікації, своїми знаннями і мовний рівень в Куршевель і Мерібель.   
 </div>
 
-![ski lessons courchevel](https://skiscool.com/dist/skilessons.jpg){.block .mx-auto .rounded}
- 
-<div class="ml3">
+![ski lessons courchevel](https://skiscool.com/dist/skilessons.jpg) 
+  
+
 З Skiscool, Ви вибираєте і забронювати лижний тренер по самій вигідною ціною.
 
 ### ціни
@@ -51,8 +51,7 @@ date: "2018-07-02"
 * Ми можемо інструктування всіх рівнів лижника.
 * Всі наші класи спеціально створені для задоволення ваших особистих потреб.
 * Тестових сесій і медалі презентації для поступового поліпшення для дітей.
-
-</div>
+ 
 
 
 ***Таким чином, ви будете уникати стажиста пастки.*** 
@@ -63,5 +62,3 @@ date: "2018-07-02"
 
 Посмотретe нашу брошюру: [Brochure Skiscool](http://ru.skiscool.com/testmybook/)
 
- **++Один інструктор c SkiScool?++{.table-cell .text-decoration-none} ![not have a bad time](https://skiscool.com/dist/pictures/instructorgood.jpg){.p1}**{.h1 .table}
- 

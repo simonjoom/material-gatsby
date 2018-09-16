@@ -1,6 +1,6 @@
 ---
 title: "Ski School"
-cover: "starter-logo-1024.png"
+cover: "carousel/1.jpg,carousel/2.jpg,carousel/3.jpg,carousel/4.jpg,carousel/5.jpg,carousel/6.jpg"
 category: "skischool"
 slug: "about"
 tags:
@@ -21,14 +21,14 @@ date: "2018-07-02"
 
 ## 为什么我们推荐你通过SkiScool来预订我们的滑雪教练呢？
 
-<div class="ml3">找到滑雪教练本就不简单，找到适合你的滑雪教练就更难。滑雪训练场的课程大多质量一般.  
+找到滑雪教练本就不简单，找到适合你的滑雪教练就更难。滑雪训练场的课程大多质量一般.  
 然而我们的教练都是来自法国滑雪校区的专业人士，我们会根据是根据受训校区认证，专业水平和语言能力水平来选择.  
 
-我们会无偿提供有保障的服务，保险购买措施。在这里，你可以为你自己和家人找到所有关于滑雪的装备和配件.</div>
+我们会无偿提供有保障的服务，保险购买措施。在这里，你可以为你自己和家人找到所有关于滑雪的装备和配件.
 
-![courchevel  地区滑雪课程](https://skiscool.com/dist/skilessons.jpg){.block .mx-auto .rounded}
+![courchevel  地区滑雪课程](https://skiscool.com/dist/skilessons.jpg)
 
-<div class="ml3">
+
 
 ### 价格  
 价格是由教练自行定价。教练会根据自己的行程安排给你最好的优惠和服务.
@@ -52,10 +52,7 @@ date: "2018-07-02"
 
 
 *** 选择我们，你会因此提前避开训练误区 *** 
-联系我们！我们会根据淡旺季提供不同的价格优惠：你会有跟多的选择，去到我们的滑雪课程...   
-</div>
+联系我们！我们会根据淡旺季提供不同的价格优惠：你会有跟多的选择，去到我们的滑雪课程... 
+
 
 谢谢你的关注，期待和你在3 Valleys 山谷上相遇
-
-
- **++SkiScool?++{.table-cell .text-decoration-none} ![not have a bad time](https://skiscool.com/dist/pictures/instructorgood.jpg){.p1}**{.h1 .table}
