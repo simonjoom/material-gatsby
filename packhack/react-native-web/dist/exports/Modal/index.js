@@ -275,6 +275,7 @@ function (_Component) {
 
   return Modal;
 }(_react.Component);
+Modal.setAppElement("#___gatsby");
 /*
         <Animated.View
           aria-modal="true"

@@ -8,19 +8,19 @@ const config = require("./src/config");
 const router = config.router;
 require("babel-polyfill");
 
-console.log(config)
+console.log(config);
 const arraymenu = [
   "/",
   "/about",
   "/jumpsuit",
-  "/concept", 
+  "/concept",
   "/contact",
   "/hotels"
 ];
 const arraygallery = ["/", "/about", "/concept"];
 
 const postNodes = [];
- 
+
 function addSiblingNodes(createNodeField) {
   postNodes.sort(
     ({ frontmatter: { date: date1 } }, { frontmatter: { date: date2 } }) => {
@@ -84,20 +84,25 @@ exports.onCreateNode = async ({
   ) {
     const content = await loadNodeContent(node);
     const data = JSON.stringify(JSON.parse(content), undefined, "");
-    const contentDigest = crypto
+    /*const contentDigest = crypto
       .createHash(`md5`)
       .update(data)
-      .digest(`hex`);
+      .digest(`hex`);contentDigest,*/
     const localeNode = {
-      id: `${node.id} >>> Locale`,
+      id: createNodeId(`${node.id} >>> Locale`),
       children: [],
       parent: node.id,
-      internal: { content, contentDigest, type: `Locale` },
+      internal: { content, type: `Locale` },
       lng: node.relativeDirectory,
       ns: node.name,
       data
     };
     localeNode.fileAbsolutePath = node.absolutePath;
+    localeNode.internal.contentDigest = crypto
+      .createHash(`md5`)
+      .update(JSON.stringify(localeNode))
+      .digest(`hex`);
+
     createNode(localeNode);
     createParentChildLink({ parent: node, child: localeNode });
   }
@@ -162,7 +167,7 @@ exports.onCreateNode = async ({
       slugfin = slug;
     }
 
-      console.log("pages", slug);
+    console.log("pages", slug);
     if (type === "pages") {
       createNodeField({
         node,
@@ -250,6 +255,25 @@ exports.createPages = ({ graphql, actions }) => {
           if (!tagSets[lng]) tagSets[lng] = new Set();
           if (!categorySets[lng]) categorySets[lng] = new Set();
           if (!langs[lng]) langs.push(lng);
+          let route = Object.assign({}, router[node.fields.slugbase]);
+          if (
+            !route ||
+            (router[node.fields.slug] && node.fields.slug !== "/")
+          ) {
+            console.warn(
+              "routepages not defined from ",
+              node.fields.slugbase,
+              node.fields.slug
+            );
+          }
+          if (node.fields.type == "instructor") {
+            route.fr = route.fr + _.kebabCase(node.frontmatter.title) + "/";
+            route.en = route.en + _.kebabCase(node.frontmatter.title) + "/";
+            route.ru = route.ru + _.kebabCase(node.frontmatter.title) + "/";
+            route.uk = route.uk + _.kebabCase(node.frontmatter.title) + "/";
+            route.pt = route.pt + _.kebabCase(node.frontmatter.title) + "/";
+            route.ch = route.ch + _.kebabCase(node.frontmatter.title) + "/";
+          }
           switch (node.fields.type) {
             case `post`:
             case `instructor`:
@@ -262,23 +286,24 @@ exports.createPages = ({ graphql, actions }) => {
               if (node.frontmatter.category) {
                 categorySets[lng].add(node.frontmatter.category);
               }
+
               createPage({
                 path: node.fields.slug,
                 component:
                   node.fields.type == "post" ? postPage : instructorPage,
                 context: {
+                  route,
                   id: node.id,
                   ...node.fields
                 }
               });
               break;
             case `pages`:
-              const route = router[node.fields.slugbase];
+              route = router[node.fields.slugbase];
               if (
                 !route ||
                 (router[node.fields.slug] && node.fields.slug !== "/")
               ) {
-                console.warn("routepages not defined from ",node.fields.slugbase, node.fields.slug);
                 return;
               }
 
@@ -361,15 +386,15 @@ exports.onPostBootstrap = () => {
 };
 
 exports.onPostBuild = function(args, options) {
-  var filename = 'sw.js';
+  var filename = "sw.js";
 
-  var read = fs.createReadStream(path.join(__dirname, 'sw.js'))
-  var write = fs.createWriteStream(path.resolve('public', filename));
+  var read = fs.createReadStream(path.join(__dirname, "sw.js"));
+  var write = fs.createWriteStream(path.resolve("public", filename));
 
   return new Promise(function(resolve, reject) {
     var stream = read.pipe(write);
 
-    stream.once('finish', resolve);
-    stream.once('error', reject);
+    stream.once("finish", resolve);
+    stream.once("error", reject);
   });
 };
