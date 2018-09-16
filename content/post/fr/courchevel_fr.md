@@ -1,20 +1,17 @@
 ---
-title: "Courchevel ski Resort"
-cover: "courchevel.png"
-category: "ski resort courchevel"
-slug: "courchevel"
+title: Courchevel ski Resort
+date: '2018-07-02'
+cover: courchevel.png
+slug: courchevel
+category: ski resort courchevel
 tags:
-    - station de ski
-    - courchevel
-
-date: "2018-07-02"
+  - station de ski
+  - courchevel
 ---
-
-
 <div class="edito-wrapper station">
     <div class="banner-station">
 <div class="banner-station-logo">
-![Courchevel]("/assets/courchevel.png")
+!\[Courchevel]("/assets/courchevel.png")
 </div>
     </div>
 <h3 class="main-title-1 h-margin-bottom-0">Courchevel</h1>
