@@ -5,6 +5,7 @@ import { View } from "react-native";
 import "font-awesome/scss/font-awesome.scss";
 import Navigation from "../components/Navigation";
 import config from "../../data/SiteConfig";
+import FrontCarousel from "../components/FrontCarousel";
 import LanguageSwitcher from "../components/Switchlang";
 import { router } from "../config";
 import "./index.scss";
@@ -14,14 +15,15 @@ import './toolbar.scss'
 
 class MainNavLayout extends React.Component {
   render() {
-    const { children, route, t, postList } = this.props;
-    console.log("transledef", postList);
+    const { children, route, t, postList, carouselList } = this.props;
+    console.log("carouselList", postList);
     return (
       <Navigation config={config} LocalTitle={this.props.title}>
         <Helmet>
           <meta name="description" content={config.siteDescription} />
         </Helmet>
-        
+          {carouselList &&
+          carouselList.length > 0 && <FrontCarousel dataList={carouselList} />}
         <Toolbar className="toolbar-main" >
           <div className="toolbar-container">
             <div className="rowlink toolbar-menu">
@@ -63,7 +65,7 @@ class MainNavLayout extends React.Component {
     );
   }
 }
-const NoStaticRun = ({ children, route, t, lng, postEdges }) => {
+const NoStaticRun = ({ children, route, t, lng, carouselList, postEdges }) => {
   const postList = [];
   postEdges.forEach(postEdge => {
     let title;
@@ -83,7 +85,12 @@ const NoStaticRun = ({ children, route, t, lng, postEdges }) => {
     title: t("instructor")
   });
   return (
-    <MainNavLayout postList={postList} route={route} t={t}>
+    <MainNavLayout
+      postList={postList}
+      route={route}
+      t={t}
+      carouselList={carouselList}
+    >
       {children}
     </MainNavLayout>
   );
@@ -91,8 +98,7 @@ const NoStaticRun = ({ children, route, t, lng, postEdges }) => {
 
 export { NoStaticRun };
 
-
-const StaticRun = ({ children, route, t, lng }) => (
+const StaticRun = ({ children, route, t, lng, carouselList }) => (
   <StaticQuery
     query={graphql`
       query MenuQuery {
@@ -142,7 +148,12 @@ const StaticRun = ({ children, route, t, lng }) => (
         title: t("instructor")
       });
       return (
-        <MainNavLayout postList={postList} route={route} t={t}>
+        <MainNavLayout
+          postList={postList}
+          route={route}
+          t={t}
+          carouselList={carouselList}
+        >
           {children}
         </MainNavLayout>
       );

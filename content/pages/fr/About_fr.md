@@ -1,6 +1,6 @@
 ---
 title: "Ski School"
-cover: "starter-logo-1024.png"
+cover: "carousel/1.jpg,carousel/2.jpg,carousel/3.jpg,carousel/4.jpg,carousel/5.jpg,carousel/6.jpg"
 category: "skischool"
 slug: "about"
 tags:
@@ -21,18 +21,18 @@ date: "2018-07-02"
 
 ## Pourquoi choisir Skiscool?
 
-<div class="ml3">Nous sélectionnons les professionnels diplômés parmis toutes les écoles de ski française de Courchevel et Méribel, ainsi vous éviterez de tomber sur leurs stagiaires.  
+    Nous sélectionnons les professionnels diplômés parmis toutes les écoles de ski française de Courchevel et Méribel, ainsi vous éviterez de tomber sur leurs stagiaires.  
+
 Contactez nous! en basse comme en haute saison nous cassons les prix, et vous contacterez directement les professionnels.
 
 Vous recherchez du sur mesure pour une prestation personnalisée et proche de vos attentes.
 En solo, en groupe, ou en famille. Du niveau débutant à expert, enfants ou adultes. En ski, snowboard, télémark, en piste ou hors piste. 
 
-Avec Skiscool, sélectionnez et réservez votre coach sportif au meilleur prix.</div>
+Avec Skiscool, sélectionnez et réservez votre coach sportif au meilleur prix.
 
-![ski lessons courchevel](https://skiscool.com/dist/skilessons.jpg){.block .mx-auto .rounded}
+![ski lessons courchevel](https://skiscool.com/dist/skilessons.jpg)
 
-<div class="ml3">
-
+ 
 ### Tarifs
 
 Les prix sont fixés directement par le moniteur, le moniteur de ski vous donne ses meilleurs tarifs en fonction de son remplissage de planning.
@@ -59,13 +59,11 @@ Quel est le but de l'école de ski SkiScool?
 
 > Nous vous aidons à trouver le professionnel qui correspondra le mieux à vos attentes.
 Nous suivons nos moniteurs et les choisissons en fonction de leur savoir faire et de leur expérience sur les 3 vallées.
+ 
 
-</div>
-  
 Merci et à bientôt sur les pistes de nos 3 vallées!  
  
  
- **++Un moniteur avec SkiScool++{.table-cell .text-decoration-none} ![not have a bad time](https://skiscool.com/dist/pictures/instructorgood.jpg){.p1}**{.h1 .table}
 
 
 

@@ -27,13 +27,17 @@ class PostTemplate extends React.Component {
 
   render() {
     const { mobile } = this.state;
-    const { slug, route, lng } = this.props.pageContext;
+    const { slug, route, lng, carousel } = this.props.pageContext;
     console.log("postthis", this.props);
     const expanded = !mobile;
-
+    let carouselList = [];
     //render current markdownRemark
     const postNode = this.props.data.markdownRemark;
     const post = postNode.frontmatter;
+    if (carousel && post.cover) {
+      carouselList = post.cover.split(",");
+    }
+    
     if (!post.id) {
       post.id = slug;
     }
@@ -47,6 +51,7 @@ class PostTemplate extends React.Component {
         location={this.props.location}
         route={route}
         t={this.props.t}
+        carouselList={carouselList}
         lng={lng}
       >
         <div className="post-page md-grid md-grid--no-spacing">

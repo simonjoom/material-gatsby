@@ -43,6 +43,7 @@
     "react-art": "^16.5.0",
     "react-disqus-comments": "^1.1.1",
     "react-dom": "16.4.2",
+    "react-easy-swipe": "^0.0.16",
     "react-helmet": "^5.2.0",
     "react-i18next": "^7.12.0",
     "react-md": "^1.2.9",

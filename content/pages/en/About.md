@@ -1,6 +1,6 @@
 ---
 title: "Ski School"
-cover: "starter-logo-1024.png"
+cover: "carousel/1.jpg,carousel/2.jpg,carousel/3.jpg,carousel/4.jpg,carousel/5.jpg,carousel/6.jpg"
 category: "skischool"
 slug: "about"
 tags:
@@ -27,7 +27,8 @@ We select our professionnals among all French ski schools according to their qua
 We offer great services, secure bookings at no additional costs.
 You will find all the ski equipment that you need, but also many accessories for the whole family.
 
-![ski lessons courchevel](https://skiscool.com/dist/skilessons.jpg){.block .mx-auto .rounded}
+![ski lessons courchevel](https://skiscool.com/dist/skilessons.jpg) 
+
 
 ### Prices  
 Prices are set by the instructor, ski instructor gives you its best rates depending on his schedule filling.
@@ -55,6 +56,3 @@ A wide choice of mountain guide to take full advantage of the 3 valleys.
 Contact us! During low and high season, we break fees : you will have no school fees to pay with us..   
  
 Thank you and a pleasure to meet you soon on the slopes of the 3 Valleys!
-
-
- **++One instructor with SkiScool?++{.table-cell .text-decoration-none} ![not have a bad time](https://skiscool.com/dist/pictures/instructorgood.jpg){.p1}**{.h1 .table}

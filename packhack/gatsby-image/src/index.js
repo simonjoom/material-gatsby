@@ -196,9 +196,9 @@ class GatsbyImage extends React.Component {
         continue
       }
 
-      return { result: filename, width: width, height: height }
+      return { result: filename, width: widthresult, height: height }
     }
-    return { result: filename, width: width, height: height }
+    return { result: filename, width: widthresult, height: height }
   }
 
   handleRef(ref) {
