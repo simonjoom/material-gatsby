@@ -1,25 +1,22 @@
 ---
-title: "Courchevel ski Resort"
-cover: "courchevel.png"
-category: "ski resort courchevel"
-slug: "courchevel"
+title: Courchevel ski Resort
+date: '2018-07-02'
+cover: courchevel.png
+slug: courchevel
+category: ski resort courchevel
 tags:
-    - station de ski
-    - courchevel
-
-date: "2018-07-02"
+  - station de ski
+  - courchevel
 ---
-
-
 <div class="edito-wrapper station">
     <div class="banner-station">
 <div class="banner-station-logo">
-![Courchevel]("/assets/courchevel.png")
+!\[Courchevel]("/assets/courchevel.png")
 </div>
     </div>
 <h3 class="main-title-1 h-margin-bottom-0">Courchevel</h1>
     <div class="rich-text">
-<p>Courchevel et ses villages se découvrent au gré des virages d’une jolie route en lacets, entre forêts enchantées et panoramas merveilleux… 5 villages reliés par des remontées mécaniques et des navettes gratuites dessinent une station skis aux pieds unique aux univers multiples. Partout, la recherche de l’excellence et la culture du détail raisonnent comme un leitmotiv. Dans chaque village, mille et une attentions sont déployées pour vous garantir un séjour inoubliable…</p>
+<p> et ses villages se découvrent au gré des virages d’une jolie route en lacets, entre forêts enchantées et panoramas merveilleux… 5 villages reliés par des remontées mécaniques et des navettes gratuites dessinent une station skis aux pieds unique aux univers multiples. Partout, la recherche de l’excellence et la culture du détail raisonnent comme un leitmotiv. Dans chaque village, mille et une attentions sont déployées pour vous garantir un séjour inoubliable…</p>
 
 <p>Le ski comme nulle part ailleurs</p>
 
