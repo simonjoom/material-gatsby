@@ -248,6 +248,7 @@ function (_React$Component) {
         alt = _convertProps.alt,
         resizeMode = _convertProps.resizeMode,
         width = _convertProps.width,
+        maxwidth = _convertProps.maxwidth,
         height = _convertProps.height,
         className = _convertProps.className,
         outerWrapperClassName = _convertProps.outerWrapperClassName,
@@ -325,7 +326,9 @@ function (_React$Component) {
 
       return _react.default.createElement("div", {
         style: {
-          width: '100%'
+          width: '100%',
+          maxWidth: maxwidth,
+          alignSelf: "center"
         },
         __source: {
           fileName: _jsxFileName,

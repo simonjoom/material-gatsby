@@ -1,8 +1,8 @@
 import React from "react";
 import Img from "gatsby-image";
-import { graphql, StaticQuery } from "gatsby"; 
-import Carousel from "./carousel"; 
-import "./carousel.css"; 
+import { graphql, StaticQuery } from "gatsby";
+import Carousel from "./carousel";
+import "./carousel.css";
 
 const FrontCarousel = ({ dataList }) => { 
   return (
@@ -11,7 +11,7 @@ const FrontCarousel = ({ dataList }) => {
             query CarouselQuery {
               allFile(
             filter: {
-          absolutePath:{regex:"/(assets)\/carousel.*\\.jpg$/"}
+          absolutePath:{regex:"/(assets)\/.*\\.jpg$/"}
             }
               ) {
                 edges {
@@ -54,35 +54,37 @@ const FrontCarousel = ({ dataList }) => {
               }
             }
           `}
-      render={data => { 
+      render={data => {
         const MapImg = dataList.map((el, ind) => {
           const FileNode = data.allFile.edges.find(function(element) {
-              console.log(element.node.absolutePath.indexOf("/static/assets/"+ el)!== -1)
-            return (
-              element.node.absolutePath.indexOf("/static/assets/"+ el)!== -1
+            console.log(
+              element.node.absolutePath.indexOf("/static/assets/" + el) !== -1
             );
-          }); 
+            return (
+              element.node.absolutePath.indexOf("/static/assets/" + el) !== -1
+            );
+          });
           if (FileNode)
             return (
               <Img
                 key={ind}
                 fluid={FileNode.node.childImageSharp.fluid}
                 height="100%"
+                maxwidth="1024px"
               />
             );
-        }); 
-
-        return (
-          <div className="carousel">
-            <Carousel
-              autoPlay
-              infiniteLoop
-              className="carousel-main"
-            >
-              {MapImg}
-            </Carousel>
-          </div>
-        );
+        });
+        if (MapImg.length > 1)
+          return (
+            <div className="carousel">
+              <Carousel autoPlay infiniteLoop className="carousel-main">
+                {MapImg}
+              </Carousel>
+            </div>
+          );
+        else {
+          return MapImg[0];
+        }
       }}
     />
   );
