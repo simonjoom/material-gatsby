@@ -1,10 +1,3 @@
-"use strict";
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _reactDom = require("react-dom");
-
 /**
  * Copyright (c) 2016-present, Nicolas Gallagher.
  *
@@ -13,5 +6,17 @@ var _reactDom = require("react-dom");
  *
  * @noflow
  */
-var _default = _reactDom.findDOMNode;
-exports.default = _default;
+
+import { findDOMNode } from 'react-dom';
+
+var findNodeHandle = function findNodeHandle(component) {
+  var node = void 0;
+
+  try {
+    node = findDOMNode(component);
+  } catch (e) {}
+
+  return node;
+};
+
+export default findNodeHandle;

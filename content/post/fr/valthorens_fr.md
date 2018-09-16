@@ -13,7 +13,7 @@ date: "2018-07-02"
 <div class="edito-wrapper station">
 <div class="banner-station">
 <div class="banner-station-logo">
-<img src="%HOST%/dist/resortfiles/val-thorens.png" alt="Val Thorens"></div>
+<img src="assets/resortfiles/val-thorens.png" alt="Val Thorens"></div>
 </div>
 <h3 class="main-title-1 h-margin-bottom-0">Val Thorens</h1>
 
@@ -63,7 +63,7 @@ profiter des plaisirs et du bon air de la montagne !</p>
 </div>
 
 <div class="o-actu fullWidth"><div class="grid-noGutter-equalHeight_sm-1">
-<div class="col"><img src="%HOST%/dist/resortfiles/vt-gastronomie.jpg"
+<div class="col"><img src="assets/resortfiles/vt-gastronomie.jpg"
  alt="Val Thorens une station gourmande">
 </div>
 <div class="col"><div class="pl2 rich-text">
@@ -75,7 +75,7 @@ profiter des plaisirs et du bon air de la montagne !</p>
 </div>
 
 <div class="o-actu fullWidth"><div class="grid-noGutter-equalHeight_sm-1">
-<div class="col"><img src="%HOST%/dist/resortfiles/vt-centresportif.jpg"
+<div class="col"><img src="assets/resortfiles/vt-centresportif.jpg"
  alt="Le centre sportif de Val Thorens">
 </div>
 <div class="col"><div class="pl2 rich-text">
@@ -87,7 +87,7 @@ profiter des plaisirs et du bon air de la montagne !</p>
 </div>
 
 <div class="o-actu fullWidth"><div class="grid-noGutter-equalHeight_sm-1">
-<div class="col"><img src="%HOST%/dist/resortfiles/vt-luge.jpg" alt="La piste de Luge « Le Toboggan »">
+<div class="col"><img src="assets/resortfiles/vt-luge.jpg" alt="La piste de Luge « Le Toboggan »">
 </div>
 <div class="col"><div class="pl2 rich-text">
 <p>Préparez-vous à vivre une expérience incroyable !</p>
@@ -102,7 +102,7 @@ profiter des plaisirs et du bon air de la montagne !</p>
 </div>
 
 <div class="o-actu fullWidth"><div class="grid-noGutter-equalHeight_sm-1">
-<div class="col"><img src="%HOST%/dist/resortfiles/vt-tyrolienne.jpg" alt="La Tyrolienne">
+<div class="col"><img src="assets/resortfiles/vt-tyrolienne.jpg" alt="La Tyrolienne">
 </div>
 <div class="col"><div class="pl2 rich-text">
 <p>D’Orelle à Val Thorens, suspendu à un filin d’acier, bien installé dans un cocon de tissu quivous fera franchir la barre des 100 km/h, vous vivrez l’émotion d’un grand rapace planantau-dessus des espaces infinis.<br/><br/>Un vol plané long de 1300 mètres, 1min45 de pur plaisir dans un panorama à couper lesouffle, depuis le point culminant des 3 Vallées à 3230 m, au sommet du Télésiège du Bouchetsur le domaine d’Orelle, pour relier la crête de Val Thorens, à 3000 m, au sommet du Funitelde Thorens.</p></div>
@@ -113,7 +113,7 @@ profiter des plaisirs et du bon air de la montagne !</p>
 </div>
 
 <div class="o-actu fullWidth"><div class="grid-noGutter-equalHeight_sm-1">
-<div class="col"><img src="%HOST%/dist/resortfiles/vt-cimecaron.jpg"
+<div class="col"><img src="assets/resortfiles/vt-cimecaron.jpg"
  alt="La Cime Caron – La plus belle vue des Alpes">
 </div>
 <div class="col"><div class="pl2 rich-text">
@@ -125,7 +125,7 @@ profiter des plaisirs et du bon air de la montagne !</p>
 </div>
 
 <div class="o-actu fullWidth"><div class="grid-noGutter-equalHeight_sm-1">
-<div class="col"><img src="%HOST%/dist/resortfiles/vt-espaceludiques.jpg"
+<div class="col"><img src="assets/resortfiles/vt-espaceludiques.jpg"
  alt="Espaces ludiques et snowparks">
 </div>
 <div class="col"><div class="pl2 rich-text">
@@ -137,7 +137,7 @@ profiter des plaisirs et du bon air de la montagne !</p>
 </div>
 
 <div class="o-actu fullWidth"><div class="grid-noGutter-equalHeight_sm-1">
-<div class="col"><img src="%HOST%/dist/resortfiles/vt-circuitdeglace.jpg"
+<div class="col"><img src="assets/resortfiles/vt-circuitdeglace.jpg"
  alt="Le circuit de Glace « Alain Prost »">
 </div>
 <div class="col"><div class="pl2 rich-text">
@@ -151,7 +151,7 @@ profiter des plaisirs et du bon air de la montagne !</p>
 </div>
 
 <div class="o-actu fullWidth"><div class="grid-noGutter-equalHeight_sm-1">
-<div class="col"><img src="%HOST%/dist/resortfiles/vt-3vallees.jpg"
+<div class="col"><img src="assets/resortfiles/vt-3vallees.jpg"
  alt="L&#39;accès au domaine skiable des 3 Vallées">
 </div>
 <div class="col"><div class="pl2 rich-text">
@@ -163,7 +163,7 @@ profiter des plaisirs et du bon air de la montagne !</p>
 </div>
 
 <div class="o-actu fullWidth"><div class="grid-noGutter-equalHeight_sm-1">
-<div class="col"><img src="%HOST%/dist/resortfiles/vt-shopping.jpg"
+<div class="col"><img src="assets/resortfiles/vt-shopping.jpg"
  alt="Découvrir les commerces de Val Thorens">
 </div>
 <div class="col"><div class="pl2 rich-text">

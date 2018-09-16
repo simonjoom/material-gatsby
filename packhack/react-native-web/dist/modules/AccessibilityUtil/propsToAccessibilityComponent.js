@@ -1,12 +1,3 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _propsToAriaRole = _interopRequireDefault(require("./propsToAriaRole"));
-
 /**
  * Copyright (c) 2017-present, Nicolas Gallagher.
  *
@@ -15,6 +6,9 @@ var _propsToAriaRole = _interopRequireDefault(require("./propsToAriaRole"));
  *
  * 
  */
+
+import propsToAriaRole from './propsToAriaRole';
+
 var roleComponents = {
   article: 'article',
   banner: 'header',
@@ -29,24 +23,20 @@ var roleComponents = {
   navigation: 'nav',
   region: 'section'
 };
+
 var emptyObject = {};
 
-var propsToAccessibilityComponent = function propsToAccessibilityComponent(props) {
-  if (props === void 0) {
-    props = emptyObject;
-  }
+var propsToAccessibilityComponent = function propsToAccessibilityComponent() {
+  var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : emptyObject;
 
-  var role = (0, _propsToAriaRole.default)(props);
-
+  var role = propsToAriaRole(props);
   if (role) {
     if (role === 'heading') {
       var level = props['aria-level'] || 1;
-      return "h" + level;
+      return 'h' + level;
     }
-
     return roleComponents[role];
   }
 };
 
-var _default = propsToAccessibilityComponent;
-exports.default = _default;
+export default propsToAccessibilityComponent;

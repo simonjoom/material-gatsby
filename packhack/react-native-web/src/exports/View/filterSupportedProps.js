@@ -5,7 +5,6 @@ const whitelist = {
   accessibilityRole: true,
   accessibilityTraits: true,
   accessible: true,
-  tabIndex: true,
   children: true,
   disabled: true,
   importantForAccessibility: true,

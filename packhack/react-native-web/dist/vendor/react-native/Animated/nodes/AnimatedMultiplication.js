@@ -9,68 +9,56 @@
  */
 'use strict';
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-exports.__esModule = true;
-exports.default = void 0;
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var _AnimatedInterpolation = _interopRequireDefault(require("./AnimatedInterpolation"));
+import AnimatedInterpolation from './AnimatedInterpolation';
+import AnimatedNode from './AnimatedNode';
+import AnimatedValue from './AnimatedValue';
+import AnimatedWithChildren from './AnimatedWithChildren';
 
-var _AnimatedNode = _interopRequireDefault(require("./AnimatedNode"));
-
-var _AnimatedValue = _interopRequireDefault(require("./AnimatedValue"));
-
-var _AnimatedWithChildren2 = _interopRequireDefault(require("./AnimatedWithChildren"));
-
-var AnimatedMultiplication =
-/*#__PURE__*/
-function (_AnimatedWithChildren) {
-  (0, _inheritsLoose2.default)(AnimatedMultiplication, _AnimatedWithChildren);
+var AnimatedMultiplication = function (_AnimatedWithChildren) {
+  _inherits(AnimatedMultiplication, _AnimatedWithChildren);
 
   function AnimatedMultiplication(a, b) {
-    var _this;
+    _classCallCheck(this, AnimatedMultiplication);
 
-    _this = _AnimatedWithChildren.call(this) || this;
-    _this._a = typeof a === 'number' ? new _AnimatedValue.default(a) : a;
-    _this._b = typeof b === 'number' ? new _AnimatedValue.default(b) : b;
+    var _this = _possibleConstructorReturn(this, _AnimatedWithChildren.call(this));
+
+    _this._a = typeof a === 'number' ? new AnimatedValue(a) : a;
+    _this._b = typeof b === 'number' ? new AnimatedValue(b) : b;
     return _this;
   }
 
-  var _proto = AnimatedMultiplication.prototype;
-
-  _proto.__makeNative = function __makeNative() {
+  AnimatedMultiplication.prototype.__makeNative = function __makeNative() {
     this._a.__makeNative();
-
     this._b.__makeNative();
-
     _AnimatedWithChildren.prototype.__makeNative.call(this);
   };
 
-  _proto.__getValue = function __getValue() {
+  AnimatedMultiplication.prototype.__getValue = function __getValue() {
     return this._a.__getValue() * this._b.__getValue();
   };
 
-  _proto.interpolate = function interpolate(config) {
-    return new _AnimatedInterpolation.default(this, config);
+  AnimatedMultiplication.prototype.interpolate = function interpolate(config) {
+    return new AnimatedInterpolation(this, config);
   };
 
-  _proto.__attach = function __attach() {
+  AnimatedMultiplication.prototype.__attach = function __attach() {
     this._a.__addChild(this);
-
     this._b.__addChild(this);
   };
 
-  _proto.__detach = function __detach() {
+  AnimatedMultiplication.prototype.__detach = function __detach() {
     this._a.__removeChild(this);
-
     this._b.__removeChild(this);
-
     _AnimatedWithChildren.prototype.__detach.call(this);
   };
 
-  _proto.__getNativeConfig = function __getNativeConfig() {
+  AnimatedMultiplication.prototype.__getNativeConfig = function __getNativeConfig() {
     return {
       type: 'multiplication',
       input: [this._a.__getNativeTag(), this._b.__getNativeTag()]
@@ -78,7 +66,6 @@ function (_AnimatedWithChildren) {
   };
 
   return AnimatedMultiplication;
-}(_AnimatedWithChildren2.default);
+}(AnimatedWithChildren);
 
-var _default = AnimatedMultiplication;
-exports.default = _default;
+export default AnimatedMultiplication;

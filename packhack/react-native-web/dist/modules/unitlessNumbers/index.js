@@ -1,7 +1,3 @@
-"use strict";
-
-exports.__esModule = true;
-exports.default = void 0;
 var unitlessNumbers = {
   animationIterationCount: true,
   borderImageOutset: true,
@@ -45,21 +41,19 @@ var unitlessNumbers = {
   // RN properties
   shadowOpacity: true
 };
+
 /**
  * Support style names that may come passed in prefixed by adding permutations
  * of vendor prefixes.
  */
-
 var prefixes = ['ms', 'Moz', 'O', 'Webkit'];
-
 var prefixKey = function prefixKey(prefix, key) {
   return prefix + key.charAt(0).toUpperCase() + key.substring(1);
 };
-
 Object.keys(unitlessNumbers).forEach(function (prop) {
   prefixes.forEach(function (prefix) {
     unitlessNumbers[prefixKey(prefix, prop)] = unitlessNumbers[prop];
   });
 });
-var _default = unitlessNumbers;
-exports.default = _default;
+
+export default unitlessNumbers;

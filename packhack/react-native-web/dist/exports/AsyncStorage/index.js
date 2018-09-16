@@ -1,11 +1,4 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _deepAssign = _interopRequireDefault(require("deep-assign"));
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
  * Copyright (c) 2015-present, Nicolas Gallagher.
@@ -16,11 +9,14 @@ var _deepAssign = _interopRequireDefault(require("deep-assign"));
  *
  * 
  */
+
+import merge from 'deep-assign';
+
 var mergeLocalStorageItem = function mergeLocalStorageItem(key, value) {
   var oldValue = window.localStorage.getItem(key);
   var oldObject = JSON.parse(oldValue);
   var newObject = JSON.parse(value);
-  var nextValue = JSON.stringify((0, _deepAssign.default)({}, oldObject, newObject));
+  var nextValue = JSON.stringify(merge({}, oldObject, newObject));
   window.localStorage.setItem(key, nextValue);
 };
 
@@ -28,17 +24,14 @@ var createPromise = function createPromise(getValue, callback) {
   return new Promise(function (resolve, reject) {
     try {
       var value = getValue();
-
       if (callback) {
         callback(null, value);
       }
-
       resolve(value);
     } catch (err) {
       if (callback) {
         callback(err);
       }
-
       reject(err);
     }
   });
@@ -55,10 +48,10 @@ var createPromiseAll = function createPromiseAll(promises, callback, processResu
   });
 };
 
-var AsyncStorage =
-/*#__PURE__*/
-function () {
-  function AsyncStorage() {}
+var AsyncStorage = function () {
+  function AsyncStorage() {
+    _classCallCheck(this, AsyncStorage);
+  }
 
   /**
    * Erases *all* AsyncStorage for the domain.
@@ -68,12 +61,14 @@ function () {
       window.localStorage.clear();
     }, callback);
   };
+
   /**
    * (stub) Flushes any pending requests using a single batch call to get the data.
    */
 
 
   AsyncStorage.flushGetRequests = function flushGetRequests() {};
+
   /**
    * Gets *all* keys known to the app, for all callers, libraries, etc.
    */
@@ -83,15 +78,14 @@ function () {
     return createPromise(function () {
       var numberOfKeys = window.localStorage.length;
       var keys = [];
-
       for (var i = 0; i < numberOfKeys; i += 1) {
         var key = window.localStorage.key(i);
         keys.push(key);
       }
-
       return keys;
     }, callback);
   };
+
   /**
    * Fetches `key` value.
    */
@@ -102,6 +96,7 @@ function () {
       return window.localStorage.getItem(key);
     }, callback);
   };
+
   /**
    * multiGet resolves to an array of key-value pair arrays that matches the
    * input format of multiSet.
@@ -114,15 +109,14 @@ function () {
     var promises = keys.map(function (key) {
       return AsyncStorage.getItem(key);
     });
-
     var processResult = function processResult(result) {
       return result.map(function (value, i) {
         return [keys[i], value];
       });
     };
-
     return createPromiseAll(promises, callback, processResult);
   };
+
   /**
    * Sets `value` for `key`.
    */
@@ -133,6 +127,7 @@ function () {
       window.localStorage.setItem(key, value);
     }, callback);
   };
+
   /**
    * Takes an array of key-value array pairs.
    *   multiSet([['k1', 'val1'], ['k2', 'val2']])
@@ -145,6 +140,7 @@ function () {
     });
     return createPromiseAll(promises, callback);
   };
+
   /**
    * Merges existing value with input value, assuming they are stringified JSON.
    */
@@ -155,6 +151,7 @@ function () {
       mergeLocalStorageItem(key, value);
     }, callback);
   };
+
   /**
    * Takes an array of key-value array pairs and merges them with existing
    * values, assuming they are stringified JSON.
@@ -169,6 +166,7 @@ function () {
     });
     return createPromiseAll(promises, callback);
   };
+
   /**
    * Removes a `key`
    */
@@ -179,6 +177,7 @@ function () {
       return window.localStorage.removeItem(key);
     }, callback);
   };
+
   /**
    * Delete all the keys in the `keys` array.
    */
@@ -194,4 +193,4 @@ function () {
   return AsyncStorage;
 }();
 
-exports.default = AsyncStorage;
+export default AsyncStorage;

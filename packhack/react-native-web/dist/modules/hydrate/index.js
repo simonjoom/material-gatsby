@@ -1,10 +1,3 @@
-"use strict";
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _reactDom = require("react-dom");
-
 /**
  * Copyright (c) 2016-present, Nicolas Gallagher.
  *
@@ -13,5 +6,6 @@ var _reactDom = require("react-dom");
  *
  * @noflow
  */
-var _default = _reactDom.hydrate;
-exports.default = _default;
+
+import { hydrate } from 'react-dom';
+export default hydrate;

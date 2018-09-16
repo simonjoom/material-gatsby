@@ -1,12 +1,3 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _invariant = _interopRequireDefault(require("fbjs/lib/invariant"));
-
 /* eslint-disable */
 
 /**
@@ -17,9 +8,11 @@ var _invariant = _interopRequireDefault(require("fbjs/lib/invariant"));
  *
  * From React 16.0.0
  */
+
+import invariant from 'fbjs/lib/invariant';
+
 var twoArgumentPooler = function twoArgumentPooler(a1, a2) {
   var Klass = this;
-
   if (Klass.instancePool.length) {
     var instance = Klass.instancePool.pop();
     Klass.call(instance, a1, a2);
@@ -32,7 +25,6 @@ var twoArgumentPooler = function twoArgumentPooler(a1, a2) {
 var standardReleaser = function standardReleaser(instance) {
   var Klass = this;
   instance.destructor();
-
   if (Klass.instancePool.length < Klass.poolSize) {
     Klass.instancePool.push(instance);
   }
@@ -40,6 +32,7 @@ var standardReleaser = function standardReleaser(instance) {
 
 var DEFAULT_POOL_SIZE = 10;
 var DEFAULT_POOLER = twoArgumentPooler;
+
 /**
  * Augments `CopyConstructor` to be a poolable class, augmenting only the class
  * itself (statically) not adding any prototypical fields. Any CopyConstructor
@@ -49,18 +42,15 @@ var DEFAULT_POOLER = twoArgumentPooler;
  * @param {Function} CopyConstructor Constructor that can be used to reset.
  * @param {Function} pooler Customizable pooler.
  */
-
 var addPoolingTo = function addPoolingTo(CopyConstructor, pooler) {
   // Casting as any so that flow ignores the actual implementation and trusts
   // it to match the type we declared
   var NewKlass = CopyConstructor;
   NewKlass.instancePool = [];
   NewKlass.getPooled = pooler || DEFAULT_POOLER;
-
   if (!NewKlass.poolSize) {
     NewKlass.poolSize = DEFAULT_POOL_SIZE;
   }
-
   NewKlass.release = standardReleaser;
   return NewKlass;
 };
@@ -69,5 +59,5 @@ var PooledClass = {
   addPoolingTo: addPoolingTo,
   twoArgumentPooler: twoArgumentPooler
 };
-var _default = PooledClass;
-exports.default = _default;
+
+export default PooledClass;

@@ -54,7 +54,7 @@ import SafeAreaView from './exports/SafeAreaView';
 import ScrollView from './exports/ScrollView';
 import SectionList from './exports/SectionList';
 import Slider from './exports/Slider';
-//import StatusBar from './exports/StatusBar';
+import StatusBar from './exports/StatusBar';
 import SwipeableFlatList from './exports/SwipeableFlatList';
 import SwipeableListView from './exports/SwipeableListView';
 import Switch from './exports/Switch';
@@ -155,7 +155,7 @@ export {
   ImageBackground,
   KeyboardAvoidingView,
   ListView,
-   Modal,
+  Modal,
   Picker,
   ProgressBar,
   RefreshControl,
@@ -163,7 +163,7 @@ export {
   ScrollView,
   SectionList,
   Slider,
- // StatusBar,
+  StatusBar,
   SwipeableFlatList,
   SwipeableListView,
   Switch,
@@ -270,7 +270,7 @@ const ReactNative = {
   ScrollView,
   SectionList,
   Slider,
- // StatusBar,
+  StatusBar,
   SwipeableFlatList,
   SwipeableListView,
   Switch,

@@ -1,14 +1,3 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _ReactNativePropRegistry = _interopRequireDefault(require("../../modules/ReactNativePropRegistry"));
-
-var _invariant = _interopRequireDefault(require("fbjs/lib/invariant"));
-
 /**
  * Copyright (c) 2015-present, Nicolas Gallagher.
  * Copyright (c) 2015-present, Facebook, Inc.
@@ -18,11 +7,14 @@ var _invariant = _interopRequireDefault(require("fbjs/lib/invariant"));
  *
  * 
  */
+
+import ReactNativePropRegistry from '../../modules/ReactNativePropRegistry';
+import invariant from 'fbjs/lib/invariant';
+
 function getStyle(style) {
   if (typeof style === 'number') {
-    return _ReactNativePropRegistry.default.getByID(style);
+    return ReactNativePropRegistry.getByID(style);
   }
-
   return style;
 }
 
@@ -32,7 +24,7 @@ function flattenStyle(style) {
   }
 
   if (process.env.NODE_ENV !== 'production') {
-    (0, _invariant.default)(style !== true, 'style may be false but not true');
+    invariant(style !== true, 'style may be false but not true');
   }
 
   if (!Array.isArray(style)) {
@@ -41,10 +33,8 @@ function flattenStyle(style) {
   }
 
   var result = {};
-
   for (var i = 0, styleLength = style.length; i < styleLength; ++i) {
     var computedStyle = flattenStyle(style[i]);
-
     if (computedStyle) {
       for (var key in computedStyle) {
         var value = computedStyle[key];
@@ -52,9 +42,7 @@ function flattenStyle(style) {
       }
     }
   }
-
   return result;
 }
 
-var _default = flattenStyle;
-exports.default = _default;
+export default flattenStyle;

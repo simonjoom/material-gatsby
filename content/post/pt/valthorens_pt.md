@@ -14,7 +14,7 @@ date: "2018-07-02"
 <div class="edito-wrapper station">
 <div class="banner-station">
 <div class="banner-station-logo">
-<img src="%HOST%/dist/resortfiles/val-thorens.png" alt="Val Thorens">
+<img src="assets/resortfiles/val-thorens.png" alt="Val Thorens">
 </div>
 </div>
 <h3 class="main-title-1 h-margin-bottom-0">Val Thorens</h1>
@@ -57,7 +57,7 @@ A atmosfera da vila é informal e amigável para o après-ski com uma grande var
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="%HOST%/dist/resortfiles/vt-gastronomie.jpg" alt="Val Thorens, a gourmet resort">
+<img src="assets/resortfiles/vt-gastronomie.jpg" alt="Val Thorens, a gourmet resort">
 </div>
 <div class="col">
 <div class="pl2 rich-text">
@@ -77,7 +77,7 @@ Diferentes lugares e estilos, todos motivados por um desejo de proporcionar aos 
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="%HOST%/dist/resortfiles/vt-centresportif.jpg" alt="Val Thorens Sports Centre">
+<img src="assets/resortfiles/vt-centresportif.jpg" alt="Val Thorens Sports Centre">
 </div>
 <div class="col">
 <div class="pl2 rich-text">
@@ -94,7 +94,7 @@ Diferentes lugares e estilos, todos motivados por um desejo de proporcionar aos 
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="%HOST%/dist/resortfiles/vt-luge.jpg" alt="The toboggan slope">
+<img src="assets/resortfiles/vt-luge.jpg" alt="The toboggan slope">
 </div>
 <div class="col">
 <div class="pl2 rich-text">
@@ -115,7 +115,7 @@ Diferentes lugares e estilos, todos motivados por um desejo de proporcionar aos 
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="%HOST%/dist/resortfiles/vt-tyrolienne.jpg" alt="The Zip Line « La Tyrolienne »">
+<img src="assets/resortfiles/vt-tyrolienne.jpg" alt="The Zip Line « La Tyrolienne »">
 </div>
 <div class="col">
 <div class="pl2 rich-text">
@@ -136,7 +136,7 @@ Diferentes lugares e estilos, todos motivados por um desejo de proporcionar aos 
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="%HOST%/dist/resortfiles/vt-cimecaron.jpg" alt="Cime Caron – The best view of the alps">
+<img src="assets/resortfiles/vt-cimecaron.jpg" alt="Cime Caron – The best view of the alps">
 </div>
 <div class="col">
 <div class="pl2 rich-text">
@@ -155,7 +155,7 @@ Diferentes lugares e estilos, todos motivados por um desejo de proporcionar aos 
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="%HOST%/dist/resortfiles/vt-espaceludiques.jpg" alt="Áreas divertidas e snowparks">
+<img src="assets/resortfiles/vt-espaceludiques.jpg" alt="Áreas divertidas e snowparks">
 </div>
 <div class="col">
 <div class="pl2 rich-text">
@@ -176,7 +176,7 @@ Diferentes lugares e estilos, todos motivados por um desejo de proporcionar aos 
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="%HOST%/dist/resortfiles/vt-circuitdeglace.jpg" alt="A Val Thorens pista de gelo">
+<img src="assets/resortfiles/vt-circuitdeglace.jpg" alt="A Val Thorens pista de gelo">
 </div>
 <div class="col">
 <div class="pl2 rich-text">
@@ -194,7 +194,7 @@ Diferentes lugares e estilos, todos motivados por um desejo de proporcionar aos 
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="%HOST%/dist/resortfiles/vt-3vallees.jpg" alt="Chegando à área de esqui Les 3 Vallées">
+<img src="assets/resortfiles/vt-3vallees.jpg" alt="Chegando à área de esqui Les 3 Vallées">
 </div>
 <div class="col">
 <div class="pl2 rich-text">
@@ -212,7 +212,7 @@ No total, existem mais de 330 pistas, quase metade das quais são encostas fáce
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="%HOST%/dist/resortfiles/vt-shopping.jpg" alt="Aproveite as Lojas Val Thorens">
+<img src="assets/resortfiles/vt-shopping.jpg" alt="Aproveite as Lojas Val Thorens">
 </div>
 <div class="col">
 <div class="pl2 rich-text">

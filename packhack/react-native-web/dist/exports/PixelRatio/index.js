@@ -1,11 +1,4 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _Dimensions = _interopRequireDefault(require("../Dimensions"));
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
  * Copyright (c) 2015-present, Nicolas Gallagher.
@@ -17,28 +10,33 @@ var _Dimensions = _interopRequireDefault(require("../Dimensions"));
  * 
  */
 
+import Dimensions from '../Dimensions';
+
 /**
  * PixelRatio gives access to the device pixel density.
  */
-var PixelRatio =
-/*#__PURE__*/
-function () {
-  function PixelRatio() {}
+
+var PixelRatio = function () {
+  function PixelRatio() {
+    _classCallCheck(this, PixelRatio);
+  }
 
   /**
    * Returns the device pixel density.
    */
   PixelRatio.get = function get() {
-    return _Dimensions.default.get('window').scale;
+    return Dimensions.get('window').scale;
   };
+
   /**
    * No equivalent for Web
    */
 
 
   PixelRatio.getFontScale = function getFontScale() {
-    return _Dimensions.default.get('window').fontScale || PixelRatio.get();
+    return Dimensions.get('window').fontScale || PixelRatio.get();
   };
+
   /**
    * Converts a layout size (dp) to pixel size (px).
    * Guaranteed to return an integer number.
@@ -48,6 +46,7 @@ function () {
   PixelRatio.getPixelSizeForLayoutSize = function getPixelSizeForLayoutSize(layoutSize) {
     return Math.round(layoutSize * PixelRatio.get());
   };
+
   /**
    * Rounds a layout size (dp) to the nearest layout size that corresponds to
    * an integer number of pixels. For example, on a device with a PixelRatio
@@ -64,4 +63,4 @@ function () {
   return PixelRatio;
 }();
 
-exports.default = PixelRatio;
+export default PixelRatio;

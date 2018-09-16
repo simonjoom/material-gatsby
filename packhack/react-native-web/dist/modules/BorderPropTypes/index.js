@@ -1,14 +1,3 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _ColorPropType = _interopRequireDefault(require("../../exports/ColorPropType"));
-
-var _propTypes = require("prop-types");
-
 /**
  * Copyright (c) 2015-present, Nicolas Gallagher.
  *
@@ -17,16 +6,21 @@ var _propTypes = require("prop-types");
  *
  * 
  */
-var numberOrString = (0, _propTypes.oneOfType)([_propTypes.number, _propTypes.string]);
-var BorderStylePropType = (0, _propTypes.oneOf)(['solid', 'dotted', 'dashed']);
+
+import ColorPropType from '../../exports/ColorPropType';
+import { number, oneOf, oneOfType, string } from 'prop-types';
+
+var numberOrString = oneOfType([number, string]);
+var BorderStylePropType = oneOf(['solid', 'dotted', 'dashed']);
+
 var BorderPropTypes = {
-  borderColor: _ColorPropType.default,
-  borderBottomColor: _ColorPropType.default,
-  borderEndColor: _ColorPropType.default,
-  borderLeftColor: _ColorPropType.default,
-  borderRightColor: _ColorPropType.default,
-  borderStartColor: _ColorPropType.default,
-  borderTopColor: _ColorPropType.default,
+  borderColor: ColorPropType,
+  borderBottomColor: ColorPropType,
+  borderEndColor: ColorPropType,
+  borderLeftColor: ColorPropType,
+  borderRightColor: ColorPropType,
+  borderStartColor: ColorPropType,
+  borderTopColor: ColorPropType,
   borderRadius: numberOrString,
   borderBottomEndRadius: numberOrString,
   borderBottomLeftRadius: numberOrString,
@@ -44,5 +38,5 @@ var BorderPropTypes = {
   borderStartStyle: BorderStylePropType,
   borderTopStyle: BorderStylePropType
 };
-var _default = BorderPropTypes;
-exports.default = _default;
+
+export default BorderPropTypes;

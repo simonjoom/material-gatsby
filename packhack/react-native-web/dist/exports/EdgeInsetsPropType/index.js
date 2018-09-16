@@ -1,14 +1,3 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _createStrictShapeTypeChecker = _interopRequireDefault(require("../../modules/createStrictShapeTypeChecker"));
-
-var _propTypes = require("prop-types");
-
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
  *
@@ -17,11 +6,15 @@ var _propTypes = require("prop-types");
  *
  * 
  */
-var EdgeInsetsPropType = (0, _createStrictShapeTypeChecker.default)({
-  top: _propTypes.number,
-  left: _propTypes.number,
-  bottom: _propTypes.number,
-  right: _propTypes.number
+
+import createStrictShapeTypeChecker from '../../modules/createStrictShapeTypeChecker';
+import { number } from 'prop-types';
+
+var EdgeInsetsPropType = createStrictShapeTypeChecker({
+  top: number,
+  left: number,
+  bottom: number,
+  right: number
 });
-var _default = EdgeInsetsPropType;
-exports.default = _default;
+
+export default EdgeInsetsPropType;

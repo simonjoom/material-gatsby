@@ -9,60 +9,52 @@
  */
 'use strict';
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-exports.__esModule = true;
-exports.default = void 0;
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var _AnimatedInterpolation = _interopRequireDefault(require("./AnimatedInterpolation"));
+import AnimatedInterpolation from './AnimatedInterpolation';
+import AnimatedNode from './AnimatedNode';
+import AnimatedWithChildren from './AnimatedWithChildren';
 
-var _AnimatedNode = _interopRequireDefault(require("./AnimatedNode"));
-
-var _AnimatedWithChildren2 = _interopRequireDefault(require("./AnimatedWithChildren"));
-
-var AnimatedModulo =
-/*#__PURE__*/
-function (_AnimatedWithChildren) {
-  (0, _inheritsLoose2.default)(AnimatedModulo, _AnimatedWithChildren);
+var AnimatedModulo = function (_AnimatedWithChildren) {
+  _inherits(AnimatedModulo, _AnimatedWithChildren);
 
   function AnimatedModulo(a, modulus) {
-    var _this;
+    _classCallCheck(this, AnimatedModulo);
 
-    _this = _AnimatedWithChildren.call(this) || this;
+    var _this = _possibleConstructorReturn(this, _AnimatedWithChildren.call(this));
+
     _this._a = a;
     _this._modulus = modulus;
     return _this;
   }
 
-  var _proto = AnimatedModulo.prototype;
-
-  _proto.__makeNative = function __makeNative() {
+  AnimatedModulo.prototype.__makeNative = function __makeNative() {
     this._a.__makeNative();
-
     _AnimatedWithChildren.prototype.__makeNative.call(this);
   };
 
-  _proto.__getValue = function __getValue() {
+  AnimatedModulo.prototype.__getValue = function __getValue() {
     return (this._a.__getValue() % this._modulus + this._modulus) % this._modulus;
   };
 
-  _proto.interpolate = function interpolate(config) {
-    return new _AnimatedInterpolation.default(this, config);
+  AnimatedModulo.prototype.interpolate = function interpolate(config) {
+    return new AnimatedInterpolation(this, config);
   };
 
-  _proto.__attach = function __attach() {
+  AnimatedModulo.prototype.__attach = function __attach() {
     this._a.__addChild(this);
   };
 
-  _proto.__detach = function __detach() {
+  AnimatedModulo.prototype.__detach = function __detach() {
     this._a.__removeChild(this);
-
     _AnimatedWithChildren.prototype.__detach.call(this);
   };
 
-  _proto.__getNativeConfig = function __getNativeConfig() {
+  AnimatedModulo.prototype.__getNativeConfig = function __getNativeConfig() {
     return {
       type: 'modulus',
       input: this._a.__getNativeTag(),
@@ -71,7 +63,6 @@ function (_AnimatedWithChildren) {
   };
 
   return AnimatedModulo;
-}(_AnimatedWithChildren2.default);
+}(AnimatedWithChildren);
 
-var _default = AnimatedModulo;
-exports.default = _default;
+export default AnimatedModulo;

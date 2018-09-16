@@ -18,7 +18,7 @@ const config = {
       pt: "/pt/blog/",
       ch: "/cn/blog/"
     },
-    "/instructor": {
+    "/instructor/": {
       fr: "/fr/instructor/",
       en: "/instructor/",
       ru: "/ru/instructor/",
@@ -26,7 +26,7 @@ const config = {
       pt: "/pt/instructor/",
       ch: "/cn/instructor/"
     },
-    "/instructor/": {
+    "/instructor": {
       fr: "/fr/instructor/",
       en: "/instructor/",
       ru: "/ru/instructor/",

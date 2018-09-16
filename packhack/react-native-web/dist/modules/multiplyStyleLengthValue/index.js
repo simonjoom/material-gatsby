@@ -1,8 +1,3 @@
-"use strict";
-
-exports.__esModule = true;
-exports.default = void 0;
-
 /**
  * Copyright (c) 2015-present, Nicolas Gallagher.
  *
@@ -11,6 +6,7 @@ exports.default = void 0;
  *
  * @noflow
  */
+
 var CSS_UNIT_RE = /^[+-]?\d*(?:\.\d+)?(?:[Ee][+-]?\d+)?(%|\w*)/;
 
 var getUnit = function getUnit(str) {
@@ -25,11 +21,10 @@ var multiplyStyleLengthValue = function multiplyStyleLengthValue(value, multiple
   if (typeof value === 'string') {
     var number = parseFloat(value) * multiple;
     var unit = getUnit(value);
-    return "" + number + unit;
+    return '' + number + unit;
   } else if (isNumeric(value)) {
     return value * multiple;
   }
 };
 
-var _default = multiplyStyleLengthValue;
-exports.default = _default;
+export default multiplyStyleLengthValue;

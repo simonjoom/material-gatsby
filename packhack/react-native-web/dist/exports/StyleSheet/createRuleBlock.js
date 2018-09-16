@@ -1,18 +1,3 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _hyphenateStyleName = _interopRequireDefault(require("hyphenate-style-name"));
-
-var _mapKeyValue = _interopRequireDefault(require("../../modules/mapKeyValue"));
-
-var _normalizeValue = _interopRequireDefault(require("./normalizeValue"));
-
-var _prefixStyles = _interopRequireDefault(require("../../modules/prefixStyles"));
-
 /**
  * Copyright (c) 2016-present, Nicolas Gallagher.
  *
@@ -21,29 +6,31 @@ var _prefixStyles = _interopRequireDefault(require("../../modules/prefixStyles")
  *
  * @noflow
  */
-var createDeclarationString = function createDeclarationString(prop, val) {
-  var name = (0, _hyphenateStyleName.default)(prop);
-  var value = (0, _normalizeValue.default)(prop, val);
 
+import hyphenateStyleName from 'hyphenate-style-name';
+import mapKeyValue from '../../modules/mapKeyValue';
+import normalizeValue from './normalizeValue';
+import prefixStyles from '../../modules/prefixStyles';
+
+var createDeclarationString = function createDeclarationString(prop, val) {
+  var name = hyphenateStyleName(prop);
+  var value = normalizeValue(prop, val);
   if (Array.isArray(val)) {
     return val.map(function (v) {
-      return name + ":" + v;
+      return name + ':' + v;
     }).join(';');
   }
-
-  return name + ":" + value;
+  return name + ':' + value;
 };
+
 /**
  * Generates valid CSS rule body from a JS object
  *
  * createRuleBlock({ width: 20, color: 'blue' });
  * // => 'color:blue;width:20px'
  */
-
-
 var createRuleBlock = function createRuleBlock(style) {
-  return (0, _mapKeyValue.default)((0, _prefixStyles.default)(style), createDeclarationString).sort().join(';');
+  return mapKeyValue(prefixStyles(style), createDeclarationString).sort().join(';');
 };
 
-var _default = createRuleBlock;
-exports.default = _default;
+export default createRuleBlock;

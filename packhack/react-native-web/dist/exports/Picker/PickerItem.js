@@ -1,54 +1,41 @@
-"use strict";
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-exports.__esModule = true;
-exports.default = void 0;
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
+import ColorPropType from '../ColorPropType';
+import { Component } from 'react';
+import createElement from '../createElement';
+import { number, oneOfType, string } from 'prop-types';
 
-var _ColorPropType = _interopRequireDefault(require("../ColorPropType"));
-
-var _react = require("react");
-
-var _createElement = _interopRequireDefault(require("../createElement"));
-
-var _propTypes = require("prop-types");
-
-var PickerItem =
-/*#__PURE__*/
-function (_Component) {
-  (0, _inheritsLoose2.default)(PickerItem, _Component);
+var PickerItem = function (_Component) {
+  _inherits(PickerItem, _Component);
 
   function PickerItem() {
-    return _Component.apply(this, arguments) || this;
+    _classCallCheck(this, PickerItem);
+
+    return _possibleConstructorReturn(this, _Component.apply(this, arguments));
   }
 
-  var _proto = PickerItem.prototype;
+  PickerItem.prototype.render = function render() {
+    var _props = this.props,
+        color = _props.color,
+        label = _props.label,
+        testID = _props.testID,
+        value = _props.value;
 
-  _proto.render = function render() {
-    var _this$props = this.props,
-        color = _this$props.color,
-        label = _this$props.label,
-        testID = _this$props.testID,
-        value = _this$props.value;
-    var style = {
-      color: color
-    };
-    return (0, _createElement.default)('option', {
-      style: style,
-      testID: testID,
-      value: value
-    }, label);
+    var style = { color: color };
+    return createElement('option', { style: style, testID: testID, value: value }, label);
   };
 
   return PickerItem;
-}(_react.Component);
+}(Component);
 
-exports.default = PickerItem;
-PickerItem.propTypes = {
-  color: _ColorPropType.default,
-  label: _propTypes.string.isRequired,
-  testID: _propTypes.string,
-  value: (0, _propTypes.oneOfType)([_propTypes.number, _propTypes.string])
-};
+export default PickerItem;
+PickerItem.propTypes = process.env.NODE_ENV !== "production" ? {
+  color: ColorPropType,
+  label: string.isRequired,
+  testID: string,
+  value: oneOfType([number, string])
+} : {};

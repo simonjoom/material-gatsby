@@ -1,7 +1,7 @@
 ---
 title: "Courchevel ski Resort"
-cover: "starter-logo-1024.png"
-category: "ski resort"
+cover: "courchevel.png"
+category: "ski resort courchevel"
 slug: "courchevel"
 tags:
     - station de ski
@@ -10,10 +10,11 @@ tags:
 date: "2018-07-02"
 ---
 
+
 <div class="edito-wrapper station">
     <div class="banner-station">
 <div class="banner-station-logo">
-    <img src="%HOST%/dist/resortfiles/courchevel.png" alt="Courchevel">
+![Courchevel]("/assets/courchevel.png")
 </div>
     </div>
 <h3 class="main-title-1 h-margin-bottom-0">Courchevel</h1>
@@ -68,7 +69,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
     <div class="col">
-<img src="%HOST%/dist/resortfiles/aquamotion.jpg" alt="AQUAMOTION">
+<img src="assets/resortfiles/aquamotion.jpg" alt="AQUAMOTION">
     </div>
     <div class="col">
 <div class="pl2 rich-text">
@@ -83,7 +84,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
     <div class="col">
-<img src="%HOST%/dist/resortfiles/saulire.jpg" alt="LA SAULIRE">
+<img src="assets/resortfiles/saulire.jpg" alt="LA SAULIRE">
     </div>
     <div class="col">
 <div class="pl2 rich-text">
@@ -98,7 +99,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
     <div class="col">
-<img src="%HOST%/dist/resortfiles/familypark.jpg" alt="LE FAMILY PARK">
+<img src="assets/resortfiles/familypark.jpg" alt="LE FAMILY PARK">
     </div>
     <div class="col">
 <div class="pl2 rich-text">
@@ -113,7 +114,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
     <div class="col">
-<img src="%HOST%/dist/resortfiles/luge-courchevel.jpg" alt="LA PISTE DE LUGE">
+<img src="assets/resortfiles/luge-courchevel.jpg" alt="LA PISTE DE LUGE">
     </div>
     <div class="col">
 <div class="pl2 rich-text">
@@ -128,7 +129,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
     <div class="col">
-<img src="%HOST%/dist/resortfiles/altiport.jpg" alt="L’ALTIPORT">
+<img src="assets/resortfiles/altiport.jpg" alt="L’ALTIPORT">
     </div>
     <div class="col">
 <div class="pl2 rich-text">
@@ -143,7 +144,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
     <div class="col">
-<img src="%HOST%/dist/resortfiles/larosiere.jpg" alt="LA ROSIÈRE">
+<img src="assets/resortfiles/larosiere.jpg" alt="LA ROSIÈRE">
     </div>
     <div class="col">
 <div class="pl2 rich-text">
@@ -158,7 +159,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
     <div class="col">
-<img src="%HOST%/dist/resortfiles/leforum.jpg" alt="LE FORUM">
+<img src="assets/resortfiles/leforum.jpg" alt="LE FORUM">
     </div>
     <div class="col">
 <div class="pl2 rich-text">
@@ -173,7 +174,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
     <div class="col">
-<img src="%HOST%/dist/resortfiles/courchevel.jpg" alt="LES TREMPLINS DE SAUT À SKI">
+<img src="assets/resortfiles/courchevel.jpg" alt="LES TREMPLINS DE SAUT À SKI">
     </div>
     <div class="col">
 <div class="pl2 rich-text">

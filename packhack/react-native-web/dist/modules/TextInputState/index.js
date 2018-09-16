@@ -1,12 +1,3 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _UIManager = _interopRequireDefault(require("../../exports/UIManager"));
-
 /**
  * Copyright (c) 2015-present, Nicolas Gallagher.
  * Copyright (c) 2015-present, Facebook, Inc.
@@ -16,6 +7,8 @@ var _UIManager = _interopRequireDefault(require("../../exports/UIManager"));
  *
  * 
  */
+
+import UIManager from '../../exports/UIManager';
 
 /**
  * This class is responsible for coordinating the "focused"
@@ -36,9 +29,9 @@ var TextInputState = {
     if (document.activeElement !== this._currentlyFocusedNode) {
       this._currentlyFocusedNode = null;
     }
-
     return this._currentlyFocusedNode;
   },
+
 
   /**
    * @param {Object} TextInputID id of the text field to focus
@@ -48,12 +41,12 @@ var TextInputState = {
   focusTextInput: function focusTextInput(textFieldNode) {
     if (textFieldNode !== null) {
       this._currentlyFocusedNode = textFieldNode;
-
       if (document.activeElement !== textFieldNode) {
-        _UIManager.default.focus(textFieldNode);
+        UIManager.focus(textFieldNode);
       }
     }
   },
+
 
   /**
    * @param {Object} textFieldNode id of the text field to focus
@@ -63,12 +56,11 @@ var TextInputState = {
   blurTextInput: function blurTextInput(textFieldNode) {
     if (textFieldNode !== null) {
       this._currentlyFocusedNode = null;
-
       if (document.activeElement === textFieldNode) {
-        _UIManager.default.blur(textFieldNode);
+        UIManager.blur(textFieldNode);
       }
     }
   }
 };
-var _default = TextInputState;
-exports.default = _default;
+
+export default TextInputState;

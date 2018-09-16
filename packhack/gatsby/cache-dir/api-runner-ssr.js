@@ -14,42 +14,29 @@ const apis = require(`./api-ssr-docs`)
 
 // Run the specified API in any plugins that have implemented it
 module.exports = (api, args, defaultReturn, argTransform) => {
-  var idd = api.indexOf('_async')
-  if (idd !== -1) api = api.slice(0, idd)
-
   if (!apis[api]) {
     console.log(`This API doesn't exist`, api)
   }
-  if (idd === -1) {
-    // Run each plugin in series.
-    // eslint-disable-next-line no-undef
-    let results = plugins.map(plugin => {
-      if (!plugin.plugin[api]) {
-        return undefined
-      }
-      const result = plugin.plugin[api](args, plugin.options)
-      if (result && argTransform) {
-        args = argTransform({ args, result })
-      }
-      return result
-    })
 
-    // Filter out undefined results.
-    results = results.filter(result => typeof result !== `undefined`)
-
-    if (results.length > 0) {
-      return results
-    } else {
-      return [defaultReturn]
+  // Run each plugin in series.
+  // eslint-disable-next-line no-undef
+  let results = plugins.map(plugin => {
+    if (!plugin.plugin[api]) {
+      return undefined
     }
-  } else {
-    let result = plugins.reduce(
-      (previous, next) =>
-        next.plugin[api]
-          ? previous.then(() => next.plugin[api](args, next.options))
-          : previous,
-      Promise.resolve()
-    )
+    const result = plugin.plugin[api](args, plugin.options)
+    if (result && argTransform) {
+      args = argTransform({ args, result })
+    }
     return result
+  })
+
+  // Filter out undefined results.
+  results = results.filter(result => typeof result !== `undefined`)
+
+  if (results.length > 0) {
+    return results
+  } else {
+    return [defaultReturn]
   }
 }

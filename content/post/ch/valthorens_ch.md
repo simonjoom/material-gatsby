@@ -14,7 +14,7 @@ date: "2018-07-02"
 <div class="edito-wrapper station">
 <div class="banner-station">
 <div class="banner-station-logo">
-<img src="%HOST%/dist/resortfiles/val-thorens.png" alt="Val Thorens">
+<img src="assets/resortfiles/val-thorens.png" alt="Val Thorens">
 </div>
 </div>
 <h3 class="main-title-1 h-margin-bottom-0">Val Thorens</h1>
@@ -55,7 +55,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="%HOST%/dist/resortfiles/vt-gastronomie.jpg" alt="Val Thorens, a gourmet resort">
+<img src="assets/resortfiles/vt-gastronomie.jpg" alt="Val Thorens, a gourmet resort">
 </div>
 <div class="col">
 <div class="pl2 rich-text">
@@ -75,7 +75,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="%HOST%/dist/resortfiles/vt-centresportif.jpg" alt="Val Thorens Sports Centre">
+<img src="assets/resortfiles/vt-centresportif.jpg" alt="Val Thorens Sports Centre">
 </div>
 <div class="col">
 <div class="pl2 rich-text">
@@ -92,7 +92,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="%HOST%/dist/resortfiles/vt-luge.jpg" alt="The toboggan slope">
+<img src="assets/resortfiles/vt-luge.jpg" alt="The toboggan slope">
 </div>
 <div class="col">
 <div class="pl2 rich-text">
@@ -114,7 +114,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="%HOST%/dist/resortfiles/vt-tyrolienne.jpg" alt="The Zip Line « La Tyrolienne »">
+<img src="assets/resortfiles/vt-tyrolienne.jpg" alt="The Zip Line « La Tyrolienne »">
 </div>
 <div class="col">
 <div class="pl2 rich-text">
@@ -135,7 +135,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="%HOST%/dist/resortfiles/vt-cimecaron.jpg" alt="Cime Caron – The best view of the alps">
+<img src="assets/resortfiles/vt-cimecaron.jpg" alt="Cime Caron – The best view of the alps">
 </div>
 <div class="col">
 <div class="pl2 rich-text">
@@ -154,7 +154,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="%HOST%/dist/resortfiles/vt-espaceludiques.jpg" alt="Fun areas and snowparks">
+<img src="assets/resortfiles/vt-espaceludiques.jpg" alt="Fun areas and snowparks">
 </div>
 <div class="col">
 <div class="pl2 rich-text">
@@ -173,7 +173,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="%HOST%/dist/resortfiles/vt-circuitdeglace.jpg" alt="The Val Thorens Ice Track">
+<img src="assets/resortfiles/vt-circuitdeglace.jpg" alt="The Val Thorens Ice Track">
 </div>
 <div class="col">
 <div class="pl2 rich-text">
@@ -192,7 +192,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="%HOST%/dist/resortfiles/vt-3vallees.jpg" alt="Getting to Les 3 Vallées ski area">
+<img src="assets/resortfiles/vt-3vallees.jpg" alt="Getting to Les 3 Vallées ski area">
 </div>
 <div class="col">
 <div class="pl2 rich-text">
@@ -210,7 +210,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="%HOST%/dist/resortfiles/vt-shopping.jpg" alt="Enjoy Val Thorens Shops">
+<img src="assets/resortfiles/vt-shopping.jpg" alt="Enjoy Val Thorens Shops">
 </div>
 <div class="col">
 <div class="pl2 rich-text">

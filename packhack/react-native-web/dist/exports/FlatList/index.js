@@ -1,12 +1,3 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _FlatList = _interopRequireDefault(require("../../vendor/react-native/FlatList"));
-
 /**
  * Copyright (c) 2016-present, Nicolas Gallagher.
  *
@@ -15,5 +6,6 @@ var _FlatList = _interopRequireDefault(require("../../vendor/react-native/FlatLi
  *
  * 
  */
-var _default = _FlatList.default;
-exports.default = _default;
+
+import FlatList from '../../vendor/react-native/FlatList';
+export default FlatList;
