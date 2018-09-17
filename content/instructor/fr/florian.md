@@ -1,7 +1,7 @@
 ---
 title: "Florian"
 category: "profile_fr"
-cover: "instructor/images/florian.jpg"
+cover: "florian.jpg"
 slug: "instructor"
 tags:
     - ski instructor

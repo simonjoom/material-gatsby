@@ -1,7 +1,7 @@
 ---
 title: "Djampal"
 category: "profile_fr"
-cover: "instructor/images/djampal.jpg"
+cover: "djampal.jpg"
 slug: "instructor"
 tags:
     - ski instructor
@@ -9,7 +9,7 @@ tags:
     - meribel
     - valthorens
 
-date: "2018-07-02"
+date: "2018-08-02"
 ---
 
 ### Description de Djampal

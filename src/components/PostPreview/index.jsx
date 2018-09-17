@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Card from "react-md/lib/Cards/Card";
 import CardTitle from "react-md/lib/Cards/CardTitle";
 import Button from "react-md/lib/Buttons";
+import FrontCarousel from "components/FrontCarousel";
 import Avatar from "react-md/lib/Avatars";
 import CardText from "react-md/lib/Cards/CardText";
 import FontIcon from "react-md/lib/FontIcons";
@@ -9,7 +10,7 @@ import { Link } from "gatsby";
 import moment from "moment";
 import Media, { MediaOverlay } from "react-md/lib/Media";
 import PostTags from "../PostTags";
-import PostCover from "../PostCover";
+//import PostCover from "../PostCover";
 import config from "../../../data/SiteConfig";
 import "./PostPreview.scss";
 
@@ -38,17 +39,28 @@ class PostPreview extends Component {
     }
   }
   render() {
-    const { postInfo,size } = this.props; 
+    const { postInfo, size } = this.props;
     const { mobile } = this.state;
+    const { carouselList, type } = postInfo;
     const expand = true;
     /* eslint no-undef: "off" */
     const coverHeight = mobile ? 162 : 225;
+    console.log("preview", carouselList,type);
     return (
-      <Card key={postInfo.path} raise className={`md-grid md-cell md-cell--${size}`}>
+      <Card
+        key={postInfo.path}
+        raise
+        className={`md-grid md-cell md-cell--${size}`}
+      >
         <Link style={{ textDecoration: "none" }} to={postInfo.path}>
           <Media style={{ height: coverHeight, paddingBottom: "0px" }}>
-            <PostCover postNode={postInfo} coverHeight={coverHeight} />
-
+            {carouselList.length > 0 && (
+              <FrontCarousel
+                dataList={carouselList}
+                directory={type}
+                coverClassName="md-grid md-cell--9 post-cover"
+              />
+            )}
             <MediaOverlay>
               <CardTitle title={postInfo.title}>
                 <Button raised secondary className="md-cell--right">
@@ -77,3 +89,5 @@ class PostPreview extends Component {
 }
 
 export default PostPreview;
+
+//<PostCover postNode={postInfo} coverHeight={coverHeight} />

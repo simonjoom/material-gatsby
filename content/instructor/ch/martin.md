@@ -1,7 +1,7 @@
 ---
 title: "Martin"
 category: "profile_ch"
-cover: "instructor/images/martin.jpg"
+cover: "martin.jpg"
 slug: "instructor"
 tags:
     - ski instructor

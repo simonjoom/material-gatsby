@@ -2,7 +2,7 @@
 title: "Philippe"
 category: "profile"
 slug: "instructor"
-cover: "instructor/images/philippe.jpg"
+cover: "philippe.jpg"
 tags:
     - ski instructor
     - courchevel

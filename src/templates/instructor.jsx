@@ -8,7 +8,7 @@ import Layout from "../layout";
 import UserInfo from "../components/UserInfo";
 import Disqus from "../components/Disqus";
 import PostTags from "../components/PostTags";
-import PostCover from "../components/PostCover";
+//import PostCover from "../components/PostCover";
 import PostInfo from "../components/PostInfo";
 import SocialLinks from "../components/SocialLinks";
 import PostSuggestions from "../components/PostSuggestions";
@@ -40,8 +40,8 @@ class PostTemplate extends React.Component {
     if (!post.category_id) {
       post.category_id = config.postDefaultCategoryID;
     }
-
-    const coverHeight = mobile ? 180 : 350;
+    const directory = postNode.fields.type;
+    const carouselList = post.cover ? [post.cover] : []; 
     return (
       <Layout
         location={this.props.location}
@@ -60,13 +60,14 @@ class PostTemplate extends React.Component {
             postSEO
             translate={this.props.t}
           />
-          {post.cover && (
-            <PostCover
-              postNode={postNode}
-              coverHeight={coverHeight}
+          {carouselList.length > 0 && (
+            <FrontCarousel
+              directory={directory}
+              dataList={carouselList}
               coverClassName="md-grid md-cell--9 post-cover"
             />
           )}
+ 
           <div className="md-grid post-page-contents mobile-fix">
             <Card className="md-grid md-cell md-cell--12 post">
               <CardText className="post-body">
@@ -121,6 +122,7 @@ export const pageQuery = graphql`
         nextSlug
         prevTitle
         prevSlug
+        type
         slug
         lng
         date

@@ -1,7 +1,7 @@
 ---
 title: "Robin"
 category: "profile_fr"
-cover: "instructor/images/robin.jpg"
+cover: "robin.jpg"
 slug: "instructor"
 tags:
     - ski instructor

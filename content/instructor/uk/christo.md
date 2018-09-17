@@ -1,7 +1,7 @@
 ---
 title: "Christo"
 category: "profile"
-cover: "instructor/images/christo.jpg"
+cover: "christo.jpg"
 slug: "instructor"
 tags:
     - ski instructor

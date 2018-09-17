@@ -2,7 +2,7 @@
 title: "Pascal"
 category: "profile"
 slug: "instructor"
-cover: "instructor/images/pascal.jpg"
+cover: "pascal.jpg"
 tags:
     - ski instructor
     - courchevel

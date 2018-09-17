@@ -2,7 +2,7 @@
 title: "Thomas"
 category: "profile_fr"
 slug: "instructor"
-cover: "instructor/images/thomas.jpg"
+cover: "thomas.jpg"
 tags:
     - ski instructor
     - courchevel

@@ -5,10 +5,12 @@ class PostListing extends React.Component {
   getPostList() {
     const postList = [];
     this.props.postEdges.forEach(postEdge => {
+      const carouselList = postEdge.node.frontmatter.cover ? [postEdge.node.frontmatter.cover] : [];
       postList.push({
         path: postEdge.node.fields.slug,
         tags: postEdge.node.frontmatter.tags,
-        cover: postEdge.node.frontmatter.cover,
+        type: postEdge.node.fields.type,
+        carouselList,
         title: postEdge.node.frontmatter.title,
         date: postEdge.node.fields.date,
         excerpt: postEdge.node.excerpt,
@@ -17,6 +19,7 @@ class PostListing extends React.Component {
     });
     return postList;
   }
+  
   render() {
     const size=this.props.size||"12"
     const sizebig=this.props.sizebig||"8"
