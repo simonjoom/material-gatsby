@@ -9,7 +9,7 @@ import Layout from "../layout";
 import UserInfo from "../components/UserInfo";
 import Disqus from "../components/Disqus";
 import PostTags from "../components/PostTags";
-import PostInfo from "../components/PostInfo";
+//import PostInfo from "../components/PostInfo";
 import SocialLinks from "../components/SocialLinks";
 import SEO from "../components/SEO";
 import SiteConfig from "../../data/SiteConfig";

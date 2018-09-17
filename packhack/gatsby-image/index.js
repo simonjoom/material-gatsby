@@ -177,16 +177,41 @@ function (_React$Component) {
   var _proto = GatsbyImage.prototype;
 
   _proto.srcset = function srcset(images, mxW, mxH, aspectRatio) {
-    var maxWidth = mxW ? mxW : 800;
-    var maxHeight = mxH ? mxH : 600;
+  var maxWidth,maxHeight,bigW,bigH;
+  
+   if (typeof window !== 'undefined') {
+   bigW=(window.innerWidth > 0 ? window.innerWidth : screen.width)
+   bigH=(window.innerHeight > 0 ? window.innerHeight : screen.height)
+   }else{
+   bigW=800
+   bigH=600
+   }
+   
+  if(mxW){
+  if(typeof mxW=="string"&&mxW.indexOf("%")!==-1)
+  maxWidth=bigW*(parseInt(mxW)/100)
+  else
+  maxWidth=parseInt(mxW,10)
+  }else{
+  maxWidth=bigW
+  }
+  
+  if(mxH){
+  if(typeof mxH=="string"&&mxH.indexOf("%")!==-1)
+  maxHeight=bigH*(parseInt(mxH)/100)
+  else
+  maxHeight=parseInt(mxH,10)
+  }else{
+  maxHeight=bigH
+  }
+  
     var maxDensity = 1;
     var ratio = 1 / aspectRatio;
 
     if (typeof window !== 'undefined') {
-      if (!mxW || mxW === '100%') maxWidth = window.innerWidth > 0 ? window.innerWidth : screen.width;else maxWidth = mxW;
-      if (!mxH || mxH === '100%') maxHeight = window.innerHeight > 0 ? window.innerHeight : screen.height;else maxHeight = mxH;
       maxDensity = window.devicePixelRatio;
     }
+    
     var filename,density,height,width,widthresult,widthresultabs,filenameresult;
     
     var candidates = images.split(',');
@@ -199,6 +224,7 @@ function (_React$Component) {
       var descriptors = candidates[i].match(/^\s*([^\s]+)\s*(\s(\d+)w)?\s*(\s(\d+)h)?\s*(\s(\d+)x)?\s*$/);
       filename = descriptors[1]; 
       width = parseInt(descriptors[3],10) || false;
+      console.log(width,maxWidth)
       //if (width) height = width * ratio;
       density = descriptors[7] || 1; 
       if (width && Math.abs(width-maxWidth)<widthresultabs){ 
@@ -213,13 +239,13 @@ function (_React$Component) {
         continue;
       }
 
+console.log("filenameresult",filenameresult)
       return {
         result: filenameresult,
         width: widthresult,
         height: height
       };
     }
-
     return {
       result: filenameresult,
       width: widthresult,
@@ -326,7 +352,7 @@ function (_React$Component) {
 
       return _react.default.createElement("div", {
         style: {
-          width: '100%',
+          width: width?width:"100%",
           maxWidth: maxwidth,
           alignSelf: "center"
         },

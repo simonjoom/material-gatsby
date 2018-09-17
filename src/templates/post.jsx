@@ -10,6 +10,7 @@ import Disqus from "../components/Disqus";
 import PostTags from "../components/PostTags";
 import PostCover from "../components/PostCover";
 import PostInfo from "../components/PostInfo";
+import FrontCarousel from "../components/FrontCarousel";
 import SocialLinks from "../components/SocialLinks";
 import PostSuggestions from "../components/PostSuggestions";
 import SEO from "../components/SEO";
@@ -51,6 +52,7 @@ class PostTemplate extends React.Component {
     const postOverlapClass = mobile ? "post-overlap-mobile" : "post-overlap";
     const postNode = this.props.data.markdownRemark;
     const post = postNode.frontmatter;
+    const carouselList = post.cover ? [post.cover] : [];
     if (!post.id) {
       post.id = slug;
     }
@@ -77,12 +79,15 @@ class PostTemplate extends React.Component {
             postSEO
             translate={this.props.t}
           />
-          <PostCover
-            postNode={postNode}
-            coverHeight={coverHeight}
-            coverClassName="md-grid md-cell--9 post-cover"
-          />
-          <div className="md-grid md-cell--9 post-page-contents mobile-fix">
+          {carouselList.length > 0 && (
+            <FrontCarousel
+              width="150px"
+              dataList={carouselList}
+              coverClassName="md-grid md-cell--9 post-cover"
+            />
+          )}
+
+          <div className="md-grid md-cell--12 post-page-contents mobile-fix">
             <Card className="md-grid md-cell md-cell--12 post">
               <CardText className="post-body">
                 <h1 className="md-display-2 post-header">{post.title}</h1>
