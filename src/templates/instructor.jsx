@@ -27,10 +27,12 @@ class PostTemplate extends React.Component {
 
   render() {
     const { mobile } = this.state;
-    const { slug, lng,route } = this.props.pageContext; 
+    const { slug, lng, route } = this.props.pageContext;
+    console.log("route", route);
     const expanded = !mobile;
     // const postOverlapClass = mobile ? "post-overlap-mobile" : "post-overla";
     const postNode = this.props.data.markdownRemark;
+    console.log("renderindex", postNode.html);
     const post = postNode.frontmatter;
     if (!post.id) {
       post.id = slug;
@@ -99,11 +101,11 @@ class PostTemplate extends React.Component {
 export default translate(["Instructor", "common"])(PostTemplate);
 
 export const pageQuery = graphql`
-  query InstructorPostBySlug($id: String!, $lng: String!) {
+  query InstructorPostBySlug($slug: String!,$lng: String!) {
     locales: allLocale(filter: { lng: { eq: $lng } }) {
       ...LocaleFragment
     }
-    markdownRemark(id: { eq: $id }) {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       timeToRead
       excerpt
