@@ -44,7 +44,7 @@ class PostPreview extends Component {
     const { carouselList, type } = postInfo;
     const expand = true;
     /* eslint no-undef: "off" */
-    const coverHeight = mobile ? 162 : 225;
+    const coverHeight = mobile ? 162 : 200;
     console.log("preview", carouselList,type);
     return (
       <Card
@@ -53,7 +53,7 @@ class PostPreview extends Component {
         className={`md-grid md-cell md-cell--${size}`}
       >
         <Link style={{ textDecoration: "none" }} to={postInfo.path}>
-          <Media style={{ height: coverHeight, paddingBottom: "0px" }}>
+          <Media style={{ height: coverHeight, paddingBottom: "0px",    display: 'flex' }}>
             {carouselList.length > 0 && (
               <FrontCarousel
                 dataList={carouselList}
