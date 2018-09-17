@@ -9,8 +9,7 @@ import config from "../../data/SiteConfig";
 
 class Index extends React.Component {
   render() {
-    const { lng, route } = this.props.pageContext;
-    console.log("Index", lng, route);
+    const { lng, route } = this.props.pageContext; 
     const postEdges = this.props.data.allMarkdownRemark.edges;
     return (
       <Layout
