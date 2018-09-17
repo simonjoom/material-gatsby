@@ -1,6 +1,6 @@
 ---
 title: "Menuires ski Resort"
-cover: "meribel.png"
+cover: "les-menuires.png"
 category: "ski resort"
 slug: "menuires"
 tags:
@@ -13,7 +13,7 @@ date: "2018-07-02"
 <div class="edito-wrapper station">
 <div class="banner-station">
     <div class="banner-station-logo">
-<img src="assets/resortfiles/les-menuires.png" alt="Les Menuires">
+<imgtest data="les-menuires.png" directory="post" alt="Les Menuires"></imgtest>
     </div>
 </div>
 <h1 class="main-title-1 h-margin-bottom-0">Les Menuires</h1>
@@ -74,7 +74,7 @@ grand.</p>
 <div class="o-actu fullWidth">
     <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-    <img src="assets/resortfiles/lm-lamasse.jpg" alt="La pointe de la Masse">
+    <imgtest data="lm-lamasse.jpg" directory="post" alt="La pointe de la Masse"></imgtest>
 </div>
 <div class="col">
     <div class="pl2 rich-text">
@@ -93,7 +93,7 @@ du bouquetin</a>», avec 1000 mètres de dénivelé pour glisser à son rythme d
 <div class="o-actu fullWidth">
     <div class="grid-noGutter-equalHeight-reverse_sm-1">
 <div class="col">
-    <img src="assets/resortfiles/lm-pistes.jpg" alt="">
+    <imgtest data="lm-pistes.jpg" directory="post" alt=""></imgtest>
 </div>
 <div class="col">
     <div class="pl2 rich-text">
@@ -113,7 +113,7 @@ freeski.»</em></p>
 <div class="o-actu fullWidth">
     <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-    <img src="assets/resortfiles/lm-montdelachambre.jpg" alt="Le Mont de la Chambre">
+    <imgtest data="lm-montdelachambre.jpg" directory="post" alt="Le Mont de la Chambre"></imgtest>
 </div>
 <div class="col">
     <div class="pl2 rich-text">
@@ -135,7 +135,7 @@ freeski.»</em></p>
 <div class="o-actu fullWidth">
     <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-    <img src="assets/resortfiles/lm-luge.jpg" alt="Speed Mountain">
+    <imgtest data="lm-luge.jpg" directory="post" alt="Speed Mountain"></imgtest>
 </div>
 <div class="col">
     <div class="pl2 rich-text">
@@ -161,7 +161,7 @@ freeski.»</em></p>
 <div class="o-actu fullWidth">
     <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-    <img src="assets/resortfiles/lm-rnb.jpg" alt="Roc’n Bob">
+    <imgtest data="lm-rnb.jpg" directory="post" alt="Roc’n Bob"></imgtest>
 </div>
 <div class="col">
     <div class="pl2 rich-text">
@@ -181,7 +181,7 @@ freeski.»</em></p>
 <div class="o-actu fullWidth">
     <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-    <img src="assets/resortfiles/lm-centre.jpg" alt="Centre sportif de la Croisette">
+    <imgtest data="lm-centre.jpg" directory="post" alt="Centre sportif de la Croisette"></imgtest>
 </div>
 <div class="col">
     <div class="pl2 rich-text">
@@ -196,7 +196,7 @@ freeski.»</em></p>
 <div class="o-actu fullWidth">
     <div class="grid-noGutter-equalHeight-reverse_sm-1">
 <div class="col">
-    <img src="assets/resortfiles/lm-fitness.jpg" alt="">
+    <imgtest data="lm-fitness.jpg" directory="post" alt=""></imgtest>
 </div>
 <div class="col">
     <div class="pl2 rich-text">
@@ -223,7 +223,7 @@ freeski.»</em></p>
 <div class="o-actu fullWidth">
     <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-    <img src="assets/resortfiles/lm-brue-res.jpg" alt="Espace aqualudique des Bruyères">
+    <imgtest data="lm-brue-res.jpg" directory="post" alt="Espace aqualudique des Bruyères"></imgtest>
 </div>
 <div class="col">
     <div class="pl2 rich-text">
@@ -262,7 +262,7 @@ photocall pour immortaliser ces moments de plaisir partagés.</p>
 <div class="o-actu fullWidth">
     <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-    <img src="assets/resortfiles/lm-lac.jpg" alt="Le Plan de l’eau aux Bruyères">
+    <imgtest data="lm-lac.jpg" directory="post" alt="Le Plan de l’eau aux Bruyères"></imgtest>
 </div>
 <div class="col">
     <div class="pl2 rich-text">
@@ -281,7 +281,7 @@ photocall pour immortaliser ces moments de plaisir partagés.</p>
 <div class="o-actu fullWidth">
     <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-    <img src="assets/resortfiles/libertyride.jpg" alt="Liberty Ride">
+    <imgtest data="libertyride.jpg" directory="post" alt="Liberty Ride"></imgtest>
 </div>
 <div class="col">
     <div class="pl2 rich-text">
@@ -303,7 +303,7 @@ Ride</a>» mises en place sur le domaine skiable.<br/>
 <div class="o-actu fullWidth">
     <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-    <img src="assets/resortfiles/lm-walibi-gliss.jpg" alt="Walibi Gliss">
+    <imgtest data="lm-walibi-gliss.jpg" directory="post" alt="Walibi Gliss"></imgtest>
 </div>
 <div class="col">
     <div class="pl2 rich-text">
@@ -322,7 +322,7 @@ Ride</a>» mises en place sur le domaine skiable.<br/>
 <div class="o-actu fullWidth">
     <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-    <img src="assets/resortfiles/lm-fatbike.jpg" alt="Fat Bike">
+    <imgtest data="lm-fatbike.jpg" directory="post" alt="Fat Bike"></imgtest>
 </div>
 <div class="col">
     <div class="pl2 rich-text">
@@ -344,7 +344,7 @@ Ride</a>» mises en place sur le domaine skiable.<br/>
 <div class="o-actu fullWidth">
     <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-    <img src="assets/resortfiles/lm-skidefond.jpg" alt="Ski de fond">
+    <imgtest data="lm-skidefond.jpg" directory="post" alt="Ski de fond"></imgtest>
 </div>
 <div class="col">
     <div class="pl2 rich-text">

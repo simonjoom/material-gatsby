@@ -13,7 +13,7 @@ date: "2018-07-02"
 <div class="edito-wrapper station">
 <div class="banner-station">
 <div class="banner-station-logo">
-<img src="assets/resortfiles/val-thorens.png" alt="Val Thorens"></div>
+<imgtest data="val-thorens.png" directory="post" alt="Val Thorens"></imgtest></div>
 </div>
 <h3 class="main-title-1 h-margin-bottom-0">Val Thorens</h1>
 
@@ -87,7 +87,7 @@ profiter des plaisirs et du bon air de la montagne !</p>
 </div>
 
 <div class="o-actu fullWidth"><div class="grid-noGutter-equalHeight_sm-1">
-<div class="col"><img src="assets/resortfiles/vt-luge.jpg" alt="La piste de Luge « Le Toboggan »">
+<div class="col"><imgtest data="vt-luge.jpg" directory="post" alt="La piste de Luge « Le Toboggan »"></imgtest>
 </div>
 <div class="col"><div class="pl2 rich-text">
 <p>Préparez-vous à vivre une expérience incroyable !</p>
@@ -102,7 +102,7 @@ profiter des plaisirs et du bon air de la montagne !</p>
 </div>
 
 <div class="o-actu fullWidth"><div class="grid-noGutter-equalHeight_sm-1">
-<div class="col"><img src="assets/resortfiles/vt-tyrolienne.jpg" alt="La Tyrolienne">
+<div class="col"><imgtest data="vt-tyrolienne.jpg" directory="post" alt="La Tyrolienne"></imgtest>
 </div>
 <div class="col"><div class="pl2 rich-text">
 <p>D’Orelle à Val Thorens, suspendu à un filin d’acier, bien installé dans un cocon de tissu quivous fera franchir la barre des 100 km/h, vous vivrez l’émotion d’un grand rapace planantau-dessus des espaces infinis.<br/><br/>Un vol plané long de 1300 mètres, 1min45 de pur plaisir dans un panorama à couper lesouffle, depuis le point culminant des 3 Vallées à 3230 m, au sommet du Télésiège du Bouchetsur le domaine d’Orelle, pour relier la crête de Val Thorens, à 3000 m, au sommet du Funitelde Thorens.</p></div>

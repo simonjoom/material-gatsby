@@ -13,7 +13,7 @@ date: "2018-07-02"
 <div class="edito-wrapper station">
 <div class="banner-station">
 <div class="banner-station-logo">
-<img src="assets/resortfiles/val-thorens.png" alt="Val Thorens">
+<imgtest data="val-thorens.png" directory="post" alt="Val Thorens"></imgtest>
 </div>
 </div>
 <h3 class="main-title-1 h-margin-bottom-0">Val Thorens</h1>
@@ -55,7 +55,7 @@ The village atmosphere is informal and friendly for après ski with a wide varie
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="assets/resortfiles/vt-gastronomie.jpg" alt="Val Thorens, a gourmet resort">
+<imgtest data="vt-gastronomie.jpg" directory="post" alt="Val Thorens, a gourmet resort"></imgtest>
 </div>
 <div class="col">
 <div class="pl2 rich-text">
@@ -75,7 +75,7 @@ Different places and styles all motivated by a desire to provide guests with a u
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="assets/resortfiles/vt-centresportif.jpg" alt="Val Thorens Sports Centre">
+<imgtest data="vt-centresportif.jpg" directory="post" alt="Val Thorens Sports Centre"></imgtest>
 </div>
 <div class="col">
 <div class="pl2 rich-text">
@@ -92,7 +92,7 @@ Different places and styles all motivated by a desire to provide guests with a u
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="assets/resortfiles/vt-luge.jpg" alt="The toboggan slope">
+<imgtest data="vt-luge.jpg" directory="post" alt="The toboggan slope"></imgtest>
 </div>
 <div class="col">
 <div class="pl2 rich-text">
@@ -113,7 +113,7 @@ Different places and styles all motivated by a desire to provide guests with a u
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="assets/resortfiles/vt-tyrolienne.jpg" alt="The Zip Line « La Tyrolienne »">
+<imgtest data="vt-tyrolienne.jpg" directory="post" alt="The Zip Line « La Tyrolienne »"></imgtest>
 </div>
 <div class="col">
 <div class="pl2 rich-text">
@@ -134,7 +134,7 @@ Different places and styles all motivated by a desire to provide guests with a u
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="assets/resortfiles/vt-cimecaron.jpg" alt="Cime Caron – The best view of the alps">
+<imgtest data="vt-cimecaron.jpg" directory="post" alt="Cime Caron – The best view of the alps"></imgtest>
 </div>
 <div class="col">
 <div class="pl2 rich-text">
@@ -153,7 +153,7 @@ Different places and styles all motivated by a desire to provide guests with a u
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="assets/resortfiles/vt-espaceludiques.jpg" alt="Fun areas and snowparks">
+<imgtest data="vt-espaceludiques.jpg" directory="post" alt="Fun areas and snowparks"></imgtest>
 </div>
 <div class="col">
 <div class="pl2 rich-text">
@@ -174,7 +174,7 @@ Different places and styles all motivated by a desire to provide guests with a u
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="assets/resortfiles/vt-circuitdeglace.jpg" alt="The Val Thorens Ice Track">
+<imgtest data="vt-circuitdeglace.jpg" directory="post" alt="The Val Thorens Ice Track"></imgtest>
 </div>
 <div class="col">
 <div class="pl2 rich-text">
@@ -193,7 +193,7 @@ Different places and styles all motivated by a desire to provide guests with a u
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="assets/resortfiles/vt-3vallees.jpg" alt="Getting to Les 3 Vallées ski area">
+<imgtest data="vt-3vallees.jpg" directory="post" alt="Getting to Les 3 Vallées ski area"></imgtest>
 </div>
 <div class="col">
 <div class="pl2 rich-text">
@@ -211,7 +211,7 @@ In total there are more than 330 slopes, almost half of which are easy slopes an
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="assets/resortfiles/vt-shopping.jpg" alt="Enjoy Val Thorens Shops">
+<imgtest data="vt-shopping.jpg" directory="post" alt="Enjoy Val Thorens Shops"></imgtest>
 </div>
 <div class="col">
 <div class="pl2 rich-text">

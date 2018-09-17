@@ -1,7 +1,8 @@
 import React from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
-import { translate } from "utils/i18n";
+import RehypeReact from 'rehype-react';
+import { translate } from "utils/i18n"; 
 import Card from "react-md/lib/Cards";
 import CardText from "react-md/lib/Cards/CardText";
 import Layout from "../layout";
@@ -17,6 +18,14 @@ import SEO from "../components/SEO";
 import config from "../../data/SiteConfig";
 import "./b16-tomorrow-dark.css";
 import "./post.scss";
+
+const renderAst = new RehypeReact({
+  createElement: React.createElement,
+  components: {
+      'imgtest': FrontCarousel,
+  },
+}).Compiler;
+
 
 class PostTemplate extends React.Component {
   constructor(props) {
@@ -84,7 +93,7 @@ class PostTemplate extends React.Component {
             <FrontCarousel
               width="150px"
               directory={directory}
-              dataList={carouselList}
+              data={carouselList}
               coverClassName="md-grid md-cell--9 post-cover"
             />
           )}
@@ -94,7 +103,9 @@ class PostTemplate extends React.Component {
               <CardText className="post-body">
                 <h1 className="md-display-2 post-header">{post.title}</h1>
                 <PostInfo postNode={postNode} carouselList={carouselList} lang={lng} />
-                <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
+                {
+                    renderAst(postNode.htmlAst)
+                }
               </CardText>
               <div className="post-meta">
                 <PostTags tags={post.tags} />
@@ -128,7 +139,7 @@ export const pageQuery = graphql`
       ...LocaleFragment
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
+      htmlAst
       timeToRead
       excerpt
       frontmatter {
@@ -151,3 +162,6 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+
+//<div dangerouslySetInnerHTML={{ __html: postNode.html }} />

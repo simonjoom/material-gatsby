@@ -2,6 +2,9 @@
 
 exports.__esModule = true;
 
+var injectEventPluginsByName = require('react-dom/unstable-native-dependencies').injectEventPluginsByName;
+
+
 var _AccessibilityUtil = require('../../modules/AccessibilityUtil');
 
 var _AccessibilityUtil2 = _interopRequireDefault(_AccessibilityUtil);
@@ -36,11 +39,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  *
  * @noflow
  */
+//import ReactDOM from 'react-dom';
 
-var EventPluginHub = _reactDom2.default.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.EventPluginHub;
+//var EventPluginHub = _reactDom2.default.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.EventPluginHub;
 
 
-EventPluginHub.injection.injectEventPluginsByName({
+injectEventPluginsByName({
   ResponderEventPlugin: _ResponderEventPlugin2.default
 });
 

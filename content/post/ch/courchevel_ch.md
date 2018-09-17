@@ -13,7 +13,7 @@ date: "2018-07-02"
 <div class="edito-wrapper station">
  <div class="banner-station">
 <div class="banner-station-logo">
- <img src="assets/resortfiles/courchevel.png" alt="Courchevel">
+ <imgtest data="courchevel.png" directory="post" alt="Courchevel"></imgtest>
 </div>
  </div>
 <h3 class="main-title-1 h-margin-bottom-0">Courchevel</h1>
@@ -58,7 +58,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
  <div class="col">
-<img src="assets/resortfiles/aquamotion.jpg" alt="AQUAMOTION">
+<imgtest data="aquamotion.jpg" directory="post" alt="AQUAMOTION"></imgtest>
  </div>
  <div class="col">
 <div class="pl2 rich-text">
@@ -74,7 +74,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
  <div class="col">
-<img src="assets/resortfiles/saulire.jpg" alt="LA SAULIRE">
+<imgtest data="saulire.jpg" directory="post" alt="LA SAULIRE"></imgtest>
  </div>
  <div class="col">
 <div class="pl2 rich-text">
@@ -89,7 +89,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
  <div class="col">
-<img src="assets/resortfiles/familypark.jpg" alt="LE FAMILY PARK">
+<imgtest data="familypark.jpg" directory="post" alt="LE FAMILY PARK"></imgtest>
  </div>
  <div class="col">
 <div class="pl2 rich-text">
@@ -105,7 +105,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
  <div class="col">
-<img src="assets/resortfiles/luge-courchevel.jpg" alt="LA PISTE DE LUGE">
+<imgtest data="luge-courchevel.jpg" directory="post" alt="LA PISTE DE LUGE"></imgtest>
  </div>
  <div class="col">
 <div class="pl2 rich-text">
@@ -122,7 +122,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
  <div class="col">
-<img src="assets/resortfiles/altiport.jpg" alt="L’ALTIPORT">
+<imgtest data="altiport.jpg" directory="post" alt="L’ALTIPORT"></imgtest>
  </div>
  <div class="col">
 <div class="pl2 rich-text">
@@ -144,7 +144,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
  <div class="col">
-<img src="assets/resortfiles/larosiere.jpg" alt="LA ROSIÈRE">
+<imgtest data="larosiere.jpg" directory="post" alt="LA ROSIÈRE"></imgtest>
  </div>
  <div class="col">
 <div class="pl2 rich-text">
@@ -161,7 +161,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
  <div class="col">
-<img src="assets/resortfiles/leforum.jpg" alt="LE FORUM">
+<imgtest data="leforum.jpg" directory="post" alt="LE FORUM"></imgtest>
  </div>
  <div class="col">
 <div class="pl2 rich-text">
@@ -178,7 +178,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
  <div class="col">
-<img src="assets/resortfiles/courchevel.jpg" alt="LES TREMPLINS DE SAUT À SKI">
+<imgtest data="courchevel.jpg" directory="post" alt="LES TREMPLINS DE SAUT À SKI"></imgtest>
  </div>
  <div class="col">
 <div class="pl2 rich-text">

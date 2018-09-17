@@ -13,7 +13,7 @@ date: "2018-07-02"
 <div class="edito-wrapper station">
 <div class="banner-station">
 <div class="banner-station-logo">
-<img src="assets/resortfiles/les-menuires.png" alt="Les Menuires">
+<imgtest data="les-menuires.png" directory="post" alt="Les Menuires"></imgtest>
 </div>
 </div>
 
@@ -60,7 +60,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="assets/resortfiles/lm-lamasse.jpg" alt="The Masse Summit">
+<imgtest data="lm-lamasse.jpg" directory="post" alt="The Masse Summit"></imgtest>
 </div>
 <div class="col">
 <div class="pl2 rich-text">
@@ -74,7 +74,7 @@ Thanks to the new blue piste, skiers of all levels can enjoy a relaxing moment b
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight-reverse_sm-1">
 <div class="col">
-<img src="assets/resortfiles/lm-pistes.jpg" alt="">
+<imgtest data="lm-pistes.jpg" directory="post" alt=""></imgtest>
 </div>
 <div class="col">
 <div class="pl2 rich-text">
@@ -90,7 +90,7 @@ Thanks to the new blue piste, skiers of all levels can enjoy a relaxing moment b
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="assets/resortfiles/lm-montdelachambre.jpg" alt="The Mont de la Chambre">
+<imgtest data="lm-montdelachambre.jpg" directory="post" alt="The Mont de la Chambre"></imgtest>
 </div>
 <div class="col">
 <div class="pl2 rich-text">
@@ -107,7 +107,7 @@ Thanks to the new blue piste, skiers of all levels can enjoy a relaxing moment b
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="assets/resortfiles/lm-luge.jpg" alt="Speed Mountain">
+<imgtest data="lm-luge.jpg" directory="post" alt="Speed Mountain"></imgtest>
 </div>
 <div class="col">
 <div class="pl2 rich-text">
@@ -125,7 +125,7 @@ Open to children from 5 years old sharing a toboggan with an adult, <a rel="nofo
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="assets/resortfiles/lm-rnb.jpg" alt="Roc’n Bob">
+<imgtest data="lm-rnb.jpg" directory="post" alt="Roc’n Bob"></imgtest>
 </div>
 <div class="col">
 <div class="pl2 rich-text">
@@ -143,7 +143,7 @@ Enjoy the pleasure of steering your way down: a long series of bends "the Roc ra
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="assets/resortfiles/lm-centre.jpg" alt="Sports and well-being centre">
+<imgtest data="lm-centre.jpg" directory="post" alt="Sports and well-being centre"></imgtest>
 </div>
 <div class="col">
 <div class="pl2 rich-text">
@@ -156,7 +156,7 @@ Enjoy the pleasure of steering your way down: a long series of bends "the Roc ra
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight-reverse_sm-1">
 <div class="col">
-<img src="assets/resortfiles/lm-fitness.jpg" alt="">
+<imgtest data="lm-fitness.jpg" directory="post" alt=""></imgtest>
 </div>
 <div class="col">
 <div class="pl2 rich-text">
@@ -176,7 +176,7 @@ Enjoy the pleasure of steering your way down: a long series of bends "the Roc ra
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="assets/resortfiles/lm-brue-res.jpg" alt="Aquafun pool and wellness center">
+<imgtest data="lm-brue-res.jpg" directory="post" alt="Aquafun pool and wellness center"></imgtest>
 </div>
 <div class="col">
 <div class="pl2 rich-text">
@@ -205,7 +205,7 @@ Enjoy the pleasure of steering your way down: a long series of bends "the Roc ra
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="assets/resortfiles/lm-lac.jpg" alt="">
+<imgtest data="lm-lac.jpg" directory="post" alt=""></imgtest>
 </div>
 </div>
 </div>
@@ -220,7 +220,7 @@ Enjoy the pleasure of steering your way down: a long series of bends "the Roc ra
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="assets/resortfiles/libertyride.jpg" alt="Liberty Ride">
+<imgtest data="libertyride.jpg" directory="post" alt="Liberty Ride"></imgtest>
 </div>
 <div class="col">
 <div class="pl2 rich-text">
@@ -238,7 +238,7 @@ Liberty ride on la Masse (access via la Masse 2 gondola) on L’ arriondaz near 
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="assets/resortfiles/lm-walibi-gliss.jpg" alt="Walibi Gliss">
+<imgtest data="lm-walibi-gliss.jpg" directory="post" alt="Walibi Gliss"></imgtest>
 </div>
 <div class="col">
 <div class="pl2 rich-text">
@@ -255,7 +255,7 @@ Liberty ride on la Masse (access via la Masse 2 gondola) on L’ arriondaz near 
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="assets/resortfiles/lm-fatbike.jpg" alt="">
+<imgtest data="lm-fatbike.jpg" directory="post" alt=""></imgtest>
 </div>
 </div>
 </div>
@@ -267,7 +267,7 @@ Liberty ride on la Masse (access via la Masse 2 gondola) on L’ arriondaz near 
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="assets/resortfiles/lm-skidefond.jpg" alt="Cross-country skiing">
+<imgtest data="lm-skidefond.jpg" directory="post" alt="Cross-country skiing"></imgtest>
 </div>
 <div class="col">
 <div class="pl2 rich-text">

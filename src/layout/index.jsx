@@ -22,7 +22,7 @@ class MainNavLayout extends React.Component {
           <meta name="description" content={config.siteDescription} />
         </Helmet> 
         {carouselList &&
-          carouselList.length > 0 && <FrontCarousel dataList={carouselList} />}
+          carouselList.length > 0 && <FrontCarousel data={carouselList} />}
 
         <LanguageSwitcher route={route} className="flex-end" />
         <View className="rowlink">

@@ -13,7 +13,7 @@ date: "2018-07-02"
 
 <div class="edito-wrapper station"><div class="banner-station">
 <div class="banner-station-logo">
-<img src="assets/resortfiles/meribel.png" alt="Méribel">
+<imgtest data="meribel.png" directory="post" alt="Méribel"></imgtest>
 </div>
 </div>
 <h3 class="main-title-1 h-margin-bottom-0">Méribel</h1>
@@ -30,7 +30,7 @@ date: "2018-07-02"
 <em>1</em> Family Cool
 </div>
 <div class="o-actu fullWidth">   <div class="grid-noGutter-equalHeight_sm-1"> <div class="col">
-<img src="assets/resortfiles/meribel-familycool.jpg" alt="Family Cool"> </div>   <div class="col">
+<imgtest data="meribel-familycool.jpg" directory="post" alt="Family Cool"> </div>   <div class="col"></imgtest>
 <div class="pl2 rich-text">   <p>在Les 3 Vallées享受乐趣，尤其是新手！与因纽特人的滑雪道，动物道，阿尔泰龙和平行大回转比赛，这里每个人总能找到适合自己的。这是在宁静中发现雪和滑雪的一切乐趣的理想场所。</p>
 
 <p>找到：méribel altiport area，乘快车Saulire Express gondola电梯，然后经过Blanchot piste。.</p>
@@ -40,7 +40,7 @@ date: "2018-07-02"
 </div>
  <div class="o-actu fullWidth"> <div class="grid-noGutter-equalHeight-reverse_sm-1">
 <div class="col">
-<img src="assets/resortfiles/meribel-lesinuits.jpg" alt="">
+<imgtest data="meribel-lesinuits.jpg" directory="post" alt=""></imgtest>
 </div>
 <div class="col">   <div class="pl2 rich-text">   <p>因纽特人的滑雪道位于一个小村庄里边，所有户外游戏是免费的大量使用。此外，每天提供儿童演艺活动，适合五到十二岁的人，如鹰展，哈士奇和雪橇表演，热巧克力等等活动。.</p>   </div>
 </div>   </div>   </div>
@@ -49,7 +49,7 @@ date: "2018-07-02"
 </div>
 
 <div class="o-actu fullWidth">   <div class="grid-noGutter-equalHeight_sm-1"> <div class="col">
-<img src="assets/resortfiles/meribel-lekrin.jpg" alt="L'Ekrin"> </div>   <div class="col">
+<imgtest data="meribel-lekrin.jpg" directory="post" alt="L'Ekrin"> </div>   <div class="col"></imgtest>
 <div class="pl2 rich-text">   <p>米其林星级餐厅就在于Méribel地区。厨师劳伦特Azoulay提供一个有精神最求，发明和微妙的菜来满足最所有顾客苛刻的口.</p>
 </div>
 </div>
@@ -60,7 +60,7 @@ date: "2018-07-02"
 <em>3</em> Yéti Park
 </div>
 <div class="o-actu fullWidth">   <div class="grid-noGutter-equalHeight_sm-1"> <div class="col">
-<img src="assets/resortfiles/meribel-yp.jpg" alt="Yéti Park"> </div>   <div class="col">
+<imgtest data="meribel-yp.jpg" directory="post" alt="Yéti Park"> </div>   <div class="col"></imgtest>
 <div class="pl2 rich-text">   <p>在魔法王国找Yooni the Yeti活动，无论老少都会喜欢。游戏区有许多可以发现的地段：与躺椅和当地特色服务、喇叭、望远镜、Yooni隧道和他的秘密洞穴！</p>
 <p>路线：搭乘Combes缆车.</p>
 </div>
@@ -73,7 +73,7 @@ date: "2018-07-02"
 </div>
 
 <div class="o-actu fullWidth">   <div class="grid-noGutter-equalHeight_sm-1"> <div class="col">
-<img src="assets/resortfiles/meribel-fd.jpg" alt="La Folie Douce"> </div>   <div class="col">
+<imgtest data="meribel-fd.jpg" directory="post" alt="La Folie Douce"> </div>   <div class="col"></imgtest>
 <div class="pl2 rich-text">   <p>在3 Vallées是你滑雪和度假的超值享受。每个下午，选择自助餐或者在la Folie Douce享受la Fruitière gastronomic餐馆美食。从2pm开始，酒吧就开始聚会活动。!</p>
 <p>路线：搭乘Saulire Express gondola 电车.</p>
 </div>
@@ -86,7 +86,7 @@ date: "2018-07-02"
 </div>
 
 <div class="o-actu fullWidth">   <div class="grid-noGutter-equalHeight_sm-1"> <div class="col">
-<img src="assets/resortfiles/meribel-roc.jpg" alt="Roc de fer Panorama"> </div>   <div class="col">
+<imgtest data="meribel-roc.jpg" directory="post" alt="Roc de fer Panorama"> </div>   <div class="col"></imgtest>
 <div class="pl2 rich-text">   <p>在Méribel 和 Belleville valleys山脊上，Roc de Fer peak山峰给你一个les 3 Vallées全新的视角：一个360度的扫描过的Mont Blanc勃朗峰，Pierra Menta，Grande Casse，Dent de Burgin，les Ecrins的峰会，LES钻头d'Arves…和les 3 Vallées滑雪区的美景。!</p>
 
 <p>路线：搭乘Olympic电缆</p>
@@ -100,7 +100,7 @@ date: "2018-07-02"
 </div>
 
 <div class="o-actu fullWidth">   <div class="grid-noGutter-equalHeight_sm-1"> <div class="col">
-<img src="assets/resortfiles/meribel-parco.jpg" alt="Parc Olympique"> </div>   <div class="col">
+<imgtest data="meribel-parco.jpg" directory="post" alt="Parc Olympique"> </div>   <div class="col"></imgtest>
 <div class="pl2 rich-text">   <p>Chaudanne高原刚好位于Méribel中心地区，the Olympic Centre主人会提供许多après-ski阿尔卑斯式滑雪活动，包括游泳池、水疗中心、健身房和攀岩墙。</p>
 </div>
 </div>
@@ -112,7 +112,7 @@ date: "2018-07-02"
 </div>
 
 <div class="o-actu fullWidth">   <div class="grid-noGutter-equalHeight_sm-1"> <div class="col">
-<img src="assets/resortfiles/meribel-cb.jpg" alt="Le Clos Bernard"> </div> <div class="col">
+<imgtest data="meribel-cb.jpg" directory="post" alt="Le Clos Bernard"> </div> <div class="col"></imgtest>
 <div class="pl2 rich-text">   <p>一个山居餐馆藏身于Méribel’s Altiport森林，到了那里，可以作为Animal Piste的起点旅程。这片乐土环绕着松树，这是给你休息充电的完美环境，在宁静的环境中享受一顿美餐。</p>
 </div>
 </div>
@@ -123,7 +123,7 @@ date: "2018-07-02"
 <em>8</em> Mont Vallon
 </div>
 <div class="o-actu fullWidth">   <div class="grid-noGutter-equalHeight_sm-1"> <div class="col">
-<img src="assets/resortfiles/meribel-mv.jpg" alt="Mont Vallon"> </div>   <div class="col">
+<imgtest data="meribel-mv.jpg" directory="post" alt="Mont Vallon"> </div>   <div class="col"></imgtest>
 <div class="pl2 rich-text">   <p>The Mont Vallon山宽谷，高达2952米，是Méribel滑雪地区最高点。它提供了一个独天得厚的全景在Gébrolaz冰川和Grand Casse.的感受。滑雪板在滑过几乎1000米直线下降的野性冲击，同时得益于自然环境Les 3 Vallées美丽的滑雪道！
 </p>
 </div>
@@ -135,7 +135,7 @@ date: "2018-07-02"
 <em>9</em> 
 </div>
 
-<div class="grid-noGutter-equalHeight_sm-1">  <div class="col"> <img src="assets/resortfiles/meribel-db.jpg" alt="Vertical Xperience">  </div>  <div class="col"> <div class="pl2 rich-text">
+<div class="grid-noGutter-equalHeight_sm-1">  <div class="col"> <imgtest data="meribel-db.jpg" directory="post" alt="Vertical Xperience">  </div>  <div class="col"> <div class="pl2 rich-text"></imgtest>
 <p>Dent de Burgin和La Saulire顶峰之间的Tournier走廊，为滑雪者提供了希望发现原生态的雪的美，这种追求在这里可以得到无尽的享受。你在寻找刺激和挑战的同时，相信这里就是为你量身定做！</p>
 <p>你可以在Saulire Express快车上面享受到雪道美和便车快以及准备的过程所感所思。</p> </div>  </div>
 <div class="poi-anchor-title" id="marker_27">
@@ -143,7 +143,7 @@ date: "2018-07-02"
 </div>
 
 <div class="o-actu fullWidth">   <div class="grid-noGutter-equalHeight_sm-1"> <div class="col">
-<img src="assets/resortfiles/meribel-ep.jpg" alt="Element Park"> </div>   <div class="col">
+<imgtest data="meribel-ep.jpg" directory="post" alt="Element Park"> </div>   <div class="col"></imgtest>
 <div class="pl2 rich-text">   <p><strong>Les 3 Vallées地貌公园已经全面升级改造!在这里4个自由学习的区域，初次呐喊放松区，有趣的十字架活动，边境交叉学习课程加速学习进度和与天同高的航空跳跃活动区域!</strong></p>
 <p><strong>路线：搭乘Plan de l’homme电缆.</strong></p>
 </div>
@@ -156,7 +156,7 @@ date: "2018-07-02"
 </div>
 
 <div class="o-actu fullWidth">   <div class="grid-noGutter-equalHeight_sm-1"> <div class="col">
-<img src="assets/resortfiles/meribel-da.jpg" alt="DC Area 43"> </div>   <div class="col">
+<imgtest data="meribel-da.jpg" directory="post" alt="DC Area 43"> </div>   <div class="col"></imgtest>
 <div class="pl2 rich-text">   <p>一个国际性的岩石地貌公园所具有的是初学滑雪者的自由区域和得当的空间以及迷你的U型训练场地。升级版的空间则是给有一定经验的滑雪者游玩，例如踢球，导轨及Superpipe在等待你去体验！</p>
 </div>
 </div>

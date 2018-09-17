@@ -10,30 +10,37 @@ const GetImage = ({
   dataList,
   coverClassName,
   width,
+  alt = "",
   directory = ""
 }) => {
   const dir = directory !== "" ? "/" + directory : "";
-  const MapImg = dataList.map((el, ind) => {
-    const FileNode = CarouselQuery.find(function(element) {
-      console.log("/static/assets"  + dir + "/" + el, element.node.absolutePath);
-      return (
-        element.node.absolutePath.indexOf(
-          "/static/assets" + dir + "/" + el
-        ) !== -1
-      );
-    });
-    if (FileNode)
-      return (
-        <Img
-          className={coverClassName}
-          key={ind}
-          fluid={FileNode.node.childImageSharp.fluid}
-          height="100%"
-          width={width}
-          maxwidth="1024px"
-        />
-      );
-  }).filter(n => n);
+  const MapImg = dataList
+    .map((el, ind) => {
+      const FileNode = CarouselQuery.find(function(element) {
+        console.log(
+          "/static/assets" + dir + "/" + el,
+          element.node.absolutePath
+        );
+        return (
+          element.node.absolutePath.indexOf(
+            "/static/assets" + dir + "/" + el
+          ) !== -1
+        );
+      });
+      if (FileNode)
+        return (
+          <Img
+            className={coverClassName}
+            key={ind}
+            alt={alt}
+            fluid={FileNode.node.childImageSharp.fluid}
+            height="100%"
+            width={width}
+            maxwidth="1024px"
+          />
+        );
+    })
+    .filter(n => n);
 
   console.log("MapImg", MapImg);
   if (MapImg.length > 1)
@@ -49,17 +56,27 @@ const GetImage = ({
     else return <div>NOCOVER</div>;
   }
 };
-const FrontCarousel = ({ dataList, coverClassName, width, directory }) => {
-  if (dataList.length == 0) return null;
-  //console.log("check", dataList, CarouselQuery);
+const FrontCarousel = ({
+  data,
+  coverClassName,
+  width,
+  directory,
+  alt = ""
+}) => { 
+  if (!data) return null; 
+  let datas = typeof data == "string" ? data.split() : data;
+
+  if (datas.length == 0) return null;
+  console.log("check", datas);
   if (CarouselQuery)
     return (
       <GetImage
         CarouselQuery={CarouselQuery}
-        dataList={dataList}
-        directory={directory} 
+        dataList={datas}
+        directory={directory}
         width={width}
         coverClassName={coverClassName}
+        alt={alt}
       />
     );
   else
@@ -112,13 +129,14 @@ const FrontCarousel = ({ dataList, coverClassName, width, directory }) => {
               }
             }
           `}
-        render={data => {
-          CarouselQuery = data.allFile.edges;
+        render={nodes => {
+          CarouselQuery = nodes.allFile.edges;
           return (
             <GetImage
               CarouselQuery={CarouselQuery}
-              dataList={dataList}
+              dataList={datas}
               width={width}
+              alt={alt}
               directory={directory}
               coverClassName={coverClassName}
             />

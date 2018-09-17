@@ -12,7 +12,7 @@ date: "2018-07-02"
 
 <div class="edito-wrapper station"><div class="banner-station">
 <div class="banner-station-logo">
-<img src="assets/resortfiles/la-tania.png" alt="La Tania">
+<imgtest data="la-tania.png" directory="post" alt="La Tania"></imgtest>
 </div>
 </div>
 
@@ -49,7 +49,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="assets/resortfiles/latania-stationpietonne.jpg" alt="Um resort para pedestres com tudo que você precisa, apenas a poucos passos">
+<imgtest data="latania-stationpietonne.jpg" directory="post" alt="Um resort para pedestres com tudo que você precisa, apenas a poucos passos"></imgtest>
 </div>
 <div class="col">
 <div class="pl2 rich-text">
@@ -66,7 +66,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="assets/resortfiles/latania-connexion.jpg" alt="A connection to the 3 Valleys skis on">
+<imgtest data="latania-connexion.jpg" directory="post" alt="A connection to the 3 Valleys skis on"></imgtest>
 </div>
 <div class="col">
 <div class="pl2 rich-text">
@@ -83,7 +83,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="assets/resortfiles/latania-lefarcon.jpg" alt="Le Farçon : one star Michelin restaurant">
+<imgtest data="latania-lefarcon.jpg" directory="post" alt="Le Farçon : one star Michelin restaurant"></imgtest>
 </div>
 <div class="col">
 <div class="pl2 rich-text">
@@ -100,7 +100,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="assets/resortfiles/latania-skiforet.jpg" alt="Ski in the forest">
+<imgtest data="latania-skiforet.jpg" directory="post" alt="Ski in the forest"></imgtest>
 </div>
 <div class="col">
 <div class="pl2 rich-text">
@@ -117,7 +117,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="assets/resortfiles/latania-chalet.jpg" alt="Uma área acolhedora de chalés a três minutos a pé do centro pedestre">
+<imgtest data="latania-chalet.jpg" directory="post" alt="Uma área acolhedora de chalés a três minutos a pé do centro pedestre"></imgtest>
 </div>
 <div class="col">
 <div class="pl2 rich-text">
@@ -134,7 +134,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="assets/resortfiles/latania-raquette.jpg" alt="A limpeza, o cenário e a paz dos Teppes são garantidos!">
+<imgtest data="latania-raquette.jpg" directory="post" alt="A limpeza, o cenário e a paz dos Teppes são garantidos!"></imgtest>
 </div>
 <div class="col">
 <div class="pl2 rich-text">
@@ -150,7 +150,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="assets/resortfiles/latania-garderie.jpg" alt="A kindergarten to take care of your toddlers">
+<imgtest data="latania-garderie.jpg" directory="post" alt="A kindergarten to take care of your toddlers"></imgtest>
 </div>
 <div class="col">
 <div class="pl2 rich-text">
@@ -167,7 +167,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
   <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<img src="assets/resortfiles/latania-airdejeux.jpg" alt="A free kid’s playground">
+<imgtest data="latania-airdejeux.jpg" directory="post" alt="A free kid’s playground"></imgtest>
 </div>
 <div class="col">
 <div class="pl2 rich-text">

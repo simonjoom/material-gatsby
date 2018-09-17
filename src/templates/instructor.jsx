@@ -63,7 +63,7 @@ class PostTemplate extends React.Component {
           {carouselList.length > 0 && (
             <FrontCarousel
               directory={directory}
-              dataList={carouselList}
+              data={carouselList}
               coverClassName="md-grid md-cell--9 post-cover"
             />
           )}

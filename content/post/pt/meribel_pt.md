@@ -12,7 +12,7 @@ date: "2018-07-02"
 
 <div class="edito-wrapper station"><div class="banner-station">
 <div class="banner-station-logo">
-   <img src="assets/resortfiles/meribel.png" alt="Méribel">
+   <imgtest data="meribel.png" directory="post" alt="Méribel"></imgtest>
 </div>
 </div>
 <h3 class="main-title-1 h-margin-bottom-0">Méribel</h1>
@@ -50,7 +50,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
    <div class="grid-noGutter-equalHeight_sm-1">
  <div class="col">
-<img src="assets/resortfiles/meribel-familycool.jpg" alt="Family Cool">
+<imgtest data="meribel-familycool.jpg" directory="post" alt="Family Cool"></imgtest>
  </div>
    <div class="col">
 <div class="pl2 rich-text">
@@ -65,7 +65,7 @@ date: "2018-07-02"
  <div class="o-actu fullWidth">
  <div class="grid-noGutter-equalHeight-reverse_sm-1">
 <div class="col">
-<img src="assets/resortfiles/meribel-lesinuits.jpg" alt="">
+<imgtest data="meribel-lesinuits.jpg" directory="post" alt=""></imgtest>
 </div>
 <div class="col">
    <div class="pl2 rich-text">
@@ -81,7 +81,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
    <div class="grid-noGutter-equalHeight_sm-1">
  <div class="col">
-<img src="assets/resortfiles/meribel-lekrin.jpg" alt="L'Ekrin">
+<imgtest data="meribel-lekrin.jpg" directory="post" alt="L'Ekrin"></imgtest>
  </div>
    <div class="col">
 <div class="pl2 rich-text">
@@ -97,7 +97,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
    <div class="grid-noGutter-equalHeight_sm-1">
  <div class="col">
-<img src="assets/resortfiles/meribel-yp.jpg" alt="Yéti Park">
+<imgtest data="meribel-yp.jpg" directory="post" alt="Yéti Park"></imgtest>
  </div>
    <div class="col">
 <div class="pl2 rich-text">
@@ -116,7 +116,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
    <div class="grid-noGutter-equalHeight_sm-1">
  <div class="col">
-<img src="assets/resortfiles/meribel-fd.jpg" alt="La Folie Douce">
+<imgtest data="meribel-fd.jpg" directory="post" alt="La Folie Douce"></imgtest>
  </div>
    <div class="col">
 <div class="pl2 rich-text">
@@ -134,7 +134,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
    <div class="grid-noGutter-equalHeight_sm-1">
  <div class="col">
-<img src="assets/resortfiles/meribel-roc.jpg" alt="Roc de fer Panorama">
+<imgtest data="meribel-roc.jpg" directory="post" alt="Roc de fer Panorama"></imgtest>
  </div>
    <div class="col">
 <div class="pl2 rich-text">
@@ -153,7 +153,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
    <div class="grid-noGutter-equalHeight_sm-1">
  <div class="col">
-<img src="assets/resortfiles/meribel-parco.jpg" alt="Parc Olympique">
+<imgtest data="meribel-parco.jpg" directory="post" alt="Parc Olympique"></imgtest>
  </div>
    <div class="col">
 <div class="pl2 rich-text">
@@ -170,7 +170,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
    <div class="grid-noGutter-equalHeight_sm-1">
  <div class="col">
-<img src="assets/resortfiles/meribel-cb.jpg" alt="Le Clos Bernard">
+<imgtest data="meribel-cb.jpg" directory="post" alt="Le Clos Bernard"></imgtest>
  </div>
    <div class="col">
 <div class="pl2 rich-text">
@@ -186,7 +186,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
    <div class="grid-noGutter-equalHeight_sm-1">
  <div class="col">
-<img src="assets/resortfiles/meribel-mv.jpg" alt="Mont Vallon">
+<imgtest data="meribel-mv.jpg" directory="post" alt="Mont Vallon"></imgtest>
  </div>
    <div class="col">
 <div class="pl2 rich-text">
@@ -217,7 +217,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
    <div class="grid-noGutter-equalHeight_sm-1">
  <div class="col">
-<img src="assets/resortfiles/meribel-ep.jpg" alt="Element Park">
+<imgtest data="meribel-ep.jpg" directory="post" alt="Element Park"></imgtest>
  </div>
    <div class="col">
 <div class="pl2 rich-text">
@@ -236,7 +236,7 @@ date: "2018-07-02"
 <div class="o-actu fullWidth">
    <div class="grid-noGutter-equalHeight_sm-1">
  <div class="col">
-<img src="assets/resortfiles/meribel-da.jpg" alt="DC Area 43">
+<imgtest data="meribel-da.jpg" directory="post" alt="DC Area 43"></imgtest>
  </div>
    <div class="col">
 <div class="pl2 rich-text">
