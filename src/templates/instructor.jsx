@@ -8,7 +8,7 @@ import Layout from "../layout";
 import UserInfo from "../components/UserInfo";
 import Disqus from "../components/Disqus";
 import PostTags from "../components/PostTags";
-//import PostCover from "../components/PostCover";
+import FrontCarousel from "../components/FrontCarousel";
 import PostInfo from "../components/PostInfo";
 import SocialLinks from "../components/SocialLinks";
 import PostSuggestions from "../components/PostSuggestions";
