@@ -1,7 +1,7 @@
 ---
 title: "Mederick"
 category: "profile"
-cover: "instructor/images/mederick.jpg"
+cover: "mederick.jpg"
 slug: "instructor"
 tags:
     - ski instructor

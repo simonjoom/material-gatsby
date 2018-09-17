@@ -1,7 +1,7 @@
 ---
 title: "Bertrand"
 category: "profile_fr"
-cover: "instructor/images/bertrand.jpg"
+cover: "bertrand.jpg"
 slug: "instructor"
 tags:
     - ski instructor

@@ -1,6 +1,6 @@
 ---
 title: "Meribel ski Resort"
-cover: "starter-logo-1024.png"
+cover: "meribel.png"
 category: "ski resort"
 slug: "meribel"
 tags:

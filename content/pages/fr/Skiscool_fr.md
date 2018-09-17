@@ -1,18 +1,18 @@
 ---
-title: "Ski School"
-cover: "mainpage.jpg"
-category: "skischool"
+title: Ski School
+date: '2018-07-02'
+cover: mainpage.jpg
+category: ski school
 slug: ""
 tags:
     - escola de esqui
     - courchevel
     - meribel
     - valthorens
-
-date: "2018-07-02"
 ---
 
 # Ecole de Ski & Snowboard
+
 
 ## Courchevel Meribel Val-thorens
 

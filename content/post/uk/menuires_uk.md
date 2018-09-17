@@ -1,6 +1,6 @@
 ---
-title: "Menuires ski Resort"
-cover: "starter-logo-1024.png"
+title: "Menuires ski Resort" 
+cover: "meribel.png"
 category: "ski resort"
 slug: "menuires"
 tags:

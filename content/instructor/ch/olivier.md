@@ -1,7 +1,7 @@
 ---
 title: "Olivier"
 category: "profile_ch"
-cover: "instructor/images/olivier.jpg"
+cover: "olivier.jpg"
 slug: "instructor"
 tags:
     - ski instructor

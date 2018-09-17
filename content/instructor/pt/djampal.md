@@ -1,7 +1,7 @@
 ---
 title: "Djampal"
 category: "profile_pt"
-cover: "instructor/images/djampal.jpg"
+cover: "djampal.jpg"
 slug: "instructor"
 tags:
     - ski instructor

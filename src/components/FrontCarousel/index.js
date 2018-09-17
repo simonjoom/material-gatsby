@@ -5,10 +5,22 @@ import Carousel from "./carousel";
 import "./carousel.css";
 let CarouselQuery;
 
-const GetImage = ({ CarouselQuery, dataList, coverClassName,width }) => {
+const GetImage = ({
+  CarouselQuery,
+  dataList,
+  coverClassName,
+  width,
+  directory = ""
+}) => {
+  const dir = directory !== "" ? "/" + directory : "";
   const MapImg = dataList.map((el, ind) => {
     const FileNode = CarouselQuery.find(function(element) {
-      return element.node.absolutePath.indexOf("/static/assets/" + el) !== -1;
+      console.log("/static/assets"  + dir + "/" + el, element.node.absolutePath);
+      return (
+        element.node.absolutePath.indexOf(
+          "/static/assets" + dir + "/" + el
+        ) !== -1
+      );
     });
     if (FileNode)
       return (
@@ -21,8 +33,9 @@ const GetImage = ({ CarouselQuery, dataList, coverClassName,width }) => {
           maxwidth="1024px"
         />
       );
-  });
-  console.log("MapImg",MapImg)
+  }).filter(n => n);
+
+  console.log("MapImg", MapImg);
   if (MapImg.length > 1)
     return (
       <div className="carousel">
@@ -36,7 +49,7 @@ const GetImage = ({ CarouselQuery, dataList, coverClassName,width }) => {
     else return <div>NOCOVER</div>;
   }
 };
-const FrontCarousel = ({ dataList, coverClassName,width }) => {
+const FrontCarousel = ({ dataList, coverClassName, width, directory }) => {
   if (dataList.length == 0) return null;
   //console.log("check", dataList, CarouselQuery);
   if (CarouselQuery)
@@ -44,6 +57,7 @@ const FrontCarousel = ({ dataList, coverClassName,width }) => {
       <GetImage
         CarouselQuery={CarouselQuery}
         dataList={dataList}
+        directory={directory} 
         width={width}
         coverClassName={coverClassName}
       />
@@ -105,6 +119,7 @@ const FrontCarousel = ({ dataList, coverClassName,width }) => {
               CarouselQuery={CarouselQuery}
               dataList={dataList}
               width={width}
+              directory={directory}
               coverClassName={coverClassName}
             />
           );
