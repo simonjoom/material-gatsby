@@ -35,7 +35,7 @@ class PostTemplate extends React.Component {
     //render current markdownRemark
     const postNode = this.props.data.markdownRemark;
     const post = postNode.frontmatter;
-    console.log("test",postNode.html)
+    console.log("test",postNode.rawMarkdownBody,post.title)
     if (carousel && post.cover) {
       carouselList = post.cover.split(",");
     }
@@ -135,6 +135,7 @@ export const pageQuery = graphql`
       html
       timeToRead
       excerpt
+      rawMarkdownBody
       frontmatter {
         title
         cover
@@ -152,3 +153,6 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+
+//<PostInfo postNode={postNode} lang={lng} />

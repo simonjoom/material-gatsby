@@ -120,4 +120,12 @@ class StatusB extends Component<Props> {
 //RNWeb.Modal = require("react-native-web-modal").default;
 //RNWeb.StatusB = StatusB;
 export const StatusBar = StatusB 
-export * from 'react-native-web'
+//export * from 'react-native-web'
+
+
+export {View,Image,FlatList,ActivityIndicator,Dimensions,ListView,Modal,StyleSheet,Text,TouchableHighlight,TouchableOpacity} from 'react-native-web'
+
+
+
+
+

@@ -52,6 +52,7 @@
     "react-native-web": "^0.8.10",
     "react-responsive-carousel": "^3.1.41",
     "react-share": "^2.1.0",
+    "react-hot-loader": "^4.3.8",
     "react-twitter-widgets": "^1.7.1",
     "micromatch":"3.1.10",
     "expand-brackets":"2.1.4",

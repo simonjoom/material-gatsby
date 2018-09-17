@@ -40,6 +40,9 @@ class LanguageSwitcher extends Component {
     const { i18n } = this.props;
     //console.log(this.props.route)
     i18n.changeLanguage(lng); 
+    if(!this.props.route)
+    console.warn("warning noroutedefined")
+    else
     push(this.props.route[lng]);
     return false;
   }
