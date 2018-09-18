@@ -12,6 +12,7 @@ class Blog extends React.Component {
   render() {
     const { slug, lng, route } = this.props.pageContext;
     const postEdges = this.props.data.allMarkdownRemark.edges;
+    window.filesQuery = this.props.data.allFile.edges;
     return (
       <Layout
         location={this.props.location}
@@ -25,7 +26,12 @@ class Blog extends React.Component {
             <link rel="canonical" href={`${config.siteUrl}`} />
           </Helmet>
           <SEO postEdges={postEdges} translate={this.props.t} />
-          <PostListing postEdges={postEdges} width={"100%"} sizebig={12} size={12}/>
+          <PostListing
+            postEdges={postEdges}
+            width={"100%"}
+            sizebig={12}
+            size={12}
+          />
         </div>
       </Layout>
     );
@@ -38,6 +44,49 @@ export const pageQuery = graphql`
     locales: allLocale(filter: { lng: { eq: $lng }, ns: { eq: "Index" } }) {
       ...LocaleFragment
     }
+    allFile(
+            filter: {
+          absolutePath:{regex:"/(assets)\/.*\\.(jpg$|png$)/"}
+            }
+              ) {
+                edges {
+                  node {
+                    id
+                    absolutePath
+                    childImageSharp {
+                      id
+                      resolutions {
+                        base64
+                        tracedSVG
+                        aspectRatio
+                        width
+                        height
+                        src
+                        srcSet
+                        srcWebp
+                        srcSetWebp
+                        originalName
+                      }
+                      internal {
+                        contentDigest
+                        type
+                        owner
+                      }
+                      fluid(maxWidth: 1300) {
+                        base64
+                        tracedSVG
+                        aspectRatio
+                        src
+                        srcSet
+                        sizes
+                        srcWebp
+                        srcSetWebp
+                        originalName
+                      }
+                    }
+                  }
+                }
+              }
     allMarkdownRemark(
       limit: 2000
       filter: {
