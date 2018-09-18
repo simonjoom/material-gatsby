@@ -3,6 +3,7 @@ import Helmet from "react-helmet";
 import { graphql, Link, StaticQuery } from "gatsby";
 import { View } from "react-native";
 import "font-awesome/scss/font-awesome.scss";
+import Paper from "react-md/lib/Papers/Paper";
 import Navigation from "../components/Navigation";
 import config from "../../data/SiteConfig";
 import FrontCarousel from "../components/FrontCarousel";
@@ -10,34 +11,54 @@ import LanguageSwitcher from "../components/Switchlang";
 import { router } from "../config";
 import "./index.scss";
 import "./global.scss";
+import "./toolbar.scss";
+import "./carousel.scss";
 
 class MainNavLayout extends React.Component {
+  state = {
+    LangSwitch: null
+  };
+  componentDidMount() {  
+      this.setState({
+        LangSwitch: ({})=><LanguageSwitcher route={this.props.route} className="flex-end" />
+      }); 
+  }
   render() {
     const { children, route, t, postList, carouselList } = this.props;
+    const { LangSwitch } = this.state;
 
     console.log("carouselList", carouselList);
     return (
       <Navigation config={config} LocalTitle={this.props.title}>
         <Helmet>
           <meta name="description" content={config.siteDescription} />
-        </Helmet> 
-        {carouselList &&
-          carouselList.length > 0 && <FrontCarousel data={carouselList} />}
+        </Helmet>
+        <div
+          className={carouselList ? "carousel-main" : null}
+        >
+          {carouselList &&
+            carouselList.length > 0 && <FrontCarousel data={carouselList} />}
+        </div>
 
-        <LanguageSwitcher route={route} className="flex-end" />
-        <View className="rowlink">
-          {postList.map(post => (
-            <Link
-              key={post.path}
-              style={{ textDecoration: "none" }}
-              to={post.path}
-              className="Menulink"
-            >
-              <i className="mr1 fa fa-lg fa-circle-o" />
-              {post.title}
-            </Link>
-          ))}
-        </View>
+        <Paper className="toolbar-main">
+          <div className="toolbar-container">
+            <div className="rowlink toolbar-menu">
+              {postList.map(post => (
+                <Link
+                  key={post.path}
+                  style={{ textDecoration: "none" }}
+                  to={post.path}
+                  className="Menulink toolbar-link"
+                >
+                  <i className="mr1 fa fa-lg fa-circle-o" />
+                  {post.title}
+                </Link>
+              ))}
+            </div>
+        {LangSwitch && <LangSwitch />}
+          </div>
+        </Paper>
+
         {children}
       </Navigation>
     );

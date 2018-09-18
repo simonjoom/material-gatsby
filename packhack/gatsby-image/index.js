@@ -354,6 +354,7 @@ console.log("filenameresult",filenameresult)
         style: {
           width: width?width:"100%",
           maxWidth: maxwidth,
+          margin: '0 auto',
           alignSelf: "center"
         },
         __source: {

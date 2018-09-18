@@ -109,6 +109,7 @@ class LanguageSwitcher extends Component {
     ];
 
     const CurrentFlag = Localetosrc[this.state.language];
+ 
     return (
       <div className="LanguageSwitcher flex-end">
         <ModalDropdown 

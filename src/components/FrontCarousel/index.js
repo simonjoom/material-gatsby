@@ -41,15 +41,12 @@ const GetImage = ({
         );
     })
     .filter(n => n);
-
-  console.log("MapImg", MapImg);
+ 
   if (MapImg.length > 1)
-    return (
-      <div className="carousel">
-        <Carousel autoPlay infiniteLoop className="carousel-main">
+    return ( 
+        <Carousel autoPlay infiniteLoop>
           {MapImg}
         </Carousel>
-      </div>
     );
   else {
     if (MapImg.length == 1) return MapImg[0];
