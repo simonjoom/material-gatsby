@@ -83,16 +83,16 @@ class LanguageSwitcher extends Component {
         <View
           style={[
             styles.dropdown_2_row,
-            { backgroundColor: evenRow ? "lemonchiffon" : "white" }
+            { backgroundColor: "white" }
           ]}
         > 
           <Text
             style={[
               styles.dropdown_2_row_text,
-              highlighted && { color: "mediumaquamarine" }
+              highlighted && { color: "black" }
             ]}
           >
-            <Flag style={{height:"50px"}}/>{`${label}`}
+            <Flag style={{height:"20px"}}/> {`${label}`}
           </Text>
         </View> 
     );
@@ -109,7 +109,6 @@ class LanguageSwitcher extends Component {
     ];
 
     const CurrentFlag = Localetosrc[this.state.language];
- 
     return (
       <div className="LanguageSwitcher flex-end">
         <ModalDropdown 
@@ -130,18 +129,20 @@ class LanguageSwitcher extends Component {
 const styles = StyleSheet.create({
   dropdown_2: {
     alignSelf: "flex-end",
-    width: 50,
-    marginTop: 32,
+    width: 30,
+    // marginTop: 32,
     right: 8,
     borderWidth: 0,
     borderRadius: 3,
-    backgroundColor: "cornflowerblue"
+    backgroundColor: "cornflowerblue",
+    margin: 10
+
   },
   dropdown_2_text: {
     marginVertical: 10,
     flex:1,
     marginHorizontal: 6,
-    fontSize: 18,
+    fontSize: 1,
     color: "white",
     textAlign: "center",
     textAlignVertical: "center"
@@ -151,23 +152,24 @@ const styles = StyleSheet.create({
     height: "auto",
     borderColor: "cornflowerblue",
     borderWidth: 2,
-    borderRadius: 3
+    borderRadius: 3,
+    padding: 5,
   },
   dropdown_2_row_text:{
     flex: 1,
   },
   dropdown_2_row: {
     flexDirection: "row",
-    height: 50,
-    marginBottom:5
+    height: 20,
+    margin:5
   },
   dropdown_6: {
     flex: 1,
     left: 8
   },
   dropdown_6_image: {
-    width: 40,
-    height: 40
+    width: 20,
+    height: 20
   }
 });
 export default translate()(LanguageSwitcher);
