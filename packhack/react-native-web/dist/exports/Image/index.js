@@ -152,89 +152,52 @@ function (_Component) {
 
     _this = _Component.call(this, props, context) || this; // If an image has been loaded before, render it immediately
 
-    _this._filterId = 0;
-    _this._imageRef = null;
+    _this._filterId = 0; 
     _this._imageRequestId = null;
     _this._imageState = null;
     _this._isMounted = false;
-
+	//_this._imageRef = _react.createRef();
+	_this.state={
+	backgroundStyle:{},
+	layout:{}
+	}
     _this._createLayoutHandler = function (resizeMode) {
       var onLayout = _this.props.onLayout;
 
       if (resizeMode === 'center' || resizeMode === 'repeat' || onLayout) {
+ 
         return function (e) {
           var layout = e.nativeEvent.layout;
           onLayout && onLayout(e);
 
-          _this.setState(function () {
-            return {
-              layout: layout
-            };
-          });
+          _this.setState({
+              layout: layout,
+              backgroundStyle:_this._getBackgroundSize(resizeMode,layout)
+            })
         };
       }
-    };
-
-    _this.srcset = function (images, maxWidth, maxHeight) {
-      var maxDensity = 1;
-      var candidates = images.split(',');
-      if (candidates.length == 0) return false;
-      var result; 
-      var filename, width, height, density;
-
-      for (var i = 0; i < candidates.length; i++) {
-        var descriptors = candidates[i].match(/^\s*([^\s]+)\s*(\s(\d+)w)?\s*(\s(\d+)h)?\s*(\s(\d+)x)?\s*$/);
-        filename = descriptors[1];
-        width = descriptors[3] || false; 
-        density = descriptors[7] || 1;
-
-        if (width && width < maxWidth) {
-          continue;
-        }
-        
-        if (density && density > maxDensity) {
-          continue;
-        }
-
-        return {
-          result: filename,
-          width: width,
-          height: height
-        };
-      }
-
-      return {
-        result: filename,
-        width: width,
-        height: height
-      };
-    };
-
-    _this._getBackgroundSize = function (resizeMode) {
-      if (_this._imageRef && (resizeMode === 'center' || resizeMode === 'repeat')) {
-        var _this$_imageRef = _this._imageRef,
-            naturalHeight = _this$_imageRef.naturalHeight,
-            naturalWidth = _this$_imageRef.naturalWidth;
-        var _this$state$layout = _this.state.layout,
+    }; 
+  _this._setImageRef = function (ref) { 
+    _this._imageRef = ref;
+  };
+    _this._getBackgroundSize = function (resizeMode,layout) {  
+      if (_this._imageRef && (resizeMode === 'center' || resizeMode === 'repeat')) { 
+     var naturalWidth= _this._imageRef.naturalWidth;
+     var naturalHeight= _this._imageRef.naturalHeight;
+             
+    console.log("backgroundStyle",_this.state.layout)
+        var _this$state$layout = layout|| _this.state.layout,
             height = _this$state$layout.height,
             width = _this$state$layout.width;
- 
-        if (naturalHeight && naturalWidth>50 && height && width) {
-       /* console.log("_getBackgroundSize")
-          if (window && _this.props.srcSet) {
-            var mywidth = _this.srcset(_this.props.srcSet, width, height).width; 
-     		//if (mywidth > naturalWidth) window.location.reload();
-          }*/
-
+        if (naturalHeight && naturalWidth>50 && height && width) { 
           var scaleFactor = Math.min(1, width / naturalWidth, height / naturalHeight);
           var x = Math.ceil(scaleFactor * naturalWidth);
-          var y = Math.ceil(scaleFactor * naturalHeight);
-          return {
-            backgroundSize: x + "px " + y + "px"
-          };
+          var y = Math.ceil(scaleFactor * naturalHeight); 
+          return { backgroundSize: x + "px " + y + "px"}
+          
         }
       }
-    };
+    }
 
     _this._onError = function () {
       var _this$props = _this.props,
@@ -263,18 +226,17 @@ function (_Component) {
       };
 
       _ImageUriCache.default.add(resolveAssetUri(source));
+if(_this._imageState === STATUS_LOADING){
 
+        }
       _this._updateImageState(STATUS_LOADED);
 
+        
       if (onLoad) {
         onLoad(event);
       }
 
       _this._onLoadEnd();
-    };
-
-    _this._setImageRef = function (ref) {
-      _this._imageRef = ref;
     };
 
     var uri = resolveAssetUri(props.source);
@@ -294,34 +256,48 @@ function (_Component) {
   var _proto = Image.prototype;
 
   _proto.componentDidMount = function componentDidMount() {
-    this._isMounted = true;
+    this._isMounted = true; 
+ this.simUpd();
+  };
+  
 
+  _proto.simUpd = function simUpd(prevProps) {
+  var _this=this;
+           var flatStyle = (0,_extends2.default)({},_StyleSheet.default.flatten(this.props.style));
+		var finalResizeMode = this.props.resizeMode || flatStyle.resizeMode || _ImageResizeMode.default.cover; // CSS filters
+  
+      window.setTimeout(function() { 
+        return _this.setState({
+    backgroundStyle:_this._getBackgroundSize(finalResizeMode)
+        })},10)
+        
     if (this._imageState === STATUS_PENDING) {
       this._createImageLoader();
+
     } else if (this._imageState === STATUS_LOADED) {
       this._onLoad({
         target: this._imageRef
-      });
+      })
     }
-  };
-
+    
+  }
   _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
     var prevUri = resolveAssetUri(prevProps.source);
     var uri = resolveAssetUri(this.props.source);
-
-    if (prevUri !== uri) {
+ 
+    if (prevUri !== uri) { 
       _ImageUriCache.default.remove(prevUri);
-
+      
       var isPreviouslyLoaded = _ImageUriCache.default.has(uri);
 
       isPreviouslyLoaded && _ImageUriCache.default.add(uri);
 
-      this._updateImageState(getImageState(uri, isPreviouslyLoaded));
+      //this._updateImageState(
+      this._imageState =getImageState(uri, isPreviouslyLoaded);
+      this.simUpd();
+		
     }
-
-    if (this._imageState === STATUS_PENDING) {
-      this._createImageLoader();
-    }
+    
   };
 
   _proto.componentWillUnmount = function componentWillUnmount() {
@@ -407,26 +383,24 @@ function (_Component) {
 
     delete flatStyle.overlayColor;
     delete flatStyle.resizeMode; // Accessibility image allows users to trigger the browser's image context menu
-console.log(displayImageUri)
+   /* 
     var hiddenImage = displayImageUri ? (0, _createElement.default)('img', {
       alt: accessibilityLabel || '',
       draggable: draggable || false,
-      ref: this._setImageRef,
+      ref: this._imageRef,
       src: displayImageUri,
      // srcSet: srcSet,
       style: _StyleSheet.default.flatten([styles.accessibilityImage, styleAccessibilityImage])
-    }) : null;
-
+    }) : null;*/
+    console.log("backgroundStyle",this.state)
     var styleImages = _StyleSheet.default.flatten([styles.image, styleImage]);
-
-    var View1Style = _StyleSheet.default.flatten([styles.root, this.context.isInAParentText && styles.inline, imageSizeStyle, flatStyle]);
-
-    var View2style = _StyleSheet.default.flatten([styleImages, this._getBackgroundSize(finalResizeMode), backgroundImage && {
+	var View2Style = _StyleSheet.default.flatten([styleImages, this.state.backgroundStyle, backgroundImage && {
       backgroundImage: backgroundImage
     }, filters.length > 0 && {
       filter: filters.join(' ')
     }]);
-
+    var View1Style = _StyleSheet.default.flatten([styles.root, this.context.isInAParentText && styles.inline, imageSizeStyle, flatStyle]);
+ 
     return _react.default.createElement(_View.default, (0, _extends2.default)({}, other, {
       accessibilityLabel: accessibilityLabel,
       accessible: accessible,
@@ -434,8 +408,15 @@ console.log(displayImageUri)
       style: View1Style,
       testID: testID
     }), _react.default.createElement(_View.default, {
-      style: View2style
-    }), hiddenImage, createTintColorSVG(tintColor, this._filterId));
+      style: View2Style
+    }), (0, _createElement.default)('img', {
+      alt: accessibilityLabel || '',
+      draggable: draggable || false,
+      ref: this._setImageRef,
+      src: displayImageUri,
+     // srcSet: srcSet,
+      style: _StyleSheet.default.flatten([styles.accessibilityImage, styleAccessibilityImage])
+    }), createTintColorSVG(tintColor, this._filterId));
   };
 
   _proto._createImageLoader = function _createImageLoader() {
@@ -478,17 +459,18 @@ console.log(displayImageUri)
   _proto._updateImageState = function _updateImageState(status) {
     this._imageState = status;
     var shouldDisplaySource = this._imageState === STATUS_LOADED || this._imageState === STATUS_LOADING; // only triggers a re-render when the image is loading (to support PJEG), loaded, or failed
-
     if (shouldDisplaySource !== this.state.shouldDisplaySource) {
+    
+      var _this=this; 
       if (this._isMounted) {
-        this.setState(function () {
+        _this.setState(function () {
           return {
             shouldDisplaySource: shouldDisplaySource
-          };
-        });
-      }
-    }
-  };
+          }; 
+      })
+    }    
+
+  }}
 
   return Image;
 }(_react.Component);

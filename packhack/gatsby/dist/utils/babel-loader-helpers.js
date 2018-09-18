@@ -60,7 +60,9 @@ const prepareOptions = (babel, resolve = require.resolve) => {
       browsers: pluginBabelConfig.browserslist
     };
   }
-
+fallbackPlugins.push(babel.createConfigItem([resolve(`babel-plugin-react-native-web`)], {
+    type: `plugin`
+  }));
 fallbackPlugins.push(babel.createConfigItem([resolve(`@babel/plugin-transform-flow-strip-types`)], {
     type: `plugin`
   }));

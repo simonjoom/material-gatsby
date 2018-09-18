@@ -11,6 +11,7 @@
     "extglob": "2.0.4",
     "font-awesome": "^4.7.0",
     "fs-extra": "5.0.0",
+    "babel-plugin-react-native-web": "^0.8.9",
     "gatsby": "2.0.0-rc.25",
     "gatsby-image": "next",
     "gatsby-plugin-catch-links": "next",

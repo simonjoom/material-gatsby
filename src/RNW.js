@@ -1,8 +1,9 @@
 // https://github.com/necolas/react-native-web/pull/850
-// https://github.com/Dekoruma/react-native-web-modal
+// https://github.com/Dekoruma/react-native-web-modal 
+//const reactnative = require("react-native-web/dist/cjs").default;
 import { canUseDOM } from "fbjs/lib/ExecutionEnvironment";
-import { Component } from "react";
-import { ColorPropType } from "react-native-web";
+import { Component } from "react"; 
+//import { ColorPropType } from "react-native-web";
 //import MyModal from './helpers/Modal'
 /*
 type StatusBarAnimation = 'none' | 'fade' | 'slide'
@@ -15,8 +16,7 @@ type Props = {
   networkActivityIndicatorVisible?: boolean,
   showHideTransition?: 'fade' | 'slide',
   translucent?: boolean,
-}*/
-
+}*/ 
 const { head } = typeof window !== "undefined" ? document : {};
 
 let _barStyle = "default";
@@ -114,13 +114,9 @@ class StatusB extends Component {
     return null;
   }
 }
-// add any component override here:
-// note the .default for ES6 libraries
 
-//RNWeb.Modal = require("react-native-web-modal").default;
 //RNWeb.StatusB = StatusB;
 export const StatusBar = StatusB;
-//export * from 'react-native-web'
 
 export {
   View,
@@ -129,11 +125,9 @@ export {
   ActivityIndicator,
   Dimensions,
   ListView,
-  Modal,
-  UIManager,
+  Modal, 
   StyleSheet,
   Text,
-  findNodeHandle,
   TouchableHighlight,
   TouchableOpacity
-} from "react-native-web";
+} from "react-native-web"
