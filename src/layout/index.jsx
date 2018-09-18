@@ -1,7 +1,6 @@
 import React from "react";
 import Helmet from "react-helmet";
-import { graphql, Link, StaticQuery } from "gatsby";
-import { View } from "react-native";
+import { graphql, Link, StaticQuery } from "gatsby"; 
 import "font-awesome/scss/font-awesome.scss";
 import Paper from "react-md/lib/Papers/Paper";
 import Navigation from "../components/Navigation";
@@ -15,19 +14,8 @@ import "./toolbar.scss";
 import "./carousel.scss";
 
 class MainNavLayout extends React.Component {
-  state = {
-    LangSwitch: null
-  };
-  componentDidMount() {  
-      this.setState({
-        LangSwitch: ({})=><LanguageSwitcher route={this.props.route} className="flex-end" />
-      }); 
-  }
   render() {
     const { children, route, t, postList, carouselList } = this.props;
-    const { LangSwitch } = this.state;
-
-    console.log("carouselList", carouselList);
     return (
       <Navigation config={config} LocalTitle={this.props.title}>
         <Helmet>
@@ -55,7 +43,7 @@ class MainNavLayout extends React.Component {
                 </Link>
               ))}
             </div>
-        {LangSwitch && <LangSwitch />}
+            <LanguageSwitcher route={this.props.route} className="flex-end" />
           </div>
         </Paper>
 
