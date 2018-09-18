@@ -43,7 +43,7 @@ class MainNavLayout extends React.Component {
                 </Link>
               ))}
             </div>
-            <LanguageSwitcher route={this.props.route} className="flex-end" />
+            <LanguageSwitcher route={route} className="flex-end" />
           </div>
         </Paper>
 

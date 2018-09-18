@@ -17,11 +17,11 @@ import "./PostPreview.scss";
 class PostPreview extends Component {
   constructor(props) {
     super(props);
-    this.state = {
+    /*this.state = {
       mobile: true
-    };
-    this.handleResize = this.handleResize.bind(this);
-  }
+    };*/
+    //this.handleResize = this.handleResize.bind(this);
+  }/*
   componentDidMount() {
     this.handleResize();
     window.addEventListener("resize", this.handleResize);
@@ -37,15 +37,15 @@ class PostPreview extends Component {
     } else {
       this.setState({ mobile: true });
     }
-  }
+  }*/
   render() {
     const { postInfo, size } = this.props;
-    const { mobile } = this.state;
+  //  const { mobile } = this.state;
     const { carouselList, type } = postInfo;
     const expand = true;
     /* eslint no-undef: "off" */
-    const coverHeight = mobile ? 162 : 200;
-    console.log("preview", carouselList, type);
+    const coverHeight = 200;
+   // console.log("preview", carouselList, type);
     return (
       <Card
         key={postInfo.path}

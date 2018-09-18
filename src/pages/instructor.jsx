@@ -11,6 +11,7 @@ class Index extends React.Component {
   render() {
     const { lng, route } = this.props.pageContext; 
     const postEdges = this.props.data.allMarkdownRemark.edges;
+    window.filesQuery=this.props.data.allFile.edges;
     return (
       <Layout
         location={this.props.location}
@@ -32,11 +33,54 @@ class Index extends React.Component {
 }
 export default translate(["Index", "common"])(Index);
 
-export const pageQuery = graphql`
+export const pageQuery = graphql`  
   query InstructorQuery($lng: String!) {
     locales: allLocale(filter: { lng: { eq: $lng } }) {
       ...LocaleFragment
     }
+    allFile(
+            filter: {
+          absolutePath:{regex:"/(assets)\/.*\\.(jpg$|png$)/"}
+            }
+              ) {
+                edges {
+                  node {
+                    id
+                    absolutePath
+                    childImageSharp {
+                      id
+                      resolutions {
+                        base64
+                        tracedSVG
+                        aspectRatio
+                        width
+                        height
+                        src
+                        srcSet
+                        srcWebp
+                        srcSetWebp
+                        originalName
+                      }
+                      internal {
+                        contentDigest
+                        type
+                        owner
+                      }
+                      fluid(maxWidth: 1300) {
+                        base64
+                        tracedSVG
+                        aspectRatio
+                        src
+                        srcSet
+                        sizes
+                        srcWebp
+                        srcSetWebp
+                        originalName
+                      }
+                    }
+                  }
+                }
+              }
     allMarkdownRemark(
       limit: 2000
       filter: {

@@ -17,10 +17,10 @@ const GetImage = ({
   const MapImg = dataList
     .map((el, ind) => {
       const FileNode = CarouselQuery.find(function(element) {
-        console.log(
+        /* console.log(
           "/static/assets" + dir + "/" + el,
           element.node.absolutePath
-        );
+        );*/
         return (
           element.node.absolutePath.indexOf(
             "/static/assets" + dir + "/" + el
@@ -41,12 +41,12 @@ const GetImage = ({
         );
     })
     .filter(n => n);
- 
+
   if (MapImg.length > 1)
-    return ( 
-        <Carousel autoPlay infiniteLoop>
-          {MapImg}
-        </Carousel>
+    return (
+      <Carousel autoPlay infiniteLoop>
+        {MapImg}
+      </Carousel>
     );
   else {
     if (MapImg.length == 1) return MapImg[0];
@@ -59,16 +59,15 @@ const FrontCarousel = ({
   width,
   directory,
   alt = ""
-}) => { 
-  if (!data) return null; 
+}) => {
+  if (!data) return null;
   let datas = typeof data == "string" ? data.split() : data;
-
+  let Query = CarouselQuery || window.filesQuery;
   if (datas.length == 0) return null;
-  console.log("check", datas);
-  if (CarouselQuery)
+  if (Query)
     return (
       <GetImage
-        CarouselQuery={CarouselQuery}
+        CarouselQuery={Query}
         dataList={datas}
         directory={directory}
         width={width}

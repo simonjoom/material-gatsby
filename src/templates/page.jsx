@@ -104,11 +104,6 @@ class PostTemplate extends React.Component {
               />
             </div>
           </Card>
-          <UserInfo
-            className="md-grid md-cell md-cell--12"
-            config={SiteConfig}
-            expanded={expanded}
-          />
           <Disqus postNode={postNode} expanded={expanded} />
         </div>
       </Layout>
