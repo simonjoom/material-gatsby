@@ -122,7 +122,7 @@ export default class ModalDropdown extends Component {
     return (
       <View {...this.props} tabIndex={0} onBlur={this.hide}>
         {this._renderButton()}
-        {this._renderModal()}
+        {this.state.showDropdown&&this._renderModal()}
       </View>
     );
   }
@@ -144,8 +144,8 @@ export default class ModalDropdown extends Component {
     }
   };
 
-  handleScroll = () => {
-    if (typeof window !== undefined) { 
+  handleScroll = (e,force) => {
+    if (typeof window !== undefined&&(this.state.showDropdown||force)) { 
       let supportPageOffset = window.pageXOffset !== undefined;
       let isCSS1Compat = (document.compatMode || "") === "CSS1Compat";
       this.scroll = {
@@ -196,7 +196,7 @@ export default class ModalDropdown extends Component {
       this.setState({
         showDropdown: false
       });
-    } else {
+    } else { 
       if (!e) {
         this.setState({
           showDropdown: false
@@ -258,6 +258,7 @@ export default class ModalDropdown extends Component {
   }
 
   _onButtonPress = () => {
+  this.handleScroll(null,true);
     const { onDropdownWillShow } = this.props;
     if (!onDropdownWillShow || onDropdownWillShow() !== false) {
       this.show();
@@ -300,15 +301,13 @@ export default class ModalDropdown extends Component {
 
     const dropdownHeight = StyleSheet.flatten(styles.dropdown).height;
     const posy = this._buttonFrame.y;
-    const posx = this._buttonFrame.x;
-    console.log("_calcPosition", this.scroll.y);
+    const posx = this._buttonFrame.x; 
     const bottomSpace = windowHeight - posy - this._buttonFrame.h;
     const rightSpace = windowWidth - posx;
     //const showInBottom = bottomSpace >= dropdownHeight || bottomSpace >= posy;
     const showInLeft = rightSpace >= posx;
 
-    const showInBottom = true;
-    console.log("showInBottom", showInBottom);
+    const showInBottom = true; 
     const positionStyle = {
       height: dropdownHeight,
       top: showInBottom
