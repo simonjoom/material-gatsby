@@ -11,6 +11,7 @@ const GetImage = ({
   coverclassname,
   width,
   alt = "",
+  maxWidth="1024px",
   directory = ""
 }) => {
   console.log("coverClassName",coverclassname)
@@ -37,7 +38,7 @@ const GetImage = ({
             fluid={FileNode.node.childImageSharp.fluid}
             height="100%"
             width={width}
-            maxwidth="1024px"
+            maxWidth={maxWidth}
           />
         );
     })
@@ -58,6 +59,7 @@ const FrontCarousel = ({
   data,
   coverclassname,
   width,
+  maxwidth="1024px",
   directory,
   alt = ""
 }) => {
@@ -72,6 +74,7 @@ const FrontCarousel = ({
         dataList={datas}
         directory={directory}
         width={width}
+        maxWidth={maxwidth}
         coverclassname={coverclassname}
         alt={alt}
       />
@@ -121,6 +124,7 @@ const FrontCarousel = ({
               CarouselQuery={CarouselQuery}
               dataList={datas}
               width={width}
+              maxWidth={maxwidth}
               alt={alt}
               directory={directory}
               coverclassname={coverclassname}

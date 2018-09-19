@@ -186,7 +186,6 @@ function (_React$Component) {
    bigW=800
    bigH=600
    }
-   
   if(mxW){
   if(typeof mxW=="string"&&mxW.indexOf("%")!==-1)
   maxWidth=bigW*(parseInt(mxW)/100)
@@ -205,6 +204,7 @@ function (_React$Component) {
   maxHeight=bigH
   }
   
+   maxWidth=this.props.maxWidth<maxWidth?this.props.maxWidth:maxWidth
     var maxDensity = 1;
     var ratio = 1 / aspectRatio;
 
@@ -223,8 +223,7 @@ function (_React$Component) {
       // http://www.w3.org/html/wg/drafts/srcset/w3c-srcset/
       var descriptors = candidates[i].match(/^\s*([^\s]+)\s*(\s(\d+)w)?\s*(\s(\d+)h)?\s*(\s(\d+)x)?\s*$/);
       filename = descriptors[1]; 
-      width = parseInt(descriptors[3],10) || false;
-      console.log(width,maxWidth)
+      width = parseInt(descriptors[3],10) || false; 
       //if (width) height = width * ratio;
       density = descriptors[7] || 1; 
       if (width && Math.abs(width-maxWidth)<widthresultabs){ 
@@ -296,7 +295,7 @@ console.log("className",className)
     if (fluid) {
       var image = fluid; // var Pattern = /\(max-width: (.*)px\).*vw, (.*)px/
  
-      var srcImage, src, srcSet, presentationHeight, Pattern, match;
+      var srcImage, src, srcSet, presentationHeight, Pattern, match ;  
 
       if (height) {
         Pattern = /(.*)px/;
