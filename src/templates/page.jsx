@@ -1,20 +1,31 @@
 import React from "react";
+import RehypeReact from 'rehype-react';
 import Helmet from "react-helmet";
 import { graphql, Link } from "gatsby";
 import { View } from "react-native";
 import { translate } from "utils/i18n";
-import Card from "react-md/lib/Cards";
-import CardText from "react-md/lib/Cards/CardText";
 import Layout from "../layout";
 import UserInfo from "../components/UserInfo";
 import Disqus from "../components/Disqus";
 import PostTags from "../components/PostTags";
+import {Card,CardText} from "react-md";
 //import PostInfo from "../components/PostInfo";
 import SocialLinks from "../components/SocialLinks";
 import SEO from "../components/SEO";
 import SiteConfig from "../../data/SiteConfig";
+import FrontCarousel from "../components/FrontCarousel";  
+import ReactFB from "../components/ReactFB";  
 import "./b16-tomorrow-dark.css";
 import "./post.scss";
+
+
+const renderAst = new RehypeReact({
+  createElement: React.createElement,
+  components: {
+      'imgtest': FrontCarousel,
+      'reactfb': ReactFB
+  },
+}).Compiler;
 
 class PostTemplate extends React.Component {
   constructor(props) {
@@ -56,12 +67,13 @@ class PostTemplate extends React.Component {
         carouselList={carouselList} 
         lng={lng}
       >
-        <div className="post-page md-grid md-grid--no-spacing">
-          <Helmet>
-            <title>{`${title} | ${SiteConfig.siteTitle}`}</title>
-            <link rel="canonical" href={`${SiteConfig.siteUrl}${post.id}`} />
-          </Helmet>
-          {slug == "/" && (
+      <Helmet>
+        <title>{`${title} | ${SiteConfig.siteTitle}`}</title>
+        <link rel="canonical" href={`${SiteConfig.siteUrl}${post.id}`} />
+      </Helmet>
+        
+          {
+            /*slug == "/" && (
             <View className="rowlink">
               <Link
                 primary
@@ -83,17 +95,21 @@ class PostTemplate extends React.Component {
                 <i className="fa fa-magic fa-2x" />
               </Link>
             </View>
-          )}
-          <SEO
+          )<SEO
             postPath={slug}
             postNode={postNode}
             postSEO
             translate={this.props.t}
           />
-          <Card className="md-grid md-cell md-cell--12 post">
+          */
+          }
+          
+          <Card className="post">
             <CardText className="post-body">
               <h1 className="md-display-2 post-header">{title}</h1>
-              <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
+              {
+                    renderAst(postNode.htmlAst)
+                }
             </CardText>
             <div className="post-meta">
               <PostTags tags={post.tags} />
@@ -104,8 +120,7 @@ class PostTemplate extends React.Component {
               />
             </div>
           </Card>
-          <Disqus postNode={postNode} expanded={expanded} />
-        </div>
+          <Disqus postNode={postNode} expanded={expanded} /> 
       </Layout>
     );
   }
@@ -119,7 +134,7 @@ export const pageQuery = graphql`
       ...LocaleFragment
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
+      htmlAst
       timeToRead
       excerpt
       rawMarkdownBody

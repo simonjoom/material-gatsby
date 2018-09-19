@@ -286,7 +286,7 @@ console.log("filenameresult",filenameresult)
         backgroundColor = _convertProps.backgroundColor;
 
     var bgColor;
-
+console.log("className",className)
     if (typeof backgroundColor === "boolean") {
       bgColor = "lightgray";
     } else {
@@ -351,6 +351,7 @@ console.log("filenameresult",filenameresult)
       var isconstrained = width !== '100%' && width; // The outer div is necessary to reset the z-index to 0.
 
       return _react.default.createElement("div", {
+      className:className,
         style: {
           width: width?width:"100%",
           maxWidth: maxwidth,

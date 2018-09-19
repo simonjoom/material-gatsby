@@ -15,3 +15,22 @@ body {
 @import 'theme.scss';
 
 @include react-md-everything;
+.fa-stack-4x, .fa-stack-8x {
+font-size: 8em;
+    left: 0;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+
+.fa-stack-big {
+display: inline-block;
+height: 8em;
+line-height: 2em;
+position: relative;
+vertical-align: middle;
+width: 8em;
+}
+.md-display-3, .md-display-4, h3, .md-title {
+    white-space: pre-wrap;
+}

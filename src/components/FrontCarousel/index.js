@@ -8,11 +8,12 @@ let CarouselQuery;
 const GetImage = ({
   CarouselQuery,
   dataList,
-  coverClassName,
+  coverclassname,
   width,
   alt = "",
   directory = ""
 }) => {
+  console.log("coverClassName",coverclassname)
   const dir = directory !== "" ? "/" + directory : "";
   const MapImg = dataList
     .map((el, ind) => {
@@ -30,7 +31,7 @@ const GetImage = ({
       if (FileNode)
         return (
           <Img
-            className={coverClassName}
+            className={coverclassname}
             key={ind}
             alt={alt}
             fluid={FileNode.node.childImageSharp.fluid}
@@ -55,7 +56,7 @@ const GetImage = ({
 };
 const FrontCarousel = ({
   data,
-  coverClassName,
+  coverclassname,
   width,
   directory,
   alt = ""
@@ -71,7 +72,7 @@ const FrontCarousel = ({
         dataList={datas}
         directory={directory}
         width={width}
-        coverClassName={coverClassName}
+        coverclassname={coverclassname}
         alt={alt}
       />
     );
@@ -134,7 +135,7 @@ const FrontCarousel = ({
               width={width}
               alt={alt}
               directory={directory}
-              coverClassName={coverClassName}
+              coverclassname={coverclassname}
             />
           );
         }}

@@ -14,6 +14,8 @@ date: "2018-07-02"
 
 # Instructor ski school and ski guides
 
+<reactfb style="display:block" language="fr" href="https://ru.skiscool.com" appid="562112907171338"/></reactfb>
+
 Ski course includes:
 
 A lesson with SkiScool is guaranteed to improve your skiing technique and increase your confidence on the mountain.

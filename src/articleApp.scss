@@ -36,11 +36,11 @@
     flex: 1 1 0%;
     padding: 0;
 }
-
+/*
 [class*=grid-][class*=-center] {
     -ms-flex-pack: center;
     justify-content: center;
-}
+}*/
 
 [class*=grid-][class*=-right] {
     -ms-flex-pack: end;
@@ -55,12 +55,13 @@
     -ms-grid-row-align: flex-start;
     align-items: flex-start
 }
-
+/*
 [class*=grid-][class*=-middle] {
     -ms-flex-align: center;
     -ms-grid-row-align: center;
     align-items: center
 }
+*/
 
 [class*=grid-][class*=-bottom] {
     -ms-flex-align: end;
