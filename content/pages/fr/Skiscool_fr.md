@@ -43,8 +43,8 @@ tags:
 
 
 
-<div class="md-grid md-grid--no-spacing md-cell--middle">
- <div style="flex-direction: column;width: 120px;" class="md-paper md-paper--1 md-grid md-cell md-cell--8">Appelez Simon<a href="tel:France+33675505209" class=" h2 black"><button type="button" class="md-btn md-pointer--hover">
+<div class="md-grid md-cell--middle">
+ <div style="flex-direction: column;width: 120px;" class="md-block-centered">Appelez Simon<a href="tel:France+33675505209" class=" h2 black"><button type="button" class="md-btn md-pointer--hover">
  <div class="mr1 fa-stack-big">
  <i class="fa fa-circle fa-stack-8x gray" style="color: rgb(178, 255, 89);"></i><i class="fa fa-phone fa-stack-4x navy"></i></div></button></a></div>
  </div>

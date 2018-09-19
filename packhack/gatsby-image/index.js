@@ -204,7 +204,7 @@ function (_React$Component) {
   maxHeight=bigH
   }
   
-   maxWidth=this.props.maxWidth<maxWidth?this.props.maxWidth:maxWidth
+   maxWidth=(this.props.maxWidth&&parseInt(this.props.maxWidth)<maxWidth)?parseInt(this.props.maxWidth):maxWidth
     var maxDensity = 1;
     var ratio = 1 / aspectRatio;
 

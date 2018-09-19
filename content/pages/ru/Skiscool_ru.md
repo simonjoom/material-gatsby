@@ -46,8 +46,8 @@ date: "2018-07-02"
   </div>
 </div> 
 
-<div class="md-grid md-grid--no-spacing md-cell--middle">
- <div style="flex-direction: column;width: 120px;" class="md-paper md-paper--1 md-grid md-cell md-cell--8">Позвоните Симону<a href="tel:France+33675505209" class=" h2 black"><button type="button" class="md-btn md-pointer--hover">
+<div class="md-grid md-cell--middle">
+ <div style="flex-direction: column;width: 120px;">Позвоните Симону<a href="tel:France+33675505209" class=" h2 black"><button type="button" class="md-btn md-pointer--hover">
  <div class="mr1 fa-stack-big">
  <i class="fa fa-circle fa-stack-8x gray" style="color: rgb(178, 255, 89);"></i><i class="fa fa-phone fa-stack-4x navy"></i></div></button></a>
  </div>
@@ -90,8 +90,8 @@ date: "2018-07-02"
 <div style="flex-direction: column;padding-top: 4%;padding-bottom: 4%;" class="md-grid md-cell md-cell--12">
 <a title="Безопасность" href="/Chalets/" style="display: flex; flex-direction: row;">
 <span>
-<p><b>The Security in first:<i class="fa fa-question-circle-o"></i></b></p>
-<p><b>Your coach</b><br/>Дипломированный инструктор обладает обязательными навыками поведения в экстренных ситуациях и оказания первой помощи. <br/> Подкреплённые опытом и отличным знанием местности ,<br/> эти качества придадут вам уверенности во время тренировок.<br/>
+<p><b>Безопасность в первую очередь:<i class="fa fa-question-circle-o"></i></b></p>
+<p><b>Ваш тренер</b><br/>Дипломированный инструктор обладает обязательными навыками поведения в экстренных ситуациях и оказания первой помощи. <br/> Подкреплённые опытом и отличным знанием местности ,<br/> эти качества придадут вам уверенности во время тренировок.<br/>
 <ul>
 <li>Никаких 'левых и внештатных' инструкторов! Мы предлагаем только дипломированных преподавателей. </li>
 <li>Обучаем <b>всем уровням катания</b>, от новичка до эксперта!</li><li>Обучаем детей и взрослых.</li>
@@ -124,7 +124,7 @@ date: "2018-07-02"
 
 <div id="thumbsUp" style="flex: 1; background-color: rgb(66, 88, 161);flex-direction: column;" class="md-paper md-paper--1 md-grid md-cell md-cell--4">
   <imgtest maxwidth="200px" data="thumbs.jpg" class="boxshad rounded bg-white"  height="75" directory="pages" alt="Courchevel"></imgtest>
-<h4 style="color: rgb(178, 255, 89);">Твой выбор::</h4>
+<h4 style="color: rgb(178, 255, 89);">Твой выбор:</h4>
 <p>Важно иметь инструктора, который вам подходит</p>
 </div>
 
@@ -132,7 +132,7 @@ date: "2018-07-02"
 
 
 <div style="flex: 1; flex-direction: row;justify-content: center;" class="md-paper md-paper--1 md-grid md-cell md-cell--4">
-<a class="emailrot silver" href="mailto:simon@skiscool.com?subject=question">Request:</a><span class="px2">|</span><a class="emailrot silver" href="mailto:simon@skiscool.com?subject=contact">Contact us</a>
+<a class="emailrot silver" href="mailto:simon@skiscool.com?subject=question">Запрос</a><span class="px2">|</span><a class="emailrot silver" href="mailto:simon@skiscool.com?subject=contact">Свяжитесь с нами</a>
 </div>
 
 <div class="md-paper">
