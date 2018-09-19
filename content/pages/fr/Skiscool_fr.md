@@ -18,8 +18,8 @@ tags:
 <div class="md-grid md-grid--no-spacing md-cell--middle">
 <div class="md-paper md-paper--1 md-grid md-cell md-cell--4 md-cell--8-tablet">
 <imgtest data="guide.png" height="75" width="200px" directory="pages" alt="Courchevel"></imgtest>
-<div class="md-grid md-cell--6-tablet">
- <h3 class="h3 mb3">Sélection du Profil et réservation:</h3>
+<div class="md-block-centered md-cell--6-tablet">
+ <h3>Sélection du Profil et réservation:</h3>
  <p>Trouver un moniteur adapté ne se fait pas en quelques clic de souris;</p>
  <p>SkiScool n'est pas une équipe de geek.<br><b style="color:#3f51b5;background-color:#ccff90">Nous connaissons nos coachs</b> ainsi que leur l'expérience d'enseignement sur les 3 vallées <b style="color:#3f51b5;background-color:#ccff90">depuis 10 ans</b>. <br> Le meilleur moyen d'obtenir une réponse adaptée à votre situation est encore de nous appeler.</p></div>
 </div>
@@ -27,7 +27,7 @@ tags:
 
 <div class="md-paper md-paper--1 md-grid md-cell md-cell--4 md-cell--8-tablet">
  <imgtest data="certified.png" height="75" width="200px" directory="pages" alt="Courchevel"></imgtest>
- <div class="md-grid md-cell--6-tablet">
+ <div class="md-block-centered md-cell--6-tablet">
 <h3>Professionnels diplômés, Service qualité prix</h3>
 <p>Tous les moniteurs de ski proposés sur notre plateforme sont des <b style="color:#3f51b5;background-color:#ccff90">professionnels diplômés</b> d'État.<br><p> Ici, pas de stagiaire ou de moniteur sans expérience ne connaissant pas le domaine des 3 vallées.  (Courchevel, Méribel et Val-thorens)</p>
 </div>
@@ -36,15 +36,15 @@ tags:
 
 <div class="md-paper md-paper--1 md-grid md-cell md-cell--4 md-cell--8-tablet">
   <imgtest data="years-experience.png" height="75" width="200px" directory="pages" alt="Courchevel"></imgtest>
-<div class="md-grid md-cell--6-tablet">
-  <h3 class="h3 mb3">Expérience SkiScool sur les 3 Vallées</h3>
+<div class="md-block-centered md-cell--6-tablet">
+  <h3>Expérience SkiScool sur les 3 Vallées</h3>
   <p>Profitez de notre expertise sur les 3 vallées, </p><br><p>Skiscool est une plateforme reconnue pour sa sélection de moniteur de ski sur les trois vallées depuis 10 ans.<br> Profitez de nos <b style="color:#3f51b5;background-color:#ccff90">offres exclusives</b>, comme:<br> Le <b style="color:#3f51b5;background-color:#ccff90">transfert gratuit</b> pour le booking d'une semaine d'engagement avec un coach.</p></div></div></div>
   </div>
 
 
 
 <div class="md-grid md-grid--no-spacing md-cell--middle">
- <div style="flex-direction: column;width: 120px;" class="md-paper md-paper--1 md-grid md-cell md-cell--8">Appelez Simon<a href="tel:France+33675505209" class=" h2 black"><button tabindex="0" class="c48 c49 c35 c39" role="button" type="button" style="height: auto; background-color: transparent;">
+ <div style="flex-direction: column;width: 120px;" class="md-paper md-paper--1 md-grid md-cell md-cell--8">Appelez Simon<a href="tel:France+33675505209" class=" h2 black"><button type="button" class="md-btn md-pointer--hover">
  <div class="mr1 fa-stack-big">
  <i class="fa fa-circle fa-stack-8x gray" style="color: rgb(178, 255, 89);"></i><i class="fa fa-phone fa-stack-4x navy"></i></div></button></a></div>
  </div>

@@ -21,8 +21,8 @@ date: "2018-07-02"
 
 <div class="md-paper md-paper--1 md-grid md-cell md-cell--4 md-cell--8-tablet">
 <imgtest data="guide.png" height="75" width="200px" directory="pages" alt="Courchevel"></imgtest>
-<div class="md-grid md-cell--6-tablet">
- <h3 class="h3 mb3">Profil selection:</h3>
+<div class="md-block-centered md-cell--6-tablet">
+ <h3>Profil selection:</h3>
   <p>Finding a suitable monitor is not just 3 mouse click;</p> <p>SkiScool is not a geek team.<br> <b style="color:#3f51b5;background-color:#ccff90">We know our coaches</b> and their teaching experience on the 3 valleys <b style="color:#3f51b5;background-color:#ccff90">for 10 years</b>. <br>The best way to get an answer adapted to your situation is still to call us.</p>
   </div>
 </div>
@@ -30,7 +30,7 @@ date: "2018-07-02"
 
 <div class="md-paper md-paper--1 md-grid md-cell md-cell--4 md-cell--8-tablet">
  <imgtest data="certified.png" height="75" width="200px" directory="pages" alt="Courchevel"></imgtest>
- <div class="md-grid md-cell--6-tablet">
+ <div class="md-block-centered md-cell--6-tablet">
 <h3>Professionals , graduate programs, Quality Service Price</h3>
  <p>All skiscool's instructors are <br><b style="color:#3f51b5;background-color:#ccff90">certified professionals</b></p>
  <p>Here, <b style="color:#3f51b5;background-color:#ccff90">no trainee</b> or instructor without experience teaching of the 3 valleys' domain .  (Courchevel, Méribel and Val-thorens)</p>
@@ -40,13 +40,13 @@ date: "2018-07-02"
 
 <div class="md-paper md-paper--1 md-grid md-cell md-cell--4 md-cell--8-tablet">
   <imgtest data="years-experience.png" height="75" width="200px" directory="pages" alt="Courchevel"></imgtest>
-<div class="md-grid md-cell--6-tablet">
+<div class="md-block-centered md-cell--6-tablet">
   <h3>Take advantage of our expertise on the 3 valleys</h3> <p>Skiscool is a platform recognized for its selection of ski instructor on the three valleys for now 10 years.<br> Enjoy our <b style="color:#3f51b5;background-color:#ccff90">exclusive offers</b>! :<br> <b style="color:#3f51b5;background-color:#ccff90">Free transfert</b> for one week booking with a coach.</p>
   </div> 
 </div> 
 
 <div class="md-grid md-grid--no-spacing md-cell--middle">
- <div style="flex-direction: column;width: 120px;" class="md-paper md-paper--1 md-grid md-cell md-cell--8">Call Simon<a href="tel:France+33675505209" class=" h2 black"><button tabindex="0" class="c48 c49 c35 c39" role="button" type="button" style="height: auto; background-color: transparent;">
+ <div style="flex-direction: column;width: 120px;" class="md-paper md-paper--1 md-grid md-cell md-cell--8">Call Simon<a href="tel:France+33675505209" class=" h2 black"><button type="button" class="md-btn md-pointer--hover">
  <div class="mr1 fa-stack-big">
  <i class="fa fa-circle fa-stack-8x gray" style="color: rgb(178, 255, 89);"></i><i class="fa fa-phone fa-stack-4x navy"></i></div></button></a>
  </div>
