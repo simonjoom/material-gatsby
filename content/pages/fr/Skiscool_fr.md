@@ -104,15 +104,15 @@ La qualité d'enseignement: <br>Notre diplôme est le BEES français<br>
 
 
 <div class="md-grid md-grid--no-spacing md-cell--middle">
-<div id="questions" style="flex: 1;background-color: rgb(66, 88, 161); flex-direction: column;" class="md-paper md-paper--1 md-grid md-cell md-cell--4"><imgtest data="envelope.jpg" class="boxshad rounded bg-white"  height="75" directory="pages" alt="Courchevel"></imgtest>
+<div id="questions" style="flex: 1;background-color: rgb(66, 88, 161); flex-direction: column;" class="md-paper md-paper--1 md-grid md-cell md-cell--4"><imgtest data="envelope.jpg" maxwidth="200px" class="boxshad rounded bg-white"  height="75" directory="pages" alt="Courchevel"></imgtest>
 <h4 style="color: rgb(178, 255, 89);">QUESTIONS?</h4><p>Chat avec ton moniteur de ski</p></div>
 
 <div id="topQualification" style="flex: 1; flex-direction: column;" class="md-paper md-paper--1 md-grid md-cell md-cell--4">
-  <imgtest data="shield.png" class="boxshad rounded bg-white"  height="75" directory="pages" alt="Courchevel"></imgtest>
+  <imgtest data="shield.png" maxwidth="200px" class="boxshad rounded bg-white"  height="75" directory="pages" alt="Courchevel"></imgtest>
 <h4 style="color: rgb(178, 255, 89);">TOP QUALIFIÉ:</h4><p>Seuls les moniteurs diplômés peuvent s'inscrire sur SkiScool</p></div>
 
 <div id="thumbsUp" style="flex: 1; background-color: rgb(66, 88, 161);flex-direction: column;" class="md-paper md-paper--1 md-grid md-cell md-cell--4">
-  <imgtest data="thumbs.jpg" class="boxshad rounded bg-white"  height="75" directory="pages" alt="Courchevel"></imgtest>
+  <imgtest data="thumbs.jpg" maxwidth="200px" class="boxshad rounded bg-white"  height="75" directory="pages" alt="Courchevel"></imgtest>
 <h4 style="color: rgb(178, 255, 89);">VOUS CHOISISSEZ:</h4>
 <p>C'est important d'avoir le moniteur qui vous convient</p>
 </div>

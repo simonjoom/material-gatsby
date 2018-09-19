@@ -115,15 +115,15 @@ date: "2018-07-02"
 
 
 <div class="md-grid md-grid--no-spacing md-cell--middle">
-<div id="questions" style="flex: 1;background-color: rgb(66, 88, 161); flex-direction: column;" class="md-paper md-paper--1 md-grid md-cell md-cell--4"><imgtest data="envelope.jpg" class="boxshad rounded bg-white"  height="75" directory="pages" alt="Вопрос courchevel"></imgtest>
+<div id="questions" style="flex: 1;background-color: rgb(66, 88, 161); flex-direction: column;" class="md-paper md-paper--1 md-grid md-cell md-cell--4"><imgtest maxwidth="200px" data="envelope.jpg" class="boxshad rounded bg-white"  height="75" directory="pages" alt="Вопрос courchevel"></imgtest>
 <h4 style="color: rgb(178, 255, 89);">Вопрос?</h4><p>Чат с инструктором</p></div>
 
 <div id="topQualification" style="flex: 1; flex-direction: column;" class="md-paper md-paper--1 md-grid md-cell md-cell--4">
-  <imgtest data="shield.png" class="boxshad rounded bg-white"  height="75" directory="pages" alt="Courchevel"></imgtest>
+  <imgtest maxwidth="200px" data="shield.png" class="boxshad rounded bg-white"  height="75" directory="pages" alt="Courchevel"></imgtest>
 <h4 style="color: rgb(178, 255, 89);">Top Qualified:</h4><p>Только лицензированные инструкторы в SkiScool</p></div>
 
 <div id="thumbsUp" style="flex: 1; background-color: rgb(66, 88, 161);flex-direction: column;" class="md-paper md-paper--1 md-grid md-cell md-cell--4">
-  <imgtest data="thumbs.jpg" class="boxshad rounded bg-white"  height="75" directory="pages" alt="Courchevel"></imgtest>
+  <imgtest maxwidth="200px" data="thumbs.jpg" class="boxshad rounded bg-white"  height="75" directory="pages" alt="Courchevel"></imgtest>
 <h4 style="color: rgb(178, 255, 89);">Твой выбор::</h4>
 <p>Важно иметь инструктора, который вам подходит</p>
 </div>

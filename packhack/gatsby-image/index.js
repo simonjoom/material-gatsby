@@ -274,7 +274,7 @@ console.log("filenameresult",filenameresult)
         alt = _convertProps.alt,
         resizeMode = _convertProps.resizeMode,
         width = _convertProps.width,
-        maxwidth = _convertProps.maxwidth,
+        maxWidth = _convertProps.maxWidth,
         height = _convertProps.height,
         className = _convertProps.className,
         outerWrapperClassName = _convertProps.outerWrapperClassName,
@@ -354,7 +354,7 @@ console.log("className",className)
       className:className,
         style: {
           width: width?width:"100%",
-          maxWidth: maxwidth,
+          maxWidth: maxWidth,
           margin: '0 auto',
           alignSelf: "center"
         },
