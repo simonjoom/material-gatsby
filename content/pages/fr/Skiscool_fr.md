@@ -83,7 +83,7 @@ La qualité d'enseignement: <br>Notre diplôme est le BEES français<br>
 </div>
 
 <div style="flex-direction: column;padding-top: 4%;padding-bottom: 4%;" class="md-grid md-cell md-cell--12">
-<a title="Sécurité:" href="/Chalets/" style="display: flex; flex-direction: row;">
+<a title="Sécurité" href="/Chalets/" style="display: flex; flex-direction: row;">
 <span class="c78 p2 h2"><div>L'aspect Sécurité : Moniteurs diplômés</div><i class="fa fa-question-circle-o"></i><span>Nous Privilégions toujours <b>la sécurité</b><br> Ainsi nous n'intégrons pas les stagiaires des écoles de ski sans expérience. <br>La montagne est dangereuse à ceux qui ne la connaissent pas!, <br>Un coach qui connait bien la station est essentiel.</span></span>
 <imgtest data="helico.jpg" height="75" width="300px" directory="pages" alt="Sécurité" coverclassname="md-paper md-paper--1"></imgtest>
 </a>
@@ -91,12 +91,15 @@ La qualité d'enseignement: <br>Notre diplôme est le BEES français<br>
 
 <div style="flex-direction: column;padding-bottom: 4%;" class="md-grid md-cell md-cell--12">
 <a title="Convivial:" href="/Hotels/" style="display: flex; flex-direction: row;">
-<span class="c78 p2 h2"><div>La Convivialité</div><i class="fa fa-question-circle-o"></i><span>Votre coach réserve les restaurants, Il est bilingue français/anglais; il se consacre à la pratique du ski de compétition et de hors piste."</span></span></a>
+<div>La Convivialité</div><i class="fa fa-question-circle-o"></i><span>Votre coach réserve les restaurants, Il est bilingue français/anglais; il se consacre à la pratique du ski de compétition et de hors piste."</span>
 <imgtest data="years-experience.png" height="75" width="300px" directory="pages" alt="Courchevel"></imgtest>
+</a>
 </div>
-<reactfb language="fr" newDivName="sel" appId="562112907171338" type="post" desc="Private ski instructor courchevel 1850 Dubai - courchevel"/></reactfb>
 
 
+<div style="flex-direction: column;padding-bottom: 4%;" class="md-grid md-cell md-cell--12">
+<reactfb language="fr" newDivName="sel" appId="562112907171338" type="post" desc="moniteur de ski courchevel 1850 Dubai - courchevel"/></reactfb>
+</div>
 
 
 
@@ -116,11 +119,14 @@ La qualité d'enseignement: <br>Notre diplôme est le BEES français<br>
 
 </div>
 
-
 <div style="flex: 1; flex-direction: row;justify-content: center;" class="md-paper md-paper--1 md-grid md-cell md-cell--4">
 <a class="emailrot silver" href="mailto:simon@skiscool.com?subject=question">Posez une question</a><span class="px2">|</span><a class="emailrot silver" href="mailto:simon@skiscool.com?subject=contact">Contactez nous</a>
 </div>
 
+
+
+
+## Courchevel Meribel val-thorens
 
 Skiscool est situé à <a href='Plan_des_pistes/Meribel' title='Meribel'>Meribel</a> et à <a href='Plan_des_pistes/Courchevel' title='Courchevel'>Courchevel</a> au coeur des 3 vallées, un des plus large domaine du monde. Nous proposons des cours de ski pour toute la famille et vos amis, pour tout niveau débutants intermédiaires, confirmés et avancés.  
 Tout nos moniteurs sont qualifiés avec beaucoup d'années d'expérience dans les 3 Vallées.  

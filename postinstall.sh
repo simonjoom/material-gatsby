@@ -2,7 +2,6 @@
 # deep copy script
 export NOYARNPOSTINSTALL="yes"
 
-cp -Rf ./packhack/gatsby-plugin-react-native-web ./node_modules/
 cp -Rf ./packhack/react-native-vector-icons ./node_modules/
 cp -Rf ./packhack/@reach ./node_modules/
 cp -Rf ./packhack/react-dev-utils ./node_modules/
