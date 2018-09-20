@@ -1,7 +1,7 @@
 ---
 title: Ski School
 date: '2018-07-02'
-cover: mainpage.jpg
+cover: carousel/snowboard4.jpg
 category: ski school
 slug: ""
 tags:
@@ -51,14 +51,14 @@ tags:
 
 <div class="md-cell--middle" style="flex-direction: column; padding-bottom: 8%;">
 <h3 style="margin-bottom: 5%;">Qualité d'enseignement</h3> 
-<a title="Enseignement">
+<a title="Enseignement" style="display: flex; flex-direction: row;">
 <imgtest data="certified.png" height="75" width="300px" directory="pages" alt="Courchevel"></imgtest>
 <div>
  <p>Notre diplôme est le BEES français<br>
 <span classname="h6">délivré par l'organisation officiel: <em>ENSA</em>
 </span></p>
-<ul><li>Professionnels: Apprendre plus rapidement avec plus de plaisir!!</li> </ul>
-<ul>Nos moniteurs sont choisis suivant 2 critères importants: 
+<ul style="padding: 5px;"><li>Professionnels: Apprendre plus rapidement avec plus de plaisir!!</li> </ul>
+<ul style="padding: 10px;">Nos moniteurs sont choisis suivant 2 critères importants: 
 <li>Pas de moniteur stagiaire </b><br>Ils sont tous <b>diplômés de l'État français</b></li>
 <li>Leur expérience d'enseignement notamment dans le coaching personnalisé. </li>
 <li>Nous les selectionnons parmis les moniteurs des différents réseaux</b>.</li>

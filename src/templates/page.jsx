@@ -1,5 +1,5 @@
 import React from "react";
-import RehypeReact from 'rehype-react';
+import RehypeReact from "rehype-react";
 import Helmet from "react-helmet";
 import { graphql, Link } from "gatsby";
 import { View } from "react-native";
@@ -8,23 +8,22 @@ import Layout from "../layout";
 import UserInfo from "../components/UserInfo";
 import Disqus from "../components/Disqus";
 import PostTags from "../components/PostTags";
-import {Card,CardText} from "react-md";
+import { Card, CardText } from "react-md";
 //import PostInfo from "../components/PostInfo";
 import SocialLinks from "../components/SocialLinks";
 import SEO from "../components/SEO";
 import SiteConfig from "../../data/SiteConfig";
-import FrontCarousel from "../components/FrontCarousel";  
-import ReactFB from "../components/ReactFB";  
+import FrontCarousel from "../components/FrontCarousel";
+import ReactFB from "../components/ReactFB";
 import "./b16-tomorrow-dark.css";
 import "./post.scss";
-
 
 const renderAst = new RehypeReact({
   createElement: React.createElement,
   components: {
-      'imgtest': FrontCarousel,
-      'reactfb': ReactFB
-  },
+    imgtest: FrontCarousel,
+    reactfb: ReactFB
+  }
 }).Compiler;
 
 class PostTemplate extends React.Component {
@@ -37,14 +36,14 @@ class PostTemplate extends React.Component {
 
   render() {
     const { mobile } = this.state;
-    const { slug, route, lng, carousel } = this.props.pageContext;
-    console.log("postthis", this.props);
+    const { slug, slugbase, route, lng, carousel } = this.props.pageContext;
+    console.log("postthis", this.props.data.markdownRemark);
     const expanded = !mobile;
     let carouselList = [];
     let background;
     //render current markdownRemark
     const postNode = this.props.data.markdownRemark;
-    const post = postNode.frontmatter; 
+    const post = postNode.frontmatter;
     if (carousel && post.cover) {
       carouselList = post.cover.split(",");
     }
@@ -64,16 +63,16 @@ class PostTemplate extends React.Component {
         location={this.props.location}
         route={route}
         t={this.props.t}
-        carouselList={carouselList} 
+        ismain={slugbase === "/"}
+        carouselList={carouselList}
         lng={lng}
       >
-      <Helmet>
-        <title>{`${title} | ${SiteConfig.siteTitle}`}</title>
-        <link rel="canonical" href={`${SiteConfig.siteUrl}${post.id}`} />
-      </Helmet>
-        
-          {
-            /*slug == "/" && (
+        <Helmet>
+          <title>{`${title} | ${SiteConfig.siteTitle}`}</title>
+          <link rel="canonical" href={`${SiteConfig.siteUrl}${post.id}`} />
+        </Helmet>
+
+        {/*slug == "/" && (
             <View className="rowlink">
               <Link
                 primary
@@ -101,32 +100,29 @@ class PostTemplate extends React.Component {
             postSEO
             translate={this.props.t}
           />
-          */
-          }
-          
-          <Card className="post">
-            <CardText className="post-body">
-              <h1 className="md-display-2 post-header">{title}</h1>
-              {
-                    renderAst(postNode.htmlAst)
-                }
-            </CardText>
-            <div className="post-meta">
-              <PostTags tags={post.tags} />
-              <SocialLinks
-                postPath={slug}
-                postNode={postNode}
-                mobile={this.state.mobile}
-              />
-            </div>
-          </Card>
-          <Disqus postNode={postNode} expanded={expanded} /> 
+          */}
+
+        <Card className="post">
+          <CardText className="post-body">
+            <h1 className="md-display-2 post-header">{title}</h1>
+            {renderAst(postNode.htmlAst)}
+          </CardText>
+          <div className="post-meta">
+            <PostTags tags={post.tags} />
+            <SocialLinks
+              postPath={slug}
+              postNode={postNode}
+              mobile={this.state.mobile}
+            />
+          </div>
+        </Card>
+        <Disqus postNode={postNode} expanded={expanded} />
       </Layout>
     );
   }
 }
 
-export default translate(["Index","common"])(PostTemplate);
+export default translate(["Index", "common"])(PostTemplate);
 
 export const pageQuery = graphql`
   query PagesBySlug($slug: String!, $lng: String!) {
@@ -155,6 +151,3 @@ export const pageQuery = graphql`
     }
   }
 `;
-
-//markdownRemark(id: { eq: $id }) {
-//<PostInfo postNode={postNode} lang={lng} />

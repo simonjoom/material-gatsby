@@ -1,6 +1,6 @@
 ---
 title: "Ski School"
-cover: "mainpage.jpg"
+cover: carousel/snowboard4.jpg
 category: "skischool"
 slug: ""
 tags:

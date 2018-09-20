@@ -1,6 +1,6 @@
 import React from "react";
 import Helmet from "react-helmet";
-import { graphql, Link, StaticQuery } from "gatsby"; 
+import { graphql, Link, StaticQuery } from "gatsby";
 import "font-awesome/scss/font-awesome.scss";
 import Paper from "react-md/lib/Papers/Paper";
 import Navigation from "../components/Navigation";
@@ -12,20 +12,26 @@ import "./index.scss";
 import "./global.scss";
 import "./toolbar.scss";
 import "./carousel.scss";
+global.postList = [];
 
 class MainNavLayout extends React.Component {
   render() {
-    const { children, route, t, postList, carouselList } = this.props;
+    const { children, route, t, postList, carouselList, ismain } = this.props;
+    console.log("ismain22", ismain);
     return (
       <Navigation config={config} LocalTitle={this.props.title}>
         <Helmet>
           <meta name="description" content={config.siteDescription} />
         </Helmet>
         <div
-          className={carouselList ? "carousel-main" : null}
+          className={
+            carouselList ? (ismain ? "carousel-main" : "carousel-nomain") : null
+          }
         >
           {carouselList &&
-            carouselList.length > 0 && <FrontCarousel data={carouselList} />}
+            carouselList.length > 0 && (
+              <FrontCarousel data={carouselList} ismain={ismain} t={t} />
+            )}
         </div>
 
         <Paper className="toolbar-main">
@@ -46,7 +52,6 @@ class MainNavLayout extends React.Component {
             <LanguageSwitcher route={route} className="flex-end" />
           </div>
         </Paper>
-
         {children}
       </Navigation>
     );
@@ -87,71 +92,87 @@ const NoStaticRun = ({ children, route, t, lng, carouselList, postEdges,backgrou
 
 export { NoStaticRun };*/
 
-const StaticRun = ({ children, route, t, lng, carouselList }) => (
-  <StaticQuery
-    query={graphql`
-      query MenuQuery {
-        allMarkdownRemark(
-          limit: 2000
-          filter: { fields: { type: { eq: "pages" } } }
-          sort: { fields: [fields___date], order: DESC }
-        ) {
-          edges {
-            node {
-              html
-              timeToRead
-              excerpt
-              fields {
-                inmenu
-                carousel
-                slug
-                lng
-              }
-              frontmatter {
-                title
+const StaticRun = ({ children, route, t, lng, carouselList, ismain }) => {
+  console.log("global.postList", global.postList);
+  if (global.postList.length > 0)
+    return (
+      <MainNavLayout
+        postList={global.postList}
+        route={route}
+        t={t}
+        ismain={ismain}
+        carouselList={carouselList}
+      >
+        {children}
+      </MainNavLayout>
+    );
+
+  return (
+    <StaticQuery
+      query={graphql`
+        query MenuQuery {
+          allMarkdownRemark(
+            limit: 2000
+            filter: { fields: { type: { eq: "pages" } } }
+            sort: { fields: [fields___date], order: DESC }
+          ) {
+            edges {
+              node {
+                html
+                timeToRead
+                excerpt
+                fields {
+                  inmenu
+                  carousel
+                  slug
+                  lng
+                }
+                frontmatter {
+                  title
+                }
               }
             }
           }
         }
-      }
-    `}
-    render={data => {
-      //generate Menu from allMarkdownRemark
-      const postEdges = data.allMarkdownRemark.edges;
-      const postList = [];
-      postEdges.forEach(postEdge => {
-        let title;
-        if (postEdge.node.fields.lng === lng) {
-          //console.log("testslug", postEdge.node.fields.slug);
-          title = t(postEdge.node.frontmatter.title);
-          if (postEdge.node.fields.inmenu)
-            postList.push({
-              path: postEdge.node.fields.slug,
-              title
-            });
-        }
-      });
-      ///
-      postList.push({
-        path: router["/instructor/"][lng],
-        title: t("instructor")
-      });
-      postList.push({
-        path: router["/blog/"][lng],
-        title: t("blog")
-      });
-      return (
-        <MainNavLayout
-          postList={postList}
-          route={route}
-          t={t}
-          carouselList={carouselList}
-        >
-          {children}
-        </MainNavLayout>
-      );
-    }}
-  />
-);
+      `}
+      render={data => {
+        //generate Menu from allMarkdownRemark
+        const postEdges = data.allMarkdownRemark.edges;
+        postEdges.forEach(postEdge => {
+          let title;
+          if (postEdge.node.fields.lng === lng) {
+            //console.log("testslug", postEdge.node.fields.slug);
+            title = t(postEdge.node.frontmatter.title);
+            if (postEdge.node.fields.inmenu)
+              postList.push({
+                path: postEdge.node.fields.slug,
+                title
+              });
+          }
+        });
+        ///
+        global.postList.push({
+          path: router["/instructor/"][lng],
+          title: t("instructor")
+        });
+        global.postList.push({
+          path: router["/blog/"][lng],
+          title: t("blog")
+        });
+        return (
+          <MainNavLayout
+            postList={postList}
+            route={route}
+            t={t}
+            ismain={ismain}
+            carouselList={carouselList}
+          >
+            {children}
+          </MainNavLayout>
+        );
+      }}
+    />
+  );
+};
 
 export default StaticRun;

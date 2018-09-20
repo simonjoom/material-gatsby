@@ -97,6 +97,7 @@
   "license": "MIT",
   "main": "n/a",
   "scripts": {
+    "postinstall": "test -n \"$NOYARNPOSTINSTALL\" || sh ./postinstall.sh",
     "develop": "gatsby develop",
     "dev": "npm run develop",
     "serve": "gatsby serve",

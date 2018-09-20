@@ -184,8 +184,7 @@ function (_Component) {
       if (_this._imageRef && (resizeMode === 'center' || resizeMode === 'repeat')) { 
      var naturalWidth= _this._imageRef.naturalWidth;
      var naturalHeight= _this._imageRef.naturalHeight;
-             
-    console.log("backgroundStyle",_this.state.layout)
+ 
         var _this$state$layout = layout|| _this.state.layout,
             height = _this$state$layout.height,
             width = _this$state$layout.width;
@@ -392,13 +391,13 @@ if(_this._imageState === STATUS_LOADING){
      // srcSet: srcSet,
       style: _StyleSheet.default.flatten([styles.accessibilityImage, styleAccessibilityImage])
     }) : null;*/
-    console.log("backgroundStyle",this.state)
-    var styleImages = _StyleSheet.default.flatten([styles.image, styleImage]);
+    var styleImages = _StyleSheet.default.flatten([styles.image, styleImage,resizeModeStyles[finalResizeMode]]);
 	var View2Style = _StyleSheet.default.flatten([styleImages, this.state.backgroundStyle, backgroundImage && {
       backgroundImage: backgroundImage
     }, filters.length > 0 && {
       filter: filters.join(' ')
     }]);
+    console.log("backgroundStyle",finalResizeMode)
     var View1Style = _StyleSheet.default.flatten([styles.root, this.context.isInAParentText && styles.inline, imageSizeStyle, flatStyle]);
  
     return _react.default.createElement(_View.default, (0, _extends2.default)({}, other, {

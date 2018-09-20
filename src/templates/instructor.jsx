@@ -27,7 +27,7 @@ class PostTemplate extends React.Component {
 
   render() {
     const { mobile } = this.state;
-    const { slug, lng, route } = this.props.pageContext;
+    const { slug, lng, route,slugbase } = this.props.pageContext;
     console.log("route", route);
     const expanded = !mobile;
     // const postOverlapClass = mobile ? "post-overlap-mobile" : "post-overla";
@@ -46,6 +46,7 @@ class PostTemplate extends React.Component {
       <Layout
         location={this.props.location}
         route={route}
+        ismain={slugbase === "/"}
         t={this.props.t}
         lng={lng}
       >

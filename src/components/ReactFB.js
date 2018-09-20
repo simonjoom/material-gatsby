@@ -31,13 +31,13 @@ class ReactFB extends PureComponent {
   
   componentDidMount() {
     const {language, appId} = this.props;
-   if (!global.doneFB && !document.getElementById('facebook-jssdk')) {
+   if (!global.FB && !document.getElementById('facebook-jssdk')) {
       insertFB(language, appId, ()=>{
-      console.log("FB.loaded",this.newDivName)
-      FB.XFBML.parse(document.getElementById(this.newDivName));});
+      console.log("FB.loaded",global.FB)
+      global.FB.XFBML.parse(document.getElementById(this.newDivName));});
       global.doneFB = true;
     }else{
-      FB.XFBML.parse(document.getElementById(this.newDivName));
+      global.FB.XFBML.parse(document.getElementById(this.newDivName));
     }
   }
   

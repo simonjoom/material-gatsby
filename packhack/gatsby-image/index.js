@@ -273,6 +273,7 @@ console.log("filenameresult",filenameresult)
         alt = _convertProps.alt,
         resizeMode = _convertProps.resizeMode,
         width = _convertProps.width,
+        content=_convertProps.content,
         maxWidth = _convertProps.maxWidth,
         height = _convertProps.height,
         className = _convertProps.className,
@@ -285,7 +286,7 @@ console.log("filenameresult",filenameresult)
         backgroundColor = _convertProps.backgroundColor;
 
     var bgColor;
-console.log("className",className)
+console.log("className",resizeMode)
     if (typeof backgroundColor === "boolean") {
       bgColor = "lightgray";
     } else {
@@ -355,6 +356,7 @@ console.log("className",className)
           width: width?width:"100%",
           maxWidth: maxWidth,
           margin: '0 auto',
+          position:'relative',
           alignSelf: "center"
         },
         __source: {
@@ -363,8 +365,8 @@ console.log("className",className)
         },
         __self: this
       }, bgColor && _react.default.createElement(_reactNative.View, {
+      	style:bgStyle,
         title: title,
-        style: bgStyle,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 304
@@ -372,6 +374,7 @@ console.log("className",className)
         __self: this
       }), _react.default.createElement("div", {
         ref: this.handleRef,
+        children:content,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 305
@@ -389,7 +392,9 @@ console.log("className",className)
         styleImage: imageStyle,
         style: {
           paddingBottom: presentationHeight ? presentationHeight : '60%',
-          maxWidth: '100%'
+          maxWidth: '100%',
+        opacity: this.state.imgLoaded ? 1 : 0,
+        transitionDelay: "0.35s"
         },
         onLoadEnd: function onLoadEnd() {
           _this3.state.IOSupported && _this3.setState({

@@ -10,11 +10,12 @@ const GetImage = ({
   dataList,
   coverclassname,
   width,
+  ismain,
   alt = "",
-  maxWidth="1024px",
+  t,
+  maxWidth = "1024px",
   directory = ""
 }) => {
-  console.log("coverClassName",coverclassname)
   const dir = directory !== "" ? "/" + directory : "";
   const MapImg = dataList
     .map((el, ind) => {
@@ -29,12 +30,69 @@ const GetImage = ({
           ) !== -1
         );
       });
+
       if (FileNode)
         return (
           <Img
             className={coverclassname}
             key={ind}
             alt={alt}
+            content={
+              ismain ? (
+                <div
+                  style={{
+                    zIndex: 8,
+                    position: "absolute",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    padding: "5px",
+                    flexDirection: "column"
+                  }}
+                  className="md-grid"
+                >
+                  <span
+                    style={{
+                      color: "#b2ff59",
+                      fontSize: "30px",
+                      fontStyle: "italic",
+                      fontWeight: 900,
+                      letterSpacing: ".01em",
+                      textTransform: "uppercase",
+                      wordSpacing: "5px"
+                    }}
+                  >
+                    {t("main1")}
+                  </span>
+                  <div style={{ fontSize: "30px" }}>
+                    {t("main2")}
+                    <div className="md-cell">
+                      <a
+                        tabindex="0"
+                        href="/instructors_skischool/"
+                        style={{
+                          color: "#3f51b5",
+                          backgroundColor: "#ccff90"
+                        }}
+                        className="md-btn md-pointer--hover"
+                      >
+                        {" "}
+                        Get Started
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                ""
+              )
+            }
+            resizeMode={ismain ? "contain" : "center"}
+            imgStyle={
+              ismain
+                ? {
+                    backgroundPosition: "right top"
+                  }
+                : {}
+            }
             fluid={FileNode.node.childImageSharp.fluid}
             height="100%"
             width={width}
@@ -59,8 +117,10 @@ const FrontCarousel = ({
   data,
   coverclassname,
   width,
-  maxwidth="1024px",
+  maxwidth = "1024px",
   directory,
+  ismain,
+  t,
   alt = ""
 }) => {
   if (!data) return null;
@@ -75,6 +135,8 @@ const FrontCarousel = ({
         directory={directory}
         width={width}
         maxWidth={maxwidth}
+        ismain={ismain}
+        t={t}
         coverclassname={coverclassname}
         alt={alt}
       />
@@ -124,8 +186,10 @@ const FrontCarousel = ({
               CarouselQuery={CarouselQuery}
               dataList={datas}
               width={width}
+              ismain={ismain}
               maxWidth={maxwidth}
               alt={alt}
+              t={t}
               directory={directory}
               coverclassname={coverclassname}
             />
