@@ -71,14 +71,14 @@ date: "2018-07-02"
 
 <div class="md-cell--middle" style="flex-direction: column;padding-bottom: 8%;">
 <h3>Best Service</h3>
-<a title="La qualité d'enseignement" style="display: flex; flex-direction: row;">
+<a title="Service" style="display: flex; flex-direction: row;">
 <div style="margin-right: 1%;">
 <p> Quality services to provide an enjoyable stay.<i class="fa fa-question-circle-o"></i></p> 
 <p>To provide a better service, SkiScool listens to all your requests, and follows the coach in his choice of restaurants and activities for you.</p>
 <p> - Your coach knows the resort, he is informed of the après-ski activities. </p>
 <p> - Your coach is a passionate instructor: he will be taking the time needed to provide you with any advice, uses demonstration and repetition to thoroughly improve your skills.</p>
 </div>
-<imgtest data="lm-pistes.jpg" height="75" width="300px" directory="pages" alt="service client" coverclassname=""></imgtest>
+<imgtest data="lm-pistes.jpg" height="75" width="300px" directory="pages" alt="service client"></imgtest>
 </a>
 </div> 
 
@@ -91,9 +91,8 @@ date: "2018-07-02"
 </div>
 
 <div class="md-cell--middle" style="flex-direction: column;padding-top: 4%;padding-bottom: 4%;">
-
 <h3>Safety First</h3>
-<a title="La qualité d'enseignement" style="display: flex; flex-direction: row;">
+<a title="Safety First" style="display: flex; flex-direction: row;">
 <imgtest data="helico.jpg" height="75" width="300px" directory="pages" alt="Sécurité" coverclassname=""></imgtest>
 <div style="margin-left: 1%;">
 <p>Our instructors are <b>Certified</b> and <b>Experienced.</b>
@@ -104,11 +103,12 @@ date: "2018-07-02"
 
 <div class="md-cell--middle" style="flex-direction: column;padding-bottom: 4%;">
 <h3>Friendly</h3>
-<a title="La qualité d'enseignement" style="display: flex; flex-direction: row;">
+<a title="Friendly coach" style="display: flex; flex-direction: row;">
 <div style="margin-right: 1%;">
 <p>Your coach books restaurants, he is bilingual, he speaks English and is dedicated to the practice of ski racing and off track skiing.</p>
 </div>
-<imgtest data="years-experience.png" height="75" width="300px" directory="pages" alt="Courchevel"></imgtest></div>
+<imgtest data="years-experience.png" height="75" width="300px" directory="pages" alt="Courchevel"></imgtest>
+</div>
 </a>
 </div>
 
