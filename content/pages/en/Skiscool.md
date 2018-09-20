@@ -53,7 +53,7 @@ date: "2018-07-02"
 
 <div class="md-cell--middle" style="flex-direction: column; padding-bottom: 8%;">
 <h3 style="margin-bottom: 5%;">Teaching quality</h3> 
-<a title="Teaching quality">
+<a title="Teaching quality" style="display: flex; flex-direction: row;">
 <imgtest data="certified.png" height="75" width="300px" directory="pages" alt="Courchevel"></imgtest>
 <div>
 <p>Ski instructor's diploma = BEES </p>
@@ -61,7 +61,7 @@ date: "2018-07-02"
 <h3>Professionals</h3>
 <p>Learn faster with more confidence!!</p>
 <h3>Our instructors are chosen following three important criterias</h3>
-<ul>
+<ul style="padding: 10px;">
 <li><b>No trainee:</b> All our instructors are certified with <b>a French diploma</b></li>
 <li><b>Teaching Experience:</b> Their teaching experience in the personal coaching in 3 Valleys Alps. Contrary to other schools, we will connect you only with <b>qualified independants instructors.</b></li>
 <li><b>Better Performance:</b> They usually work better than normal school system provides.</li>
