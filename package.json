@@ -19,7 +19,7 @@
     "gatsby-plugin-google-analytics": "next",
     "gatsby-plugin-lodash": "next",
     "gatsby-plugin-manifest": "next",
-    "gatsby-plugin-netlify-cms": "^3.0.0-rc.5",
+    "gatsby-plugin-netlify-cms": "^3.0.2",
     "gatsby-plugin-nprogress": "next",
     "gatsby-plugin-offline": "2.0.0-rc.6",
     "gatsby-plugin-react-helmet": "next",
