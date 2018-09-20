@@ -11,7 +11,7 @@ class Index extends React.Component {
   render() {
     const { lng, route } = this.props.pageContext; 
     const postEdges = this.props.data.allMarkdownRemark.edges;
-    window.filesQuery=this.props.data.allFile.edges;
+    global.filesQuery=this.props.data.allFile.edges;
     return (
       <Layout
         location={this.props.location}

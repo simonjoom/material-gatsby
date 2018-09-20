@@ -125,7 +125,7 @@ const FrontCarousel = ({
 }) => {
   if (!data) return null;
   let datas = typeof data == "string" ? data.split() : data;
-  let Query = CarouselQuery || window.filesQuery;
+  let Query = CarouselQuery || global.filesQuery;
   if (datas.length == 0) return null;
   if (Query)
     return (
