@@ -1,31 +1,22 @@
-'use strict';
+"use strict";
 
 exports.__esModule = true;
+exports.default = void 0;
 
-var _ColorPropType = require('../ColorPropType');
+var _ColorPropType = _interopRequireDefault(require("../ColorPropType"));
 
-var _ColorPropType2 = _interopRequireDefault(_ColorPropType);
+var _ViewStylePropTypes = _interopRequireDefault(require("../View/ViewStylePropTypes"));
 
-var _ViewStylePropTypes = require('../View/ViewStylePropTypes');
-
-var _ViewStylePropTypes2 = _interopRequireDefault(_ViewStylePropTypes);
-
-var _propTypes = require('prop-types');
+var _propTypes = require("prop-types");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var numberOrString = (0, _propTypes.oneOfType)([_propTypes.number, _propTypes.string]); /**
-                                                                                         * Copyright (c) 2015-present, Nicolas Gallagher.
-                                                                                         * Copyright (c) 2015-present, Facebook, Inc.
-                                                                                         *
-                                                                                         * This source code is licensed under the MIT license found in the
-                                                                                         * LICENSE file in the root directory of this source tree.
-                                                                                         *
-                                                                                         * 
-                                                                                         */
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-var TextStylePropTypes = Object.assign({}, _ViewStylePropTypes2.default, {
-  color: _ColorPropType2.default,
+var numberOrString = (0, _propTypes.oneOfType)([_propTypes.number, _propTypes.string]);
+
+var TextStylePropTypes = _extends({}, _ViewStylePropTypes.default, {
+  color: _ColorPropType.default,
   fontFamily: _propTypes.string,
   fontFeatureSettings: _propTypes.string,
   fontSize: numberOrString,
@@ -36,13 +27,17 @@ var TextStylePropTypes = Object.assign({}, _ViewStylePropTypes2.default, {
   lineHeight: numberOrString,
   textAlign: (0, _propTypes.oneOf)(['center', 'end', 'inherit', 'justify', 'justify-all', 'left', 'right', 'start']),
   textAlignVertical: _propTypes.string,
-  textDecorationColor: _ColorPropType2.default,
+  textDecorationColor: _ColorPropType.default,
   textDecorationLine: _propTypes.string,
   textDecorationStyle: _propTypes.string,
-  textShadowColor: _ColorPropType2.default,
-  textShadowOffset: (0, _propTypes.shape)({ width: _propTypes.number, height: _propTypes.number }),
+  textShadowColor: _ColorPropType.default,
+  textShadowOffset: (0, _propTypes.shape)({
+    width: _propTypes.number,
+    height: _propTypes.number
+  }),
   textShadowRadius: _propTypes.number,
   writingDirection: (0, _propTypes.oneOf)(['auto', 'ltr', 'rtl']),
+
   /* @platform web */
   textIndent: numberOrString,
   textOverflow: _propTypes.string,
@@ -55,5 +50,5 @@ var TextStylePropTypes = Object.assign({}, _ViewStylePropTypes2.default, {
   WebkitFontSmoothing: _propTypes.string
 });
 
-exports.default = TextStylePropTypes;
-module.exports = exports['default'];
+var _default = TextStylePropTypes;
+exports.default = _default;

@@ -7,12 +7,12 @@
  *
  * 
  */
-
 import dismissKeyboard from '../../modules/dismissKeyboard';
-
 var Keyboard = {
   addListener: function addListener() {
-    return { remove: function remove() {} };
+    return {
+      remove: function remove() {}
+    };
   },
   dismiss: function dismiss() {
     dismissKeyboard();
@@ -20,5 +20,4 @@ var Keyboard = {
   removeAllListeners: function removeAllListeners() {},
   removeListener: function removeListener() {}
 };
-
 export default Keyboard;

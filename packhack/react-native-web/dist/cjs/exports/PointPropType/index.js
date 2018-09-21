@@ -1,12 +1,11 @@
-'use strict';
+"use strict";
 
 exports.__esModule = true;
+exports.default = void 0;
 
-var _createStrictShapeTypeChecker = require('../../modules/createStrictShapeTypeChecker');
+var _createStrictShapeTypeChecker = _interopRequireDefault(require("../../modules/createStrictShapeTypeChecker"));
 
-var _createStrictShapeTypeChecker2 = _interopRequireDefault(_createStrictShapeTypeChecker);
-
-var _propTypes = require('prop-types');
+var _propTypes = require("prop-types");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -18,11 +17,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  *
  * 
  */
-
-var PointPropType = (0, _createStrictShapeTypeChecker2.default)({
+var PointPropType = (0, _createStrictShapeTypeChecker.default)({
   x: _propTypes.number,
   y: _propTypes.number
 });
-
-exports.default = PointPropType;
-module.exports = exports['default'];
+var _default = PointPropType;
+exports.default = _default;

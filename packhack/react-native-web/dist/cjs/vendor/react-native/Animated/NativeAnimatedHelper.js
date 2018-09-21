@@ -10,33 +10,39 @@
 'use strict';
 
 exports.__esModule = true;
-exports.shouldUseNativeDriver = exports.assertNativeAnimatedModule = exports.generateNewAnimationId = exports.generateNewNodeTag = exports.validateInterpolation = exports.validateTransform = exports.validateStyles = exports.addWhitelistedInterpolationParam = exports.addWhitelistedTransformProp = exports.addWhitelistedStyleProp = exports.API = undefined;
+exports.addWhitelistedStyleProp = addWhitelistedStyleProp;
+exports.addWhitelistedTransformProp = addWhitelistedTransformProp;
+exports.addWhitelistedInterpolationParam = addWhitelistedInterpolationParam;
+exports.validateStyles = validateStyles;
+exports.validateTransform = validateTransform;
+exports.validateInterpolation = validateInterpolation;
+exports.generateNewNodeTag = generateNewNodeTag;
+exports.generateNewAnimationId = generateNewAnimationId;
+exports.assertNativeAnimatedModule = assertNativeAnimatedModule;
+exports.shouldUseNativeDriver = shouldUseNativeDriver;
+exports.default = exports.API = void 0;
 
-var _invariant = require('fbjs/lib/invariant');
+var _invariant = _interopRequireDefault(require("fbjs/lib/invariant"));
 
-var _invariant2 = _interopRequireDefault(_invariant);
+var _NativeModules = _interopRequireDefault(require("../../../exports/NativeModules"));
 
-var _NativeModules = require('../../../exports/NativeModules');
-
-var _NativeModules2 = _interopRequireDefault(_NativeModules);
-
-var _NativeEventEmitter = require('../NativeEventEmitter');
-
-var _NativeEventEmitter2 = _interopRequireDefault(_NativeEventEmitter);
+var _NativeEventEmitter = _interopRequireDefault(require("../NativeEventEmitter"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var NativeAnimatedModule = _NativeModules2.default.NativeAnimatedModule;
+var NativeAnimatedModule = _NativeModules.default.NativeAnimatedModule;
+var __nativeAnimatedNodeTagCount = 1;
+/* used for animated nodes */
 
-var __nativeAnimatedNodeTagCount = 1; /* used for animated nodes */
-var __nativeAnimationIdCount = 1; /* used for started animations */
+var __nativeAnimationIdCount = 1;
+/* used for started animations */
 
-var nativeEventEmitter = void 0;
-
+var nativeEventEmitter;
 /**
  * Simple wrappers around NativeAnimatedModule to provide flow and autocmplete support for
  * the native module methods
  */
+
 var API = {
   createAnimatedNode: function createAnimatedNode(tag, config) {
     assertNativeAnimatedModule();
@@ -103,26 +109,28 @@ var API = {
     NativeAnimatedModule.removeAnimatedEventFromView(viewTag, eventName, animatedNodeTag);
   }
 };
-
 /**
  * Styles allowed by the native animated implementation.
  *
  * In general native animated implementation should support any numeric property that doesn't need
  * to be updated through the shadow view hierarchy (all non-layout properties).
  */
+
+exports.API = API;
 var STYLES_WHITELIST = {
   opacity: true,
   transform: true,
+
   /* ios styles */
   shadowOpacity: true,
   shadowRadius: true,
+
   /* legacy android transform properties */
   scaleX: true,
   scaleY: true,
   translateX: true,
   translateY: true
 };
-
 var TRANSFORM_WHITELIST = {
   translateX: true,
   translateY: true,
@@ -134,7 +142,6 @@ var TRANSFORM_WHITELIST = {
   rotateY: true,
   perspective: true
 };
-
 var SUPPORTED_INTERPOLATION_PARAMS = {
   inputRange: true,
   outputRange: true,
@@ -158,7 +165,7 @@ function addWhitelistedInterpolationParam(param) {
 function validateTransform(configs) {
   configs.forEach(function (config) {
     if (!TRANSFORM_WHITELIST.hasOwnProperty(config.property)) {
-      throw new Error('Property \'' + config.property + '\' is not supported by native animated module');
+      throw new Error("Property '" + config.property + "' is not supported by native animated module");
     }
   });
 }
@@ -166,7 +173,7 @@ function validateTransform(configs) {
 function validateStyles(styles) {
   for (var key in styles) {
     if (!STYLES_WHITELIST.hasOwnProperty(key)) {
-      throw new Error('Style property \'' + key + '\' is not supported by native animated module');
+      throw new Error("Style property '" + key + "' is not supported by native animated module");
     }
   }
 }
@@ -174,7 +181,7 @@ function validateStyles(styles) {
 function validateInterpolation(config) {
   for (var key in config) {
     if (!SUPPORTED_INTERPOLATION_PARAMS.hasOwnProperty(key)) {
-      throw new Error('Interpolation property \'' + key + '\' is not supported by native animated module');
+      throw new Error("Interpolation property '" + key + "' is not supported by native animated module");
     }
   }
 }
@@ -188,7 +195,7 @@ function generateNewAnimationId() {
 }
 
 function assertNativeAnimatedModule() {
-  (0, _invariant2.default)(NativeAnimatedModule, 'Native animated module is not available');
+  (0, _invariant.default)(NativeAnimatedModule, 'Native animated module is not available');
 }
 
 var _warnedMissingNativeAnimated = false;
@@ -199,6 +206,7 @@ function shouldUseNativeDriver(config) {
       console.warn('Animated: `useNativeDriver` is not supported because the native ' + 'animated module is missing. Falling back to JS-based animation. To ' + 'resolve this, add `RCTAnimation` module to this app, or remove ' + '`useNativeDriver`. ' + 'More info: https://github.com/facebook/react-native/issues/11094#issuecomment-263240420');
       _warnedMissingNativeAnimated = true;
     }
+
     return false;
   }
 
@@ -217,23 +225,15 @@ var NativeAnimatedHelper = {
   generateNewAnimationId: generateNewAnimationId,
   assertNativeAnimatedModule: assertNativeAnimatedModule,
   shouldUseNativeDriver: shouldUseNativeDriver,
+
   get nativeEventEmitter() {
     if (!nativeEventEmitter) {
-      nativeEventEmitter = new _NativeEventEmitter2.default(NativeAnimatedModule);
+      nativeEventEmitter = new _NativeEventEmitter.default(NativeAnimatedModule);
     }
+
     return nativeEventEmitter;
   }
-};
 
-exports.API = API;
-exports.addWhitelistedStyleProp = addWhitelistedStyleProp;
-exports.addWhitelistedTransformProp = addWhitelistedTransformProp;
-exports.addWhitelistedInterpolationParam = addWhitelistedInterpolationParam;
-exports.validateStyles = validateStyles;
-exports.validateTransform = validateTransform;
-exports.validateInterpolation = validateInterpolation;
-exports.generateNewNodeTag = generateNewNodeTag;
-exports.generateNewAnimationId = generateNewAnimationId;
-exports.assertNativeAnimatedModule = assertNativeAnimatedModule;
-exports.shouldUseNativeDriver = shouldUseNativeDriver;
-exports.default = NativeAnimatedHelper;
+};
+var _default = NativeAnimatedHelper;
+exports.default = _default;

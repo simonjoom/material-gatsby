@@ -1,33 +1,28 @@
-'use strict';
+"use strict";
 
 exports.__esModule = true;
+exports.default = void 0;
 
-var _isDisabled = require('./isDisabled');
+var _isDisabled = _interopRequireDefault(require("./isDisabled"));
 
-var _isDisabled2 = _interopRequireDefault(_isDisabled);
+var _propsToAccessibilityComponent = _interopRequireDefault(require("./propsToAccessibilityComponent"));
 
-var _propsToAccessibilityComponent = require('./propsToAccessibilityComponent');
-
-var _propsToAccessibilityComponent2 = _interopRequireDefault(_propsToAccessibilityComponent);
-
-var _propsToAriaRole = require('./propsToAriaRole');
-
-var _propsToAriaRole2 = _interopRequireDefault(_propsToAriaRole);
+var _propsToAriaRole = _interopRequireDefault(require("./propsToAriaRole"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/**
+ * Copyright (c) 2017-present, Nicolas Gallagher.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
 var AccessibilityUtil = {
-  isDisabled: _isDisabled2.default,
-  propsToAccessibilityComponent: _propsToAccessibilityComponent2.default,
-  propsToAriaRole: _propsToAriaRole2.default
-}; /**
-    * Copyright (c) 2017-present, Nicolas Gallagher.
-    *
-    * This source code is licensed under the MIT license found in the
-    * LICENSE file in the root directory of this source tree.
-    *
-    * 
-    */
-
-exports.default = AccessibilityUtil;
-module.exports = exports['default'];
+  isDisabled: _isDisabled.default,
+  propsToAccessibilityComponent: _propsToAccessibilityComponent.default,
+  propsToAriaRole: _propsToAriaRole.default
+};
+var _default = AccessibilityUtil;
+exports.default = _default;

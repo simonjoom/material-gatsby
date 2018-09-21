@@ -1,30 +1,19 @@
-'use strict';
+"use strict";
 
 exports.__esModule = true;
+exports.default = void 0;
 
-var _invariant = require('fbjs/lib/invariant');
+var _invariant = _interopRequireDefault(require("fbjs/lib/invariant"));
 
-var _invariant2 = _interopRequireDefault(_invariant);
+var _unmountComponentAtNode = _interopRequireDefault(require("../unmountComponentAtNode"));
 
-var _unmountComponentAtNode = require('../unmountComponentAtNode');
+var _renderApplication = _interopRequireWildcard(require("./renderApplication"));
 
-var _unmountComponentAtNode2 = _interopRequireDefault(_unmountComponentAtNode);
-
-var _renderApplication = require('./renderApplication');
-
-var _renderApplication2 = _interopRequireDefault(_renderApplication);
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } } /**
-                                                                                                                                                           * Copyright (c) 2015-present, Nicolas Gallagher.
-                                                                                                                                                           * Copyright (c) 2015-present, Facebook, Inc.
-                                                                                                                                                           *
-                                                                                                                                                           * This source code is licensed under the MIT license found in the
-                                                                                                                                                           * LICENSE file in the root directory of this source tree.
-                                                                                                                                                           *
-                                                                                                                                                           * 
-                                                                                                                                                           */
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 var emptyObject = {};
 var runnables = {};
@@ -32,23 +21,23 @@ var runnables = {};
 var componentProviderInstrumentationHook = function componentProviderInstrumentationHook(component) {
   return component();
 };
-var wrapperComponentProvider = void 0;
+
+var wrapperComponentProvider;
 
 /**
  * `AppRegistry` is the JS entry point to running all React Native apps.
  */
-var AppRegistry = function () {
-  function AppRegistry() {
-    _classCallCheck(this, AppRegistry);
-  }
+var AppRegistry =
+/*#__PURE__*/
+function () {
+  function AppRegistry() {}
 
   AppRegistry.getAppKeys = function getAppKeys() {
     return Object.keys(runnables);
   };
 
   AppRegistry.getApplication = function getApplication(appKey, appParameters) {
-    (0, _invariant2.default)(runnables[appKey] && runnables[appKey].getApplication, 'Application ' + appKey + ' has not been registered. ' + 'This is either due to an import error during initialization or failure to call AppRegistry.registerComponent.');
-
+    (0, _invariant.default)(runnables[appKey] && runnables[appKey].getApplication, "Application " + appKey + " has not been registered. " + 'This is either due to an import error during initialization or failure to call AppRegistry.registerComponent.');
     return runnables[appKey].getApplication(appParameters);
   };
 
@@ -58,7 +47,7 @@ var AppRegistry = function () {
         return (0, _renderApplication.getApplication)(componentProviderInstrumentationHook(componentProvider), appParameters ? appParameters.initialProps : emptyObject, wrapperComponentProvider && wrapperComponentProvider(appParameters));
       },
       run: function run(appParameters) {
-        return (0, _renderApplication2.default)(componentProviderInstrumentationHook(componentProvider), appParameters.initialProps || emptyObject, appParameters.rootTag, wrapperComponentProvider && wrapperComponentProvider(appParameters), appParameters.callback);
+        return (0, _renderApplication.default)(componentProviderInstrumentationHook(componentProvider), appParameters.initialProps || emptyObject, appParameters.rootTag, wrapperComponentProvider && wrapperComponentProvider(appParameters), appParameters.callback);
       }
     };
     return appKey;
@@ -73,31 +62,31 @@ var AppRegistry = function () {
       if (run) {
         AppRegistry.registerRunnable(appKey, run);
       } else {
-        (0, _invariant2.default)(component, 'No component provider passed in');
+        (0, _invariant.default)(component, 'No component provider passed in');
         AppRegistry.registerComponent(appKey, component);
       }
     });
-  };
-
-  // TODO: fix style sheet creation when using this method
+  }; // TODO: fix style sheet creation when using this method
 
 
   AppRegistry.registerRunnable = function registerRunnable(appKey, run) {
-    runnables[appKey] = { run: run };
+    runnables[appKey] = {
+      run: run
+    };
     return appKey;
   };
 
   AppRegistry.runApplication = function runApplication(appKey, appParameters) {
     var isDevelopment = process.env.NODE_ENV !== 'production';
-    if (isDevelopment) {
-      var params = Object.assign({}, appParameters);
-      params.rootTag = '#' + params.rootTag.id;
 
-      console.log('Running application "' + appKey + '" with appParams: ' + JSON.stringify(params) + '.\n' + ('Development-level warnings: ' + (isDevelopment ? 'ON' : 'OFF') + '.\n') + ('Performance optimizations: ' + (isDevelopment ? 'OFF' : 'ON') + '.'));
+    if (isDevelopment) {
+      var params = _extends({}, appParameters);
+
+      params.rootTag = "#" + params.rootTag.id;
+      console.log("Running application \"" + appKey + "\" with appParams: " + JSON.stringify(params) + ".\n" + ("Development-level warnings: " + (isDevelopment ? 'ON' : 'OFF') + ".\n") + ("Performance optimizations: " + (isDevelopment ? 'OFF' : 'ON') + "."));
     }
 
-    (0, _invariant2.default)(runnables[appKey] && runnables[appKey].run, 'Application "' + appKey + '" has not been registered. ' + 'This is either due to an import error during initialization or failure to call AppRegistry.registerComponent.');
-
+    (0, _invariant.default)(runnables[appKey] && runnables[appKey].run, "Application \"" + appKey + "\" has not been registered. " + 'This is either due to an import error during initialization or failure to call AppRegistry.registerComponent.');
     runnables[appKey].run(appParameters);
   };
 
@@ -110,11 +99,10 @@ var AppRegistry = function () {
   };
 
   AppRegistry.unmountApplicationComponentAtRootTag = function unmountApplicationComponentAtRootTag(rootTag) {
-    (0, _unmountComponentAtNode2.default)(rootTag);
+    (0, _unmountComponentAtNode.default)(rootTag);
   };
 
   return AppRegistry;
 }();
 
 exports.default = AppRegistry;
-module.exports = exports['default'];

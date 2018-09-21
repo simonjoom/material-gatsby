@@ -2,8 +2,7 @@ import React from "react";
 import Img from "gatsby-image";
 import { graphql, StaticQuery } from "gatsby";
 import Carousel from "./carousel";
-import "./carousel.css";
-let CarouselQuery;
+import "./carousel.css"; 
 
 const GetImage = ({
   CarouselQuery,
@@ -125,7 +124,7 @@ const FrontCarousel = ({
 }) => {
   if (!data) return null;
   let datas = typeof data == "string" ? data.split() : data;
-  let Query = CarouselQuery || global.filesQuery;
+  let Query = global.filesQuery;
   if (datas.length == 0) return null;
   if (Query)
     return (
@@ -141,7 +140,8 @@ const FrontCarousel = ({
         alt={alt}
       />
     );
-  else
+  return (null)
+ /* else
     return (
       <StaticQuery
         query={graphql`
@@ -196,7 +196,7 @@ const FrontCarousel = ({
           );
         }}
       />
-    );
-};
+    );*/
+      }
 
 export default FrontCarousel;

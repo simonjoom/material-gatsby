@@ -9,30 +9,28 @@
  */
 'use strict';
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 /**
  * EventSubscription represents a subscription to a particular event. It can
  * remove its own subscription.
  */
-var EventSubscription = function () {
-
+var EventSubscription =
+/*#__PURE__*/
+function () {
   /**
    * @param {EventSubscriptionVendor} subscriber the subscriber that controls
    *   this subscription.
    */
   function EventSubscription(subscriber) {
-    _classCallCheck(this, EventSubscription);
-
     this.subscriber = subscriber;
   }
-
   /**
    * Removes this subscription from the subscriber that controls it.
    */
 
 
-  EventSubscription.prototype.remove = function remove() {
+  var _proto = EventSubscription.prototype;
+
+  _proto.remove = function remove() {
     this.subscriber.removeSubscription(this);
   };
 

@@ -6,6 +6,5 @@
  *
  * 
  */
-
 import FlatList from '../../vendor/react-native/FlatList';
 export default FlatList;

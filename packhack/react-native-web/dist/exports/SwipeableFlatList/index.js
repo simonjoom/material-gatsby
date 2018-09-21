@@ -6,6 +6,5 @@
  *
  * 
  */
-
 import SwipeableFlatList from '../../vendor/react-native/SwipeableFlatList';
 export default SwipeableFlatList;

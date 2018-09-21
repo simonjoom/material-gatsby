@@ -6,15 +6,12 @@
  *
  * 
  */
-
 import isDisabled from './isDisabled';
 import propsToAccessibilityComponent from './propsToAccessibilityComponent';
 import propsToAriaRole from './propsToAriaRole';
-
 var AccessibilityUtil = {
   isDisabled: isDisabled,
   propsToAccessibilityComponent: propsToAccessibilityComponent,
   propsToAriaRole: propsToAriaRole
 };
-
 export default AccessibilityUtil;

@@ -1,3 +1,5 @@
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 /**
  * Copyright (c) 2015-present, Nicolas Gallagher.
  * Copyright (c) 2015-present, Facebook, Inc.
@@ -7,14 +9,12 @@
  *
  * 
  */
-
 import ColorPropType from '../ColorPropType';
 import ViewStylePropTypes from '../View/ViewStylePropTypes';
 import { array, number, oneOf, oneOfType, shape, string } from 'prop-types';
-
 var numberOrString = oneOfType([number, string]);
 
-var TextStylePropTypes = Object.assign({}, ViewStylePropTypes, {
+var TextStylePropTypes = _extends({}, ViewStylePropTypes, {
   color: ColorPropType,
   fontFamily: string,
   fontFeatureSettings: string,
@@ -30,9 +30,13 @@ var TextStylePropTypes = Object.assign({}, ViewStylePropTypes, {
   textDecorationLine: string,
   textDecorationStyle: string,
   textShadowColor: ColorPropType,
-  textShadowOffset: shape({ width: number, height: number }),
+  textShadowOffset: shape({
+    width: number,
+    height: number
+  }),
   textShadowRadius: number,
   writingDirection: oneOf(['auto', 'ltr', 'rtl']),
+
   /* @platform web */
   textIndent: numberOrString,
   textOverflow: string,

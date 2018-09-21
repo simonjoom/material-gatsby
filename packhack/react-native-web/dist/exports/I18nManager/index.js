@@ -7,9 +7,7 @@
  *
  * 
  */
-
 import ExecutionEnvironment from 'fbjs/lib/ExecutionEnvironment';
-
 var doLeftAndRightSwapInRTL = true;
 var isPreferredLanguageRTL = false;
 var isRTLAllowed = true;
@@ -19,6 +17,7 @@ var isRTL = function isRTL() {
   if (isRTLForced) {
     return true;
   }
+
   return isRTLAllowed && isPreferredLanguageRTL;
 };
 
@@ -50,9 +49,10 @@ var I18nManager = {
   get doLeftAndRightSwapInRTL() {
     return doLeftAndRightSwapInRTL;
   },
+
   get isRTL() {
     return isRTL();
   }
-};
 
+};
 export default I18nManager;

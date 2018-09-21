@@ -7,14 +7,11 @@
  *
  * 
  */
-
 import EdgeInsetsPropType from '../EdgeInsetsPropType';
 import StyleSheetPropType from '../../modules/StyleSheetPropType';
 import ViewStylePropTypes from './ViewStylePropTypes';
 import { any, array, bool, func, object, oneOf, oneOfType, string } from 'prop-types';
-
 var stylePropType = StyleSheetPropType(ViewStylePropTypes);
-
 var ViewPropTypes = {
   accessibilityComponentType: string,
   accessibilityLabel: string,
@@ -63,5 +60,4 @@ var ViewPropTypes = {
   shouldRasterizeIOS: bool,
   tvParallaxProperties: object
 };
-
 export default ViewPropTypes;

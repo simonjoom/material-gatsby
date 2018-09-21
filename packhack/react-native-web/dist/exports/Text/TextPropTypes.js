@@ -7,11 +7,9 @@
  *
  * 
  */
-
 import StyleSheetPropType from '../../modules/StyleSheetPropType';
 import TextStylePropTypes from './TextStylePropTypes';
 import { any, array, bool, func, number, oneOf, oneOfType, string } from 'prop-types';
-
 var TextPropTypes = {
   accessibilityComponentType: string,
   accessibilityLabel: string,
@@ -31,5 +29,4 @@ var TextPropTypes = {
   style: StyleSheetPropType(TextStylePropTypes),
   testID: string
 };
-
 export default TextPropTypes;

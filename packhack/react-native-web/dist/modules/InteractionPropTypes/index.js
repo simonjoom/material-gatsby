@@ -6,14 +6,11 @@
  *
  * 
  */
-
 import { oneOf, string } from 'prop-types';
-
 var InteractionPropTypes = {
   cursor: string,
   touchAction: oneOf(['auto', 'inherit', 'manipulation', 'none', 'pan-down', 'pan-left', 'pan-right', 'pan-up', 'pan-x', 'pan-y', 'pinch-zoom']),
   userSelect: string,
   willChange: string
 };
-
 export default InteractionPropTypes;

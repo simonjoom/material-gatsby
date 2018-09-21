@@ -1,85 +1,42 @@
-'use strict';
+"use strict";
 
 exports.__esModule = true;
+exports.default = void 0;
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _createReactClass = _interopRequireDefault(require("create-react-class"));
 
-var _createReactClass = require('create-react-class');
+var _dismissKeyboard = _interopRequireDefault(require("../../modules/dismissKeyboard"));
 
-var _createReactClass2 = _interopRequireDefault(_createReactClass);
+var _findNodeHandle = _interopRequireDefault(require("../findNodeHandle"));
 
-var _dismissKeyboard = require('../../modules/dismissKeyboard');
+var _invariant = _interopRequireDefault(require("fbjs/lib/invariant"));
 
-var _dismissKeyboard2 = _interopRequireDefault(_dismissKeyboard);
+var _ScrollResponder = _interopRequireDefault(require("../../modules/ScrollResponder"));
 
-var _findNodeHandle = require('../findNodeHandle');
+var _ScrollViewBase = _interopRequireDefault(require("./ScrollViewBase"));
 
-var _findNodeHandle2 = _interopRequireDefault(_findNodeHandle);
+var _StyleSheet = _interopRequireDefault(require("../StyleSheet"));
 
-var _invariant = require('fbjs/lib/invariant');
+var _View = _interopRequireDefault(require("../View"));
 
-var _invariant2 = _interopRequireDefault(_invariant);
+var _ViewPropTypes = _interopRequireDefault(require("../ViewPropTypes"));
 
-var _ScrollResponder = require('../../modules/ScrollResponder');
+var _react = _interopRequireDefault(require("react"));
 
-var _ScrollResponder2 = _interopRequireDefault(_ScrollResponder);
-
-var _ScrollViewBase = require('./ScrollViewBase');
-
-var _ScrollViewBase2 = _interopRequireDefault(_ScrollViewBase);
-
-var _StyleSheet = require('../StyleSheet');
-
-var _StyleSheet2 = _interopRequireDefault(_StyleSheet);
-
-var _View = require('../View');
-
-var _View2 = _interopRequireDefault(_View);
-
-var _ViewPropTypes = require('../ViewPropTypes');
-
-var _ViewPropTypes2 = _interopRequireDefault(_ViewPropTypes);
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = require('prop-types');
+var _propTypes = require("prop-types");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; } /**
-                                                                                                                                                                                                                              * Copyright (c) 2016-present, Nicolas Gallagher.
-                                                                                                                                                                                                                              * Copyright (c) 2015-present, Facebook, Inc.
-                                                                                                                                                                                                                              *
-                                                                                                                                                                                                                              * This source code is licensed under the MIT license found in the
-                                                                                                                                                                                                                              * LICENSE file in the root directory of this source tree.
-                                                                                                                                                                                                                              *
-                                                                                                                                                                                                                              * @noflow
-                                                                                                                                                                                                                              */
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 var emptyObject = {};
-
 /* eslint-disable react/prefer-es6-class, react/prop-types */
-var ScrollView = (0, _createReactClass2.default)({
-  displayName: 'ScrollView',
 
-  propTypes: Object.assign({}, _ViewPropTypes2.default, {
-    contentContainerStyle: _ViewPropTypes2.default.style,
-    horizontal: _propTypes.bool,
-    keyboardDismissMode: (0, _propTypes.oneOf)(['none', 'interactive', 'on-drag']),
-    onContentSizeChange: _propTypes.func,
-    onScroll: _propTypes.func,
-    pagingEnabled: _propTypes.bool,
-    refreshControl: _propTypes.element,
-    scrollEnabled: _propTypes.bool,
-    scrollEventThrottle: _propTypes.number,
-    stickyHeaderIndices: (0, _propTypes.arrayOf)(_propTypes.number),
-    style: _ViewPropTypes2.default.style
-  }),
-
-  mixins: [_ScrollResponder2.default.Mixin],
-
+var ScrollView = (0, _createReactClass.default)({
+  displayName: "ScrollView",
+  mixins: [_ScrollResponder.default.Mixin],
   getInitialState: function getInitialState() {
     return this.scrollResponderMixinGetInitialState();
   },
@@ -92,7 +49,6 @@ var ScrollView = (0, _createReactClass2.default)({
     }
   },
 
-
   /**
    * Returns a reference to the underlying scroll responder, which supports
    * operations like `scrollTo`. All ScrollView-like components should
@@ -103,12 +59,11 @@ var ScrollView = (0, _createReactClass2.default)({
     return this;
   },
   getScrollableNode: function getScrollableNode() {
-    return (0, _findNodeHandle2.default)(this._scrollViewRef);
+    return (0, _findNodeHandle.default)(this._scrollViewRef);
   },
   getInnerViewNode: function getInnerViewNode() {
-    return (0, _findNodeHandle2.default)(this._innerViewRef);
+    return (0, _findNodeHandle.default)(this._innerViewRef);
   },
-
 
   /**
    * Scrolls to a given x, y offset, either immediately or with a smooth animation.
@@ -138,7 +93,6 @@ var ScrollView = (0, _createReactClass2.default)({
     });
   },
 
-
   /**
    * If this is a vertical ScrollView scrolls to the bottom.
    * If this is a horizontal ScrollView scrolls to the right.
@@ -151,61 +105,76 @@ var ScrollView = (0, _createReactClass2.default)({
     // Default to true
     var animated = (options && options.animated) !== false;
     var horizontal = this.props.horizontal;
-
     var scrollResponder = this.getScrollResponder();
     var scrollResponderNode = scrollResponder.scrollResponderGetScrollableNode();
     var x = horizontal ? scrollResponderNode.scrollWidth : 0;
     var y = horizontal ? 0 : scrollResponderNode.scrollHeight;
-    scrollResponder.scrollResponderScrollTo({ x: x, y: y, animated: animated });
+    scrollResponder.scrollResponderScrollTo({
+      x: x,
+      y: y,
+      animated: animated
+    });
   },
-
 
   /**
    * Deprecated, do not use.
    */
-  scrollWithoutAnimationTo: function scrollWithoutAnimationTo() {
-    var y = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-    var x = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+  scrollWithoutAnimationTo: function scrollWithoutAnimationTo(y, x) {
+    if (y === void 0) {
+      y = 0;
+    }
+
+    if (x === void 0) {
+      x = 0;
+    }
 
     console.warn('`scrollWithoutAnimationTo` is deprecated. Use `scrollTo` instead');
-    this.scrollTo({ x: x, y: y, animated: false });
+    this.scrollTo({
+      x: x,
+      y: y,
+      animated: false
+    });
   },
   render: function render() {
-    var _props = this.props,
-        contentContainerStyle = _props.contentContainerStyle,
-        horizontal = _props.horizontal,
-        onContentSizeChange = _props.onContentSizeChange,
-        refreshControl = _props.refreshControl,
-        stickyHeaderIndices = _props.stickyHeaderIndices,
-        keyboardDismissMode = _props.keyboardDismissMode,
-        onScroll = _props.onScroll,
-        pagingEnabled = _props.pagingEnabled,
-        other = _objectWithoutProperties(_props, ['contentContainerStyle', 'horizontal', 'onContentSizeChange', 'refreshControl', 'stickyHeaderIndices', 'keyboardDismissMode', 'onScroll', 'pagingEnabled']);
+    var _this$props = this.props,
+        contentContainerStyle = _this$props.contentContainerStyle,
+        horizontal = _this$props.horizontal,
+        onContentSizeChange = _this$props.onContentSizeChange,
+        refreshControl = _this$props.refreshControl,
+        stickyHeaderIndices = _this$props.stickyHeaderIndices,
+        keyboardDismissMode = _this$props.keyboardDismissMode,
+        onScroll = _this$props.onScroll,
+        pagingEnabled = _this$props.pagingEnabled,
+        other = _objectWithoutPropertiesLoose(_this$props, ["contentContainerStyle", "horizontal", "onContentSizeChange", "refreshControl", "stickyHeaderIndices", "keyboardDismissMode", "onScroll", "pagingEnabled"]);
 
     if (process.env.NODE_ENV !== 'production' && this.props.style) {
-      var style = _StyleSheet2.default.flatten(this.props.style);
+      var style = _StyleSheet.default.flatten(this.props.style);
+
       var childLayoutProps = ['alignItems', 'justifyContent'].filter(function (prop) {
         return style && style[prop] !== undefined;
       });
-      (0, _invariant2.default)(childLayoutProps.length === 0, 'ScrollView child layout (' + JSON.stringify(childLayoutProps) + ') ' + 'must be applied through the contentContainerStyle prop.');
+      (0, _invariant.default)(childLayoutProps.length === 0, "ScrollView child layout (" + JSON.stringify(childLayoutProps) + ") " + 'must be applied through the contentContainerStyle prop.');
     }
 
     var contentSizeChangeProps = {};
+
     if (onContentSizeChange) {
       contentSizeChangeProps = {
         onLayout: this._handleContentOnLayout
       };
     }
 
-    var children = !horizontal && Array.isArray(stickyHeaderIndices) ? _react2.default.Children.map(this.props.children, function (child, i) {
+    var children = !horizontal && Array.isArray(stickyHeaderIndices) ? _react.default.Children.map(this.props.children, function (child, i) {
       if (stickyHeaderIndices.indexOf(i) > -1) {
-        return _react2.default.cloneElement(child, { style: [child.props.style, styles.stickyHeader] });
+        return _react.default.cloneElement(child, {
+          style: [child.props.style, styles.stickyHeader]
+        });
       } else {
         return child;
       }
     }) : this.props.children;
 
-    var contentContainer = _react2.default.createElement(_View2.default, _extends({}, contentSizeChangeProps, {
+    var contentContainer = _react.default.createElement(_View.default, _extends({}, contentSizeChangeProps, {
       children: children,
       collapsable: false,
       ref: this._setInnerViewRef,
@@ -214,7 +183,7 @@ var ScrollView = (0, _createReactClass2.default)({
 
     var baseStyle = horizontal ? styles.baseHorizontal : styles.baseVertical;
 
-    var props = Object.assign({}, other, {
+    var props = _extends({}, other, {
       style: [baseStyle, this.props.style],
       onTouchStart: this.scrollResponderHandleTouchStart,
       onTouchMove: this.scrollResponderHandleTouchMove,
@@ -234,29 +203,27 @@ var ScrollView = (0, _createReactClass2.default)({
       onResponderReject: this.scrollResponderHandleResponderReject
     });
 
-    var ScrollViewClass = _ScrollViewBase2.default;
-
-    (0, _invariant2.default)(ScrollViewClass !== undefined, 'ScrollViewClass must not be undefined');
+    var ScrollViewClass = _ScrollViewBase.default;
+    (0, _invariant.default)(ScrollViewClass !== undefined, 'ScrollViewClass must not be undefined');
 
     if (refreshControl) {
-      return _react2.default.cloneElement(refreshControl, { style: props.style }, _react2.default.createElement(
-        ScrollViewClass,
-        _extends({}, props, { ref: this._setScrollViewRef, style: baseStyle }),
-        contentContainer
-      ));
+      return _react.default.cloneElement(refreshControl, {
+        style: props.style
+      }, _react.default.createElement(ScrollViewClass, _extends({}, props, {
+        ref: this._setScrollViewRef,
+        style: baseStyle
+      }), contentContainer));
     }
 
-    return _react2.default.createElement(
-      ScrollViewClass,
-      _extends({}, props, { ref: this._setScrollViewRef, style: props.style }),
-      contentContainer
-    );
+    return _react.default.createElement(ScrollViewClass, _extends({}, props, {
+      ref: this._setScrollViewRef,
+      style: props.style
+    }), contentContainer);
   },
   _handleContentOnLayout: function _handleContentOnLayout(e) {
     var _e$nativeEvent$layout = e.nativeEvent.layout,
         width = _e$nativeEvent$layout.width,
         height = _e$nativeEvent$layout.height;
-
     this.props.onContentSizeChange(width, height);
   },
   _handleScroll: function _handleScroll(e) {
@@ -267,7 +234,7 @@ var ScrollView = (0, _createReactClass2.default)({
     }
 
     if (this.props.keyboardDismissMode === 'on-drag') {
-      (0, _dismissKeyboard2.default)();
+      (0, _dismissKeyboard.default)();
     }
 
     this.scrollResponderHandleScroll(e);
@@ -279,26 +246,27 @@ var ScrollView = (0, _createReactClass2.default)({
     this._scrollViewRef = component;
   }
 });
-
 var commonStyle = {
   flexGrow: 1,
   flexShrink: 1,
   // Enable hardware compositing in modern browsers.
   // Creates a new layer with its own backing surface that can significantly
   // improve scroll performance.
-  transform: [{ translateZ: 0 }],
+  transform: [{
+    translateZ: 0
+  }],
   // iOS native scrolling
   WebkitOverflowScrolling: 'touch'
 };
 
-var styles = _StyleSheet2.default.create({
-  baseVertical: Object.assign({}, commonStyle, {
+var styles = _StyleSheet.default.create({
+  baseVertical: _extends({}, commonStyle, {
     flexDirection: 'column',
     overflowX: 'hidden',
     overflowY: 'auto',
     touchAction: 'pan-y'
   }),
-  baseHorizontal: Object.assign({}, commonStyle, {
+  baseHorizontal: _extends({}, commonStyle, {
     flexDirection: 'row',
     overflowX: 'auto',
     overflowY: 'hidden',
@@ -314,5 +282,5 @@ var styles = _StyleSheet2.default.create({
   }
 });
 
-exports.default = ScrollView;
-module.exports = exports['default'];
+var _default = ScrollView;
+exports.default = _default;

@@ -1,46 +1,31 @@
-"use strict";
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+import AnimationPropTypes from '../../modules/AnimationPropTypes';
+import BorderPropTypes from '../../modules/BorderPropTypes';
+import ColorPropType from '../ColorPropType';
+import ImageResizeMode from './ImageResizeMode';
+import InteractionPropTypes from '../../modules/InteractionPropTypes';
+import LayoutPropTypes from '../../modules/LayoutPropTypes';
+import ShadowPropTypes from '../../modules/ShadowPropTypes';
+import TransformPropTypes from '../../modules/TransformPropTypes';
+import { number, oneOf, string } from 'prop-types';
 
-exports.__esModule = true;
-exports.default = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
-var _AnimationPropTypes = _interopRequireDefault(require("../../modules/AnimationPropTypes"));
-
-var _BorderPropTypes = _interopRequireDefault(require("../../modules/BorderPropTypes"));
-
-var _ColorPropType = _interopRequireDefault(require("../ColorPropType"));
-
-var _ImageResizeMode = _interopRequireDefault(require("./ImageResizeMode"));
-
-var _InteractionPropTypes = _interopRequireDefault(require("../../modules/InteractionPropTypes"));
-
-var _LayoutPropTypes = _interopRequireDefault(require("../../modules/LayoutPropTypes"));
-
-var _ShadowPropTypes = _interopRequireDefault(require("../../modules/ShadowPropTypes"));
-
-var _TransformPropTypes = _interopRequireDefault(require("../../modules/TransformPropTypes"));
-
-var _propTypes = require("prop-types");
-
-var ImageStylePropTypes = (0, _extends2.default)({}, _AnimationPropTypes.default, _BorderPropTypes.default, _InteractionPropTypes.default, _LayoutPropTypes.default, _ShadowPropTypes.default, _TransformPropTypes.default, {
-  backgroundColor: _ColorPropType.default,
-  opacity: _propTypes.number,
-  resizeMode: (0, _propTypes.oneOf)(Object.keys(_ImageResizeMode.default)),
-  tintColor: _ColorPropType.default,
+var ImageStylePropTypes = _extends({}, AnimationPropTypes, BorderPropTypes, InteractionPropTypes, LayoutPropTypes, ShadowPropTypes, TransformPropTypes, {
+  backgroundColor: ColorPropType,
+  opacity: number,
+  resizeMode: oneOf(Object.keys(ImageResizeMode)),
+  tintColor: ColorPropType,
 
   /**
    * @platform unsupported
    */
-  overlayColor: _propTypes.string,
+  overlayColor: string,
 
   /**
    * @platform web
    */
-  boxShadow: _propTypes.string,
-  filter: _propTypes.string
+  boxShadow: string,
+  filter: string
 });
-var _default = ImageStylePropTypes;
-exports.default = _default;
+
+export default ImageStylePropTypes;

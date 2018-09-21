@@ -38,6 +38,7 @@ var whitelist = {
   pointerEvents: true,
   style: true,
   testID: true,
+
   /* @platform web */
   onScroll: true,
   onWheel: true,
@@ -64,6 +65,7 @@ var whitelist = {
 
 var filterSupportedProps = function filterSupportedProps(props) {
   var safeProps = {};
+
   for (var prop in props) {
     if (props.hasOwnProperty(prop)) {
       if (whitelist[prop] || prop.indexOf('aria-') === 0 || prop.indexOf('data-') === 0) {
@@ -71,6 +73,7 @@ var filterSupportedProps = function filterSupportedProps(props) {
       }
     }
   }
+
   return safeProps;
 };
 

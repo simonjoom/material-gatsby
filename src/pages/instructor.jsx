@@ -10,8 +10,7 @@ import config from "../../data/SiteConfig";
 class Index extends React.Component {
   render() {
     const { lng, route } = this.props.pageContext; 
-    const postEdges = this.props.data.allMarkdownRemark.edges;
-    global.filesQuery=this.props.data.allFile.edges;
+    const postEdges = this.props.data.allMarkdownRemark.edges; 
     return (
       <Layout
         location={this.props.location}
@@ -38,37 +37,6 @@ export const pageQuery = graphql`
     locales: allLocale(filter: { lng: { eq: $lng } }) {
       ...LocaleFragment
     }
-    allFile(
-            filter: {
-          absolutePath:{regex:"/(assets)\/.*\\.(jpg$|png$)/"}
-            }
-              ) {
-                edges {
-                  node {
-                    id
-                    absolutePath
-                    childImageSharp {
-                      id
-                      internal {
-                        contentDigest
-                        type
-                        owner
-                      }
-                      fluid(maxWidth: 1300) {
-                        base64
-                        tracedSVG
-                        aspectRatio
-                        src
-                        srcSet
-                        sizes
-                        srcWebp
-                        srcSetWebp
-                        originalName
-                      }
-                    }
-                  }
-                }
-              }
     allMarkdownRemark(
       limit: 2000
       filter: {

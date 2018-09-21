@@ -6,13 +6,13 @@
  *
  * @noflow
  */
-
 import unitlessNumbers from '../../modules/unitlessNumbers';
 
 var normalizeValue = function normalizeValue(property, value) {
   if (!unitlessNumbers[property] && typeof value === 'number') {
-    value = value + 'px';
+    value = value + "px";
   }
+
   return value;
 };
 

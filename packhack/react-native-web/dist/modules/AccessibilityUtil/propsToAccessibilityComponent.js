@@ -6,9 +6,7 @@
  *
  * 
  */
-
 import propsToAriaRole from './propsToAriaRole';
-
 var roleComponents = {
   article: 'article',
   banner: 'header',
@@ -23,18 +21,21 @@ var roleComponents = {
   navigation: 'nav',
   region: 'section'
 };
-
 var emptyObject = {};
 
-var propsToAccessibilityComponent = function propsToAccessibilityComponent() {
-  var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : emptyObject;
+var propsToAccessibilityComponent = function propsToAccessibilityComponent(props) {
+  if (props === void 0) {
+    props = emptyObject;
+  }
 
   var role = propsToAriaRole(props);
+
   if (role) {
     if (role === 'heading') {
       var level = props['aria-level'] || 1;
-      return 'h' + level;
+      return "h" + level;
     }
+
     return roleComponents[role];
   }
 };

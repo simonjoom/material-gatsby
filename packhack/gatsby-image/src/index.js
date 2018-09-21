@@ -168,7 +168,6 @@ class GatsbyImage extends React.Component {
    bigW=800
    bigH=600
    }
-   
   if(mxW){
   if(typeof mxW=="string"&&mxW.indexOf("%")!==-1)
   maxWidth=bigW*(parseInt(mxW)/100)
@@ -186,6 +185,8 @@ class GatsbyImage extends React.Component {
   }else{
   maxHeight=bigH
   }
+  
+   maxWidth=(this.props.maxWidth&&parseInt(this.props.maxWidth)<maxWidth)?parseInt(this.props.maxWidth):maxWidth
 
     var maxDensity = 1
     const ratio = 1 / aspectRatio
@@ -198,7 +199,6 @@ class GatsbyImage extends React.Component {
     let candidates = images.split(',')
     if (candidates.length == 0) return false
     var widthresultabs=10000;
-    let filename, width, height, density
     for (var i = 0; i < candidates.length; i++) {
       // The following regular expression was created based on the rules
       // in the srcset W3C specification available at:
@@ -238,6 +238,8 @@ class GatsbyImage extends React.Component {
       alt,
       resizeMode,
       width,
+      content,
+      maxWidth,
       height,
       className,
       outerWrapperClassName,
@@ -323,11 +325,16 @@ class GatsbyImage extends React.Component {
       return (
         <div
           style={{
-          width: '100%'
+          width: width?width:"100%",
+          maxWidth: maxWidth,
+          margin: '0 auto',
+          position:'relative',
+          alignSelf: "center"
           }}
         >
           {bgColor && <View title={title} style={bgStyle} />}
-          <div ref={this.handleRef} />
+          <div ref={this.handleRef}>
+         {content}</div>
           {/* Once the image is visible (or the browser doesn't support IntersectionObserver), start downloading the image */}
           {this.state.isVisible && (
             <Image
@@ -341,9 +348,11 @@ class GatsbyImage extends React.Component {
               styleAccessibilityImage={imagePlaceholderStyle}
               styleImage={imageStyle}
               style={{
-                paddingBottom: presentationHeight ? presentationHeight : '60%',
-                maxWidth: '100%',
-              }}
+          paddingBottom: presentationHeight ? presentationHeight : '60%',
+          maxWidth: '100%',
+        opacity: this.state.imgLoaded ? 1 : 0,
+        transitionDelay: "0.35s"
+        }}
               onLoadEnd={() => {
                 this.state.IOSupported && this.setState({ imgLoaded: true })
                 this.props.onLoad && this.props.onLoad()

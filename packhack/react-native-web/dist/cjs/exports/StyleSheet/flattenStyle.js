@@ -1,14 +1,11 @@
-'use strict';
+"use strict";
 
 exports.__esModule = true;
+exports.default = void 0;
 
-var _ReactNativePropRegistry = require('../../modules/ReactNativePropRegistry');
+var _ReactNativePropRegistry = _interopRequireDefault(require("../../modules/ReactNativePropRegistry"));
 
-var _ReactNativePropRegistry2 = _interopRequireDefault(_ReactNativePropRegistry);
-
-var _invariant = require('fbjs/lib/invariant');
-
-var _invariant2 = _interopRequireDefault(_invariant);
+var _invariant = _interopRequireDefault(require("fbjs/lib/invariant"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -21,11 +18,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  *
  * 
  */
-
 function getStyle(style) {
   if (typeof style === 'number') {
-    return _ReactNativePropRegistry2.default.getByID(style);
+    return _ReactNativePropRegistry.default.getByID(style);
   }
+
   return style;
 }
 
@@ -35,7 +32,7 @@ function flattenStyle(style) {
   }
 
   if (process.env.NODE_ENV !== 'production') {
-    (0, _invariant2.default)(style !== true, 'style may be false but not true');
+    (0, _invariant.default)(style !== true, 'style may be false but not true');
   }
 
   if (!Array.isArray(style)) {
@@ -44,8 +41,10 @@ function flattenStyle(style) {
   }
 
   var result = {};
+
   for (var i = 0, styleLength = style.length; i < styleLength; ++i) {
     var computedStyle = flattenStyle(style[i]);
+
     if (computedStyle) {
       for (var key in computedStyle) {
         var value = computedStyle[key];
@@ -53,8 +52,9 @@ function flattenStyle(style) {
       }
     }
   }
+
   return result;
 }
 
-exports.default = flattenStyle;
-module.exports = exports['default'];
+var _default = flattenStyle;
+exports.default = _default;

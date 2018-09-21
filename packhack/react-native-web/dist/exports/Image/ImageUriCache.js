@@ -1,7 +1,3 @@
-"use strict";
-
-exports.__esModule = true;
-exports.default = void 0;
 var dataUriPattern = /^data:/;
 
 var ImageUriCache =
@@ -66,6 +62,6 @@ function () {
   return ImageUriCache;
 }();
 
-exports.default = ImageUriCache;
 ImageUriCache._maximumEntries = 256;
 ImageUriCache._entries = {};
+export { ImageUriCache as default };

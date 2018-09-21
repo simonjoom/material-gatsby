@@ -6,15 +6,12 @@
  *
  * 
  */
-
 import createStrictShapeTypeChecker from '../../modules/createStrictShapeTypeChecker';
 import { number } from 'prop-types';
-
 var EdgeInsetsPropType = createStrictShapeTypeChecker({
   top: number,
   left: number,
   bottom: number,
   right: number
 });
-
 export default EdgeInsetsPropType;

@@ -6,7 +6,6 @@
  *
  * 
  */
-
 function emptyFunction() {}
 
 var AccessibilityInfo = {
@@ -48,5 +47,4 @@ var AccessibilityInfo = {
     return;
   }
 };
-
 export default AccessibilityInfo;

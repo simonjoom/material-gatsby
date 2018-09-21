@@ -6,7 +6,6 @@
  *
  * 
  */
-
 import ReactNativeStyleResolver from './ReactNativeStyleResolver';
 var styleResolver = new ReactNativeStyleResolver();
 export default styleResolver;

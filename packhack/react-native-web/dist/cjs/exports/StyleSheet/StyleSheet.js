@@ -1,37 +1,33 @@
-'use strict';
+"use strict";
 
 exports.__esModule = true;
+exports.default = void 0;
 
-var _StyleSheetValidation = require('./StyleSheetValidation');
+var _StyleSheetValidation = _interopRequireDefault(require("./StyleSheetValidation"));
 
-var _StyleSheetValidation2 = _interopRequireDefault(_StyleSheetValidation);
+var _ReactNativePropRegistry = _interopRequireDefault(require("../../modules/ReactNativePropRegistry"));
 
-var _ReactNativePropRegistry = require('../../modules/ReactNativePropRegistry');
-
-var _ReactNativePropRegistry2 = _interopRequireDefault(_ReactNativePropRegistry);
-
-var _flattenStyle = require('./flattenStyle');
-
-var _flattenStyle2 = _interopRequireDefault(_flattenStyle);
+var _flattenStyle = _interopRequireDefault(require("./flattenStyle"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/**
+ * Copyright (c) 2016-present, Nicolas Gallagher.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * @noflow
+ */
 var absoluteFillObject = {
   position: 'absolute',
   left: 0,
   right: 0,
   top: 0,
   bottom: 0
-}; /**
-    * Copyright (c) 2016-present, Nicolas Gallagher.
-    *
-    * This source code is licensed under the MIT license found in the
-    * LICENSE file in the root directory of this source tree.
-    *
-    * @noflow
-    */
+};
 
-var absoluteFill = _ReactNativePropRegistry2.default.register(absoluteFillObject);
+var absoluteFill = _ReactNativePropRegistry.default.register(absoluteFillObject);
 
 var StyleSheet = {
   absoluteFill: absoluteFill,
@@ -47,17 +43,17 @@ var StyleSheet = {
     var result = {};
     Object.keys(styles).forEach(function (key) {
       if (process.env.NODE_ENV !== 'production') {
-        _StyleSheetValidation2.default.validateStyle(key, styles);
+        _StyleSheetValidation.default.validateStyle(key, styles);
       }
-      var id = styles[key] && _ReactNativePropRegistry2.default.register(styles[key]);
+
+      var id = styles[key] && _ReactNativePropRegistry.default.register(styles[key]);
+
       result[key] = id;
     });
     return result;
   },
-
-  flatten: _flattenStyle2.default,
+  flatten: _flattenStyle.default,
   hairlineWidth: 1
 };
-
-exports.default = StyleSheet;
-module.exports = exports['default'];
+var _default = StyleSheet;
+exports.default = _default;

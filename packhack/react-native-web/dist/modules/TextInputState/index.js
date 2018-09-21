@@ -7,14 +7,13 @@
  *
  * 
  */
-
 import UIManager from '../../exports/UIManager';
-
 /**
  * This class is responsible for coordinating the "focused"
  * state for TextInputs. All calls relating to the keyboard
  * should be funneled through here
  */
+
 var TextInputState = {
   /**
    * Internal state
@@ -29,9 +28,9 @@ var TextInputState = {
     if (document.activeElement !== this._currentlyFocusedNode) {
       this._currentlyFocusedNode = null;
     }
+
     return this._currentlyFocusedNode;
   },
-
 
   /**
    * @param {Object} TextInputID id of the text field to focus
@@ -41,12 +40,12 @@ var TextInputState = {
   focusTextInput: function focusTextInput(textFieldNode) {
     if (textFieldNode !== null) {
       this._currentlyFocusedNode = textFieldNode;
+
       if (document.activeElement !== textFieldNode) {
         UIManager.focus(textFieldNode);
       }
     }
   },
-
 
   /**
    * @param {Object} textFieldNode id of the text field to focus
@@ -56,11 +55,11 @@ var TextInputState = {
   blurTextInput: function blurTextInput(textFieldNode) {
     if (textFieldNode !== null) {
       this._currentlyFocusedNode = null;
+
       if (document.activeElement === textFieldNode) {
         UIManager.blur(textFieldNode);
       }
     }
   }
 };
-
 export default TextInputState;

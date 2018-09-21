@@ -6,11 +6,9 @@
  *
  * @noflow
  */
-
 import StyleSheetValidation from './StyleSheetValidation';
 import ReactNativePropRegistry from '../../modules/ReactNativePropRegistry';
 import flattenStyle from './flattenStyle';
-
 var absoluteFillObject = {
   position: 'absolute',
   left: 0,
@@ -19,7 +17,6 @@ var absoluteFillObject = {
   bottom: 0
 };
 var absoluteFill = ReactNativePropRegistry.register(absoluteFillObject);
-
 var StyleSheet = {
   absoluteFill: absoluteFill,
   absoluteFillObject: absoluteFillObject,
@@ -36,14 +33,13 @@ var StyleSheet = {
       if (process.env.NODE_ENV !== 'production') {
         StyleSheetValidation.validateStyle(key, styles);
       }
+
       var id = styles[key] && ReactNativePropRegistry.register(styles[key]);
       result[key] = id;
     });
     return result;
   },
-
   flatten: flattenStyle,
   hairlineWidth: 1
 };
-
 export default StyleSheet;

@@ -6,6 +6,5 @@
  *
  * 
  */
-
 import LayoutAnimation from '../../vendor/react-native/LayoutAnimation';
 export default LayoutAnimation;

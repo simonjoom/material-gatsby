@@ -1,29 +1,8 @@
-"use strict";
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
-var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutPropertiesLoose"));
-
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
-
-var _ensureComponentIsNative = _interopRequireDefault(require("../../modules/ensureComponentIsNative"));
-
-var _Image = _interopRequireDefault(require("../Image"));
-
-var _StyleSheet = _interopRequireDefault(require("../StyleSheet"));
-
-var _View = _interopRequireDefault(require("../View"));
-
-var _ViewPropTypes = _interopRequireDefault(require("../ViewPropTypes"));
-
-var _react = _interopRequireWildcard(require("react"));
+function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
 
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
@@ -33,6 +12,12 @@ var _react = _interopRequireWildcard(require("react"));
  *
  * 
  */
+import ensureComponentIsNative from '../../modules/ensureComponentIsNative';
+import Image from '../Image';
+import StyleSheet from '../StyleSheet';
+import View from '../View';
+import ViewPropTypes from '../ViewPropTypes';
+import React, { Component } from 'react';
 var emptyObject = {};
 /**
  * Very simple drop-in replacement for <Image> which supports nesting views.
@@ -41,7 +26,7 @@ var emptyObject = {};
 var ImageBackground =
 /*#__PURE__*/
 function (_Component) {
-  (0, _inheritsLoose2.default)(ImageBackground, _Component);
+  _inheritsLoose(ImageBackground, _Component);
 
   function ImageBackground() {
     var _this;
@@ -67,7 +52,7 @@ function (_Component) {
     var viewRef = this._viewRef;
 
     if (viewRef) {
-      (0, _ensureComponentIsNative.default)(viewRef);
+      ensureComponentIsNative(viewRef);
       viewRef.setNativeProps(props);
     }
   };
@@ -78,13 +63,14 @@ function (_Component) {
         style = _this$props.style,
         imageStyle = _this$props.imageStyle,
         imageRef = _this$props.imageRef,
-        props = (0, _objectWithoutPropertiesLoose2.default)(_this$props, ["children", "style", "imageStyle", "imageRef"]);
-    return _react.default.createElement(_View.default, {
+        props = _objectWithoutPropertiesLoose(_this$props, ["children", "style", "imageStyle", "imageRef"]);
+
+    return React.createElement(View, {
       ref: this._captureRef,
       style: style
-    }, _react.default.createElement(_Image.default, (0, _extends2.default)({}, props, {
+    }, React.createElement(Image, _extends({}, props, {
       ref: imageRef,
-      style: [_StyleSheet.default.absoluteFill, {
+      style: [StyleSheet.absoluteFill, {
         // Temporary Workaround:
         // Current (imperfect yet) implementation of <Image> overwrites width and height styles
         // (which is not quite correct), and these styles conflict with explicitly set styles
@@ -100,14 +86,9 @@ function (_Component) {
   };
 
   return ImageBackground;
-}(_react.Component);
-/*
-ImageBackground.propTypes = (0, _extends2.default)({}, _Image.default.propTypes, {
-  imageStyle: _Image.default.propTypes.style,
-  style: _ViewPropTypes.default.style
-});*/
+}(Component);
+
 ImageBackground.defaultProps = {
   style: emptyObject
 };
-var _default = ImageBackground;
-exports.default = _default;
+export default ImageBackground;

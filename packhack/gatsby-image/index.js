@@ -1,33 +1,21 @@
-"use strict";
+function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
- 
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-exports.__esModule = true;
-exports.default = void 0;
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
-
-var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
-var _react = _interopRequireDefault(require("react"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _reactNative = require("react-native");
-
-var _jsxFileName = "/Users/simon/gatsby/gatsby-blog/packhack/gatsby-image/src/index.js";
-
+import React from 'react';
+import PropTypes from 'prop-types';
+import { View, Image } from 'react-native';
 /*
 const FancyImage = React.forwardRef((props, ref) => (
   <Image forwardedRef={ref} {...props} />
 ))
 const ref = React.createRef()*/
 // Handle legacy names for image queries.
+
 var convertProps = function convertProps(props) {
-  var convertedProps = (0, _extends2.default)({}, props);
+  var convertedProps = _extends({}, props);
 
   if (convertedProps.sizes) {
     convertedProps.fluid = convertedProps.sizes;
@@ -135,7 +123,7 @@ Img.propTypes = {
 var GatsbyImage =
 /*#__PURE__*/
 function (_React$Component) {
-  (0, _inheritsLoose2.default)(GatsbyImage, _React$Component);
+  _inheritsLoose(GatsbyImage, _React$Component);
 
   function GatsbyImage(props) {
     var _this;
@@ -169,7 +157,7 @@ function (_React$Component) {
       imgLoaded: imgLoaded,
       IOSupported: IOSupported
     };
-    _this.handleRef = _this.handleRef.bind((0, _assertThisInitialized2.default)((0, _assertThisInitialized2.default)(_this)));
+    _this.handleRef = _this.handleRef.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   } // Implement srcset
 
@@ -177,74 +165,70 @@ function (_React$Component) {
   var _proto = GatsbyImage.prototype;
 
   _proto.srcset = function srcset(images, mxW, mxH, aspectRatio) {
-  var maxWidth,maxHeight,bigW,bigH;
-  
-   if (typeof window !== 'undefined') {
-   bigW=(window.innerWidth > 0 ? window.innerWidth : screen.width)
-   bigH=(window.innerHeight > 0 ? window.innerHeight : screen.height)
-   }else{
-   bigW=800
-   bigH=600
-   }
-  if(mxW){
-  if(typeof mxW=="string"&&mxW.indexOf("%")!==-1)
-  maxWidth=bigW*(parseInt(mxW)/100)
-  else
-  maxWidth=parseInt(mxW,10)
-  }else{
-  maxWidth=bigW
-  }
-  
-  if(mxH){
-  if(typeof mxH=="string"&&mxH.indexOf("%")!==-1)
-  maxHeight=bigH*(parseInt(mxH)/100)
-  else
-  maxHeight=parseInt(mxH,10)
-  }else{
-  maxHeight=bigH
-  }
-  
-   maxWidth=(this.props.maxWidth&&parseInt(this.props.maxWidth)<maxWidth)?parseInt(this.props.maxWidth):maxWidth
+    var maxWidth, maxHeight, bigW, bigH;
+
+    if (typeof window !== 'undefined') {
+      bigW = window.innerWidth > 0 ? window.innerWidth : screen.width;
+      bigH = window.innerHeight > 0 ? window.innerHeight : screen.height;
+    } else {
+      bigW = 800;
+      bigH = 600;
+    }
+
+    if (mxW) {
+      if (typeof mxW == "string" && mxW.indexOf("%") !== -1) maxWidth = bigW * (parseInt(mxW) / 100);else maxWidth = parseInt(mxW, 10);
+    } else {
+      maxWidth = bigW;
+    }
+
+    if (mxH) {
+      if (typeof mxH == "string" && mxH.indexOf("%") !== -1) maxHeight = bigH * (parseInt(mxH) / 100);else maxHeight = parseInt(mxH, 10);
+    } else {
+      maxHeight = bigH;
+    }
+
+    maxWidth = this.props.maxWidth && parseInt(this.props.maxWidth) < maxWidth ? parseInt(this.props.maxWidth) : maxWidth;
     var maxDensity = 1;
     var ratio = 1 / aspectRatio;
 
     if (typeof window !== 'undefined') {
       maxDensity = window.devicePixelRatio;
     }
-    
-    var filename,density,height,width,widthresult,widthresultabs,filenameresult;
-    
+
+    var filename, density, height, width, widthresult, widthresultabs, filenameresult;
     var candidates = images.split(',');
-    if (candidates.length == 0) return false
-    var widthresultabs=10000;
+    if (candidates.length == 0) return false;
+    var widthresultabs = 10000;
+
     for (var i = 0; i < candidates.length; i++) {
       // The following regular expression was created based on the rules
       // in the srcset W3C specification available at:
       // http://www.w3.org/html/wg/drafts/srcset/w3c-srcset/
       var descriptors = candidates[i].match(/^\s*([^\s]+)\s*(\s(\d+)w)?\s*(\s(\d+)h)?\s*(\s(\d+)x)?\s*$/);
-      filename = descriptors[1]; 
-      width = parseInt(descriptors[3],10) || false; 
-      //if (width) height = width * ratio;
-      density = descriptors[7] || 1; 
-      if (width && Math.abs(width-maxWidth)<widthresultabs){ 
-      widthresult=width;
-      height = width * ratio;
-      filenameresult=filename;
-      widthresultabs=Math.abs(width-maxWidth);
+      filename = descriptors[1];
+      width = parseInt(descriptors[3], 10) || false; //if (width) height = width * ratio;
+
+      density = descriptors[7] || 1;
+
+      if (width && Math.abs(width - maxWidth) < widthresultabs) {
+        widthresult = width;
+        height = width * ratio;
+        filenameresult = filename;
+        widthresultabs = Math.abs(width - maxWidth);
         continue;
-      } 
-      
+      }
+
       if (density && density > maxDensity) {
         continue;
       }
 
-console.log("filenameresult",filenameresult)
       return {
         result: filenameresult,
         width: widthresult,
         height: height
       };
     }
+
     return {
       result: filenameresult,
       width: widthresult,
@@ -273,7 +257,7 @@ console.log("filenameresult",filenameresult)
         alt = _convertProps.alt,
         resizeMode = _convertProps.resizeMode,
         width = _convertProps.width,
-        content=_convertProps.content,
+        content = _convertProps.content,
         maxWidth = _convertProps.maxWidth,
         height = _convertProps.height,
         className = _convertProps.className,
@@ -286,7 +270,7 @@ console.log("filenameresult",filenameresult)
         backgroundColor = _convertProps.backgroundColor;
 
     var bgColor;
-console.log("className",resizeMode)
+
     if (typeof backgroundColor === "boolean") {
       bgColor = "lightgray";
     } else {
@@ -295,8 +279,8 @@ console.log("className",resizeMode)
 
     if (fluid) {
       var image = fluid; // var Pattern = /\(max-width: (.*)px\).*vw, (.*)px/
- 
-      var srcImage, src, srcSet, presentationHeight, Pattern, match ;  
+
+      var srcImage, src, srcSet, presentationHeight, Pattern, match;
 
       if (height) {
         Pattern = /(.*)px/;
@@ -316,13 +300,15 @@ console.log("className",resizeMode)
         }
       }
 
-      var imagePlaceholderStyle = (0, _extends2.default)({
+      var imagePlaceholderStyle = _extends({
         opacity: this.state.imgLoaded ? 0 : 1,
         transitionDelay: "0.25s"
       }, imgStyle, placeholderStyle);
-      var imageStyle = (0, _extends2.default)({
+
+      var imageStyle = _extends({
         opacity: this.state.imgLoaded || this.props.fadeIn === false ? 1 : 0
       }, imgStyle); // Use webp by default if browser supports it
+
 
       if (image.srcWebp && image.srcSetWebp && isWebpSupported()) {
         srcImage = this.srcset(image.srcSetWebp, width, height, image.aspectRatio);
@@ -331,13 +317,12 @@ console.log("className",resizeMode)
         srcImage = this.srcset(image.srcSet, width, height, image.aspectRatio);
         srcSet = image.srcSet;
       }
-      
+
       src = srcImage.result;
       image.width = srcImage.width;
-      
       image.height = srcImage.height;
-      var srcFront = image.tracedSVG 
-      //|| image.base64; not good change size of image
+      var srcFront = image.tracedSVG; //|| image.base64 not good
+
       var bgStyle = {
         backgroundColor: bgColor,
         position: "absolute",
@@ -350,37 +335,25 @@ console.log("className",resizeMode)
       };
       var isconstrained = width !== '100%' && width; // The outer div is necessary to reset the z-index to 0.
 
-      return _react.default.createElement("div", {
-      className:className,
+      /*   style={{
+           height: presentationHeight ? presentationHeight : 'auto',
+           width: width !== '100%' ? srcImage.width : '100%',
+         }}*/
+
+      return React.createElement("div", {
         style: {
-          width: width?width:"100%",
+          width: width ? width : "100%",
           maxWidth: maxWidth,
           margin: '0 auto',
-          position:'relative',
+          position: 'relative',
           alignSelf: "center"
-        },
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 298
-        },
-        __self: this
-      }, bgColor && _react.default.createElement(_reactNative.View, {
-      	style:bgStyle,
+        }
+      }, bgColor && React.createElement(View, {
         title: title,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 304
-        },
-        __self: this
-      }), _react.default.createElement("div", {
-        ref: this.handleRef,
-        children:content,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 305
-        },
-        __self: this
-      }), this.state.isVisible && _react.default.createElement(_reactNative.Image, {
+        style: bgStyle
+      }), React.createElement("div", {
+        ref: this.handleRef
+      }, content), this.state.isVisible && React.createElement(Image, {
         accessibilityLabel: alt,
         resizeMode: resizeMode,
         title: title,
@@ -393,8 +366,8 @@ console.log("className",resizeMode)
         style: {
           paddingBottom: presentationHeight ? presentationHeight : '60%',
           maxWidth: '100%',
-        opacity: this.state.imgLoaded ? 1 : 0,
-        transitionDelay: "0.35s"
+          opacity: this.state.imgLoaded ? 1 : 0,
+          transitionDelay: "0.35s"
         },
         onLoadEnd: function onLoadEnd() {
           _this3.state.IOSupported && _this3.setState({
@@ -402,12 +375,7 @@ console.log("className",resizeMode)
           });
           _this3.props.onLoad && _this3.props.onLoad();
         },
-        onError: this.props.onError,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 308
-        },
-        __self: this
+        onError: this.props.onError
       }));
     }
 
@@ -415,34 +383,32 @@ console.log("className",resizeMode)
   };
 
   return GatsbyImage;
-}(_react.default.Component);
+}(React.Component);
 
-_reactNative.Image.defaultProps = {
+Image.defaultProps = {
   fadeIn: true,
   alt: "",
   resizeMode: 'center'
 };
-
-var fixedObject = _propTypes.default.shape({
-  width: _propTypes.default.number.isRequired,
-  height: _propTypes.default.number.isRequired,
-  src: _propTypes.default.string.isRequired,
-  srcSet: _propTypes.default.string.isRequired,
-  base64: _propTypes.default.string,
-  tracedSVG: _propTypes.default.string,
-  srcWebp: _propTypes.default.string,
-  srcSetWebp: _propTypes.default.string
+var fixedObject = PropTypes.shape({
+  width: PropTypes.number.isRequired,
+  height: PropTypes.number.isRequired,
+  src: PropTypes.string.isRequired,
+  srcSet: PropTypes.string.isRequired,
+  base64: PropTypes.string,
+  tracedSVG: PropTypes.string,
+  srcWebp: PropTypes.string,
+  srcSetWebp: PropTypes.string
 });
-
-var fluidObject = _propTypes.default.shape({
-  aspectRatio: _propTypes.default.number.isRequired,
-  src: _propTypes.default.string.isRequired,
-  srcSet: _propTypes.default.string.isRequired,
-  sizes: _propTypes.default.string.isRequired,
-  base64: _propTypes.default.string,
-  tracedSVG: _propTypes.default.string,
-  srcWebp: _propTypes.default.string,
-  srcSetWebp: _propTypes.default.string
+var fluidObject = PropTypes.shape({
+  aspectRatio: PropTypes.number.isRequired,
+  src: PropTypes.string.isRequired,
+  srcSet: PropTypes.string.isRequired,
+  sizes: PropTypes.string.isRequired,
+  base64: PropTypes.string,
+  tracedSVG: PropTypes.string,
+  srcWebp: PropTypes.string,
+  srcSetWebp: PropTypes.string
 });
 /*
 Image.propTypes = {
@@ -470,6 +436,4 @@ Image.propTypes = {
               }}
 }*/
 
-//var _default = (0, _applyNativeMethods.default)(GatsbyImage);
-var _default = GatsbyImage;
-exports.default = _default;
+export default GatsbyImage;

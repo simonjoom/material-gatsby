@@ -1,9 +1,18 @@
-'use strict';
+"use strict";
 
 exports.__esModule = true;
+exports.default = void 0;
 
-var _propTypes = require('prop-types');
+var _propTypes = require("prop-types");
 
+/**
+ * Copyright (c) 2017-present, Nicolas Gallagher.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
 var AnimationPropTypes = {
   animationDelay: _propTypes.string,
   animationDirection: (0, _propTypes.oneOf)(['alternate', 'alternate-reverse', 'normal', 'reverse']),
@@ -17,14 +26,6 @@ var AnimationPropTypes = {
   transitionDuration: _propTypes.string,
   transitionProperty: _propTypes.string,
   transitionTimingFunction: _propTypes.string
-}; /**
-    * Copyright (c) 2017-present, Nicolas Gallagher.
-    *
-    * This source code is licensed under the MIT license found in the
-    * LICENSE file in the root directory of this source tree.
-    *
-    * 
-    */
-
-exports.default = AnimationPropTypes;
-module.exports = exports['default'];
+};
+var _default = AnimationPropTypes;
+exports.default = _default;

@@ -8,10 +8,7 @@
  */
 'use strict';
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 import ListViewDataSource from '../ListView/ListViewDataSource';
-
 /**
  * Data source wrapper around ListViewDataSource to allow for tracking of
  * which row is swiped open and close opened row(s) when another row is swiped
@@ -21,11 +18,11 @@ import ListViewDataSource from '../ListView/ListViewDataSource';
  * ListViewDataSource is not subclassed.
  */
 
-var SwipeableListViewDataSource = function () {
+var SwipeableListViewDataSource =
+/*#__PURE__*/
+function () {
   function SwipeableListViewDataSource(params) {
     var _this = this;
-
-    _classCallCheck(this, SwipeableListViewDataSource);
 
     this._dataSource = new ListViewDataSource({
       getRowData: params.getRowData,
@@ -41,28 +38,26 @@ var SwipeableListViewDataSource = function () {
     });
   }
 
-  SwipeableListViewDataSource.prototype.cloneWithRowsAndSections = function cloneWithRowsAndSections(dataBlob, sectionIdentities, rowIdentities) {
-    this._dataSource = this._dataSource.cloneWithRowsAndSections(dataBlob, sectionIdentities, rowIdentities);
+  var _proto = SwipeableListViewDataSource.prototype;
 
+  _proto.cloneWithRowsAndSections = function cloneWithRowsAndSections(dataBlob, sectionIdentities, rowIdentities) {
+    this._dataSource = this._dataSource.cloneWithRowsAndSections(dataBlob, sectionIdentities, rowIdentities);
     this._dataBlob = dataBlob;
     this.rowIdentities = this._dataSource.rowIdentities;
     this.sectionIdentities = this._dataSource.sectionIdentities;
-
     return this;
-  };
-
-  // For the actual ListView to use
+  }; // For the actual ListView to use
 
 
-  SwipeableListViewDataSource.prototype.getDataSource = function getDataSource() {
+  _proto.getDataSource = function getDataSource() {
     return this._dataSource;
   };
 
-  SwipeableListViewDataSource.prototype.getOpenRowID = function getOpenRowID() {
+  _proto.getOpenRowID = function getOpenRowID() {
     return this._openRowID;
   };
 
-  SwipeableListViewDataSource.prototype.getFirstRowID = function getFirstRowID() {
+  _proto.getFirstRowID = function getFirstRowID() {
     /**
      * If rowIdentities is specified, find the first data row from there since
      * we don't want to attempt to bounce section headers. If unspecified, find
@@ -71,25 +66,26 @@ var SwipeableListViewDataSource = function () {
     if (this.rowIdentities) {
       return this.rowIdentities[0] && this.rowIdentities[0][0];
     }
+
     return Object.keys(this._dataBlob)[0];
   };
 
-  SwipeableListViewDataSource.prototype.getLastRowID = function getLastRowID() {
+  _proto.getLastRowID = function getLastRowID() {
     if (this.rowIdentities && this.rowIdentities.length) {
       var lastSection = this.rowIdentities[this.rowIdentities.length - 1];
+
       if (lastSection && lastSection.length) {
         return lastSection[lastSection.length - 1];
       }
     }
+
     return Object.keys(this._dataBlob)[this._dataBlob.length - 1];
   };
 
-  SwipeableListViewDataSource.prototype.setOpenRowID = function setOpenRowID(rowID) {
+  _proto.setOpenRowID = function setOpenRowID(rowID) {
     this._previousOpenRowID = this._openRowID;
     this._openRowID = rowID;
-
     this._dataSource = this._dataSource.cloneWithRowsAndSections(this._dataBlob, this.sectionIdentities, this.rowIdentities);
-
     return this;
   };
 

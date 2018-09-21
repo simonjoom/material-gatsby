@@ -7,6 +7,7 @@ var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runt
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 
 const autoprefixer = require(`autoprefixer`);
+const path = require(`path`);
 
 const flexbugs = require(`postcss-flexbugs-fixes`);
 
@@ -31,11 +32,11 @@ function () {
     program
   }) {
     const assetRelativeRoot = `static/`;
-    const vendorRegex = /(node_modules|bower_components)/;
+    const vendorRegex = /(node_modules|babelHelper|bower_components)/;
     const supportedBrowsers = program.browserslist;
     const PRODUCTION = !stage.includes(`develop`);
     const isSSR = stage.includes(`html`);
-
+console.log("PRODUCTION",PRODUCTION)
     const makeExternalOnly = original => (options = {}) => {
       let rule = original(options);
       rule.include = vendorRegex;
@@ -169,7 +170,16 @@ function () {
     /**
      * Javascript loader via babel, excludes node_modules
      */
-
+{
+      let jsx = (options = {}) => {
+        return {
+       //   test: /react-native-web.*\.jsx?/,
+       // type: 'javascript/esm',
+       //   use: [loaders.js(options)]
+        };
+      };
+      rules.jsx = jsx;
+    }
     {
       let js = (options = {}) => {
         return {
@@ -325,7 +335,7 @@ function () {
         cache: true,
         parallel: true,
         exclude: /\.min\.js/,
-        sourceMap: true,
+        sourceMap: false,
         terserOptions: Object.assign({
           compress: {
             drop_console: true
@@ -349,7 +359,10 @@ function () {
     }, options));
 
     plugins.moment = () => plugins.ignore(/^\.\/locale$/, /moment$/);
-
+    plugins.babelHelpers = () => plugins.provide({
+    babelHelpers: path.resolve(__dirname,"babelHelper.js") 
+    })
+    
     return {
       loaders,
       rules: rules,

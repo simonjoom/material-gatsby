@@ -6,6 +6,5 @@
  *
  * 
  */
-
 import SwipeableListView from '../../vendor/react-native/SwipeableListView';
 export default SwipeableListView;

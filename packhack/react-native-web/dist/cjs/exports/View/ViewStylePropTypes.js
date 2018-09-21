@@ -1,58 +1,39 @@
-'use strict';
+"use strict";
 
 exports.__esModule = true;
+exports.default = void 0;
 
-var _AnimationPropTypes = require('../../modules/AnimationPropTypes');
+var _AnimationPropTypes = _interopRequireDefault(require("../../modules/AnimationPropTypes"));
 
-var _AnimationPropTypes2 = _interopRequireDefault(_AnimationPropTypes);
+var _BorderPropTypes = _interopRequireDefault(require("../../modules/BorderPropTypes"));
 
-var _BorderPropTypes = require('../../modules/BorderPropTypes');
+var _ColorPropType = _interopRequireDefault(require("../ColorPropType"));
 
-var _BorderPropTypes2 = _interopRequireDefault(_BorderPropTypes);
+var _InteractionPropTypes = _interopRequireDefault(require("../../modules/InteractionPropTypes"));
 
-var _ColorPropType = require('../ColorPropType');
+var _LayoutPropTypes = _interopRequireDefault(require("../../modules/LayoutPropTypes"));
 
-var _ColorPropType2 = _interopRequireDefault(_ColorPropType);
+var _ShadowPropTypes = _interopRequireDefault(require("../../modules/ShadowPropTypes"));
 
-var _InteractionPropTypes = require('../../modules/InteractionPropTypes');
+var _TransformPropTypes = _interopRequireDefault(require("../../modules/TransformPropTypes"));
 
-var _InteractionPropTypes2 = _interopRequireDefault(_InteractionPropTypes);
-
-var _LayoutPropTypes = require('../../modules/LayoutPropTypes');
-
-var _LayoutPropTypes2 = _interopRequireDefault(_LayoutPropTypes);
-
-var _ShadowPropTypes = require('../../modules/ShadowPropTypes');
-
-var _ShadowPropTypes2 = _interopRequireDefault(_ShadowPropTypes);
-
-var _TransformPropTypes = require('../../modules/TransformPropTypes');
-
-var _TransformPropTypes2 = _interopRequireDefault(_TransformPropTypes);
-
-var _propTypes = require('prop-types');
+var _propTypes = require("prop-types");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/**
- * Copyright (c) 2015-present, Nicolas Gallagher.
- * Copyright (c) 2015-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * 
- */
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 var overscrollBehaviorType = (0, _propTypes.oneOf)(['auto', 'contain', 'none']);
 
-var ViewStylePropTypes = Object.assign({}, _AnimationPropTypes2.default, _BorderPropTypes2.default, _InteractionPropTypes2.default, _LayoutPropTypes2.default, _ShadowPropTypes2.default, _TransformPropTypes2.default, {
-  backgroundColor: _ColorPropType2.default,
+var ViewStylePropTypes = _extends({}, _AnimationPropTypes.default, _BorderPropTypes.default, _InteractionPropTypes.default, _LayoutPropTypes.default, _ShadowPropTypes.default, _TransformPropTypes.default, {
+  backgroundColor: _ColorPropType.default,
   opacity: _propTypes.number,
+
   /**
    * @platform unsupported
    */
   elevation: _propTypes.number,
+
   /**
    * @platform web
    */
@@ -68,7 +49,7 @@ var ViewStylePropTypes = Object.assign({}, _AnimationPropTypes2.default, _Border
   clip: _propTypes.string,
   filter: _propTypes.string,
   outline: _propTypes.string,
-  outlineColor: _ColorPropType2.default,
+  outlineColor: _ColorPropType.default,
   overscrollBehavior: overscrollBehaviorType,
   overscrollBehaviorX: overscrollBehaviorType,
   overscrollBehaviorY: overscrollBehaviorType,
@@ -76,5 +57,5 @@ var ViewStylePropTypes = Object.assign({}, _AnimationPropTypes2.default, _Border
   WebkitOverflowScrolling: (0, _propTypes.oneOf)(['auto', 'touch'])
 });
 
-exports.default = ViewStylePropTypes;
-module.exports = exports['default'];
+var _default = ViewStylePropTypes;
+exports.default = _default;

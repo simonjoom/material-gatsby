@@ -12,18 +12,19 @@
 import invariant from 'fbjs/lib/invariant';
 import NativeModules from '../../../exports/NativeModules';
 import NativeEventEmitter from '../NativeEventEmitter';
-
 var NativeAnimatedModule = NativeModules.NativeAnimatedModule;
+var __nativeAnimatedNodeTagCount = 1;
+/* used for animated nodes */
 
-var __nativeAnimatedNodeTagCount = 1; /* used for animated nodes */
-var __nativeAnimationIdCount = 1; /* used for started animations */
+var __nativeAnimationIdCount = 1;
+/* used for started animations */
 
-var nativeEventEmitter = void 0;
-
+var nativeEventEmitter;
 /**
  * Simple wrappers around NativeAnimatedModule to provide flow and autocmplete support for
  * the native module methods
  */
+
 var API = {
   createAnimatedNode: function createAnimatedNode(tag, config) {
     assertNativeAnimatedModule();
@@ -90,26 +91,27 @@ var API = {
     NativeAnimatedModule.removeAnimatedEventFromView(viewTag, eventName, animatedNodeTag);
   }
 };
-
 /**
  * Styles allowed by the native animated implementation.
  *
  * In general native animated implementation should support any numeric property that doesn't need
  * to be updated through the shadow view hierarchy (all non-layout properties).
  */
+
 var STYLES_WHITELIST = {
   opacity: true,
   transform: true,
+
   /* ios styles */
   shadowOpacity: true,
   shadowRadius: true,
+
   /* legacy android transform properties */
   scaleX: true,
   scaleY: true,
   translateX: true,
   translateY: true
 };
-
 var TRANSFORM_WHITELIST = {
   translateX: true,
   translateY: true,
@@ -121,7 +123,6 @@ var TRANSFORM_WHITELIST = {
   rotateY: true,
   perspective: true
 };
-
 var SUPPORTED_INTERPOLATION_PARAMS = {
   inputRange: true,
   outputRange: true,
@@ -145,7 +146,7 @@ function addWhitelistedInterpolationParam(param) {
 function validateTransform(configs) {
   configs.forEach(function (config) {
     if (!TRANSFORM_WHITELIST.hasOwnProperty(config.property)) {
-      throw new Error('Property \'' + config.property + '\' is not supported by native animated module');
+      throw new Error("Property '" + config.property + "' is not supported by native animated module");
     }
   });
 }
@@ -153,7 +154,7 @@ function validateTransform(configs) {
 function validateStyles(styles) {
   for (var key in styles) {
     if (!STYLES_WHITELIST.hasOwnProperty(key)) {
-      throw new Error('Style property \'' + key + '\' is not supported by native animated module');
+      throw new Error("Style property '" + key + "' is not supported by native animated module");
     }
   }
 }
@@ -161,7 +162,7 @@ function validateStyles(styles) {
 function validateInterpolation(config) {
   for (var key in config) {
     if (!SUPPORTED_INTERPOLATION_PARAMS.hasOwnProperty(key)) {
-      throw new Error('Interpolation property \'' + key + '\' is not supported by native animated module');
+      throw new Error("Interpolation property '" + key + "' is not supported by native animated module");
     }
   }
 }
@@ -186,6 +187,7 @@ function shouldUseNativeDriver(config) {
       console.warn('Animated: `useNativeDriver` is not supported because the native ' + 'animated module is missing. Falling back to JS-based animation. To ' + 'resolve this, add `RCTAnimation` module to this app, or remove ' + '`useNativeDriver`. ' + 'More info: https://github.com/facebook/react-native/issues/11094#issuecomment-263240420');
       _warnedMissingNativeAnimated = true;
     }
+
     return false;
   }
 
@@ -204,14 +206,15 @@ var NativeAnimatedHelper = {
   generateNewAnimationId: generateNewAnimationId,
   assertNativeAnimatedModule: assertNativeAnimatedModule,
   shouldUseNativeDriver: shouldUseNativeDriver,
+
   get nativeEventEmitter() {
     if (!nativeEventEmitter) {
       nativeEventEmitter = new NativeEventEmitter(NativeAnimatedModule);
     }
+
     return nativeEventEmitter;
   }
+
 };
-
 export { API, addWhitelistedStyleProp, addWhitelistedTransformProp, addWhitelistedInterpolationParam, validateStyles, validateTransform, validateInterpolation, generateNewNodeTag, generateNewAnimationId, assertNativeAnimatedModule, shouldUseNativeDriver };
-
 export default NativeAnimatedHelper;

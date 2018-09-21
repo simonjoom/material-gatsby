@@ -1,6 +1,8 @@
 "use strict";
 
 exports.__esModule = true;
+exports.default = void 0;
+
 /**
  * Copyright (c) 2016-present, Nicolas Gallagher.
  * Copyright (c) 2015-present, Facebook, Inc.
@@ -10,7 +12,6 @@ exports.__esModule = true;
  *
  * 
  */
-
 function emptyFunction() {}
 
 var BackHandler = {
@@ -20,9 +21,7 @@ var BackHandler = {
       remove: emptyFunction
     };
   },
-
   removeEventListener: emptyFunction
 };
-
-exports.default = BackHandler;
-module.exports = exports["default"];
+var _default = BackHandler;
+exports.default = _default;

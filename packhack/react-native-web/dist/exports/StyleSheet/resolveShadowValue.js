@@ -6,11 +6,12 @@
  *
  * 
  */
-
 import normalizeColor from '../../modules/normalizeColor';
 import normalizeValue from './normalizeValue';
-
-var defaultOffset = { height: 0, width: 0 };
+var defaultOffset = {
+  height: 0,
+  width: 0
+};
 
 var resolveShadowValue = function resolveShadowValue(style) {
   var shadowColor = style.shadowColor,
@@ -26,8 +27,9 @@ var resolveShadowValue = function resolveShadowValue(style) {
   var offsetY = normalizeValue(null, height);
   var blurRadius = normalizeValue(null, shadowRadius || 0);
   var color = normalizeColor(shadowColor || 'black', shadowOpacity);
+
   if (color) {
-    return offsetX + ' ' + offsetY + ' ' + blurRadius + ' ' + color;
+    return offsetX + " " + offsetY + " " + blurRadius + " " + color;
   }
 };
 

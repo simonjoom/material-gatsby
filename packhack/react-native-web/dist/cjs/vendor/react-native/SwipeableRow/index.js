@@ -10,46 +10,27 @@
 'use strict';
 
 exports.__esModule = true;
+exports.default = void 0;
 
-var _Animated = require('../../../exports/Animated');
+var _Animated = _interopRequireDefault(require("../../../exports/Animated"));
 
-var _Animated2 = _interopRequireDefault(_Animated);
+var _I18nManager = _interopRequireDefault(require("../../../exports/I18nManager"));
 
-var _I18nManager = require('../../../exports/I18nManager');
+var _PanResponder = _interopRequireDefault(require("../../../exports/PanResponder"));
 
-var _I18nManager2 = _interopRequireDefault(_I18nManager);
+var _react = _interopRequireDefault(require("react"));
 
-var _PanResponder = require('../../../exports/PanResponder');
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _PanResponder2 = _interopRequireDefault(_PanResponder);
+var _StyleSheet = _interopRequireDefault(require("../../../exports/StyleSheet"));
 
-var _react = require('react');
+var _reactTimerMixin = _interopRequireDefault(require("react-timer-mixin"));
 
-var _react2 = _interopRequireDefault(_react);
+var _View = _interopRequireDefault(require("../../../exports/View"));
 
-var _propTypes = require('prop-types');
+var _createReactClass = _interopRequireDefault(require("create-react-class"));
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _StyleSheet = require('../../../exports/StyleSheet');
-
-var _StyleSheet2 = _interopRequireDefault(_StyleSheet);
-
-var _reactTimerMixin = require('react-timer-mixin');
-
-var _reactTimerMixin2 = _interopRequireDefault(_reactTimerMixin);
-
-var _View = require('../../../exports/View');
-
-var _View2 = _interopRequireDefault(_View);
-
-var _createReactClass = require('create-react-class');
-
-var _createReactClass2 = _interopRequireDefault(_createReactClass);
-
-var _emptyFunction = require('fbjs/lib/emptyFunction');
-
-var _emptyFunction2 = _interopRequireDefault(_emptyFunction);
+var _emptyFunction = _interopRequireDefault(require("fbjs/lib/emptyFunction"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -57,30 +38,28 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * found when Flow v0.54 was deployed. To see the error delete this comment and
  * run Flow. */
 var isRTL = function isRTL() {
-  return _I18nManager2.default.isRTL;
-};
-
-// NOTE: Eventually convert these consts to an input object of configurations
-
+  return _I18nManager.default.isRTL;
+}; // NOTE: Eventually convert these consts to an input object of configurations
 // Position of the left of the swipable item when closed
-var CLOSED_LEFT_POSITION = 0;
-// Minimum swipe distance before we recognize it as such
-var HORIZONTAL_SWIPE_DISTANCE_THRESHOLD = 10;
-// Minimum swipe speed before we fully animate the user's action (open/close)
-var HORIZONTAL_FULL_SWIPE_SPEED_THRESHOLD = 0.3;
-// Factor to divide by to get slow speed; i.e. 4 means 1/4 of full speed
-var SLOW_SPEED_SWIPE_FACTOR = 4;
-// Time, in milliseconds, of how long the animated swipe should be
-var SWIPE_DURATION = 300;
 
+
+var CLOSED_LEFT_POSITION = 0; // Minimum swipe distance before we recognize it as such
+
+var HORIZONTAL_SWIPE_DISTANCE_THRESHOLD = 10; // Minimum swipe speed before we fully animate the user's action (open/close)
+
+var HORIZONTAL_FULL_SWIPE_SPEED_THRESHOLD = 0.3; // Factor to divide by to get slow speed; i.e. 4 means 1/4 of full speed
+
+var SLOW_SPEED_SWIPE_FACTOR = 4; // Time, in milliseconds, of how long the animated swipe should be
+
+var SWIPE_DURATION = 300;
 /**
  * On SwipeableListView mount, the 1st item will bounce to show users it's
  * possible to swipe
  */
-var ON_MOUNT_BOUNCE_DELAY = 700;
-var ON_MOUNT_BOUNCE_DURATION = 400;
 
-// Distance left of closed position to bounce back when right-swiping from closed
+var ON_MOUNT_BOUNCE_DELAY = 700;
+var ON_MOUNT_BOUNCE_DURATION = 400; // Distance left of closed position to bounce back when right-swiping from closed
+
 var RIGHT_SWIPE_BOUNCE_BACK_DISTANCE = 30;
 var RIGHT_SWIPE_BOUNCE_BACK_DURATION = 300;
 /**
@@ -88,8 +67,8 @@ var RIGHT_SWIPE_BOUNCE_BACK_DURATION = 300;
  * Must be multiplied by SLOW_SPEED_SWIPE_FACTOR because gestureState.dx tracks
  * how far the finger swipes, and not the actual animation distance.
 */
-var RIGHT_SWIPE_THRESHOLD = 30 * SLOW_SPEED_SWIPE_FACTOR;
 
+var RIGHT_SWIPE_THRESHOLD = 30 * SLOW_SPEED_SWIPE_FACTOR;
 /**
  * Creates a swipable row that allows taps on the main item and a custom View
  * on the item hidden behind the row. Typically this should be used in
@@ -97,39 +76,16 @@ var RIGHT_SWIPE_THRESHOLD = 30 * SLOW_SPEED_SWIPE_FACTOR;
  * used in a normal ListView. See the renderRow for SwipeableListView to see how
  * to use this component separately.
  */
-var SwipeableRow = (0, _createReactClass2.default)({
+
+var SwipeableRow = (0, _createReactClass.default)({
   displayName: 'SwipeableRow',
   _panResponder: {},
   _previousLeft: CLOSED_LEFT_POSITION,
-
-  mixins: [_reactTimerMixin2.default],
-
-  propTypes: {
-    children: _propTypes2.default.any,
-    isOpen: _propTypes2.default.bool,
-    preventSwipeRight: _propTypes2.default.bool,
-    maxSwipeDistance: _propTypes2.default.number.isRequired,
-    onOpen: _propTypes2.default.func.isRequired,
-    onClose: _propTypes2.default.func.isRequired,
-    onSwipeEnd: _propTypes2.default.func.isRequired,
-    onSwipeStart: _propTypes2.default.func.isRequired,
-    // Should bounce the row on mount
-    shouldBounceOnMount: _propTypes2.default.bool,
-    /**
-     * A ReactElement that is unveiled when the user swipes
-     */
-    slideoutView: _propTypes2.default.node.isRequired,
-    /**
-     * The minimum swipe distance required before fully animating the swipe. If
-     * the user swipes less than this distance, the item will return to its
-     * previous (open/close) position.
-     */
-    swipeThreshold: _propTypes2.default.number.isRequired
-  },
-
+  mixins: [_reactTimerMixin.default],
   getInitialState: function getInitialState() {
     return {
-      currentLeft: new _Animated2.default.Value(this._previousLeft),
+      currentLeft: new _Animated.default.Value(this._previousLeft),
+
       /**
        * In order to render component A beneath component B, A must be rendered
        * before B. However, this will cause "flickering", aka we see A briefly
@@ -145,15 +101,15 @@ var SwipeableRow = (0, _createReactClass2.default)({
       isOpen: false,
       preventSwipeRight: false,
       maxSwipeDistance: 0,
-      onOpen: _emptyFunction2.default,
-      onClose: _emptyFunction2.default,
-      onSwipeEnd: _emptyFunction2.default,
-      onSwipeStart: _emptyFunction2.default,
+      onOpen: _emptyFunction.default,
+      onClose: _emptyFunction.default,
+      onSwipeEnd: _emptyFunction.default,
+      onSwipeStart: _emptyFunction.default,
       swipeThreshold: 30
     };
   },
   UNSAFE_componentWillMount: function UNSAFE_componentWillMount() {
-    this._panResponder = _PanResponder2.default.create({
+    this._panResponder = _PanResponder.default.create({
       onMoveShouldSetPanResponderCapture: this._handleMoveShouldSetPanResponderCapture,
       onPanResponderGrant: this._handlePanResponderGrant,
       onPanResponderMove: this._handlePanResponderMove,
@@ -189,33 +145,31 @@ var SwipeableRow = (0, _createReactClass2.default)({
   },
   render: function render() {
     // The view hidden behind the main view
-    var slideOutView = void 0;
+    var slideOutView;
+
     if (this.state.isSwipeableViewRendered && this.state.rowHeight) {
-      slideOutView = _react2.default.createElement(
-        _View2.default,
-        { style: [styles.slideOutContainer, { height: this.state.rowHeight }] },
-        this.props.slideoutView
-      );
-    }
+      slideOutView = _react.default.createElement(_View.default, {
+        style: [styles.slideOutContainer, {
+          height: this.state.rowHeight
+        }]
+      }, this.props.slideoutView);
+    } // The swipeable item
 
-    // The swipeable item
-    var swipeableView = _react2.default.createElement(
-      _Animated2.default.View,
-      {
-        onLayout: this._onSwipeableViewLayout,
-        style: { transform: [{ translateX: this.state.currentLeft }] } },
-      this.props.children
-    );
 
-    return _react2.default.createElement(
-      _View2.default,
-      this._panResponder.panHandlers,
-      slideOutView,
-      swipeableView
-    );
+    var swipeableView = _react.default.createElement(_Animated.default.View, {
+      onLayout: this._onSwipeableViewLayout,
+      style: {
+        transform: [{
+          translateX: this.state.currentLeft
+        }]
+      }
+    }, this.props.children);
+
+    return _react.default.createElement(_View.default, this._panResponder.panHandlers, slideOutView, swipeableView);
   },
   close: function close() {
     this.props.onClose();
+
     this._animateToClosedPosition();
   },
   _onSwipeableViewLayout: function _onSwipeableViewLayout(event) {
@@ -264,13 +218,18 @@ var SwipeableRow = (0, _createReactClass2.default)({
   _onPanResponderTerminationRequest: function _onPanResponderTerminationRequest(event, gestureState) {
     return false;
   },
-  _animateTo: function _animateTo(toValue) {
+  _animateTo: function _animateTo(toValue, duration, callback) {
     var _this2 = this;
 
-    var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : SWIPE_DURATION;
-    var callback = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : _emptyFunction2.default;
+    if (duration === void 0) {
+      duration = SWIPE_DURATION;
+    }
 
-    _Animated2.default.timing(this.state.currentLeft, {
+    if (callback === void 0) {
+      callback = _emptyFunction.default;
+    }
+
+    _Animated.default.timing(this.state.currentLeft, {
       duration: duration,
       toValue: toValue,
       useNativeDriver: true
@@ -281,6 +240,7 @@ var SwipeableRow = (0, _createReactClass2.default)({
   },
   _animateToOpenPosition: function _animateToOpenPosition() {
     var maxSwipeDistance = isRTL() ? -this.props.maxSwipeDistance : this.props.maxSwipeDistance;
+
     this._animateTo(-maxSwipeDistance);
   },
   _animateToOpenPositionWith: function _animateToOpenPositionWith(speed, distMoved) {
@@ -293,12 +253,16 @@ var SwipeableRow = (0, _createReactClass2.default)({
      * Calculate the duration the row should take to swipe the remaining distance
      * at the same speed the user swiped (or the speed threshold)
      */
+
     var duration = Math.abs((this.props.maxSwipeDistance - Math.abs(distMoved)) / speed);
     var maxSwipeDistance = isRTL() ? -this.props.maxSwipeDistance : this.props.maxSwipeDistance;
+
     this._animateTo(-maxSwipeDistance, duration);
   },
-  _animateToClosedPosition: function _animateToClosedPosition() {
-    var duration = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : SWIPE_DURATION;
+  _animateToClosedPosition: function _animateToClosedPosition(duration) {
+    if (duration === void 0) {
+      duration = SWIPE_DURATION;
+    }
 
     this._animateTo(CLOSED_LEFT_POSITION, duration);
   },
@@ -311,10 +275,9 @@ var SwipeableRow = (0, _createReactClass2.default)({
      * so users know they should swipe right to get content.
      */
     var swipeBounceBackDistance = isRTL() ? -RIGHT_SWIPE_BOUNCE_BACK_DISTANCE : RIGHT_SWIPE_BOUNCE_BACK_DISTANCE;
+
     this._animateTo(-swipeBounceBackDistance, duration, this._animateToClosedPositionDuringBounce);
   },
-
-
   // Ignore swipes due to user's finger moving slightly when tapping
   _isValidSwipe: function _isValidSwipe(gestureState) {
     if (this.props.preventSwipeRight && this._previousLeft === CLOSED_LEFT_POSITION && gestureState.dx > 0) {
@@ -332,17 +295,21 @@ var SwipeableRow = (0, _createReactClass2.default)({
   },
   _handlePanResponderEnd: function _handlePanResponderEnd(event, gestureState) {
     var horizontalDistance = isRTL() ? -gestureState.dx : gestureState.dx;
+
     if (this._isSwipingRightFromClosed(gestureState)) {
       this.props.onOpen();
+
       this._animateBounceBack(RIGHT_SWIPE_BOUNCE_BACK_DURATION);
     } else if (this._shouldAnimateRemainder(gestureState)) {
       if (horizontalDistance < 0) {
         // Swiped left
         this.props.onOpen();
+
         this._animateToOpenPositionWith(gestureState.vx, horizontalDistance);
       } else {
         // Swiped right
         this.props.onClose();
+
         this._animateToClosedPosition();
       }
     } else {
@@ -357,7 +324,7 @@ var SwipeableRow = (0, _createReactClass2.default)({
   }
 });
 
-var styles = _StyleSheet2.default.create({
+var styles = _StyleSheet.default.create({
   slideOutContainer: {
     bottom: 0,
     left: 0,
@@ -367,5 +334,5 @@ var styles = _StyleSheet2.default.create({
   }
 });
 
-exports.default = SwipeableRow;
-module.exports = exports['default'];
+var _default = SwipeableRow;
+exports.default = _default;

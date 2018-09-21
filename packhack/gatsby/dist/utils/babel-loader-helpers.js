@@ -60,10 +60,20 @@ const prepareOptions = (babel, resolve = require.resolve) => {
       browsers: pluginBabelConfig.browserslist
     };
   }
+  
+fallbackPlugins.push(babel.createConfigItem([resolve(`@babel/plugin-external-helpers`)], {
+    type: `plugin`
+  }));
 fallbackPlugins.push(babel.createConfigItem([resolve(`babel-plugin-react-native-web`)], {
     type: `plugin`
   }));
+  
 fallbackPlugins.push(babel.createConfigItem([resolve(`@babel/plugin-transform-flow-strip-types`)], {
+    type: `plugin`
+  }));
+  
+  if (stage !== `develop`)
+fallbackPlugins.push(babel.createConfigItem([resolve(`babel-plugin-transform-react-remove-prop-types`)], {
     type: `plugin`
   }));
   
@@ -91,6 +101,8 @@ fallbackPlugins.push(babel.createConfigItem([resolve(`@babel/plugin-transform-fl
   fallbackPlugins.push(babel.createConfigItem([resolve(`babel-plugin-macros`)], {
     type: `plugin`
   }));
+  
+
   fallbackPlugins.push(babel.createConfigItem([resolve(`@babel/plugin-syntax-dynamic-import`)], {
     type: `plugin`
   }));

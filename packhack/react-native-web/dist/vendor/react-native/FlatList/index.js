@@ -1,10 +1,6 @@
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
@@ -15,15 +11,13 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @noflow
  * @format
  */
-
 import UnimplementedView from '../../../modules/UnimplementedView';
 import React from 'react';
 import View from '../../../exports/View';
 import VirtualizedList from '../VirtualizedList';
-
 import invariant from 'fbjs/lib/invariant';
 
-var defaultProps = Object.assign({}, VirtualizedList.defaultProps, {
+var defaultProps = _extends({}, VirtualizedList.defaultProps, {
   numColumns: 1
 });
 
@@ -135,18 +129,21 @@ var defaultProps = Object.assign({}, VirtualizedList.defaultProps, {
  *
  * Also inherits [ScrollView Props](docs/scrollview.html#props), unless it is nested in another FlatList of same orientation.
  */
-var FlatList = function (_React$PureComponent) {
-  _inherits(FlatList, _React$PureComponent);
+var FlatList =
+/*#__PURE__*/
+function (_React$PureComponent) {
+  _inheritsLoose(FlatList, _React$PureComponent);
+
+  var _proto = FlatList.prototype;
 
   /**
    * Scrolls to the end of the content. May be janky without `getItemLayout` prop.
    */
-  FlatList.prototype.scrollToEnd = function scrollToEnd(params) {
+  _proto.scrollToEnd = function scrollToEnd(params) {
     if (this._listRef) {
       this._listRef.scrollToEnd(params);
     }
   };
-
   /**
    * Scrolls to the item at the specified index such that it is positioned in the viewable area
    * such that `viewPosition` 0 places it at the top, 1 at the bottom, and 0.5 centered in the
@@ -157,12 +154,11 @@ var FlatList = function (_React$PureComponent) {
    */
 
 
-  FlatList.prototype.scrollToIndex = function scrollToIndex(params) {
+  _proto.scrollToIndex = function scrollToIndex(params) {
     if (this._listRef) {
       this._listRef.scrollToIndex(params);
     }
   };
-
   /**
    * Requires linear scan through data - use `scrollToIndex` instead if possible.
    *
@@ -171,12 +167,11 @@ var FlatList = function (_React$PureComponent) {
    */
 
 
-  FlatList.prototype.scrollToItem = function scrollToItem(params) {
+  _proto.scrollToItem = function scrollToItem(params) {
     if (this._listRef) {
       this._listRef.scrollToItem(params);
     }
   };
-
   /**
    * Scroll to a specific content pixel offset in the list.
    *
@@ -184,12 +179,11 @@ var FlatList = function (_React$PureComponent) {
    */
 
 
-  FlatList.prototype.scrollToOffset = function scrollToOffset(params) {
+  _proto.scrollToOffset = function scrollToOffset(params) {
     if (this._listRef) {
       this._listRef.scrollToOffset(params);
     }
   };
-
   /**
    * Tells the list an interaction has occurred, which should trigger viewability calculations, e.g.
    * if `waitForInteractions` is true and the user has not scrolled. This is typically called by
@@ -197,12 +191,11 @@ var FlatList = function (_React$PureComponent) {
    */
 
 
-  FlatList.prototype.recordInteraction = function recordInteraction() {
+  _proto.recordInteraction = function recordInteraction() {
     if (this._listRef) {
       this._listRef.recordInteraction();
     }
   };
-
   /**
    * Displays the scroll indicators momentarily.
    *
@@ -210,40 +203,39 @@ var FlatList = function (_React$PureComponent) {
    */
 
 
-  FlatList.prototype.flashScrollIndicators = function flashScrollIndicators() {
+  _proto.flashScrollIndicators = function flashScrollIndicators() {
     if (this._listRef) {
       this._listRef.flashScrollIndicators();
     }
   };
-
   /**
    * Provides a handle to the underlying scroll responder.
    */
 
 
-  FlatList.prototype.getScrollResponder = function getScrollResponder() {
+  _proto.getScrollResponder = function getScrollResponder() {
     if (this._listRef) {
       return this._listRef.getScrollResponder();
     }
   };
 
-  FlatList.prototype.getScrollableNode = function getScrollableNode() {
+  _proto.getScrollableNode = function getScrollableNode() {
     if (this._listRef) {
       return this._listRef.getScrollableNode();
     }
   };
 
-  FlatList.prototype.setNativeProps = function setNativeProps(props) {
+  _proto.setNativeProps = function setNativeProps(props) {
     if (this._listRef) {
       this._listRef.setNativeProps(props);
     }
   };
 
-  FlatList.prototype.UNSAFE_componentWillMount = function UNSAFE_componentWillMount() {
+  _proto.UNSAFE_componentWillMount = function UNSAFE_componentWillMount() {
     this._checkProps(this.props);
   };
 
-  FlatList.prototype.UNSAFE_componentWillReceiveProps = function UNSAFE_componentWillReceiveProps(nextProps) {
+  _proto.UNSAFE_componentWillReceiveProps = function UNSAFE_componentWillReceiveProps(nextProps) {
     invariant(nextProps.numColumns === this.props.numColumns, 'Changing numColumns on the fly is not supported. Change the key prop on FlatList when ' + 'changing the number of columns to force a fresh render of the component.');
     invariant(nextProps.onViewableItemsChanged === this.props.onViewableItemsChanged, 'Changing onViewableItemsChanged on the fly is not supported');
     invariant(nextProps.viewabilityConfig === this.props.viewabilityConfig, 'Changing viewabilityConfig on the fly is not supported');
@@ -253,10 +245,9 @@ var FlatList = function (_React$PureComponent) {
   };
 
   function FlatList(props) {
-    _classCallCheck(this, FlatList);
+    var _this;
 
-    var _this = _possibleConstructorReturn(this, _React$PureComponent.call(this, props));
-
+    _this = _React$PureComponent.call(this, props) || this;
     _this._hasWarnedLegacy = false;
     _this._virtualizedListPairs = [];
 
@@ -269,10 +260,12 @@ var FlatList = function (_React$PureComponent) {
 
       if (numColumns > 1) {
         var ret = [];
+
         for (var kk = 0; kk < numColumns; kk++) {
           var _item = data[index * numColumns + kk];
           _item && ret.push(_item);
         }
+
         return ret;
       } else {
         return data[index];
@@ -310,20 +303,21 @@ var FlatList = function (_React$PureComponent) {
       if (numColumns > 1) {
         var _item2 = info.item,
             _index = info.index;
-
         invariant(Array.isArray(_item2), 'Expected array of items with numColumns > 1');
-        return React.createElement(
-          View,
-          { style: [{ flexDirection: 'row' }, columnWrapperStyle] },
-          _item2.map(function (it, kk) {
-            var element = renderItem({
-              item: it,
-              index: _index * numColumns + kk,
-              separators: info.separators
-            });
-            return element && React.cloneElement(element, { key: kk });
-          })
-        );
+        return React.createElement(View, {
+          style: [{
+            flexDirection: 'row'
+          }, columnWrapperStyle]
+        }, _item2.map(function (it, kk) {
+          var element = renderItem({
+            item: it,
+            index: _index * numColumns + kk,
+            separators: info.separators
+          });
+          return element && React.cloneElement(element, {
+            key: kk
+          });
+        }));
       } else {
         return renderItem(info);
       }
@@ -345,10 +339,11 @@ var FlatList = function (_React$PureComponent) {
         onViewableItemsChanged: _this._createOnViewableItemsChanged(_this.props.onViewableItemsChanged)
       });
     }
+
     return _this;
   }
 
-  FlatList.prototype._checkProps = function _checkProps(props) {
+  _proto._checkProps = function _checkProps(props) {
     var getItem = props.getItem,
         getItemCount = props.getItemCount,
         horizontal = props.horizontal,
@@ -357,38 +352,43 @@ var FlatList = function (_React$PureComponent) {
         columnWrapperStyle = props.columnWrapperStyle,
         onViewableItemsChanged = props.onViewableItemsChanged,
         viewabilityConfigCallbackPairs = props.viewabilityConfigCallbackPairs;
-
     invariant(!getItem && !getItemCount, 'FlatList does not support custom data formats.');
+
     if (numColumns > 1) {
       invariant(!horizontal, 'numColumns does not support horizontal.');
     } else {
       invariant(!columnWrapperStyle, 'columnWrapperStyle not supported for single column lists');
     }
+
     if (legacyImplementation) {
-      invariant(numColumns === 1, 'Legacy list does not support multiple columns.');
-      // Warning: may not have full feature parity and is meant more for debugging and performance
+      invariant(numColumns === 1, 'Legacy list does not support multiple columns.'); // Warning: may not have full feature parity and is meant more for debugging and performance
       // comparison.
+
       if (!this._hasWarnedLegacy) {
         console.warn('FlatList: Using legacyImplementation - some features not supported and performance ' + 'may suffer');
         this._hasWarnedLegacy = true;
       }
     }
+
     invariant(!(onViewableItemsChanged && viewabilityConfigCallbackPairs), 'FlatList does not support setting both onViewableItemsChanged and ' + 'viewabilityConfigCallbackPairs.');
   };
 
-  FlatList.prototype._pushMultiColumnViewable = function _pushMultiColumnViewable(arr, v) {
-    var _props = this.props,
-        numColumns = _props.numColumns,
-        keyExtractor = _props.keyExtractor;
-
+  _proto._pushMultiColumnViewable = function _pushMultiColumnViewable(arr, v) {
+    var _this$props3 = this.props,
+        numColumns = _this$props3.numColumns,
+        keyExtractor = _this$props3.keyExtractor;
     v.item.forEach(function (item, ii) {
       invariant(v.index != null, 'Missing index!');
       var index = v.index * numColumns + ii;
-      arr.push(Object.assign({}, v, { item: item, key: keyExtractor(item, index), index: index }));
+      arr.push(_extends({}, v, {
+        item: item,
+        key: keyExtractor(item, index),
+        index: index
+      }));
     });
   };
 
-  FlatList.prototype._createOnViewableItemsChanged = function _createOnViewableItemsChanged(onViewableItemsChanged) {
+  _proto._createOnViewableItemsChanged = function _createOnViewableItemsChanged(onViewableItemsChanged) {
     var _this2 = this;
 
     return function (info) {
@@ -396,15 +396,18 @@ var FlatList = function (_React$PureComponent) {
 
       if (onViewableItemsChanged) {
         if (numColumns > 1) {
-          var _changed = [];
-          var _viewableItems = [];
+          var changed = [];
+          var viewableItems = [];
           info.viewableItems.forEach(function (v) {
-            return _this2._pushMultiColumnViewable(_viewableItems, v);
+            return _this2._pushMultiColumnViewable(viewableItems, v);
           });
           info.changed.forEach(function (v) {
-            return _this2._pushMultiColumnViewable(_changed, v);
+            return _this2._pushMultiColumnViewable(changed, v);
           });
-          onViewableItemsChanged({ viewableItems: _viewableItems, changed: _changed });
+          onViewableItemsChanged({
+            viewableItems: viewableItems,
+            changed: changed
+          });
         } else {
           onViewableItemsChanged(info);
         }
@@ -412,7 +415,7 @@ var FlatList = function (_React$PureComponent) {
     };
   };
 
-  FlatList.prototype.render = function render() {
+  _proto.render = function render() {
     if (this.props.legacyImplementation) {
       return (
         /* $FlowFixMe(>=0.66.0 site=react_native_fb) This comment suppresses an
@@ -442,6 +445,4 @@ var FlatList = function (_React$PureComponent) {
 }(React.PureComponent);
 
 FlatList.defaultProps = defaultProps;
-
-
 export default FlatList;

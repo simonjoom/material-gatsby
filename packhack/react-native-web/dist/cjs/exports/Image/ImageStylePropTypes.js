@@ -1,52 +1,41 @@
-'use strict';
+"use strict";
 
 exports.__esModule = true;
+exports.default = void 0;
 
-var _AnimationPropTypes = require('../../modules/AnimationPropTypes');
+var _AnimationPropTypes = _interopRequireDefault(require("../../modules/AnimationPropTypes"));
 
-var _AnimationPropTypes2 = _interopRequireDefault(_AnimationPropTypes);
+var _BorderPropTypes = _interopRequireDefault(require("../../modules/BorderPropTypes"));
 
-var _BorderPropTypes = require('../../modules/BorderPropTypes');
+var _ColorPropType = _interopRequireDefault(require("../ColorPropType"));
 
-var _BorderPropTypes2 = _interopRequireDefault(_BorderPropTypes);
+var _ImageResizeMode = _interopRequireDefault(require("./ImageResizeMode"));
 
-var _ColorPropType = require('../ColorPropType');
+var _InteractionPropTypes = _interopRequireDefault(require("../../modules/InteractionPropTypes"));
 
-var _ColorPropType2 = _interopRequireDefault(_ColorPropType);
+var _LayoutPropTypes = _interopRequireDefault(require("../../modules/LayoutPropTypes"));
 
-var _ImageResizeMode = require('./ImageResizeMode');
+var _ShadowPropTypes = _interopRequireDefault(require("../../modules/ShadowPropTypes"));
 
-var _ImageResizeMode2 = _interopRequireDefault(_ImageResizeMode);
+var _TransformPropTypes = _interopRequireDefault(require("../../modules/TransformPropTypes"));
 
-var _InteractionPropTypes = require('../../modules/InteractionPropTypes');
-
-var _InteractionPropTypes2 = _interopRequireDefault(_InteractionPropTypes);
-
-var _LayoutPropTypes = require('../../modules/LayoutPropTypes');
-
-var _LayoutPropTypes2 = _interopRequireDefault(_LayoutPropTypes);
-
-var _ShadowPropTypes = require('../../modules/ShadowPropTypes');
-
-var _ShadowPropTypes2 = _interopRequireDefault(_ShadowPropTypes);
-
-var _TransformPropTypes = require('../../modules/TransformPropTypes');
-
-var _TransformPropTypes2 = _interopRequireDefault(_TransformPropTypes);
-
-var _propTypes = require('prop-types');
+var _propTypes = require("prop-types");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var ImageStylePropTypes = Object.assign({}, _AnimationPropTypes2.default, _BorderPropTypes2.default, _InteractionPropTypes2.default, _LayoutPropTypes2.default, _ShadowPropTypes2.default, _TransformPropTypes2.default, {
-  backgroundColor: _ColorPropType2.default,
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+var ImageStylePropTypes = _extends({}, _AnimationPropTypes.default, _BorderPropTypes.default, _InteractionPropTypes.default, _LayoutPropTypes.default, _ShadowPropTypes.default, _TransformPropTypes.default, {
+  backgroundColor: _ColorPropType.default,
   opacity: _propTypes.number,
-  resizeMode: (0, _propTypes.oneOf)(Object.keys(_ImageResizeMode2.default)),
-  tintColor: _ColorPropType2.default,
+  resizeMode: (0, _propTypes.oneOf)(Object.keys(_ImageResizeMode.default)),
+  tintColor: _ColorPropType.default,
+
   /**
    * @platform unsupported
    */
   overlayColor: _propTypes.string,
+
   /**
    * @platform web
    */
@@ -54,5 +43,5 @@ var ImageStylePropTypes = Object.assign({}, _AnimationPropTypes2.default, _Borde
   filter: _propTypes.string
 });
 
-exports.default = ImageStylePropTypes;
-module.exports = exports['default'];
+var _default = ImageStylePropTypes;
+exports.default = _default;

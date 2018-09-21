@@ -1,6 +1,8 @@
-'use strict';
+"use strict";
 
 exports.__esModule = true;
+exports.default = void 0;
+
 /* eslint-disable */
 
 /**
@@ -11,7 +13,6 @@ exports.__esModule = true;
  *
  * Based on React 16.3.0
  */
-
 var emptyFunction = require('fbjs/lib/emptyFunction');
 
 var warnValidStyle = emptyFunction;
@@ -23,6 +24,7 @@ if (process.env.NODE_ENV !== 'production') {
       var instance = instanceOrFiber;
       return instance.getName();
     }
+
     if (typeof instanceOrFiber.tag === 'number') {
       // Fiber reconciler
       var fiber = instanceOrFiber;
@@ -31,24 +33,23 @@ if (process.env.NODE_ENV !== 'production') {
       if (typeof type === 'string') {
         return type;
       }
+
       if (typeof type === 'function') {
         return type.displayName || type.name;
       }
     }
-    return null;
-  };
 
-  // 'msTransform' is correct, but the other prefixes should be capitalized
+    return null;
+  }; // 'msTransform' is correct, but the other prefixes should be capitalized
 
 
   var camelizeStyleName = require('fbjs/lib/camelizeStyleName');
+
   var warning = require('fbjs/lib/warning');
 
-  var badVendoredStyleNamePattern = /^(?:webkit|moz|o)[A-Z]/;
+  var badVendoredStyleNamePattern = /^(?:webkit|moz|o)[A-Z]/; // style values shouldn't contain a semicolon
 
-  // style values shouldn't contain a semicolon
   var badStyleValueWithSemicolonPattern = /;\s*$/;
-
   var warnedStyleNames = {};
   var warnedStyleValues = {};
   var warnedForNaNValue = false;
@@ -101,28 +102,31 @@ if (process.env.NODE_ENV !== 'production') {
 
   var checkRenderMessage = function checkRenderMessage(owner) {
     var ownerName;
+
     if (owner != null) {
       // Stack passes the owner manually all the way to CSSPropertyOperations.
       ownerName = getComponentName(owner);
-    } else {
-      // Fiber doesn't pass it but uses ReactDebugCurrentFiber to track it.
+    } else {// Fiber doesn't pass it but uses ReactDebugCurrentFiber to track it.
       // It is only enabled in development and tracks host components too.
       // var {getCurrentFiberOwnerName} = require('ReactDebugCurrentFiber');
       //  ownerName = getCurrentFiberOwnerName();
       // TODO: also report the stack.
     }
+
     if (ownerName) {
       return '\n\nCheck the render method of `' + ownerName + '`.';
     }
+
     return '';
   };
 
   warnValidStyle = function warnValidStyle(name, value, component) {
     var owner;
-    if (component) {
-      // TODO: this only works with Stack. Seems like we need to add unit tests?
+
+    if (component) {// TODO: this only works with Stack. Seems like we need to add unit tests?
       // owner = component._currentElement._owner;
     }
+
     if (name.indexOf('-') > -1) {
       warnHyphenatedStyleName(name, owner);
     } else if (badVendoredStyleNamePattern.test(name)) {
@@ -141,5 +145,5 @@ if (process.env.NODE_ENV !== 'production') {
   };
 }
 
-exports.default = warnValidStyle;
-module.exports = exports['default'];
+var _default = warnValidStyle;
+exports.default = _default;

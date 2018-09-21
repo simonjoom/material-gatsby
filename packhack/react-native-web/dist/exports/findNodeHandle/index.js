@@ -6,11 +6,10 @@
  *
  * @noflow
  */
-
 import { findDOMNode } from 'react-dom';
 
 var findNodeHandle = function findNodeHandle(component) {
-  var node = void 0;
+  var node;
 
   try {
     node = findDOMNode(component);

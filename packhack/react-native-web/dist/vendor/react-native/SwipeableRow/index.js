@@ -18,37 +18,35 @@ import StyleSheet from '../../../exports/StyleSheet';
 /* $FlowFixMe(>=0.54.0 site=react_native_oss) This comment suppresses an error
  * found when Flow v0.54 was deployed. To see the error delete this comment and
  * run Flow. */
+
 import TimerMixin from 'react-timer-mixin';
 import View from '../../../exports/View';
-
 import createReactClass from 'create-react-class';
 import emptyFunction from 'fbjs/lib/emptyFunction';
 
 var isRTL = function isRTL() {
   return I18nManager.isRTL;
-};
-
-// NOTE: Eventually convert these consts to an input object of configurations
-
+}; // NOTE: Eventually convert these consts to an input object of configurations
 // Position of the left of the swipable item when closed
-var CLOSED_LEFT_POSITION = 0;
-// Minimum swipe distance before we recognize it as such
-var HORIZONTAL_SWIPE_DISTANCE_THRESHOLD = 10;
-// Minimum swipe speed before we fully animate the user's action (open/close)
-var HORIZONTAL_FULL_SWIPE_SPEED_THRESHOLD = 0.3;
-// Factor to divide by to get slow speed; i.e. 4 means 1/4 of full speed
-var SLOW_SPEED_SWIPE_FACTOR = 4;
-// Time, in milliseconds, of how long the animated swipe should be
-var SWIPE_DURATION = 300;
 
+
+var CLOSED_LEFT_POSITION = 0; // Minimum swipe distance before we recognize it as such
+
+var HORIZONTAL_SWIPE_DISTANCE_THRESHOLD = 10; // Minimum swipe speed before we fully animate the user's action (open/close)
+
+var HORIZONTAL_FULL_SWIPE_SPEED_THRESHOLD = 0.3; // Factor to divide by to get slow speed; i.e. 4 means 1/4 of full speed
+
+var SLOW_SPEED_SWIPE_FACTOR = 4; // Time, in milliseconds, of how long the animated swipe should be
+
+var SWIPE_DURATION = 300;
 /**
  * On SwipeableListView mount, the 1st item will bounce to show users it's
  * possible to swipe
  */
-var ON_MOUNT_BOUNCE_DELAY = 700;
-var ON_MOUNT_BOUNCE_DURATION = 400;
 
-// Distance left of closed position to bounce back when right-swiping from closed
+var ON_MOUNT_BOUNCE_DELAY = 700;
+var ON_MOUNT_BOUNCE_DURATION = 400; // Distance left of closed position to bounce back when right-swiping from closed
+
 var RIGHT_SWIPE_BOUNCE_BACK_DISTANCE = 30;
 var RIGHT_SWIPE_BOUNCE_BACK_DURATION = 300;
 /**
@@ -56,8 +54,8 @@ var RIGHT_SWIPE_BOUNCE_BACK_DURATION = 300;
  * Must be multiplied by SLOW_SPEED_SWIPE_FACTOR because gestureState.dx tracks
  * how far the finger swipes, and not the actual animation distance.
 */
-var RIGHT_SWIPE_THRESHOLD = 30 * SLOW_SPEED_SWIPE_FACTOR;
 
+var RIGHT_SWIPE_THRESHOLD = 30 * SLOW_SPEED_SWIPE_FACTOR;
 /**
  * Creates a swipable row that allows taps on the main item and a custom View
  * on the item hidden behind the row. Typically this should be used in
@@ -65,39 +63,16 @@ var RIGHT_SWIPE_THRESHOLD = 30 * SLOW_SPEED_SWIPE_FACTOR;
  * used in a normal ListView. See the renderRow for SwipeableListView to see how
  * to use this component separately.
  */
+
 var SwipeableRow = createReactClass({
   displayName: 'SwipeableRow',
   _panResponder: {},
   _previousLeft: CLOSED_LEFT_POSITION,
-
   mixins: [TimerMixin],
-
-  propTypes: {
-    children: PropTypes.any,
-    isOpen: PropTypes.bool,
-    preventSwipeRight: PropTypes.bool,
-    maxSwipeDistance: PropTypes.number.isRequired,
-    onOpen: PropTypes.func.isRequired,
-    onClose: PropTypes.func.isRequired,
-    onSwipeEnd: PropTypes.func.isRequired,
-    onSwipeStart: PropTypes.func.isRequired,
-    // Should bounce the row on mount
-    shouldBounceOnMount: PropTypes.bool,
-    /**
-     * A ReactElement that is unveiled when the user swipes
-     */
-    slideoutView: PropTypes.node.isRequired,
-    /**
-     * The minimum swipe distance required before fully animating the swipe. If
-     * the user swipes less than this distance, the item will return to its
-     * previous (open/close) position.
-     */
-    swipeThreshold: PropTypes.number.isRequired
-  },
-
   getInitialState: function getInitialState() {
     return {
       currentLeft: new Animated.Value(this._previousLeft),
+
       /**
        * In order to render component A beneath component B, A must be rendered
        * before B. However, this will cause "flickering", aka we see A briefly
@@ -157,33 +132,30 @@ var SwipeableRow = createReactClass({
   },
   render: function render() {
     // The view hidden behind the main view
-    var slideOutView = void 0;
+    var slideOutView;
+
     if (this.state.isSwipeableViewRendered && this.state.rowHeight) {
-      slideOutView = React.createElement(
-        View,
-        { style: [styles.slideOutContainer, { height: this.state.rowHeight }] },
-        this.props.slideoutView
-      );
-    }
+      slideOutView = React.createElement(View, {
+        style: [styles.slideOutContainer, {
+          height: this.state.rowHeight
+        }]
+      }, this.props.slideoutView);
+    } // The swipeable item
 
-    // The swipeable item
-    var swipeableView = React.createElement(
-      Animated.View,
-      {
-        onLayout: this._onSwipeableViewLayout,
-        style: { transform: [{ translateX: this.state.currentLeft }] } },
-      this.props.children
-    );
 
-    return React.createElement(
-      View,
-      this._panResponder.panHandlers,
-      slideOutView,
-      swipeableView
-    );
+    var swipeableView = React.createElement(Animated.View, {
+      onLayout: this._onSwipeableViewLayout,
+      style: {
+        transform: [{
+          translateX: this.state.currentLeft
+        }]
+      }
+    }, this.props.children);
+    return React.createElement(View, this._panResponder.panHandlers, slideOutView, swipeableView);
   },
   close: function close() {
     this.props.onClose();
+
     this._animateToClosedPosition();
   },
   _onSwipeableViewLayout: function _onSwipeableViewLayout(event) {
@@ -232,11 +204,16 @@ var SwipeableRow = createReactClass({
   _onPanResponderTerminationRequest: function _onPanResponderTerminationRequest(event, gestureState) {
     return false;
   },
-  _animateTo: function _animateTo(toValue) {
+  _animateTo: function _animateTo(toValue, duration, callback) {
     var _this2 = this;
 
-    var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : SWIPE_DURATION;
-    var callback = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : emptyFunction;
+    if (duration === void 0) {
+      duration = SWIPE_DURATION;
+    }
+
+    if (callback === void 0) {
+      callback = emptyFunction;
+    }
 
     Animated.timing(this.state.currentLeft, {
       duration: duration,
@@ -249,6 +226,7 @@ var SwipeableRow = createReactClass({
   },
   _animateToOpenPosition: function _animateToOpenPosition() {
     var maxSwipeDistance = isRTL() ? -this.props.maxSwipeDistance : this.props.maxSwipeDistance;
+
     this._animateTo(-maxSwipeDistance);
   },
   _animateToOpenPositionWith: function _animateToOpenPositionWith(speed, distMoved) {
@@ -261,12 +239,16 @@ var SwipeableRow = createReactClass({
      * Calculate the duration the row should take to swipe the remaining distance
      * at the same speed the user swiped (or the speed threshold)
      */
+
     var duration = Math.abs((this.props.maxSwipeDistance - Math.abs(distMoved)) / speed);
     var maxSwipeDistance = isRTL() ? -this.props.maxSwipeDistance : this.props.maxSwipeDistance;
+
     this._animateTo(-maxSwipeDistance, duration);
   },
-  _animateToClosedPosition: function _animateToClosedPosition() {
-    var duration = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : SWIPE_DURATION;
+  _animateToClosedPosition: function _animateToClosedPosition(duration) {
+    if (duration === void 0) {
+      duration = SWIPE_DURATION;
+    }
 
     this._animateTo(CLOSED_LEFT_POSITION, duration);
   },
@@ -279,10 +261,9 @@ var SwipeableRow = createReactClass({
      * so users know they should swipe right to get content.
      */
     var swipeBounceBackDistance = isRTL() ? -RIGHT_SWIPE_BOUNCE_BACK_DISTANCE : RIGHT_SWIPE_BOUNCE_BACK_DISTANCE;
+
     this._animateTo(-swipeBounceBackDistance, duration, this._animateToClosedPositionDuringBounce);
   },
-
-
   // Ignore swipes due to user's finger moving slightly when tapping
   _isValidSwipe: function _isValidSwipe(gestureState) {
     if (this.props.preventSwipeRight && this._previousLeft === CLOSED_LEFT_POSITION && gestureState.dx > 0) {
@@ -300,17 +281,21 @@ var SwipeableRow = createReactClass({
   },
   _handlePanResponderEnd: function _handlePanResponderEnd(event, gestureState) {
     var horizontalDistance = isRTL() ? -gestureState.dx : gestureState.dx;
+
     if (this._isSwipingRightFromClosed(gestureState)) {
       this.props.onOpen();
+
       this._animateBounceBack(RIGHT_SWIPE_BOUNCE_BACK_DURATION);
     } else if (this._shouldAnimateRemainder(gestureState)) {
       if (horizontalDistance < 0) {
         // Swiped left
         this.props.onOpen();
+
         this._animateToOpenPositionWith(gestureState.vx, horizontalDistance);
       } else {
         // Swiped right
         this.props.onClose();
+
         this._animateToClosedPosition();
       }
     } else {
@@ -324,7 +309,6 @@ var SwipeableRow = createReactClass({
     this.props.onSwipeEnd();
   }
 });
-
 var styles = StyleSheet.create({
   slideOutContainer: {
     bottom: 0,
@@ -334,5 +318,4 @@ var styles = StyleSheet.create({
     top: 0
   }
 });
-
 export default SwipeableRow;

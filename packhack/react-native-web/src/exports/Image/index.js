@@ -145,7 +145,8 @@ class Image extends Component<*, State> {
     // If an image has been loaded before, render it immediately
     const uri = resolveAssetUri(props.source);
     const shouldDisplaySource = ImageUriCache.has(uri);
-    this.state = { layout: {}, shouldDisplaySource };
+    this.state = { layout: {},
+	backgroundStyle:{}, shouldDisplaySource };
     this._imageState = getImageState(uri, shouldDisplaySource);
     this._filterId = filterId;
     filterId++;
@@ -153,13 +154,27 @@ class Image extends Component<*, State> {
 
   componentDidMount() {
     this._isMounted = true;
+ this.simUpd();
+  }
+  
+  simUpd=(prevProps)=>{
+ var finalResizeMode = this.props.resizeMode || this.props.style.resizeMode || ImageResizeMode.cover; // CSS filters
+  var that=this;
+  window.setTimeout(function(){ 
+        return that.setState({
+    backgroundStyle:that._getBackgroundSize(finalResizeMode)
+        })},10)
+        
     if (this._imageState === STATUS_PENDING) {
       this._createImageLoader();
+
     } else if (this._imageState === STATUS_LOADED) {
-      this._onLoad({ target: this._imageRef });
+      this._onLoad({
+        target: this._imageRef
+      })
     }
   }
-
+  
   componentDidUpdate(prevProps) {
     const prevUri = resolveAssetUri(prevProps.source);
     const uri = resolveAssetUri(this.props.source);
@@ -168,10 +183,11 @@ class Image extends Component<*, State> {
       const isPreviouslyLoaded = ImageUriCache.has(uri);
       isPreviouslyLoaded && ImageUriCache.add(uri);
       this._updateImageState(getImageState(uri, isPreviouslyLoaded));
+       this.simUpd();
     }
-    if (this._imageState === STATUS_PENDING) {
-      this._createImageLoader();
-    }
+   // if (this._imageState === STATUS_PENDING) {
+   //   this._createImageLoader();
+   // }
   }
 
   componentWillUnmount() {
@@ -185,11 +201,13 @@ class Image extends Component<*, State> {
     const { shouldDisplaySource } = this.state;
     const {
       accessibilityLabel,
+      styleAccessibilityImage,
       accessible,
       blurRadius,
       defaultSource,
       draggable,
       source,
+      styleImage,
       testID,
       /* eslint-disable */
       capInsets,
@@ -259,10 +277,11 @@ class Image extends Component<*, State> {
           draggable: draggable || false,
           ref: this._setImageRef,
           src: displayImageUri,
-          style: styles.accessibilityImage
+          style: StyleSheet.flatten([styles.accessibilityImage, styleAccessibilityImage])
         })
       : null;
-
+       
+    
     return (
       <View
         {...other}
@@ -279,9 +298,9 @@ class Image extends Component<*, State> {
       >
         <View
           style={[
-            styles.image,
+            styles.image,styleImage,
             resizeModeStyles[finalResizeMode],
-            this._getBackgroundSize(finalResizeMode),
+            this.state.backgroundStyle,
             backgroundImage && { backgroundImage },
             filters.length > 0 && { filter: filters.join(' ') }
           ]}
@@ -313,16 +332,17 @@ class Image extends Component<*, State> {
       return e => {
         const { layout } = e.nativeEvent;
         onLayout && onLayout(e);
-        this.setState(() => ({ layout }));
+        this.setState(() => ({ layout ,
+              backgroundStyle:this._getBackgroundSize(resizeMode,layout)}));
       };
     }
   };
 
-  _getBackgroundSize = resizeMode => {
+  _getBackgroundSize = (resizeMode,layout) => {
     if (this._imageRef && (resizeMode === 'center' || resizeMode === 'repeat')) {
       const { naturalHeight, naturalWidth } = this._imageRef;
-      const { height, width } = this.state.layout;
-      if (naturalHeight && naturalWidth && height && width) {
+      const { height, width } = layout|| this.state.layout;
+      if (naturalHeight && naturalWidth>50 && height && width) {
         const scaleFactor = Math.min(1, width / naturalWidth, height / naturalHeight);
         const x = Math.ceil(scaleFactor * naturalWidth);
         const y = Math.ceil(scaleFactor * naturalHeight);

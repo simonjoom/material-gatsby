@@ -6,6 +6,5 @@
  *
  * 
  */
-
 import SectionList from '../../vendor/react-native/SectionList';
 export default SectionList;

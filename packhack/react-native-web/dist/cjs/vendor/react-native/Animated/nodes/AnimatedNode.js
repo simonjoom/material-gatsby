@@ -10,79 +10,81 @@
 'use strict';
 
 exports.__esModule = true;
+exports.default = void 0;
 
-var _NativeAnimatedHelper = require('../NativeAnimatedHelper');
+var _NativeAnimatedHelper = _interopRequireDefault(require("../NativeAnimatedHelper"));
 
-var _NativeAnimatedHelper2 = _interopRequireDefault(_NativeAnimatedHelper);
-
-var _invariant = require('fbjs/lib/invariant');
-
-var _invariant2 = _interopRequireDefault(_invariant);
+var _invariant = _interopRequireDefault(require("fbjs/lib/invariant"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 // Note(vjeux): this would be better as an interface but flow doesn't
 // support them yet
-var AnimatedNode = function () {
-  function AnimatedNode() {
-    _classCallCheck(this, AnimatedNode);
-  }
+var AnimatedNode =
+/*#__PURE__*/
+function () {
+  function AnimatedNode() {}
 
-  AnimatedNode.prototype.__attach = function __attach() {};
+  var _proto = AnimatedNode.prototype;
 
-  AnimatedNode.prototype.__detach = function __detach() {
+  _proto.__attach = function __attach() {};
+
+  _proto.__detach = function __detach() {
     if (this.__isNative && this.__nativeTag != null) {
-      _NativeAnimatedHelper2.default.API.dropAnimatedNode(this.__nativeTag);
+      _NativeAnimatedHelper.default.API.dropAnimatedNode(this.__nativeTag);
+
       this.__nativeTag = undefined;
     }
   };
 
-  AnimatedNode.prototype.__getValue = function __getValue() {};
+  _proto.__getValue = function __getValue() {};
 
-  AnimatedNode.prototype.__getAnimatedValue = function __getAnimatedValue() {
+  _proto.__getAnimatedValue = function __getAnimatedValue() {
     return this.__getValue();
   };
 
-  AnimatedNode.prototype.__addChild = function __addChild(child) {};
+  _proto.__addChild = function __addChild(child) {};
 
-  AnimatedNode.prototype.__removeChild = function __removeChild(child) {};
+  _proto.__removeChild = function __removeChild(child) {};
 
-  AnimatedNode.prototype.__getChildren = function __getChildren() {
+  _proto.__getChildren = function __getChildren() {
     return [];
   };
-
   /* Methods and props used by native Animated impl */
 
 
-  AnimatedNode.prototype.__makeNative = function __makeNative() {
+  _proto.__makeNative = function __makeNative() {
     if (!this.__isNative) {
       throw new Error('This node cannot be made a "native" animated node');
     }
   };
 
-  AnimatedNode.prototype.__getNativeTag = function __getNativeTag() {
-    _NativeAnimatedHelper2.default.assertNativeAnimatedModule();
-    (0, _invariant2.default)(this.__isNative, 'Attempt to get native tag from node not marked as "native"');
+  _proto.__getNativeTag = function __getNativeTag() {
+    _NativeAnimatedHelper.default.assertNativeAnimatedModule();
+
+    (0, _invariant.default)(this.__isNative, 'Attempt to get native tag from node not marked as "native"');
+
     if (this.__nativeTag == null) {
-      var nativeTag = _NativeAnimatedHelper2.default.generateNewNodeTag();
-      _NativeAnimatedHelper2.default.API.createAnimatedNode(nativeTag, this.__getNativeConfig());
+      var nativeTag = _NativeAnimatedHelper.default.generateNewNodeTag();
+
+      _NativeAnimatedHelper.default.API.createAnimatedNode(nativeTag, this.__getNativeConfig());
+
       this.__nativeTag = nativeTag;
     }
+
     return this.__nativeTag;
   };
 
-  AnimatedNode.prototype.__getNativeConfig = function __getNativeConfig() {
+  _proto.__getNativeConfig = function __getNativeConfig() {
     throw new Error('This JS animated node type cannot be used as native animated node');
   };
 
-  AnimatedNode.prototype.toJSON = function toJSON() {
+  _proto.toJSON = function toJSON() {
     return this.__getValue();
   };
 
   return AnimatedNode;
 }();
 
-exports.default = AnimatedNode;
-module.exports = exports['default'];
+var _default = AnimatedNode;
+exports.default = _default;

@@ -110,17 +110,39 @@ const StaticRun = ({ children, route, t, lng, carouselList, ismain }) => {
   return (
     <StaticQuery
       query={graphql`
-        query MenuQuery {
+        query MenuFileQuery {
+    allFile(
+            filter: {
+          absolutePath:{regex:"/(assets)\/.*\\.(jpg$|png$)/"}
+            }
+              ) {
+                edges {
+                  node {
+                    id
+                    absolutePath
+                    childImageSharp {
+                      id
+                      fluid(maxWidth: 1300) {
+                        tracedSVG
+                        aspectRatio
+                        src
+                        srcSet
+                        sizes
+                        srcWebp
+                        srcSetWebp
+                        originalName
+                      }
+                    }
+                  }
+                }
+              }
           allMarkdownRemark(
             limit: 2000
             filter: { fields: { type: { eq: "pages" } } }
             sort: { fields: [fields___date], order: DESC }
           ) {
             edges {
-              node {
-                html
-                timeToRead
-                excerpt
+              node {  
                 fields {
                   inmenu
                   carousel
@@ -137,6 +159,7 @@ const StaticRun = ({ children, route, t, lng, carouselList, ismain }) => {
       `}
       render={data => {
         //generate Menu from allMarkdownRemark
+        global.filesQuery=data.allFile.edges;
         const postEdges = data.allMarkdownRemark.edges;
         postEdges.forEach(postEdge => {
           let title;
@@ -144,7 +167,7 @@ const StaticRun = ({ children, route, t, lng, carouselList, ismain }) => {
             //console.log("testslug", postEdge.node.fields.slug);
             title = t(postEdge.node.frontmatter.title);
             if (postEdge.node.fields.inmenu)
-              postList.push({
+            global.postList.push({
                 path: postEdge.node.fields.slug,
                 title
               });

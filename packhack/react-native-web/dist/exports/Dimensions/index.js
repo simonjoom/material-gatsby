@@ -1,5 +1,3 @@
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 /**
  * Copyright (c) 2015-present, Nicolas Gallagher.
  * Copyright (c) 2015-present, Facebook, Inc.
@@ -9,11 +7,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  *
  * 
  */
-
 import { canUseDOM } from 'fbjs/lib/ExecutionEnvironment';
 import debounce from 'debounce';
 import invariant from 'fbjs/lib/invariant';
-
 var win = canUseDOM ? window : {
   devicePixelRatio: undefined,
   innerHeight: undefined,
@@ -23,17 +19,16 @@ var win = canUseDOM ? window : {
     width: undefined
   }
 };
-
 var dimensions = {};
 var listeners = {};
 
-var Dimensions = function () {
-  function Dimensions() {
-    _classCallCheck(this, Dimensions);
-  }
+var Dimensions =
+/*#__PURE__*/
+function () {
+  function Dimensions() {}
 
   Dimensions.get = function get(dimension) {
-    invariant(dimensions[dimension], 'No dimension set for key ' + dimension);
+    invariant(dimensions[dimension], "No dimension set for key " + dimension);
     return dimensions[dimension];
   };
 
@@ -55,7 +50,6 @@ var Dimensions = function () {
       scale: win.devicePixelRatio || 1,
       width: win.innerWidth
     };
-
     dimensions.screen = {
       fontScale: 1,
       height: win.screen.height,
@@ -86,8 +80,7 @@ var Dimensions = function () {
   return Dimensions;
 }();
 
-export default Dimensions;
-
+export { Dimensions as default };
 
 Dimensions._update();
 

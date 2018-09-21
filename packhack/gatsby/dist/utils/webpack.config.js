@@ -37,7 +37,6 @@ const hasLocalEslint = require(`./local-eslint-config-finder`); // Four stages o
 //   3) build-javascript: Build JS and CSS chunks for production
 //   4) build-html: build all HTML files
 
-
 module.exports =
 /*#__PURE__*/
 function () {
@@ -180,7 +179,7 @@ function () {
     }
 
     function getPlugins() {
-      let configPlugins = [plugins.moment(), // Add a few global variables. Set NODE_ENV to production (enables
+      let configPlugins = [plugins.moment(),plugins.babelHelpers(), // Add a few global variables. Set NODE_ENV to production (enables
       // optimizations for React) and what the link prefix is (__PATH_PREFIX__).
       plugins.define({
         "process.env": processEnv(stage, `development`),
@@ -202,7 +201,8 @@ function () {
             configPlugins = configPlugins.concat([plugins.extractText(),plugins.define({
       __DEV__: false,
       __PROD__: true,
-    }), // Write out stats object mapping named dynamic imports (aka page
+    }),
+         // Write out stats object mapping named dynamic imports (aka page
             // components) to all their async chunks.
             {
               apply: function apply(compiler) {
@@ -470,7 +470,7 @@ function () {
     if (stage === `build-html` || stage === `develop-html`) {
       const externalList = [// match `lodash` and `lodash/foo`
       // but not things like `lodash-es`
-      `lodash`, /^lodash\//, `react`, /^react-dom\//, `pify`, `@reach/router`, `@reach/router/lib/history`, `common-tags`, `path`, `semver`, `react-helmet`, `minimatch`, `fs`, /^core-js\//, `es6-promise`, `crypto`, `zlib`, `http`, `https`, `debug`];
+  /*    `lodash`, /^lodash\//, `react`, /^react-dom\//, `pify`, `@reach/router`, `@reach/router/lib/history`, `common-tags`, `path`, `semver`, `react-helmet`, `minimatch`, `fs`, /^core-js\//, `es6-promise`, `crypto`, `zlib`, `http`, `https`, `debug`];
       config.externals = [function (context, request, callback) {
         if (externalList.some(item => {
           if (typeof item === `string` && item === request) {
@@ -481,11 +481,13 @@ function () {
 
           return false;
         })) {
-          return callback(null, `umd ${request}`);
+          return callback(null, `comm ${request}`);
         }
 
         return callback();
-      }];
+      }
+      */
+      ];
     }
 
     store.dispatch(actions.replaceWebpackConfig(config));

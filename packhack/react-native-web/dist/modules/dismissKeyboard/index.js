@@ -6,7 +6,6 @@
  *
  * 
  */
-
 import TextInputState from '../TextInputState';
 
 var dismissKeyboard = function dismissKeyboard() {
