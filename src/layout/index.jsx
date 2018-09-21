@@ -171,7 +171,6 @@ const StaticRun = ({ children, route, t, lng, carouselList, ismain }) => {
       `}
       render={data => {
         //generate Menu from allMarkdownRemark
-        global.filesQuery = data.allFile.edges;
         const postEdges = data.allMarkdownRemark.edges;
         postEdges.forEach(postEdge => {
           let title;

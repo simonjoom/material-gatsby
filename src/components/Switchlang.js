@@ -99,7 +99,7 @@ class LanguageSwitcher extends Component {
             {languages.map((el, i) => {
               if (el.code !== lng)
                 return (
-                  <NavItem key={"nav" + i} href={this.props.route[lng]}>
+                  <NavItem key={"nav" + i} href={this.props.route[el.code]}>
                     {this.renderRow(el.label, el.code)}
                   </NavItem>
                 );
