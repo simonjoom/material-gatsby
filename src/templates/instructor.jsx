@@ -32,6 +32,7 @@ class PostTemplate extends React.Component {
     const expanded = !mobile;
     // const postOverlapClass = mobile ? "post-overlap-mobile" : "post-overla";
     const postNode = this.props.data.markdownRemark;
+    global.filesQuery=this.props.data.allFile.edges;
     console.log("renderindex", postNode.html);
     const post = postNode.frontmatter;
     if (!post.id) {
@@ -107,6 +108,31 @@ export const pageQuery = graphql`
     locales: allLocale(filter: { lng: { eq: $lng } }) {
       ...LocaleFragment
     }
+    allFile(
+            filter: {
+          absolutePath:{regex:"/(assets)\/.*\\.(jpg$|png$)/"}
+            }
+              ) {
+                edges {
+                  node {
+                    id
+                    absolutePath
+                    childImageSharp {
+                      id
+                      fluid(maxWidth: 1300) {
+                        tracedSVG
+                        aspectRatio
+                        src
+                        srcSet
+                        sizes
+                        srcWebp
+                        srcSetWebp
+                        originalName
+                      }
+                    }
+                  }
+                }
+              }
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       timeToRead

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Card from "react-md/lib/Cards/Card";
 import CardTitle from "react-md/lib/Cards/CardTitle";
-import Button from "react-md/lib/Buttons";
+//import Button from "react-md/lib/Buttons";
 import FrontCarousel from "components/FrontCarousel";
 import Avatar from "react-md/lib/Avatars";
 import CardText from "react-md/lib/Cards/CardText";
@@ -40,6 +40,7 @@ class PostPreview extends Component {
   }*/
   render() {
     const { postInfo, size } = this.props;
+    const Button=global.Button;
   //  const { mobile } = this.state;
     const { carouselList, type } = postInfo;
     const expand = true;
@@ -69,7 +70,7 @@ class PostPreview extends Component {
             )}
             <MediaOverlay>
               <CardTitle title={postInfo.title}>
-                <Button raised secondary className="md-cell--right">
+                <Button className="btn md-cell--right">
                   Read
                 </Button>
               </CardTitle>

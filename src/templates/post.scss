@@ -150,9 +150,8 @@ img {
         content: "";
         display: block;
         position: relative;
-        height: $md-toolbar-mobile-portrait-height + $phone-status-bar-height;
-        margin: -($md-toolbar-mobile-portrait-height + $phone-status-bar-height)
-          0 0;
+        height: $phone-status-bar-height;
+        margin: -($phone-status-bar-height) 0 0;
       }
     }
   }

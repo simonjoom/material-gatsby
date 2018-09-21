@@ -1,4 +1,4 @@
-@import "~react-md/src/scss/react-md";
+//@import "~react-md/src/scss/react-md";
 
 .boxshad {
   box-shadow: 0 1px 5px 0 rgba(255, 205, 155, 0.6),
@@ -17,12 +17,12 @@ $md-white: #FAFAFA;
 
 //$md-grey-400;
 //$md-secondary-color: $md-red-800;
-$md-tertiary-color: $md-grey-300;
-
+$md-tertiary-color: rgb(157, 157, 157);
+/*
 .main-container,
 .darker-background {
   background-color: $md-tertiary-color;
-}
+}*/
 
 a:link {
   color: $md-primary-color;

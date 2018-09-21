@@ -37,6 +37,7 @@ class PostTemplate extends React.Component {
   render() {
     const { mobile } = this.state;
     const { slug, slugbase, route, lng, carousel } = this.props.pageContext;
+    global.filesQuery=this.props.data.allFile.edges;
     console.log("postthis", this.props.data.markdownRemark);
     const expanded = !mobile;
     let carouselList = [];
@@ -129,6 +130,32 @@ export const pageQuery = graphql`
     locales: allLocale(filter: { lng: { eq: $lng } }) {
       ...LocaleFragment
     }
+    allFile(
+            filter: {
+          absolutePath:{regex:"/(assets)\/.*\\.(jpg$|png$)/"}
+            }
+              ) {
+                edges {
+                  node {
+                    id
+                    absolutePath
+                    childImageSharp {
+                      id
+                      fluid(maxWidth: 1300) {
+                        tracedSVG
+                        aspectRatio
+                        src
+                        srcSet
+                        sizes
+                        srcWebp
+                        srcSetWebp
+                        originalName
+                      }
+                    }
+                  }
+                }
+              }
+
     markdownRemark(fields: { slug: { eq: $slug } }) {
       htmlAst
       timeToRead

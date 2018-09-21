@@ -7,6 +7,7 @@ import Navigation from "../components/Navigation";
 import config from "../../data/SiteConfig";
 import FrontCarousel from "../components/FrontCarousel";
 import LanguageSwitcher from "../components/Switchlang";
+
 import { router } from "../config";
 import "./index.scss";
 import "./global.scss";
@@ -14,12 +15,48 @@ import "./toolbar.scss";
 import "./carousel.scss";
 global.postList = [];
 
+const ZeptoAsync = () =>
+  import(/* webpackChunkName: "zepto" */ "../components/zepto");
+
+const ZeptoMin = () => import(/* webpackChunkName: "minz" */ "./cc.js");
+
 class MainNavLayout extends React.Component {
+  constructor(props) {
+    super(props);
+    global.Button ="div";
+    this.state = { Button: "div", SideNavItem: null, SideNav: "div" };
+  }
+  componentDidMount() {
+    ZeptoAsync().then(Zepto => {
+      global.Zepto = Zepto.default;
+      ZeptoMin().then(() => {
+        const Button = require("../reactLIB/Button").default;
+        const SideNavItem = require("../reactLIB/SideNavItem").default;
+        const SideNav = require("../reactLIB/SideNav").default;
+        const Dropdown= require("../reactLIB/Dropdown").default;
+        const NavItem= require("../reactLIB/NavItem").default;
+        global.Button =Button;
+        global.Dropdown =Dropdown;
+        global.NavItem =NavItem;
+        this.setState({
+          Button,
+          SideNavItem,
+          SideNav
+        });
+      });
+    });
+  }
   render() {
     const { children, route, t, postList, carouselList, ismain } = this.props;
     console.log("ismain22", ismain);
     return (
-      <Navigation config={config} LocalTitle={this.props.title}>
+      <Navigation
+        Button={this.state.Button}
+        SideNavItem={this.state.SideNavItem}
+        SideNav={this.state.SideNav}
+        config={config}
+        LocalTitle={this.props.title}
+      >
         <Helmet>
           <meta name="description" content={config.siteDescription} />
         </Helmet>
@@ -111,31 +148,6 @@ const StaticRun = ({ children, route, t, lng, carouselList, ismain }) => {
     <StaticQuery
       query={graphql`
         query MenuFileQuery {
-    allFile(
-            filter: {
-          absolutePath:{regex:"/(assets)\/.*\\.(jpg$|png$)/"}
-            }
-              ) {
-                edges {
-                  node {
-                    id
-                    absolutePath
-                    childImageSharp {
-                      id
-                      fluid(maxWidth: 1300) {
-                        tracedSVG
-                        aspectRatio
-                        src
-                        srcSet
-                        sizes
-                        srcWebp
-                        srcSetWebp
-                        originalName
-                      }
-                    }
-                  }
-                }
-              }
           allMarkdownRemark(
             limit: 2000
             filter: { fields: { type: { eq: "pages" } } }
@@ -159,7 +171,7 @@ const StaticRun = ({ children, route, t, lng, carouselList, ismain }) => {
       `}
       render={data => {
         //generate Menu from allMarkdownRemark
-        global.filesQuery=data.allFile.edges;
+        global.filesQuery = data.allFile.edges;
         const postEdges = data.allMarkdownRemark.edges;
         postEdges.forEach(postEdge => {
           let title;
@@ -167,7 +179,7 @@ const StaticRun = ({ children, route, t, lng, carouselList, ismain }) => {
             //console.log("testslug", postEdge.node.fields.slug);
             title = t(postEdge.node.frontmatter.title);
             if (postEdge.node.fields.inmenu)
-            global.postList.push({
+              global.postList.push({
                 path: postEdge.node.fields.slug,
                 title
               });

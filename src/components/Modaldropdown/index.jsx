@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
+import React, { Component } from "react"; 
 import { throttle } from "lodash";
 import {
   StyleSheet,
@@ -9,9 +8,7 @@ import {
   TouchableHighlight,
   TouchableOpacity,
   TouchableWithoutFeedback,
-  ListView,
-  findNodeHandle,
-  UIManager,
+  ListView, 
   Modal,
   ActivityIndicator
 } from "react-native";
@@ -19,54 +16,6 @@ import {
 import PropTypes from "prop-types";
 
 export default class ModalDropdown extends Component {
-  static propTypes = {
-    disabled: PropTypes.bool,
-    scrollEnabled: PropTypes.bool,
-    defaultIndex: PropTypes.number,
-    defaultValue: PropTypes.string,
-    options: PropTypes.array,
-
-    accessible: PropTypes.bool,
-    animated: PropTypes.bool,
-    showsVerticalScrollIndicator: PropTypes.bool,
-    keyboardShouldPersistTaps: PropTypes.string,
-
-    style: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.object,
-      PropTypes.array
-    ]),
-    textStyle: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.object,
-      PropTypes.array
-    ]),
-    dropdownStyle: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.object,
-      PropTypes.array
-    ]),
-    dropdownTextStyle: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.object,
-      PropTypes.array
-    ]),
-    dropdownTextHighlightStyle: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.object,
-      PropTypes.array
-    ]),
-
-    adjustFrame: PropTypes.func,
-    renderRow: PropTypes.func,
-    renderSeparator: PropTypes.func,
-    renderButtonText: PropTypes.func,
-
-    onDropdownWillShow: PropTypes.func,
-    onDropdownWillHide: PropTypes.func,
-    onSelect: PropTypes.func
-  };
-
   static defaultProps = {
     disabled: false,
     scrollEnabled: true,

@@ -56,10 +56,11 @@ class PostTemplate extends React.Component {
   render() {
     const { mobile } = this.state;
     const { slug, route, lng } = this.props.pageContext;
+    global.filesQuery=this.props.data.allFile.edges;
     console.log("postthis", this.props);
     const expanded = !mobile;
     const postOverlapClass = mobile ? "post-overlap-mobile" : "post-overlap";
-    const postNode = this.props.data.markdownRemark;
+    const postNode = this.props.data.markdownRemark; 
     const post = postNode.frontmatter;
     const directory = postNode.fields.type;
     const carouselList = post.cover ? [post.cover] : [];
@@ -138,6 +139,31 @@ export const pageQuery = graphql`
     locales: allLocale(filter: { lng: { eq: $lng } }) {
       ...LocaleFragment
     }
+    allFile(
+            filter: {
+          absolutePath:{regex:"/(assets)\/.*\\.(jpg$|png$)/"}
+            }
+              ) {
+                edges {
+                  node {
+                    id
+                    absolutePath
+                    childImageSharp {
+                      id
+                      fluid(maxWidth: 1300) {
+                        tracedSVG
+                        aspectRatio
+                        src
+                        srcSet
+                        sizes
+                        srcWebp
+                        srcSetWebp
+                        originalName
+                      }
+                    }
+                  }
+                }
+              }
     markdownRemark(fields: { slug: { eq: $slug } }) {
       htmlAst
       timeToRead
