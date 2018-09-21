@@ -11,12 +11,12 @@ class CardTitle extends Component {
       'card-image': true,
       'waves-effect': waves,
       'waves-block': waves,
-      [`waves-Zepto{waves}`]: waves
+      [`waves-${waves}`]: waves
     });
 
     return (
       <div className={cx(classes)} {...props}>
-        <img className={cx({ activator: reveal })} src={image} />
+        {image&&<img className={cx({ activator: reveal })} src={image} />}
         <span className={cx('card-title')}>{children}</span>
       </div>
     );

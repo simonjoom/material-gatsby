@@ -1,17 +1,20 @@
 import React, { Component } from "react";
-import Card from "react-md/lib/Cards/Card";
-import CardTitle from "react-md/lib/Cards/CardTitle";
+//import Card from "react-md/lib/Cards/Card";
+//import CardTitle from "react-md/lib/Cards/CardTitle";
 //import Button from "react-md/lib/Buttons";
 import FrontCarousel from "components/FrontCarousel";
 import Avatar from "react-md/lib/Avatars";
-import CardText from "react-md/lib/Cards/CardText";
+//import CardText from "react-md/lib/Cards/CardText";
 import FontIcon from "react-md/lib/FontIcons";
 import { Link } from "gatsby";
 import moment from "moment";
-import Media, { MediaOverlay } from "react-md/lib/Media";
+//import Media, { MediaOverlay } from "react-md/lib/Media";
 import PostTags from "../PostTags";
 //import PostCover from "../PostCover";
 import config from "../../../data/SiteConfig";
+import Card from "../../reactLIB/Card";
+import CardTitle from "../../reactLIB/CardTitle";
+import Icon from "../../reactLIB/Icon";
 import "./PostPreview.scss";
 
 class PostPreview extends Component {
@@ -21,7 +24,7 @@ class PostPreview extends Component {
       mobile: true
     };*/
     //this.handleResize = this.handleResize.bind(this);
-  }/*
+  } /*
   componentDidMount() {
     this.handleResize();
     window.addEventListener("resize", this.handleResize);
@@ -40,15 +43,57 @@ class PostPreview extends Component {
   }*/
   render() {
     const { postInfo, size } = this.props;
-    const Button=global.Button;
-  //  const { mobile } = this.state;
+    const Button = global.Button;
+    //  const { mobile } = this.state;
     const { carouselList, type } = postInfo;
     const expand = true;
     /* eslint no-undef: "off" */
     const coverHeight = 200;
-   // console.log("preview", carouselList, type);
+    // console.log("preview", carouselList, type);
     return (
       <Card
+        key={postInfo.path}
+        waves="light"
+        className={`md-cell md-cell--12-phone md-cell--${size} md-cell--4-tablet`}
+        contentImage={
+          carouselList.length > 0 && (
+            <FrontCarousel
+              data={carouselList}
+              directory={type}
+              coverClassName="md-cell--9 post-cover"
+            />
+          )
+        }
+        titlereveal={postInfo.title}
+        title={
+          <Link style={{ textDecoration: "none" }} to={postInfo.path}>
+            <Avatar icon={<Icon className="calendar" />} />
+            {postInfo.title}
+            <Button className="btn md-cell--right">Read </Button>
+          </Link>
+        }
+        imgtitle={`Published on ${moment(postInfo.date).format(
+          config.dateFormat
+        )}`}
+        reveal={
+          <>
+            <div
+              dangerouslySetInnerHTML={{ __html: window ? postInfo.html : "" }}
+            />
+            <PostTags tags={postInfo.tags} />
+          </>
+        }
+      >
+        {postInfo.excerpt}
+      </Card>
+    );
+  }
+}
+
+export default PostPreview;
+
+//<PostCover postNode={postInfo} coverHeight={coverHeight} />
+/*<Card
         key={postInfo.path}
         raise
         className={`md-grid md-cell md-cell--${size}`}
@@ -90,11 +135,4 @@ class PostPreview extends Component {
           {postInfo.excerpt}
           <PostTags tags={postInfo.tags} />
         </CardText>
-      </Card>
-    );
-  }
-}
-
-export default PostPreview;
-
-//<PostCover postNode={postInfo} coverHeight={coverHeight} />
+      </Card>*/

@@ -122,6 +122,7 @@ const FrontCarousel = ({
   t,
   alt = ""
 }) => {
+  console.log("data",data,global.filesQuery)
   if (!data) return null;
   let datas = typeof data == "string" ? data.split() : data;
   let Query = global.filesQuery;

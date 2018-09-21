@@ -21,7 +21,7 @@ class Card extends Component {
         })}
       >
         {title}
-        {reveal && <Icon right>more_vert</Icon>}
+        {reveal && <Icon className="ellipsis-v" right/>}
       </span>
     );
   }
@@ -31,7 +31,7 @@ class Card extends Component {
       <div className="card-reveal">
         <span className="card-title grey-text text-darken-4">
           {title}
-          <Icon right>close</Icon>
+          <Icon className="times" right/>
         </span>
         {reveal}
       </div>
@@ -50,12 +50,29 @@ class Card extends Component {
       </div>
     );
   }
-
-  renderAll(title, reveal, textClassName, children, actions) {
+  renderImage(imgClassName, contentImage, reveal, imgtitle,waves) {
+    const classes = cx({
+      'card-image': true,
+      'waves-effect': waves,
+      'waves-block': waves,
+      [`waves-${waves}`]: waves
+    });
+    return (
+      <div
+        className={cx(classes, imgClassName, {
+          activator: reveal
+        })}
+      >
+        {contentImage}
+        <span className="card-title">{imgtitle}</span>
+      </div>
+    );
+  }
+  renderAll(title,titlereveal, reveal, textClassName, children, actions) {
     return (
       <React.Fragment>
         {this.renderContent(title, reveal, textClassName, children)}
-        {this.renderReveal(title, reveal)}
+        {this.renderReveal(titlereveal, reveal)}
         {actions && this.renderAction(actions)}
       </React.Fragment>
     );
@@ -64,13 +81,17 @@ class Card extends Component {
   render() {
     const {
       title,
-      header,
+      imgtitle,
+      titlereveal,
+      contentImage,
+      imgClassName,
       className,
       textClassName,
       actions,
       reveal,
       children,
       horizontal,
+      waves,
       ...other
     } = this.props;
 
@@ -80,15 +101,17 @@ class Card extends Component {
     };
 
     return (
-      <div {...other} className={cx(className, classes)}>
-        {header}
+      <div className={className}>
+      <div className={cx(classes)} {...other}>
+        {this.renderImage(imgClassName, contentImage, reveal, imgtitle,waves)}
         {horizontal ? (
           <div className="card-stacked">
-            {this.renderAll(title, reveal, textClassName, children, actions)}
+            {this.renderAll(title,titlereveal, reveal, textClassName, children, actions)}
           </div>
         ) : (
-          this.renderAll(title, reveal, textClassName, children, actions)
+          <>{this.renderAll(title,titlereveal, reveal, textClassName, children, actions)}</>
         )}
+      </div>
       </div>
     );
   }
@@ -100,7 +123,8 @@ Card.propTypes = {
   title: PropTypes.string,
   textClassName: PropTypes.string,
   reveal: PropTypes.element,
-  header: PropTypes.element,
+  contentImage:PropTypes.element,
+  imgtitle: PropTypes.element,
   // The buttons to be displayed at the action area
   actions: PropTypes.arrayOf(PropTypes.element),
   horizontal: PropTypes.bool

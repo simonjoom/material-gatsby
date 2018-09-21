@@ -6,7 +6,7 @@ import cx from 'classnames';
 class Icon extends React.Component {
   render() {
     const classes = {
-      'material-icons': true
+      'fa': true
     };
     constants.PLACEMENTS.forEach(p => {
       classes[p] = this.props[p];
@@ -15,7 +15,7 @@ class Icon extends React.Component {
       classes[s] = this.props[s];
     });
     return (
-      <i className={cx(classes, this.props.className)}>{this.props.children}</i>
+      <i className={cx(classes, "fa-"+this.props.className)}></i>
     );
   }
 }

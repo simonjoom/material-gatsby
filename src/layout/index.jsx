@@ -2,7 +2,7 @@ import React from "react";
 import Helmet from "react-helmet";
 import { graphql, Link, StaticQuery } from "gatsby";
 import "font-awesome/scss/font-awesome.scss";
-import Paper from "react-md/lib/Papers/Paper";
+//import Paper from "react-md/lib/Papers/Paper";
 import Navigation from "../components/Navigation";
 import config from "../../data/SiteConfig";
 import FrontCarousel from "../components/FrontCarousel";
@@ -71,7 +71,7 @@ class MainNavLayout extends React.Component {
             )}
         </div>
 
-        <Paper className="toolbar-main">
+        <div className="toolbar-main md-paper md-paper--1">
           <div className="toolbar-container">
             <div className="rowlink toolbar-menu">
               {postList.map(post => (
@@ -88,7 +88,7 @@ class MainNavLayout extends React.Component {
             </div>
             <LanguageSwitcher route={route} className="flex-end" />
           </div>
-        </Paper>
+        </div>
         {children}
       </Navigation>
     );

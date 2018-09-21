@@ -4917,6 +4917,7 @@ small {
 
 .card .card-image {
   position: relative;
+  background-color:black;
 }
 
 .card .card-image img {
@@ -4934,9 +4935,10 @@ small {
   color: #fff;
   position: absolute;
   bottom: 0;
+  font-size: 1em;
+  padding: 1em;
   left: 0;
   max-width: 100%;
-  padding: 24px;
 }
 
 .card .card-content {

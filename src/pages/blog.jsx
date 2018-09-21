@@ -11,6 +11,7 @@ import "../articleApp.scss";
 class Blog extends React.Component {
   render() {
     const { slug, lng, route } = this.props.pageContext;
+    global.filesQuery=this.props.data.allFile.edges;
     const postEdges = this.props.data.allMarkdownRemark.edges; 
     return (
       <Layout
@@ -43,6 +44,31 @@ export const pageQuery = graphql`
     locales: allLocale(filter: { lng: { eq: $lng }, ns: { eq: "Index" } }) {
       ...LocaleFragment
     }
+    allFile(
+            filter: {
+          absolutePath:{regex:"/(assets)\/.*\\.(jpg$|png$)/"}
+            }
+              ) {
+                edges {
+                  node {
+                    id
+                    absolutePath
+                    childImageSharp {
+                      id
+                      fluid(maxWidth: 1300) {
+                        tracedSVG
+                        aspectRatio
+                        src
+                        srcSet
+                        sizes
+                        srcWebp
+                        srcSetWebp
+                        originalName
+                      }
+                    }
+                  }
+                }
+              }
     allMarkdownRemark(
       limit: 2000
       filter: {

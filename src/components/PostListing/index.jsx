@@ -14,6 +14,7 @@ class PostListing extends React.Component {
         ? [postEdge.node.frontmatter.cover]
         : [];
         this.postList.push({
+          html: postEdge.node.html,
         path: postEdge.node.fields.slug,
         tags: postEdge.node.frontmatter.tags,
         type: postEdge.node.fields.type,
