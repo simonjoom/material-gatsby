@@ -17,9 +17,7 @@ global.postList = [];
 
 const ZeptoAsync = () =>
   import(/* webpackChunkName: "zepto" */ "../components/zepto");
-
-const ZeptoMin = () => import(/* webpackChunkName: "minz" */ "./cc.js");
-
+ 
 class MainNavLayout extends React.Component {
   constructor(props) {
     super(props);
@@ -30,7 +28,6 @@ class MainNavLayout extends React.Component {
     if (!global.Zepto)
       ZeptoAsync().then(Zepto => {
         global.Zepto = Zepto.default;
-        ZeptoMin().then(() => { 
           if (/comp|inter|loaded/.test(document.readyState)){ 
             Waves.displayEffect();
           } else {
@@ -42,21 +39,16 @@ class MainNavLayout extends React.Component {
               false
             );
           }
-          const Button = require("../reactLIB/Button").default;
-          const SideNavItem = require("../reactLIB/SideNavItem").default;
-          const SideNav = require("../reactLIB/SideNav").default;
-          const Dropdown = require("../reactLIB/Dropdown").default;
-          const NavItem = require("../reactLIB/NavItem").default;
-          global.Button = Button;
-          global.Dropdown = Dropdown;
-          global.NavItem = NavItem;
+          global.Button = Zepto.Button;
+          global.Dropdown = Zepto.Dropdown;
+          global.NavItem = Zepto.NavItem;
+          global.SideNavItem = Zepto.SideNavItem;
           this.setState({
-            Button,
-            SideNavItem,
-            SideNav
+            Button:Zepto.Button,
+            SideNavItem:Zepto.SideNavItem,
+            SideNav:Zepto.SideNav
           });
         });
-      });
   }
   render() {
     const { children, route, t, postList, carouselList, ismain } = this.props;
