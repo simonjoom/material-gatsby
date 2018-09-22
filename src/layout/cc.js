@@ -4926,6 +4926,7 @@ $jscomp.polyfill = function (e, r, p, m) {
 
       // Set ripple position
       var rippleStyle = {
+      "z-index":111,
         'top': relativeY + 'px',
         'left': relativeX + 'px'
       };
@@ -5107,7 +5108,7 @@ $jscomp.polyfill = function (e, r, p, m) {
    */
   function showEffect(e) {
     var element = getWavesEffectElement(e);
-
+ 
     if (element !== null) {
       Effect.show(e, element);
 
@@ -5128,7 +5129,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     if ('duration' in options) {
       Effect.duration = options.duration;
     }
-
+    
     //Wrap input inside <i> tag
     Effect.wrapInput($$('.waves-effect'));
 
@@ -5162,9 +5163,9 @@ $jscomp.polyfill = function (e, r, p, m) {
 
   window.Waves = Waves;
 
-  document.addEventListener('DOMContentLoaded', function () {
+ /* document.addEventListener('DOMContentLoaded', function () {
     Waves.displayEffect();
-  }, false);
+  }, false);*/
 })(window);
 ;(function ($, anim) {
   'use strict';

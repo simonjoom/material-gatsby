@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import classNames from "classnames";
+import cn from "classnames";
 import { translate } from "react-i18next";
 import { push } from "gatsby";
 import { StyleSheet, View, TouchableHighlight, Text } from "react-native";
@@ -20,7 +20,7 @@ const Localetosrc = {
   pt: Icon_Flag_BR,
   ru: Icon_Flag_RU,
   uk: Icon_Flag_UK
-}; 
+};
 class LanguageSwitcher extends Component {
   constructor(props) {
     super(props);
@@ -45,7 +45,7 @@ class LanguageSwitcher extends Component {
   }
 
   renderLanguageChoice({ code, label }) {
-    const buttonClass = classNames("LanguageSwitcher__button", {
+    const buttonClass = cn("LanguageSwitcher__button", {
       "LanguageSwitcher__button--selected": this.state.language === code
     });
 
@@ -59,15 +59,15 @@ class LanguageSwitcher extends Component {
       </button>
     );
   }
-  
+
   renderButtonText(rowData) {
     const { label } = rowData;
     return `${label}`;
-  } 
+  }
   renderRow(label, lng) {
     const Flag = Localetosrc[lng];
     return (
-      <View style={[styles.dropdown_2_row, { backgroundColor: "white" }]}>
+      <View style={styles.dropdown_2_row}>
         <Text style={[styles.dropdown_2_row_text]}>
           <Flag style={{ height: "20px" }} /> {`${label}`}
         </Text>
@@ -82,24 +82,18 @@ class LanguageSwitcher extends Component {
       { code: "pt", label: "Portuguese" },
       { code: "uk", label: "Ukrainien" },
       { code: "ch", label: "Chinese" }
-    ]; 
-   const Dropdown = global.Dropdown;
+    ];
+    const Dropdown = global.Dropdown;
     const lng = this.state.language;
-    const label=languages.find(el=>el.code==lng).label
+    const label = languages.find(el => el.code == lng).label;
     return (
       <div className="LanguageSwitcher flex-end">
         {Dropdown && (
-          <Dropdown
-            trigger={
-              <Button>
-                {this.renderRow(label, lng)} 
-              </Button>
-            }
-          >
+          <Dropdown trigger={<Button>{this.renderRow(label, lng)}</Button>}>
             {languages.map((el, i) => {
               if (el.code !== lng)
                 return (
-                  <NavItem key={"nav" + i} href={this.props.route[el.code]}>
+                  <NavItem key={"nav" + i} href={this.props.route[el.code]} waves="light">
                     {this.renderRow(el.label, el.code)}
                   </NavItem>
                 );
@@ -110,7 +104,7 @@ class LanguageSwitcher extends Component {
     );
   }
 }
- 
+
 const styles = StyleSheet.create({
   dropdown_2: {
     alignSelf: "flex-end",

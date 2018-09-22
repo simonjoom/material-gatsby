@@ -1,12 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 
-const NavItem = ({ divider, children, href = '', onClick, ...props }) => {
+const NavItem = ({
+  divider,
+  children,
+  href = '',
+  onClick,
+  waves,
+  ...props
+}) => {
+  const mywaves = waves;
+  const classes = cx({
+    'card-image': true,
+    'waves-effect': waves,
+    'waves-block': waves,
+    [mywaves]: waves
+  });
+
   if (divider) return <li className="divider" />;
   const a = onClick ? (
-    <a onClick={onClick}>{children}</a>
+    <a onClick={onClick} className={classes}>
+      {children}
+    </a>
   ) : (
-    <a href={href}>{children}</a>
+    <a href={href} className={classes}>
+      {children}
+    </a>
   );
   return <li {...props}>{a}</li>;
 };

@@ -260,6 +260,8 @@ class GatsbyImage extends React.Component {
       // var Pattern = /\(max-width: (.*)px\).*vw, (.*)px/
       let srcImage, src, srcSet, presentationHeight, Pattern, match
 
+		presentationHeight = height?height:"50%"
+		/*
       if (height) {
         Pattern = /(.*)px/
         match = height.match(Pattern)
@@ -274,7 +276,7 @@ class GatsbyImage extends React.Component {
             presentationHeight = height + 'px'
           }
         }
-      }
+      }*/
       const imagePlaceholderStyle = {
         opacity: this.state.imgLoaded ? 0 : 1,
         transitionDelay: `0.25s`,
@@ -331,6 +333,7 @@ class GatsbyImage extends React.Component {
           position:'relative',
           alignSelf: "center"
           }}
+          className={className}
         >
           {bgColor && <View title={title} style={bgStyle} />}
           <div ref={this.handleRef}>

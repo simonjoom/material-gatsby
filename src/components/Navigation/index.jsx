@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Icon from "../../reactLIB/Icon";
 
 //import NavigationDrawer from "react-md/lib/NavigationDrawers";
 //import ToolbarActions from "../ToolbarActions";
@@ -29,7 +30,7 @@ class Navigation extends Component {
         <SideNav
           trigger={
             <Button className="right" tooltip="open">
-              <i class="fa fa-bars" />
+              <Icon className="bars" />
             </Button>
           }
         >

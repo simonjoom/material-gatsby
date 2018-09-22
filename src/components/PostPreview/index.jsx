@@ -13,7 +13,7 @@ import PostTags from "../PostTags";
 //import PostCover from "../PostCover";
 import config from "../../../data/SiteConfig";
 import Card from "../../reactLIB/Card";
-import CardTitle from "../../reactLIB/CardTitle";
+//import CardTitle from "../../reactLIB/CardTitle";
 import Icon from "../../reactLIB/Icon";
 import "./PostPreview.scss";
 
@@ -59,8 +59,8 @@ class PostPreview extends Component {
           carouselList.length > 0 && (
             <FrontCarousel
               data={carouselList}
+              height="0"
               directory={type}
-              coverClassName="md-cell--9 post-cover"
             />
           )
         }
@@ -72,9 +72,11 @@ class PostPreview extends Component {
             <Button className="btn md-cell--right">Read </Button>
           </Link>
         }
-        imgtitle={`Published on ${moment(postInfo.date).format(
-          config.dateFormat
-        )}`}
+        imgtitle={
+          <div>
+            Published on {`${moment(postInfo.date).format(config.dateFormat)}`}
+          </div>
+        }
         reveal={
           <>
             <div

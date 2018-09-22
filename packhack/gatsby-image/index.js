@@ -1,21 +1,11 @@
-function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Image } from 'react-native';
-/*
-const FancyImage = React.forwardRef((props, ref) => (
-  <Image forwardedRef={ref} {...props} />
-))
-const ref = React.createRef()*/
+
 // Handle legacy names for image queries.
 
 var convertProps = function convertProps(props) {
-  var convertedProps = _extends({}, props);
+  var convertedProps = babelHelpers.extends({}, props);
 
   if (convertedProps.sizes) {
     convertedProps.fluid = convertedProps.sizes;
@@ -123,7 +113,7 @@ Img.propTypes = {
 var GatsbyImage =
 /*#__PURE__*/
 function (_React$Component) {
-  _inheritsLoose(GatsbyImage, _React$Component);
+  babelHelpers.inheritsLoose(GatsbyImage, _React$Component);
 
   function GatsbyImage(props) {
     var _this;
@@ -157,7 +147,7 @@ function (_React$Component) {
       imgLoaded: imgLoaded,
       IOSupported: IOSupported
     };
-    _this.handleRef = _this.handleRef.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.handleRef = _this.handleRef.bind(babelHelpers.assertThisInitialized(babelHelpers.assertThisInitialized(_this)));
     return _this;
   } // Implement srcset
 
@@ -281,8 +271,8 @@ function (_React$Component) {
       var image = fluid; // var Pattern = /\(max-width: (.*)px\).*vw, (.*)px/
 
       var srcImage, src, srcSet, presentationHeight, Pattern, match;
-
-      if (height) {
+		presentationHeight = height?height:"50%"
+      /*if (height) {
         Pattern = /(.*)px/;
         match = height.match(Pattern);
 
@@ -298,17 +288,15 @@ function (_React$Component) {
             presentationHeight = height + 'px';
           }
         }
-      }
+      }*/
 
-      var imagePlaceholderStyle = _extends({
+      var imagePlaceholderStyle = babelHelpers.extends({
         opacity: this.state.imgLoaded ? 0 : 1,
         transitionDelay: "0.25s"
       }, imgStyle, placeholderStyle);
-
-      var imageStyle = _extends({
+      var imageStyle = babelHelpers.extends({
         opacity: this.state.imgLoaded || this.props.fadeIn === false ? 1 : 0
       }, imgStyle); // Use webp by default if browser supports it
-
 
       if (image.srcWebp && image.srcSetWebp && isWebpSupported()) {
         srcImage = this.srcset(image.srcSetWebp, width, height, image.aspectRatio);
@@ -347,7 +335,8 @@ function (_React$Component) {
           margin: '0 auto',
           position: 'relative',
           alignSelf: "center"
-        }
+        },
+        className: className
       }, bgColor && React.createElement(View, {
         title: title,
         style: bgStyle

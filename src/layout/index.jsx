@@ -23,32 +23,44 @@ const ZeptoMin = () => import(/* webpackChunkName: "minz" */ "./cc.js");
 class MainNavLayout extends React.Component {
   constructor(props) {
     super(props);
-    global.Button ="div";
+    global.Button = "div";
     this.state = { Button: "div", SideNavItem: null, SideNav: "div" };
   }
   componentDidMount() {
-    ZeptoAsync().then(Zepto => {
-      global.Zepto = Zepto.default;
-      ZeptoMin().then(() => {
-        const Button = require("../reactLIB/Button").default;
-        const SideNavItem = require("../reactLIB/SideNavItem").default;
-        const SideNav = require("../reactLIB/SideNav").default;
-        const Dropdown= require("../reactLIB/Dropdown").default;
-        const NavItem= require("../reactLIB/NavItem").default;
-        global.Button =Button;
-        global.Dropdown =Dropdown;
-        global.NavItem =NavItem;
-        this.setState({
-          Button,
-          SideNavItem,
-          SideNav
+    if (!global.Zepto)
+      ZeptoAsync().then(Zepto => {
+        global.Zepto = Zepto.default;
+        ZeptoMin().then(() => { 
+          if (/comp|inter|loaded/.test(document.readyState)){ 
+            Waves.displayEffect();
+          } else {
+            document.addEventListener(
+              "DOMContentLoaded",
+              function() { 
+                Waves.displayEffect();
+              },
+              false
+            );
+          }
+          const Button = require("../reactLIB/Button").default;
+          const SideNavItem = require("../reactLIB/SideNavItem").default;
+          const SideNav = require("../reactLIB/SideNav").default;
+          const Dropdown = require("../reactLIB/Dropdown").default;
+          const NavItem = require("../reactLIB/NavItem").default;
+          global.Button = Button;
+          global.Dropdown = Dropdown;
+          global.NavItem = NavItem;
+          this.setState({
+            Button,
+            SideNavItem,
+            SideNav
+          });
         });
       });
-    });
   }
   render() {
     const { children, route, t, postList, carouselList, ismain } = this.props;
-    console.log("ismain22", ismain);
+    console.log("ismain22", ismain, carouselList);
     return (
       <Navigation
         Button={this.state.Button}
@@ -154,7 +166,7 @@ const StaticRun = ({ children, route, t, lng, carouselList, ismain }) => {
             sort: { fields: [fields___date], order: DESC }
           ) {
             edges {
-              node {  
+              node {
                 fields {
                   inmenu
                   carousel

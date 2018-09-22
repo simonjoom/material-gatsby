@@ -2,7 +2,7 @@ import React from "react";
 import Img from "gatsby-image";
 import { graphql, StaticQuery } from "gatsby";
 import Carousel from "./carousel";
-import "./carousel.css"; 
+import "./carousel.css";
 
 const GetImage = ({
   CarouselQuery,
@@ -10,6 +10,7 @@ const GetImage = ({
   coverclassname,
   width,
   ismain,
+  height = "50%",
   alt = "",
   t,
   maxWidth = "1024px",
@@ -66,7 +67,7 @@ const GetImage = ({
                     {t("main2")}
                     <div className="md-cell">
                       <a
-                        tabindex="0"
+                        tabIndex="0"
                         href="/instructors_skischool/"
                         style={{
                           color: "#3f51b5",
@@ -93,7 +94,7 @@ const GetImage = ({
                 : {}
             }
             fluid={FileNode.node.childImageSharp.fluid}
-            height="100%"
+            height={height}
             width={width}
             maxWidth={maxWidth}
           />
@@ -118,11 +119,12 @@ const FrontCarousel = ({
   width,
   maxwidth = "1024px",
   directory,
+  height,
   ismain,
   t,
   alt = ""
 }) => {
-  console.log("data",data,global.filesQuery)
+  console.log("data", data, global.filesQuery);
   if (!data) return null;
   let datas = typeof data == "string" ? data.split() : data;
   let Query = global.filesQuery;
@@ -134,6 +136,7 @@ const FrontCarousel = ({
         dataList={datas}
         directory={directory}
         width={width}
+        height={height}
         maxWidth={maxwidth}
         ismain={ismain}
         t={t}
@@ -141,8 +144,8 @@ const FrontCarousel = ({
         alt={alt}
       />
     );
-  return (null)
- /* else
+  return null;
+  /* else
     return (
       <StaticQuery
         query={graphql`
@@ -198,6 +201,6 @@ const FrontCarousel = ({
         }}
       />
     );*/
-      }
+};
 
 export default FrontCarousel;
