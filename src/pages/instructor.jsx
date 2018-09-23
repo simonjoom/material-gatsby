@@ -16,7 +16,7 @@ class Instructor extends React.Component {
       <Layout
         carouselList={[]}
         route={route}
-        lng={route}
+        lng={lng}
         ismain={false}
         location={this.props.location}
       >
@@ -25,7 +25,7 @@ class Instructor extends React.Component {
             <title>{config.siteTitle}</title>
             <link rel="canonical" href={`${config.siteUrl}`} />
           </Helmet>
-          <SEO postEdges={postEdges} translate={t} />
+          <SEO postEdges={postEdges} translate={t("Instructor")} />
           <PostListing postEdges={postEdges} size="3" sizebig="11" />
         </div>
       </Layout>

@@ -17,7 +17,7 @@ class Blog extends React.Component {
       <Layout
         carouselList={[]}
         route={route}
-        lng={route}
+        lng={lng}
         ismain={false}
         location={this.props.location}
       >

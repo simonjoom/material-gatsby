@@ -7,7 +7,7 @@ import LanguageSwitcher from "./Switchlang";
 
 class Layout extends React.Component {
   render() {
-    console.log("Layoutprops", this.props);
+    console.log("Layoutprops", global.menuList);
     const {
       translate,
       children,
@@ -17,6 +17,7 @@ class Layout extends React.Component {
       ismain,
       location
     } = this.props;
+
     return (
       <>
         <div
@@ -37,17 +38,18 @@ class Layout extends React.Component {
         <div className="toolbar-main md-paper md-paper--1">
           <div className="toolbar-container">
             <div className="rowlink toolbar-menu">
-              {global.menuList[lng].map(post => (
-                <Link
-                  key={post.path}
-                  style={{ textDecoration: "none" }}
-                  to={post.path}
-                  className="Menulink toolbar-link"
-                >
-                  <i className="mr1 fa fa-lg fa-circle-o" />
-                  {post.title}
-                </Link>
-              ))}
+              {global.menuList&&global.menuList[lng].length > 0 &&
+                global.menuList[lng].map(post => (
+                  <Link
+                    key={post.path}
+                    style={{ textDecoration: "none" }}
+                    to={post.path}
+                    className="Menulink toolbar-link"
+                  >
+                    <i className="mr1 fa fa-lg fa-circle-o" />
+                    {post.title}
+                  </Link>
+                ))}
               <Link
                 key={router["/instructor/"][lng]}
                 style={{ textDecoration: "none" }}
