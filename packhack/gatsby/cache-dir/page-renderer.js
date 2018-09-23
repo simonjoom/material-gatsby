@@ -1,44 +1,52 @@
 import React, { createElement } from "react"
 import PropTypes from "prop-types"
 import { publicLoader } from "./loader"
-import { apiRunner } from "./api-runner-browser"
-import { onRouteUpdate, onPreRouteUpdate } from "./navigation"
+import { apiRunner,apiRunnerAsync } from "./api-runner-browser"
 
-// Renders page and fire on(Pre)RouteUpdate APIs
+// Renders page
 class PageRenderer extends React.Component {
+
   constructor(props) {
     super(props)
-    if (props.isMain) {
-      onPreRouteUpdate(props.location)
-    }
+    this.state={wrappedPage:null} 
   }
 
-  componentDidMount() {
-    if (this.props.isMain) {
-      onRouteUpdate(this.props.location)
-    }
-  }
-
-  componentDidUpdate(prevProps, prevState, shouldFireRouteUpdate) {
-    if (this.props.isMain && shouldFireRouteUpdate) {
-      onRouteUpdate(this.props.location)
-    }
-  }
-
-  getSnapshotBeforeUpdate(prevProps, prevState) {
-    if (this.props.isMain) {
-      if (this.props.location.pathname !== prevProps.location.pathname) {
-        onPreRouteUpdate(this.props.location)
-        return true
-      }
-
-      return false
-    }
-    return null
-  }
-
-  render() {
+componentDidMount(){
+    
     const props = {
+      ...this.props,
+      pathContext: this.props.pageContext,
+    } 
+
+    const [replacementElement] = apiRunner(`replaceComponentRenderer`, {
+      props: this.props,
+      loader: publicLoader,
+    })
+
+    const pageElement =
+      replacementElement ||
+      createElement(this.props.pageResources.component, {
+        ...props,
+        key: this.props.location.pathname,
+      })
+
+    const wrappedPage = apiRunnerAsync(
+      `wrapPageElement`,
+      { element: pageElement, props },
+      pageElement,
+      ({ result }) => {
+        return { element: result, props }
+      }
+    )
+    wrappedPage.then((end)=>{
+    this.setState({wrappedPage:end})
+}) 
+}
+
+componentDidUpdate(nextprops, prevState) { 
+console.log("pageResources",nextprops.location.pathname!==this.props.location.pathname)
+if(nextprops.location.pathname!==this.props.location.pathname){
+	const props = {
       ...this.props,
       pathContext: this.props.pageContext,
     }
@@ -50,18 +58,28 @@ class PageRenderer extends React.Component {
 
     const pageElement =
       replacementElement ||
-      createElement(this.props.pageResources.component, props)
+      createElement(this.props.pageResources.component, {
+        ...props,
+        key: this.props.location.pathname,
+      })
 
-    const wrappedPage = apiRunner(
+    const wrappedPage = apiRunnerAsync(
       `wrapPageElement`,
       { element: pageElement, props },
       pageElement,
       ({ result }) => {
         return { element: result, props }
       }
-    ).pop()
+    )
+     wrappedPage.then((end)=>{
+    this.setState({wrappedPage:end})
+})
+} 
+}
 
-    return wrappedPage
+  render() { 
+console.log("render_runtranslate")
+    return this.state.wrappedPage 
   }
 }
 
@@ -70,7 +88,6 @@ PageRenderer.propTypes = {
   pageResources: PropTypes.object.isRequired,
   data: PropTypes.object,
   pageContext: PropTypes.object.isRequired,
-  isMain: PropTypes.bool,
 }
 
 export default PageRenderer

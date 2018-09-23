@@ -3,7 +3,9 @@ import React, { Component } from "react";
 //import CardTitle from "react-md/lib/Cards/CardTitle";
 //import Button from "react-md/lib/Buttons";
 import FrontCarousel from "components/FrontCarousel";
-import Avatar from "react-md/lib/Avatars";
+import Avatar from "react-md/lib/Avatars"; 
+import Button from "../../reactLIB/Button"
+
 //import CardText from "react-md/lib/Cards/CardText";
 import FontIcon from "react-md/lib/FontIcons";
 import { Link } from "gatsby";
@@ -42,8 +44,7 @@ class PostPreview extends Component {
     }
   }*/
   render() {
-    const { postInfo, size } = this.props;
-    const Button = global.Button;
+    const { postInfo, size } = this.props; 
     //  const { mobile } = this.state;
     const { carouselList, type } = postInfo;
     const expand = true;

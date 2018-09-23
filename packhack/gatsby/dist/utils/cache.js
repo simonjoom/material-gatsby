@@ -51,14 +51,14 @@ exports.initCache = () => {
   let previousState;
 
   try {
-    previousState = JSON.parse(fs.readFileSync(`${directory}/db.json`));
+  previousState = JSON.parse(fs.readFileSync(`${directory}/db.json`));
   } catch (e) {// ignore
   }
 
   if (previousState) {
-    db = objectToMap(previousState);
+  db = objectToMap(previousState);
   } else {
-    db = new Map();
+  db = new Map();
   }
 };
 /**

@@ -142,6 +142,12 @@ console.log("PRODUCTION",PRODUCTION)
           loader: require.resolve(`./babel-loader`)
         };
       },
+      jso: options => {
+        return {
+          options,
+          loader: require.resolve(`./babel-loadero`)
+        };
+      },
       eslint: (schema = ``) => {
         const options = eslintConfig(schema);
         return {
@@ -169,27 +175,28 @@ console.log("PRODUCTION",PRODUCTION)
     const rules = {};
     /**
      * Javascript loader via babel, excludes node_modules
-     */
-{
-      let jsx = (options = {}) => {
-        return {
-       //   test: /react-native-web.*\.jsx?/,
-       // type: 'javascript/esm',
-       //   use: [loaders.js(options)]
-        };
-      };
-      rules.jsx = jsx;
-    }
+     */ 
     {
       let js = (options = {}) => {
         return {
           test: /\.jsx?$/,
-          exclude: vendorRegex,
+          exclude: /(node_modules|babelHelper|gatsby-|.cache|bower_components)/,
           use: [loaders.js(options)]
         };
       };
 
       rules.js = js;
+    }
+    {
+      let jso = (options = {}) => {
+        return {
+          test: /\.jsx?$/,
+          exclude: /(node_modules|babelHelper|bower_components)/,
+          use: [loaders.jso(options)]
+        };
+      };
+
+      rules.jso = jso;
     }
     {
       let eslint = schema => {

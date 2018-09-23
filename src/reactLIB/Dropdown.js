@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'; 
 import idgen from './idgen';
 import cx from 'classnames';
 
@@ -15,8 +15,8 @@ class Dropdown extends Component {
   }
 
   componentDidMount() {
-    const options = this.props.options || {}; 
-    Zepto(this._trigger).dropdown(options); 
+    const { options } = this.props;
+    Zepto(this._trigger).dropdown(options);
   }
 
   componentWillUnmount() {
@@ -72,4 +72,4 @@ Dropdown.propTypes = {
   })
 };
 
-export default Dropdown;
+export default Dropdown; 

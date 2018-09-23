@@ -4,11 +4,11 @@ import { graphql } from "gatsby";
 import RehypeReact from 'rehype-react';
 import { translate } from "utils/i18n"; 
 import Card from "react-md/lib/Cards";
-import CardText from "react-md/lib/Cards/CardText";
-import Layout from "../layout";
+import CardText from "react-md/lib/Cards/CardText"; 
 import UserInfo from "../components/UserInfo";
 import Disqus from "../components/Disqus";
 import PostTags from "../components/PostTags";
+import Layout from "../components/Layout";
 //import PostCover from "../components/PostCover";
 import PostInfo from "../components/PostInfo";
 import FrontCarousel from "../components/FrontCarousel";
@@ -55,8 +55,7 @@ class PostTemplate extends React.Component {
 */
   render() {
     const { mobile } = this.state;
-    const { slug, route, lng } = this.props.pageContext;
-    global.filesQuery=this.props.data.allFile.edges;
+    const { slug, route, lng } = this.props.pageContext; 
     console.log("postthis", this.props);
     const expanded = !mobile;
     const postOverlapClass = mobile ? "post-overlap-mobile" : "post-overlap";
@@ -73,11 +72,8 @@ class PostTemplate extends React.Component {
 
     const coverHeight = mobile ? 180 : 350;
     return (
-      <Layout
-        location={this.props.location}
-        route={route}
-        t={this.props.t}
-        lng={lng}
+      <Layout 
+         carouselList={carouselList} route={route} lng={lng} ismain={false} location={this.props.location}>
       >
         <div className="post-page md-grid md-grid--no-spacing">
           <Helmet>
@@ -134,6 +130,36 @@ class PostTemplate extends React.Component {
 
 export default translate(["Post", "common"])(PostTemplate);
 
+export const postQuery = graphql`
+  query PostsBySlug($slug: String!) {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
+      htmlAst
+      timeToRead
+      excerpt
+      rawMarkdownBody
+      frontmatter {
+        title
+        cover
+        date
+        category
+        tags
+      }
+      fields {
+        inmenu
+        carousel
+        nextTitle
+        nextSlug
+        prevTitle
+        prevSlug
+        slug
+        lng
+        date
+        type
+      }
+    }
+  }
+`;
+/*
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!, $lng: String!) {
     locales: allLocale(filter: { lng: { eq: $lng } }) {
@@ -188,6 +214,5 @@ export const pageQuery = graphql`
     }
   }
 `;
-
-
-//<div dangerouslySetInnerHTML={{ __html: postNode.html }} />
+*/
+ 

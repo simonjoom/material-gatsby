@@ -1,6 +1,6 @@
 import React from "react";
 import Img from "gatsby-image";
-import { graphql, StaticQuery } from "gatsby";
+import { withTheme } from '../../withContext'; 
 import Carousel from "./carousel";
 import "./carousel.css";
 
@@ -119,9 +119,9 @@ const FrontCarousel = ({
   width,
   maxwidth = "1024px",
   directory,
-  height,
+  height = "50%",
   ismain,
-  t,
+  translate,
   alt = ""
 }) => {
   console.log("data", data, global.filesQuery);
@@ -139,68 +139,12 @@ const FrontCarousel = ({
         height={height}
         maxWidth={maxwidth}
         ismain={ismain}
-        t={t}
+        t={translate("Index")}
         coverclassname={coverclassname}
         alt={alt}
       />
     );
   return null;
-  /* else
-    return (
-      <StaticQuery
-        query={graphql`
-            query CarouselQuery {
-              allFile(
-            filter: {
-          absolutePath:{regex:"/(assets)\/.*\\.(jpg$|png$)/"}
-            }
-              ) {
-                edges {
-                  node {
-                    id
-                    absolutePath
-                    childImageSharp {
-                      id
-                      internal {
-                        contentDigest
-                        type
-                        owner
-                      }
-                      fluid(maxWidth: 1300) {
-                        base64
-                        tracedSVG
-                        aspectRatio
-                        src
-                        srcSet
-                        sizes
-                        srcWebp
-                        srcSetWebp
-                        originalName
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          `}
-        render={nodes => {
-          CarouselQuery = nodes.allFile.edges;
-          return (
-            <GetImage
-              CarouselQuery={CarouselQuery}
-              dataList={datas}
-              width={width}
-              ismain={ismain}
-              maxWidth={maxwidth}
-              alt={alt}
-              t={t}
-              directory={directory}
-              coverclassname={coverclassname}
-            />
-          );
-        }}
-      />
-    );*/
 };
 
-export default FrontCarousel;
+export default withTheme(FrontCarousel);

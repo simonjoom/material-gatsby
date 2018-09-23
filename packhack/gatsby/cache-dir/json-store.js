@@ -53,7 +53,7 @@ class JSONStore extends React.Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    const newPath = getPathFromProps(props)
+    const newPath = getPathFromProps(props) 
     if (newPath !== state.path) {
       socketUnregisterPath(state.path)
       socketRegisterPath(newPath)
@@ -69,10 +69,9 @@ class JSONStore extends React.Component {
     // We want to update this component when:
     // - location changed
     // - page data for path changed
-    // - static query results changed
-
+    // - static query results changed  
     return (
-      this.props.location !== nextProps.location ||
+      this.props.location.pathname !== nextProps.location.pathname ||
       this.state.path !== nextState.path ||
       this.state.pageQueryData[nextState.path] !==
         nextState.pageQueryData[nextState.path] ||
@@ -90,7 +89,10 @@ class JSONStore extends React.Component {
 
     return (
       <StaticQueryContext.Provider value={this.state.staticQueryData}>
-        <PageRenderer {...propsWithoutPages} {...data} />
+        <PageRenderer
+          {...propsWithoutPages}
+          {...data}
+        />
       </StaticQueryContext.Provider>
     )
   }

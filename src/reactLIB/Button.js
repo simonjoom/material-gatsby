@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'; 
 import constants from './constants';
 import cx from 'classnames';
 import Icon from './Icon';
@@ -11,16 +11,13 @@ class Button extends Component {
     this.renderIcon = this.renderIcon.bind(this);
     this.renderFab = this.renderFab.bind(this);
   }
-
   componentDidMount() {
-    const { tooltip, tooltipOptions } = this.props;
-    console.log("didmountButton",Zepto,tooltip)
-    if (
+    const { tooltip, tooltipOptions } = this.props;   
       typeof Zepto !== 'undefined' &&
-      (typeof tooltip !== 'undefined' || typeof tooltipOptions !== 'undefined')
-    ) {
+      (typeof tooltip !== 'undefined' ||
+        typeof tooltipOptions !== 'undefined') &&
       Zepto(this._btnEl).tooltip(tooltipOptions);
-    }
+    // Typical usage (don't forget to compare props):
   }
 
   render() {

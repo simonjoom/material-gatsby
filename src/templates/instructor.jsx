@@ -3,14 +3,14 @@ import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import { translate } from "utils/i18n";
 import Card from "react-md/lib/Cards";
-import CardText from "react-md/lib/Cards/CardText";
-import Layout from "../layout";
+import CardText from "react-md/lib/Cards/CardText"; 
 import UserInfo from "../components/UserInfo";
 import Disqus from "../components/Disqus";
 import PostTags from "../components/PostTags";
 import FrontCarousel from "../components/FrontCarousel";
 import PostInfo from "../components/PostInfo";
 import SocialLinks from "../components/SocialLinks";
+import Layout from "../components/Layout";
 import PostSuggestions from "../components/PostSuggestions";
 import SEO from "../components/SEO";
 import config from "../../data/SiteConfig";
@@ -31,8 +31,7 @@ class PostTemplate extends React.Component {
     console.log("route", route);
     const expanded = !mobile;
     // const postOverlapClass = mobile ? "post-overlap-mobile" : "post-overla";
-    const postNode = this.props.data.markdownRemark;
-    global.filesQuery=this.props.data.allFile.edges;
+    const postNode = this.props.data.markdownRemark; 
     console.log("renderindex", postNode.html);
     const post = postNode.frontmatter;
     if (!post.id) {
@@ -44,13 +43,7 @@ class PostTemplate extends React.Component {
     const directory = postNode.fields.type;
     const carouselList = post.cover ? [post.cover] : []; 
     return (
-      <Layout
-        location={this.props.location}
-        route={route}
-        ismain={slugbase === "/"}
-        t={this.props.t}
-        lng={lng}
-      >
+      <Layout carouselList={carouselList} route={route} lng={lng} ismain={false} location={this.props.location}>
         <div className="post-page md-grid">
           <Helmet>
             <title>{`${post.title} | ${config.siteTitle}`}</title>
@@ -95,8 +88,7 @@ class PostTemplate extends React.Component {
           </div>
 
           <PostSuggestions postNode={postNode} />
-        </div>
-      </Layout>
+        </div> </Layout>
     );
   }
 }
@@ -104,35 +96,7 @@ class PostTemplate extends React.Component {
 export default translate(["Instructor", "common"])(PostTemplate);
 
 export const pageQuery = graphql`
-  query InstructorPostBySlug($slug: String!,$lng: String!) {
-    locales: allLocale(filter: { lng: { eq: $lng } }) {
-      ...LocaleFragment
-    }
-    allFile(
-            filter: {
-          absolutePath:{regex:"/(assets)\/.*\\.(jpg$|png$)/"}
-            }
-              ) {
-                edges {
-                  node {
-                    id
-                    absolutePath
-                    childImageSharp {
-                      id
-                      fluid(maxWidth: 1300) {
-                        tracedSVG
-                        aspectRatio
-                        src
-                        srcSet
-                        sizes
-                        srcWebp
-                        srcSetWebp
-                        originalName
-                      }
-                    }
-                  }
-                }
-              }
+  query InstructorPostBySlug($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       timeToRead
@@ -157,3 +121,19 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+
+/*
+      <Layout
+        location={this.props.location}
+        route={route}
+        ismain={slugbase === "/"}
+        t={this.props.t}
+        lng={lng}
+      >
+      
+      
+          locales: allLocale(filter: { lng: { eq: $lng } }) {
+      ...LocaleFragment
+    }
+      */

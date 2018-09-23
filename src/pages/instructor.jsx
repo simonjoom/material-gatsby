@@ -2,22 +2,22 @@ import React from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import { translate } from "utils/i18n";
-import Layout from "../layout";
 import PostListing from "../components/PostListing";
+import Layout from "../components/Layout";
 import SEO from "../components/SEO";
 import config from "../../data/SiteConfig";
 
 class Index extends React.Component {
   render() {
-    const { lng, route } = this.props.pageContext; 
-    global.filesQuery=this.props.data.allFile.edges;
-    const postEdges = this.props.data.allMarkdownRemark.edges; 
+    const { lng, route } = this.props.pageContext;
+    const postEdges = this.props.data.allMarkdownRemark.edges;
     return (
       <Layout
-        location={this.props.location}
+        carouselList={[]}
         route={route}
-        t={this.props.t}
-        lng={lng}
+        lng={route}
+        ismain={false}
+        location={this.props.location}
       >
         <div className="index-container">
           <Helmet>
@@ -33,36 +33,8 @@ class Index extends React.Component {
 }
 export default translate(["Index", "common"])(Index);
 
-export const pageQuery = graphql`  
+export const pageQuery = graphql`
   query InstructorQuery($lng: String!) {
-    locales: allLocale(filter: { lng: { eq: $lng } }) {
-      ...LocaleFragment
-    }
-    allFile(
-            filter: {
-          absolutePath:{regex:"/(assets)\/.*\\.(jpg$|png$)/"}
-            }
-              ) {
-                edges {
-                  node {
-                    id
-                    absolutePath
-                    childImageSharp {
-                      id
-                      fluid(maxWidth: 1300) {
-                        tracedSVG
-                        aspectRatio
-                        src
-                        srcSet
-                        sizes
-                        srcWebp
-                        srcSetWebp
-                        originalName
-                      }
-                    }
-                  }
-                }
-              }
     allMarkdownRemark(
       limit: 2000
       filter: {

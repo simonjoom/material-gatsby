@@ -1,8 +1,9 @@
-import React, { Component } from "react";
-import cn from "classnames";
+import React, { Component } from "react"; 
 import { translate } from "react-i18next";
-import { push } from "gatsby";
-import { StyleSheet, View, TouchableHighlight, Text } from "react-native";
+import Dropdown from "../reactLIB/Dropdown";
+import Button from "../reactLIB/Button";
+import NavItem from "../reactLIB/NavItem"; 
+import { StyleSheet, View, Text } from "react-native";
 
 import {
   Icon_Flag_FR,
@@ -26,38 +27,10 @@ class LanguageSwitcher extends Component {
     super(props);
     const { i18n } = this.props;
     this.state = { language: i18n.language };
-
-    this.handleChangeLanguage = this.handleChangeLanguage.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log("componentWillReceiveProps", nextProps.i18n.language);
     this.setState({ language: nextProps.i18n.language });
-  }
-
-  handleChangeLanguage(lng) {
-    const { i18n } = this.props;
-    //console.log(this.props.route)
-    i18n.changeLanguage(lng);
-    if (!this.props.route) console.warn("warning noroutedefined");
-    else push(this.props.route[lng]);
-    return false;
-  }
-
-  renderLanguageChoice({ code, label }) {
-    const buttonClass = cn("LanguageSwitcher__button", {
-      "LanguageSwitcher__button--selected": this.state.language === code
-    });
-
-    return (
-      <button
-        key={code}
-        className={buttonClass}
-        onClick={() => this.handleChangeLanguage(code)}
-      >
-        {label}
-      </button>
-    );
   }
 
   renderButtonText(rowData) {
@@ -83,23 +56,30 @@ class LanguageSwitcher extends Component {
       { code: "uk", label: "Ukrainien" },
       { code: "ch", label: "Chinese" }
     ];
-    const Dropdown = global.Dropdown;
     const lng = this.state.language;
     const label = languages.find(el => el.code == lng).label;
     return (
       <div className="LanguageSwitcher flex-end">
-        {Dropdown && (
-          <Dropdown trigger={<Button>{this.renderRow(label, lng)}</Button>}>
-            {languages.map((el, i) => {
-              if (el.code !== lng)
-                return (
-                  <NavItem key={"nav" + i} href={this.props.route[el.code]} waves="light">
-                    {this.renderRow(el.label, el.code)}
-                  </NavItem>
-                );
-            })}
-          </Dropdown>
-        )}
+        <Dropdown
+          trigger={
+            <Button>
+              {this.renderRow(label, lng)}
+            </Button>
+          }
+        >
+          {languages.map((el, i) => {
+            if (el.code !== lng)
+              return (
+                <NavItem
+                  key={"nav" + i}
+                  href={this.props.route[el.code]}
+                  waves="light"
+                >
+                  {this.renderRow(el.label, el.code)}
+                </NavItem>
+              );
+          })}
+        </Dropdown>
       </div>
     );
   }

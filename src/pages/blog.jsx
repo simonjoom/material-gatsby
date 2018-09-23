@@ -2,7 +2,7 @@ import React from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import { translate } from "utils/i18n";
-import Layout from "../layout";
+import Layout from "../components/Layout";
 import PostListing from "../components/PostListing";
 import SEO from "../components/SEO";
 import config from "../../data/SiteConfig";
@@ -11,14 +11,14 @@ import "../articleApp.scss";
 class Blog extends React.Component {
   render() {
     const { slug, lng, route } = this.props.pageContext;
-    global.filesQuery=this.props.data.allFile.edges;
-    const postEdges = this.props.data.allMarkdownRemark.edges; 
+    const postEdges = this.props.data.allMarkdownRemark.edges;
     return (
       <Layout
-        location={this.props.location}
+        carouselList={[]}
         route={route}
-        t={this.props.t}
-        lng={lng}
+        lng={route}
+        ismain={false}
+        location={this.props.location}
       >
         <div className="index-container">
           <Helmet>
@@ -41,34 +41,6 @@ export default translate(["Index", "common"])(Blog);
 
 export const pageQuery = graphql`
   query BlogQuery($lng: String!) {
-    locales: allLocale(filter: { lng: { eq: $lng }, ns: { eq: "Index" } }) {
-      ...LocaleFragment
-    }
-    allFile(
-            filter: {
-          absolutePath:{regex:"/(assets)\/.*\\.(jpg$|png$)/"}
-            }
-              ) {
-                edges {
-                  node {
-                    id
-                    absolutePath
-                    childImageSharp {
-                      id
-                      fluid(maxWidth: 1300) {
-                        tracedSVG
-                        aspectRatio
-                        src
-                        srcSet
-                        sizes
-                        srcWebp
-                        srcSetWebp
-                        originalName
-                      }
-                    }
-                  }
-                }
-              }
     allMarkdownRemark(
       limit: 2000
       filter: {
@@ -98,3 +70,15 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+/*
+   locales: allLocale(filter: { lng: { eq: $lng }, ns: { eq: "Index" } }) {
+      ...LocaleFragment
+    }
+
+      <Layout
+        location={this.props.location}
+        route={route}
+        t={this.props.t}
+        lng={lng}
+      >*/

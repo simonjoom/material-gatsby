@@ -3,11 +3,11 @@ import RehypeReact from "rehype-react";
 import Helmet from "react-helmet";
 import { graphql, Link } from "gatsby";
 import { View } from "react-native";
-import { translate } from "utils/i18n";
-import Layout from "../layout";
+import { translate } from "utils/i18n"; 
 import UserInfo from "../components/UserInfo";
 import Disqus from "../components/Disqus";
 import PostTags from "../components/PostTags";
+import Layout from "../components/Layout";
 import { Card, CardText } from "react-md";
 //import PostInfo from "../components/PostInfo";
 import SocialLinks from "../components/SocialLinks";
@@ -37,9 +37,9 @@ class PostTemplate extends React.Component {
   render() {
     const { mobile } = this.state;
     const { slug, slugbase, route, lng, carousel } = this.props.pageContext;
-    global.filesQuery=this.props.data.allFile.edges;
-    console.log("postthis", this.props.data.markdownRemark);
+    console.log("postthis", this.props);
     const expanded = !mobile;
+    const ismain = slugbase === "/";
     let carouselList = [];
     let background;
     //render current markdownRemark
@@ -60,14 +60,7 @@ class PostTemplate extends React.Component {
     const title = this.props.t(post.title);
     //render current markdownRemark
     return (
-      <Layout
-        location={this.props.location}
-        route={route}
-        t={this.props.t}
-        ismain={slugbase === "/"}
-        carouselList={carouselList}
-        lng={lng}
-      >
+      <Layout carouselList={carouselList} route={route} lng={lng} ismain={ismain} location={this.props.location}>
         <Helmet>
           <title>{`${title} | ${SiteConfig.siteTitle}`}</title>
           <link rel="canonical" href={`${SiteConfig.siteUrl}${post.id}`} />
@@ -126,36 +119,7 @@ class PostTemplate extends React.Component {
 export default translate(["Index", "common"])(PostTemplate);
 
 export const pageQuery = graphql`
-  query PagesBySlug($slug: String!, $lng: String!) {
-    locales: allLocale(filter: { lng: { eq: $lng } }) {
-      ...LocaleFragment
-    }
-    allFile(
-            filter: {
-          absolutePath:{regex:"/(assets)\/.*\\.(jpg$|png$)/"}
-            }
-              ) {
-                edges {
-                  node {
-                    id
-                    absolutePath
-                    childImageSharp {
-                      id
-                      fluid(maxWidth: 1300) {
-                        tracedSVG
-                        aspectRatio
-                        src
-                        srcSet
-                        sizes
-                        srcWebp
-                        srcSetWebp
-                        originalName
-                      }
-                    }
-                  }
-                }
-              }
-
+  query PagesBySlug($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       htmlAst
       timeToRead
@@ -178,3 +142,14 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+
+/*
+      <Layout
+        location={this.props.location}
+        route={route}
+        t={this.props.t}
+        ismain={slugbase === "/"}
+        carouselList={carouselList}
+        lng={lng}
+      >*/

@@ -179,7 +179,9 @@ function () {
     }
 
     function getPlugins() {
-      let configPlugins = [plugins.moment(),plugins.babelHelpers(), // Add a few global variables. Set NODE_ENV to production (enables
+      let configPlugins = [plugins.moment(),
+      plugins.babelHelpers(),
+       // Add a few global variables. Set NODE_ENV to production (enables
       // optimizations for React) and what the link prefix is (__PATH_PREFIX__).
       plugins.define({
         "process.env": processEnv(stage, `development`),
@@ -303,7 +305,7 @@ function () {
     function getModule(config) {
       // Common config for every env.
       // prettier-ignore
-      let configRules = [rules.js(), rules.yaml(), rules.fonts(), rules.images(), rules.media(), rules.miscAssets()];
+      let configRules = [rules.js(),rules.jso(), rules.yaml(), rules.fonts(), rules.images(), rules.media(), rules.miscAssets()];
 
       switch (stage) {
         case `develop`:

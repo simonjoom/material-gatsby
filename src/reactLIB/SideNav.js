@@ -1,31 +1,30 @@
 import React, { Component } from 'react';
 import cx from 'classnames';
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'; 
 import idgen from './idgen';
 
 class SideNav extends Component {
   constructor(props) {
     super(props);
-    var r=idgen(); 
+    var r = idgen();
     this.id = props.id || `sidenav_${r}`;
   }
 
-  componentDidMount() {
+  componentDidMount() { 
     const { options } = this.props;
-  Zepto(document).ready(function(){
-  
-   Zepto('.sidenav').sidenav(options);
-  });
-  
-    //Zepto('.sidenav').sidenav(options);
+     Zepto(document).ready(function() {
+        Zepto('.sidenav').sidenav(options);
+      });
   }
+
 
   render() {
     const { className, children, trigger, fixed, ...props } = this.props;
     delete props.id;
     delete props.options;
     const classNames = cx(
-      'sidenav',"sidenav-close",
+      'sidenav',
+      'sidenav-close',
       { 'sidenav-fixed': fixed || !trigger },
       className
     );
