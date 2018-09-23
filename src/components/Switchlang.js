@@ -1,9 +1,13 @@
-import React, { Component } from "react"; 
-import { translate } from "react-i18next";
+import React, { Component } from "react";
 import Dropdown from "../reactLIB/Dropdown";
 import Button from "../reactLIB/Button";
-import NavItem from "../reactLIB/NavItem"; 
+import NavItem from "../reactLIB/NavItem";
+import i18n from "i18next";
 import { StyleSheet, View, Text } from "react-native";
+
+const getLanguage = () =>
+  i18n.language ||
+  (typeof window !== "undefined" && window.localStorage.i18nextLng);
 
 import {
   Icon_Flag_FR,
@@ -25,12 +29,7 @@ const Localetosrc = {
 class LanguageSwitcher extends Component {
   constructor(props) {
     super(props);
-    const { i18n } = this.props;
-    this.state = { language: i18n.language };
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({ language: nextProps.i18n.language });
+    this.state = { language: getLanguage() };
   }
 
   renderButtonText(rowData) {
@@ -60,13 +59,7 @@ class LanguageSwitcher extends Component {
     const label = languages.find(el => el.code == lng).label;
     return (
       <div className="LanguageSwitcher flex-end">
-        <Dropdown
-          trigger={
-            <Button>
-              {this.renderRow(label, lng)}
-            </Button>
-          }
-        >
+        <Dropdown trigger={<Button>{this.renderRow(label, lng)}</Button>}>
           {languages.map((el, i) => {
             if (el.code !== lng)
               return (
@@ -130,7 +123,7 @@ const styles = StyleSheet.create({
     height: 20
   }
 });
-export default translate()(LanguageSwitcher);
+export default LanguageSwitcher;
 
 /*
         {languages.map(language => this.renderLanguageChoice(language))}*/

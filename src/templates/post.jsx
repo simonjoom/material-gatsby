@@ -2,7 +2,7 @@ import React from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import RehypeReact from 'rehype-react';
-import { translate } from "utils/i18n"; 
+import withTheme from "../withContext";
 import Card from "react-md/lib/Cards";
 import CardText from "react-md/lib/Cards/CardText"; 
 import UserInfo from "../components/UserInfo";
@@ -55,6 +55,7 @@ class PostTemplate extends React.Component {
 */
   render() {
     const { mobile } = this.state;
+    const {translate: t} = this.props;
     const { slug, route, lng } = this.props.pageContext; 
     console.log("postthis", this.props);
     const expanded = !mobile;
@@ -84,7 +85,7 @@ class PostTemplate extends React.Component {
             postPath={slug}
             postNode={postNode}
             postSEO
-            translate={this.props.t}
+            translate={t("Post")}
           />
           {carouselList.length > 0 && (
             <FrontCarousel
@@ -128,7 +129,7 @@ class PostTemplate extends React.Component {
   }
 }
 
-export default translate(["Post", "common"])(PostTemplate);
+export default withTheme(PostTemplate);
 
 export const postQuery = graphql`
   query PostsBySlug($slug: String!) {

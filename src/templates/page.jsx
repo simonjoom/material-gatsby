@@ -3,9 +3,9 @@ import RehypeReact from "rehype-react";
 import Helmet from "react-helmet";
 import { graphql, Link } from "gatsby";
 import { View } from "react-native";
-import { translate } from "utils/i18n"; 
 import UserInfo from "../components/UserInfo";
 import Disqus from "../components/Disqus";
+import withTheme from "../withContext";
 import PostTags from "../components/PostTags";
 import Layout from "../components/Layout";
 import { Card, CardText } from "react-md";
@@ -36,6 +36,7 @@ class PostTemplate extends React.Component {
 
   render() {
     const { mobile } = this.state;
+    const { translate: t } = this.props;
     const { slug, slugbase, route, lng, carousel } = this.props.pageContext;
     console.log("postthis", this.props);
     const expanded = !mobile;
@@ -57,10 +58,16 @@ class PostTemplate extends React.Component {
     if (!post.category_id) {
       post.category_id = SiteConfig.postDefaultCategoryID;
     }
-    const title = this.props.t(post.title);
+    const title = t("index")(post.title);
     //render current markdownRemark
     return (
-      <Layout carouselList={carouselList} route={route} lng={lng} ismain={ismain} location={this.props.location}>
+      <Layout
+        carouselList={carouselList}
+        route={route}
+        lng={lng}
+        ismain={ismain}
+        location={this.props.location}
+      >
         <Helmet>
           <title>{`${title} | ${SiteConfig.siteTitle}`}</title>
           <link rel="canonical" href={`${SiteConfig.siteUrl}${post.id}`} />
@@ -91,8 +98,7 @@ class PostTemplate extends React.Component {
           )<SEO
             postPath={slug}
             postNode={postNode}
-            postSEO
-            translate={this.props.t}
+            postSEO 
           />
           */}
 
@@ -116,7 +122,7 @@ class PostTemplate extends React.Component {
   }
 }
 
-export default translate(["Index", "common"])(PostTemplate);
+export default withTheme(PostTemplate);
 
 export const pageQuery = graphql`
   query PagesBySlug($slug: String!) {
@@ -142,7 +148,6 @@ export const pageQuery = graphql`
     }
   }
 `;
-
 
 /*
       <Layout

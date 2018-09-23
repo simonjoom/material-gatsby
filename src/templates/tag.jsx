@@ -1,11 +1,13 @@
 import React from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby"; 
+import withTheme from "../withContext";
 import PostListing from "../components/PostListing";
 import config from "../../data/SiteConfig";
 
-export default class TagTemplate extends React.Component {
+class TagTemplate extends React.Component {
   render() {
+    const {translate: t} = this.props;
     const { tag, route, lng } = this.props.pageContext;
     const postEdges = this.props.data.allMarkdownRemark.edges;
     return (
@@ -19,6 +21,7 @@ export default class TagTemplate extends React.Component {
     );
   }
 }
+export default withTheme(TagTemplate)
 
 export const pageQuery = graphql`
   query TagPage($tag: String, $lng: String!) {

@@ -5,7 +5,7 @@ export const ThemeContext = React.createContext({
 });
 
 // This function takes a component...
-export function withTheme(Component) {
+function withTheme(Component) {
   // ...and returns another component...
   return function ThemedComponent(props) {
     // ... and renders the wrapped component with the context theme!
@@ -22,3 +22,4 @@ export function withTheme(Component) {
     );
   };
 }
+export default withTheme

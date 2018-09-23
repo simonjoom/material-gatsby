@@ -1,5 +1,6 @@
 import React from "react";
 import i18n from "i18next";
+import { ThemeContext } from "./withContext";
 
 const filetranslate = lng => import(`./layouts/translate_${lng}`);
 const ZeptoAsync = () =>
@@ -7,9 +8,8 @@ const ZeptoAsync = () =>
 const Statics = () =>
   import(/* webpackChunkName: "statics" */ "./layouts/statics");
 
-global.postList = [];
-console.log("runprovider", global.postList);
-global.filesQuery = undefined;
+global.menuList = { en: [], ru: [], pt: [], uk: [], ch: [], fr: [] };
+global.filesQuery = [];
 const preferDefault = m => (m && m.default) || m;
 let Layout;
 try {
@@ -33,7 +33,7 @@ const getLanguage = () =>
 export const wrapPageElement = async ({ element, props }) => {
   const { lng } = props.pageContext;
   let Red, Red2;
-  if (!global.trname || getLanguage() !== lng) {
+  if (global.menuList[lng].length == 0 || getLanguage() !== lng) {
     const Obj = await filetranslate(lng);
     Red = Obj.default;
   } else {
@@ -55,7 +55,7 @@ export const wrapPageElement = async ({ element, props }) => {
     global.Zepto = Zep.default;
   }
 
-  if (global.postList.length == 0) {
+  if (global.filesQuery.length == 0) {
     const Obj = await Statics();
     Red2 = Obj.default;
   } else {
@@ -64,16 +64,21 @@ export const wrapPageElement = async ({ element, props }) => {
   console.log("Red2", Red2, lng);
   const { slug, slugbase, route, carousel } = props.pageContext;
   const namespace = slugbase === "/" ? "Index" : "Post";
-  const ismain = slugbase === "/";
-
-  console.log("runnPaggeLayout", global.trname, global.postList);
+  const ismain = slugbase === "/"; 
+  console.log("runMainNavLayout", props.location);
   return (
     <>
       <Red />
       <Red2 lng={lng} />
-      <Layout route={route} lng={lng} location={props.location}>
-        {element}
-      </Layout>
+      <ThemeContext.Provider
+        value={{
+          translate: namespace => i18n.getFixedT(null, [namespace, "common"])
+        }}
+      >
+        <Layout route={route} lng={lng}>
+          {element}
+        </Layout>
+      </ThemeContext.Provider>
     </>
   );
 };

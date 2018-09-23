@@ -1,9 +1,9 @@
 import React from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
-import { translate } from "utils/i18n";
+import withTheme from "../withContext";
 import Card from "react-md/lib/Cards";
-import CardText from "react-md/lib/Cards/CardText"; 
+import CardText from "react-md/lib/Cards/CardText";
 import UserInfo from "../components/UserInfo";
 import Disqus from "../components/Disqus";
 import PostTags from "../components/PostTags";
@@ -27,11 +27,12 @@ class PostTemplate extends React.Component {
 
   render() {
     const { mobile } = this.state;
-    const { slug, lng, route,slugbase } = this.props.pageContext;
+    const { translate: t } = this.props;
+    const { slug, lng, route, slugbase } = this.props.pageContext;
     console.log("route", route);
     const expanded = !mobile;
     // const postOverlapClass = mobile ? "post-overlap-mobile" : "post-overla";
-    const postNode = this.props.data.markdownRemark; 
+    const postNode = this.props.data.markdownRemark;
     console.log("renderindex", postNode.html);
     const post = postNode.frontmatter;
     if (!post.id) {
@@ -41,9 +42,15 @@ class PostTemplate extends React.Component {
       post.category_id = config.postDefaultCategoryID;
     }
     const directory = postNode.fields.type;
-    const carouselList = post.cover ? [post.cover] : []; 
+    const carouselList = post.cover ? [post.cover] : [];
     return (
-      <Layout carouselList={carouselList} route={route} lng={lng} ismain={false} location={this.props.location}>
+      <Layout
+        carouselList={carouselList}
+        route={route}
+        lng={lng}
+        ismain={false}
+        location={this.props.location}
+      >
         <div className="post-page md-grid">
           <Helmet>
             <title>{`${post.title} | ${config.siteTitle}`}</title>
@@ -53,7 +60,7 @@ class PostTemplate extends React.Component {
             postPath={slug}
             postNode={postNode}
             postSEO
-            translate={this.props.t}
+            translate={t("Instructor")}
           />
           {carouselList.length > 0 && (
             <FrontCarousel
@@ -62,7 +69,7 @@ class PostTemplate extends React.Component {
               coverClassName="md-grid md-cell--9 post-cover"
             />
           )}
- 
+
           <div className="md-grid post-page-contents mobile-fix">
             <Card className="md-grid md-cell md-cell--12 post">
               <CardText className="post-body">
@@ -88,12 +95,13 @@ class PostTemplate extends React.Component {
           </div>
 
           <PostSuggestions postNode={postNode} />
-        </div> </Layout>
+        </div>
+      </Layout>
     );
   }
 }
 
-export default translate(["Instructor", "common"])(PostTemplate);
+export default withTheme(PostTemplate);
 
 export const pageQuery = graphql`
   query InstructorPostBySlug($slug: String!) {
@@ -121,19 +129,4 @@ export const pageQuery = graphql`
     }
   }
 `;
-
-
-/*
-      <Layout
-        location={this.props.location}
-        route={route}
-        ismain={slugbase === "/"}
-        t={this.props.t}
-        lng={lng}
-      >
-      
-      
-          locales: allLocale(filter: { lng: { eq: $lng } }) {
-      ...LocaleFragment
-    }
-      */
+ 

@@ -1,6 +1,6 @@
 import React from "react";
 import Img from "gatsby-image";
-import { withTheme } from '../../withContext'; 
+import withTheme from '../../withContext'; 
 import Carousel from "./carousel";
 import "./carousel.css";
 

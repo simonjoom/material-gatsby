@@ -34,56 +34,12 @@ const statics = ({ lng }) => {
                   }
                 }
               }
-          allMarkdownRemark(
-            limit: 2000
-            filter: { fields: { type: { eq: "pages" } } }
-            sort: { fields: [fields___date], order: DESC }
-          ) {
-            edges {
-              node {
-                fields {
-                  inmenu
-                  carousel
-                  slug
-                  lng
-                }
-                frontmatter {
-                  title
-                }
-              }
-            }
-          }
         }
       `}
         render={data => {
           run = false;
-          console.log("runstatic", global.trname);
-          //generate Menu from allMarkdownRemark
-          const postEdges = data.allMarkdownRemark.edges;
-          postEdges.forEach(postEdge => {
-            let title;
-            if (postEdge.node.fields.lng === lng) {
-              //console.log("testslug", postEdge.node.fields.slug);
-              // title = t(postEdge.node.frontmatter.title);
-              title = postEdge.node.frontmatter.title;
-              if (postEdge.node.fields.inmenu)
-                global.postList.push({
-                  path: postEdge.node.fields.slug,
-                  title
-                });
-            }
-          });
-          global.filesQuery = data.allFile.edges;
-          const t = global.trname("Index");
-          global.postList.push({
-            path: router["/instructor/"][lng],
-            title: t("instructor")
-          });
-          global.postList.push({
-            path: router["/blog/"][lng],
-            title: t("blog")
-          });
-
+          console.log("runstatic", global.filesQuery); 
+          global.filesQuery = data.allFile.edges; 
           return <div />;
         }}
       />

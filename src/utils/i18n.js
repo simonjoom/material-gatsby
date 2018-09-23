@@ -3,7 +3,7 @@ import i18n from "i18next";
 import Backend from "i18next-xhr-backend";
 import { graphql } from "gatsby";
 import LanguageDetector from "i18next-browser-languagedetector";
-import { reactI18nextModule, translate as t } from "react-i18next";
+//import { reactI18nextModule } from "react-i18next";
 import config from "../config";
 
 const options = {
@@ -33,13 +33,13 @@ if (process.browser) {
     .use(LanguageDetector);
 }
 
-i18n.use(reactI18nextModule);
+//i18n.use(reactI18nextModule);
 
 // initialize if not already initialized
 if (!i18n.isInitialized) i18n.init(options);
 
 export default i18n;
-
+/*
 export function withPathnameObserver(WrappedComponent) {
   return class extends Component {
     componentWillMount() {
@@ -88,6 +88,7 @@ lang=lng;
   };
 }
 
+
 export function translate(ns = ["common"]) {
   return function Wrapper(WrappedComponent) {
     const Extended = t(ns, { i18n, wait: process.browser })(WrappedComponent);
@@ -97,15 +98,4 @@ export function translate(ns = ["common"]) {
   };
 }
 
-export const localeFragment = graphql`
-  fragment LocaleFragment on LocaleConnection {
-    edges {
-      node {
-        id
-        lng
-        ns
-        data
-      }
-    }
-  }
-`;
+*/

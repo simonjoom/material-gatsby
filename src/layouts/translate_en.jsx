@@ -20,6 +20,23 @@ const translate = () => {
                 }
               }
             }
+            allMarkdownRemark(
+              limit: 2000
+              filter: { fields: { type: { eq: "pages" }, lng: { eq: "en" } } }
+              sort: { fields: [fields___date], order: DESC }
+            ) {
+              edges {
+                node {
+                  fields {
+                    inmenu 
+                    slug 
+                  }
+                  frontmatter {
+                    title
+                  }
+                }
+              }
+            }
           }
         `}
         render={data => {
@@ -34,8 +51,18 @@ const translate = () => {
             }
           });
           i18n.changeLanguage(lang);
-          global.trname = namespace =>
-            i18n.getFixedT(null, [namespace, "common"]);
+          let t = namespace => i18n.getFixedT(null, [namespace, "common"]);
+
+          global.postEdges = data.allMarkdownRemark.edges;
+          global.postEdges.forEach(postEdge => {
+            const { title } = postEdge.node.frontmatter;
+            if (postEdge.node.fields.inmenu)
+              global.menuList["en"].push({
+                path: postEdge.node.fields.slug,
+                title: t("Index")(title)
+              });
+          });
+
           console.log("changeLanguage", lang);
           return <div />;
         }}
