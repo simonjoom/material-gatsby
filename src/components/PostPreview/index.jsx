@@ -6,8 +6,7 @@ import FrontCarousel from "components/FrontCarousel";
 import Avatar from "react-md/lib/Avatars"; 
 import Button from "../../reactLIB/Button"
 
-//import CardText from "react-md/lib/Cards/CardText";
-import FontIcon from "react-md/lib/FontIcons";
+//import CardText from "react-md/lib/Cards/CardText"; 
 import { Link } from "gatsby";
 import moment from "moment";
 //import Media, { MediaOverlay } from "react-md/lib/Media";
@@ -61,6 +60,7 @@ class PostPreview extends Component {
             <FrontCarousel
               data={carouselList}
               height="0"
+              maxwidth={size>6?"200px":"600px"}
               directory={type}
             />
           )

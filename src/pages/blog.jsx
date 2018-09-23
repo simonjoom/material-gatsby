@@ -27,10 +27,9 @@ class Blog extends React.Component {
           </Helmet>
           <SEO postEdges={postEdges} translate={this.props.t} />
           <PostListing
-            postEdges={postEdges}
-            width={"100%"}
+            postEdges={postEdges} 
             sizebig={12}
-            size={12}
+            size={6}
           />
         </div>
       </Layout>
