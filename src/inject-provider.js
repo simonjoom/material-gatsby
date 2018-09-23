@@ -1,6 +1,11 @@
 import React from "react";
 import i18n from "i18next";
 import { ThemeContext } from "./withContext";
+var canUseDOM = !!(
+  typeof window !== "undefined" &&
+  window.document &&
+  window.document.createElement
+);
 
 const filetranslate = lng => import(`./layouts/translate_${lng}`);
 const ZeptoAsync = () =>
@@ -39,7 +44,7 @@ export const wrapPageElement = async ({ element, props }) => {
   } else {
     Red = "div";
   }
-  if (!global.Zepto) {
+  if (canUseDOM && !global.Zepto) {
     const Zep = await ZeptoAsync();
     if (/comp|inter|loaded/.test(document.readyState)) {
       Waves.displayEffect();
@@ -64,7 +69,7 @@ export const wrapPageElement = async ({ element, props }) => {
   console.log("Red2", Red2, lng);
   const { slug, slugbase, route, carousel } = props.pageContext;
   const namespace = slugbase === "/" ? "Index" : "Post";
-  const ismain = slugbase === "/"; 
+  const ismain = slugbase === "/";
   console.log("runMainNavLayout", props.location);
   return (
     <>
