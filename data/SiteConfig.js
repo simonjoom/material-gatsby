@@ -28,7 +28,7 @@ module.exports = {
     },
     {
       label: "Twitter",
-      url: "https://twitter.com/Vagr9K",
+      url: "#",
       iconClassName: "fa fa-twitter"
     },
     {

@@ -1,21 +1,26 @@
 import React, { Component } from "react";
-import Button from "react-md/lib/Buttons";
+// import Button from "react-md/lib/Buttons";
+import Button from "../../reactLIB/Button";
 import "./UserLinks.scss";
 
 class UserLinks extends Component {
   getLinkElements() {
     const { userLinks } = this.props.config;
-    const { labeled } = this.props;
+    const { labeled, footer } = this.props;
     return userLinks.map(link => (
       <Button
-        icon={!labeled}
-        flat={labeled}
-        secondary
+        // icon={!labeled}
+        // flat={labeled}
+        // secondary
         key={link.label}
-        iconClassName={link.iconClassName}
-        href={link.url}
+        // iconClassName={link.iconClassName}
+        node="a"
+        href={footer ? link.url : link.url}
+        waves= "light"
+        className="white-text"
+        style={{margin: '0 1%'}}
       >
-        {labeled ? link.label : ""}
+        <i className={link.iconClassName}></i> {labeled ? link.label : ""}
       </Button>
     ));
   }
