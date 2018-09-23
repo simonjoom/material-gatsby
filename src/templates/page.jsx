@@ -148,13 +148,4 @@ export const pageQuery = graphql`
     }
   }
 `;
-
-/*
-      <Layout
-        location={this.props.location}
-        route={route}
-        t={this.props.t}
-        ismain={slugbase === "/"}
-        carouselList={carouselList}
-        lng={lng}
-      >*/
+ 

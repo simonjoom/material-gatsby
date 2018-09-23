@@ -5,10 +5,6 @@ import NavItem from "../reactLIB/NavItem";
 import i18n from "i18next";
 import { StyleSheet, View, Text } from "react-native";
 
-const getLanguage = () =>
-  i18n.language ||
-  (typeof window !== "undefined" && window.localStorage.i18nextLng);
-
 import {
   Icon_Flag_FR,
   Icon_Flag_RU,
@@ -29,12 +25,16 @@ const Localetosrc = {
 class LanguageSwitcher extends Component {
   constructor(props) {
     super(props);
-    this.state = { language: getLanguage() };
+    console.log("i18n.language", i18n.language);
+    this.language = this.getLanguage();
+    this.route = this.props.route;
   }
-
-  renderButtonText(rowData) {
-    const { label } = rowData;
-    return `${label}`;
+  getLanguage() {
+    return (
+      i18n.language ||
+      (!isSSR && window && window.localStorage.i18nextLng) ||
+      "en"
+    );
   }
   renderRow(label, lng) {
     const Flag = Localetosrc[lng];
@@ -55,7 +55,7 @@ class LanguageSwitcher extends Component {
       { code: "uk", label: "Ukrainien" },
       { code: "ch", label: "Chinese" }
     ];
-    const lng = this.state.language;
+    const lng = this.getLanguage();
     const label = languages.find(el => el.code == lng).label;
     return (
       <div className="LanguageSwitcher flex-end">
@@ -65,7 +65,16 @@ class LanguageSwitcher extends Component {
               return (
                 <NavItem
                   key={"nav" + i}
-                  href={this.props.route[el.code]}
+                  href={
+                    this.route
+                      ? this.route[el.code]
+                      : this.props.path
+                          .replace("_fr", "_" + lng)
+                          .replace("_pt", "_" + lng)
+                          .replace("_ru", "_" + lng)
+                          .replace("_ch", "_" + lng)
+                          .replace("_uk", "_" + lng)
+                  }
                   waves="light"
                 >
                   {this.renderRow(el.label, el.code)}

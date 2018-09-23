@@ -7,7 +7,6 @@ import LanguageSwitcher from "./Switchlang";
 
 class Layout extends React.Component {
   render() {
-    console.log("Layoutprops", global.menuList);
     const {
       translate,
       children,
@@ -15,9 +14,11 @@ class Layout extends React.Component {
       lng,
       carouselList,
       ismain,
+      path,
       location
     } = this.props;
 
+    console.log("Layoutroute", route);
     return (
       <>
         <div
@@ -69,7 +70,7 @@ class Layout extends React.Component {
                 {translate("Index")("blog")}
               </Link>
             </div>
-            <LanguageSwitcher route={route} className="flex-end" />
+            {(route||path)&&<LanguageSwitcher path={path} route={route} className="flex-end" />}
           </div>
         </div>
         {children}

@@ -56,8 +56,9 @@ function () {
           plugins = _ref2.plugins;
 
     function processEnv(stage, defaultNodeEnv) {
-      debug(`Building env for "${stage}"`);
-      const env = process.env.NODE_ENV ? process.env.NODE_ENV : `${defaultNodeEnv}`;
+      debug(`Building env for "${stage}"`); 
+      console.log("Building env",process.env.NODE_ENV)
+      const env = process.env.NODE_ENV ? process.env.NODE_ENV : `${defaultNodeEnv}`; 
       const envFile = path.join(process.cwd(), `./.env.${env}`);
       let parsed = {};
 
@@ -279,6 +280,7 @@ function () {
         case `develop-html`:
         case `build-html`:
         case `build-javascript`:
+        return false;
           return `source-map`;
 
         default:
@@ -472,7 +474,7 @@ function () {
     if (stage === `build-html` || stage === `develop-html`) {
       const externalList = [// match `lodash` and `lodash/foo`
       // but not things like `lodash-es`
-  /*    `lodash`, /^lodash\//, `react`, /^react-dom\//, `pify`, `@reach/router`, `@reach/router/lib/history`, `common-tags`, `path`, `semver`, `react-helmet`, `minimatch`, `fs`, /^core-js\//, `es6-promise`, `crypto`, `zlib`, `http`, `https`, `debug`];
+  `lodash`, /^lodash\//, `react`, /^react-dom\//, `pify`, `@reach/router`, `@reach/router/lib/history`, `common-tags`, `path`, `semver`, `react-helmet`, `minimatch`, `fs`, /^core-js\//, `es6-promise`, `crypto`, `zlib`, `http`, `https`, `debug`];
       config.externals = [function (context, request, callback) {
         if (externalList.some(item => {
           if (typeof item === `string` && item === request) {
@@ -483,12 +485,11 @@ function () {
 
           return false;
         })) {
-          return callback(null, `comm ${request}`);
+          return callback(null, `umd ${request}`);
         }
 
         return callback();
       }
-      */
       ];
     }
 

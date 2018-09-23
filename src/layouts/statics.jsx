@@ -1,9 +1,7 @@
-import React from "react";
-import { router } from "../config";
+import React from "react"; 
 import { graphql, StaticQuery } from "gatsby";
 let run = true;
-const statics = ({ lng }) => {
-  console.log("runstaticsz",lng)
+const statics = ({ lng }) => { 
   if (run)
     return (
       <StaticQuery
@@ -37,8 +35,7 @@ const statics = ({ lng }) => {
         }
       `}
         render={data => {
-          run = false;
-          console.log("runstatic", global.filesQuery); 
+          run = false; 
           global.filesQuery = data.allFile.edges; 
           return <div />;
         }}

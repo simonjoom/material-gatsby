@@ -15,8 +15,7 @@ export default class MainNavLayout extends React.Component {
   }
   render() {
     const {
-      children,
-      route, 
+      children, 
       lng, 
       location
     } = this.props; 

@@ -1,20 +1,20 @@
 import React, { Component } from "react";
-//import Card from "react-md/lib/Cards/Card";
-//import CardTitle from "react-md/lib/Cards/CardTitle";
-//import Button from "react-md/lib/Buttons";
+// import Card from "react-md/lib/Cards/Card";
+// import CardTitle from "react-md/lib/Cards/CardTitle";
+// import Button from "react-md/lib/Buttons";
 import FrontCarousel from "components/FrontCarousel";
 import Avatar from "react-md/lib/Avatars"; 
 import Button from "../../reactLIB/Button"
 
-//import CardText from "react-md/lib/Cards/CardText"; 
+// import CardText from "react-md/lib/Cards/CardText"; 
 import { Link } from "gatsby";
 import moment from "moment";
-//import Media, { MediaOverlay } from "react-md/lib/Media";
+// import Media, { MediaOverlay } from "react-md/lib/Media";
 import PostTags from "../PostTags";
-//import PostCover from "../PostCover";
+// import PostCover from "../PostCover";
 import config from "../../../data/SiteConfig";
 import Card from "../../reactLIB/Card";
-//import CardTitle from "../../reactLIB/CardTitle";
+// import CardTitle from "../../reactLIB/CardTitle";
 import Icon from "../../reactLIB/Icon";
 import "./PostPreview.scss";
 
@@ -23,8 +23,8 @@ class PostPreview extends Component {
     super(props);
     /*this.state = {
       mobile: true
-    };*/
-    //this.handleResize = this.handleResize.bind(this);
+    }; */
+    // this.handleResize = this.handleResize.bind(this);
   } /*
   componentDidMount() {
     this.handleResize();
@@ -41,7 +41,7 @@ class PostPreview extends Component {
     } else {
       this.setState({ mobile: true });
     }
-  }*/
+  } */
   render() {
     const { postInfo, size } = this.props; 
     //  const { mobile } = this.state;
@@ -81,7 +81,7 @@ class PostPreview extends Component {
         reveal={
           <>
             <div
-              dangerouslySetInnerHTML={{ __html: window ? postInfo.html : "" }}
+              dangerouslySetInnerHTML={{ __html: isSSR ? postInfo.html : "" }}
             />
             <PostTags tags={postInfo.tags} />
           </>
@@ -95,8 +95,8 @@ class PostPreview extends Component {
 
 export default PostPreview;
 
-//<PostCover postNode={postInfo} coverHeight={coverHeight} />
-/*<Card
+// <PostCover postNode={postInfo} coverHeight={coverHeight} />
+/* <Card
         key={postInfo.path}
         raise
         className={`md-grid md-cell md-cell--${size}`}

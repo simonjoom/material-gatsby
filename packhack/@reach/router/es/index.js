@@ -155,7 +155,11 @@ var ServerLocation = function ServerLocation(_ref2) {
     LocationContext.Provider,
     {
       value: {
-        location: { pathname: url },
+        location: {
+          pathname: url,
+          search: "",
+          hash: ""
+        },
         navigate: function navigate() {
           throw new Error("You can't call navigate on the server.");
         }
@@ -373,7 +377,11 @@ var FocusHandlerImpl = function (_React$Component2) {
       if (initialRender) {
         initialRender = false;
       } else {
-        this.node.focus();
+        // React polyfills [autofocus] and it fires earlier than cDM,
+        // so we were stealing focus away, this line prevents that.
+        if (!this.node.contains(document.activeElement)) {
+          this.node.focus();
+        }
       }
     }
   };
@@ -586,7 +594,11 @@ var stripSlashes = function stripSlashes(str) {
 
 var createRoute = function createRoute(basepath) {
   return function (element) {
-    !(element.props.path || element.props.default || element.type === Redirect) ? process.env.NODE_ENV !== "production" ? invariant(false, "<Router>: Children of <Router> must have a `path` or `default` prop, or be a `<Redirect>`. None found on element type `" + element.type + "`") : invariant(false) : void 0;
+    if (!element) {
+      return null;
+    }
+console.log("element",element,element.props)
+    !(element.props.path || element.props.default || element.type === Redirect) ? process.env.NODE_ENV !== "production" ? invariant(false, "<Router>: Children of <Router> must have a `path` or `default` prop, or be a `<Redirect>`. None found on element type") : invariant(false) : void 0;
 
     !!(element.type === Redirect && (!element.props.from || !element.props.to)) ? process.env.NODE_ENV !== "production" ? invariant(false, "<Redirect from=\"" + element.props.from + " to=\"" + element.props.to + "\"/> requires both \"from\" and \"to\" props when inside a <Router>.") : invariant(false) : void 0;
 
@@ -613,4 +625,4 @@ var shouldNavigate = function shouldNavigate(event) {
 };
 
 ////////////////////////////////////////////////////////////////////////
-export { Link, Location, LocationProvider, Match, Redirect, Router, ServerLocation, createHistory, createMemorySource, isRedirect, navigate, redirectTo };
+export { Link, Location, LocationProvider, Match, Redirect, Router, ServerLocation, createHistory, createMemorySource, isRedirect, navigate, redirectTo, globalHistory };

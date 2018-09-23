@@ -2,17 +2,23 @@ import React from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import withTheme from "../withContext";
-import PostListing from "../components/PostListing"; 
+import PostListing from "../components/PostListing";
 import Layout from "../components/Layout";
 import config from "../../data/SiteConfig";
 
 class CategoryTemplate extends React.Component {
   render() {
-    const {translate: t} = this.props;
-    const { category, lng, route } = this.props.pageContext;
-    const postEdges = this.props.data.allMarkdownRemark.edges; 
+    const { translate: t, path } = this.props;
+    const { category, lng } = this.props.pageContext;
+    const postEdges = this.props.data.allMarkdownRemark.edges;
     return (
-      <Layout carouselList={[]} route={route} lng={lng} ismain={false} location={this.props.location}>
+      <Layout
+        carouselList={[]}
+        path={path}
+        lng={lng}
+        ismain={false}
+        location={this.props.location}
+      >
         <div className="category-container">
           <Helmet>
             <title>
@@ -24,8 +30,8 @@ class CategoryTemplate extends React.Component {
             />
           </Helmet>
           <PostListing postEdges={postEdges} />
-        </div> 
-        </Layout>
+        </div>
+      </Layout>
     );
   }
 }
@@ -61,5 +67,3 @@ export const pageQuery = graphql`
     }
   }
 `;
-
- 

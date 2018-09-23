@@ -1,27 +1,36 @@
 import React from "react";
 import Helmet from "react-helmet";
-import { graphql } from "gatsby"; 
+import { graphql } from "gatsby";
 import withTheme from "../withContext";
+import Layout from "../components/Layout";
 import PostListing from "../components/PostListing";
 import config from "../../data/SiteConfig";
 
 class TagTemplate extends React.Component {
   render() {
-    const {translate: t} = this.props;
-    const { tag, route, lng } = this.props.pageContext;
+    const { translate: t ,path } = this.props;
+    const { tag, lng } = this.props.pageContext;
     const postEdges = this.props.data.allMarkdownRemark.edges;
     return (
+      <Layout
+        carouselList={[]}
+        path={path}
+        lng={lng}
+        ismain={false}
+        location={this.props.location}
+      >
         <div className="tag-container">
           <Helmet>
             <title>{`Posts tagged as "${tag}" | ${config.siteTitle}`}</title>
             <link rel="canonical" href={`${config.siteUrl}/tags/${tag}`} />
           </Helmet>
           <PostListing postEdges={postEdges} />
-        </div> 
+        </div>{" "}
+      </Layout>
     );
   }
 }
-export default withTheme(TagTemplate)
+export default withTheme(TagTemplate);
 
 export const pageQuery = graphql`
   query TagPage($tag: String, $lng: String!) {
@@ -54,14 +63,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
-
-
-/*
-      <Layout
-        location={this.props.location}
-        title={`Tagged in ${tag.charAt(0).toUpperCase() + tag.slice(1)}`}
-        route={route}
-        t={this.props.t}
-        lng={lng}
-      >*/
+`; 

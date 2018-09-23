@@ -28,12 +28,10 @@ class PostTemplate extends React.Component {
   render() {
     const { mobile } = this.state;
     const { translate: t } = this.props;
-    const { slug, lng, route, slugbase } = this.props.pageContext;
-    console.log("route", route);
+    const { slug, lng, route, slugbase } = this.props.pageContext; 
     const expanded = !mobile;
     // const postOverlapClass = mobile ? "post-overlap-mobile" : "post-overla";
-    const postNode = this.props.data.markdownRemark;
-    console.log("renderindex", postNode.html);
+    const postNode = this.props.data.markdownRemark; 
     const post = postNode.frontmatter;
     if (!post.id) {
       post.id = slug;
