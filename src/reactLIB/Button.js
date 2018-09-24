@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types'; 
+import PropTypes from 'prop-types';
 import constants from './constants';
 import cx from 'classnames';
 import Icon from './Icon';
@@ -10,13 +10,19 @@ class Button extends Component {
     super(props);
     this.renderIcon = this.renderIcon.bind(this);
     this.renderFab = this.renderFab.bind(this);
+    const { tooltip, tooltipOptions } = this.props;
+    this.tooltip =
+      typeof tooltip !== 'undefined' || typeof tooltipOptions !== 'undefined';
   }
   componentDidMount() {
-    const { tooltip, tooltipOptions } = this.props;   
-      typeof Zepto !== 'undefined' &&
-      (typeof tooltip !== 'undefined' ||
-        typeof tooltipOptions !== 'undefined') &&
-      Zepto(this._btnEl).tooltip(tooltipOptions);
+    const { tooltipOptions } = this.props;
+    var elems = document.querySelectorAll('.tooltipped');
+    //  var instances =Zepto.Tooltip.init(elems, options);
+
+    typeof Zepto !== 'undefined' &&
+      this.tooltip &&
+      Zepto.Tooltip.init(elems, tooltipOptions);
+    //    Zepto(this._btnEl).tooltip(tooltipOptions);
     // Typical usage (don't forget to compare props):
   }
 
@@ -65,8 +71,7 @@ class Button extends Component {
           {...other}
           disabled={!!disabled}
           onClick={this.props.onClick}
-          className={cx(classes, className)}
-          ref={el => (this._btnEl = el)}
+          className={cx(this.tooltip ? 'tooltipped' : '', classes, className)}
           data-tooltip={tooltip}
         >
           {this.renderIcon()}

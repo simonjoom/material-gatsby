@@ -181,7 +181,42 @@ document.addEventListener('keydown', docHandleKeydown, true);
 document.addEventListener('keyup', docHandleKeyup, true);
 document.addEventListener('focus', docHandleFocus, true);
 document.addEventListener('blur', docHandleBlur, true);
- 
+
+/**
+ * Initialize jQuery wrapper for plugin
+ * @param {Class} plugin  javascript class
+ * @param {string} pluginName  jQuery plugin name
+ * @param {string} classRef  Class reference name
+ */
+M.initializeJqueryWrapper = function (plugin, pluginName, classRef) {
+  Zepto.fn[pluginName] = function (methodOrOptions) {
+    // Call plugin method if valid method name is passed in
+    if (methodOrOptions&&plugin.prototype[methodOrOptions]) { 
+      var params = Array.prototype.slice.call(arguments, 1);
+
+      // Getter methods
+      if (methodOrOptions.slice(0, 3) === 'get') {
+        var instance = this.first()[0][classRef];
+        return instance[methodOrOptions].apply(instance, params);
+      }
+
+      // Void methods
+      return this.each(function () {
+        var instance = this[classRef];
+        instance[methodOrOptions].apply(instance, params);
+      });
+
+      // Initialize plugin if options or no argument is passed in
+    } else if (typeof methodOrOptions === 'object' || !methodOrOptions) {
+   
+      plugin.init(this, arguments[0]);
+      return this;
+    }
+
+    // Return error if an unrecognized  method name is passed in
+    console.log("Method " + methodOrOptions + " does not exist on jQuery." + pluginName);
+  };
+};
 
 /**
  * Automatically initialize components
@@ -1228,7 +1263,10 @@ $jscomp.polyfill = function (e, r, p, m) {
   }(Component);
 
   M.Collapsible = Collapsible;
- 
+
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(Collapsible, 'collapsible', 'M_Collapsible');
+  }
 })(cash, M.anime);
 ;(function ($, anim) {
   'use strict';
@@ -1873,7 +1911,11 @@ $jscomp.polyfill = function (e, r, p, m) {
 
   Dropdown._dropdowns = [];
 
-  M.Dropdown = Dropdown; 
+  M.Dropdown = Dropdown;
+
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(Dropdown, 'dropdown', 'M_Dropdown');
+  }
 })(cash, M.anime);
 ;(function ($, anim) {
   'use strict';
@@ -2309,7 +2351,10 @@ $jscomp.polyfill = function (e, r, p, m) {
   Modal._count = 0;
 
   M.Modal = Modal;
- 
+
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(Modal, 'modal', 'M_Modal');
+  }
 })(cash, M.anime);
 ;(function ($, anim) {
   'use strict';
@@ -2808,10 +2853,12 @@ $jscomp.polyfill = function (e, r, p, m) {
     return Materialbox;
   }(Component);
 
-  M.Materialbox = Materialbox; 
-})(cash, M.anime);
+  M.Materialbox = Materialbox;
 
-/*
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(Materialbox, 'materialbox', 'M_Materialbox');
+  }
+})(cash, M.anime);
 ;(function ($) {
   'use strict';
 
@@ -2828,7 +2875,12 @@ $jscomp.polyfill = function (e, r, p, m) {
       var _this21 = _possibleConstructorReturn(this, (Parallax.__proto__ || Object.getPrototypeOf(Parallax)).call(this, Parallax, el, options));
 
       _this21.el.M_Parallax = _this21;
- 
+
+      /**
+       * Options for the Parallax
+       * @member Parallax#options
+       * @prop {Number} responsiveThreshold
+       */
       _this21.options = $.extend({}, Parallax.defaults, options);
       _this21._enabled = window.innerWidth > _this21.options.responsiveThreshold;
 
@@ -2847,7 +2899,12 @@ $jscomp.polyfill = function (e, r, p, m) {
     }
 
     _createClass(Parallax, [{
-      key: "destroy", 
+      key: "destroy",
+
+
+      /**
+       * Teardown component
+       */
       value: function destroy() {
         Parallax._parallaxes.splice(Parallax._parallaxes.indexOf(this), 1);
         this.$img[0].style.transform = '';
@@ -2914,7 +2971,10 @@ $jscomp.polyfill = function (e, r, p, m) {
       value: function init(els, options) {
         return _get(Parallax.__proto__ || Object.getPrototypeOf(Parallax), "init", this).call(this, this, els, options);
       }
- 
+
+      /**
+       * Get Instance
+       */
 
     }, {
       key: "getInstance",
@@ -2947,14 +3007,21 @@ $jscomp.polyfill = function (e, r, p, m) {
 
     return Parallax;
   }(Component);
- 
+
+  /**
+   * @static
+   * @memberof Parallax
+   */
+
+
   Parallax._parallaxes = [];
 
   M.Parallax = Parallax;
- 
-})(cash);
-*/
 
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(Parallax, 'parallax', 'M_Parallax');
+  }
+})(cash);
 ;(function ($, anim) {
   'use strict';
 
@@ -3415,7 +3482,11 @@ $jscomp.polyfill = function (e, r, p, m) {
     return Tabs;
   }(Component);
 
-  M.Tabs = Tabs; 
+  M.Tabs = Tabs;
+
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(Tabs, 'tabs', 'M_Tabs');
+  }
 })(cash, M.anime);
 ;(function ($, anim) {
   'use strict';
@@ -3753,7 +3824,10 @@ $jscomp.polyfill = function (e, r, p, m) {
   }(Component);
 
   M.Tooltip = Tooltip;
- 
+
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(Tooltip, 'tooltip', 'M_Tooltip');
+  }
 })(cash, M.anime);
 ; 
 
@@ -5075,7 +5149,10 @@ $jscomp.polyfill = function (e, r, p, m) {
   Sidenav._sidenavs = [];
 
   M.Sidenav = Sidenav;
- 
+
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(Sidenav, 'sidenav', 'M_Sidenav');
+  }
 })(cash, M.anime);
 ;(function ($, anim) {
   'use strict';
@@ -5390,7 +5467,10 @@ $jscomp.polyfill = function (e, r, p, m) {
   ScrollSpy._ticks = 0;
 
   M.ScrollSpy = ScrollSpy;
- 
+
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(ScrollSpy, 'scrollSpy', 'M_ScrollSpy');
+  }
 })(cash, M.anime);
 ;(function ($) {
   'use strict';
@@ -5881,7 +5961,10 @@ $jscomp.polyfill = function (e, r, p, m) {
   Autocomplete._keydown = false;
 
   M.Autocomplete = Autocomplete;
- 
+
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(Autocomplete, 'autocomplete', 'M_Autocomplete');
+  }
 })(cash);
 ;(function ($) {
   // Function to update labels of text fields
@@ -6536,7 +6619,10 @@ $jscomp.polyfill = function (e, r, p, m) {
   }(Component);
 
   M.Slider = Slider;
- 
+
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(Slider, 'slider', 'M_Slider');
+  }
 })(cash, M.anime);
 ;(function ($, anim) {
   $(document).on('click', '.card', function (e) {
@@ -7110,7 +7196,10 @@ $jscomp.polyfill = function (e, r, p, m) {
   Chips._keydown = false;
 
   M.Chips = Chips;
- 
+
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(Chips, 'chips', 'M_Chips');
+  }
 
   $(document).ready(function () {
     // Handle removal of static chips.
@@ -7284,7 +7373,10 @@ $jscomp.polyfill = function (e, r, p, m) {
   Pushpin._pushpins = [];
 
   M.Pushpin = Pushpin;
- 
+
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(Pushpin, 'pushpin', 'M_Pushpin');
+  }
 })(cash);
 ;(function ($, anim) {
   'use strict';
@@ -7680,7 +7772,10 @@ $jscomp.polyfill = function (e, r, p, m) {
   }(Component);
 
   M.FloatingActionButton = FloatingActionButton;
- 
+
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(FloatingActionButton, 'floatingActionButton', 'M_FloatingActionButton');
+  }
 })(cash, M.anime);
 ;(function ($) {
   'use strict';
@@ -8602,7 +8697,10 @@ $jscomp.polyfill = function (e, r, p, m) {
   Datepicker._template = ['<div class= "modal datepicker-modal">', '<div class="modal-content datepicker-container">', '<div class="datepicker-date-display">', '<span class="year-text"></span>', '<span class="date-text"></span>', '</div>', '<div class="datepicker-calendar-container">', '<div class="datepicker-calendar"></div>', '<div class="datepicker-footer">', '<button class="btn-flat datepicker-clear waves-effect" style="visibility: hidden;" type="button"></button>', '<div class="confirmation-btns">', '<button class="btn-flat datepicker-cancel waves-effect" type="button"></button>', '<button class="btn-flat datepicker-done waves-effect" type="button"></button>', '</div>', '</div>', '</div>', '</div>', '</div>'].join('');
 
   M.Datepicker = Datepicker;
- 
+
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(Datepicker, 'datepicker', 'M_Datepicker');
+  }
 })(cash);
 ;(function ($) {
   'use strict';
@@ -9236,7 +9334,10 @@ $jscomp.polyfill = function (e, r, p, m) {
   Timepicker._template = ['<div class= "modal timepicker-modal">', '<div class="modal-content timepicker-container">', '<div class="timepicker-digital-display">', '<div class="timepicker-text-container">', '<div class="timepicker-display-column">', '<span class="timepicker-span-hours text-primary"></span>', ':', '<span class="timepicker-span-minutes"></span>', '</div>', '<div class="timepicker-display-column timepicker-display-am-pm">', '<div class="timepicker-span-am-pm"></div>', '</div>', '</div>', '</div>', '<div class="timepicker-analog-display">', '<div class="timepicker-plate">', '<div class="timepicker-canvas"></div>', '<div class="timepicker-dial timepicker-hours"></div>', '<div class="timepicker-dial timepicker-minutes timepicker-dial-out"></div>', '</div>', '<div class="timepicker-footer"></div>', '</div>', '</div>', '</div>'].join('');
 
   M.Timepicker = Timepicker;
- 
+
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(Timepicker, 'timepicker', 'M_Timepicker');
+  }
 })(cash);
 ;(function ($) {
   'use strict';
@@ -9403,7 +9504,10 @@ $jscomp.polyfill = function (e, r, p, m) {
   }(Component);
 
   M.CharacterCounter = CharacterCounter;
- 
+
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(CharacterCounter, 'characterCounter', 'M_CharacterCounter');
+  }
 })(cash);
 ;(function ($) {
   'use strict';
@@ -10187,7 +10291,10 @@ $jscomp.polyfill = function (e, r, p, m) {
   }(Component);
 
   M.Carousel = Carousel;
- 
+
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(Carousel, 'carousel', 'M_Carousel');
+  }
 })(cash);
 ;(function ($) {
   'use strict';
@@ -10537,7 +10644,11 @@ $jscomp.polyfill = function (e, r, p, m) {
     return TapTarget;
   }(Component);
 
-  M.TapTarget = TapTarget; 
+  M.TapTarget = TapTarget;
+
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(TapTarget, 'tapTarget', 'M_TapTarget');
+  }
 })(cash);
 ;(function ($) {
   'use strict';
@@ -11010,7 +11121,10 @@ $jscomp.polyfill = function (e, r, p, m) {
   }(Component);
 
   M.FormSelect = FormSelect;
- 
+
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(FormSelect, 'formSelect', 'M_FormSelect');
+  }
 })(cash);
 ;(function ($, anim) {
   'use strict';
@@ -11304,10 +11418,16 @@ $jscomp.polyfill = function (e, r, p, m) {
     return Range;
   }(Component);
 
-  M.Range = Range; 
+  M.Range = Range;
+
+  if (M.jQueryLoaded) {
+    M.initializeJqueryWrapper(Range, 'range', 'M_Range');
+  }
+
   Range.init($('input[type=range]'));
 })(cash, M.anime);
 
-export default M;
+
+export default Zepto;
 //export default Zepto
 //}))

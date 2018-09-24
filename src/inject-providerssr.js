@@ -7,9 +7,7 @@ import trpt from "./layouts/translate_pt";
 import trru from "./layouts/translate_ru";
 import truk from "./layouts/translate_uk";
 import trch from "./layouts/translate_ch";
-
-const Statics = () =>
-  import(/* webpackChunkName: "statics" */ "./layouts/statics");
+import statics from "./layouts/statics";
 
 global.Zepto = undefined;
 const getLanguage = () => i18n.language;
@@ -54,8 +52,7 @@ export const wrapPageElement = async ({ element, props }) => {
   }
 
   if (global.filesQuery.length == 0) {
-    const Obj = await Statics();
-    Red2 = Obj.default;
+    Red2 = statics;
   } else {
     Red2 = "div";
   }
@@ -63,7 +60,7 @@ export const wrapPageElement = async ({ element, props }) => {
   const { slug, slugbase, route, carousel } = props.pageContext;
   const namespace = slugbase === "/" ? "Index" : "Post";
   const ismain = slugbase === "/";
-  console.log("runMainNavLayout",lng);
+  console.log("runMainNavLayout", lng);
   return (
     <>
       <Red />
