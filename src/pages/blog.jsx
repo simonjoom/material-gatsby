@@ -1,7 +1,7 @@
 import React from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
-import { translate } from "utils/i18n";
+import withTheme from "../withContext"; 
 import Layout from "../components/Layout";
 import PostListing from "../components/PostListing";
 import SEO from "../components/SEO";
@@ -10,13 +10,14 @@ import "../articleApp.scss";
 
 class Blog extends React.Component {
   render() {
+    const {translate: t} = this.props;
     const { slug, lng, route } = this.props.pageContext;
     const postEdges = this.props.data.allMarkdownRemark.edges;
     return (
       <Layout
         carouselList={[]}
         route={route}
-        lng={route}
+        lng={lng}
         ismain={false}
         location={this.props.location}
       >
@@ -25,7 +26,7 @@ class Blog extends React.Component {
             <title>{config.siteTitle}</title>
             <link rel="canonical" href={`${config.siteUrl}`} />
           </Helmet>
-          <SEO postEdges={postEdges} translate={this.props.t} />
+          <SEO postEdges={postEdges} translate={t("Index")} />
           <PostListing
             postEdges={postEdges} 
             sizebig={12}
@@ -36,7 +37,7 @@ class Blog extends React.Component {
     );
   }
 }
-export default translate(["Index", "common"])(Blog);
+export default withTheme(Blog);
 
 export const pageQuery = graphql`
   query BlogQuery($lng: String!) {
@@ -68,16 +69,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
-
-/*
-   locales: allLocale(filter: { lng: { eq: $lng }, ns: { eq: "Index" } }) {
-      ...LocaleFragment
-    }
-
-      <Layout
-        location={this.props.location}
-        route={route}
-        t={this.props.t}
-        lng={lng}
-      >*/
+`; 

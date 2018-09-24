@@ -19,11 +19,28 @@ const translate = () => {
                 }
               }
             }
+            allMarkdownRemark(
+              limit: 2000
+              filter: { fields: { type: { eq: "pages" }, lng: { eq: "fr" } } }
+              sort: { fields: [fields___date], order: DESC }
+            ) {
+              edges {
+                node {
+                  fields {
+                    inmenu 
+                    slug 
+                  }
+                  frontmatter {
+                    title
+                  }
+                }
+              }
+            }
           }
         `}
-        render={data => {
+        render={data => {         
           let lang;
-          run=false;
+          run = false;
           console.log("changeLanguage", data);
           data.allLocale.edges.forEach(({ node }) => {
             const { lng, ns, data } = node;
@@ -33,9 +50,17 @@ const translate = () => {
             }
           });
           i18n.changeLanguage(lang);
-          global.trname = namespace =>
-            i18n.getFixedT(null, [namespace, "common"]);
-          console.log("changeLanguage", lang);
+          let t = namespace => i18n.getFixedT(null, [namespace, "common"]);
+
+          global.postEdges = data.allMarkdownRemark.edges;
+          global.postEdges.forEach(postEdge => {
+            const { title } = postEdge.node.frontmatter;
+            if (postEdge.node.fields.inmenu)
+            global.menuList["fr"].push({
+                path: postEdge.node.fields.slug,
+                title: t("Index")(title)
+              });
+          });
           return <div />;
         }}
       />

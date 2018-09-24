@@ -1,8 +1,8 @@
-import React, { Component } from "react"; 
-import { translate } from "react-i18next";
+import React, { Component } from "react";
 import Dropdown from "../reactLIB/Dropdown";
 import Button from "../reactLIB/Button";
-import NavItem from "../reactLIB/NavItem"; 
+import NavItem from "../reactLIB/NavItem";
+import i18n from "i18next";
 import { StyleSheet, View, Text } from "react-native";
 
 import {
@@ -25,17 +25,16 @@ const Localetosrc = {
 class LanguageSwitcher extends Component {
   constructor(props) {
     super(props);
-    const { i18n } = this.props;
-    this.state = { language: i18n.language };
+    console.log("i18n.language", i18n.language);
+    this.language = this.getLanguage();
+    this.route = this.props.route;
   }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({ language: nextProps.i18n.language });
-  }
-
-  renderButtonText(rowData) {
-    const { label } = rowData;
-    return `${label}`;
+  getLanguage() {
+    return (
+      i18n.language ||
+      (!isSSR && window && window.localStorage.i18nextLng) ||
+      "en"
+    );
   }
   renderRow(label, lng) {
     const Flag = Localetosrc[lng];
@@ -56,7 +55,7 @@ class LanguageSwitcher extends Component {
       { code: "uk", label: "Ukrainien" },
       { code: "ch", label: "Chinese" }
     ];
-    const lng = this.state.language;
+    const lng = this.getLanguage();
     const label = languages.find(el => el.code == lng).label;
     return (
       <div className="LanguageSwitcher flex-end">
@@ -74,7 +73,16 @@ class LanguageSwitcher extends Component {
               return (
                 <NavItem
                   key={"nav" + i}
-                  href={this.props.route[el.code]}
+                  href={
+                    this.route
+                      ? this.route[el.code]
+                      : this.props.path
+                          .replace("_fr", "_" + lng)
+                          .replace("_pt", "_" + lng)
+                          .replace("_ru", "_" + lng)
+                          .replace("_ch", "_" + lng)
+                          .replace("_uk", "_" + lng)
+                  }
                   waves="light"
                 >
                   {this.renderRow(el.label, el.code)}
@@ -133,7 +141,7 @@ const styles = StyleSheet.create({
     height: 20
   }
 });
-export default translate()(LanguageSwitcher);
+export default LanguageSwitcher;
 
 /*
         {languages.map(language => this.renderLanguageChoice(language))}*/

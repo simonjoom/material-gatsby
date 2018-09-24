@@ -1,24 +1,18 @@
 import React from "react";
 import i18n from "i18next";
 import { ThemeContext } from "./withContext";
+import trfr from "./layouts/translate_fr";
+import tren from "./layouts/translate_en";
+import trpt from "./layouts/translate_pt";
+import trru from "./layouts/translate_ru";
+import truk from "./layouts/translate_uk";
+import trch from "./layouts/translate_ch";
+import statics from "./layouts/statics";
+
 global.Zepto = undefined;
-const getLanguage = () =>
-  i18n.language ||
-  (typeof window !== "undefined" && window.localStorage.i18nextLng);
+const getLanguage = () => i18n.language;
 
-var canUseDOM = !!(
-  typeof window !== "undefined" &&
-  window.document &&
-  window.document.createElement
-);
-
-global.isSSR=!canUseDOM
-
-const filetranslate = lng => import(`./layouts/translate_${lng}`);
-const ZeptoAsync = () =>
-  import(/* webpackChunkName: "zepto" */ "./components/zepto");
-const Statics = () =>
-  import(/* webpackChunkName: "statics" */ "./layouts/statics");
+global.isSSR = true;
 
 global.menuList = { en: [], ru: [], pt: [], uk: [], ch: [], fr: [] };
 global.filesQuery = [];
@@ -41,45 +35,34 @@ export const wrapPageElement = async ({ element, props }) => {
   const { lng } = props.pageContext;
   let Red, Red2;
   if (global.menuList[lng].length == 0 || getLanguage() !== lng) {
-    try {
-      const Obj = await filetranslate(lng);
-      Red = Obj.default;
-    } catch (e) {
-      console.log("error", e);
-      Red = "div";
-    }
+    Red =
+      lng == "fr"
+        ? trfr
+        : lng == "pt"
+          ? trpt
+          : lng == "uk"
+            ? truk
+            : lng == "ru"
+              ? trru
+              : lng == "ch"
+                ? trch
+                : tren;
   } else {
     Red = "div";
   }
-  if (canUseDOM && !global.Zepto) {
-    const Zep = await ZeptoAsync();
-    if (/comp|inter|loaded/.test(document.readyState)) {
-      Waves.displayEffect();
-    } else {
-      document.addEventListener(
-        "DOMContentLoaded",
-        function() {
-          Waves.displayEffect();
-        },
-        false
-      );
-    }
-    global.Zepto = Zep.default;
-  }
 
   if (global.filesQuery.length == 0) {
-    const Obj = await Statics();
-    Red2 = Obj.default;
+    Red2 = statics;
   } else {
     Red2 = "div";
-  }  
+  }
   // console.log("Red2", Red2, lng);
   const { slug, slugbase, route, carousel } = props.pageContext;
   const namespace = slugbase === "/" ? "Index" : "Post";
   const ismain = slugbase === "/";
-  console.log("runMainNavLayout");
+  console.log("runMainNavLayout", lng);
   return (
-    <div>
+    <>
       <Red />
       <Red2 lng={lng} />
       <ThemeContext.Provider
@@ -91,6 +74,6 @@ export const wrapPageElement = async ({ element, props }) => {
           {element}
         </Layout>
       </ThemeContext.Provider>
-    </div>
+    </>
   );
 };

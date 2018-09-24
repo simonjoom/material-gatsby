@@ -1,10 +1,10 @@
 import React from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
-import RehypeReact from 'rehype-react';
-import { translate } from "utils/i18n"; 
+import RehypeReact from "rehype-react";
+import withTheme from "../withContext";
 import Card from "react-md/lib/Cards";
-import CardText from "react-md/lib/Cards/CardText"; 
+import CardText from "react-md/lib/Cards/CardText";
 import UserInfo from "../components/UserInfo";
 import Disqus from "../components/Disqus";
 import PostTags from "../components/PostTags";
@@ -22,10 +22,9 @@ import "./post.scss";
 const renderAst = new RehypeReact({
   createElement: React.createElement,
   components: {
-      'imgtest': FrontCarousel,
-  },
+    imgtest: FrontCarousel
+  }
 }).Compiler;
-
 
 class PostTemplate extends React.Component {
   constructor(props) {
@@ -55,11 +54,12 @@ class PostTemplate extends React.Component {
 */
   render() {
     const { mobile } = this.state;
-    const { slug, route, lng } = this.props.pageContext; 
+    const { translate: t } = this.props;
+    const { slug, route, lng } = this.props.pageContext;
     console.log("postthis", this.props);
     const expanded = !mobile;
     const postOverlapClass = mobile ? "post-overlap-mobile" : "post-overlap";
-    const postNode = this.props.data.markdownRemark; 
+    const postNode = this.props.data.markdownRemark;
     const post = postNode.frontmatter;
     const directory = postNode.fields.type;
     const carouselList = post.cover ? [post.cover] : [];
@@ -72,9 +72,14 @@ class PostTemplate extends React.Component {
 
     const coverHeight = mobile ? 180 : 350;
     return (
-      <Layout 
-         carouselList={carouselList} route={route} lng={lng} ismain={false} location={this.props.location}>
+      <Layout
+        carouselList={carouselList}
+        route={route}
+        lng={lng}
+        ismain={false}
+        location={this.props.location}
       >
+        >
         <div className="post-page md-grid md-grid--no-spacing">
           <Helmet>
             <title>{`${post.title} | ${config.siteTitle}`}</title>
@@ -84,7 +89,7 @@ class PostTemplate extends React.Component {
             postPath={slug}
             postNode={postNode}
             postSEO
-            translate={this.props.t}
+            translate={t("Post")}
           />
           {carouselList.length > 0 && (
             <FrontCarousel
@@ -99,10 +104,12 @@ class PostTemplate extends React.Component {
             <Card className="md-grid md-cell md-cell--12 post">
               <CardText className="post-body">
                 <h1 className="md-display-2 post-header">{post.title}</h1>
-                <PostInfo postNode={postNode} carouselList={carouselList} lang={lng} />
-                {
-                    renderAst(postNode.htmlAst)
-                }
+                <PostInfo
+                  postNode={postNode}
+                  carouselList={carouselList}
+                  lang={lng}
+                />
+                {renderAst(postNode.htmlAst)}
               </CardText>
               <div className="post-meta">
                 <PostTags tags={post.tags} />
@@ -128,7 +135,7 @@ class PostTemplate extends React.Component {
   }
 }
 
-export default translate(["Post", "common"])(PostTemplate);
+export default withTheme(PostTemplate);
 
 export const postQuery = graphql`
   query PostsBySlug($slug: String!) {
@@ -215,4 +222,3 @@ export const pageQuery = graphql`
   }
 `;
 */
- 

@@ -7,7 +7,7 @@ import { apiRunner,apiRunnerAsync } from "./api-runner-browser"
 class PageRenderer extends React.Component {
 
   constructor(props) {
-    super(props)
+    super(props) 
     this.state={wrappedPage:null} 
   }
 
@@ -77,8 +77,7 @@ if(nextprops.location.pathname!==this.props.location.pathname){
 } 
 }
 
-  render() { 
-console.log("render_runtranslate")
+  render() {  
     return this.state.wrappedPage 
   }
 }

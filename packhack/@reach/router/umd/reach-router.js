@@ -1603,8 +1603,6 @@ var possibleConstructorReturn = function (self, call) {
   return call && (typeof call === "object" || typeof call === "function") ? call : self;
 };
 
-////////////////////////////////////////////////////////////////////////////////
-// createHistory(source) - wraps a history source
 var getLocation = function getLocation(source) {
   return _extends({}, source.location, {
     state: source.history.state,
@@ -1636,7 +1634,7 @@ var createHistory = function createHistory(source, options) {
 
       var popstateListener = function popstateListener() {
         location = getLocation(source);
-        listener();
+        listener({ location: location, action: "POP" });
       };
 
       source.addEventListener("popstate", popstateListener);
@@ -1671,8 +1669,8 @@ var createHistory = function createHistory(source, options) {
       var transition = new Promise(function (res) {
         return resolveTransition = res;
       });
-      listeners.forEach(function (fn) {
-        return fn();
+      listeners.forEach(function (listener) {
+        return listener({ location: location, action: "PUSH" });
       });
       return transition;
     }
@@ -1877,7 +1875,11 @@ var ServerLocation = function ServerLocation(_ref2) {
     LocationContext.Provider,
     {
       value: {
-        location: { pathname: url },
+        location: {
+          pathname: url,
+          search: "",
+          hash: ""
+        },
         navigate: function navigate$$1() {
           throw new Error("You can't call navigate on the server.");
         }
@@ -2087,7 +2089,11 @@ var FocusHandlerImpl = function (_React$Component2) {
       if (initialRender) {
         initialRender = false;
       } else {
-        this.node.focus();
+        // React polyfills [autofocus] and it fires earlier than cDM,
+        // so we were stealing focus away, this line prevents that.
+        if (!this.node.contains(document.activeElement)) {
+          this.node.focus();
+        }
       }
     }
   };
@@ -2296,6 +2302,10 @@ var stripSlashes = function stripSlashes(str) {
 
 var createRoute = function createRoute(basepath) {
   return function (element) {
+    if (!element) {
+      return null;
+    }
+
     !(element.props.path || element.props.default || element.type === Redirect) ? invariant_1$1(false, "<Router>: Children of <Router> must have a `path` or `default` prop, or be a `<Redirect>`. None found on element type `" + element.type + "`") : void 0;
 
     !!(element.type === Redirect && (!element.props.from || !element.props.to)) ? invariant_1$1(false, "<Redirect from=\"" + element.props.from + " to=\"" + element.props.to + "\"/> requires both \"from\" and \"to\" props when inside a <Router>.") : void 0;
@@ -2334,6 +2344,7 @@ exports.createMemorySource = createMemorySource;
 exports.isRedirect = isRedirect;
 exports.navigate = navigate;
 exports.redirectTo = redirectTo;
+exports.globalHistory = globalHistory;
 
 Object.defineProperty(exports, '__esModule', { value: true });
 

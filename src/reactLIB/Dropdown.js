@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types'; 
+import PropTypes from 'prop-types';
 import idgen from './idgen';
 import cx from 'classnames';
 
@@ -11,16 +11,22 @@ class Dropdown extends Component {
   constructor(props) {
     super(props);
     this.idx = 'dropdown_' + idgen();
+    this.instances = null;
+    this.elems =[]
     this.renderTrigger = this.renderTrigger.bind(this);
   }
 
   componentDidMount() {
     const { options } = this.props;
-    Zepto(this._trigger).dropdown(options);
+    this.elems = document.querySelectorAll('.dropdown-trigger');
+    this.instances = Zepto.Dropdown.init(this.elems, options);  
   }
 
   componentWillUnmount() {
-    Zepto(this._trigger).off();
+    $(this.elems).map((i,el) => {
+      var instance = Zepto.Dropdown.getInstance(el);
+      instance.destroy();
+    }); 
   }
 
   render() {
@@ -72,4 +78,4 @@ Dropdown.propTypes = {
   })
 };
 
-export default Dropdown; 
+export default Dropdown;

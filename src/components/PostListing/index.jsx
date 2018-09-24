@@ -1,10 +1,5 @@
 import React from "react";
-import PostPreview from "../PostPreview"; 
-var canUseDOM = !!(
-  typeof window !== "undefined" &&
-  window.document &&
-  window.document.createElement
-);
+import PostPreview from "../PostPreview";
 
 class PostListing extends React.Component {
   state = {
@@ -34,22 +29,22 @@ class PostListing extends React.Component {
 
   componentWillMount() {
     const size = this.props.size || "12";
-    this.arrSSR = []; 
+    this.arrSSR = [];
     this.postList.forEach((el, index) => {
       this.arrSSR.push(
         <PostPreview key={el.title} postInfo={el} size={size} />
       );
-    }); 
-    this.running = true;
-    this.runAnim();
+    });
+    !isSSR && this.runAnim();
   }
   runAnim() {
-      setTimeout(() => {
-        this.setState({ arr: [...this.state.arr, this.arrSSR.shift()] });
-      }, 780);
+    this.running = true;
+    setTimeout(() => {
+      this.setState({ arr: [...this.state.arr, this.arrSSR.shift()] });
+    }, 780);
   }
- 
-  componentDidUpdate(nextprops) { 
+
+  componentDidUpdate(nextprops) {
     if (this.running && this.arrSSR.length > 0)
       setTimeout(() => {
         this.setState({ arr: [...this.state.arr, this.arrSSR.shift()] });
@@ -65,7 +60,7 @@ class PostListing extends React.Component {
     return (
       <div className="md-grid md-grid--no-spacing md-cell--middle">
         <div className={`md-grid md-cell--${sizebig} mobile-fix`}>
-          {canUseDOM ? this.state.arr : this.arrSSR}
+          {!isSSR ? this.state.arr : this.arrSSR}
         </div>
       </div>
     );

@@ -12,9 +12,8 @@ class SideNav extends Component {
 
   componentDidMount() { 
     const { options } = this.props;
-     Zepto(document).ready(function() {
-        Zepto('.sidenav').sidenav(options);
-      });
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = Zepto.Sidenav.init(elems, options); 
   }
 
 
