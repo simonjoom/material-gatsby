@@ -14,10 +14,10 @@ class UserLinks extends Component {
         // secondary
         key={link.label}
         // iconClassName={link.iconClassName}
-        node="a"
-        href={footer ? link.url : link.url}
-        waves= "light"
-        className="white-text"
+        node={footer? "a": null}
+        href={link.url}
+        waves= {footer? "light": null}
+        className= {footer? "white-text": null}
         style={{margin: '0 1%'}}
       >
         <i className={link.iconClassName}></i> {labeled ? link.label : ""}

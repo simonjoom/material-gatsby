@@ -3,6 +3,8 @@ import Img from "gatsby-image";
 import { withTheme } from '../../withContext'; 
 import Carousel from "./carousel";
 import "./carousel.css";
+import Button from "../../reactLIB/Button";
+import { auto } from "eol";
 
 const GetImage = ({
   CarouselQuery,
@@ -66,7 +68,7 @@ const GetImage = ({
                   <div style={{ fontSize: "30px" }}>
                     {t("main2")}
                     <div className="md-cell">
-                      <a
+                      {/* <a
                         tabIndex="0"
                         href="/instructors_skischool/"
                         style={{
@@ -77,7 +79,24 @@ const GetImage = ({
                       >
                         {" "}
                         Get Started
-                      </a>
+                      </a> */}
+                      <Button
+                        node="a"
+                        href="/instructors_skischool/"
+                        waves= "light"
+                        style={{
+                          // color: "#ccff90",
+                          fontWeight: 'bold',
+                          // backgroundColor: "#ccff90",
+                          // padding: '0 10%',
+                          fontSize: '0.5em',
+                          // width: '200px',
+                          // height: 'auto'
+                        }}
+                        className="btn-large white-text"
+                      >
+                      Get Started
+                      </Button>
                     </div>
                   </div>
                 </div>

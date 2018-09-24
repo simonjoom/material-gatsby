@@ -62,7 +62,9 @@ class LanguageSwitcher extends Component {
       <div className="LanguageSwitcher flex-end">
         <Dropdown
           trigger={
-            <Button>
+            <Button
+              style={{margin: '10px 0px',paddingBottom: '20px', width:'150px'}}
+            >
               {this.renderRow(label, lng)}
             </Button>
           }
@@ -119,6 +121,7 @@ const styles = StyleSheet.create({
   dropdown_2_row: {
     flexDirection: "row",
     height: 20,
+    // width: 'auto',
     margin: 5
   },
   dropdown_6: {

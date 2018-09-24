@@ -23,18 +23,18 @@ export default class Layout extends React.Component {
             )}
         </div>
 
-        <div className="toolbar-main md-paper md-paper--1">
+        <div className="toolbar-main md-paper md-paper--1" style={{}}>
           <div className="toolbar-container">
-            <div className="rowlink toolbar-menu">
+            <div className="rowlink toolbar-menu" style={{margin: 'auto 0', padding: '0', display: 'flex'}}>
               {global.postList.map(post => (
                 <Link
                   key={post.path}
-                  style={{ textDecoration: "none" }}
+                  style={{ textDecoration: "none", }}
                   to={post.path}
                   className="Menulink toolbar-link"
                 >
                   <i className="mr1 fa fa-lg fa-circle-o" />
-                  {post.title}
+                  {" "}{post.title}
                 </Link>
               ))}
             </div>
