@@ -1,29 +1,50 @@
-"use strict";
+'use strict';
 
 exports.__esModule = true;
-exports.default = void 0;
 
-var _crossFade = _interopRequireDefault(require("inline-style-prefixer/static/plugins/crossFade"));
+var _crossFade = require('inline-style-prefixer/static/plugins/crossFade');
 
-var _cursor = _interopRequireDefault(require("inline-style-prefixer/static/plugins/cursor"));
+var _crossFade2 = _interopRequireDefault(_crossFade);
 
-var _filter = _interopRequireDefault(require("inline-style-prefixer/static/plugins/filter"));
+var _cursor = require('inline-style-prefixer/static/plugins/cursor');
 
-var _flex = _interopRequireDefault(require("inline-style-prefixer/static/plugins/flex"));
+var _cursor2 = _interopRequireDefault(_cursor);
 
-var _flexboxIE = _interopRequireDefault(require("inline-style-prefixer/static/plugins/flexboxIE"));
+var _filter = require('inline-style-prefixer/static/plugins/filter');
 
-var _flexboxOld = _interopRequireDefault(require("inline-style-prefixer/static/plugins/flexboxOld"));
+var _filter2 = _interopRequireDefault(_filter);
 
-var _gradient = _interopRequireDefault(require("inline-style-prefixer/static/plugins/gradient"));
+var _flex = require('inline-style-prefixer/static/plugins/flex');
 
-var _imageSet = _interopRequireDefault(require("inline-style-prefixer/static/plugins/imageSet"));
+var _flex2 = _interopRequireDefault(_flex);
 
-var _position = _interopRequireDefault(require("inline-style-prefixer/static/plugins/position"));
+var _flexboxIE = require('inline-style-prefixer/static/plugins/flexboxIE');
 
-var _sizing = _interopRequireDefault(require("inline-style-prefixer/static/plugins/sizing"));
+var _flexboxIE2 = _interopRequireDefault(_flexboxIE);
 
-var _transition = _interopRequireDefault(require("inline-style-prefixer/static/plugins/transition"));
+var _flexboxOld = require('inline-style-prefixer/static/plugins/flexboxOld');
+
+var _flexboxOld2 = _interopRequireDefault(_flexboxOld);
+
+var _gradient = require('inline-style-prefixer/static/plugins/gradient');
+
+var _gradient2 = _interopRequireDefault(_gradient);
+
+var _imageSet = require('inline-style-prefixer/static/plugins/imageSet');
+
+var _imageSet2 = _interopRequireDefault(_imageSet);
+
+var _position = require('inline-style-prefixer/static/plugins/position');
+
+var _position2 = _interopRequireDefault(_position);
+
+var _sizing = require('inline-style-prefixer/static/plugins/sizing');
+
+var _sizing2 = _interopRequireDefault(_sizing);
+
+var _transition = require('inline-style-prefixer/static/plugins/transition');
+
+var _transition2 = _interopRequireDefault(_transition);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -33,8 +54,9 @@ var ms = ['ms'];
 var wm = ['Webkit', 'Moz'];
 var wms = ['Webkit', 'ms'];
 var wmms = ['Webkit', 'Moz', 'ms'];
-var _default = {
-  plugins: [_crossFade.default, _cursor.default, _filter.default, _flex.default, _flexboxIE.default, _flexboxOld.default, _gradient.default, _imageSet.default, _position.default, _sizing.default, _transition.default],
+
+exports.default = {
+  plugins: [_crossFade2.default, _cursor2.default, _filter2.default, _flex2.default, _flexboxIE2.default, _flexboxOld2.default, _gradient2.default, _imageSet2.default, _position2.default, _sizing2.default, _transition2.default],
   prefixMap: {
     animation: w,
     animationDelay: w,
@@ -162,4 +184,4 @@ var _default = {
     transitionTimingFunction: w
   }
 };
-exports.default = _default;
+module.exports = exports['default'];

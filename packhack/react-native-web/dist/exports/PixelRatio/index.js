@@ -1,3 +1,5 @@
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 /**
  * Copyright (c) 2015-present, Nicolas Gallagher.
  * Copyright (c) 2015-present, Facebook, Inc.
@@ -7,15 +9,17 @@
  *
  * 
  */
+
 import Dimensions from '../Dimensions';
+
 /**
  * PixelRatio gives access to the device pixel density.
  */
 
-var PixelRatio =
-/*#__PURE__*/
-function () {
-  function PixelRatio() {}
+var PixelRatio = function () {
+  function PixelRatio() {
+    _classCallCheck(this, PixelRatio);
+  }
 
   /**
    * Returns the device pixel density.
@@ -23,6 +27,7 @@ function () {
   PixelRatio.get = function get() {
     return Dimensions.get('window').scale;
   };
+
   /**
    * No equivalent for Web
    */
@@ -31,6 +36,7 @@ function () {
   PixelRatio.getFontScale = function getFontScale() {
     return Dimensions.get('window').fontScale || PixelRatio.get();
   };
+
   /**
    * Converts a layout size (dp) to pixel size (px).
    * Guaranteed to return an integer number.
@@ -40,6 +46,7 @@ function () {
   PixelRatio.getPixelSizeForLayoutSize = function getPixelSizeForLayoutSize(layoutSize) {
     return Math.round(layoutSize * PixelRatio.get());
   };
+
   /**
    * Rounds a layout size (dp) to the nearest layout size that corresponds to
    * an integer number of pixels. For example, on a device with a PixelRatio
@@ -56,4 +63,4 @@ function () {
   return PixelRatio;
 }();
 
-export { PixelRatio as default };
+export default PixelRatio;

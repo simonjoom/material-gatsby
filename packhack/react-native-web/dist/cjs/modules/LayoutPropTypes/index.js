@@ -1,21 +1,21 @@
-"use strict";
+'use strict';
 
 exports.__esModule = true;
-exports.default = void 0;
 
-var _propTypes = require("prop-types");
+var _propTypes = require('prop-types');
 
-/**
- * Copyright (c) 2015-present, Nicolas Gallagher.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * 
- */
-var OverflowPropType = (0, _propTypes.oneOf)(['auto', 'hidden', 'scroll', 'visible']);
+var OverflowPropType = (0, _propTypes.oneOf)(['auto', 'hidden', 'scroll', 'visible']); /**
+                                                                                        * Copyright (c) 2015-present, Nicolas Gallagher.
+                                                                                        *
+                                                                                        * This source code is licensed under the MIT license found in the
+                                                                                        * LICENSE file in the root directory of this source tree.
+                                                                                        *
+                                                                                        * 
+                                                                                        */
+
 var hiddenOrVisible = (0, _propTypes.oneOf)(['hidden', 'visible']);
 var numberOrString = (0, _propTypes.oneOfType)([_propTypes.number, _propTypes.string]);
+
 var LayoutPropTypes = {
   alignContent: (0, _propTypes.oneOf)(['center', 'flex-end', 'flex-start', 'space-around', 'space-between', 'stretch']),
   alignItems: (0, _propTypes.oneOf)(['baseline', 'center', 'flex-end', 'flex-start', 'stretch']),
@@ -75,12 +75,10 @@ var LayoutPropTypes = {
   visibility: hiddenOrVisible,
   width: numberOrString,
   zIndex: _propTypes.number,
-
   /**
    * @platform unsupported
    */
   aspectRatio: _propTypes.number,
-
   /**
    * @platform web
    */
@@ -97,5 +95,6 @@ var LayoutPropTypes = {
   gridTemplateRows: _propTypes.string,
   gridTemplateAreas: _propTypes.string
 };
-var _default = LayoutPropTypes;
-exports.default = _default;
+
+exports.default = LayoutPropTypes;
+module.exports = exports['default'];

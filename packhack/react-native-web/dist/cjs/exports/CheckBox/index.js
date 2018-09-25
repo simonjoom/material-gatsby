@@ -1,96 +1,112 @@
-"use strict";
+'use strict';
 
 exports.__esModule = true;
-exports.default = void 0;
 
-var _applyNativeMethods = _interopRequireDefault(require("../../modules/applyNativeMethods"));
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _ColorPropType = _interopRequireDefault(require("../ColorPropType"));
+var _applyNativeMethods = require('../../modules/applyNativeMethods');
 
-var _createElement = _interopRequireDefault(require("../createElement"));
+var _applyNativeMethods2 = _interopRequireDefault(_applyNativeMethods);
 
-var _StyleSheet = _interopRequireDefault(require("../StyleSheet"));
+var _ColorPropType = require('../ColorPropType');
 
-var _UIManager = _interopRequireDefault(require("../UIManager"));
+var _ColorPropType2 = _interopRequireDefault(_ColorPropType);
 
-var _View = _interopRequireDefault(require("../View"));
+var _createElement = require('../createElement');
 
-var _ViewPropTypes = _interopRequireDefault(require("../ViewPropTypes"));
+var _createElement2 = _interopRequireDefault(_createElement);
 
-var _react = _interopRequireWildcard(require("react"));
+var _StyleSheet = require('../StyleSheet');
 
-var _propTypes = require("prop-types");
+var _StyleSheet2 = _interopRequireDefault(_StyleSheet);
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+var _UIManager = require('../UIManager');
+
+var _UIManager2 = _interopRequireDefault(_UIManager);
+
+var _View = require('../View');
+
+var _View2 = _interopRequireDefault(_View);
+
+var _ViewPropTypes = require('../ViewPropTypes');
+
+var _ViewPropTypes2 = _interopRequireDefault(_ViewPropTypes);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-var CheckBox =
-/*#__PURE__*/
-function (_Component) {
-  _inheritsLoose(CheckBox, _Component);
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Copyright (c) 2017-present, Nicolas Gallagher.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Copyright (c) 2017-present, Facebook, Inc.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * This source code is licensed under the MIT license found in the
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * LICENSE file in the root directory of this source tree.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
+var CheckBox = function (_Component) {
+  _inherits(CheckBox, _Component);
 
   function CheckBox() {
-    var _this;
+    var _temp, _this, _ret;
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    _classCallCheck(this, CheckBox);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
-
-    _this._handleChange = function (event) {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, _Component.call.apply(_Component, [this].concat(args))), _this), _this._handleChange = function (event) {
       var _this$props = _this.props,
           onChange = _this$props.onChange,
           onValueChange = _this$props.onValueChange;
+
       var value = event.nativeEvent.target.checked;
       event.nativeEvent.value = value;
       onChange && onChange(event);
       onValueChange && onValueChange(value);
-    };
-
-    _this._setCheckboxRef = function (element) {
+    }, _this._setCheckboxRef = function (element) {
       _this._checkboxElement = element;
-    };
-
-    return _this;
+    }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
-  var _proto = CheckBox.prototype;
-
-  _proto.blur = function blur() {
-    _UIManager.default.blur(this._checkboxElement);
+  CheckBox.prototype.blur = function blur() {
+    _UIManager2.default.blur(this._checkboxElement);
   };
 
-  _proto.focus = function focus() {
-    _UIManager.default.focus(this._checkboxElement);
+  CheckBox.prototype.focus = function focus() {
+    _UIManager2.default.focus(this._checkboxElement);
   };
 
-  _proto.render = function render() {
-    var _this$props2 = this.props,
-        color = _this$props2.color,
-        disabled = _this$props2.disabled,
-        onChange = _this$props2.onChange,
-        onValueChange = _this$props2.onValueChange,
-        style = _this$props2.style,
-        value = _this$props2.value,
-        other = _objectWithoutPropertiesLoose(_this$props2, ["color", "disabled", "onChange", "onValueChange", "style", "value"]);
+  CheckBox.prototype.render = function render() {
+    var _props = this.props,
+        color = _props.color,
+        disabled = _props.disabled,
+        onChange = _props.onChange,
+        onValueChange = _props.onValueChange,
+        style = _props.style,
+        value = _props.value,
+        other = _objectWithoutProperties(_props, ['color', 'disabled', 'onChange', 'onValueChange', 'style', 'value']);
 
-    var fakeControl = _react.default.createElement(_View.default, {
-      style: [styles.fakeControl, value && styles.fakeControlChecked, // custom color
-      value && color && {
-        backgroundColor: color,
-        borderColor: color
-      }, disabled && styles.fakeControlDisabled, value && disabled && styles.fakeControlCheckedAndDisabled]
+    var fakeControl = _react2.default.createElement(_View2.default, {
+      style: [styles.fakeControl, value && styles.fakeControlChecked,
+      // custom color
+      value && color && { backgroundColor: color, borderColor: color }, disabled && styles.fakeControlDisabled, value && disabled && styles.fakeControlCheckedAndDisabled]
     });
 
-    var nativeControl = (0, _createElement.default)('input', {
+    var nativeControl = (0, _createElement2.default)('input', {
       checked: value,
       disabled: disabled,
       onChange: this._handleChange,
@@ -98,9 +114,13 @@ function (_Component) {
       style: [styles.nativeControl, styles.cursorInherit],
       type: 'checkbox'
     });
-    return _react.default.createElement(_View.default, _extends({}, other, {
-      style: [styles.root, style, disabled && styles.cursorDefault]
-    }), fakeControl, nativeControl);
+
+    return _react2.default.createElement(
+      _View2.default,
+      _extends({}, other, { style: [styles.root, style, disabled && styles.cursorDefault] }),
+      fakeControl,
+      nativeControl
+    );
   };
 
   return CheckBox;
@@ -111,8 +131,16 @@ CheckBox.defaultProps = {
   disabled: false,
   value: false
 };
+CheckBox.propTypes = process.env.NODE_ENV !== "production" ? Object.assign({}, _ViewPropTypes2.default, {
+  color: _ColorPropType2.default,
+  disabled: _propTypes.bool,
+  onChange: _propTypes.func,
+  onValueChange: _propTypes.func,
+  value: _propTypes.bool
+}) : {};
 
-var styles = _StyleSheet.default.create({
+
+var styles = _StyleSheet2.default.create({
   root: {
     cursor: 'pointer',
     height: 16,
@@ -149,7 +177,7 @@ var styles = _StyleSheet.default.create({
     backgroundColor: '#AAB8C2',
     borderColor: '#AAB8C2'
   },
-  nativeControl: _extends({}, _StyleSheet.default.absoluteFillObject, {
+  nativeControl: Object.assign({}, _StyleSheet2.default.absoluteFillObject, {
     height: '100%',
     margin: 0,
     opacity: 0,
@@ -158,6 +186,5 @@ var styles = _StyleSheet.default.create({
   })
 });
 
-var _default = (0, _applyNativeMethods.default)(CheckBox);
-
-exports.default = _default;
+exports.default = (0, _applyNativeMethods2.default)(CheckBox);
+module.exports = exports['default'];

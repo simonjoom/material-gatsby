@@ -1,13 +1,14 @@
-"use strict";
+'use strict';
 
 exports.__esModule = true;
-exports.default = void 0;
 
-var _invariant = _interopRequireDefault(require("fbjs/lib/invariant"));
+var _invariant = require('fbjs/lib/invariant');
 
-var _requestIdleCallback = _interopRequireWildcard(require("../../modules/requestIdleCallback"));
+var _invariant2 = _interopRequireDefault(_invariant);
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+var _requestIdleCallback = require('../../modules/requestIdleCallback');
+
+var _requestIdleCallback2 = _interopRequireDefault(_requestIdleCallback);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -20,6 +21,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  *
  * 
  */
+
 var InteractionManager = {
   Events: {
     interactionStart: 'interactionStart',
@@ -30,9 +32,10 @@ var InteractionManager = {
    * Schedule a function to run after all interactions have completed.
    */
   runAfterInteractions: function runAfterInteractions(task) {
-    var handle;
+    var handle = void 0;
+
     var promise = new Promise(function (resolve) {
-      handle = (0, _requestIdleCallback.default)(function () {
+      handle = (0, _requestIdleCallback2.default)(function () {
         if (task) {
           resolve(task());
         }
@@ -47,6 +50,7 @@ var InteractionManager = {
     };
   },
 
+
   /**
    * Notify manager that an interaction has started.
    */
@@ -54,13 +58,17 @@ var InteractionManager = {
     return 1;
   },
 
+
   /**
    * Notify manager that an interaction has completed.
    */
   clearInteractionHandle: function clearInteractionHandle(handle) {
-    (0, _invariant.default)(!!handle, 'Must provide a handle to clear.');
+    (0, _invariant2.default)(!!handle, 'Must provide a handle to clear.');
   },
+
+
   addListener: function addListener() {}
 };
-var _default = InteractionManager;
-exports.default = _default;
+
+exports.default = InteractionManager;
+module.exports = exports['default'];

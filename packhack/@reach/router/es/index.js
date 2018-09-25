@@ -597,7 +597,7 @@ var createRoute = function createRoute(basepath) {
     if (!element) {
       return null;
     }
-console.log("element",element,element.props)
+    
     !(element.props.path || element.props.default || element.type === Redirect) ? process.env.NODE_ENV !== "production" ? invariant(false, "<Router>: Children of <Router> must have a `path` or `default` prop, or be a `<Redirect>`. None found on element type") : invariant(false) : void 0;
 
     !!(element.type === Redirect && (!element.props.from || !element.props.to)) ? process.env.NODE_ENV !== "production" ? invariant(false, "<Redirect from=\"" + element.props.from + " to=\"" + element.props.to + "\"/> requires both \"from\" and \"to\" props when inside a <Router>.") : invariant(false) : void 0;

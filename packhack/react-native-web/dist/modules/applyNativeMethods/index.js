@@ -6,6 +6,7 @@
  *
  * @noflow
  */
+
 import NativeMethodsMixin from '../NativeMethodsMixin';
 
 var applyNativeMethods = function applyNativeMethods(Component) {

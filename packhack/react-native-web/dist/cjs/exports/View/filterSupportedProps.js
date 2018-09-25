@@ -1,7 +1,6 @@
-"use strict";
+'use strict';
 
 exports.__esModule = true;
-exports.default = void 0;
 var whitelist = {
   accessibilityComponentType: true,
   accessibilityLabel: true,
@@ -42,7 +41,6 @@ var whitelist = {
   pointerEvents: true,
   style: true,
   testID: true,
-
   /* @platform web */
   onScroll: true,
   onWheel: true,
@@ -69,7 +67,6 @@ var whitelist = {
 
 var filterSupportedProps = function filterSupportedProps(props) {
   var safeProps = {};
-
   for (var prop in props) {
     if (props.hasOwnProperty(prop)) {
       if (whitelist[prop] || prop.indexOf('aria-') === 0 || prop.indexOf('data-') === 0) {
@@ -77,9 +74,8 @@ var filterSupportedProps = function filterSupportedProps(props) {
       }
     }
   }
-
   return safeProps;
 };
 
-var _default = filterSupportedProps;
-exports.default = _default;
+exports.default = filterSupportedProps;
+module.exports = exports['default'];

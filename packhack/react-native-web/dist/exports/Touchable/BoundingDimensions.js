@@ -6,12 +6,14 @@
  *
  * 
  */
+
 import PooledClass from '../../vendor/react-native/PooledClass';
+
 var twoArgumentPooler = PooledClass.twoArgumentPooler;
+
 /**
  * PooledClass representing the bounding rectangle of a region.
  */
-
 function BoundingDimensions(width, height) {
   this.width = width;
   this.height = height;
@@ -27,4 +29,5 @@ BoundingDimensions.getPooledFromElement = function (element) {
 };
 
 PooledClass.addPoolingTo(BoundingDimensions, twoArgumentPooler);
+
 export default BoundingDimensions;

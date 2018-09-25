@@ -1,17 +1,30 @@
-"use strict";
+'use strict';
 
 exports.__esModule = true;
-exports.default = void 0;
 
-var _performanceNow = _interopRequireDefault(require("fbjs/lib/performanceNow"));
+var _performanceNow = require('fbjs/lib/performanceNow');
 
-var _warning = _interopRequireDefault(require("fbjs/lib/warning"));
+var _performanceNow2 = _interopRequireDefault(_performanceNow);
+
+var _warning = require('fbjs/lib/warning');
+
+var _warning2 = _interopRequireDefault(_warning);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } } /**
+                                                                                                                                                           * Copyright (c) 2015-present, Facebook, Inc.
+                                                                                                                                                           *
+                                                                                                                                                           * This source code is licensed under the MIT license found in the
+                                                                                                                                                           * LICENSE file in the root directory of this source tree.
+                                                                                                                                                           *
+                                                                                                                                                           * 
+                                                                                                                                                           * @format
+                                                                                                                                                           */
 
 var Info = function Info() {
+  _classCallCheck(this, Info);
+
   this.any_blank_count = 0;
   this.any_blank_ms = 0;
   this.any_blank_speed_sum = 0;
@@ -25,10 +38,11 @@ var Info = function Info() {
 };
 
 var DEBUG = false;
+
 var _listeners = [];
 var _minSampleCount = 10;
-
 var _sampleRate = DEBUG ? 1 : null;
+
 /**
  * A helper class for detecting when the maximem fill rate of `VirtualizedList` is exceeded.
  * By default the sampling rate is set to zero and this will do nothing. If you want to collect
@@ -38,15 +52,10 @@ var _sampleRate = DEBUG ? 1 : null;
  * `SceneTracker.getActiveScene` to determine the context of the events.
  */
 
-
-var FillRateHelper =
-/*#__PURE__*/
-function () {
+var FillRateHelper = function () {
   FillRateHelper.addListener = function addListener(callback) {
-    (0, _warning.default)(_sampleRate !== null, 'Call `FillRateHelper.setSampleRate` before `addListener`.');
-
+    (0, _warning2.default)(_sampleRate !== null, 'Call `FillRateHelper.setSampleRate` before `addListener`.');
     _listeners.push(callback);
-
     return {
       remove: function remove() {
         _listeners = _listeners.filter(function (listener) {
@@ -65,51 +74,44 @@ function () {
   };
 
   function FillRateHelper(getFrameMetrics) {
+    _classCallCheck(this, FillRateHelper);
+
     this._anyBlankStartTime = null;
     this._enabled = false;
     this._info = new Info();
     this._mostlyBlankStartTime = null;
     this._samplesStartTime = null;
+
     this._getFrameMetrics = getFrameMetrics;
     this._enabled = (_sampleRate || 0) > Math.random();
-
     this._resetData();
   }
 
-  var _proto = FillRateHelper.prototype;
-
-  _proto.activate = function activate() {
+  FillRateHelper.prototype.activate = function activate() {
     if (this._enabled && this._samplesStartTime == null) {
       DEBUG && console.debug('FillRateHelper: activate');
-      this._samplesStartTime = (0, _performanceNow.default)();
+      this._samplesStartTime = (0, _performanceNow2.default)();
     }
   };
 
-  _proto.deactivateAndFlush = function deactivateAndFlush() {
+  FillRateHelper.prototype.deactivateAndFlush = function deactivateAndFlush() {
     if (!this._enabled) {
       return;
     }
-
     var start = this._samplesStartTime; // const for flow
-
     if (start == null) {
       DEBUG && console.debug('FillRateHelper: bail on deactivate with no start time');
       return;
     }
-
     if (this._info.sample_count < _minSampleCount) {
       // Don't bother with under-sampled events.
       this._resetData();
-
       return;
     }
-
-    var total_time_spent = (0, _performanceNow.default)() - start;
-
-    var info = _extends({}, this._info, {
+    var total_time_spent = (0, _performanceNow2.default)() - start;
+    var info = Object.assign({}, this._info, {
       total_time_spent: total_time_spent
     });
-
     if (DEBUG) {
       var derived = {
         avg_blankness: this._info.pixels_blank / this._info.pixels_sampled,
@@ -120,96 +122,77 @@ function () {
         mostly_blank_per_min: this._info.mostly_blank_count / (total_time_spent / 1000 / 60),
         mostly_blank_time_frac: this._info.mostly_blank_ms / total_time_spent
       };
-
       for (var key in derived) {
         derived[key] = Math.round(1000 * derived[key]) / 1000;
       }
-
-      console.debug('FillRateHelper deactivateAndFlush: ', {
-        derived: derived,
-        info: info
-      });
+      console.debug('FillRateHelper deactivateAndFlush: ', { derived: derived, info: info });
     }
-
     _listeners.forEach(function (listener) {
       return listener(info);
     });
-
     this._resetData();
   };
 
-  _proto.computeBlankness = function computeBlankness(props, state, scrollMetrics) {
+  FillRateHelper.prototype.computeBlankness = function computeBlankness(props, state, scrollMetrics) {
     if (!this._enabled || props.getItemCount(props.data) === 0 || this._samplesStartTime == null) {
       return 0;
     }
-
     var dOffset = scrollMetrics.dOffset,
         offset = scrollMetrics.offset,
         velocity = scrollMetrics.velocity,
-        visibleLength = scrollMetrics.visibleLength; // Denominator metrics that we track for all events - most of the time there is no blankness and
+        visibleLength = scrollMetrics.visibleLength;
+
+    // Denominator metrics that we track for all events - most of the time there is no blankness and
     // we want to capture that.
 
     this._info.sample_count++;
     this._info.pixels_sampled += Math.round(visibleLength);
     this._info.pixels_scrolled += Math.round(Math.abs(dOffset));
     var scrollSpeed = Math.round(Math.abs(velocity) * 1000); // px / sec
+
     // Whether blank now or not, record the elapsed time blank if we were blank last time.
-
-    var now = (0, _performanceNow.default)();
-
+    var now = (0, _performanceNow2.default)();
     if (this._anyBlankStartTime != null) {
       this._info.any_blank_ms += now - this._anyBlankStartTime;
     }
-
     this._anyBlankStartTime = null;
-
     if (this._mostlyBlankStartTime != null) {
       this._info.mostly_blank_ms += now - this._mostlyBlankStartTime;
     }
-
     this._mostlyBlankStartTime = null;
+
     var blankTop = 0;
     var first = state.first;
-
     var firstFrame = this._getFrameMetrics(first);
-
     while (first <= state.last && (!firstFrame || !firstFrame.inLayout)) {
       firstFrame = this._getFrameMetrics(first);
       first++;
-    } // Only count blankTop if we aren't rendering the first item, otherwise we will count the header
+    }
+    // Only count blankTop if we aren't rendering the first item, otherwise we will count the header
     // as blank.
-
-
     if (firstFrame && first > 0) {
       blankTop = Math.min(visibleLength, Math.max(0, firstFrame.offset - offset));
     }
-
     var blankBottom = 0;
     var last = state.last;
-
     var lastFrame = this._getFrameMetrics(last);
-
     while (last >= state.first && (!lastFrame || !lastFrame.inLayout)) {
       lastFrame = this._getFrameMetrics(last);
       last--;
-    } // Only count blankBottom if we aren't rendering the last item, otherwise we will count the
+    }
+    // Only count blankBottom if we aren't rendering the last item, otherwise we will count the
     // footer as blank.
-
-
     if (lastFrame && last < props.getItemCount(props.data) - 1) {
       var bottomEdge = lastFrame.offset + lastFrame.length;
       blankBottom = Math.min(visibleLength, Math.max(0, offset + visibleLength - bottomEdge));
     }
-
     var pixels_blank = Math.round(blankTop + blankBottom);
     var blankness = pixels_blank / visibleLength;
-
     if (blankness > 0) {
       this._anyBlankStartTime = now;
       this._info.any_blank_speed_sum += scrollSpeed;
       this._info.any_blank_count++;
       this._info.pixels_blank += pixels_blank;
-
       if (blankness > 0.5) {
         this._mostlyBlankStartTime = now;
         this._info.mostly_blank_count++;
@@ -217,15 +200,14 @@ function () {
     } else if (scrollSpeed < 0.01 || Math.abs(dOffset) < 1) {
       this.deactivateAndFlush();
     }
-
     return blankness;
   };
 
-  _proto.enabled = function enabled() {
+  FillRateHelper.prototype.enabled = function enabled() {
     return this._enabled;
   };
 
-  _proto._resetData = function _resetData() {
+  FillRateHelper.prototype._resetData = function _resetData() {
     this._anyBlankStartTime = null;
     this._info = new Info();
     this._mostlyBlankStartTime = null;
@@ -235,5 +217,5 @@ function () {
   return FillRateHelper;
 }();
 
-var _default = FillRateHelper;
-exports.default = _default;
+exports.default = FillRateHelper;
+module.exports = exports['default'];

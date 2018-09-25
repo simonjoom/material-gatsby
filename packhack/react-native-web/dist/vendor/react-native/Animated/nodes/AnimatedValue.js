@@ -9,15 +9,22 @@
  */
 'use strict';
 
-function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 import AnimatedInterpolation from './AnimatedInterpolation';
 import AnimatedNode from './AnimatedNode';
 import AnimatedWithChildren from './AnimatedWithChildren';
 import InteractionManager from '../../../../exports/InteractionManager';
 import NativeAnimatedHelper from '../NativeAnimatedHelper';
+
 var NativeAnimatedAPI = NativeAnimatedHelper.API;
+
 var _uniqueId = 1;
+
 /**
  * Animated works by building a directed acyclic graph of dependencies
  * transparently when you render your Animated components.
@@ -40,10 +47,8 @@ var _uniqueId = 1;
  * this two-phases process is to deal with composite props such as
  * transform which can receive values from multiple parents.
  */
-
 function _flush(rootNode) {
   var animatedStyles = new Set();
-
   function findAnimatedStyles(node) {
     if (typeof node.update === 'function') {
       animatedStyles.add(node);
@@ -51,14 +56,13 @@ function _flush(rootNode) {
       node.__getChildren().forEach(findAnimatedStyles);
     }
   }
-
   findAnimatedStyles(rootNode);
   /* $FlowFixMe */
-
   animatedStyles.forEach(function (animatedStyle) {
     return animatedStyle.update();
   });
 }
+
 /**
  * Standard value for driving animations.  One `Animated.Value` can drive
  * multiple properties in a synchronized fashion, but can only be driven by one
@@ -68,16 +72,14 @@ function _flush(rootNode) {
  * See http://facebook.github.io/react-native/docs/animatedvalue.html
  */
 
-
-var AnimatedValue =
-/*#__PURE__*/
-function (_AnimatedWithChildren) {
-  _inheritsLoose(AnimatedValue, _AnimatedWithChildren);
+var AnimatedValue = function (_AnimatedWithChildren) {
+  _inherits(AnimatedValue, _AnimatedWithChildren);
 
   function AnimatedValue(value) {
-    var _this;
+    _classCallCheck(this, AnimatedValue);
 
-    _this = _AnimatedWithChildren.call(this) || this;
+    var _this = _possibleConstructorReturn(this, _AnimatedWithChildren.call(this));
+
     _this._startingValue = _this._value = value;
     _this._offset = 0;
     _this._animation = null;
@@ -85,25 +87,23 @@ function (_AnimatedWithChildren) {
     return _this;
   }
 
-  var _proto = AnimatedValue.prototype;
-
-  _proto.__detach = function __detach() {
+  AnimatedValue.prototype.__detach = function __detach() {
     this.stopAnimation();
-
     _AnimatedWithChildren.prototype.__detach.call(this);
   };
 
-  _proto.__getValue = function __getValue() {
+  AnimatedValue.prototype.__getValue = function __getValue() {
     return this._value + this._offset;
   };
 
-  _proto.__makeNative = function __makeNative() {
+  AnimatedValue.prototype.__makeNative = function __makeNative() {
     _AnimatedWithChildren.prototype.__makeNative.call(this);
 
     if (Object.keys(this._listeners).length) {
       this._startListeningToNativeValueUpdates();
     }
   };
+
   /**
    * Directly set the value.  This will stop any animations running on the value
    * and update all the bound properties.
@@ -112,21 +112,18 @@ function (_AnimatedWithChildren) {
    */
 
 
-  _proto.setValue = function setValue(value) {
+  AnimatedValue.prototype.setValue = function setValue(value) {
     if (this._animation) {
       this._animation.stop();
-
       this._animation = null;
     }
-
-    this._updateValue(value, !this.__isNative
-    /* don't perform a flush for natively driven values */
+    this._updateValue(value, !this.__isNative /* don't perform a flush for natively driven values */
     );
-
     if (this.__isNative) {
       NativeAnimatedAPI.setAnimatedNodeValue(this.__getNativeTag(), value);
     }
   };
+
   /**
    * Sets an offset that is applied on top of whatever value is set, whether via
    * `setValue`, an animation, or `Animated.event`.  Useful for compensating
@@ -136,13 +133,13 @@ function (_AnimatedWithChildren) {
    */
 
 
-  _proto.setOffset = function setOffset(offset) {
+  AnimatedValue.prototype.setOffset = function setOffset(offset) {
     this._offset = offset;
-
     if (this.__isNative) {
       NativeAnimatedAPI.setAnimatedNodeOffset(this.__getNativeTag(), offset);
     }
   };
+
   /**
    * Merges the offset value into the base value and resets the offset to zero.
    * The final output of the value is unchanged.
@@ -151,14 +148,14 @@ function (_AnimatedWithChildren) {
    */
 
 
-  _proto.flattenOffset = function flattenOffset() {
+  AnimatedValue.prototype.flattenOffset = function flattenOffset() {
     this._value += this._offset;
     this._offset = 0;
-
     if (this.__isNative) {
       NativeAnimatedAPI.flattenAnimatedNodeOffset(this.__getNativeTag());
     }
   };
+
   /**
    * Sets the offset value to the base value, and resets the base value to zero.
    * The final output of the value is unchanged.
@@ -167,14 +164,14 @@ function (_AnimatedWithChildren) {
    */
 
 
-  _proto.extractOffset = function extractOffset() {
+  AnimatedValue.prototype.extractOffset = function extractOffset() {
     this._offset += this._value;
     this._value = 0;
-
     if (this.__isNative) {
       NativeAnimatedAPI.extractAnimatedNodeOffset(this.__getNativeTag());
     }
   };
+
   /**
    * Adds an asynchronous listener to the value so you can observe updates from
    * animations.  This is useful because there is no way to
@@ -184,16 +181,15 @@ function (_AnimatedWithChildren) {
    */
 
 
-  _proto.addListener = function addListener(callback) {
+  AnimatedValue.prototype.addListener = function addListener(callback) {
     var id = String(_uniqueId++);
     this._listeners[id] = callback;
-
     if (this.__isNative) {
       this._startListeningToNativeValueUpdates();
     }
-
     return id;
   };
+
   /**
    * Unregister a listener. The `id` param shall match the identifier
    * previously returned by `addListener()`.
@@ -202,13 +198,13 @@ function (_AnimatedWithChildren) {
    */
 
 
-  _proto.removeListener = function removeListener(id) {
+  AnimatedValue.prototype.removeListener = function removeListener(id) {
     delete this._listeners[id];
-
     if (this.__isNative && Object.keys(this._listeners).length === 0) {
       this._stopListeningForNativeValueUpdates();
     }
   };
+
   /**
    * Remove all registered listeners.
    *
@@ -216,15 +212,14 @@ function (_AnimatedWithChildren) {
    */
 
 
-  _proto.removeAllListeners = function removeAllListeners() {
+  AnimatedValue.prototype.removeAllListeners = function removeAllListeners() {
     this._listeners = {};
-
     if (this.__isNative) {
       this._stopListeningForNativeValueUpdates();
     }
   };
 
-  _proto._startListeningToNativeValueUpdates = function _startListeningToNativeValueUpdates() {
+  AnimatedValue.prototype._startListeningToNativeValueUpdates = function _startListeningToNativeValueUpdates() {
     var _this2 = this;
 
     if (this.__nativeAnimatedValueListener) {
@@ -236,23 +231,20 @@ function (_AnimatedWithChildren) {
       if (data.tag !== _this2.__getNativeTag()) {
         return;
       }
-
-      _this2._updateValue(data.value, false
-      /* flush */
-      );
+      _this2._updateValue(data.value, false /* flush */);
     });
   };
 
-  _proto._stopListeningForNativeValueUpdates = function _stopListeningForNativeValueUpdates() {
+  AnimatedValue.prototype._stopListeningForNativeValueUpdates = function _stopListeningForNativeValueUpdates() {
     if (!this.__nativeAnimatedValueListener) {
       return;
     }
 
     this.__nativeAnimatedValueListener.remove();
-
     this.__nativeAnimatedValueListener = null;
     NativeAnimatedAPI.stopListeningToAnimatedNodeValue(this.__getNativeTag());
   };
+
   /**
    * Stops any running animation or tracking. `callback` is invoked with the
    * final value after stopping the animation, which is useful for updating
@@ -262,12 +254,13 @@ function (_AnimatedWithChildren) {
    */
 
 
-  _proto.stopAnimation = function stopAnimation(callback) {
+  AnimatedValue.prototype.stopAnimation = function stopAnimation(callback) {
     this.stopTracking();
     this._animation && this._animation.stop();
     this._animation = null;
     callback && callback(this.__getValue());
   };
+
   /**
    * Stops any animation and resets the value to its original.
    *
@@ -275,19 +268,21 @@ function (_AnimatedWithChildren) {
    */
 
 
-  _proto.resetAnimation = function resetAnimation(callback) {
+  AnimatedValue.prototype.resetAnimation = function resetAnimation(callback) {
     this.stopAnimation(callback);
     this._value = this._startingValue;
   };
+
   /**
    * Interpolates the value before updating the property, e.g. mapping 0-1 to
    * 0-10.
    */
 
 
-  _proto.interpolate = function interpolate(config) {
+  AnimatedValue.prototype.interpolate = function interpolate(config) {
     return new AnimatedInterpolation(this, config);
   };
+
   /**
    * Typically only used internally, but could be used by a custom Animation
    * class.
@@ -296,68 +291,60 @@ function (_AnimatedWithChildren) {
    */
 
 
-  _proto.animate = function animate(animation, callback) {
+  AnimatedValue.prototype.animate = function animate(animation, callback) {
     var _this3 = this;
 
     var handle = null;
-
     if (animation.__isInteraction) {
       handle = InteractionManager.createInteractionHandle();
     }
-
     var previousAnimation = this._animation;
     this._animation && this._animation.stop();
     this._animation = animation;
     animation.start(this._value, function (value) {
       // Natively driven animations will never call into that callback, therefore we can always
       // pass flush = true to allow the updated value to propagate to native with setNativeProps
-      _this3._updateValue(value, true
-      /* flush */
-      );
+      _this3._updateValue(value, true /* flush */);
     }, function (result) {
       _this3._animation = null;
-
       if (handle !== null) {
         InteractionManager.clearInteractionHandle(handle);
       }
-
       callback && callback(result);
     }, previousAnimation, this);
   };
+
   /**
    * Typically only used internally.
    */
 
 
-  _proto.stopTracking = function stopTracking() {
+  AnimatedValue.prototype.stopTracking = function stopTracking() {
     this._tracking && this._tracking.__detach();
     this._tracking = null;
   };
+
   /**
    * Typically only used internally.
    */
 
 
-  _proto.track = function track(tracking) {
+  AnimatedValue.prototype.track = function track(tracking) {
     this.stopTracking();
     this._tracking = tracking;
   };
 
-  _proto._updateValue = function _updateValue(value, flush) {
+  AnimatedValue.prototype._updateValue = function _updateValue(value, flush) {
     this._value = value;
-
     if (flush) {
       _flush(this);
     }
-
     for (var _key in this._listeners) {
-      this._listeners[_key]({
-        value: this.__getValue()
-      });
+      this._listeners[_key]({ value: this.__getValue() });
     }
   };
 
-  _proto.__getNativeConfig = function __getNativeConfig() {
+  AnimatedValue.prototype.__getNativeConfig = function __getNativeConfig() {
     return {
       type: 'value',
       value: this._value,

@@ -121,14 +121,21 @@ apiRunnerAsync(`onClientEntry`).then(() => {
 
       let NewRoot = () => WrappedRoot
 
-      const renderer = apiRunner(
+      const renderer2 = apiRunnerAsync(
         `replaceHydrateFunction`,
         undefined,
         ReactDOM.hydrate
-      )[0]
+      )
 
-      domReady(() => {
-        renderer(
+      domReady(async () => {
+      let renderer;
+       try {
+    renderer = await renderer2;
+  }
+  catch (rejectedValue) {
+  console.log("rejectedValue",rejectedValue)
+  }
+      return renderer(
           <NewRoot />,
           typeof window !== `undefined`
             ? document.getElementById(`___gatsby`)

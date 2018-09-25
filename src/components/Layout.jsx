@@ -17,8 +17,7 @@ class Layout extends React.Component {
       path,
       location
     } = this.props;
-
-    console.log("Layoutroute", route);
+ console.log("route",lng,global.menuList[lng])
     return (
       <>
         <div

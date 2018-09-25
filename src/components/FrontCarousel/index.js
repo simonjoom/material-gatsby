@@ -1,7 +1,7 @@
 import React from "react";
 import Img from "gatsby-image";
 import withTheme from '../../withContext'; 
-import Carousel from "./carousel";
+import Carousel from "./carousel.js";
 import "./carousel.css";
 
 const GetImage = ({
@@ -123,8 +123,7 @@ const FrontCarousel = ({
   ismain,
   translate,
   alt = ""
-}) => {
-  console.log("data", data, global.filesQuery);
+}) => { 
   if (!data) return null;
   let datas = typeof data == "string" ? data.split() : data;
   let Query = global.filesQuery;

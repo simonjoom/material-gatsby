@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import Card from "react-md/lib/Cards/Card";
-import CardTitle from "react-md/lib/Cards/CardTitle";
-import CardText from "react-md/lib/Cards/CardText";
-import Avatar from "react-md/lib/Avatars";
-import FontIcon from "react-md/lib/FontIcons";
+import withTheme from "../../withContext";
+import Card from "../../reactLIB/Card";
+import Icon from "../../reactLIB/Icon"; 
+import config from "../../../data/SiteConfig";
+import Avatar from "react-md/lib/Avatars"; 
 import IconSeparator from "react-md/lib/Helpers/IconSeparator";
 import { Follow } from "react-twitter-widgets";
 import UserLinks from "../UserLinks";
@@ -19,9 +19,10 @@ class UserInfo extends Component {
       userLinks,
       userTwitter
     } = this.props.config;
+    const {translate: t} = this.props;
     const { expanded } = this.props;
     const userLinksElement = (
-      <UserLinks config={this.props.config} labeled={expanded} />
+      <UserLinks config={this.props.config} labeled />
     );
     if (!userAvatar && !userName && !userLocation && !userDescription) {
       if (userLinks) {
@@ -34,34 +35,42 @@ class UserInfo extends Component {
       return null;
     }
     return (
-      <Card className="md-grid md-cell md-cell--12 user-info">
-        <CardTitle
-          expander={!expanded}
-          avatar={userAvatar && <Avatar src={userAvatar} role="presentation" />}
-          title={userName && userName}
-          subtitle={
-            userTwitter ? (
+      <Card
+        className="md-grid md-cell md-cell--12 user-info"
+        titlereveal={userName && userName}
+        title={
+          <div>
+            {userName}
+            {userTwitter ? (
               <Follow
                 username={userTwitter}
                 options={{ count: expanded ? "none" : "none" }}
               />
             ) : (
               "Author"
-            )
-          }
-        />
-        <CardText expandable={!expanded}>
-          {userLocation && (
-            <IconSeparator label={userLocation} iconBefore>
-              <FontIcon iconClassName="fa fa-map-marker" />
-            </IconSeparator>
-          )}
-          <p>{userDescription && userDescription}</p>
-          {userLinksElement}
-        </CardText>
+            )}
+          </div>
+        }
+        reveal={
+          <>
+            {userLocation && (
+              <IconSeparator label={userLocation} iconBefore>
+                <Icon className="map-marker" />
+              </IconSeparator>
+            )}
+            <p>{userDescription && userDescription}</p>
+            {userLinksElement}
+          </>
+        }
+        contentImage={
+          userAvatar && <Avatar src={userAvatar} role="presentation" />
+        }
+      >
+        <p className="about-text md-body-1">{t("UserDescription")}</p>
+        <UserLinks labeled config={config} />
       </Card>
     );
   }
 }
 
-export default UserInfo;
+export default withTheme(UserInfo); 

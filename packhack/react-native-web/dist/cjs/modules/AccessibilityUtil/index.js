@@ -1,13 +1,22 @@
-"use strict";
+'use strict';
 
 exports.__esModule = true;
-exports.default = void 0;
 
-var _isDisabled = _interopRequireDefault(require("./isDisabled"));
+var _buttonLikeRoles = require('./buttonLikeRoles');
 
-var _propsToAccessibilityComponent = _interopRequireDefault(require("./propsToAccessibilityComponent"));
+var _buttonLikeRoles2 = _interopRequireDefault(_buttonLikeRoles);
 
-var _propsToAriaRole = _interopRequireDefault(require("./propsToAriaRole"));
+var _isDisabled = require('./isDisabled');
+
+var _isDisabled2 = _interopRequireDefault(_isDisabled);
+
+var _propsToAccessibilityComponent = require('./propsToAccessibilityComponent');
+
+var _propsToAccessibilityComponent2 = _interopRequireDefault(_propsToAccessibilityComponent);
+
+var _propsToAriaRole = require('./propsToAriaRole');
+
+var _propsToAriaRole2 = _interopRequireDefault(_propsToAriaRole);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -19,10 +28,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  *
  * 
  */
+
 var AccessibilityUtil = {
-  isDisabled: _isDisabled.default,
-  propsToAccessibilityComponent: _propsToAccessibilityComponent.default,
-  propsToAriaRole: _propsToAriaRole.default
+  buttonLikeRoles: _buttonLikeRoles2.default,
+  isDisabled: _isDisabled2.default,
+  propsToAccessibilityComponent: _propsToAccessibilityComponent2.default,
+  propsToAriaRole: _propsToAriaRole2.default
 };
-var _default = AccessibilityUtil;
-exports.default = _default;
+
+exports.default = AccessibilityUtil;
+module.exports = exports['default'];

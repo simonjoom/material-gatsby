@@ -1,20 +1,14 @@
-import React, { Component } from "react";
-// import Card from "react-md/lib/Cards/Card";
-// import CardTitle from "react-md/lib/Cards/CardTitle";
-// import Button from "react-md/lib/Buttons";
+import React, { Component } from "react"; 
+import { Link } from "gatsby";
+import moment from "moment"; 
 import FrontCarousel from "components/FrontCarousel";
 import Avatar from "react-md/lib/Avatars"; 
 import Button from "../../reactLIB/Button"
-
-// import CardText from "react-md/lib/Cards/CardText"; 
-import { Link } from "gatsby";
-import moment from "moment";
 // import Media, { MediaOverlay } from "react-md/lib/Media";
 import PostTags from "../PostTags";
 // import PostCover from "../PostCover";
 import config from "../../../data/SiteConfig";
-import Card from "../../reactLIB/Card";
-// import CardTitle from "../../reactLIB/CardTitle";
+import Card from "../../reactLIB/Card"; 
 import Icon from "../../reactLIB/Icon";
 import "./PostPreview.scss";
 

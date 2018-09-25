@@ -1,11 +1,12 @@
-"use strict";
+'use strict';
 
 exports.__esModule = true;
-exports.default = void 0;
 
-var _ViewPropTypes = _interopRequireDefault(require("../View/ViewPropTypes"));
+var _ViewPropTypes = require('../View/ViewPropTypes');
+
+var _ViewPropTypes2 = _interopRequireDefault(_ViewPropTypes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _default = _ViewPropTypes.default;
-exports.default = _default;
+exports.default = _ViewPropTypes2.default;
+module.exports = exports['default'];

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import cx from 'classnames';
-import PropTypes from 'prop-types'; 
+import PropTypes from 'prop-types';
 import idgen from './idgen';
 
 class SideNav extends Component {
@@ -10,12 +10,11 @@ class SideNav extends Component {
     this.id = props.id || `sidenav_${r}`;
   }
 
-  componentDidMount() { 
+  componentDidMount() {
     const { options } = this.props;
     var elems = document.querySelectorAll('.sidenav');
-    var instances = Zepto.Sidenav.init(elems, options); 
-  }
-
+    Zepto.Sidenav.init(elems, options);
+  } 
 
   render() {
     const { className, children, trigger, fixed, ...props } = this.props;

@@ -10,35 +10,36 @@
 'use strict';
 
 exports.__esModule = true;
-exports.default = void 0;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
  * EventSubscription represents a subscription to a particular event. It can
  * remove its own subscription.
  */
-var EventSubscription =
-/*#__PURE__*/
-function () {
+var EventSubscription = function () {
+
   /**
    * @param {EventSubscriptionVendor} subscriber the subscriber that controls
    *   this subscription.
    */
   function EventSubscription(subscriber) {
+    _classCallCheck(this, EventSubscription);
+
     this.subscriber = subscriber;
   }
+
   /**
    * Removes this subscription from the subscriber that controls it.
    */
 
 
-  var _proto = EventSubscription.prototype;
-
-  _proto.remove = function remove() {
+  EventSubscription.prototype.remove = function remove() {
     this.subscriber.removeSubscription(this);
   };
 
   return EventSubscription;
 }();
 
-var _default = EventSubscription;
-exports.default = _default;
+exports.default = EventSubscription;
+module.exports = exports['default'];

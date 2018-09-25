@@ -1,33 +1,34 @@
 import React, { Component } from "react";
-import Card from "react-md/lib/Cards/Card";
-import CardText from "react-md/lib/Cards/CardText";
+import withTheme from "../../withContext";
+import Card from "../../reactLIB/Card"; 
+
 import UserLinks from "../UserLinks";
 import config from "../../../data/SiteConfig";
 import "./About.scss";
 
 class About extends Component {
   render() {
-    const { translate } = this.props;
+    const {translate: t} = this.props;
     return (
       <div className="about-container md-grid mobile-fix">
-        <Card className="md-grid md-cell--8">
-          <div className="about-wrapper">
+        <Card
+          className="md-grid md-cell--8"
+          titlereveal="UserDescription"
+          title="UserDescription"
+          contentImage={
             <img
               src={config.userAvatar}
               className="about-img"
               alt={config.userName}
             />
-            <CardText>
-              <p className="about-text md-body-1">
-                {translate("UserDescription")}
-              </p>
-            </CardText>
-            <UserLinks labeled config={config} />
-          </div>
+          }
+        >
+          <p className="about-text md-body-1">{t("UserDescription")}</p>
+          <UserLinks labeled config={config} />
         </Card>
       </div>
     );
   }
 }
 
-export default About;
+export default withTheme(About); 

@@ -34,11 +34,17 @@ exports.apiRunner = (api, args = {}, defaultReturn, argTransform) => {
   }
 }
 
-exports.apiRunnerAsync = (api, args, defaultReturn) =>
+exports.apiRunnerAsync = (api, args, defaultReturn, argTransform) =>
   plugins.reduce(
     (previous, next) =>
       next.plugin[api]
-        ? previous.then(() => next.plugin[api](args, next.options))
+        ?      previous.then(() => {
+          const result =  next.plugin[api](args, next.options)
+      if (result && argTransform) {
+        args = argTransform({ args, result })
+      }
+      return result
+          })
         : previous,
     Promise.resolve()
   )

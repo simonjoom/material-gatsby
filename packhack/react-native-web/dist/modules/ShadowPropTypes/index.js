@@ -6,9 +6,11 @@
  *
  * 
  */
+
 import ColorPropType from '../../exports/ColorPropType';
 import { number, oneOfType, shape, string } from 'prop-types';
 var numberOrString = oneOfType([number, string]);
+
 var ShadowPropTypes = {
   shadowColor: ColorPropType,
   shadowOffset: shape({
@@ -19,4 +21,5 @@ var ShadowPropTypes = {
   shadowRadius: numberOrString,
   shadowSpread: numberOrString
 };
+
 export default ShadowPropTypes;

@@ -6,10 +6,13 @@
  *
  * 
  */
+
 import createStrictShapeTypeChecker from '../../modules/createStrictShapeTypeChecker';
 import { number } from 'prop-types';
+
 var PointPropType = createStrictShapeTypeChecker({
   x: number,
   y: number
 });
+
 export default PointPropType;

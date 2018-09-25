@@ -1,5 +1,7 @@
 import React from "react";
 import i18n from "i18next";
+import { AppRegistry } from "react-native-web";
+import { renderToString } from "react-dom/server";
 import { ThemeContext } from "./withContext";
 import trfr from "./layouts/translate_fr";
 import tren from "./layouts/translate_en";
@@ -16,6 +18,27 @@ global.isSSR = true;
 
 global.menuList = { en: [], ru: [], pt: [], uk: [], ch: [], fr: [] };
 global.filesQuery = [];
+global.locale = { en: [], ru: [], pt: [], uk: [], ch: [], fr: [] };
+/*
+const initialState = {
+  menuList: global.menuList,
+  filesQuery: global.filesQuery
+};
+const preloadedState = initialState;
+
+const reducermenuList = (state = global.menuList, action) => {
+  return state;
+};
+const reducerfilesQuery = (state = global.filesQuery, action) => {
+  return state;
+};
+const rootReducer = combineReducers({
+  menuList: reducermenuList,
+  filesQuery: reducerfilesQuery
+});
+
+const store = createStore(rootReducer, preloadedState);
+*/
 const preferDefault = m => (m && m.default) || m;
 let Layout;
 try {
@@ -31,10 +54,48 @@ try {
   }
 }
 
-export const wrapPageElement = async ({ element, props }) => {
+function injectState() {
+  // const state = store.getState();
+  // appends apollo state to the global client window object
+  return (
+    <script
+      dangerouslySetInnerHTML={{
+        __html: `window.__INITIAL_STATE__=${JSON.stringify({
+          menuList: global.menuList,
+          filesQuery: global.filesQuery,
+          locale: global.locale
+        })};`
+      }}
+    />
+  );
+}
+
+export const replaceRenderer = ({
+  bodyComponent,
+  replaceBodyHTMLString,
+  setHeadComponents
+}) => {
+  class App extends React.Component {
+    render() {
+      return <div id="App">{bodyComponent}</div>;
+    }
+  }
+  AppRegistry.registerComponent("App", () => App);
+  const { element, getStyleElement } = AppRegistry.getApplication("App");
+  const html = renderToString(element);
+  const styleElement = getStyleElement();
+
+  replaceBodyHTMLString(html);
+  setHeadComponents([styleElement, injectState()]);
+};
+
+export const wrapPageElement = ({ element, props }) => {
   const { lng } = props.pageContext;
   let Red, Red2;
-  if (global.menuList[lng].length == 0 || getLanguage() !== lng) {
+  if (!lng) return <Layout>{element}</Layout>;
+  // console.log("global.menuList", lng);
+  // console.log("global.menuList", global.menuList[lng]);
+  if (global.menuList[lng].length == 0) {
     Red =
       lng == "fr"
         ? trfr
@@ -58,22 +119,24 @@ export const wrapPageElement = async ({ element, props }) => {
   }
   // console.log("Red2", Red2, lng);
   const { slug, slugbase, route, carousel } = props.pageContext;
-  const namespace = slugbase === "/" ? "Index" : "Post";
   const ismain = slugbase === "/";
-  console.log("runMainNavLayout", lng);
+  //console.log("runMainNavLayout");
+
   return (
     <>
       <Red />
-      <Red2 lng={lng} />
-      <ThemeContext.Provider
-        value={{
-          translate: namespace => i18n.getFixedT(null, [namespace, "common"])
-        }}
-      >
-        <Layout route={route} lng={lng}>
-          {element}
-        </Layout>
-      </ThemeContext.Provider>
+      <Red2 />
+      <Layout lng={lng}>{element}</Layout>
     </>
   );
 };
+
+export const wrapRootElement = ({ element }) => (
+  <ThemeContext.Provider
+    value={{
+      translate: namespace => i18n.getFixedT(null, [namespace, "common"])
+    }}
+  >
+    {element}
+  </ThemeContext.Provider>
+);

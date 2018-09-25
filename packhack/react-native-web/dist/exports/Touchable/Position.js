@@ -6,7 +6,9 @@
  *
  * @noflow
  */
+
 import PooledClass from '../../vendor/react-native/PooledClass';
+
 var twoArgumentPooler = PooledClass.twoArgumentPooler;
 
 function Position(left, top) {
@@ -20,4 +22,5 @@ Position.prototype.destructor = function () {
 };
 
 PooledClass.addPoolingTo(Position, twoArgumentPooler);
+
 export default Position;

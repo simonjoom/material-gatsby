@@ -121,10 +121,8 @@ export const StatusBar = StatusB;
 export {
   View,
   Image,
-  FlatList,
   ActivityIndicator,
   Dimensions,
-  ListView,
   Modal, 
   StyleSheet,
   Text,

@@ -12,7 +12,6 @@ function flattenArray(array) {
 
     return result;
   }
-
   return flattenDown(array, []);
 }
 

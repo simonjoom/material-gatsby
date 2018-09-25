@@ -6,6 +6,7 @@
  *
  * 
  */
+
 import invariant from 'fbjs/lib/invariant';
 
 var ensureComponentIsNative = function ensureComponentIsNative(component) {

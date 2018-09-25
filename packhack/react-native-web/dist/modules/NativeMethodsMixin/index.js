@@ -7,10 +7,12 @@
  *
  * 
  */
+
 import createDOMProps from '../createDOMProps';
 import findNodeHandle from '../../exports/findNodeHandle';
 import styleResolver from '../../exports/StyleSheet/styleResolver';
 import UIManager from '../../exports/UIManager';
+
 var NativeMethodsMixin = {
   /**
    * Removes focus from an input or view. This is the opposite of `focus()`.
@@ -18,6 +20,7 @@ var NativeMethodsMixin = {
   blur: function blur() {
     UIManager.blur(findNodeHandle(this));
   },
+
 
   /**
    * Requests focus for the given input or view.
@@ -27,12 +30,14 @@ var NativeMethodsMixin = {
     UIManager.focus(findNodeHandle(this));
   },
 
+
   /**
    * Determines the position and dimensions of the view
    */
   measure: function measure(callback) {
     UIManager.measure(findNodeHandle(this), callback);
   },
+
 
   /**
    * Determines the location of the given view in the window and returns the
@@ -53,12 +58,14 @@ var NativeMethodsMixin = {
     UIManager.measureInWindow(findNodeHandle(this), callback);
   },
 
+
   /**
    * Measures the view relative to another view (usually an ancestor)
    */
   measureLayout: function measureLayout(relativeToNativeNode, onSuccess, onFail) {
     UIManager.measureLayout(findNodeHandle(this), relativeToNativeNode, onFail, onSuccess);
   },
+
 
   /**
    * This function sends props straight to the underlying DOM node.
@@ -70,9 +77,7 @@ var NativeMethodsMixin = {
     if (!nativeProps) {
       return;
     }
-
     var node = findNodeHandle(this);
-
     if (node) {
       // Next state is determined by comparison to existing state (in the DOM).
       // Existing state has already gone through i18n transform
@@ -83,4 +88,5 @@ var NativeMethodsMixin = {
     }
   }
 };
+
 export default NativeMethodsMixin;

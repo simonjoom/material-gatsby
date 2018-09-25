@@ -6,7 +6,9 @@
  *
  * 
  */
+
 import { arrayOf, number, object, oneOf, oneOfType, string } from 'prop-types';
+
 var AnimationPropTypes = {
   animationDelay: string,
   animationDirection: oneOf(['alternate', 'alternate-reverse', 'normal', 'reverse']),
@@ -21,4 +23,5 @@ var AnimationPropTypes = {
   transitionProperty: string,
   transitionTimingFunction: string
 };
+
 export default AnimationPropTypes;

@@ -1,51 +1,67 @@
-"use strict";
+'use strict';
 
 exports.__esModule = true;
-exports.default = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _StyleSheet = _interopRequireDefault(require("../StyleSheet"));
+var _react = require('react');
 
-var _View = _interopRequireDefault(require("../View"));
+var _react2 = _interopRequireDefault(_react);
 
-var _ViewPropTypes = _interopRequireDefault(require("../ViewPropTypes"));
+var _StyleSheet = require('../StyleSheet');
+
+var _StyleSheet2 = _interopRequireDefault(_StyleSheet);
+
+var _View = require('../View');
+
+var _View2 = _interopRequireDefault(_View);
+
+var _ViewPropTypes = require('../ViewPropTypes');
+
+var _ViewPropTypes2 = _interopRequireDefault(_ViewPropTypes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-var SafeAreaView =
-/*#__PURE__*/
-function (_React$Component) {
-  _inheritsLoose(SafeAreaView, _React$Component);
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Copyright (c) 2015-present, Facebook, Inc.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * This source code is licensed under the MIT license found in the
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * LICENSE file in the root directory of this source tree.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
+var SafeAreaView = function (_React$Component) {
+  _inherits(SafeAreaView, _React$Component);
 
   function SafeAreaView() {
-    return _React$Component.apply(this, arguments) || this;
+    _classCallCheck(this, SafeAreaView);
+
+    return _possibleConstructorReturn(this, _React$Component.apply(this, arguments));
   }
 
-  var _proto = SafeAreaView.prototype;
+  SafeAreaView.prototype.render = function render() {
+    var _props = this.props,
+        style = _props.style,
+        rest = _objectWithoutProperties(_props, ['style']);
 
-  _proto.render = function render() {
-    var _this$props = this.props,
-        style = _this$props.style,
-        rest = _objectWithoutPropertiesLoose(_this$props, ["style"]);
-
-    return _react.default.createElement(_View.default, _extends({}, rest, {
-      style: _StyleSheet.default.compose(styles.root, style)
-    }));
+    return _react2.default.createElement(_View2.default, _extends({}, rest, { style: _StyleSheet2.default.compose(styles.root, style) }));
   };
 
   return SafeAreaView;
-}(_react.default.Component);
+}(_react2.default.Component);
 
 SafeAreaView.displayName = 'SafeAreaView';
+SafeAreaView.propTypes = process.env.NODE_ENV !== "production" ? Object.assign({}, _ViewPropTypes2.default) : {};
 
-var styles = _StyleSheet.default.create({
+
+var styles = _StyleSheet2.default.create({
   root: {
     paddingTop: 'env(safe-area-inset-top)',
     paddingRight: 'env(safe-area-inset-right)',
@@ -54,5 +70,5 @@ var styles = _StyleSheet.default.create({
   }
 });
 
-var _default = SafeAreaView;
-exports.default = _default;
+exports.default = SafeAreaView;
+module.exports = exports['default'];

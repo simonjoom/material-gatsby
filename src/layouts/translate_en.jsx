@@ -42,7 +42,7 @@ const translate = () => {
         render={data => {
           let lang;
           run = false;
-          console.log("changeLanguage", data);
+          console.log("changeLanguage", data); 
           data.allLocale.edges.forEach(({ node }) => {
             const { lng, ns, data } = node;
             lang = lng;
@@ -50,16 +50,18 @@ const translate = () => {
               i18n.addResources(lng, ns, JSON.parse(data));
             }
           });
+          global.locale[lang] = data.allLocale.edges;
           i18n.changeLanguage(lang);
           let t = namespace => i18n.getFixedT(null, [namespace, "common"]);
 
           global.postEdges = data.allMarkdownRemark.edges;
           global.postEdges.forEach(postEdge => {
             const { title } = postEdge.node.frontmatter;
+            const tr = t("Index")(title);
             if (postEdge.node.fields.inmenu)
-              global.menuList["en"].push({
+            global.menuList["en"].push({
                 path: postEdge.node.fields.slug,
-                title: t("Index")(title)
+                title: tr
               });
           });
 

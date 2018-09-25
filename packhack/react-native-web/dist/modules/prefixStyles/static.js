@@ -15,6 +15,7 @@ var ms = ['ms'];
 var wm = ['Webkit', 'Moz'];
 var wms = ['Webkit', 'ms'];
 var wmms = ['Webkit', 'Moz', 'ms'];
+
 export default {
   plugins: [crossFade, cursor, filter, flex, flexboxIE, flexboxOld, gradient, imageSet, position, sizing, transition],
   prefixMap: {

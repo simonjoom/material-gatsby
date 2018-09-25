@@ -1,12 +1,18 @@
-"use strict";
+'use strict';
 
 exports.__esModule = true;
-exports.default = void 0;
 
-var _PooledClass = _interopRequireDefault(require("../../vendor/react-native/PooledClass"));
+var _PooledClass = require('../../vendor/react-native/PooledClass');
+
+var _PooledClass2 = _interopRequireDefault(_PooledClass);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var twoArgumentPooler = _PooledClass2.default.twoArgumentPooler;
+
+/**
+ * PooledClass representing the bounding rectangle of a region.
+ */
 /**
  * Copyright (c) 2015-present, Nicolas Gallagher.
  *
@@ -14,10 +20,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * LICENSE file in the root directory of this source tree.
  *
  * 
- */
-var twoArgumentPooler = _PooledClass.default.twoArgumentPooler;
-/**
- * PooledClass representing the bounding rectangle of a region.
  */
 
 function BoundingDimensions(width, height) {
@@ -34,7 +36,7 @@ BoundingDimensions.getPooledFromElement = function (element) {
   return BoundingDimensions.getPooled(element.offsetWidth, element.offsetHeight);
 };
 
-_PooledClass.default.addPoolingTo(BoundingDimensions, twoArgumentPooler);
+_PooledClass2.default.addPoolingTo(BoundingDimensions, twoArgumentPooler);
 
-var _default = BoundingDimensions;
-exports.default = _default;
+exports.default = BoundingDimensions;
+module.exports = exports['default'];

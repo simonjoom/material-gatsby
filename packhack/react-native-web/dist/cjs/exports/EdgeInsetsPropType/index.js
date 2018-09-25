@@ -1,11 +1,12 @@
-"use strict";
+'use strict';
 
 exports.__esModule = true;
-exports.default = void 0;
 
-var _createStrictShapeTypeChecker = _interopRequireDefault(require("../../modules/createStrictShapeTypeChecker"));
+var _createStrictShapeTypeChecker = require('../../modules/createStrictShapeTypeChecker');
 
-var _propTypes = require("prop-types");
+var _createStrictShapeTypeChecker2 = _interopRequireDefault(_createStrictShapeTypeChecker);
+
+var _propTypes = require('prop-types');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -17,11 +18,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  *
  * 
  */
-var EdgeInsetsPropType = (0, _createStrictShapeTypeChecker.default)({
+
+var EdgeInsetsPropType = (0, _createStrictShapeTypeChecker2.default)({
   top: _propTypes.number,
   left: _propTypes.number,
   bottom: _propTypes.number,
   right: _propTypes.number
 });
-var _default = EdgeInsetsPropType;
-exports.default = _default;
+
+exports.default = EdgeInsetsPropType;
+module.exports = exports['default'];

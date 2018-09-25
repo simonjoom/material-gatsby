@@ -3,15 +3,17 @@ import RehypeReact from "rehype-react";
 import Helmet from "react-helmet";
 import { graphql, Link } from "gatsby";
 import { View } from "react-native";
-import UserInfo from "../components/UserInfo";
+//import UserInfo from "../components/UserInfo";
 import Disqus from "../components/Disqus";
 import withTheme from "../withContext";
 import PostTags from "../components/PostTags";
 import Layout from "../components/Layout";
-import { Card, CardText } from "react-md";
 //import PostInfo from "../components/PostInfo";
 import SocialLinks from "../components/SocialLinks";
 import SEO from "../components/SEO";
+import Card from "../reactLIB/Card";
+import Icon from "../reactLIB/Icon";
+import Button from "../reactLIB/Button";
 import SiteConfig from "../../data/SiteConfig";
 import FrontCarousel from "../components/FrontCarousel";
 import ReactFB from "../components/ReactFB";
@@ -38,7 +40,7 @@ class PostTemplate extends React.Component {
     const { mobile } = this.state;
     const { translate: t } = this.props;
     const { slug, slugbase, route, lng, carousel } = this.props.pageContext;
-    console.log("postthis", this.props);
+ 
     const expanded = !mobile;
     const ismain = slugbase === "/";
     let carouselList = [];
@@ -101,21 +103,17 @@ class PostTemplate extends React.Component {
             postSEO 
           />
           */}
-
-        <Card className="post">
-          <CardText className="post-body">
-            <h1 className="md-display-2 post-header">{title}</h1>
-            {renderAst(postNode.htmlAst)}
-          </CardText>
-          <div className="post-meta">
-            <PostTags tags={post.tags} />
-            <SocialLinks
-              postPath={slug}
-              postNode={postNode}
-              mobile={this.state.mobile}
-            />
-          </div>
+        <Card className="post" title={title}>
+          {renderAst(postNode.htmlAst)}
         </Card>
+        <div className="post-meta">
+          <PostTags tags={post.tags} />
+          <SocialLinks
+            postPath={slug}
+            postNode={postNode}
+            mobile={this.state.mobile}
+          />
+        </div>
         <Disqus postNode={postNode} expanded={expanded} />
       </Layout>
     );
@@ -148,4 +146,3 @@ export const pageQuery = graphql`
     }
   }
 `;
- 

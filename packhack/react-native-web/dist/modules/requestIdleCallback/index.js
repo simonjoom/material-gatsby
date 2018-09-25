@@ -6,6 +6,7 @@
  *
  * 
  */
+
 import { canUseDOM } from 'fbjs/lib/ExecutionEnvironment';
 
 var _requestIdleCallback = function _requestIdleCallback(cb, options) {
@@ -18,15 +19,17 @@ var _requestIdleCallback = function _requestIdleCallback(cb, options) {
       }
     });
   }, 1);
-}; // $FlowFixMe (TimeoutID type is not recognized by eslint)
+};
 
-
+// $FlowFixMe (TimeoutID type is not recognized by eslint)
 var _cancelIdleCallback = function _cancelIdleCallback(id) {
   clearTimeout(id);
 };
 
 var isSupported = canUseDOM && typeof window.requestIdleCallback !== 'undefined';
+
 var requestIdleCallback = isSupported ? window.requestIdleCallback : _requestIdleCallback;
 var cancelIdleCallback = isSupported ? window.cancelIdleCallback : _cancelIdleCallback;
+
 export default requestIdleCallback;
 export { cancelIdleCallback };

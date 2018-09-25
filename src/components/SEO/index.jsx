@@ -16,8 +16,7 @@ class SEO extends Component {
       description = postMeta.description
         ? postMeta.description
         : postNode.excerpt;
-      image = postMeta.cover||"";
-      console.log("postPath",postPath,translate("siteUrl"))
+      image = postMeta.cover || "";
       postURL = urljoin(translate("siteUrl"), config.pathPrefix, postPath);
     } else {
       title = config.siteTitle;

@@ -140,7 +140,11 @@ function (_Component) {
       var finalResizeMode = _this.props.resizeMode || _this.props.style.resizeMode || ImageResizeMode.cover; // CSS filters
 
       var that = _assertThisInitialized(_assertThisInitialized(_this));
-
+if(isSSR)
+that.setState({
+          backgroundStyle: that._getBackgroundSize(finalResizeMode)
+        });
+        else
       window.setTimeout(function () {
         return that.setState({
           backgroundStyle: that._getBackgroundSize(finalResizeMode)
@@ -236,6 +240,7 @@ function (_Component) {
     };
 
     var uri = resolveAssetUri(props.source);
+   // var shouldDisplaySource = ImageUriCache.has(uri)||isSSR;
     var shouldDisplaySource = ImageUriCache.has(uri);
     _this.state = {
       layout: {},

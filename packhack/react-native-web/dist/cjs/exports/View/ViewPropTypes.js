@@ -1,15 +1,20 @@
-"use strict";
+'use strict';
 
 exports.__esModule = true;
-exports.default = void 0;
 
-var _EdgeInsetsPropType = _interopRequireDefault(require("../EdgeInsetsPropType"));
+var _EdgeInsetsPropType = require('../EdgeInsetsPropType');
 
-var _StyleSheetPropType = _interopRequireDefault(require("../../modules/StyleSheetPropType"));
+var _EdgeInsetsPropType2 = _interopRequireDefault(_EdgeInsetsPropType);
 
-var _ViewStylePropTypes = _interopRequireDefault(require("./ViewStylePropTypes"));
+var _StyleSheetPropType = require('../../modules/StyleSheetPropType');
 
-var _propTypes = require("prop-types");
+var _StyleSheetPropType2 = _interopRequireDefault(_StyleSheetPropType);
+
+var _ViewStylePropTypes = require('./ViewStylePropTypes');
+
+var _ViewStylePropTypes2 = _interopRequireDefault(_ViewStylePropTypes);
+
+var _propTypes = require('prop-types');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -22,7 +27,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  *
  * 
  */
-var stylePropType = (0, _StyleSheetPropType.default)(_ViewStylePropTypes.default);
+
+var stylePropType = (0, _StyleSheetPropType2.default)(_ViewStylePropTypes2.default);
+
 var ViewPropTypes = {
   accessibilityComponentType: _propTypes.string,
   accessibilityLabel: _propTypes.string,
@@ -31,7 +38,7 @@ var ViewPropTypes = {
   accessibilityTraits: (0, _propTypes.oneOfType)([_propTypes.array, _propTypes.string]),
   accessible: _propTypes.bool,
   children: _propTypes.any,
-  hitSlop: _EdgeInsetsPropType.default,
+  hitSlop: _EdgeInsetsPropType2.default,
   importantForAccessibility: (0, _propTypes.oneOf)(['auto', 'no', 'no-hide-descendants', 'yes']),
   onBlur: _propTypes.func,
   onClick: _propTypes.func,
@@ -71,5 +78,6 @@ var ViewPropTypes = {
   shouldRasterizeIOS: _propTypes.bool,
   tvParallaxProperties: _propTypes.object
 };
-var _default = ViewPropTypes;
-exports.default = _default;
+
+exports.default = ViewPropTypes;
+module.exports = exports['default'];

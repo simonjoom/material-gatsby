@@ -1,7 +1,8 @@
-"use strict";
+'use strict';
 
 exports.__esModule = true;
-exports.default = void 0;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
  * Copyright (c) 2016-present, Nicolas Gallagher.
@@ -12,10 +13,11 @@ exports.default = void 0;
  *
  * 
  */
-var Clipboard =
-/*#__PURE__*/
-function () {
-  function Clipboard() {}
+
+var Clipboard = function () {
+  function Clipboard() {
+    _classCallCheck(this, Clipboard);
+  }
 
   Clipboard.isAvailable = function isAvailable() {
     return typeof document.queryCommandSupported === 'function' && document.queryCommandSupported('copy');
@@ -36,20 +38,22 @@ function () {
       node.style.opacity = '0';
       node.style.position = 'absolute';
       node.style.whiteSpace = 'pre-wrap';
-      body.appendChild(node); // select the text
+      body.appendChild(node);
 
+      // select the text
       var selection = window.getSelection();
       selection.removeAllRanges();
       var range = document.createRange();
       range.selectNodeContents(node);
-      selection.addRange(range); // attempt to copy
+      selection.addRange(range);
 
+      // attempt to copy
       try {
         document.execCommand('copy');
         success = true;
-      } catch (e) {} // remove selection and node
+      } catch (e) {}
 
-
+      // remove selection and node
       selection.removeAllRanges();
       body.removeChild(node);
     }
@@ -61,3 +65,4 @@ function () {
 }();
 
 exports.default = Clipboard;
+module.exports = exports['default'];

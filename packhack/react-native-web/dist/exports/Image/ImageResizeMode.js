@@ -6,4 +6,5 @@ var ImageResizeMode = {
   repeat: 'repeat',
   stretch: 'stretch'
 };
+
 export default ImageResizeMode;
