@@ -287,7 +287,8 @@ const QueryFiles = depsfiles => `
   }
 }
 }`;
-let arraydepfiles = [];
+let arraydepfilesInstructor = [];
+let arraydepfilesBlog = [];
 async function asyncForEach(array, callback) {
   for (let index = 0; index < array.length; index++) {
     await callback(array[index], index, array);
@@ -344,21 +345,33 @@ exports.createPages = ({ graphql, actions }) => {
           route.ch = route.ch + _.kebabCase(node.frontmatter.title) + "/";
         }
 
-        let depsfiles = node.frontmatter.deps
-          ? node.frontmatter.deps
-          : "mainpage";
-
         const next =
           node.frontmatter && node.frontmatter.cover
             ? node.frontmatter.cover
                 .replace(/(.jpg|.jpeg|.png)/g, "")
                 .split(",")
             : [];
-        arraydepfiles = Array.from(new Set(arraydepfiles.concat(next)));
+
+        //add for the page frontmatter instructor type
+        if (node.fields.type === "instructor") {
+          arraydepfilesInstructor = Array.from(
+            new Set(arraydepfilesInstructor.concat(next))
+          );
+        }
+        //add for the page frontmatter post type
+        if (node.fields.type === "post") {
+          arraydepfilesBlog = Array.from(
+            new Set(arraydepfilesBlog.concat(next))
+          );
+        }
+
+        let depsfiles = node.frontmatter.deps
+          ? node.frontmatter.deps
+          : "mainpage";
 
         const extra = next.join("|");
 
-        console.log(depsfiles, node.frontmatter.cover);
+        // console.log(depsfiles, node.frontmatter.cover);
         depsfiles = extra === "" ? depsfiles : depsfiles + "|" + extra;
 
         const myquery = QueryFiles(depsfiles);
@@ -371,8 +384,7 @@ exports.createPages = ({ graphql, actions }) => {
           filesArrayCache[depsfiles] = filedeps;
         }
         const files = filesArrayCache[depsfiles];
-
-        console.log(files);
+ 
         switch (node.fields.type) {
           case "post":
           case "instructor":
@@ -484,20 +496,24 @@ exports.onCreatePage = async ({ page, actions }) => {
       };
       createPage(newPage);
     } else if (route[locale]) {
-      console.log("oncreate", page.path, arraydepfiles);
-      const depsfiles = arraydepfiles.join("|");
+      const _require2 = require(`gatsby/dist/redux`);
+      const store = _require2.store;
+      const schema = store.getState().schema;
+      const graphqlo = require(`graphql`).graphql;
+      console.log("oncreate", page.path);
+      let depsfiles;
+      if (page.path === "/instructor/")
+        depsfiles = arraydepfilesInstructor.join("|");
+      else if (page.path === "/blog/") depsfiles = arraydepfilesBlog.join("|");
+
       const myquery = QueryFiles(depsfiles);
       if (!filesArrayCache[depsfiles]) {
-        const _require2 = require(`gatsby/dist/redux`);
-        const store = _require2.store;
-        const schema = store.getState().schema;
-        const graphqlo = require(`graphql`).graphql;
         const {
           data: {
             allFile: { edges: filedeps }
           }
         } = await graphqlo(schema, myquery, {}, {}, {});
-        console.log("filesArrayCache", filedeps);
+        // console.log("filesArrayCache", filedeps);
         filesArrayCache[depsfiles] = filedeps;
       }
       const files = filesArrayCache[depsfiles];

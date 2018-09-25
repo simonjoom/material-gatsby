@@ -9,7 +9,7 @@ import trpt from "./layouts/translate_pt";
 import trru from "./layouts/translate_ru";
 import truk from "./layouts/translate_uk";
 import trch from "./layouts/translate_ch";
-import statics from "./layouts/statics";
+//import statics from "./layouts/statics";
 
 global.Zepto = undefined;
 const getLanguage = () => i18n.language;
@@ -111,12 +111,12 @@ export const wrapPageElement = ({ element, props }) => {
   } else {
     Red = "div";
   }
-
+/*
   if (global.filesQuery.length == 0) {
     Red2 = statics;
   } else {
     Red2 = "div";
-  }
+  }*/
   // console.log("Red2", Red2, lng);
   const { slug, slugbase, route, carousel } = props.pageContext;
   const ismain = slugbase === "/";
@@ -124,8 +124,7 @@ export const wrapPageElement = ({ element, props }) => {
 
   return (
     <>
-      <Red />
-      <Red2 />
+      <Red /> 
       <Layout lng={lng}>{element}</Layout>
     </>
   );
