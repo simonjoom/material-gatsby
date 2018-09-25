@@ -2,6 +2,7 @@
 title: Ski School
 date: '2018-07-02'
 cover: carousel/snowboard4.jpg
+deps: lm-pistes|helico|years-experience|envelope|shield|thumbs|certified|guide
 category: ski school
 slug: ""
 tags:
@@ -116,7 +117,6 @@ Notre rapport qualité-prix. Nos tarifs ne sont pas définis<br>
 <div style="flex-direction: column;padding-bottom: 4%;" class="md-grid md-cell md-cell--12">
 <reactfb language="fr" newDivName="sel" appId="562112907171338" type="post" desc="moniteur de ski courchevel 1850 Dubai - courchevel"/></reactfb>
 </div>
-
 
 <div class="md-grid md-cell--middle">
 <div id="questions" style="flex: 1;background-color: rgb(66, 88, 161); flex-direction: column;" class="md-paper md-paper--1 md-grid md-cell md-cell--4"><imgtest data="envelope.jpg" maxwidth="200px" class="boxshad rounded bg-white"  height="75" directory="pages" alt="Courchevel"></imgtest>

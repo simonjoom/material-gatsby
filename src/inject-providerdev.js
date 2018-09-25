@@ -18,8 +18,7 @@ global.isSSR=!canUseDOM
 const filetranslate = lng => import(`./layouts/translate_${lng}`);
 const ZeptoAsync = () =>
   import(/* webpackChunkName: "zepto" */ "./components/zepto");
-const Statics = () =>
-  import(/* webpackChunkName: "statics" */ "./layouts/statics");
+  
   global.locale= { en: [], ru: [], pt: [], uk: [], ch: [], fr: [] };
 global.menuList = { en: [], ru: [], pt: [], uk: [], ch: [], fr: [] };
 global.filesQuery = [];
@@ -84,13 +83,13 @@ export const wrapPageElement = async ({ element, props }) => {
   } else {
     Red = "div";
   } 
-
+/*
   if (global.filesQuery.length == 0) {
     const Obj = await Statics();
     Red2 = Obj.default;
   } else {
     Red2 = "div";
-  }  
+  }  */
   // console.log("Red2", Red2, lng);
   const { slug, slugbase, route, carousel } = props.pageContext;
   const namespace = slugbase === "/" ? "Index" : "Post";
@@ -98,8 +97,7 @@ export const wrapPageElement = async ({ element, props }) => {
   console.log("runMainNavLayout");
   return (
     <>
-      <Red />
-      <Red2 lng={lng} />
+      <Red /> 
       <Layout lng={lng}>{element}</Layout>
     </>
   );

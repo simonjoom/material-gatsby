@@ -2,6 +2,7 @@
 title: "Ski School"
 date: "2018-07-02"
 cover: carousel/snowboard4.jpg
+deps: lm-pistes|helico|years-experience|envelope|shield|thumbs|certified|guide
 category: "skischool"
 slug: ""
 tags:

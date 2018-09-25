@@ -115,10 +115,6 @@ exports.onCreateNode = async ({
   ) {
     const content = await loadNodeContent(node);
     const data = JSON.stringify(JSON.parse(content), undefined, "");
-    /*const contentDigest = crypto
-      .createHash(`md5`)
-      .update(data)
-      .digest(`hex`);contentDigest,*/
     const localeNode = {
       id: createNodeId(`${node.id} >>> Locale`),
       children: [],
@@ -230,168 +226,245 @@ exports.setFieldsOnGraphQLNodeType = ({ type, actions }) => {
     addSiblingNodes(createNodeField);
   }
 };
+const MarkdownQueries = `
+  {
+    allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date] }
+    ) {
+      edges {
+        node {
+          id
+          fileAbsolutePath
+          frontmatter {
+            title
+            deps
+            cover
+            date
+            category
+            tags
+          }
+          fields {
+            lng
+            slugbase
+            slug
+            inmenu
+            carousel
+            type
+          }
+        }
+      }
+    }
+  } 
+`;
 
+const filesArrayCache = [];
+const QueryFiles = depsfiles => `
+{
+  allFile(
+    filter: { 
+      absolutePath:{regex:"\/assets\/\.\*\(${depsfiles}\)\\\\.\(jpg\$|png\$\)\/"}
+    }
+    )
+    {
+      edges {
+        node {
+      id
+      absolutePath
+      childImageSharp {
+        id
+        fluid(maxWidth: 1300) {
+          tracedSVG
+          aspectRatio
+          src
+          srcSet
+          sizes
+          srcWebp
+          srcSetWebp
+          originalName
+        }
+      }
+    }
+  }
+}
+}`;
+let arraydepfiles = [];
+async function asyncForEach(array, callback) {
+  for (let index = 0; index < array.length; index++) {
+    await callback(array[index], index, array);
+  }
+}
+let MarkdownQueriesCache = null;
 exports.createPages = ({ graphql, actions }) => {
   const { createPage, deleteNode } = actions;
 
-  return new Promise((resolve, reject) => {
-    const pagePage = path.resolve("src/templates/page.jsx");
-    const postPage = path.resolve("src/templates/post.jsx");
-    const instructorPage = path.resolve("src/templates/instructor.jsx");
-    const tagPage = path.resolve("src/templates/tag.jsx");
-    const categoryPage = path.resolve("src/templates/category.jsx");
-    resolve(
-      graphql(
-        `
-          {
-            allMarkdownRemark(
-              sort: { order: DESC, fields: [frontmatter___date] }
-            ) {
-              edges {
-                node {
-                  id
-                  fileAbsolutePath
-                  frontmatter {
-                    title
-                    cover
-                    date
-                    category
-                    tags
-                  }
-                  fields {
-                    lng
-                    slugbase
-                    slug
-                    inmenu
-                    carousel
-                    type
-                  }
-                }
-              }
-            }
-          }
-        `
-      ).then(result => {
-        if (result.errors) {
-          /* eslint no-console: "off" */
-          console.log(result.errors);
-          reject(result.errors);
+  // return new Promise((resolve, reject) => {
+  const pagePage = path.resolve("src/templates/page.jsx");
+  const postPage = path.resolve("src/templates/post.jsx");
+  const instructorPage = path.resolve("src/templates/instructor.jsx");
+  const tagPage = path.resolve("src/templates/tag.jsx");
+  const categoryPage = path.resolve("src/templates/category.jsx");
+
+  return new Promise(async (resolve, reject) => {
+    if (!MarkdownQueriesCache) {
+      MarkdownQueriesCache = await graphql(MarkdownQueries);
+    }
+    //.then(result => {
+    if (MarkdownQueriesCache.errors) {
+      /* eslint no-console: "off" */
+      console.log(result.errors);
+      reject(result.errors);
+    }
+    let tagSets = [];
+    let categorySets = [];
+    let langs = [];
+    // const tagSet = new Set();
+    // const categorySet = new Set();
+
+    await asyncForEach(
+      MarkdownQueriesCache.data.allMarkdownRemark.edges,
+      async ({ node }) => {
+        const lng = node.fields.lng;
+        if (!tagSets[lng]) tagSets[lng] = new Set();
+        if (!categorySets[lng]) categorySets[lng] = new Set();
+        if (!langs[lng]) langs.push(lng);
+        let route = Object.assign({}, router[node.fields.slugbase]);
+        if (!route || (router[node.fields.slug] && node.fields.slug !== "/")) {
+          console.warn(
+            "routepages not defined from ",
+            node.fields.slugbase,
+            node.fields.slug
+          );
         }
-        let tagSets = [];
-        let categorySets = [];
-        let langs = [];
-        // const tagSet = new Set();
-        // const categorySet = new Set();
-        result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-          let lng = node.fields.lng;
-          if (!tagSets[lng]) tagSets[lng] = new Set();
-          if (!categorySets[lng]) categorySets[lng] = new Set();
-          if (!langs[lng]) langs.push(lng);
-          let route = Object.assign({}, router[node.fields.slugbase]);
-          if (
-            !route ||
-            (router[node.fields.slug] && node.fields.slug !== "/")
-          ) {
-            console.warn(
-              "routepages not defined from ",
-              node.fields.slugbase,
-              node.fields.slug
-            );
-          }
-          if (node.fields.type == "instructor") {
-            route.fr = route.fr + _.kebabCase(node.frontmatter.title) + "/";
-            route.en = route.en + _.kebabCase(node.frontmatter.title) + "/";
-            route.ru = route.ru + _.kebabCase(node.frontmatter.title) + "/";
-            route.uk = route.uk + _.kebabCase(node.frontmatter.title) + "/";
-            route.pt = route.pt + _.kebabCase(node.frontmatter.title) + "/";
-            route.ch = route.ch + _.kebabCase(node.frontmatter.title) + "/";
-          }
-          switch (node.fields.type) {
-            case `post`:
-            case `instructor`:
-              if (node.frontmatter.tags) {
-                node.frontmatter.tags.forEach(tag => {
-                  tagSets[lng].add(tag);
-                });
-              }
+        if (node.fields.type == "instructor") {
+          route.fr = route.fr + _.kebabCase(node.frontmatter.title) + "/";
+          route.en = route.en + _.kebabCase(node.frontmatter.title) + "/";
+          route.ru = route.ru + _.kebabCase(node.frontmatter.title) + "/";
+          route.uk = route.uk + _.kebabCase(node.frontmatter.title) + "/";
+          route.pt = route.pt + _.kebabCase(node.frontmatter.title) + "/";
+          route.ch = route.ch + _.kebabCase(node.frontmatter.title) + "/";
+        }
 
-              if (node.frontmatter.category) {
-                categorySets[lng].add(node.frontmatter.category);
-              }
+        let depsfiles = node.frontmatter.deps
+          ? node.frontmatter.deps
+          : "mainpage";
 
-              createPage({
-                path: node.fields.slug,
-                component:
-                  node.fields.type == "post" ? postPage : instructorPage,
-                context: {
-                  route,
-                  id: node.id,
-                  ...node.fields
-                }
+        const next =
+          node.frontmatter && node.frontmatter.cover
+            ? node.frontmatter.cover
+                .replace(/(.jpg|.jpeg|.png)/g, "")
+                .split(",")
+            : [];
+        arraydepfiles = Array.from(new Set(arraydepfiles.concat(next)));
+
+        const extra = next.join("|");
+
+        console.log(depsfiles, node.frontmatter.cover);
+        depsfiles = extra === "" ? depsfiles : depsfiles + "|" + extra;
+
+        const myquery = QueryFiles(depsfiles);
+        if (!filesArrayCache[depsfiles]) {
+          const {
+            data: {
+              allFile: { edges: filedeps }
+            }
+          } = await graphql(myquery);
+          filesArrayCache[depsfiles] = filedeps;
+        }
+        const files = filesArrayCache[depsfiles];
+
+        console.log(files);
+        switch (node.fields.type) {
+          case "post":
+          case "instructor":
+            if (node.frontmatter.tags) {
+              node.frontmatter.tags.forEach(tag => {
+                tagSets[lng].add(tag);
               });
-              break;
-            case `pages`:
-              route = router[node.fields.slugbase];
-              if (
-                !route ||
-                (router[node.fields.slug] && node.fields.slug !== "/")
-              ) {
-                return;
+            }
+
+            if (node.frontmatter.category) {
+              categorySets[lng].add(node.frontmatter.category);
+            }
+
+            createPage({
+              path: node.fields.slug,
+              component: node.fields.type == "post" ? postPage : instructorPage,
+              context: {
+                route,
+                files,
+                id: node.id,
+                ...node.fields
               }
+            });
+            break;
+          case "pages":
+            route = router[node.fields.slugbase];
+            if (
+              !route ||
+              (router[node.fields.slug] && node.fields.slug !== "/")
+            ) {
+              return;
+            }
+            createPage({
+              path: node.fields.slug,
+              component: pagePage,
+              context: {
+                route,
+                files,
+                id: node.id,
+                ...node.fields
+              }
+            });
+            break;
+          default:
+            console.log("????");
+            break;
+        }
 
-              createPage({
-                path: node.fields.slug,
-                component: pagePage,
-                context: {
-                  route,
-                  id: node.id,
-                  ...node.fields
-                }
-              });
-          }
-        });
-
-        langs.forEach(lng => {
-          const tagList = Array.from(tagSets[lng]);
+        langs.forEach(lg => {
+          const tagList = Array.from(tagSets[lg]);
           tagList.forEach(tag => {
             createPage({
-              path: `/tags_${lng}/${_.kebabCase(tag)}/`,
+              path: `/tags_${lg}/${_.kebabCase(tag)}/`,
               component: tagPage,
               context: {
                 tag,
-                lng
+                lng: lg
               }
             });
           });
-          const categoryList = Array.from(categorySets[lng]);
+          const categoryList = Array.from(categorySets[lg]);
           categoryList.forEach(category => {
             createPage({
-              path: `/categories_${lng}/${_.kebabCase(category)}/`,
+              path: `/categories_${lg}/${_.kebabCase(category)}/`,
               component: categoryPage,
               context: {
                 category,
-                lng
+                lng: lg
               }
             });
+            // });
+            // });
           });
         });
-      })
+      }
     );
+    resolve();
   });
 };
 
-exports.onCreatePage = ({ page, actions }) => {
+exports.onCreatePage = async ({ page, actions }) => {
   const { createPage, deletePage } = actions;
 
   const route = router[page.path];
   if (!route) {
-    console.warn("no route", page.path);  
+    console.warn("no route", page.path);
   }
 
   const { locales, defaultLocale } = config;
   let oldPage = Object.assign({}, page);
   const newPage = {};
-  locales.forEach(locale => {
+  await asyncForEach(locales, async locale => {
     if (!route) {
       if (oldPage) deletePage(oldPage);
       oldPage = null;
@@ -411,6 +484,24 @@ exports.onCreatePage = ({ page, actions }) => {
       };
       createPage(newPage);
     } else if (route[locale]) {
+      console.log("oncreate", page.path, arraydepfiles);
+      const depsfiles = arraydepfiles.join("|");
+      const myquery = QueryFiles(depsfiles);
+      if (!filesArrayCache[depsfiles]) {
+        const _require2 = require(`gatsby/dist/redux`);
+        const store = _require2.store;
+        const schema = store.getState().schema;
+        const graphqlo = require(`graphql`).graphql;
+        const {
+          data: {
+            allFile: { edges: filedeps }
+          }
+        } = await graphqlo(schema, myquery, {}, {}, {});
+        console.log("filesArrayCache", filedeps);
+        filesArrayCache[depsfiles] = filedeps;
+      }
+      const files = filesArrayCache[depsfiles];
+
       if (oldPage) deletePage(oldPage);
       oldPage = null;
       newPage.component = page.component;
@@ -418,6 +509,7 @@ exports.onCreatePage = ({ page, actions }) => {
       newPage.context = {
         lng: locale,
         slug: newPage.path,
+        files,
         route
       };
       createPage(newPage);

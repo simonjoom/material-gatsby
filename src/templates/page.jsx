@@ -39,8 +39,8 @@ class PostTemplate extends React.Component {
   render() {
     const { mobile } = this.state;
     const { translate: t } = this.props;
-    const { slug, slugbase, route, lng, carousel } = this.props.pageContext;
- 
+    const { slug, slugbase, route, lng, carousel,files } = this.props.pageContext;
+    global.filesQuery=files; 
     const expanded = !mobile;
     const ismain = slugbase === "/";
     let carouselList = [];
@@ -123,6 +123,7 @@ class PostTemplate extends React.Component {
 export default withTheme(PostTemplate);
 
 export const pageQuery = graphql`
+ 
   query PagesBySlug($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       htmlAst

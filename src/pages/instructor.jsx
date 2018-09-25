@@ -10,7 +10,8 @@ import config from "../../data/SiteConfig";
 class Instructor extends React.Component {
   render() {
     const {translate: t} = this.props;
-    const { lng, route } = this.props.pageContext;
+    const { lng, route,files } = this.props.pageContext;
+    global.filesQuery=files; 
     const postEdges = this.props.data.allMarkdownRemark.edges;
     return (
       <Layout

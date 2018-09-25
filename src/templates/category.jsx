@@ -9,7 +9,8 @@ import config from "../../data/SiteConfig";
 class CategoryTemplate extends React.Component {
   render() {
     const { translate: t, path } = this.props;
-    const { category, lng } = this.props.pageContext;
+    const { category, lng, files } = this.props.pageContext;
+    global.filesQuery = files;
     const postEdges = this.props.data.allMarkdownRemark.edges;
     return (
       <Layout

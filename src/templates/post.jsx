@@ -61,7 +61,8 @@ class PostTemplate extends React.Component {
   render() {
     const { mobile } = this.state;
     const { translate: t } = this.props;
-    const { slug, route, lng } = this.props.pageContext; 
+    const { slug, route, lng,files } = this.props.pageContext;     
+    global.filesQuery=files; 
     const postOverlapClass = mobile ? "post-overlap-mobile" : "post-overlap";
     const postNode = this.props.data.markdownRemark;
     const post = postNode.frontmatter;

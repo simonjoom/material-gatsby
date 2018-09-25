@@ -1,7 +1,8 @@
 ---
 title: "Ski School"
-cover: "mainpage.jpg"
+cover: carousel/snowboard4.jpg
 category: "skischool"
+deps: lm-pistes|helico|years-experience|envelope|shield|thumbs|certified|guide
 slug: ""
 tags:
     - escola de esqui
