@@ -1,7 +1,6 @@
 import React from "react";
 import i18n from "i18next";
-import { graphql, StaticQuery } from "gatsby";
-let run = true;
+import { graphql, StaticQuery } from "gatsby"; 
 const translate = () => {
   if (global.locale["fr"].length == 0) {
     console.log("runtranslate");
@@ -39,8 +38,7 @@ const translate = () => {
           }
         `}
         render={data => {
-          let lang;
-          run = false;
+          let lang; 
           console.log("changeLanguage", data);
           data.allLocale.edges.forEach(({ node }) => {
             const { lng, ns, data } = node;
