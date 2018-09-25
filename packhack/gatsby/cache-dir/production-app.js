@@ -12,7 +12,7 @@ import {
 } from "./navigation"
 import emitter from "./emitter"
 window.___emitter = emitter
-import PageRenderer from "./page-renderer"
+import PageRenderer from "./page-renderer-prod"
 import asyncRequires from "./async-requires"
 import loader from "./loader"
 import loadDirectlyOr404 from "./load-directly-or-404"

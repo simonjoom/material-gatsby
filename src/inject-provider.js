@@ -2,11 +2,11 @@ import React from "react";
 import i18n from "i18next";
 //import { createStore, combineReducers } from "redux";
 import { AppRegistry } from "react-native-web";
-import { ThemeContext } from "./withContext";
-
-global.menuList = window.__INITIAL_STATE__.menuList;
-global.filesQuery = window.__INITIAL_STATE__.filesQuery;
-global.locale = window.__INITIAL_STATE__.locale;
+import { ThemeContext } from "./withContext"; 
+  global.menuList = window.__INITIAL_STATE__.menuList;
+  global.filesQuery = window.__INITIAL_STATE__.filesQuery;
+  global.locale = window.__INITIAL_STATE__.locale;
+ 
 
 /*const initialState = {
   menuList: global.menuList,
@@ -109,15 +109,7 @@ export const wrapPageElement = ({ element, props }) => {
   return <Layout lng={lng}>{element}</Layout>;
 };
 
-export const wrapRootElement = ({ element }) => {
-  //class LayoutZepto extends React.Component {
-   // componentDidMount() {
-  //  }
-  //  render() {
-  //    return this.props.children;
-  //  }
- // }
-
+export const wrapRootElement = ({ element }) => { 
   return (
     <ThemeContext.Provider
       value={{

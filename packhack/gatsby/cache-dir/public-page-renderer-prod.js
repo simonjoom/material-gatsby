@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-import InternalPageRenderer from "./page-renderer"
+import InternalPageRenderer from "./page-renderer-prod"
 import loader from "./loader"
 
 const ProdPageRenderer = ({ location }) => {
