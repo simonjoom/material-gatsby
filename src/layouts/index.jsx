@@ -8,6 +8,7 @@ import "./index.scss";
 import "./global.scss";
 import "./toolbar.scss";
 import "./carousel.scss";
+import Chat from "../components/Chat/Chat"
 
 export default class MainNavLayout extends React.Component {
   componentWillUnmount(){
@@ -26,6 +27,7 @@ export default class MainNavLayout extends React.Component {
             <meta name="description" content={config.siteDescription} />
           </Helmet>
           {children}
+        <Chat/>
         </Navigation> 
     );
   }

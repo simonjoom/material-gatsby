@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import Dropdown from "../reactLIB/Dropdown";
 import Button from "../reactLIB/Button";
 import NavItem from "../reactLIB/NavItem";
