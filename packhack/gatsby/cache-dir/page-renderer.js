@@ -3,6 +3,8 @@ import PropTypes from "prop-types"
 import { publicLoader } from "./loader"
 import { apiRunner,apiRunnerAsync } from "./api-runner-browser"
 
+import shallowCompare from 'shallow-compare';
+
 // Renders page
 class PageRenderer extends React.Component {
 
@@ -42,9 +44,11 @@ componentDidMount(){
     this.setState({wrappedPage:end})
 }) 
 } 
+
+
 componentDidUpdate(nextprops, prevState) { 
-console.log("pageResources",nextprops.location.pathname!==this.props.location.pathname)
-if(nextprops.location.pathname!==this.props.location.pathname){
+if(!!prevState.wrappedPage)
+if(nextprops.location!==this.props.location){
 	const props = {
       ...this.props,
       pathContext: this.props.pageContext,

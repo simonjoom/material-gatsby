@@ -34,14 +34,22 @@ exports.apiRunner = (api, args = {}, defaultReturn, argTransform) => {
   }
 }
 
-exports.apiRunnerAsync = (api, args, defaultReturn, argTransform) =>
+exports.apiRunnerAsync = (api, args = {}, defaultReturn, argTransform) =>
   plugins.reduce(
     (previous, next) =>
       next.plugin[api]
-        ?      previous.then(() => {
+        ?  previous.then(() => {
+    if (!next.plugin[api]) {
+      return undefined
+    }
+
+    args.getResourcesForPathnameSync = getResourcesForPathnameSync
+    args.getResourcesForPathname = getResourcesForPathname
+    args.getResourceURLsForPathname = getResourceURLsForPathname
+    
           const result =  next.plugin[api](args, next.options)
       if (result && argTransform) {
-        args = argTransform({ args, result })
+        args = argTransform({ args, result,next })
       }
       return result
           })

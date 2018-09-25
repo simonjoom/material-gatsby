@@ -4,19 +4,17 @@ cover: carousel/snowboard4.jpg
 category: "skischool"
 slug: ""
 tags:
-    - escola de esqui
+    - ski school
     - courchevel
     - meribel
     - valthorens
 
 date: "2018-07-02"
 ---
- 
-  <div data-netlify-identity-button>Login with Netlify Identity</div>
 
 # Ski and Snowboard Instructors
 
-  <div class="md-grid  md-cell--middle">
+<div class="md-grid  md-cell--middle">
   <div class="md-cell md-cell--4 md-cell--8-tablet">
 <imgtest data="guide.png" height="75" width="200px" directory="pages" alt="Courchevel"></imgtest>
 <div class="md-block-centered md-cell--6-tablet">
@@ -41,12 +39,12 @@ date: "2018-07-02"
 <div class="md-block-centered md-cell--6-tablet">
   <h3>Take advantage of our expertise on the 3 valleys</h3> <p>Skiscool is a platform recognized for its selection of ski instructor on the three valleys for over 10 years.<br> Enjoy our <b style="color:#3f51b5;background-color:#ccff90">exclusive offers</b>! :<br> <b style="color:#3f51b5;background-color:#ccff90">Free transfers</b> for one week booking with a coach.</p>
   </div> 
-</div> 
-</div> 
+</div>
+</div>
 
 
 <div class="md-grid md-cell--middle" style="padding:12px;flex-flow: column wrap;">
- <div class="md-cell--middle" style="flex-direction: column;width: 120px;"><h3 style="font-size:1.2em">Call Simon</h3><a href="tel:France+33675505209" class="h2 black"><button type="button" class="btn-flat">
+ <div class="md-cell--middle" style="flex-direction: column;width: 120px;"><h3 style="font-size:1.2em">Call Simon</h3><a href="tel:France+33675505209" class="h2 black"><button type="button" class="btn btn-flat">
  <div class="mr1 fa-stack-big">
  <i class="fa fa-circle fa-stack-8x gray" style="color: rgb(178, 255, 89);"></i><i class="fa fa-phone fa-stack-4x navy"></i></div></button></a>
  </div>
@@ -73,7 +71,7 @@ date: "2018-07-02"
 <h3>Best Service</h3>
 <a title="Service" style="display: flex; flex-direction: row;">
 <div style="margin-right: 1%;">
-<p> Quality services to provide an enjoyable stay.<i class="fa fa-question-circle-o"></i></p> 
+<p> Quality services to provide an enjoyable stay.</p> 
 <p>To provide a better service, SkiScool listens to all your requests, and follows the coach in his choice of restaurants and activities for you.</p>
 <p> - Your coach knows the resort, he is informed of the après-ski activities. </p>
 <p> - Your coach is a passionate instructor: he will be taking the time needed to provide you with any advice, uses demonstration and repetition to thoroughly improve your skills.</p>
