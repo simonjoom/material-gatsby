@@ -4,7 +4,7 @@ import { graphql, StaticQuery } from "gatsby";
 let run = true;
 
 const translate = () => {
-  if (run) {
+  if (!global.locale["en"].length == 0) {
     console.log("runtranslate");
     return (
       <StaticQuery

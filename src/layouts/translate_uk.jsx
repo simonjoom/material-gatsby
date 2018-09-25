@@ -3,7 +3,7 @@ import i18n from "i18next";
 import { graphql, StaticQuery } from "gatsby";
 let run=true;
 const translate = () => {
-  if (run) {
+  if (!global.locale["uk"].length == 0) {
     console.log("runtranslate");
     return (
       <StaticQuery
