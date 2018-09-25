@@ -1,7 +1,7 @@
 import React from "react";
 import i18n from "i18next";
 import { graphql, StaticQuery } from "gatsby";
-let run=true;
+let run = true;
 const translate = () => {
   if (run) {
     console.log("runtranslate");
@@ -27,8 +27,8 @@ const translate = () => {
               edges {
                 node {
                   fields {
-                    inmenu 
-                    slug 
+                    inmenu
+                    slug
                   }
                   frontmatter {
                     title
@@ -38,10 +38,10 @@ const translate = () => {
             }
           }
         `}
-        render={data => {         
+        render={data => {
           let lang;
           run = false;
-          console.log("changeLanguage", data);
+          console.log("changeLanguage", data); 
           data.allLocale.edges.forEach(({ node }) => {
             const { lng, ns, data } = node;
             lang = lng;
@@ -49,16 +49,18 @@ const translate = () => {
               i18n.addResources(lng, ns, JSON.parse(data));
             }
           });
+          global.locale[lang] = data.allLocale.edges;
           i18n.changeLanguage(lang);
-          let t = namespace => i18n.getFixedT(null, [namespace, "common"]);
+          let t = namespace => i18n.getFixedT(lang, [namespace, "common"]);
 
           global.postEdges = data.allMarkdownRemark.edges;
           global.postEdges.forEach(postEdge => {
             const { title } = postEdge.node.frontmatter;
+            const tr = t("Index")(title);
             if (postEdge.node.fields.inmenu)
-            global.menuList["fr"].push({
+              global.menuList["fr"].push({
                 path: postEdge.node.fields.slug,
-                title: t("Index")(title)
+                title: tr
               });
           });
           return <div />;

@@ -7,6 +7,7 @@
  *
  * 
  */
+
 function emptyFunction() {}
 
 var BackHandler = {
@@ -16,6 +17,8 @@ var BackHandler = {
       remove: emptyFunction
     };
   },
+
   removeEventListener: emptyFunction
 };
+
 export default BackHandler;

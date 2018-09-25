@@ -1,8 +1,6 @@
-"use strict";
+'use strict';
 
 exports.__esModule = true;
-exports.default = void 0;
-
 /**
  * Copyright (c) 2015-present, Nicolas Gallagher.
  *
@@ -11,23 +9,20 @@ exports.default = void 0;
  *
  * 
  */
-var emptyArray = [];
 
+var emptyArray = [];
 var emptyFunction = function emptyFunction() {};
 
 var getRect = function getRect(node) {
   if (node) {
-    var isElement = node.nodeType === 1
-    /* Node.ELEMENT_NODE */
-    ;
-
+    var isElement = node.nodeType === 1 /* Node.ELEMENT_NODE */;
     if (isElement && typeof node.getBoundingClientRect === 'function') {
       return node.getBoundingClientRect();
     }
   }
-}; // Mobile Safari re-uses touch objects, so we copy the properties we want and normalize the identifier
+};
 
-
+// Mobile Safari re-uses touch objects, so we copy the properties we want and normalize the identifier
 var normalizeTouches = function normalizeTouches(touches) {
   if (!touches) {
     return emptyArray;
@@ -35,29 +30,25 @@ var normalizeTouches = function normalizeTouches(touches) {
 
   return Array.prototype.slice.call(touches).map(function (touch) {
     var identifier = touch.identifier > 20 ? touch.identifier % 20 : touch.identifier;
-    var rect;
+    var rect = void 0;
+
     return {
       _normalized: true,
       clientX: touch.clientX,
       clientY: touch.clientY,
       force: touch.force,
-
       get locationX() {
         rect = rect || getRect(touch.target);
-
         if (rect) {
           return touch.pageX - rect.left;
         }
       },
-
       get locationY() {
         rect = rect || getRect(touch.target);
-
         if (rect) {
           return touch.pageY - rect.top;
         }
       },
-
       identifier: identifier,
       pageX: touch.pageX,
       pageY: touch.pageY,
@@ -77,9 +68,11 @@ var normalizeTouches = function normalizeTouches(touches) {
 function normalizeTouchEvent(nativeEvent) {
   var changedTouches = normalizeTouches(nativeEvent.changedTouches);
   var touches = normalizeTouches(nativeEvent.touches);
+
   var preventDefault = typeof nativeEvent.preventDefault === 'function' ? nativeEvent.preventDefault.bind(nativeEvent) : emptyFunction;
   var stopImmediatePropagation = typeof nativeEvent.stopImmediatePropagation === 'function' ? nativeEvent.stopImmediatePropagation.bind(nativeEvent) : emptyFunction;
   var stopPropagation = typeof nativeEvent.stopPropagation === 'function' ? nativeEvent.stopPropagation.bind(nativeEvent) : emptyFunction;
+
   var event = {
     _normalized: true,
     bubbles: nativeEvent.bubbles,
@@ -115,30 +108,26 @@ function normalizeTouchEvent(nativeEvent) {
 }
 
 function normalizeMouseEvent(nativeEvent) {
-  var rect;
+  var rect = void 0;
+
   var touches = [{
     _normalized: true,
     clientX: nativeEvent.clientX,
     clientY: nativeEvent.clientY,
     force: nativeEvent.force,
     identifier: 0,
-
     get locationX() {
       rect = rect || getRect(nativeEvent.target);
-
       if (rect) {
         return nativeEvent.pageX - rect.left;
       }
     },
-
     get locationY() {
       rect = rect || getRect(nativeEvent.target);
-
       if (rect) {
         return nativeEvent.pageY - rect.top;
       }
     },
-
     pageX: nativeEvent.pageX,
     pageY: nativeEvent.pageY,
     screenX: nativeEvent.screenX,
@@ -146,9 +135,11 @@ function normalizeMouseEvent(nativeEvent) {
     target: nativeEvent.target,
     timestamp: Date.now()
   }];
+
   var preventDefault = typeof nativeEvent.preventDefault === 'function' ? nativeEvent.preventDefault.bind(nativeEvent) : emptyFunction;
   var stopImmediatePropagation = typeof nativeEvent.stopImmediatePropagation === 'function' ? nativeEvent.stopImmediatePropagation.bind(nativeEvent) : emptyFunction;
   var stopPropagation = typeof nativeEvent.stopPropagation === 'function' ? nativeEvent.stopPropagation.bind(nativeEvent) : emptyFunction;
+
   return {
     _normalized: true,
     bubbles: nativeEvent.bubbles,
@@ -169,17 +160,15 @@ function normalizeMouseEvent(nativeEvent) {
     type: nativeEvent.type,
     which: nativeEvent.which
   };
-} // TODO: how to best handle keyboard events?
+}
 
-
+// TODO: how to best handle keyboard events?
 function normalizeNativeEvent(nativeEvent) {
   if (!nativeEvent || nativeEvent._normalized) {
     return nativeEvent;
   }
-
   var eventType = nativeEvent.type || '';
   var mouse = eventType.indexOf('mouse') >= 0;
-
   if (mouse) {
     return normalizeMouseEvent(nativeEvent);
   } else {
@@ -187,5 +176,5 @@ function normalizeNativeEvent(nativeEvent) {
   }
 }
 
-var _default = normalizeNativeEvent;
-exports.default = _default;
+exports.default = normalizeNativeEvent;
+module.exports = exports['default'];

@@ -180,7 +180,7 @@ console.log("PRODUCTION",PRODUCTION)
       let js = (options = {}) => {
         return {
           test: /\.jsx?$/,
-          exclude: /(node_modules|babelHelper|gatsby-|.cache|bower_components)/,
+          exclude: /(node_modules|babelHelper|gatsby-|inject-|bower_components)/,
           use: [loaders.js(options)]
         };
       };

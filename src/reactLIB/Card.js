@@ -50,7 +50,7 @@ class Card extends Component {
       </div>
     );
   }
-  renderImage(imgClassName, contentImage, reveal, imgtitle, waves="light") {
+  renderImage(imgClassName, contentImage, reveal, imgtitle, waves = 'light') {
     const classes = cx({
       'card-image': true,
       'waves-effect': waves,
@@ -58,9 +58,7 @@ class Card extends Component {
       [`waves-${waves}`]: waves
     });
     return (
-      <div
-        className={cx(classes, imgClassName)}
-      >
+      <div className={cx(classes, imgClassName)}>
         {contentImage}
         <span className="card-title">{imgtitle}</span>
       </div>
@@ -101,13 +99,14 @@ class Card extends Component {
     return (
       <div className={className}>
         <div className={cx(classes)} {...other}>
-          {this.renderImage(
-            imgClassName,
-            contentImage,
-            reveal,
-            imgtitle,
-            waves
-          )}
+          {contentImage &&
+            this.renderImage(
+              imgClassName,
+              contentImage,
+              reveal,
+              imgtitle,
+              waves
+            )}
           {horizontal ? (
             <div className="card-stacked">
               {this.renderAll(
@@ -140,7 +139,7 @@ class Card extends Component {
 Card.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  title: PropTypes.string,
+  title: PropTypes.any,
   textClassName: PropTypes.string,
   reveal: PropTypes.element,
   contentImage: PropTypes.element,

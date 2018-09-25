@@ -1,7 +1,35 @@
 import React from "react";
 import i18n from "i18next";
-import { ThemeContext } from "./withContext";
+//import { createStore, combineReducers } from "redux";
+import { AppRegistry } from "react-native-web";
+import { ThemeContext } from "./withContext"; 
+  global.menuList = window.__INITIAL_STATE__.menuList;
+  global.filesQuery = window.__INITIAL_STATE__.filesQuery;
+  global.locale = window.__INITIAL_STATE__.locale;
+ 
+
+/*const initialState = {
+  menuList: global.menuList,
+  filesQuery: global.filesQuery
+};
+const preloadedState =window.__INITIAL_STATE__ || initialState; 
+
+const reducermenuList = (state=global.menuList, action) => {
+  return state;
+};
+const reducerfilesQuery = (state=global.filesQuery, action) => { 
+  return state;
+};
+const rootReducer = combineReducers({ menuList:reducermenuList,filesQuery:reducerfilesQuery });
+
+const store = createStore(rootReducer, preloadedState);
+console.log("getState", store.getState());*/
+
+const ZeptoAsync = () =>
+  import(/* webpackChunkName: "zepto" */ "./components/zepto");
+
 global.Zepto = undefined;
+
 const getLanguage = () =>
   i18n.language ||
   (typeof window !== "undefined" && window.localStorage.i18nextLng);
@@ -12,16 +40,41 @@ var canUseDOM = !!(
   window.document.createElement
 );
 
-global.isSSR=!canUseDOM
+global.isSSR = !canUseDOM;
 
-const filetranslate = lng => import(`./layouts/translate_${lng}`);
-const ZeptoAsync = () =>
-  import(/* webpackChunkName: "zepto" */ "./components/zepto");
-const Statics = () =>
-  import(/* webpackChunkName: "statics" */ "./layouts/statics");
+export const replaceHydrateFunction = async () => {
+  if (!global.Zepto) {
+    const Zep = await ZeptoAsync();
+    global.Zepto = Zep.default;
+  }
+  return (element, container, callback) => {
+    class App extends React.Component {
+      render() {
+        return <div id="App">{element}</div>;
+      }
+    }
 
-global.menuList = { en: [], ru: [], pt: [], uk: [], ch: [], fr: [] };
-global.filesQuery = [];
+    if (/comp|inter|loaded/.test(document.readyState)) {
+      Waves.displayEffect();
+    } else {
+      document.addEventListener(
+        "DOMContentLoaded",
+        function() {
+          Waves.displayEffect();
+        },
+        false
+      );
+    }
+    
+    AppRegistry.registerComponent("App", () => App);
+    AppRegistry.runApplication("App", {
+      initialProps: {},
+      rootTag: container,
+      callback
+    });
+  };
+};
+
 const preferDefault = m => (m && m.default) || m;
 let Layout;
 try {
@@ -37,60 +90,33 @@ try {
   }
 }
 
-export const wrapPageElement = async ({ element, props }) => {
+export const wrapPageElement = ({ element, props }) => {
   const { lng } = props.pageContext;
   let Red, Red2;
-  if (global.menuList[lng].length == 0 || getLanguage() !== lng) {
-    try {
-      const Obj = await filetranslate(lng);
-      Red = Obj.default;
-    } catch (e) {
-      console.log("error", e);
-      Red = "div";
-    }
-  } else {
-    Red = "div";
-  }
-  if (canUseDOM && !global.Zepto) {
-    const Zep = await ZeptoAsync();
-    if (/comp|inter|loaded/.test(document.readyState)) {
-      Waves.displayEffect();
-    } else {
-      document.addEventListener(
-        "DOMContentLoaded",
-        function() {
-          Waves.displayEffect();
-        },
-        false
-      );
-    }
-    global.Zepto = Zep.default;
-  }
+  if (!lng) return <Layout>{element}</Layout>;
 
-  if (global.filesQuery.length == 0) {
-    const Obj = await Statics();
-    Red2 = Obj.default;
-  } else {
-    Red2 = "div";
-  }  
-  // console.log("Red2", Red2, lng);
+  global.locale[lng].forEach(({ node }) => {
+    const { lng, ns, data } = node;
+    if (!i18n.hasResourceBundle(lng, ns)) {
+      i18n.addResources(lng, ns, JSON.parse(data));
+    }
+  });
+  i18n.changeLanguage(lng);
   const { slug, slugbase, route, carousel } = props.pageContext;
   const namespace = slugbase === "/" ? "Index" : "Post";
   const ismain = slugbase === "/";
   console.log("runMainNavLayout");
+  return <Layout lng={lng}>{element}</Layout>;
+};
+
+export const wrapRootElement = ({ element }) => { 
   return (
-    <div>
-      <Red />
-      <Red2 lng={lng} />
-      <ThemeContext.Provider
-        value={{
-          translate: namespace => i18n.getFixedT(null, [namespace, "common"])
-        }}
-      >
-        <Layout route={route} lng={lng}>
-          {element}
-        </Layout>
-      </ThemeContext.Provider>
-    </div>
+    <ThemeContext.Provider
+      value={{
+        translate: namespace => i18n.getFixedT(null, [namespace, "common"])
+      }}
+    >
+      {element}
+    </ThemeContext.Provider>
   );
 };

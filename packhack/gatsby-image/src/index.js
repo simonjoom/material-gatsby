@@ -141,12 +141,6 @@ class GatsbyImage extends React.Component {
       IOSupported = true
     }
 
-    // Always don't render image while server rendering
-    if (typeof window === `undefined`) {
-      isVisible = false
-      imgLoaded = false
-    }
-
     this.state = {
       Imgheight,
       isVisible,

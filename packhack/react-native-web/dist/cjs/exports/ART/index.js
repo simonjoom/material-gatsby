@@ -1,11 +1,12 @@
-"use strict";
+'use strict';
 
 exports.__esModule = true;
-exports.default = void 0;
 
-var _reactArt = _interopRequireDefault(require("react-art"));
+var _reactArt = require('react-art');
+
+var _reactArt2 = _interopRequireDefault(_reactArt);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _default = _reactArt.default;
-exports.default = _default;
+exports.default = _reactArt2.default;
+module.exports = exports['default'];

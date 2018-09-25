@@ -8,7 +8,6 @@ const config = require("./src/config");
 const router = config.router;
 require("babel-polyfill");
 
-console.log(config);
 const arraymenu = [
   "/",
   "/about",
@@ -20,40 +19,38 @@ const arraymenu = [
 const arraygallery = ["/", "/about", "/concept"];
 
 const postNodes = [];
-let didRunAlready = false
-let absoluteComponentPath
+let didRunAlready = false;
+let absoluteComponentPath;
 
 exports.onPreInit = ({ store }, { component }) => {
-  const defaultLayoutComponentPath = `src/layouts/index`
+  const defaultLayoutComponentPath = `src/layouts/index`;
   if (!component) {
     // Default to `src/layouts/index.[js|jsx]` for drop-in replacement of v1 layouts
     component = path.join(
       store.getState().program.directory,
       defaultLayoutComponentPath
-    )
+    );
   }
 
   if (didRunAlready) {
     throw new Error(
       `You can only have single instance of gatsby-plugin-layout in your gatsby-config.js`
-    )
+    );
   }
 
-  didRunAlready = true
-  absoluteComponentPath = component
-}
+  didRunAlready = true;
+  absoluteComponentPath = component;
+};
 
 exports.onCreateWebpackConfig = ({ actions, plugins }) => {
   actions.setWebpackConfig({
     plugins: [
       plugins.define({
-        GATSBY_LAYOUT_COMPONENT_PATH: JSON.stringify(absoluteComponentPath),
-      }),
-    ],
-  })
-}
-
-
+        GATSBY_LAYOUT_COMPONENT_PATH: JSON.stringify(absoluteComponentPath)
+      })
+    ]
+  });
+};
 
 function addSiblingNodes(createNodeField) {
   postNodes.sort(
@@ -131,7 +128,7 @@ exports.onCreateNode = async ({
       ns: node.name,
       data
     };
-    console.log("namespace",node.name)
+    //console.log("namespace",node.name)
     localeNode.fileAbsolutePath = node.absolutePath;
     localeNode.internal.contentDigest = crypto
       .createHash(`md5`)
@@ -202,7 +199,7 @@ exports.onCreateNode = async ({
       slugfin = slug;
     }
 
-    console.log("pages", slug);
+    //console.log("pages", slug);
     if (type === "pages") {
       createNodeField({
         node,
@@ -383,23 +380,39 @@ exports.createPages = ({ graphql, actions }) => {
   });
 };
 
-exports.onCreatePage = async ({ page, actions }) => {
+exports.onCreatePage = ({ page, actions }) => {
   const { createPage, deletePage } = actions;
 
   const route = router[page.path];
   if (!route) {
-    console.warn("no route", page.path);
-    return;
+    console.warn("no route", page.path);  
   }
 
   const { locales, defaultLocale } = config;
   let oldPage = Object.assign({}, page);
   const newPage = {};
   locales.forEach(locale => {
-    if (route[locale]) {
+    if (!route) {
       if (oldPage) deletePage(oldPage);
       oldPage = null;
-
+      newPage.component = page.component;
+      newPage.path = page.path + "_" + locale;
+      newPage.context = {
+        lng: locale,
+        slug: newPage.path,
+        route: {
+          fr: page.path + "_fr",
+          en: page.path + "_en",
+          pt: page.path + "_pt",
+          ru: page.path + "_ru",
+          uk: page.path + "_uk",
+          ch: page.path + "_ch"
+        }
+      };
+      createPage(newPage);
+    } else if (route[locale]) {
+      if (oldPage) deletePage(oldPage);
+      oldPage = null;
       newPage.component = page.component;
       newPage.path = route[locale];
       newPage.context = {

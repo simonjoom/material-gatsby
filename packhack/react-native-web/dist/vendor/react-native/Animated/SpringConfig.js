@@ -6,6 +6,7 @@
  *
  * 
  */
+
 'use strict';
 
 function stiffnessFromOrigamiValue(oValue) {
@@ -67,6 +68,7 @@ function fromBouncinessAndSpeed(bounciness, speed) {
   var s = normalize(speed / 1.7, 0, 20);
   var bouncyTension = projectNormal(s, 0.5, 200);
   var bouncyFriction = quadraticOutInterpolation(b, b3Nobounce(bouncyTension), 0.01);
+
   return {
     stiffness: stiffnessFromOrigamiValue(bouncyTension),
     damping: dampingFromOrigamiValue(bouncyFriction)
@@ -74,7 +76,4 @@ function fromBouncinessAndSpeed(bounciness, speed) {
 }
 
 export { fromOrigamiTensionAndFriction, fromBouncinessAndSpeed };
-export default {
-  fromOrigamiTensionAndFriction: fromOrigamiTensionAndFriction,
-  fromBouncinessAndSpeed: fromBouncinessAndSpeed
-};
+export default { fromOrigamiTensionAndFriction: fromOrigamiTensionAndFriction, fromBouncinessAndSpeed: fromBouncinessAndSpeed };

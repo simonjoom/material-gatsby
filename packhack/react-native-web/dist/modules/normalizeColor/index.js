@@ -6,13 +6,12 @@
  *
  * 
  */
+
 import isWebColor from '../isWebColor';
 import processColor from '../../exports/processColor';
 
-var normalizeColor = function normalizeColor(color, opacity) {
-  if (opacity === void 0) {
-    opacity = 1;
-  }
+var normalizeColor = function normalizeColor(color) {
+  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
 
   if (color == null) return;
 
@@ -21,14 +20,13 @@ var normalizeColor = function normalizeColor(color, opacity) {
   }
 
   var colorInt = processColor(color);
-
   if (colorInt != null) {
     var r = colorInt >> 16 & 255;
     var g = colorInt >> 8 & 255;
     var b = colorInt & 255;
     var a = (colorInt >> 24 & 255) / 255;
     var alpha = (a * opacity).toFixed(2);
-    return "rgba(" + r + "," + g + "," + b + "," + alpha + ")";
+    return 'rgba(' + r + ',' + g + ',' + b + ',' + alpha + ')';
   }
 };
 

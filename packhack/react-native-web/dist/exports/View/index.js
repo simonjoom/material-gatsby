@@ -1,6 +1,8 @@
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
  * Copyright (c) 2015-present, Nicolas Gallagher.
@@ -9,6 +11,7 @@ function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.crea
  *
  * 
  */
+
 import applyLayout from '../../modules/applyLayout';
 import applyNativeMethods from '../../modules/applyNativeMethods';
 import { bool } from 'prop-types';
@@ -21,46 +24,42 @@ import React, { Component } from 'react';
 
 var calculateHitSlopStyle = function calculateHitSlopStyle(hitSlop) {
   var hitStyle = {};
-
   for (var prop in hitSlop) {
     if (hitSlop.hasOwnProperty(prop)) {
       var value = hitSlop[prop];
       hitStyle[prop] = value > 0 ? -1 * value : 0;
     }
   }
-
   return hitStyle;
 };
 
-var View =
-/*#__PURE__*/
-function (_Component) {
-  _inheritsLoose(View, _Component);
+var View = function (_Component) {
+  _inherits(View, _Component);
 
   function View() {
-    return _Component.apply(this, arguments) || this;
+    _classCallCheck(this, View);
+
+    return _possibleConstructorReturn(this, _Component.apply(this, arguments));
   }
 
-  var _proto = View.prototype;
-
-  _proto.render = function render() {
+  View.prototype.render = function render() {
     var hitSlop = this.props.hitSlop;
     var supportedProps = filterSupportedProps(this.props);
 
     if (process.env.NODE_ENV !== 'production') {
       React.Children.toArray(this.props.children).forEach(function (item) {
-        invariant(typeof item !== 'string', "Unexpected text node: " + item + ". A text node cannot be a child of a <View>.");
+        invariant(typeof item !== 'string', 'Unexpected text node: ' + item + '. A text node cannot be a child of a <View>.');
       });
     }
 
     var isInAParentText = this.context.isInAParentText;
+
+
     supportedProps.style = StyleSheet.compose(styles.initial, StyleSheet.compose(isInAParentText && styles.inline, this.props.style));
 
     if (hitSlop) {
       var hitSlopStyle = calculateHitSlopStyle(hitSlop);
-      var hitSlopChild = createElement('span', {
-        style: [styles.hitSlop, hitSlopStyle]
-      });
+      var hitSlopChild = createElement('span', { style: [styles.hitSlop, hitSlopStyle] });
       supportedProps.children = React.Children.toArray([hitSlopChild, supportedProps.children]);
     }
 
@@ -74,6 +73,9 @@ View.displayName = 'View';
 View.contextTypes = {
   isInAParentText: bool
 };
+View.propTypes = process.env.NODE_ENV !== "production" ? ViewPropTypes : {};
+
+
 var styles = StyleSheet.create({
   // https://github.com/facebook/css-layout#default-values
   initial: {
@@ -96,8 +98,9 @@ var styles = StyleSheet.create({
   },
   // this zIndex-ordering positions the hitSlop above the View but behind
   // its children
-  hitSlop: _extends({}, StyleSheet.absoluteFillObject, {
+  hitSlop: Object.assign({}, StyleSheet.absoluteFillObject, {
     zIndex: -1
   })
 });
+
 export default applyLayout(applyNativeMethods(View));

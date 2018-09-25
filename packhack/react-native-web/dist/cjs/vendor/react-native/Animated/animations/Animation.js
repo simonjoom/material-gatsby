@@ -10,53 +10,53 @@
 'use strict';
 
 exports.__esModule = true;
-exports.default = void 0;
 
-var _NativeAnimatedHelper = _interopRequireDefault(require("../NativeAnimatedHelper"));
+var _NativeAnimatedHelper = require('../NativeAnimatedHelper');
+
+var _NativeAnimatedHelper2 = _interopRequireDefault(_NativeAnimatedHelper);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 // Important note: start() and stop() will only be called at most once.
 // Once an animation has been stopped or finished its course, it will
 // not be reused.
-var Animation =
-/*#__PURE__*/
-function () {
-  function Animation() {}
+var Animation = function () {
+  function Animation() {
+    _classCallCheck(this, Animation);
+  }
 
-  var _proto = Animation.prototype;
+  Animation.prototype.start = function start(fromValue, onUpdate, onEnd, previousAnimation, animatedValue) {};
 
-  _proto.start = function start(fromValue, onUpdate, onEnd, previousAnimation, animatedValue) {};
-
-  _proto.stop = function stop() {
+  Animation.prototype.stop = function stop() {
     if (this.__nativeId) {
-      _NativeAnimatedHelper.default.API.stopAnimation(this.__nativeId);
+      _NativeAnimatedHelper2.default.API.stopAnimation(this.__nativeId);
     }
   };
 
-  _proto.__getNativeAnimationConfig = function __getNativeAnimationConfig() {
+  Animation.prototype.__getNativeAnimationConfig = function __getNativeAnimationConfig() {
     // Subclasses that have corresponding animation implementation done in native
     // should override this method
     throw new Error('This animation type cannot be offloaded to native');
-  }; // Helper function for subclasses to make sure onEnd is only called once.
+  };
+  // Helper function for subclasses to make sure onEnd is only called once.
 
 
-  _proto.__debouncedOnEnd = function __debouncedOnEnd(result) {
+  Animation.prototype.__debouncedOnEnd = function __debouncedOnEnd(result) {
     var onEnd = this.__onEnd;
     this.__onEnd = null;
     onEnd && onEnd(result);
   };
 
-  _proto.__startNativeAnimation = function __startNativeAnimation(animatedValue) {
+  Animation.prototype.__startNativeAnimation = function __startNativeAnimation(animatedValue) {
     animatedValue.__makeNative();
-
-    this.__nativeId = _NativeAnimatedHelper.default.generateNewAnimationId();
-
-    _NativeAnimatedHelper.default.API.startAnimatingNode(this.__nativeId, animatedValue.__getNativeTag(), this.__getNativeAnimationConfig(), this.__debouncedOnEnd.bind(this));
+    this.__nativeId = _NativeAnimatedHelper2.default.generateNewAnimationId();
+    _NativeAnimatedHelper2.default.API.startAnimatingNode(this.__nativeId, animatedValue.__getNativeTag(), this.__getNativeAnimationConfig(), this.__debouncedOnEnd.bind(this));
   };
 
   return Animation;
 }();
 
-var _default = Animation;
-exports.default = _default;
+exports.default = Animation;
+module.exports = exports['default'];

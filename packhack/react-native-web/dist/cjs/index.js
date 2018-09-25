@@ -1,419 +1,495 @@
-"use strict";
+'use strict';
 
 exports.__esModule = true;
-exports.default = exports.VibrationIOS = exports.TVEventHandler = exports.TimePickerAndroid = exports.Systrace = exports.StatusBarIOS = exports.Settings = exports.PushNotificationIOS = exports.PermissionsAndroid = exports.ImagePickerIOS = exports.DatePickerAndroid = exports.CameraRoll = exports.AlertIOS = exports.ActionSheetIOS = exports.WebView = exports.ViewPagerAndroid = exports.ToolbarAndroid = exports.ToastAndroid = exports.TabBarIOS = exports.SnapshotViewIOS = exports.SegmentedControlIOS = exports.ProgressViewIOS = exports.ProgressBarAndroid = exports.PickerIOS = exports.NavigatorIOS = exports.MaskedViewIOS = exports.InputAccessoryView = exports.ImageStore = exports.ImageEditor = exports.DrawerLayoutAndroid = exports.DatePickerIOS = void 0;
+exports.VibrationIOS = exports.TVEventHandler = exports.TimePickerAndroid = exports.Systrace = exports.StatusBarIOS = exports.Settings = exports.PushNotificationIOS = exports.PermissionsAndroid = exports.ImagePickerIOS = exports.DatePickerAndroid = exports.CameraRoll = exports.AlertIOS = exports.ActionSheetIOS = exports.WebView = exports.ViewPagerAndroid = exports.ToolbarAndroid = exports.ToastAndroid = exports.TabBarIOS = exports.SnapshotViewIOS = exports.SegmentedControlIOS = exports.ProgressViewIOS = exports.ProgressBarAndroid = exports.PickerIOS = exports.NavigatorIOS = exports.MaskedViewIOS = exports.InputAccessoryView = exports.ImageStore = exports.ImageEditor = exports.DrawerLayoutAndroid = exports.DatePickerIOS = exports.PointPropType = exports.EdgeInsetsPropType = exports.ColorPropType = exports.YellowBox = exports.VirtualizedList = exports.View = exports.TouchableWithoutFeedback = exports.TouchableOpacity = exports.TouchableNativeFeedback = exports.TouchableHighlight = exports.Touchable = exports.TextInput = exports.Text = exports.Switch = exports.SwipeableListView = exports.SwipeableFlatList = exports.StatusBar = exports.Slider = exports.SectionList = exports.ScrollView = exports.SafeAreaView = exports.RefreshControl = exports.ProgressBar = exports.Picker = exports.Modal = exports.ListView = exports.KeyboardAvoidingView = exports.ImageBackground = exports.Image = exports.FlatList = exports.CheckBox = exports.Button = exports.ART = exports.ActivityIndicator = exports.Vibration = exports.UIManager = exports.StyleSheet = exports.Share = exports.Platform = exports.PixelRatio = exports.PanResponder = exports.NetInfo = exports.NativeEventEmitter = exports.Linking = exports.LayoutAnimation = exports.Keyboard = exports.InteractionManager = exports.I18nManager = exports.Easing = exports.Dimensions = exports.DeviceInfo = exports.Clipboard = exports.BackHandler = exports.AsyncStorage = exports.AppState = exports.AppRegistry = exports.Animated = exports.Alert = exports.AccessibilityInfo = exports.ViewPropTypes = exports.TextPropTypes = exports.NativeModules = exports.processColor = exports.unmountComponentAtNode = exports.render = exports.findNodeHandle = exports.createElement = undefined;
 
-var _UnimplementedView = _interopRequireDefault(require("./modules/UnimplementedView"));
+var _UnimplementedView = require('./modules/UnimplementedView');
 
-var _createElement = _interopRequireDefault(require("./exports/createElement"));
+var _UnimplementedView2 = _interopRequireDefault(_UnimplementedView);
 
-exports.createElement = _createElement.default;
+var _createElement = require('./exports/createElement');
 
-var _findNodeHandle = _interopRequireDefault(require("./exports/findNodeHandle"));
+var _createElement2 = _interopRequireDefault(_createElement);
 
-exports.findNodeHandle = _findNodeHandle.default;
+var _findNodeHandle = require('./exports/findNodeHandle');
 
-var _processColor = _interopRequireDefault(require("./exports/processColor"));
+var _findNodeHandle2 = _interopRequireDefault(_findNodeHandle);
 
-exports.processColor = _processColor.default;
+var _processColor = require('./exports/processColor');
 
-var _render = _interopRequireDefault(require("./exports/render"));
+var _processColor2 = _interopRequireDefault(_processColor);
 
-exports.render = _render.default;
+var _render = require('./exports/render');
 
-var _unmountComponentAtNode = _interopRequireDefault(require("./exports/unmountComponentAtNode"));
+var _render2 = _interopRequireDefault(_render);
 
-exports.unmountComponentAtNode = _unmountComponentAtNode.default;
+var _unmountComponentAtNode = require('./exports/unmountComponentAtNode');
 
-var _NativeModules = _interopRequireDefault(require("./exports/NativeModules"));
+var _unmountComponentAtNode2 = _interopRequireDefault(_unmountComponentAtNode);
 
-exports.NativeModules = _NativeModules.default;
+var _NativeModules = require('./exports/NativeModules');
 
-var _TextPropTypes = _interopRequireDefault(require("./exports/TextPropTypes"));
+var _NativeModules2 = _interopRequireDefault(_NativeModules);
 
-exports.TextPropTypes = _TextPropTypes.default;
+var _TextPropTypes = require('./exports/TextPropTypes');
 
-var _ViewPropTypes = _interopRequireDefault(require("./exports/ViewPropTypes"));
+var _TextPropTypes2 = _interopRequireDefault(_TextPropTypes);
 
-exports.ViewPropTypes = _ViewPropTypes.default;
+var _ViewPropTypes = require('./exports/ViewPropTypes');
 
-var _AccessibilityInfo = _interopRequireDefault(require("./exports/AccessibilityInfo"));
+var _ViewPropTypes2 = _interopRequireDefault(_ViewPropTypes);
 
-exports.AccessibilityInfo = _AccessibilityInfo.default;
+var _AccessibilityInfo = require('./exports/AccessibilityInfo');
 
-var _Alert = _interopRequireDefault(require("./exports/Alert"));
+var _AccessibilityInfo2 = _interopRequireDefault(_AccessibilityInfo);
 
-exports.Alert = _Alert.default;
+var _Alert = require('./exports/Alert');
 
-var _Animated = _interopRequireDefault(require("./exports/Animated"));
+var _Alert2 = _interopRequireDefault(_Alert);
 
-exports.Animated = _Animated.default;
+var _Animated = require('./exports/Animated');
 
-var _AppRegistry = _interopRequireDefault(require("./exports/AppRegistry"));
+var _Animated2 = _interopRequireDefault(_Animated);
 
-exports.AppRegistry = _AppRegistry.default;
+var _AppRegistry = require('./exports/AppRegistry');
 
-var _AppState = _interopRequireDefault(require("./exports/AppState"));
+var _AppRegistry2 = _interopRequireDefault(_AppRegistry);
 
-exports.AppState = _AppState.default;
+var _AppState = require('./exports/AppState');
 
-var _AsyncStorage = _interopRequireDefault(require("./exports/AsyncStorage"));
+var _AppState2 = _interopRequireDefault(_AppState);
 
-exports.AsyncStorage = _AsyncStorage.default;
+var _AsyncStorage = require('./exports/AsyncStorage');
 
-var _BackHandler = _interopRequireDefault(require("./exports/BackHandler"));
+var _AsyncStorage2 = _interopRequireDefault(_AsyncStorage);
 
-exports.BackHandler = _BackHandler.default;
+var _BackHandler = require('./exports/BackHandler');
 
-var _Clipboard = _interopRequireDefault(require("./exports/Clipboard"));
+var _BackHandler2 = _interopRequireDefault(_BackHandler);
 
-exports.Clipboard = _Clipboard.default;
+var _Clipboard = require('./exports/Clipboard');
 
-var _DeviceInfo = _interopRequireDefault(require("./exports/DeviceInfo"));
+var _Clipboard2 = _interopRequireDefault(_Clipboard);
 
-exports.DeviceInfo = _DeviceInfo.default;
+var _DeviceInfo = require('./exports/DeviceInfo');
 
-var _Dimensions = _interopRequireDefault(require("./exports/Dimensions"));
+var _DeviceInfo2 = _interopRequireDefault(_DeviceInfo);
 
-exports.Dimensions = _Dimensions.default;
+var _Dimensions = require('./exports/Dimensions');
 
-var _Easing = _interopRequireDefault(require("./exports/Easing"));
+var _Dimensions2 = _interopRequireDefault(_Dimensions);
 
-exports.Easing = _Easing.default;
+var _Easing = require('./exports/Easing');
 
-var _I18nManager = _interopRequireDefault(require("./exports/I18nManager"));
+var _Easing2 = _interopRequireDefault(_Easing);
 
-exports.I18nManager = _I18nManager.default;
+var _I18nManager = require('./exports/I18nManager');
 
-var _Keyboard = _interopRequireDefault(require("./exports/Keyboard"));
+var _I18nManager2 = _interopRequireDefault(_I18nManager);
 
-exports.Keyboard = _Keyboard.default;
+var _Keyboard = require('./exports/Keyboard');
 
-var _InteractionManager = _interopRequireDefault(require("./exports/InteractionManager"));
+var _Keyboard2 = _interopRequireDefault(_Keyboard);
 
-exports.InteractionManager = _InteractionManager.default;
+var _InteractionManager = require('./exports/InteractionManager');
 
-var _LayoutAnimation = _interopRequireDefault(require("./exports/LayoutAnimation"));
+var _InteractionManager2 = _interopRequireDefault(_InteractionManager);
 
-exports.LayoutAnimation = _LayoutAnimation.default;
+var _LayoutAnimation = require('./exports/LayoutAnimation');
 
-var _Linking = _interopRequireDefault(require("./exports/Linking"));
+var _LayoutAnimation2 = _interopRequireDefault(_LayoutAnimation);
 
-exports.Linking = _Linking.default;
+var _Linking = require('./exports/Linking');
 
-var _NativeEventEmitter = _interopRequireDefault(require("./exports/NativeEventEmitter"));
+var _Linking2 = _interopRequireDefault(_Linking);
 
-exports.NativeEventEmitter = _NativeEventEmitter.default;
+var _NativeEventEmitter = require('./exports/NativeEventEmitter');
 
-var _NetInfo = _interopRequireDefault(require("./exports/NetInfo"));
+var _NativeEventEmitter2 = _interopRequireDefault(_NativeEventEmitter);
 
-exports.NetInfo = _NetInfo.default;
+var _NetInfo = require('./exports/NetInfo');
 
-var _PanResponder = _interopRequireDefault(require("./exports/PanResponder"));
+var _NetInfo2 = _interopRequireDefault(_NetInfo);
 
-exports.PanResponder = _PanResponder.default;
+var _PanResponder = require('./exports/PanResponder');
 
-var _PixelRatio = _interopRequireDefault(require("./exports/PixelRatio"));
+var _PanResponder2 = _interopRequireDefault(_PanResponder);
 
-exports.PixelRatio = _PixelRatio.default;
+var _PixelRatio = require('./exports/PixelRatio');
 
-var _Platform = _interopRequireDefault(require("./exports/Platform"));
+var _PixelRatio2 = _interopRequireDefault(_PixelRatio);
 
-exports.Platform = _Platform.default;
+var _Platform = require('./exports/Platform');
 
-var _Share = _interopRequireDefault(require("./exports/Share"));
+var _Platform2 = _interopRequireDefault(_Platform);
 
-exports.Share = _Share.default;
+var _Share = require('./exports/Share');
 
-var _StyleSheet = _interopRequireDefault(require("./exports/StyleSheet"));
+var _Share2 = _interopRequireDefault(_Share);
 
-exports.StyleSheet = _StyleSheet.default;
+var _StyleSheet = require('./exports/StyleSheet');
 
-var _UIManager = _interopRequireDefault(require("./exports/UIManager"));
+var _StyleSheet2 = _interopRequireDefault(_StyleSheet);
 
-exports.UIManager = _UIManager.default;
+var _UIManager = require('./exports/UIManager');
 
-var _Vibration = _interopRequireDefault(require("./exports/Vibration"));
+var _UIManager2 = _interopRequireDefault(_UIManager);
 
-exports.Vibration = _Vibration.default;
+var _Vibration = require('./exports/Vibration');
 
-var _ActivityIndicator = _interopRequireDefault(require("./exports/ActivityIndicator"));
+var _Vibration2 = _interopRequireDefault(_Vibration);
 
-exports.ActivityIndicator = _ActivityIndicator.default;
+var _ActivityIndicator = require('./exports/ActivityIndicator');
 
-var _ART = _interopRequireDefault(require("./exports/ART"));
+var _ActivityIndicator2 = _interopRequireDefault(_ActivityIndicator);
 
-exports.ART = _ART.default;
+var _ART = require('./exports/ART');
 
-var _Button = _interopRequireDefault(require("./exports/Button"));
+var _ART2 = _interopRequireDefault(_ART);
 
-exports.Button = _Button.default;
+var _Button = require('./exports/Button');
 
-var _CheckBox = _interopRequireDefault(require("./exports/CheckBox"));
+var _Button2 = _interopRequireDefault(_Button);
 
-exports.CheckBox = _CheckBox.default;
+var _CheckBox = require('./exports/CheckBox');
 
-var _FlatList = _interopRequireDefault(require("./exports/FlatList"));
+var _CheckBox2 = _interopRequireDefault(_CheckBox);
 
-exports.FlatList = _FlatList.default;
+var _FlatList = require('./exports/FlatList');
 
-var _Image = _interopRequireDefault(require("./exports/Image"));
+var _FlatList2 = _interopRequireDefault(_FlatList);
 
-exports.Image = _Image.default;
+var _Image = require('./exports/Image');
 
-var _ImageBackground = _interopRequireDefault(require("./exports/ImageBackground"));
+var _Image2 = _interopRequireDefault(_Image);
 
-exports.ImageBackground = _ImageBackground.default;
+var _ImageBackground = require('./exports/ImageBackground');
 
-var _KeyboardAvoidingView = _interopRequireDefault(require("./exports/KeyboardAvoidingView"));
+var _ImageBackground2 = _interopRequireDefault(_ImageBackground);
 
-exports.KeyboardAvoidingView = _KeyboardAvoidingView.default;
+var _KeyboardAvoidingView = require('./exports/KeyboardAvoidingView');
 
-var _ListView = _interopRequireDefault(require("./exports/ListView"));
+var _KeyboardAvoidingView2 = _interopRequireDefault(_KeyboardAvoidingView);
 
-exports.ListView = _ListView.default;
+var _ListView = require('./exports/ListView');
 
-var _Modal = _interopRequireDefault(require("./exports/Modal"));
+var _ListView2 = _interopRequireDefault(_ListView);
 
-exports.Modal = _Modal.default;
+var _Modal = require('./exports/Modal');
 
-var _Picker = _interopRequireDefault(require("./exports/Picker"));
+var _Modal2 = _interopRequireDefault(_Modal);
 
-exports.Picker = _Picker.default;
+var _Picker = require('./exports/Picker');
 
-var _ProgressBar = _interopRequireDefault(require("./exports/ProgressBar"));
+var _Picker2 = _interopRequireDefault(_Picker);
 
-exports.ProgressBar = _ProgressBar.default;
+var _ProgressBar = require('./exports/ProgressBar');
 
-var _RefreshControl = _interopRequireDefault(require("./exports/RefreshControl"));
+var _ProgressBar2 = _interopRequireDefault(_ProgressBar);
 
-exports.RefreshControl = _RefreshControl.default;
+var _RefreshControl = require('./exports/RefreshControl');
 
-var _SafeAreaView = _interopRequireDefault(require("./exports/SafeAreaView"));
+var _RefreshControl2 = _interopRequireDefault(_RefreshControl);
 
-exports.SafeAreaView = _SafeAreaView.default;
+var _SafeAreaView = require('./exports/SafeAreaView');
 
-var _ScrollView = _interopRequireDefault(require("./exports/ScrollView"));
+var _SafeAreaView2 = _interopRequireDefault(_SafeAreaView);
 
-exports.ScrollView = _ScrollView.default;
+var _ScrollView = require('./exports/ScrollView');
 
-var _SectionList = _interopRequireDefault(require("./exports/SectionList"));
+var _ScrollView2 = _interopRequireDefault(_ScrollView);
 
-exports.SectionList = _SectionList.default;
+var _SectionList = require('./exports/SectionList');
 
-var _Slider = _interopRequireDefault(require("./exports/Slider"));
+var _SectionList2 = _interopRequireDefault(_SectionList);
 
-exports.Slider = _Slider.default;
+var _Slider = require('./exports/Slider');
 
-var _StatusBar = _interopRequireDefault(require("./exports/StatusBar"));
+var _Slider2 = _interopRequireDefault(_Slider);
 
-exports.StatusBar = _StatusBar.default;
+var _StatusBar = require('./exports/StatusBar');
 
-var _SwipeableFlatList = _interopRequireDefault(require("./exports/SwipeableFlatList"));
+var _StatusBar2 = _interopRequireDefault(_StatusBar);
 
-exports.SwipeableFlatList = _SwipeableFlatList.default;
+var _SwipeableFlatList = require('./exports/SwipeableFlatList');
 
-var _SwipeableListView = _interopRequireDefault(require("./exports/SwipeableListView"));
+var _SwipeableFlatList2 = _interopRequireDefault(_SwipeableFlatList);
 
-exports.SwipeableListView = _SwipeableListView.default;
+var _SwipeableListView = require('./exports/SwipeableListView');
 
-var _Switch = _interopRequireDefault(require("./exports/Switch"));
+var _SwipeableListView2 = _interopRequireDefault(_SwipeableListView);
 
-exports.Switch = _Switch.default;
+var _Switch = require('./exports/Switch');
 
-var _Text = _interopRequireDefault(require("./exports/Text"));
+var _Switch2 = _interopRequireDefault(_Switch);
 
-exports.Text = _Text.default;
+var _Text = require('./exports/Text');
 
-var _TextInput = _interopRequireDefault(require("./exports/TextInput"));
+var _Text2 = _interopRequireDefault(_Text);
 
-exports.TextInput = _TextInput.default;
+var _TextInput = require('./exports/TextInput');
 
-var _Touchable = _interopRequireDefault(require("./exports/Touchable"));
+var _TextInput2 = _interopRequireDefault(_TextInput);
 
-exports.Touchable = _Touchable.default;
+var _Touchable = require('./exports/Touchable');
 
-var _TouchableHighlight = _interopRequireDefault(require("./exports/TouchableHighlight"));
+var _Touchable2 = _interopRequireDefault(_Touchable);
 
-exports.TouchableHighlight = _TouchableHighlight.default;
+var _TouchableHighlight = require('./exports/TouchableHighlight');
 
-var _TouchableNativeFeedback = _interopRequireDefault(require("./exports/TouchableNativeFeedback"));
+var _TouchableHighlight2 = _interopRequireDefault(_TouchableHighlight);
 
-exports.TouchableNativeFeedback = _TouchableNativeFeedback.default;
+var _TouchableNativeFeedback = require('./exports/TouchableNativeFeedback');
 
-var _TouchableOpacity = _interopRequireDefault(require("./exports/TouchableOpacity"));
+var _TouchableNativeFeedback2 = _interopRequireDefault(_TouchableNativeFeedback);
 
-exports.TouchableOpacity = _TouchableOpacity.default;
+var _TouchableOpacity = require('./exports/TouchableOpacity');
 
-var _TouchableWithoutFeedback = _interopRequireDefault(require("./exports/TouchableWithoutFeedback"));
+var _TouchableOpacity2 = _interopRequireDefault(_TouchableOpacity);
 
-exports.TouchableWithoutFeedback = _TouchableWithoutFeedback.default;
+var _TouchableWithoutFeedback = require('./exports/TouchableWithoutFeedback');
 
-var _View = _interopRequireDefault(require("./exports/View"));
+var _TouchableWithoutFeedback2 = _interopRequireDefault(_TouchableWithoutFeedback);
 
-exports.View = _View.default;
+var _View = require('./exports/View');
 
-var _VirtualizedList = _interopRequireDefault(require("./exports/VirtualizedList"));
+var _View2 = _interopRequireDefault(_View);
 
-exports.VirtualizedList = _VirtualizedList.default;
+var _VirtualizedList = require('./exports/VirtualizedList');
 
-var _YellowBox = _interopRequireDefault(require("./exports/YellowBox"));
+var _VirtualizedList2 = _interopRequireDefault(_VirtualizedList);
 
-exports.YellowBox = _YellowBox.default;
+var _YellowBox = require('./exports/YellowBox');
 
-var _ColorPropType = _interopRequireDefault(require("./exports/ColorPropType"));
+var _YellowBox2 = _interopRequireDefault(_YellowBox);
 
-exports.ColorPropType = _ColorPropType.default;
+var _ColorPropType = require('./exports/ColorPropType');
 
-var _EdgeInsetsPropType = _interopRequireDefault(require("./exports/EdgeInsetsPropType"));
+var _ColorPropType2 = _interopRequireDefault(_ColorPropType);
 
-exports.EdgeInsetsPropType = _EdgeInsetsPropType.default;
+var _EdgeInsetsPropType = require('./exports/EdgeInsetsPropType');
 
-var _PointPropType = _interopRequireDefault(require("./exports/PointPropType"));
+var _EdgeInsetsPropType2 = _interopRequireDefault(_EdgeInsetsPropType);
 
-exports.PointPropType = _PointPropType.default;
+var _PointPropType = require('./exports/PointPropType');
+
+var _PointPropType2 = _interopRequireDefault(_PointPropType);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// APIs
 // components
+var emptyObject = {};
+// compat (components)
+
+
 // propTypes
-var emptyObject = {}; // compat (components)
 
-var DatePickerIOS = _UnimplementedView.default;
-exports.DatePickerIOS = DatePickerIOS;
-var DrawerLayoutAndroid = _UnimplementedView.default;
-exports.DrawerLayoutAndroid = DrawerLayoutAndroid;
-var ImageEditor = _UnimplementedView.default;
-exports.ImageEditor = ImageEditor;
-var ImageStore = _UnimplementedView.default;
-exports.ImageStore = ImageStore;
-var InputAccessoryView = _UnimplementedView.default;
-exports.InputAccessoryView = InputAccessoryView;
-var MaskedViewIOS = _UnimplementedView.default;
-exports.MaskedViewIOS = MaskedViewIOS;
-var NavigatorIOS = _UnimplementedView.default;
-exports.NavigatorIOS = NavigatorIOS;
-var PickerIOS = _Picker.default;
-exports.PickerIOS = PickerIOS;
-var ProgressBarAndroid = _UnimplementedView.default;
-exports.ProgressBarAndroid = ProgressBarAndroid;
-var ProgressViewIOS = _UnimplementedView.default;
-exports.ProgressViewIOS = ProgressViewIOS;
-var SegmentedControlIOS = _UnimplementedView.default;
-exports.SegmentedControlIOS = SegmentedControlIOS;
-var SnapshotViewIOS = _UnimplementedView.default;
-exports.SnapshotViewIOS = SnapshotViewIOS;
-var TabBarIOS = _UnimplementedView.default;
-exports.TabBarIOS = TabBarIOS;
-var ToastAndroid = _UnimplementedView.default;
-exports.ToastAndroid = ToastAndroid;
-var ToolbarAndroid = _UnimplementedView.default;
-exports.ToolbarAndroid = ToolbarAndroid;
-var ViewPagerAndroid = _UnimplementedView.default;
-exports.ViewPagerAndroid = ViewPagerAndroid;
-var WebView = _UnimplementedView.default; // compat (apis)
 
-exports.WebView = WebView;
+// APIs
+var DatePickerIOS = _UnimplementedView2.default;
+var DrawerLayoutAndroid = _UnimplementedView2.default;
+var ImageEditor = _UnimplementedView2.default;
+var ImageStore = _UnimplementedView2.default;
+var InputAccessoryView = _UnimplementedView2.default;
+var MaskedViewIOS = _UnimplementedView2.default;
+var NavigatorIOS = _UnimplementedView2.default;
+var PickerIOS = _Picker2.default;
+var ProgressBarAndroid = _UnimplementedView2.default;
+var ProgressViewIOS = _UnimplementedView2.default;
+var SegmentedControlIOS = _UnimplementedView2.default;
+var SnapshotViewIOS = _UnimplementedView2.default;
+var TabBarIOS = _UnimplementedView2.default;
+var ToastAndroid = _UnimplementedView2.default;
+var ToolbarAndroid = _UnimplementedView2.default;
+var ViewPagerAndroid = _UnimplementedView2.default;
+var WebView = _UnimplementedView2.default;
+// compat (apis)
 var ActionSheetIOS = emptyObject;
-exports.ActionSheetIOS = ActionSheetIOS;
 var AlertIOS = emptyObject;
-exports.AlertIOS = AlertIOS;
 var CameraRoll = emptyObject;
-exports.CameraRoll = CameraRoll;
 var DatePickerAndroid = emptyObject;
-exports.DatePickerAndroid = DatePickerAndroid;
 var ImagePickerIOS = emptyObject;
-exports.ImagePickerIOS = ImagePickerIOS;
 var PermissionsAndroid = emptyObject;
-exports.PermissionsAndroid = PermissionsAndroid;
 var PushNotificationIOS = emptyObject;
-exports.PushNotificationIOS = PushNotificationIOS;
 var Settings = emptyObject;
-exports.Settings = Settings;
 var StatusBarIOS = emptyObject;
-exports.StatusBarIOS = StatusBarIOS;
 var Systrace = emptyObject;
-exports.Systrace = Systrace;
 var TimePickerAndroid = emptyObject;
-exports.TimePickerAndroid = TimePickerAndroid;
 var TVEventHandler = emptyObject;
-exports.TVEventHandler = TVEventHandler;
 var VibrationIOS = emptyObject;
+
+exports.createElement = _createElement2.default;
+exports.findNodeHandle = _findNodeHandle2.default;
+exports.render = _render2.default;
+exports.unmountComponentAtNode = _unmountComponentAtNode2.default;
+exports.processColor = _processColor2.default;
+exports.NativeModules = _NativeModules2.default;
+exports.TextPropTypes = _TextPropTypes2.default;
+exports.ViewPropTypes = _ViewPropTypes2.default;
+exports.AccessibilityInfo = _AccessibilityInfo2.default;
+exports.Alert = _Alert2.default;
+exports.Animated = _Animated2.default;
+exports.AppRegistry = _AppRegistry2.default;
+exports.AppState = _AppState2.default;
+exports.AsyncStorage = _AsyncStorage2.default;
+exports.BackHandler = _BackHandler2.default;
+exports.Clipboard = _Clipboard2.default;
+exports.DeviceInfo = _DeviceInfo2.default;
+exports.Dimensions = _Dimensions2.default;
+exports.Easing = _Easing2.default;
+exports.I18nManager = _I18nManager2.default;
+exports.InteractionManager = _InteractionManager2.default;
+exports.Keyboard = _Keyboard2.default;
+exports.LayoutAnimation = _LayoutAnimation2.default;
+exports.Linking = _Linking2.default;
+exports.NativeEventEmitter = _NativeEventEmitter2.default;
+exports.NetInfo = _NetInfo2.default;
+exports.PanResponder = _PanResponder2.default;
+exports.PixelRatio = _PixelRatio2.default;
+exports.Platform = _Platform2.default;
+exports.Share = _Share2.default;
+exports.StyleSheet = _StyleSheet2.default;
+exports.UIManager = _UIManager2.default;
+exports.Vibration = _Vibration2.default;
+exports.ActivityIndicator = _ActivityIndicator2.default;
+exports.ART = _ART2.default;
+exports.Button = _Button2.default;
+exports.CheckBox = _CheckBox2.default;
+exports.FlatList = _FlatList2.default;
+exports.Image = _Image2.default;
+exports.ImageBackground = _ImageBackground2.default;
+exports.KeyboardAvoidingView = _KeyboardAvoidingView2.default;
+exports.ListView = _ListView2.default;
+exports.Modal = _Modal2.default;
+exports.Picker = _Picker2.default;
+exports.ProgressBar = _ProgressBar2.default;
+exports.RefreshControl = _RefreshControl2.default;
+exports.SafeAreaView = _SafeAreaView2.default;
+exports.ScrollView = _ScrollView2.default;
+exports.SectionList = _SectionList2.default;
+exports.Slider = _Slider2.default;
+exports.StatusBar = _StatusBar2.default;
+exports.SwipeableFlatList = _SwipeableFlatList2.default;
+exports.SwipeableListView = _SwipeableListView2.default;
+exports.Switch = _Switch2.default;
+exports.Text = _Text2.default;
+exports.TextInput = _TextInput2.default;
+exports.Touchable = _Touchable2.default;
+exports.TouchableHighlight = _TouchableHighlight2.default;
+exports.TouchableNativeFeedback = _TouchableNativeFeedback2.default;
+exports.TouchableOpacity = _TouchableOpacity2.default;
+exports.TouchableWithoutFeedback = _TouchableWithoutFeedback2.default;
+exports.View = _View2.default;
+exports.VirtualizedList = _VirtualizedList2.default;
+exports.YellowBox = _YellowBox2.default;
+exports.ColorPropType = _ColorPropType2.default;
+exports.EdgeInsetsPropType = _EdgeInsetsPropType2.default;
+exports.PointPropType = _PointPropType2.default;
+exports.DatePickerIOS = DatePickerIOS;
+exports.DrawerLayoutAndroid = DrawerLayoutAndroid;
+exports.ImageEditor = ImageEditor;
+exports.ImageStore = ImageStore;
+exports.InputAccessoryView = InputAccessoryView;
+exports.MaskedViewIOS = MaskedViewIOS;
+exports.NavigatorIOS = NavigatorIOS;
+exports.PickerIOS = PickerIOS;
+exports.ProgressBarAndroid = ProgressBarAndroid;
+exports.ProgressViewIOS = ProgressViewIOS;
+exports.SegmentedControlIOS = SegmentedControlIOS;
+exports.SnapshotViewIOS = SnapshotViewIOS;
+exports.TabBarIOS = TabBarIOS;
+exports.ToastAndroid = ToastAndroid;
+exports.ToolbarAndroid = ToolbarAndroid;
+exports.ViewPagerAndroid = ViewPagerAndroid;
+exports.WebView = WebView;
+exports.ActionSheetIOS = ActionSheetIOS;
+exports.AlertIOS = AlertIOS;
+exports.CameraRoll = CameraRoll;
+exports.DatePickerAndroid = DatePickerAndroid;
+exports.ImagePickerIOS = ImagePickerIOS;
+exports.PermissionsAndroid = PermissionsAndroid;
+exports.PushNotificationIOS = PushNotificationIOS;
+exports.Settings = Settings;
+exports.StatusBarIOS = StatusBarIOS;
+exports.Systrace = Systrace;
+exports.TimePickerAndroid = TimePickerAndroid;
+exports.TVEventHandler = TVEventHandler;
 exports.VibrationIOS = VibrationIOS;
+
+
 var ReactNative = {
   // top-level API
-  createElement: _createElement.default,
-  findNodeHandle: _findNodeHandle.default,
-  render: _render.default,
-  unmountComponentAtNode: _unmountComponentAtNode.default,
+  createElement: _createElement2.default,
+  findNodeHandle: _findNodeHandle2.default,
+  render: _render2.default,
+  unmountComponentAtNode: _unmountComponentAtNode2.default,
   // modules
-  processColor: _processColor.default,
-  NativeModules: _NativeModules.default,
-  TextPropTypes: _TextPropTypes.default,
-  ViewPropTypes: _ViewPropTypes.default,
+  processColor: _processColor2.default,
+  NativeModules: _NativeModules2.default,
+  TextPropTypes: _TextPropTypes2.default,
+  ViewPropTypes: _ViewPropTypes2.default,
   // APIs
-  AccessibilityInfo: _AccessibilityInfo.default,
-  Alert: _Alert.default,
-  Animated: _Animated.default,
-  AppRegistry: _AppRegistry.default,
-  AppState: _AppState.default,
-  AsyncStorage: _AsyncStorage.default,
-  BackHandler: _BackHandler.default,
-  Clipboard: _Clipboard.default,
-  DeviceInfo: _DeviceInfo.default,
-  Dimensions: _Dimensions.default,
-  Easing: _Easing.default,
-  I18nManager: _I18nManager.default,
-  InteractionManager: _InteractionManager.default,
-  Keyboard: _Keyboard.default,
-  LayoutAnimation: _LayoutAnimation.default,
-  Linking: _Linking.default,
-  NativeEventEmitter: _NativeEventEmitter.default,
-  NetInfo: _NetInfo.default,
-  PanResponder: _PanResponder.default,
-  PixelRatio: _PixelRatio.default,
-  Platform: _Platform.default,
-  Share: _Share.default,
-  StyleSheet: _StyleSheet.default,
-  UIManager: _UIManager.default,
-  Vibration: _Vibration.default,
+  AccessibilityInfo: _AccessibilityInfo2.default,
+  Alert: _Alert2.default,
+  Animated: _Animated2.default,
+  AppRegistry: _AppRegistry2.default,
+  AppState: _AppState2.default,
+  AsyncStorage: _AsyncStorage2.default,
+  BackHandler: _BackHandler2.default,
+  Clipboard: _Clipboard2.default,
+  DeviceInfo: _DeviceInfo2.default,
+  Dimensions: _Dimensions2.default,
+  Easing: _Easing2.default,
+  I18nManager: _I18nManager2.default,
+  InteractionManager: _InteractionManager2.default,
+  Keyboard: _Keyboard2.default,
+  LayoutAnimation: _LayoutAnimation2.default,
+  Linking: _Linking2.default,
+  NativeEventEmitter: _NativeEventEmitter2.default,
+  NetInfo: _NetInfo2.default,
+  PanResponder: _PanResponder2.default,
+  PixelRatio: _PixelRatio2.default,
+  Platform: _Platform2.default,
+  Share: _Share2.default,
+  StyleSheet: _StyleSheet2.default,
+  UIManager: _UIManager2.default,
+  Vibration: _Vibration2.default,
   // components
-  ActivityIndicator: _ActivityIndicator.default,
-  ART: _ART.default,
-  Button: _Button.default,
-  CheckBox: _CheckBox.default,
-  FlatList: _FlatList.default,
-  Image: _Image.default,
-  ImageBackground: _ImageBackground.default,
-  KeyboardAvoidingView: _KeyboardAvoidingView.default,
-  ListView: _ListView.default,
-  Modal: _Modal.default,
-  Picker: _Picker.default,
-  ProgressBar: _ProgressBar.default,
-  RefreshControl: _RefreshControl.default,
-  SafeAreaView: _SafeAreaView.default,
-  ScrollView: _ScrollView.default,
-  SectionList: _SectionList.default,
-  Slider: _Slider.default,
-  StatusBar: _StatusBar.default,
-  SwipeableFlatList: _SwipeableFlatList.default,
-  SwipeableListView: _SwipeableListView.default,
-  Switch: _Switch.default,
-  Text: _Text.default,
-  TextInput: _TextInput.default,
-  Touchable: _Touchable.default,
-  TouchableHighlight: _TouchableHighlight.default,
-  TouchableNativeFeedback: _TouchableNativeFeedback.default,
-  TouchableOpacity: _TouchableOpacity.default,
-  TouchableWithoutFeedback: _TouchableWithoutFeedback.default,
-  View: _View.default,
-  VirtualizedList: _VirtualizedList.default,
-  YellowBox: _YellowBox.default,
+  ActivityIndicator: _ActivityIndicator2.default,
+  ART: _ART2.default,
+  Button: _Button2.default,
+  CheckBox: _CheckBox2.default,
+  FlatList: _FlatList2.default,
+  Image: _Image2.default,
+  ImageBackground: _ImageBackground2.default,
+  KeyboardAvoidingView: _KeyboardAvoidingView2.default,
+  ListView: _ListView2.default,
+  Modal: _Modal2.default,
+  Picker: _Picker2.default,
+  ProgressBar: _ProgressBar2.default,
+  RefreshControl: _RefreshControl2.default,
+  SafeAreaView: _SafeAreaView2.default,
+  ScrollView: _ScrollView2.default,
+  SectionList: _SectionList2.default,
+  Slider: _Slider2.default,
+  StatusBar: _StatusBar2.default,
+  SwipeableFlatList: _SwipeableFlatList2.default,
+  SwipeableListView: _SwipeableListView2.default,
+  Switch: _Switch2.default,
+  Text: _Text2.default,
+  TextInput: _TextInput2.default,
+  Touchable: _Touchable2.default,
+  TouchableHighlight: _TouchableHighlight2.default,
+  TouchableNativeFeedback: _TouchableNativeFeedback2.default,
+  TouchableOpacity: _TouchableOpacity2.default,
+  TouchableWithoutFeedback: _TouchableWithoutFeedback2.default,
+  View: _View2.default,
+  VirtualizedList: _VirtualizedList2.default,
+  YellowBox: _YellowBox2.default,
   // propTypes
-  ColorPropType: _ColorPropType.default,
-  EdgeInsetsPropType: _EdgeInsetsPropType.default,
-  PointPropType: _PointPropType.default,
+  ColorPropType: _ColorPropType2.default,
+  EdgeInsetsPropType: _EdgeInsetsPropType2.default,
+  PointPropType: _PointPropType2.default,
   // compat (components)
   DatePickerIOS: DatePickerIOS,
   DrawerLayoutAndroid: DrawerLayoutAndroid,
@@ -447,5 +523,5 @@ var ReactNative = {
   TVEventHandler: TVEventHandler,
   VibrationIOS: VibrationIOS
 };
-var _default = ReactNative;
-exports.default = _default;
+
+exports.default = ReactNative;

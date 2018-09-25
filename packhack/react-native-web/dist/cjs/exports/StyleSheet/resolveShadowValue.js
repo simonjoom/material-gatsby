@@ -1,11 +1,14 @@
-"use strict";
+'use strict';
 
 exports.__esModule = true;
-exports.default = void 0;
 
-var _normalizeColor = _interopRequireDefault(require("../../modules/normalizeColor"));
+var _normalizeColor = require('../../modules/normalizeColor');
 
-var _normalizeValue = _interopRequireDefault(require("./normalizeValue"));
+var _normalizeColor2 = _interopRequireDefault(_normalizeColor);
+
+var _normalizeValue = require('./normalizeValue');
+
+var _normalizeValue2 = _interopRequireDefault(_normalizeValue);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -17,10 +20,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  *
  * 
  */
-var defaultOffset = {
-  height: 0,
-  width: 0
-};
+
+var defaultOffset = { height: 0, width: 0 };
 
 var resolveShadowValue = function resolveShadowValue(style) {
   var shadowColor = style.shadowColor,
@@ -32,15 +33,14 @@ var resolveShadowValue = function resolveShadowValue(style) {
       height = _ref.height,
       width = _ref.width;
 
-  var offsetX = (0, _normalizeValue.default)(null, width);
-  var offsetY = (0, _normalizeValue.default)(null, height);
-  var blurRadius = (0, _normalizeValue.default)(null, shadowRadius || 0);
-  var color = (0, _normalizeColor.default)(shadowColor || 'black', shadowOpacity);
-
+  var offsetX = (0, _normalizeValue2.default)(null, width);
+  var offsetY = (0, _normalizeValue2.default)(null, height);
+  var blurRadius = (0, _normalizeValue2.default)(null, shadowRadius || 0);
+  var color = (0, _normalizeColor2.default)(shadowColor || 'black', shadowOpacity);
   if (color) {
-    return offsetX + " " + offsetY + " " + blurRadius + " " + color;
+    return offsetX + ' ' + offsetY + ' ' + blurRadius + ' ' + color;
   }
 };
 
-var _default = resolveShadowValue;
-exports.default = _default;
+exports.default = resolveShadowValue;
+module.exports = exports['default'];

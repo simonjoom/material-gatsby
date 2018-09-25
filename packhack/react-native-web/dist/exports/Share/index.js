@@ -1,6 +1,6 @@
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
  * Copyright (c) 2018-present, Nicolas Gallagher.
@@ -11,17 +11,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
  *
  * 
  */
+
 import invariant from 'fbjs/lib/invariant';
 
-var Share =
-/*#__PURE__*/
-function () {
-  function Share() {}
+var Share = function () {
+  function Share() {
+    _classCallCheck(this, Share);
+  }
 
-  Share.share = function share(content, options) {
-    if (options === void 0) {
-      options = {};
-    }
+  Share.share = function share(content) {
+    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
     invariant(typeof content === 'object' && content !== null, 'Content to share must be a valid object');
     invariant(typeof content.url === 'string' || typeof content.message === 'string', 'At least one of URL and message is required');
@@ -38,23 +37,25 @@ function () {
       return Promise.reject(new Error('Share is not supported in this browser'));
     }
   };
+
   /**
    * The content was successfully shared.
    */
 
 
   _createClass(Share, null, [{
-    key: "sharedAction",
+    key: 'sharedAction',
     get: function get() {
       return 'sharedAction';
     }
+
     /**
      * The dialog has been dismissed.
      * @platform ios
      */
 
   }, {
-    key: "dismissedAction",
+    key: 'dismissedAction',
     get: function get() {
       return 'dismissedAction';
     }

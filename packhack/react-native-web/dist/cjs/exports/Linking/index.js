@@ -1,11 +1,12 @@
-"use strict";
+'use strict';
 
 exports.__esModule = true;
-exports.default = void 0;
 
-var _ExecutionEnvironment = require("fbjs/lib/ExecutionEnvironment");
+var _ExecutionEnvironment = require('fbjs/lib/ExecutionEnvironment');
 
-var _invariant = _interopRequireDefault(require("fbjs/lib/invariant"));
+var _invariant = require('fbjs/lib/invariant');
+
+var _invariant2 = _interopRequireDefault(_invariant);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -18,7 +19,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  *
  * 
  */
+
 var initialURL = _ExecutionEnvironment.canUseDOM ? window.location.href : '';
+
 var Linking = {
   addEventListener: function addEventListener() {},
   removeEventListener: function removeEventListener() {},
@@ -37,8 +40,8 @@ var Linking = {
     }
   },
   _validateURL: function _validateURL(url) {
-    (0, _invariant.default)(typeof url === 'string', 'Invalid URL: should be a string. Was: ' + url);
-    (0, _invariant.default)(url, 'Invalid URL: cannot be empty');
+    (0, _invariant2.default)(typeof url === 'string', 'Invalid URL: should be a string. Was: ' + url);
+    (0, _invariant2.default)(url, 'Invalid URL: cannot be empty');
   }
 };
 
@@ -48,5 +51,5 @@ var open = function open(url) {
   }
 };
 
-var _default = Linking;
-exports.default = _default;
+exports.default = Linking;
+module.exports = exports['default'];

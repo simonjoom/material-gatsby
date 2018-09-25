@@ -44,17 +44,15 @@ module.exports = (api, args, defaultReturn, argTransform) => {
       return [defaultReturn]
     }
   } else {
-    let result = plugins.reduce(
+    var result = plugins.reduce(
       (previous, next) =>
-        next.plugin[api]
-          ? previous.then(() => {
+        next.plugin[api]  ? previous.then(() => {
           const result =  next.plugin[api](args, next.options)
       if (result && argTransform) {
         args = argTransform({ args, result })
       }
       return result
-          })
-          : previous,
+          }) : previous,
       Promise.resolve()
     )
     return result

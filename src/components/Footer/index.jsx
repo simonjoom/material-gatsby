@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import Button from "react-md/lib/Buttons";
 import { View, Text } from "react-native";
 import { Link } from "gatsby";
+import Button from "../../reactLIB/Button";
+import Icon from "../../reactLIB/Icon";
 import UserLinks from "../UserLinks";
 import config from "../../../data/SiteConfig";
 import "./Footer.scss";
@@ -21,10 +22,10 @@ class Footer extends Component {
         <View className="notice-container">
           <View className="contact-us">
             <Text className="contact-item">
-            <i className="fa fa-phone" /> Call Us: +33 6 75 505209{" "}
+              <Icon className="phone" /> Call Us: +33 6 75 505209{" "}
             </Text>
             <Text className="contact-item">
-            <i className="fa fa-envelope" /> e-mail us: simon@skiscool.com
+              <Icon className="envelope" /> e-mail us: simon@skiscool.com
             </Text>
           </View>
           <div className="c1 c5 c2 py2 fit center mx-auto">
@@ -39,14 +40,13 @@ class Footer extends Component {
             <img src="https://skiscool.com/dist/pic/apogee.jpg" />
             <img src="https://skiscool.com/dist/pic/davidcintract.jpg" />
           </div>
- 		 
         </View>
- 		<div className="bottom-section">
+        <div className="bottom-section">
           {userLinks ? <UserLinks config={config} labeled /> : null}
 
           <div className="rss">
             <Link to={url}>
-              <Button flat secondary iconClassName="fa fa-rss">
+              <Button flat secondary className="fa fa-rss">
                 Subscribe
               </Button>
             </Link>

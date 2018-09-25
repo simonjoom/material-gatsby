@@ -6,5 +6,6 @@
  *
  * @noflow
  */
+
 import { hydrate } from 'react-dom';
 export default hydrate;

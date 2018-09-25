@@ -7,6 +7,7 @@
  * @providesModule isEmpty
  */
 'use strict';
+
 /**
  * Mimics empty from PHP.
  */
@@ -18,7 +19,6 @@ function isEmpty(obj) {
     for (var i in obj) {
       return false;
     }
-
     return true;
   } else {
     return !obj;

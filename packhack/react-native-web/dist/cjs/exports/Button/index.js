@@ -1,63 +1,95 @@
-"use strict";
+'use strict';
 
 exports.__esModule = true;
-exports.default = void 0;
 
-var _ColorPropType = _interopRequireDefault(require("../ColorPropType"));
+var _ColorPropType = require('../ColorPropType');
 
-var _StyleSheet = _interopRequireDefault(require("../StyleSheet"));
+var _ColorPropType2 = _interopRequireDefault(_ColorPropType);
 
-var _TouchableOpacity = _interopRequireDefault(require("../TouchableOpacity"));
+var _StyleSheet = require('../StyleSheet');
 
-var _Text = _interopRequireDefault(require("../Text"));
+var _StyleSheet2 = _interopRequireDefault(_StyleSheet);
 
-var _propTypes = require("prop-types");
+var _TouchableOpacity = require('../TouchableOpacity');
 
-var _react = _interopRequireWildcard(require("react"));
+var _TouchableOpacity2 = _interopRequireDefault(_TouchableOpacity);
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+var _Text = require('../Text');
+
+var _Text2 = _interopRequireDefault(_Text);
+
+var _propTypes = require('prop-types');
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Button =
-/*#__PURE__*/
-function (_Component) {
-  _inheritsLoose(Button, _Component);
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Copyright (c) 2016-present, Nicolas Gallagher.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * This source code is licensed under the MIT license found in the
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * LICENSE file in the root directory of this source tree.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
+var Button = function (_Component) {
+  _inherits(Button, _Component);
 
   function Button() {
-    return _Component.apply(this, arguments) || this;
+    _classCallCheck(this, Button);
+
+    return _possibleConstructorReturn(this, _Component.apply(this, arguments));
   }
 
-  var _proto = Button.prototype;
+  Button.prototype.render = function render() {
+    var _props = this.props,
+        accessibilityLabel = _props.accessibilityLabel,
+        color = _props.color,
+        disabled = _props.disabled,
+        onPress = _props.onPress,
+        testID = _props.testID,
+        title = _props.title;
 
-  _proto.render = function render() {
-    var _this$props = this.props,
-        accessibilityLabel = _this$props.accessibilityLabel,
-        color = _this$props.color,
-        disabled = _this$props.disabled,
-        onPress = _this$props.onPress,
-        testID = _this$props.testID,
-        title = _this$props.title;
-    return _react.default.createElement(_TouchableOpacity.default, {
-      accessibilityLabel: accessibilityLabel,
-      accessibilityRole: "button",
-      disabled: disabled,
-      onPress: onPress,
-      style: [styles.button, color && {
-        backgroundColor: color
-      }, disabled && styles.buttonDisabled],
-      testID: testID
-    }, _react.default.createElement(_Text.default, {
-      style: [styles.text, disabled && styles.textDisabled]
-    }, title));
+
+    return _react2.default.createElement(
+      _TouchableOpacity2.default,
+      {
+        accessibilityLabel: accessibilityLabel,
+        accessibilityRole: 'button',
+        disabled: disabled,
+        onPress: onPress,
+        style: [styles.button, color && { backgroundColor: color }, disabled && styles.buttonDisabled],
+        testID: testID
+      },
+      _react2.default.createElement(
+        _Text2.default,
+        { style: [styles.text, disabled && styles.textDisabled] },
+        title
+      )
+    );
   };
 
   return Button;
 }(_react.Component);
 
-var styles = _StyleSheet.default.create({
+Button.propTypes = process.env.NODE_ENV !== "production" ? {
+  accessibilityLabel: _propTypes.string,
+  color: _ColorPropType2.default,
+  disabled: _propTypes.bool,
+  onPress: _propTypes.func.isRequired,
+  testID: _propTypes.string,
+  title: _propTypes.string.isRequired
+} : {};
+
+
+var styles = _StyleSheet2.default.create({
   button: {
     backgroundColor: '#2196F3',
     borderRadius: 2
@@ -77,5 +109,5 @@ var styles = _StyleSheet.default.create({
   }
 });
 
-var _default = Button;
-exports.default = _default;
+exports.default = Button;
+module.exports = exports['default'];

@@ -6,9 +6,12 @@
  *
  * @noflow
  */
-import UIManager from '../UIManager'; // NativeModules shim
 
+import UIManager from '../UIManager';
+
+// NativeModules shim
 var NativeModules = {
   UIManager: UIManager
 };
+
 export default NativeModules;

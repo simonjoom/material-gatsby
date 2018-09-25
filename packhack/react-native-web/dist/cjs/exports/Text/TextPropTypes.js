@@ -1,25 +1,19 @@
-"use strict";
+'use strict';
 
 exports.__esModule = true;
-exports.default = void 0;
 
-var _StyleSheetPropType = _interopRequireDefault(require("../../modules/StyleSheetPropType"));
+var _StyleSheetPropType = require('../../modules/StyleSheetPropType');
 
-var _TextStylePropTypes = _interopRequireDefault(require("./TextStylePropTypes"));
+var _StyleSheetPropType2 = _interopRequireDefault(_StyleSheetPropType);
 
-var _propTypes = require("prop-types");
+var _TextStylePropTypes = require('./TextStylePropTypes');
+
+var _TextStylePropTypes2 = _interopRequireDefault(_TextStylePropTypes);
+
+var _propTypes = require('prop-types');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/**
- * Copyright (c) 2015-present, Nicolas Gallagher.
- * Copyright (c) 2015-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * 
- */
 var TextPropTypes = {
   accessibilityComponentType: _propTypes.string,
   accessibilityLabel: _propTypes.string,
@@ -36,8 +30,17 @@ var TextPropTypes = {
   onLayout: _propTypes.func,
   onPress: _propTypes.func,
   selectable: _propTypes.bool,
-  style: (0, _StyleSheetPropType.default)(_TextStylePropTypes.default),
+  style: (0, _StyleSheetPropType2.default)(_TextStylePropTypes2.default),
   testID: _propTypes.string
-};
-var _default = TextPropTypes;
-exports.default = _default;
+}; /**
+    * Copyright (c) 2015-present, Nicolas Gallagher.
+    * Copyright (c) 2015-present, Facebook, Inc.
+    *
+    * This source code is licensed under the MIT license found in the
+    * LICENSE file in the root directory of this source tree.
+    *
+    * 
+    */
+
+exports.default = TextPropTypes;
+module.exports = exports['default'];

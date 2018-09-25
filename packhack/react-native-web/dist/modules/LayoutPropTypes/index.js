@@ -6,10 +6,12 @@
  *
  * 
  */
+
 import { number, oneOf, oneOfType, string } from 'prop-types';
 var OverflowPropType = oneOf(['auto', 'hidden', 'scroll', 'visible']);
 var hiddenOrVisible = oneOf(['hidden', 'visible']);
 var numberOrString = oneOfType([number, string]);
+
 var LayoutPropTypes = {
   alignContent: oneOf(['center', 'flex-end', 'flex-start', 'space-around', 'space-between', 'stretch']),
   alignItems: oneOf(['baseline', 'center', 'flex-end', 'flex-start', 'stretch']),
@@ -69,12 +71,10 @@ var LayoutPropTypes = {
   visibility: hiddenOrVisible,
   width: numberOrString,
   zIndex: number,
-
   /**
    * @platform unsupported
    */
   aspectRatio: number,
-
   /**
    * @platform web
    */
@@ -91,4 +91,5 @@ var LayoutPropTypes = {
   gridTemplateRows: string,
   gridTemplateAreas: string
 };
+
 export default LayoutPropTypes;

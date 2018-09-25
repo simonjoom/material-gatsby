@@ -1,6 +1,7 @@
 const React = require(`react`);
 const fs = require(`fs`);
-const { join } = require(`path`);
+const { join } = require(`path`); 
+
 const { renderToString, renderToStaticMarkup } = require(`react-dom/server`);
 const { ServerLocation, Router, isRedirect } = require(`@reach/router`);
 const { get, merge, isObject, flatten, uniqBy } = require(`lodash`);
@@ -50,9 +51,9 @@ const getPage = path => pagesObjectMap.get(path);
 const createElement = React.createElement;
 
 export default (pagePath, callback) => {
-  let bodyHtml = ``;
+  let bodyHtml = ``; 
   let headComponents = [
-    <meta name="generator" content={`Gatsby ${gatsbyVersion}`} />
+    <meta name="generator" content="Gatsby" />
   ];
   let htmlAttributes = {};
   let bodyAttributes = {};
@@ -121,48 +122,46 @@ export default (pagePath, callback) => {
       console.log(`error`, pathToJsonData, e);
       process.exit();
     }
-  } 
-
-function Handler(WrappedComponent) {
-  return class extends React.Component { 
-    render() {  
-      return WrappedComponent
-    }
   }
-  }
-  //store.dispatch(async function(dispatch) {
-  var props = {
-    path: `/*`,
-    ...dataAndContext,
-    pathContext: dataAndContext.pageContext
-  };
-  var pageElement = createElement(
-    syncRequires.components[page.componentChunkName],
-    {
-      ...props
-    }
-  );
-  var wrappedPage = apiRunner(
-    `wrapPageElement_async`,
-    { element: pageElement, props },
-    pageElement,
-    ({ result }) => {
-      return { element: result, props };
-    }
-  );
   
-  wrappedPage.then((RouteHandler,props) => { 
-    const routerElement = createElement(
-      ServerLocation,
-      { url: `${__PATH_PREFIX__}${pagePath}` },
-      createElement(
-        Router,
-        {
-          baseuri: `${__PATH_PREFIX__}`
-        },
-        createElement(Handler(RouteHandler),{path: `/*`})
+
+  class RouteHandler extends React.Component {
+    render() {
+      const props = {
+        ...this.props,
+        ...dataAndContext,
+        pathContext: dataAndContext.pageContext,
+      }
+
+      const pageElement = createElement(
+        syncRequires.components[page.componentChunkName],
+        props
       )
-    );
+
+      const wrappedPage = apiRunner(
+        `wrapPageElement`,
+        { element: pageElement, props },
+        pageElement,
+        ({ result }) => {
+          return { element: result, props }
+        }
+      ).pop()
+
+      return wrappedPage
+    }
+  }
+
+  const routerElement = createElement(
+    ServerLocation,
+    { url: `${__PATH_PREFIX__}${pagePath}` },
+    createElement(
+      Router,
+      {
+        baseuri: `${__PATH_PREFIX__}`,
+      },
+      createElement(RouteHandler, { path: `/*` })
+    )
+  ) 
 
     const bodyComponent = apiRunner(
       `wrapRootElement`,
@@ -172,7 +171,7 @@ function Handler(WrappedComponent) {
         return { element: result };
       }
     ).pop();
-
+    
     // Let the site or plugin render the page component.
     apiRunner(`replaceRenderer`, {
       bodyComponent,
@@ -183,13 +182,16 @@ function Handler(WrappedComponent) {
       setPreBodyComponents,
       setPostBodyComponents,
       setBodyProps
-    })
+    }) 
 
     // If no one stepped up, we'll handle it.
-    if (!bodyHtml) {
-      try {
-        bodyHtml = renderToString(bodyComponent);
-      } catch (e) {
+    if (!bodyHtml) { 
+    
+      try { 
+        bodyHtml = renderToString(bodyComponent); 
+         
+      } catch (e) { 
+      console.log("error",e)
         // ignore @reach/router redirect errors
         if (!isRedirect(e)) throw e;
       }
@@ -385,5 +387,5 @@ function Handler(WrappedComponent) {
     )}`;
 
     callback(null, html); 
-  }).catch(err=>console.log(err));
+  //  })
 };

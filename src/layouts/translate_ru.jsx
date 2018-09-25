@@ -49,16 +49,18 @@ const translate = () => {
               i18n.addResources(lng, ns, JSON.parse(data));
             }
           });
+          global.locale[lang] = data.allLocale.edges;
           i18n.changeLanguage(lang);
           let t = namespace => i18n.getFixedT(null, [namespace, "common"]);
 
-          global.postEdges = data.allMarkdownRemark.edges;
+          global.postEdges = data.allMarkdownRemark.edges; 
           global.postEdges.forEach(postEdge => {
             const { title } = postEdge.node.frontmatter;
+            const tr = t("Index")(title);
             if (postEdge.node.fields.inmenu)
             global.menuList["ru"].push({
                 path: postEdge.node.fields.slug,
-                title: t("Index")(title)
+                title: tr
               });
           });
           console.log("changeLanguage", lang);

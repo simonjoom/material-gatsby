@@ -1,28 +1,42 @@
-"use strict";
+'use strict';
 
 exports.__esModule = true;
-exports.default = void 0;
 
-var _AnimatedImplementation = _interopRequireDefault(require("../../vendor/react-native/Animated/AnimatedImplementation"));
+var _AnimatedImplementation = require('../../vendor/react-native/Animated/AnimatedImplementation');
 
-var _Image = _interopRequireDefault(require("../Image"));
+var _AnimatedImplementation2 = _interopRequireDefault(_AnimatedImplementation);
 
-var _ScrollView = _interopRequireDefault(require("../ScrollView"));
+var _Image = require('../Image');
 
-var _Text = _interopRequireDefault(require("../Text"));
+var _Image2 = _interopRequireDefault(_Image);
 
-var _View = _interopRequireDefault(require("../View"));
+var _ScrollView = require('../ScrollView');
+
+var _ScrollView2 = _interopRequireDefault(_ScrollView);
+
+var _Text = require('../Text');
+
+var _Text2 = _interopRequireDefault(_Text);
+
+var _View = require('../View');
+
+var _View2 = _interopRequireDefault(_View);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+var Animated = Object.assign({}, _AnimatedImplementation2.default, {
+  Image: _AnimatedImplementation2.default.createAnimatedComponent(_Image2.default),
+  ScrollView: _AnimatedImplementation2.default.createAnimatedComponent(_ScrollView2.default),
+  View: _AnimatedImplementation2.default.createAnimatedComponent(_View2.default),
+  Text: _AnimatedImplementation2.default.createAnimatedComponent(_Text2.default)
+}); /**
+     * Copyright (c) 2016-present, Nicolas Gallagher.
+     *
+     * This source code is licensed under the MIT license found in the
+     * LICENSE file in the root directory of this source tree.
+     *
+     * 
+     */
 
-var Animated = _extends({}, _AnimatedImplementation.default, {
-  Image: _AnimatedImplementation.default.createAnimatedComponent(_Image.default),
-  ScrollView: _AnimatedImplementation.default.createAnimatedComponent(_ScrollView.default),
-  View: _AnimatedImplementation.default.createAnimatedComponent(_View.default),
-  Text: _AnimatedImplementation.default.createAnimatedComponent(_Text.default)
-});
-
-var _default = Animated;
-exports.default = _default;
+exports.default = Animated;
+module.exports = exports['default'];

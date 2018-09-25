@@ -1,11 +1,12 @@
-"use strict";
+'use strict';
 
 exports.__esModule = true;
-exports.default = void 0;
 
-var _ColorPropType = _interopRequireDefault(require("../../exports/ColorPropType"));
+var _ColorPropType = require('../../exports/ColorPropType');
 
-var _propTypes = require("prop-types");
+var _ColorPropType2 = _interopRequireDefault(_ColorPropType);
+
+var _propTypes = require('prop-types');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -17,9 +18,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  *
  * 
  */
+
 var numberOrString = (0, _propTypes.oneOfType)([_propTypes.number, _propTypes.string]);
+
 var ShadowPropTypes = {
-  shadowColor: _ColorPropType.default,
+  shadowColor: _ColorPropType2.default,
   shadowOffset: (0, _propTypes.shape)({
     width: numberOrString,
     height: numberOrString
@@ -28,5 +31,6 @@ var ShadowPropTypes = {
   shadowRadius: numberOrString,
   shadowSpread: numberOrString
 };
-var _default = ShadowPropTypes;
-exports.default = _default;
+
+exports.default = ShadowPropTypes;
+module.exports = exports['default'];

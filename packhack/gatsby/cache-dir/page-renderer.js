@@ -41,8 +41,7 @@ componentDidMount(){
     wrappedPage.then((end)=>{
     this.setState({wrappedPage:end})
 }) 
-}
-
+} 
 componentDidUpdate(nextprops, prevState) { 
 console.log("pageResources",nextprops.location.pathname!==this.props.location.pathname)
 if(nextprops.location.pathname!==this.props.location.pathname){
@@ -81,6 +80,39 @@ if(nextprops.location.pathname!==this.props.location.pathname){
     return this.state.wrappedPage 
   }
 }
+/*
+// Renders page
+class PageRenderer extends React.Component {
+  render() {
+    const props = {
+      ...this.props,
+      pathContext: this.props.pageContext,
+    }
+
+    const [replacementElement] = apiRunner(`replaceComponentRenderer`, {
+      props: this.props,
+      loader: publicLoader,
+    })
+
+    const pageElement =
+      replacementElement ||
+      createElement(this.props.pageResources.component, {
+        ...props,
+        key: this.props.location.pathname,
+      })
+
+    const wrappedPage = apiRunner(
+      `wrapPageElement`,
+      { element: pageElement, props },
+      pageElement,
+      ({ result }) => {
+        return { element: result, props }
+      }
+    ).pop()
+
+    return wrappedPage
+  }
+}*/
 
 PageRenderer.propTypes = {
   location: PropTypes.object.isRequired,

@@ -40,19 +40,28 @@ apiRunnerAsync(`onClientEntry`).then(() => {
 
   const rootElement = document.getElementById(`___gatsby`)
 
-  const renderer = apiRunner(
-    `replaceHydrateFunction`,
-    undefined,
-    ReactDOM.render
-  )[0]
+      const renderer2 = apiRunnerAsync(
+        `replaceHydrateFunction`,
+        undefined,
+        ReactDOM.hydrate
+      )
 
+       
   loader.addPagesArray(pages)
   loader.addDevRequires(syncRequires)
 
   loader.getResourcesForPathname(window.location.pathname).then(() => {
     let Root = hot(module)(preferDefault(require(`./root`)))
-    domReady(() => {
-      renderer(<Root />, rootElement, () => {
+
+      domReady(async () => {
+      let renderer;
+       try {
+    renderer = await renderer2;
+  }
+  catch (rejectedValue) {
+  console.log("rejectedValue",rejectedValue)
+  }
+      return renderer(<Root />, rootElement, () => {
         apiRunner(`onInitialClientRender`)
       })
     })

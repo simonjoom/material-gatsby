@@ -1,4 +1,5 @@
 import UnimplementedView from './modules/UnimplementedView';
+
 import createElement from './exports/createElement';
 import findNodeHandle from './exports/findNodeHandle';
 import processColor from './exports/processColor';
@@ -6,8 +7,9 @@ import render from './exports/render';
 import unmountComponentAtNode from './exports/unmountComponentAtNode';
 import NativeModules from './exports/NativeModules';
 import TextPropTypes from './exports/TextPropTypes';
-import ViewPropTypes from './exports/ViewPropTypes'; // APIs
+import ViewPropTypes from './exports/ViewPropTypes';
 
+// APIs
 import AccessibilityInfo from './exports/AccessibilityInfo';
 import Alert from './exports/Alert';
 import Animated from './exports/Animated';
@@ -32,8 +34,9 @@ import Platform from './exports/Platform';
 import Share from './exports/Share';
 import StyleSheet from './exports/StyleSheet';
 import UIManager from './exports/UIManager';
-import Vibration from './exports/Vibration'; // components
+import Vibration from './exports/Vibration';
 
+// components
 import ActivityIndicator from './exports/ActivityIndicator';
 import ART from './exports/ART';
 import Button from './exports/Button';
@@ -64,13 +67,15 @@ import TouchableOpacity from './exports/TouchableOpacity';
 import TouchableWithoutFeedback from './exports/TouchableWithoutFeedback';
 import View from './exports/View';
 import VirtualizedList from './exports/VirtualizedList';
-import YellowBox from './exports/YellowBox'; // propTypes
+import YellowBox from './exports/YellowBox';
 
+// propTypes
 import ColorPropType from './exports/ColorPropType';
 import EdgeInsetsPropType from './exports/EdgeInsetsPropType';
 import PointPropType from './exports/PointPropType';
-var emptyObject = {}; // compat (components)
 
+var emptyObject = {};
+// compat (components)
 var DatePickerIOS = UnimplementedView;
 var DrawerLayoutAndroid = UnimplementedView;
 var ImageEditor = UnimplementedView;
@@ -87,8 +92,8 @@ var TabBarIOS = UnimplementedView;
 var ToastAndroid = UnimplementedView;
 var ToolbarAndroid = UnimplementedView;
 var ViewPagerAndroid = UnimplementedView;
-var WebView = UnimplementedView; // compat (apis)
-
+var WebView = UnimplementedView;
+// compat (apis)
 var ActionSheetIOS = emptyObject;
 var AlertIOS = emptyObject;
 var CameraRoll = emptyObject;
@@ -102,14 +107,23 @@ var Systrace = emptyObject;
 var TimePickerAndroid = emptyObject;
 var TVEventHandler = emptyObject;
 var VibrationIOS = emptyObject;
-export { // top-level API
-createElement, findNodeHandle, render, unmountComponentAtNode, // modules
-processColor, NativeModules, TextPropTypes, ViewPropTypes, // APIs
-AccessibilityInfo, Alert, Animated, AppRegistry, AppState, AsyncStorage, BackHandler, Clipboard, DeviceInfo, Dimensions, Easing, I18nManager, InteractionManager, Keyboard, LayoutAnimation, Linking, NativeEventEmitter, NetInfo, PanResponder, PixelRatio, Platform, Share, StyleSheet, UIManager, Vibration, // components
-ActivityIndicator, ART, Button, CheckBox, FlatList, Image, ImageBackground, KeyboardAvoidingView, ListView, Modal, Picker, ProgressBar, RefreshControl, SafeAreaView, ScrollView, SectionList, Slider, StatusBar, SwipeableFlatList, SwipeableListView, Switch, Text, TextInput, Touchable, TouchableHighlight, TouchableNativeFeedback, TouchableOpacity, TouchableWithoutFeedback, View, VirtualizedList, YellowBox, // propTypes
-ColorPropType, EdgeInsetsPropType, PointPropType, // compat (components)
-DatePickerIOS, DrawerLayoutAndroid, ImageEditor, ImageStore, InputAccessoryView, MaskedViewIOS, NavigatorIOS, PickerIOS, ProgressBarAndroid, ProgressViewIOS, SegmentedControlIOS, SnapshotViewIOS, TabBarIOS, ToastAndroid, ToolbarAndroid, ViewPagerAndroid, WebView, // compat (apis)
+
+export {
+// top-level API
+createElement, findNodeHandle, render, unmountComponentAtNode,
+// modules
+processColor, NativeModules, TextPropTypes, ViewPropTypes,
+// APIs
+AccessibilityInfo, Alert, Animated, AppRegistry, AppState, AsyncStorage, BackHandler, Clipboard, DeviceInfo, Dimensions, Easing, I18nManager, InteractionManager, Keyboard, LayoutAnimation, Linking, NativeEventEmitter, NetInfo, PanResponder, PixelRatio, Platform, Share, StyleSheet, UIManager, Vibration,
+// components
+ActivityIndicator, ART, Button, CheckBox, FlatList, Image, ImageBackground, KeyboardAvoidingView, ListView, Modal, Picker, ProgressBar, RefreshControl, SafeAreaView, ScrollView, SectionList, Slider, StatusBar, SwipeableFlatList, SwipeableListView, Switch, Text, TextInput, Touchable, TouchableHighlight, TouchableNativeFeedback, TouchableOpacity, TouchableWithoutFeedback, View, VirtualizedList, YellowBox,
+// propTypes
+ColorPropType, EdgeInsetsPropType, PointPropType,
+// compat (components)
+DatePickerIOS, DrawerLayoutAndroid, ImageEditor, ImageStore, InputAccessoryView, MaskedViewIOS, NavigatorIOS, PickerIOS, ProgressBarAndroid, ProgressViewIOS, SegmentedControlIOS, SnapshotViewIOS, TabBarIOS, ToastAndroid, ToolbarAndroid, ViewPagerAndroid, WebView,
+// compat (apis)
 ActionSheetIOS, AlertIOS, CameraRoll, DatePickerAndroid, ImagePickerIOS, PermissionsAndroid, PushNotificationIOS, Settings, StatusBarIOS, Systrace, TimePickerAndroid, TVEventHandler, VibrationIOS };
+
 var ReactNative = {
   // top-level API
   createElement: createElement,
@@ -216,4 +230,5 @@ var ReactNative = {
   TVEventHandler: TVEventHandler,
   VibrationIOS: VibrationIOS
 };
+
 export default ReactNative;

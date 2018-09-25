@@ -7,9 +7,12 @@
  *
  * 
  */
+
 import { canUseDOM } from 'fbjs/lib/ExecutionEnvironment';
 import invariant from 'fbjs/lib/invariant';
+
 var initialURL = canUseDOM ? window.location.href : '';
+
 var Linking = {
   addEventListener: function addEventListener() {},
   removeEventListener: function removeEventListener() {},

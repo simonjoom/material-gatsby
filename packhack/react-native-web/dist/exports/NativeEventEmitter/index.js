@@ -6,5 +6,6 @@
  *
  * 
  */
+
 import NativeEventEmitter from '../../vendor/react-native/NativeEventEmitter';
 export default NativeEventEmitter;

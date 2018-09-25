@@ -1,11 +1,14 @@
-"use strict";
+'use strict';
 
 exports.__esModule = true;
-exports.default = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = require('react');
 
-var _ = _interopRequireDefault(require("./"));
+var _react2 = _interopRequireDefault(_react);
+
+var _ = require('./');
+
+var _2 = _interopRequireDefault(_);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -18,18 +21,17 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  *
  * 
  */
+
 var PickerItemPropType = function PickerItemPropType(props, propName, componentName) {
   var prop = props[propName];
   var error = null;
-
-  _react.default.Children.forEach(prop, function (child) {
-    if (child.type !== _.default.Item) {
+  _react2.default.Children.forEach(prop, function (child) {
+    if (child.type !== _2.default.Item) {
       error = new Error('`Picker` children must be of type `Picker.Item`.');
     }
   });
-
   return error;
 };
 
-var _default = PickerItemPropType;
-exports.default = _default;
+exports.default = PickerItemPropType;
+module.exports = exports['default'];

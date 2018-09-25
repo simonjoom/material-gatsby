@@ -11,7 +11,7 @@ const noop = () => {};
 
 const defaultStatusFormatter = (current, total) => `${current} of ${total}`;
 
-class Carousel extends Component {
+export default class Carousel extends Component {
   static displayName = "Carousel";
 
   static propTypes = {
@@ -702,4 +702,3 @@ class Carousel extends Component {
   }
 }
 //               { this.renderThumbs() }
-export default Carousel;

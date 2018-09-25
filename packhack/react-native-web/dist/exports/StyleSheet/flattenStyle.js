@@ -7,6 +7,7 @@
  *
  * 
  */
+
 import ReactNativePropRegistry from '../../modules/ReactNativePropRegistry';
 import invariant from 'fbjs/lib/invariant';
 
@@ -14,7 +15,6 @@ function getStyle(style) {
   if (typeof style === 'number') {
     return ReactNativePropRegistry.getByID(style);
   }
-
   return style;
 }
 
@@ -33,10 +33,8 @@ function flattenStyle(style) {
   }
 
   var result = {};
-
   for (var i = 0, styleLength = style.length; i < styleLength; ++i) {
     var computedStyle = flattenStyle(style[i]);
-
     if (computedStyle) {
       for (var key in computedStyle) {
         var value = computedStyle[key];
@@ -44,7 +42,6 @@ function flattenStyle(style) {
       }
     }
   }
-
   return result;
 }
 

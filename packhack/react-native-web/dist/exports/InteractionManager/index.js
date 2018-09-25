@@ -7,8 +7,10 @@
  *
  * 
  */
+
 import invariant from 'fbjs/lib/invariant';
 import requestIdleCallback, { cancelIdleCallback } from '../../modules/requestIdleCallback';
+
 var InteractionManager = {
   Events: {
     interactionStart: 'interactionStart',
@@ -19,7 +21,8 @@ var InteractionManager = {
    * Schedule a function to run after all interactions have completed.
    */
   runAfterInteractions: function runAfterInteractions(task) {
-    var handle;
+    var handle = void 0;
+
     var promise = new Promise(function (resolve) {
       handle = requestIdleCallback(function () {
         if (task) {
@@ -36,6 +39,7 @@ var InteractionManager = {
     };
   },
 
+
   /**
    * Notify manager that an interaction has started.
    */
@@ -43,12 +47,16 @@ var InteractionManager = {
     return 1;
   },
 
+
   /**
    * Notify manager that an interaction has completed.
    */
   clearInteractionHandle: function clearInteractionHandle(handle) {
     invariant(!!handle, 'Must provide a handle to clear.');
   },
+
+
   addListener: function addListener() {}
 };
+
 export default InteractionManager;

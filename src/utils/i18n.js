@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import i18n from "i18next";
-import Backend from "i18next-xhr-backend";
-import { graphql } from "gatsby";
+import Backend from "i18next-xhr-backend"; 
 import LanguageDetector from "i18next-browser-languagedetector";
 //import { reactI18nextModule } from "react-i18next";
 import config from "../config";
@@ -12,10 +11,8 @@ const options = {
 
   // have a common namespace used around the full app
   ns: ["common"],
-  defaultNS: "common",
-
-  debug: false, // process.env.NODE_ENV !== 'production',
-  saveMissing: true,
+  defaultNS: "common", 
+  debug: false, // process.env.NODE_ENV !== 'production', 
 
   interpolation: {
     escapeValue: false, // not needed for react!!

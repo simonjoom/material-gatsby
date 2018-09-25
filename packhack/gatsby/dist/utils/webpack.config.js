@@ -58,7 +58,7 @@ function () {
     function processEnv(stage, defaultNodeEnv) {
       debug(`Building env for "${stage}"`); 
       console.log("Building env",process.env.NODE_ENV)
-      const env = process.env.NODE_ENV ? process.env.NODE_ENV : `${defaultNodeEnv}`; 
+    const env = process.env.NODE_ENV ? process.env.NODE_ENV : `${defaultNodeEnv}`; 
       const envFile = path.join(process.cwd(), `./.env.${env}`);
       let parsed = {};
 
@@ -465,9 +465,9 @@ function () {
         },
         splitChunks: {
           name: false
-        },
-        minimizer: [// TODO: maybe this option should be noMinimize?
-        !program.noUglify && plugins.minifyJs(), plugins.minifyCss()].filter(Boolean)
+        }, 
+    //    nodeEnv:"development",
+     minimizer: [  !program.noUglify && plugins.minifyJs(), plugins.minifyCss()].filter(Boolean)
       };
     }
 

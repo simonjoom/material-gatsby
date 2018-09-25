@@ -25,7 +25,7 @@ const Localetosrc = {
 class LanguageSwitcher extends Component {
   constructor(props) {
     super(props);
-    console.log("i18n.language", i18n.language);
+   // console.log("i18n.language", i18n.language);
     this.language = this.getLanguage();
     this.route = this.props.route;
   }
@@ -54,7 +54,7 @@ class LanguageSwitcher extends Component {
       { code: "pt", label: "Portuguese" },
       { code: "uk", label: "Ukrainien" },
       { code: "ch", label: "Chinese" }
-    ];
+    ]; 
     const lng = this.getLanguage();
     const label = languages.find(el => el.code == lng).label;
     return (

@@ -1,7 +1,6 @@
-"use strict";
+'use strict';
 
 exports.__esModule = true;
-exports.default = void 0;
 var ImageResizeMode = {
   center: 'center',
   contain: 'contain',
@@ -10,5 +9,6 @@ var ImageResizeMode = {
   repeat: 'repeat',
   stretch: 'stretch'
 };
-var _default = ImageResizeMode;
-exports.default = _default;
+
+exports.default = ImageResizeMode;
+module.exports = exports['default'];

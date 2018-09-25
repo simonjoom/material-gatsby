@@ -6,41 +6,16 @@
  *
  * 
  */
+
 import { arrayOf, number, oneOf, oneOfType, shape, string } from 'prop-types';
 var numberOrString = oneOfType([number, string]);
+
 var TransformPropTypes = {
   perspective: oneOfType([number, string]),
   perspectiveOrigin: string,
-  transform: arrayOf(oneOfType([shape({
-    perspective: numberOrString
-  }), shape({
-    rotate: string
-  }), shape({
-    rotateX: string
-  }), shape({
-    rotateY: string
-  }), shape({
-    rotateZ: string
-  }), shape({
-    scale: number
-  }), shape({
-    scaleX: number
-  }), shape({
-    scaleY: number
-  }), shape({
-    skewX: string
-  }), shape({
-    skewY: string
-  }), shape({
-    translateX: numberOrString
-  }), shape({
-    translateY: numberOrString
-  }), shape({
-    translateZ: numberOrString
-  }), shape({
-    translate3d: string
-  })])),
+  transform: arrayOf(oneOfType([shape({ perspective: numberOrString }), shape({ rotate: string }), shape({ rotateX: string }), shape({ rotateY: string }), shape({ rotateZ: string }), shape({ scale: number }), shape({ scaleX: number }), shape({ scaleY: number }), shape({ skewX: string }), shape({ skewY: string }), shape({ translateX: numberOrString }), shape({ translateY: numberOrString }), shape({ translateZ: numberOrString }), shape({ translate3d: string })])),
   transformOrigin: string,
   transformStyle: oneOf(['flat', 'preserve-3d'])
 };
+
 export default TransformPropTypes;

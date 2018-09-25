@@ -1,21 +1,33 @@
-"use strict";
+'use strict';
 
 exports.__esModule = true;
-exports.default = void 0;
 
-var _AccessibilityUtil = _interopRequireDefault(require("../AccessibilityUtil"));
+var _AccessibilityUtil = require('../AccessibilityUtil');
 
-var _StyleSheet = _interopRequireDefault(require("../../exports/StyleSheet"));
+var _AccessibilityUtil2 = _interopRequireDefault(_AccessibilityUtil);
 
-var _styleResolver2 = _interopRequireDefault(require("../../exports/StyleSheet/styleResolver"));
+var _StyleSheet = require('../../exports/StyleSheet');
+
+var _StyleSheet2 = _interopRequireDefault(_StyleSheet);
+
+var _styleResolver2 = require('../../exports/StyleSheet/styleResolver');
+
+var _styleResolver3 = _interopRequireDefault(_styleResolver2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; } /**
+                                                                                                                                                                                                                              * Copyright (c) 2015-present, Nicolas Gallagher.
+                                                                                                                                                                                                                              *
+                                                                                                                                                                                                                              * This source code is licensed under the MIT license found in the
+                                                                                                                                                                                                                              * LICENSE file in the root directory of this source tree.
+                                                                                                                                                                                                                              *
+                                                                                                                                                                                                                              * @noflow
+                                                                                                                                                                                                                              */
 
 var emptyObject = {};
 
-var resetStyles = _StyleSheet.default.create({
+var resetStyles = _StyleSheet2.default.create({
   ariaButton: {
     cursor: 'pointer'
   },
@@ -49,7 +61,7 @@ var resetStyles = _StyleSheet.default.create({
   }
 });
 
-var pointerEventsStyles = _StyleSheet.default.create({
+var pointerEventsStyles = _StyleSheet2.default.create({
   auto: {
     pointerEvents: 'auto'
   },
@@ -65,7 +77,7 @@ var pointerEventsStyles = _StyleSheet.default.create({
 });
 
 var defaultStyleResolver = function defaultStyleResolver(style) {
-  return _styleResolver2.default.resolve(style);
+  return _styleResolver3.default.resolve(style);
 };
 
 var createDOMProps = function createDOMProps(component, props, styleResolver) {
@@ -89,47 +101,42 @@ var createDOMProps = function createDOMProps(component, props, styleResolver) {
       accessibilityComponentType = _props.accessibilityComponentType,
       accessibilityRole = _props.accessibilityRole,
       accessibilityTraits = _props.accessibilityTraits,
-      domProps = _objectWithoutPropertiesLoose(_props, ["accessibilityLabel", "accessibilityLiveRegion", "importantForAccessibility", "placeholderTextColor", "pointerEvents", "style", "testID", "accessible", "accessibilityComponentType", "accessibilityRole", "accessibilityTraits"]);
+      domProps = _objectWithoutProperties(_props, ['accessibilityLabel', 'accessibilityLiveRegion', 'importantForAccessibility', 'placeholderTextColor', 'pointerEvents', 'style', 'testID', 'accessible', 'accessibilityComponentType', 'accessibilityRole', 'accessibilityTraits']);
 
-  var disabled = _AccessibilityUtil.default.isDisabled(props);
+  var disabled = _AccessibilityUtil2.default.isDisabled(props);
+  var role = _AccessibilityUtil2.default.propsToAriaRole(props);
 
-  var role = _AccessibilityUtil.default.propsToAriaRole(props); // GENERAL ACCESSIBILITY
-
-
+  // GENERAL ACCESSIBILITY
   if (importantForAccessibility === 'no-hide-descendants') {
     domProps['aria-hidden'] = true;
   }
-
   if (accessibilityLabel && accessibilityLabel.constructor === String) {
     domProps['aria-label'] = accessibilityLabel;
   }
-
   if (accessibilityLiveRegion && accessibilityLiveRegion.constructor === String) {
     domProps['aria-live'] = accessibilityLiveRegion === 'none' ? 'off' : accessibilityLiveRegion;
   }
-
   if (role && role.constructor === String && role !== 'label') {
     domProps.role = role;
-  } // DISABLED
+  }
 
-
+  // DISABLED
   if (disabled) {
     domProps['aria-disabled'] = disabled;
     domProps.disabled = disabled;
-  } // FOCUS
+  }
+
+  // FOCUS
   // Assume that 'link' is focusable by default (uses <a>).
   // Assume that 'button' is not (uses <div role='button'>) but must be treated as such.
-
-
   var focusable = !disabled && importantForAccessibility !== 'no' && importantForAccessibility !== 'no-hide-descendants';
-
   if (role === 'link' || component === 'input' || component === 'select' || component === 'textarea') {
     if (accessible === false || !focusable) {
       domProps.tabIndex = '-1';
     } else {
       domProps['data-focusable'] = true;
     }
-  } else if (role === 'button' || role === 'textbox') {
+  } else if (_AccessibilityUtil2.default.buttonLikeRoles[role] || role === 'textbox') {
     if (accessible !== false && focusable) {
       domProps['data-focusable'] = true;
       domProps.tabIndex = '0';
@@ -139,32 +146,28 @@ var createDOMProps = function createDOMProps(component, props, styleResolver) {
       domProps['data-focusable'] = true;
       domProps.tabIndex = '0';
     }
-  } // STYLE
+  }
+
+  // STYLE
   // Resolve React Native styles to optimized browser equivalent
-
-
-  var reactNativeStyle = [component === 'a' && resetStyles.link, component === 'button' && resetStyles.button, role === 'heading' && resetStyles.heading, component === 'ul' && resetStyles.list, role === 'button' && !disabled && resetStyles.ariaButton, pointerEvents && pointerEventsStyles[pointerEvents], providedStyle, placeholderTextColor && {
-    placeholderTextColor: placeholderTextColor
-  }];
+  var reactNativeStyle = [component === 'a' && resetStyles.link, component === 'button' && resetStyles.button, role === 'heading' && resetStyles.heading, component === 'ul' && resetStyles.list, role === 'button' && !disabled && resetStyles.ariaButton, pointerEvents && pointerEventsStyles[pointerEvents], providedStyle, placeholderTextColor && { placeholderTextColor: placeholderTextColor }];
 
   var _styleResolver = styleResolver(reactNativeStyle),
       className = _styleResolver.className,
       style = _styleResolver.style;
 
   if (className && className.constructor === String) {
-    domProps.className = props.className ? props.className + " " + className : className;
+    domProps.className = props.className ? props.className + ' ' + className : className;
   }
-
   if (style) {
     domProps.style = style;
-  } // OTHER
-  // Link security and automation test ids
-
-
-  if (component === 'a' && domProps.target === '_blank') {
-    domProps.rel = (domProps.rel || '') + " noopener noreferrer";
   }
 
+  // OTHER
+  // Link security and automation test ids
+  if (component === 'a' && domProps.target === '_blank') {
+    domProps.rel = (domProps.rel || '') + ' noopener noreferrer';
+  }
   if (testID && testID.constructor === String) {
     domProps['data-testid'] = testID;
   }
@@ -172,5 +175,5 @@ var createDOMProps = function createDOMProps(component, props, styleResolver) {
   return domProps;
 };
 
-var _default = createDOMProps;
-exports.default = _default;
+exports.default = createDOMProps;
+module.exports = exports['default'];

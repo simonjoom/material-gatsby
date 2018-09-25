@@ -6,6 +6,7 @@
  *
  * @noflow
  */
+
 var CSS_UNIT_RE = /^[+-]?\d*(?:\.\d+)?(?:[Ee][+-]?\d+)?(%|\w*)/;
 
 var getUnit = function getUnit(str) {
@@ -20,7 +21,7 @@ var multiplyStyleLengthValue = function multiplyStyleLengthValue(value, multiple
   if (typeof value === 'string') {
     var number = parseFloat(value) * multiple;
     var unit = getUnit(value);
-    return "" + number + unit;
+    return '' + number + unit;
   } else if (isNumeric(value)) {
     return value * multiple;
   }

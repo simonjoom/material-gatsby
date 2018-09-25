@@ -6,10 +6,13 @@
  *
  * 
  */
+
 import ColorPropType from '../../exports/ColorPropType';
 import { number, oneOf, oneOfType, string } from 'prop-types';
+
 var numberOrString = oneOfType([number, string]);
 var BorderStylePropType = oneOf(['solid', 'dotted', 'dashed']);
+
 var BorderPropTypes = {
   borderColor: ColorPropType,
   borderBottomColor: ColorPropType,
@@ -35,4 +38,5 @@ var BorderPropTypes = {
   borderStartStyle: BorderStylePropType,
   borderTopStyle: BorderStylePropType
 };
+
 export default BorderPropTypes;

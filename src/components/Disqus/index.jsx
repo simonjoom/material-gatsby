@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import ReactDisqusComments from "react-disqus-comments";
+import moment from "moment"; 
 import urljoin from "url-join";
-import Card from "react-md/lib/Cards/Card";
-import CardTitle from "react-md/lib/Cards/CardTitle";
-import CardText from "react-md/lib/Cards/CardText";
 import Avatar from "react-md/lib/Avatars";
 import FontIcon from "react-md/lib/FontIcons";
 import Snackbar from "react-md/lib/Snackbars";
 import config from "../../../data/SiteConfig";
+import Card from "../../reactLIB/Card"; 
+import Icon from "../../reactLIB/Icon";
+import Button from "../../reactLIB/Button";
 
 class Disqus extends Component {
   constructor(props) {
@@ -29,7 +30,7 @@ class Disqus extends Component {
     this.setState({ toasts });
   }
   render() {
-    const { postNode, expanded } = this.props;
+    const { postNode } = this.props;
     if (!config.disqusShortname) {
       return null;
     }
@@ -41,13 +42,26 @@ class Disqus extends Component {
     );
 
     return (
-      <Card className="md-grid md-cell md-cell--12">
-        <CardTitle
-          title="Comments"
-          avatar={<Avatar icon={<FontIcon>comment</FontIcon>} />}
-          expander={!expanded}
-        />
-        <CardText expandable={!expanded}>
+      <Card
+        key={post.path}
+        waves="light"
+        className="md-grid md-cell md-cell--12-phone md-cell--4 md-cell--4-tablet"
+        contentImage={<Avatar icon={<FontIcon>comment</FontIcon>} />}
+        titlereveal="Comments"
+        title={
+          <>
+            <Avatar icon={<FontIcon>comment</FontIcon>} /> 
+            <Button className="btn md-cell--right">Comments</Button>
+          </>
+        }
+        imgtitle={
+          <div>
+            <Avatar icon={<Icon className="calendar" />} />
+            Published on{" "}
+            {`${moment(postNode.fields.date).format(config.dateFormat)}`}
+          </div>
+        }
+        reveal={
           <ReactDisqusComments
             shortname={config.disqusShortname}
             identifier={post.title}
@@ -56,7 +70,8 @@ class Disqus extends Component {
             category_id={post.category_id}
             onNewComment={this.notifyAboutComment}
           />
-        </CardText>
+        }
+      >
         <Snackbar
           toasts={this.state.toasts}
           onDismiss={this.onSnackbarDismiss}

@@ -135,12 +135,10 @@ function (_React$Component) {
       IOSupported = true;
     } // Always don't render image while server rendering
 
-
-    if (typeof window === "undefined") {
-      isVisible = false;
-      imgLoaded = false;
-    }
-
+if(isSSR){
+    var isVisible = true;
+    var imgLoaded = false;
+}
     _this.state = {
       Imgheight: Imgheight,
       isVisible: isVisible,
@@ -355,7 +353,7 @@ function (_React$Component) {
         style: {
           paddingBottom: presentationHeight ? presentationHeight : '60%',
           maxWidth: '100%',
-          opacity: this.state.imgLoaded ? 1 : 0,
+          opacity: 1,
           transitionDelay: "0.35s"
         },
         onLoadEnd: function onLoadEnd() {

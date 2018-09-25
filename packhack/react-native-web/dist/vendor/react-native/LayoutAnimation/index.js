@@ -7,12 +7,14 @@
  * @noflow
  * @format
  */
+
 import PropTypes from 'prop-types';
 import UIManager from '../../../exports/UIManager';
 
 var __DEV__ = process.env.NODE !== 'production';
-
 var checkPropTypes = PropTypes.checkPropTypes;
+
+
 var Types = {
   spring: 'spring',
   linear: 'linear',
@@ -21,21 +23,25 @@ var Types = {
   easeOut: 'easeOut',
   keyboard: 'keyboard'
 };
+
 var Properties = {
   opacity: 'opacity',
   scaleX: 'scaleX',
   scaleY: 'scaleY',
   scaleXY: 'scaleXY'
 };
+
 var animType = PropTypes.shape({
   duration: PropTypes.number,
   delay: PropTypes.number,
   springDamping: PropTypes.number,
   initialVelocity: PropTypes.number,
   type: PropTypes.oneOf(Object.keys(Types)).isRequired,
-  property: PropTypes.oneOf( // Only applies to create/delete
+  property: PropTypes.oneOf(
+  // Only applies to create/delete
   Object.keys(Properties))
 });
+
 var configType = PropTypes.shape({
   duration: PropTypes.number.isRequired,
   create: animType,
@@ -44,18 +50,13 @@ var configType = PropTypes.shape({
 });
 
 function checkConfig(config, location, name) {
-  checkPropTypes({
-    config: configType
-  }, {
-    config: config
-  }, location, name);
+  checkPropTypes({ config: configType }, { config: config }, location, name);
 }
 
 function configureNext(config, onAnimationDidEnd) {
   if (__DEV__) {
     checkConfig(config, 'config', 'LayoutAnimation.configureNext');
   }
-
   UIManager.configureNextLayoutAnimation(config, onAnimationDidEnd || function () {}, function () {
     /* unused */
   });
@@ -97,6 +98,7 @@ var Presets = {
     }
   }
 };
+
 /**
  * Automatically animates views to their new positions when the
  * next layout happens.
@@ -107,7 +109,6 @@ var Presets = {
  *
  *     UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
  */
-
 var LayoutAnimation = {
   /**
    * Schedules an animation to happen on the next layout.
@@ -124,7 +125,6 @@ var LayoutAnimation = {
    * @param onError Called on error. Only supported on iOS.
    */
   configureNext: configureNext,
-
   /**
    * Helper for creating a config for `configureNext`.
    */
@@ -137,4 +137,5 @@ var LayoutAnimation = {
   linear: configureNext.bind(null, Presets.linear),
   spring: configureNext.bind(null, Presets.spring)
 };
+
 export default LayoutAnimation;

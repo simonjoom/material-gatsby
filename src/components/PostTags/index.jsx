@@ -1,15 +1,17 @@
 import React, { Component } from "react";
 import { kebabCase } from "lodash";
-import i18next from "src/utils/i18n";
+import i18next from "../../utils/i18n";
 import { Link } from "gatsby";
 import Chip from "react-md/lib/Chips";
 import "./PostTags.scss";
 
 class PostTags extends Component {
   render() {
-    const lng = i18next.language;
-    console.log("langueTags",lng)
+    const lng = i18next.language; 
     const { tags } = this.props;
+    if(!lng)
+    return null;
+
     return (
       <div className="post-tag-container">
         {tags &&
