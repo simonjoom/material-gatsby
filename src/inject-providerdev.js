@@ -81,6 +81,13 @@ export const wrapPageElement = async ({ element, props }) => {
       Red = "div";
     }
   } else {
+    console.log("dev",global.locale)
+    global.locale[lng].forEach(({ node }) => {
+      const { lng, ns, data } = node;
+      if (!i18n.hasResourceBundle(lng, ns)) {
+        i18n.addResources(lng, ns, JSON.parse(data));
+      }
+    });
     Red = "div";
   } 
 /*

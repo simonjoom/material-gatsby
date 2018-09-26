@@ -86,13 +86,7 @@ const GetImage = ({
               )
             }
             resizeMode={ismain ? "contain" : "center"}
-            imgStyle={
-              ismain
-                ? {
-                    backgroundPosition: "right top"
-                  }
-                : {}
-            }
+            positionImage={"right"} 
             fluid={FileNode.node.childImageSharp.fluid}
             height={height}
             width={width}

@@ -47,8 +47,8 @@ const translate = () => {
               i18n.addResources(lng, ns, JSON.parse(data));
             }
           });
-          global.locale[lang] = data.allLocale.edges;
-          i18n.changeLanguage(lang);
+          global.locale["ru"] = data.allLocale.edges;
+          i18n.changeLanguage("ru");
           let t = namespace => i18n.getFixedT(null, [namespace, "common"]);
 
           global.postEdges = data.allMarkdownRemark.edges; 

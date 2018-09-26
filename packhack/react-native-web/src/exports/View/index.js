@@ -78,7 +78,6 @@ const styles = StyleSheet.create({
     margin: 0,
     padding: 0,
     position: 'relative',
-    zIndex: 0,
     // fix flexbox bugs
     minHeight: 0,
     minWidth: 0

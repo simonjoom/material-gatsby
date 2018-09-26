@@ -4,24 +4,9 @@ import { View, Image } from 'react-native';
 
 // Handle legacy names for image queries.
 
-var convertProps = function convertProps(props) {
-  var convertedProps = babelHelpers.extends({}, props);
-
-  if (convertedProps.sizes) {
-    convertedProps.fluid = convertedProps.sizes;
-    delete convertedProps.sizes;
-  }
-
-  return convertedProps;
-}; // Cache if we've seen an image before so we don't both with
-// lazy-loading & fading in on subsequent mounts.
-
-
 var imageCache = {};
 
-var inImageCache = function inImageCache(props) {
-  var convertedProps = convertProps(props); // Find src
-
+var inImageCache = function inImageCache(convertedProps) { 
   var src = convertedProps.fluid.src; // ? convertedProps.fluid.src
   // : convertedProps.fixed.src
 
@@ -127,7 +112,8 @@ function (_React$Component) {
     var Imgheight; // If this image has already been loaded before then we can assume it's
     // already in the browser cache so it's cheap to just show directly.
 
-    var seenBefore = inImageCache(props);
+    var _convertProps = babelHelpers.extends({},props,{fluid:props.fluid?props.fluid:props.sizes}); 
+    var seenBefore = inImageCache(_convertProps);
 
     if (!seenBefore && typeof window !== "undefined" && window.IntersectionObserver) {
       isVisible = false;
@@ -240,7 +226,7 @@ if(isSSR){
   _proto.render = function render() {
     var _this3 = this;
 
-    var _convertProps = convertProps(this.props),
+    var _convertProps = this.props,
         title = _convertProps.title,
         alt = _convertProps.alt,
         resizeMode = _convertProps.resizeMode,
@@ -251,12 +237,13 @@ if(isSSR){
         className = _convertProps.className,
         outerWrapperClassName = _convertProps.outerWrapperClassName,
         _convertProps$imgStyl = _convertProps.imgStyle,
+        positionImage= _convertProps.positionImage,
         imgStyle = _convertProps$imgStyl === void 0 ? {} : _convertProps$imgStyl,
         _convertProps$placeho = _convertProps.placeholderStyle,
         placeholderStyle = _convertProps$placeho === void 0 ? {} : _convertProps$placeho,
-        fluid = _convertProps.fluid,
+        fluid = _convertProps.fluid?_convertProps.fluid:_convertProps.sizes,
         backgroundColor = _convertProps.backgroundColor;
-
+ 
     var bgColor;
 
     if (typeof backgroundColor === "boolean") {
@@ -290,11 +277,17 @@ if(isSSR){
 
       var imagePlaceholderStyle = babelHelpers.extends({
         opacity: this.state.imgLoaded ? 0 : 1,
-        transitionDelay: "0.25s"
-      }, imgStyle, placeholderStyle);
+        transitionDelay: "0.25s",
+        width:"auto",
+        left:"auto"
+      }, imgStyle, placeholderStyle,positionImage=="right"?{right:"0px"}:{});
+      
       var imageStyle = babelHelpers.extends({
-        opacity: this.state.imgLoaded || this.props.fadeIn === false ? 1 : 0
-      }, imgStyle); // Use webp by default if browser supports it
+        opacity: this.state.imgLoaded ? 1 : 0,
+        transitionDelay: "0.25s"
+      }, imgStyle,positionImage=="right"?
+{backgroundPosition: "right top"}:{}); // Use webp by default if browser supports it
+ 
 
       if (image.srcWebp && image.srcSetWebp && isWebpSupported()) {
         srcImage = this.srcset(image.srcSetWebp, width, height, image.aspectRatio);
@@ -303,7 +296,7 @@ if(isSSR){
         srcImage = this.srcset(image.srcSet, width, height, image.aspectRatio);
         srcSet = image.srcSet;
       }
-
+ 
       src = srcImage.result;
       image.width = srcImage.width;
       image.height = srcImage.height;

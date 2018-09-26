@@ -95,8 +95,7 @@ AppContainer.propTypes = process.env.NODE_ENV !== "production" ? {
 
 
 var styles = _StyleSheet2.default.create({
-  appContainer: {
-  zIndex:"auto",
+  appContainer: { 
     flex: 1
   }
 });
