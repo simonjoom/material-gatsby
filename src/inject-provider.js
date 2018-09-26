@@ -2,11 +2,10 @@ import React from "react";
 import i18n from "i18next";
 //import { createStore, combineReducers } from "redux";
 import { AppRegistry } from "react-native-web";
-import { ThemeContext } from "./withContext"; 
-  global.menuList = window.__INITIAL_STATE__.menuList;
-  global.filesQuery = window.__INITIAL_STATE__.filesQuery;
-  global.locale = window.__INITIAL_STATE__.locale;
- 
+import { ThemeContext } from "./withContext";
+global.menuList = window.__INITIAL_STATE__.menuList;
+global.filesQuery = window.__INITIAL_STATE__.filesQuery;
+global.locale = window.__INITIAL_STATE__.locale;
 
 /*const initialState = {
   menuList: global.menuList,
@@ -65,7 +64,7 @@ export const replaceHydrateFunction = async () => {
         false
       );
     }
-    
+
     AppRegistry.registerComponent("App", () => App);
     AppRegistry.runApplication("App", {
       initialProps: {},
@@ -93,7 +92,13 @@ try {
 export const wrapPageElement = ({ element, props }) => {
   const { lng } = props.pageContext;
   let Red, Red2;
-  if (!lng) return <Layout>{element}</Layout>;
+  if (!lng)
+    return (
+      <>
+        <div />
+        <Layout>{element}</Layout>
+      </>
+    );
 
   global.locale[lng].forEach(({ node }) => {
     const { lng, ns, data } = node;
@@ -106,10 +111,15 @@ export const wrapPageElement = ({ element, props }) => {
   const namespace = slugbase === "/" ? "Index" : "Post";
   const ismain = slugbase === "/";
   console.log("runMainNavLayout");
-  return <Layout lng={lng}>{element}</Layout>;
+  return (
+    <>
+      <div />
+      <Layout lng={lng}>{element}</Layout>
+    </>
+  );
 };
 
-export const wrapRootElement = ({ element }) => { 
+export const wrapRootElement = ({ element }) => {
   return (
     <ThemeContext.Provider
       value={{

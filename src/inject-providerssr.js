@@ -92,7 +92,13 @@ export const replaceRenderer = ({
 export const wrapPageElement = ({ element, props }) => {
   const { lng } = props.pageContext;
   let Red, Red2;
-  if (!lng) return <Layout>{element}</Layout>;
+  if (!lng)
+    return (
+      <>
+        <div />
+        <Layout>{element}</Layout>
+      </>
+    );
   // console.log("global.menuList", lng);
   // console.log("global.menuList", global.menuList[lng]);
   if (global.menuList[lng].length == 0) {
@@ -111,7 +117,7 @@ export const wrapPageElement = ({ element, props }) => {
   } else {
     Red = "div";
   }
-/*
+  /*
   if (global.filesQuery.length == 0) {
     Red2 = statics;
   } else {
@@ -124,7 +130,7 @@ export const wrapPageElement = ({ element, props }) => {
 
   return (
     <>
-      <Red /> 
+      <Red />
       <Layout lng={lng}>{element}</Layout>
     </>
   );

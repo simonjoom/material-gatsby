@@ -25,11 +25,7 @@ var _createReactContext = require("create-react-context");
 
 var _createReactContext2 = _interopRequireDefault(_createReactContext);
 
-var _reactLifecyclesCompat = require("react-lifecycles-compat");
-
-var _reactDom = require("react-dom");
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
+var _reactLifecyclesCompat = require("react-lifecycles-compat"); 
 
 var _utils = require("./lib/utils");
 
@@ -48,13 +44,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 ////////////////////////////////////////////////////////////////////////////////
 // React polyfill
-var unstable_deferredUpdates = _reactDom2.default.unstable_deferredUpdates;
-
-if (unstable_deferredUpdates === undefined) {
-  unstable_deferredUpdates = function unstable_deferredUpdates(fn) {
-    return fn();
-  };
-}
 
 var createNamedContext = function createNamedContext(name, defaultValue) {
   var Ctx = (0, _createReactContext2.default)(defaultValue);
@@ -134,7 +123,7 @@ var LocationProvider = function (_React$Component) {
 
     refs.unlisten = history.listen(function () {
       Promise.resolve().then(function () {
-        unstable_deferredUpdates(function () {
+        requestAnimationFrame(function () {
           if (!_this2.unmounted) {
             _this2.setState(function () {
               return { context: _this2.getContext() };

@@ -268,6 +268,7 @@ class GatsbyImage extends React.Component {
       const imagePlaceholderStyle = {
         opacity: this.state.imgLoaded ? 0 : 1,
         transitionDelay: `0.25s`,
+        left:"auto",
         ...imgStyle,
         ...placeholderStyle,
         ...posImag

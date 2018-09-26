@@ -3,8 +3,7 @@ import Icon from "../../reactLIB/Icon";
 import Button from "../../reactLIB/Button";
 import SideNavItem from "../../reactLIB/SideNavItem";
 import SideNav from "../../reactLIB/SideNav";
-
-//import NavigationDrawer from "react-md/lib/NavigationDrawers";
+ 
 //import ToolbarActions from "../ToolbarActions";
 
 import Footer from "../Footer";
@@ -50,19 +49,4 @@ class Navigation extends Component {
     );
   }
 }
-export default Navigation;
-/*
-    
-      <NavigationDrawer
-        drawerTitle={config.siteTitle}
-        toolbarTitle={LocalTitle}
-        contentClassName="main-content"
-        navItems={GetNavList(config)}
-        mobileDrawerType={NavigationDrawer.DrawerTypes.TEMPORARY}
-        tabletDrawerType={NavigationDrawer.DrawerTypes.TEMPORARY}
-        desktopDrawerType={NavigationDrawer.DrawerTypes.TEMPORARY}
-        toolbarActions={<ToolbarActions config={config} />}
-      >
-        <div className="main-container">{children}</div>
-        <Footer userLinks={footerLinks} />
-      </NavigationDrawer>*/
+export default Navigation; 

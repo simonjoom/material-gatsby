@@ -1,6 +1,6 @@
 import React from "react";
 import Img from "gatsby-image";
-import withTheme from '../../withContext'; 
+import withTheme from "../../withContext";
 import Carousel from "./carousel.js";
 import "./carousel.css";
 
@@ -86,7 +86,7 @@ const GetImage = ({
               )
             }
             resizeMode={ismain ? "contain" : "center"}
-            positionImage={"right"} 
+            positionImage={ismain ? "right" : null}
             fluid={FileNode.node.childImageSharp.fluid}
             height={height}
             width={width}
@@ -117,7 +117,7 @@ const FrontCarousel = ({
   ismain,
   translate,
   alt = ""
-}) => { 
+}) => {
   if (!data) return null;
   let datas = typeof data == "string" ? data.split() : data;
   let Query = global.filesQuery;

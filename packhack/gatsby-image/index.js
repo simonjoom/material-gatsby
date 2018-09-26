@@ -278,7 +278,6 @@ if(isSSR){
       var imagePlaceholderStyle = babelHelpers.extends({
         opacity: this.state.imgLoaded ? 0 : 1,
         transitionDelay: "0.25s",
-        width:"auto",
         left:"auto"
       }, imgStyle, placeholderStyle,positionImage=="right"?{right:"0px"}:{});
       
