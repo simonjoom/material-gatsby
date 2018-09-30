@@ -9,7 +9,7 @@ import Button from './Button';
 class Modal extends Component {
   constructor(props) {
     super(props);
-    this.modalID = props.id || `modal_Zepto{idgen()}`;
+    this.modalID = props.id || `modal_${idgen()}`;
     this.showModal = this.showModal.bind(this);
     this.createRoot();
   }
@@ -23,7 +23,7 @@ class Modal extends Component {
     const { trigger, modalOptions, open } = this.props;
 
     if (!trigger) {
-      Zepto(`#Zepto{this.modalID}`).modal(modalOptions);
+      M(`#${this.modalID}`).modal(modalOptions);
     }
 
     if (open) this.showModal();
@@ -86,13 +86,13 @@ class Modal extends Component {
   showModal(e) {
     if (e) e.preventDefault();
     const { modalOptions = {} } = this.props;
-    Zepto(`#Zepto{this.modalID}`).modal(modalOptions);
-    Zepto(`#Zepto{this.modalID}`).modal('open');
+    M(`#${this.modalID}`).modal(modalOptions);
+    M(`#${this.modalID}`).modal('open');
   }
 
   hideModal(e) {
     if (e) e.preventDefault();
-    Zepto(`#Zepto{this.modalID}`).modal('close');
+    M(`#${this.modalID}`).modal('close');
   }
 
   render() {

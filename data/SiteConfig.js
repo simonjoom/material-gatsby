@@ -10,7 +10,7 @@ module.exports = {
   siteRss: "/rss.xml", // Path to the RSS file.
   siteFBAppID: "1825356251115265", // FB Application ID for using app insights
   siteGATrackingID: "UA-47311644-4", // Tracking code ID for google analytics.
-  disqusShortname: "https-www-skiscool-com.disqus.com", // Disqus shortname.
+  disqusShortname: "https-www-skiscool-com", // Disqus shortname.
   postDefaultCategoryID: "Tech", // Default category for posts.
   dateFromFormat: "YYYY-MM-DD", // Date format used in the frontmatter.
   dateFormat: "DD/MM/YYYY", // Date format for display.
@@ -24,17 +24,17 @@ module.exports = {
     {
       label: "GitHub",
       url: "https://github.com/simonjoom/material-gatsby",
-      iconClassName: "fa fa-github"
+      iconClassName: "github"
     },
     {
       label: "Twitter",
       url: "https://twitter.com/Vagr9K",
-      iconClassName: "fa fa-twitter"
+      iconClassName: "twitter"
     },
     {
       label: "Email",
       url: "mailto:vagr9k@gmail.com",
-      iconClassName: "fa fa-envelope"
+      iconClassName: "envelope"
     }
   ],
   copyright: "Copyright © 2017. Material User" // Copyright string for the footer of the website and RSS feed.

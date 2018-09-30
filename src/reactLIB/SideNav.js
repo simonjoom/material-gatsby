@@ -13,8 +13,8 @@ class SideNav extends Component {
   componentDidMount() {
     const { options } = this.props;
     var elems = document.querySelectorAll('.sidenav');
-    Zepto.Sidenav.init(elems, options);
-  } 
+    M.Sidenav.init(elems, options);
+  }
 
   render() {
     const { className, children, trigger, fixed, ...props } = this.props;

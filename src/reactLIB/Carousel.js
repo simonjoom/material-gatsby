@@ -12,8 +12,8 @@ class Carousel extends React.Component {
   componentDidMount() {
     const { options = {} } = this.props;
 
-    if (typeof Zepto !== 'undefined') {
-      Zepto(this._carousel).carousel(options);
+    if (typeof M !== 'undefined') {
+      M(this._carousel).carousel(options);
     }
   }
 

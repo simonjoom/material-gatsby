@@ -24,8 +24,8 @@ const rootReducer = combineReducers({ menuList:reducermenuList,filesQuery:reduce
 const store = createStore(rootReducer, preloadedState);
 console.log("getState", store.getState());*/
 
-const ZeptoAsync = () =>
-  import(/* webpackChunkName: "zepto" */ "./components/zepto");
+const MAsync = () =>
+  import(/* webpackChunkName: "zepto" */ "./components/materialize");
 
 global.Zepto = undefined;
 
@@ -42,9 +42,9 @@ var canUseDOM = !!(
 global.isSSR = !canUseDOM;
 
 export const replaceHydrateFunction = async () => {
-  if (!global.Zepto) {
-    const Zep = await ZeptoAsync();
-    global.Zepto = Zep.default;
+  if (!global.M) {
+    const Zep = await MAsync();
+    global.M = Zep.default;
   }
   return (element, container, callback) => {
     class App extends React.Component {
@@ -118,13 +118,11 @@ export const wrapPageElement = ({ element, props }) => {
     </>
   );
 };
-
+const stateProvider={translate: namespace => i18n.getFixedT(null, [namespace, "common"])}
 export const wrapRootElement = ({ element }) => {
   return (
     <ThemeContext.Provider
-      value={{
-        translate: namespace => i18n.getFixedT(null, [namespace, "common"])
-      }}
+      value={stateProvider}
     >
       {element}
     </ThemeContext.Provider>

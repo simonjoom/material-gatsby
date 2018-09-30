@@ -6,7 +6,7 @@ import CollapsibleItem from 'CollapsibleItem';
 import Search from './Search';
 import routes from '../routes';
 
-const isMobile = () => (Zepto(window).width() < 993);
+const isMobile = () => (M(window).width() < 993);
 const getPageTitle = () => window.location.hash.substring(2) || 'react materialize';
 const capitalize = path => path[0] ? path[0].toUpperCase() + path.substr(1) : '';
 
@@ -18,7 +18,7 @@ class Navigation extends React.Component {
   }
 
   componentDidMount () {
-    Zepto('.button-collapse').sidenav({
+    M('.button-collapse').sidenav({
       closeOnClick: isMobile,
       edge: 'left'
     });
@@ -65,10 +65,10 @@ const renderNavItems = (navItem, idx) => {
 
   return (
     navItem.component
-      ? <li key={`routeZepto{idx}`}>
+      ? <li key={`route${idx}`}>
         <NavLink className='waves-effect waves-teal' to='/'>Getting started</NavLink>
       </li>
-      : <CollapsibleItem expanded={expanded} key={`routeZepto{idx}`} header={navItem.path}>
+      : <CollapsibleItem expanded={expanded} key={`route${idx}`} header={navItem.path}>
         <ul>{navItem.routes.map(renderSubNavItems)}</ul>
       </CollapsibleItem>
   );

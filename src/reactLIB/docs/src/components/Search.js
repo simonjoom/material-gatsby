@@ -39,7 +39,7 @@ class Search extends React.Component {
   }
 
   closeSideNav () {
-    Zepto('.button-collapse').sideNav('hide');
+    M('.button-collapse').sideNav('hide');
   }
 
   search () {
@@ -95,7 +95,7 @@ class Search extends React.Component {
           <Icon>search</Icon>
           <div className='search-results'>
             {this.state.results.map(({ path, component }) => {
-              return <Link to={`/Zepto{path}`} onClick={this.handleClicked} key={path}>{capitalize(path)}</Link>;
+              return <Link to={`/${path}`} onClick={this.handleClicked} key={path}>{capitalize(path)}</Link>;
             })}
           </div>
         </div>

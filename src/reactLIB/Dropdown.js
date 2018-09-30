@@ -19,14 +19,14 @@ class Dropdown extends Component {
   componentDidMount() {
     const { options } = this.props;
     this.elems = document.querySelectorAll('.dropdown-trigger');
-    this.instances = Zepto.Dropdown.init(this.elems, options);  
+    this.instances = M.Dropdown.init(this.elems, options);
   }
 
   componentWillUnmount() {
-    $(this.elems).map((i,el) => {
-      var instance = Zepto.Dropdown.getInstance(el);
+    M(this.elems).map((i,el) => {
+      var instance = M.Dropdown.getInstance(el);
       instance.destroy();
-    }); 
+    });
   }
 
   render() {

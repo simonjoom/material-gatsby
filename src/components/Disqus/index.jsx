@@ -3,7 +3,7 @@ import ReactDisqusComments from "react-disqus-comments";
 import moment from "moment"; 
 import urljoin from "url-join";
 import Avatar from "react-md/lib/Avatars";
-import FontIcon from "react-md/lib/FontIcons";
+//import FontIcon from "react-md/lib/FontIcons";
 import Snackbar from "react-md/lib/Snackbars";
 import config from "../../../data/SiteConfig";
 import Card from "../../reactLIB/Card"; 
@@ -42,17 +42,14 @@ class Disqus extends Component {
     );
 
     return (
-      <Card
+      <><Card
         key={post.path}
         waves="light"
         className="md-grid md-cell md-cell--12-phone md-cell--4 md-cell--4-tablet"
-        contentImage={<Avatar icon={<FontIcon>comment</FontIcon>} />}
-        titlereveal="Comments"
+        contentImage={<Avatar icon={<Icon type="material" className="comment"/>} />}
+        titlereveal="Comments" 
         title={
-          <>
-            <Avatar icon={<FontIcon>comment</FontIcon>} /> 
-            <Button className="btn md-cell--right">Comments</Button>
-          </>
+            <Button className="btn" icon="comment" type="material">Comments</Button>
         }
         imgtitle={
           <div>
@@ -60,23 +57,21 @@ class Disqus extends Component {
             Published on{" "}
             {`${moment(postNode.fields.date).format(config.dateFormat)}`}
           </div>
-        }
-        reveal={
-          <ReactDisqusComments
-            shortname={config.disqusShortname}
-            identifier={post.title}
-            title={post.title}
-            url={url}
-            category_id={post.category_id}
-            onNewComment={this.notifyAboutComment}
-          />
-        }
+        } 
       >
+      <ReactDisqusComments
+        shortname={config.disqusShortname}
+        identifier={post.title}
+        title={post.title}
+        url={url}
+        category_id={post.category_id}
+        onNewComment={this.notifyAboutComment}
+      />
+      </Card>
         <Snackbar
           toasts={this.state.toasts}
           onDismiss={this.onSnackbarDismiss}
-        />
-      </Card>
+        /></>
     );
   }
 }

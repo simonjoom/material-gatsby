@@ -69,7 +69,7 @@ class Pagination extends Component {
       buttons.push(
         <PaginationButton
           active={i === activePage}
-          key={`pagination-Zepto{i}`}
+          key={`pagination-${i}`}
           onSelect={this._onClick(i)}
         >
           {i}
@@ -79,7 +79,7 @@ class Pagination extends Component {
 
     buttons.push(
       <PaginationButton
-        key={`pagination-Zepto{items + 1}`}
+        key={`pagination-${items + 1}`}
         disabled={activePage === items}
         onSelect={this._onClick(activePage + 1)}
       >

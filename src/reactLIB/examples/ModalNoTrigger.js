@@ -5,7 +5,7 @@ import Button from '../src/Button';
 export default
 <div>
   <Button onClick={() => {
-    Zepto('#foo').modal('open');
+    M('#foo').modal('open');
   }}>Show Modal</Button>
   <Modal
     id='foo'

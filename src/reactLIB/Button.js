@@ -17,13 +17,9 @@ class Button extends Component {
   componentDidMount() {
     const { tooltipOptions } = this.props;
     var elems = document.querySelectorAll('.tooltipped');
-    //  var instances =Zepto.Tooltip.init(elems, options);
-
-    typeof Zepto !== 'undefined' &&
+    typeof M !== 'undefined' &&
       this.tooltip &&
-      Zepto.Tooltip.init(elems, tooltipOptions);
-    //    Zepto(this._btnEl).tooltip(tooltipOptions);
-    // Typical usage (don't forget to compare props):
+      M.Tooltip.init(elems, tooltipOptions);
   }
 
   render() {
@@ -39,6 +35,8 @@ class Button extends Component {
       disabled,
       waves,
       tooltip,
+      iconStyle,
+      type,
       ...other
     } = this.props;
 
@@ -96,14 +94,15 @@ class Button extends Component {
   }
 
   renderIcon() {
-    const { icon } = this.props;
-    if (!icon) return;
-
-    return <Icon>{icon}</Icon>;
+    const { icon, type, iconStyle } = this.props;
+    if (!icon || !type) return;
+    return <Icon type={type} className={icon} style={iconStyle} />;
   }
 }
 
 Button.propTypes = {
+  type: PropTypes.string,
+  iconStyle: PropTypes.any,
   children: PropTypes.node,
   className: PropTypes.string,
   disabled: PropTypes.bool,

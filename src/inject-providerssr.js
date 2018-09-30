@@ -11,7 +11,7 @@ import truk from "./layouts/translate_uk";
 import trch from "./layouts/translate_ch";
 //import statics from "./layouts/statics";
 
-global.Zepto = undefined;
+global.M = undefined;
 const getLanguage = () => i18n.language;
 
 global.isSSR = true;
@@ -136,11 +136,10 @@ export const wrapPageElement = ({ element, props }) => {
   );
 };
 
+const stateProvider={translate: namespace => i18n.getFixedT(null, [namespace, "common"])}
 export const wrapRootElement = ({ element }) => (
   <ThemeContext.Provider
-    value={{
-      translate: namespace => i18n.getFixedT(null, [namespace, "common"])
-    }}
+    value={stateProvider}
   >
     {element}
   </ThemeContext.Provider>

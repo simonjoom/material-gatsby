@@ -144,8 +144,7 @@ class PostTemplate extends React.Component {
               </div>
               {post.excerpt}
             </Card>
-            <UserInfo className="md-grid md-cell md-cell--12" config={config} />
-            <Disqus postNode={postNode} />
+            <UserInfo className="md-grid md-cell md-cell--12" config={config} /> 
           </div>
 
           <PostSuggestions postNode={postNode} />

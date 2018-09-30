@@ -2,7 +2,7 @@ import React from "react";
 import i18n from "i18next";
 import { AppRegistry } from "react-native-web";
 import { ThemeContext } from "./withContext";  
-global.Zepto = undefined;
+global.M = undefined;
 const getLanguage = () =>
   i18n.language ||
   (typeof window !== "undefined" && window.localStorage.i18nextLng);
@@ -16,8 +16,8 @@ var canUseDOM = !!(
 global.isSSR=!canUseDOM
 
 const filetranslate = lng => import(`./layouts/translate_${lng}`);
-const ZeptoAsync = () =>
-  import(/* webpackChunkName: "zepto" */ "./components/zepto");
+const MAsync = () =>
+  import(/* webpackChunkName: "materialize" */ "./components/materialize");
   
   global.locale= { en: [], ru: [], pt: [], uk: [], ch: [], fr: [] };
 global.menuList = { en: [], ru: [], pt: [], uk: [], ch: [], fr: [] };
@@ -38,9 +38,9 @@ try {
 }
 
 export const replaceHydrateFunction = async () => {
-  if (!global.Zepto) {
-    const Zep = await ZeptoAsync();
-    global.Zepto = Zep.default;
+  if (!global.M) {
+    const Zep = await MAsync();
+    global.M = Zep.default;
   }
   return (element, container, callback) => {
     class App extends React.Component {
@@ -110,12 +110,11 @@ export const wrapPageElement = async ({ element, props }) => {
   );
 };
 
+const stateProvider={translate: namespace => i18n.getFixedT(null, [namespace, "common"])}
 export const wrapRootElement = ({ element }) => { 
   return (
     <ThemeContext.Provider
-      value={{
-        translate: namespace => i18n.getFixedT(null, [namespace, "common"])
-      }}
+      value={stateProvider}
     >
       {element}
     </ThemeContext.Provider>

@@ -11,15 +11,16 @@ import config from "../../data/SiteConfig";
 
 
 export default class MainNavLayout extends React.Component {
- 
-  render() {
+  render() { 
+    console.log("MainNavLayout",this.props)
     const {
       children, 
       lng, 
       location
     } = this.props;  
+    const postNode = children.props.data.markdownRemark;
     return (
-        <Navigation config={config} LocalTitle={this.props.title}>
+        <Navigation postNode={postNode} config={config} LocalTitle={this.props.title}>
           <Helmet>
             <meta name="description" content={config.siteDescription} />
           </Helmet>

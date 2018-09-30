@@ -1,22 +1,61 @@
 import React, { Component } from "react";
-import Button from "react-md/lib/Buttons";
+import cx from "classnames";
+import { Link } from "gatsby";
+import Button from "../../reactLIB/Button"; 
 import "./UserLinks.scss";
+
+class EmulateItem extends Component {
+  render() {
+    const liClass = {
+      display: "flex",
+      alignItems: "center",
+      paddingLeft: "12px",
+      paddingTop: "12px",
+      paddingBottom: "12px",
+      justifyContent: "flex-start"
+    };
+    const subHeading = {
+      color: "rgba(0, 0, 0, 0.87)",
+      fontSize: "1rem",
+      fontWeight: 400,
+      fontFamily: "Roboto, Helvetica, Arial, sans-serif",
+      lineHeight: "1.5em"
+    };
+    const { icon, to } = this.props;
+    return (
+      <li style={liClass}>
+        <Link to={to} className="link">
+          <Button
+            className={cx(this.props.className, "btn-flat")}
+            type={this.props.type}
+            iconStyle={{
+              color: "rgba(0, 0, 0, 0.54)",
+              flexShrink: 0,
+              marginRight: "16px"
+            }}
+            icon={icon}
+          >
+            <span style={subHeading}>{this.props.children}</span>
+          </Button>
+        </Link>
+      </li>
+    );
+  }
+}
 
 class UserLinks extends Component {
   getLinkElements() {
     const { userLinks } = this.props.config;
-    const { labeled } = this.props;
+    const { labeled } = this.props; 
     return userLinks.map(link => (
-      <Button
-        icon={!labeled}
-        flat={labeled}
-        secondary
+      <EmulateItem
         key={link.label}
-        iconClassName={link.iconClassName}
-        href={link.url}
+        icon={link.iconClassName}
+        type="awesome"
+        to={link.url}
       >
         {labeled ? link.label : ""}
-      </Button>
+      </EmulateItem>
     ));
   }
   render() {
@@ -24,7 +63,7 @@ class UserLinks extends Component {
     if (!userLinks) {
       return null;
     }
-    return <div className="user-links">{this.getLinkElements()}</div>;
+    return <ul className="user-links">{this.getLinkElements()}</ul>;
   }
 }
 

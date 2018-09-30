@@ -21,22 +21,22 @@ class Input extends Component {
 
   componentDidMount() {
     if (this.isMaterialSelect()) {
-      Zepto(this.selectInput).material_select();
-      Zepto(this.selectInput).on('change', this._onChange);
+      M(this.selectInput).material_select();
+      M(this.selectInput).on('change', this._onChange);
     }
     if (this.isDatePicker) {
-      Zepto(this.dateInput).pickadate(this.props.options);
-      Zepto(this.dateInput).on('change', this._onChange);
+      M(this.dateInput).pickadate(this.props.options);
+      M(this.dateInput).on('change', this._onChange);
     }
     if (this.isTimePicker) {
-      Zepto(this.timeInput).pickatime(this.props.options);
-      Zepto(this.timeInput).on('change', this._onChange);
+      M(this.timeInput).pickatime(this.props.options);
+      M(this.timeInput).on('change', this._onChange);
     }
   }
 
   componentDidUpdate() {
     if (this.isMaterialSelect() && !this.props.multiple) {
-      Zepto(this.selectInput).material_select();
+      M(this.selectInput).material_select();
     }
   }
 
@@ -46,14 +46,14 @@ class Input extends Component {
         {
           value: nextProps.defaultValue
         },
-        () => Zepto(this.selectInput).material_select()
+        () => M(this.selectInput).material_select()
       );
     }
   }
 
   componentWillUnmount() {
     if (this.isMaterialSelect()) {
-      Zepto(this.selectInput).off('change', this._onChange);
+      M(this.selectInput).off('change', this._onChange);
     }
   }
 
@@ -108,7 +108,7 @@ class Input extends Component {
       ...other
     } = this.props;
     let sizes = { s, m, l };
-    this._id = this._id || this.props.id || `input_Zepto{idgen()}`;
+    this._id = this._id || this.props.id || `input_M{idgen()}`;
     let classes = {
       col: true,
       inline: type !== 'checkbox' && type !== 'radio' && inline,
@@ -322,7 +322,7 @@ class Input extends Component {
     return (
       this.props.type === 'select' &&
       !this.props.browserDefault &&
-      typeof Zepto !== 'undefined'
+      typeof M !== 'undefined'
     );
   }
 }

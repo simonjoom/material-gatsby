@@ -4,7 +4,6 @@ import Helmet from "react-helmet";
 import { graphql, Link } from "gatsby";
 import { View } from "react-native";
 //import UserInfo from "../components/UserInfo";
-import Disqus from "../components/Disqus";
 import withTheme from "../withContext";
 import PostTags from "../components/PostTags";
 import Layout from "../components/Layout";
@@ -113,8 +112,7 @@ class PostTemplate extends React.Component {
             postNode={postNode}
             mobile={this.state.mobile}
           />
-        </div>
-        <Disqus postNode={postNode} expanded={expanded} />
+        </div> 
       </Layout>
     );
   }
