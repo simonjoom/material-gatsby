@@ -12,7 +12,7 @@ class Dropdown extends Component {
     super(props);
     this.idx = 'dropdown_' + idgen();
     this.instances = null;
-    this.elems =[]
+    this.elems = [];
     this.renderTrigger = this.renderTrigger.bind(this);
   }
 
@@ -23,10 +23,10 @@ class Dropdown extends Component {
   }
 
   componentWillUnmount() {
-    M(this.elems).map((i,el) => {
-      var instance = M.Dropdown.getInstance(el);
-      instance.destroy();
-    });
+    $(this.elems).map((i, el) => {
+        var instance = M.Dropdown.getInstance(el);
+        instance.destroy();
+      });
   }
 
   render() {

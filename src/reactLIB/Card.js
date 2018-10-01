@@ -89,8 +89,7 @@ class Card extends Component {
       horizontal,
       waves,
       ...other
-    } = this.props;
-console.log("card",children)
+    } = this.props; 
     const classes = {
       card: true,
       horizontal: horizontal

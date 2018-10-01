@@ -58,14 +58,6 @@ const config = {
       pt: "/pt/hotels/",
       ch: "/cn/hotels/"
     },
-    "/jumpsuit": {
-      fr: "/jumpsuit/fr/",
-      en: "/jumpsuit/",
-      ru: "/ru/jumpsuit/",
-      uk: "/uk/jumpsuit/",
-      pt: "/pt/jumpsuit/",
-      ch: "/cn/jumpsuit/"
-    },
     "/skipass": {
       fr: "/Articles/Forfait-de-ski/",
       en: "/Articles/SkiPass/",
@@ -127,3 +119,12 @@ const config = {
 
 module.exports = config;
 //export default config;
+/*
+    "/jumpsuit": {
+      fr: "/jumpsuit/fr/",
+      en: "/jumpsuit/",
+      ru: "/ru/jumpsuit/",
+      uk: "/uk/jumpsuit/",
+      pt: "/pt/jumpsuit/",
+      ch: "/cn/jumpsuit/"
+    },*/

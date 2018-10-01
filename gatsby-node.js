@@ -11,14 +11,18 @@ require("babel-polyfill");
 const arraymenu = [
   "/",
   "/about",
-  "/jumpsuit",
   "/concept",
   "/contact",
   "/hotels"
 ];
 const arraygallery = ["/", "/about", "/concept"];
+const postTypes = ["post", "instructor"];
+//const postNodes = { fr: [], en: [], pt: [], ru: [], uk: [], ch: [] };
+const postNodes = {
+  post: { fr: [], en: [], pt: [], ru: [], uk: [], ch: [] },
+  instructor: { fr: [], en: [], pt: [], ru: [], uk: [], ch: [] }
+};
 
-const postNodes = [];
 let didRunAlready = false;
 let absoluteComponentPath;
 
@@ -53,44 +57,58 @@ exports.onCreateWebpackConfig = ({ actions, plugins }) => {
 };
 
 function addSiblingNodes(createNodeField) {
-  postNodes.sort(
-    ({ frontmatter: { date: date1 } }, { frontmatter: { date: date2 } }) => {
-      const dateA = moment(date1, siteConfig.dateFromFormat);
-      const dateB = moment(date2, siteConfig.dateFromFormat);
+  for (let k in postTypes) {
+    const type = postTypes[k];
+    for (let l in config.locales) {
+      const lng = config.locales[l];
+      const el = postNodes[type][lng];
+      el.sort(
+        (
+          { frontmatter: { date: date1 } },
+          { frontmatter: { date: date2 } }
+        ) => {
+          const dateA = moment(date1, siteConfig.dateFromFormat);
+          const dateB = moment(date2, siteConfig.dateFromFormat);
 
-      if (dateA.isBefore(dateB)) return 1;
+          if (dateA.isBefore(dateB)) return 1;
 
-      if (dateB.isBefore(dateA)) return -1;
+          if (dateB.isBefore(dateA)) return -1;
 
-      return 0;
+          return 0;
+        }
+      );
+      var index = 0;
+      for (let i = 0; i < el.length; i += 1) {
+        const nextID = index + 1 < el.length ? index + 1 : 0;
+        const prevID = index - 1 > 0 ? index - 1 : el.length - 1;
+        const currNode = el[index];
+        const nextNode = el[nextID];
+        const prevNode = el[prevID];
+        if (nextNode.frontmatter.title !== "default") {
+          createNodeField({
+            node: currNode,
+            name: "nextTitle",
+            value: nextNode.frontmatter.title
+          });
+          createNodeField({
+            node: currNode,
+            name: "nextSlug",
+            value: nextNode.fields.slug
+          });
+          createNodeField({
+            node: currNode,
+            name: "prevTitle",
+            value: prevNode.frontmatter.title
+          });
+          createNodeField({
+            node: currNode,
+            name: "prevSlug",
+            value: prevNode.fields.slug
+          });
+          index++;
+        }
+      }
     }
-  );
-  for (let i = 0; i < postNodes.length; i += 1) {
-    const nextID = i + 1 < postNodes.length ? i + 1 : 0;
-    const prevID = i - 1 > 0 ? i - 1 : postNodes.length - 1;
-    const currNode = postNodes[i];
-    const nextNode = postNodes[nextID];
-    const prevNode = postNodes[prevID];
-    createNodeField({
-      node: currNode,
-      name: "nextTitle",
-      value: nextNode.frontmatter.title
-    });
-    createNodeField({
-      node: currNode,
-      name: "nextSlug",
-      value: nextNode.fields.slug
-    });
-    createNodeField({
-      node: currNode,
-      name: "prevTitle",
-      value: prevNode.frontmatter.title
-    });
-    createNodeField({
-      node: currNode,
-      name: "prevSlug",
-      value: prevNode.fields.slug
-    });
   }
 }
 
@@ -214,14 +232,16 @@ exports.onCreateNode = async ({
     createNodeField({ node, name: `type`, value: type });
     createNodeField({ node, name: "slugbase", value: slug });
     createNodeField({ node, name: "slug", value: slugfin });
-    if (type !== "pages") postNodes.push(node);
+    console.log(lng);
+    if (type !== "pages") postNodes[type][lng].push(node);
   }
 };
 
 exports.setFieldsOnGraphQLNodeType = ({ type, actions }) => {
-  // console.log("setFieldsOnGraphQLNodeType", type);
-  const { name } = type;
+  const { name, nodes } = type;
   const { createNodeField } = actions;
+  //console.log("setFieldsOnGraphQLNodeType", nodes);
+
   if (name === "MarkdownRemark") {
     addSiblingNodes(createNodeField);
   }
@@ -233,6 +253,7 @@ const MarkdownQueries = `
     ) {
       edges {
         node {
+          html
           id
           fileAbsolutePath
           frontmatter {
@@ -365,10 +386,24 @@ exports.createPages = ({ graphql, actions }) => {
           );
         }
 
-        let depsfiles = node.frontmatter.deps
-          ? node.frontmatter.deps
-          : "mainpage";
+        let depsfiles = "";
 
+        if (node.frontmatter.deps) {
+          depsfiles = node.frontmatter.deps;
+        } else {
+          var regex = /imgtest data=['|"](.*)\..*["|']/g;
+          var matches = [];
+          var str = node.html;
+          if (str && str != "") {
+            str.replace(regex, function() {
+              var match = Array.prototype.slice.call(arguments, 0, -1);
+              matches.push(match[1]);
+              // example: ['test1', 'e', 'st1', '1'] with properties `index` and `input`
+            });
+            depsfiles = matches.join("|");
+            console.log(depsfiles);
+          }
+        }
         const extra = next.join("|");
 
         // console.log(depsfiles, node.frontmatter.cover);
@@ -384,7 +419,7 @@ exports.createPages = ({ graphql, actions }) => {
           filesArrayCache[depsfiles] = filedeps;
         }
         const files = filesArrayCache[depsfiles];
- 
+
         switch (node.fields.type) {
           case "post":
           case "instructor":
@@ -433,32 +468,52 @@ exports.createPages = ({ graphql, actions }) => {
             break;
         }
 
-        langs.forEach(lg => {
-          const tagList = Array.from(tagSets[lg]);
-          tagList.forEach(tag => {
-            createPage({
-              path: `/tags_${lg}/${_.kebabCase(tag)}/`,
-              component: tagPage,
-              context: {
-                tag,
-                lng: lg
-              }
+        if (node.frontmatter.title !== "default") {
+          langs.forEach(lg => {
+            const tagList = Array.from(tagSets[lg]);
+            tagList.forEach(tag => {
+              const route = {};
+              const kbtag = _.kebabCase(tag);
+              route.fr = `/tags_fr/${kbtag}/`;
+              route.en = `/tags_en/${kbtag}/`;
+              route.ru = `/tags_ru/${kbtag}/`;
+              route.uk = `/tags_uk/${kbtag}/`;
+              route.pt = `/tags_pt/${kbtag}/`;
+              route.ch = `/tags_ch/${kbtag}/`;
+              createPage({
+                path: `/tags_${lg}/${kbtag}/`,
+                component: tagPage,
+                context: {
+                  route,
+                  tag,
+                  lng: lg
+                }
+              });
+            });
+            const categoryList = Array.from(categorySets[lg]);
+            categoryList.forEach(category => {
+              const route = {};
+              const kbcategory = _.kebabCase(category);
+              route.fr = `/categories_fr/${kbcategory}/`;
+              route.en = `/categories_en/${kbcategory}/`;
+              route.ru = `/categories_ru/${kbcategory}/`;
+              route.uk = `/categories_uk/${kbcategory}/`;
+              route.pt = `/categories_pt/${kbcategory}/`;
+              route.ch = `/categories_ch/${kbcategory}/`;
+              createPage({
+                path: `/categories_${lg}/${kbcategory}/`,
+                component: categoryPage,
+                context: {
+                  route,
+                  category,
+                  lng: lg
+                }
+              });
+              // });
+              // });
             });
           });
-          const categoryList = Array.from(categorySets[lg]);
-          categoryList.forEach(category => {
-            createPage({
-              path: `/categories_${lg}/${_.kebabCase(category)}/`,
-              component: categoryPage,
-              context: {
-                category,
-                lng: lg
-              }
-            });
-            // });
-            // });
-          });
-        });
+        }
       }
     );
     resolve();

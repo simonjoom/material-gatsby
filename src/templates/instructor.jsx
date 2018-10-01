@@ -1,5 +1,4 @@
 import React from "react";
-import Helmet from "react-helmet";
 import { graphql, Link } from "gatsby";
 import { kebabCase } from "lodash";
 import moment from "moment";
@@ -7,9 +6,6 @@ import Avatar from "react-md/lib/Avatars";
 import withTheme from "../withContext";
 import Card from "../reactLIB/Card";
 import Icon from "../reactLIB/Icon";
-import Button from "../reactLIB/Button";
-import UserInfo from "../components/UserInfo";
-import Disqus from "../components/Disqus";
 import PostTags from "../components/PostTags";
 import FrontCarousel from "../components/FrontCarousel";
 import SocialLinks from "../components/SocialLinks";
@@ -31,8 +27,8 @@ class PostTemplate extends React.Component {
   render() {
     const { mobile } = this.state;
     const { translate: t } = this.props;
-    const { slug, lng, route, slugbase,files } = this.props.pageContext;
-    global.filesQuery=files; 
+    const { slug, lng, route, slugbase, files } = this.props.pageContext;
+    global.filesQuery = files;
     const expanded = !mobile;
     // const postOverlapClass = mobile ? "post-overlap-mobile" : "post-overla";
     const postNode = this.props.data.markdownRemark;
@@ -54,12 +50,9 @@ class PostTemplate extends React.Component {
         location={this.props.location}
       >
         <div className="post-page md-grid">
-          <Helmet>
-            <title>{`${post.title} | ${config.siteTitle}`}</title>
-            <link rel="canonical" href={`${config.siteUrl}${post.id}`} />
-          </Helmet>
           <SEO
             postPath={slug}
+            route={route}
             postNode={postNode}
             postSEO
             translate={t("Instructor")}
@@ -93,11 +86,7 @@ class PostTemplate extends React.Component {
                 >
                   <Avatar icon={<Icon className="folder-open" />} />
                   {post.title} In category {post.category}
-                  <Button className="btn md-cell--right">Read </Button>
                 </Link>
-              }
-              reveal={
-                <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
               }
             >
               <div className="post-meta">
@@ -108,14 +97,10 @@ class PostTemplate extends React.Component {
                   mobile={this.state.mobile}
                 />
               </div>
+
+              <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
               {post.excerpt}
             </Card>
-
-            <UserInfo
-              className="md-grid md-cell md-cell--12"
-              config={config}
-              expanded={expanded}
-            />
           </div>
 
           <PostSuggestions postNode={postNode} />

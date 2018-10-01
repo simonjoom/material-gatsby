@@ -123,7 +123,7 @@ Button.propTypes = {
    */
   icon: PropTypes.string,
   modal: PropTypes.oneOf(['close', 'confirm']),
-  node: PropTypes.node,
+  node: PropTypes.any,
   /**
    * Will be disabled when fab is set.
    */

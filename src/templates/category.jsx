@@ -1,7 +1,7 @@
-import React from "react";
-import Helmet from "react-helmet";
+import React from "react"; 
 import { graphql } from "gatsby";
 import withTheme from "../withContext";
+import SEO from "../components/SEO";
 import PostListing from "../components/PostListing";
 import Layout from "../components/Layout";
 import config from "../../data/SiteConfig";
@@ -9,7 +9,7 @@ import config from "../../data/SiteConfig";
 class CategoryTemplate extends React.Component {
   render() {
     const { translate: t, path } = this.props;
-    const { category, lng, files } = this.props.pageContext;
+    const { category, lng, route, files } = this.props.pageContext; 
     global.filesQuery = files;
     const postEdges = this.props.data.allMarkdownRemark.edges;
     return (
@@ -20,16 +20,8 @@ class CategoryTemplate extends React.Component {
         ismain={false}
         location={this.props.location}
       >
-        <div className="category-container">
-          <Helmet>
-            <title>
-              {`Posts in category "${category}" | ${config.siteTitle}`}
-            </title>
-            <link
-              rel="canonical"
-              href={`${config.siteUrl}/categories_${lng}/${category}`}
-            />
-          </Helmet>
+        <div className="category-container"> 
+          <SEO title={`Posts in category "${category}" | ${config.siteTitle}`} route={route} translate={t("Index")} />  
           <PostListing postEdges={postEdges} />
         </div>
       </Layout>

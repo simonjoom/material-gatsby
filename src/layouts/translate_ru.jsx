@@ -1,5 +1,6 @@
 import React from "react";
 import i18n from "i18next";
+import { router } from "../config";
 import { graphql, StaticQuery } from "gatsby"; 
 const translate = () => {
   if (global.locale["ru"].length == 0) {
@@ -52,15 +53,32 @@ const translate = () => {
           let t = namespace => i18n.getFixedT(null, [namespace, "common"]);
 
           global.postEdges = data.allMarkdownRemark.edges; 
-          global.postEdges.forEach(postEdge => {
-            const { title } = postEdge.node.frontmatter;
-            const tr = t("Index")(title);
-            if (postEdge.node.fields.inmenu)
-            global.menuList["ru"].push({
-                path: postEdge.node.fields.slug,
-                title: tr
-              });
+          let array = [];
+
+          Object.keys(router).forEach(function(element, key, _array) {
+            global.postEdges.forEach(postEdge => {
+              const { title } = postEdge.node.frontmatter;
+              const tr = t("Index")(title);
+              if (
+                postEdge.node.fields.inmenu &&
+                postEdge.node.fields.slug == router[element][lang]
+              )
+                array.push({
+                  path: postEdge.node.fields.slug,
+                  title: tr
+                });
+            });
           });
+        
+
+          let item = {
+            path: router["/instructor/"][lang],
+            title: t("Index")("instructor")
+          };
+          array.splice(2, 0, item);
+          item = { path: router["/blog/"][lang], title: t("Index")("blog") };
+          array.splice(array.length, 0, item);
+          global.menuList[lang] = array;
           console.log("changeLanguage", lang);
           return <div />;
         }}

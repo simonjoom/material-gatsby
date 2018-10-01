@@ -4,8 +4,7 @@ import "font-awesome/scss/font-awesome.scss";
 import "./index.scss";
 import "./global.scss";
 import "./toolbar.scss";
-import "./carousel.scss";
-//import Paper from "react-md/lib/Papers/Paper";
+import "./carousel.scss"; 
 import Navigation from "../components/Navigation";
 import config from "../../data/SiteConfig"; 
 

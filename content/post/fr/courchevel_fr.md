@@ -1,5 +1,6 @@
 ---
 title: Courchevel ski Resort
+deps: aquamotion|saulire|familypark|luge-courchevel|altiport|larosiere|leforum|courchevel
 date: '2018-07-02'
 cover: courchevel.png
 slug: courchevel

@@ -23,11 +23,7 @@ class Blog extends React.Component {
         location={this.props.location}
       >
         <div className="index-container">
-          <Helmet>
-            <title>{config.siteTitle}</title>
-            <link rel="canonical" href={`${config.siteUrl}`} />
-          </Helmet>
-          <SEO postEdges={postEdges} translate={t("Index")} />
+          <SEO postEdges={postEdges} route={route} translate={t("Blog")} />  
           <PostListing postEdges={postEdges} sizebig={12} size={6} />
         </div>
       </Layout>
