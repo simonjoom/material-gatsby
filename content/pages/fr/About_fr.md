@@ -1,6 +1,6 @@
 ---
 title: "Ski School"
-cover: "carousel/1.jpg,carousel/2.jpg,carousel/3.jpg,carousel/4.jpg,carousel/5.jpg,carousel/6.jpg"
+cover: "carousel/dog.jpg,carousel/snowboard2.jpg,carousel/clown.jpg,carousel/desert.jpg,carousel/ski-room.jpg"
 category: "skischool"
 slug: "about"
 tags:

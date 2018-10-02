@@ -1,5 +1,4 @@
-import React from "react";
-import Helmet from "react-helmet"; 
+import React from "react"; 
 import "font-awesome/scss/font-awesome.scss";
 import "./index.scss";
 import "./global.scss";
@@ -20,9 +19,6 @@ export default class MainNavLayout extends React.Component {
     const postNode = children.props.data.markdownRemark;
     return (
         <Navigation postNode={postNode} config={config} LocalTitle={this.props.title}>
-          <Helmet>
-            <meta name="description" content={config.siteDescription} />
-          </Helmet>
           {children}
         </Navigation> 
     );

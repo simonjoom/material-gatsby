@@ -30,7 +30,7 @@ class Instructor extends React.Component {
 export default withTheme(Instructor);
 
 export const pageQuery = graphql`
-  query InstructorQuery($lng: String!) {
+  query InstQuery($lng: String!) {
     allMarkdownRemark(
       limit: 2000
       filter: {

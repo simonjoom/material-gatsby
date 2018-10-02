@@ -100,6 +100,7 @@ export const pageQuery = graphql`
       rawMarkdownBody
       frontmatter {
         title
+        description
         cover
         date
         category

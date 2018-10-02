@@ -15,7 +15,7 @@ date: "2018-07-02"
 ### Description Laure
 是一个有能力且能够胜任的滑雪教练，说着一口流利的英语口语，是一个自由职滑雪教练,  多次受到%company%邀请出任滑雪教练，学员对他的好评一如既往的给力
 
-* %langspoken% 
+* speak: french and english 
 * 十年执教经验.
 * 在Three Vallees 有丰富的导引经验，尤其是上山吊椅（运送滑雪学员）这一领域..
 * 灵活组织你的滑雪时间.

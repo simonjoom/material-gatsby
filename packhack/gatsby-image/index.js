@@ -114,7 +114,7 @@ function (_React$Component) {
 
     var _convertProps = babelHelpers.extends({},props,{fluid:props.fluid?props.fluid:props.sizes}); 
     var seenBefore = inImageCache(_convertProps);
-
+    
     if (!seenBefore && typeof window !== "undefined" && window.IntersectionObserver) {
       isVisible = false;
       imgLoaded = false;
@@ -122,9 +122,10 @@ function (_React$Component) {
     } // Always don't render image while server rendering
 
 if(isSSR){
-    var isVisible = true;
-    var imgLoaded = false;
+     isVisible = true;
+     imgLoaded = false;
 }
+
     _this.state = {
       Imgheight: Imgheight,
       isVisible: isVisible,
@@ -132,6 +133,19 @@ if(isSSR){
       IOSupported: IOSupported
     };
     _this.handleRef = _this.handleRef.bind(babelHelpers.assertThisInitialized(babelHelpers.assertThisInitialized(_this)));
+    
+    
+   var width = _convertProps.width; 
+    var  height = _convertProps.height;
+    var image = _convertProps.fluid;
+      if (image.srcWebp && image.srcSetWebp && isWebpSupported()) {
+        _this.srcImage = this.srcset(image.srcSetWebp, width, height, image.aspectRatio);
+        _this.srcSet = image.srcSetWebp;
+      } else {
+        _this.srcImage = this.srcset(image.srcSet, width, height, image.aspectRatio);
+        _this.srcSet = image.srcSet;
+      } 
+      
     return _this;
   } // Implement srcset
 
@@ -164,6 +178,10 @@ if(isSSR){
     maxWidth = this.props.maxWidth && parseInt(this.props.maxWidth) < maxWidth ? parseInt(this.props.maxWidth) : maxWidth;
     var maxDensity = 1;
     var ratio = 1 / aspectRatio;
+    
+if(maxWidth * ratio>maxHeight){
+maxWidth=maxHeight/ratio
+} 
 
     if (typeof window !== 'undefined') {
       maxDensity = window.devicePixelRatio;
@@ -257,26 +275,10 @@ if(isSSR){
 
       var srcImage, src, srcSet, presentationHeight, Pattern, match;
 		presentationHeight = height?height:"50%"
-      /*if (height) {
-        Pattern = /(.*)px/;
-        match = height.match(Pattern);
-
-        if (match) {
-          presentationHeight = parseInt(match[1], 10) / 2 + 'px'; //|| match[2] + 'px'
-        } else {
-          Pattern = /(.*)%/;
-          match = height.match(Pattern);
-
-          if (match) {
-            presentationHeight = parseInt(match[1], 10) / 2 + '%'; //|| match[2] + 'px'
-          } else {
-            presentationHeight = height + 'px';
-          }
-        }
-      }*/
+ 
 
       var imagePlaceholderStyle = babelHelpers.extends({
-        opacity: this.state.imgLoaded ? 0 : 1,
+        opacity: !this.state.imgLoaded ? 1 : 0,
         transitionDelay: "0.25s",
         left:"auto"
       }, imgStyle, placeholderStyle,positionImage=="right"?{right:"0px"}:{});
@@ -285,29 +287,26 @@ if(isSSR){
         opacity: this.state.imgLoaded ? 1 : 0,
         transitionDelay: "0.25s"
       }, imgStyle,positionImage=="right"?
-{backgroundPosition: "right top"}:{}); // Use webp by default if browser supports it
+{backgroundPosition: "right top"}:{backgroundPosition: "center top"}); // Use webp by default if browser supports it
  
-
+/*
       if (image.srcWebp && image.srcSetWebp && isWebpSupported()) {
         srcImage = this.srcset(image.srcSetWebp, width, height, image.aspectRatio);
         srcSet = image.srcSetWebp;
       } else {
         srcImage = this.srcset(image.srcSet, width, height, image.aspectRatio);
         srcSet = image.srcSet;
-      }
+      }*/
  
-      src = srcImage.result;
-      image.width = srcImage.width;
-      image.height = srcImage.height;
-      var srcFront = image.tracedSVG; //|| image.base64 not good
-
+      src = this.srcImage.result;
+      image.width = this.srcImage.width;
+      image.height = this.srcImage.height;
+      var srcFront = image.tracedSVG; //|| image.base64 not good 
       var bgStyle = {
         backgroundColor: bgColor,
         position: "absolute",
         top: 0,
         bottom: 0,
-        opacity: !this.state.imgLoaded ? 1 : 0,
-        transitionDelay: "0.35s",
         right: 0,
         left: 0
       };
@@ -332,7 +331,7 @@ if(isSSR){
         style: bgStyle
       }), React.createElement("div", {
         ref: this.handleRef
-      }, content), this.state.isVisible && React.createElement(Image, {
+      }, content), _this3.state.isVisible && React.createElement(Image, {
         accessibilityLabel: alt,
         resizeMode: resizeMode,
         title: title,
@@ -343,7 +342,7 @@ if(isSSR){
         styleAccessibilityImage: imagePlaceholderStyle,
         styleImage: imageStyle,
         style: {
-          paddingBottom: presentationHeight ? presentationHeight : '60%',
+          paddingBottom: presentationHeight,
           maxWidth: '100%',
           opacity: 1,
           transitionDelay: "0.35s"

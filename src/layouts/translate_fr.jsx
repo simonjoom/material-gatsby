@@ -70,7 +70,13 @@ const translate = () => {
             });
           });
 
+
           let item = {
+            path: router["/hotel/"][lang],
+            title: t("Index")("hotel")
+          };
+          array.splice(2, 0, item);
+          item = {
             path: router["/instructor/"][lang],
             title: t("Index")("instructor")
           };

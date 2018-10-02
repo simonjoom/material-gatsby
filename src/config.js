@@ -11,23 +11,39 @@ const config = {
       ch: "/cn/"
     },
     "/blog/": {
-      fr: "/fr/blog/",
+      fr: "/fr/ecole-de-ski-courchevel-meribel/",
       en: "/blog/",
-      ru: "/ru/blog/",
-      uk: "/uk/blog/",
+      ru: "/ru/лыжная-школа-Куршевель/",
+      uk: "/uk/Лижна-школа-Куршевель/",
       pt: "/pt/blog/",
       ch: "/cn/blog/"
     },
     "/instructor/": {
-      fr: "/fr/instructor/",
-      en: "/instructor/",
-      ru: "/ru/instructor/",
-      uk: "/uk/instructor/",
-      pt: "/pt/instructor/",
-      ch: "/cn/instructor/"
+      fr: "/fr/Moniteurs_skischool/",
+      en: "/Instructors_skischool/",
+      ru: "/ru/Инструкторы_skischool/",
+      uk: "/uk/інструкторів_skischool/",
+      pt: "/pt/instructors_skischool/",
+      ch: "/cn/Instructors_skischool/"
+    },
+    "/hotel/": {
+      fr: "/fr/Hotels/",
+      en: "/hotels/",
+      ru: "/ru/Гостиница/",
+      uk: "/uk/отель/",
+      pt: "/pt/Hoteis/",
+      ch: "/cn/Hotels/"
+    },
+    "/hotel": {
+      fr: "/fr/Hotels/",
+      en: "/hotels/",
+      ru: "/ru/Гостиница/",
+      uk: "/uk/отель/",
+      pt: "/pt/Hoteis/",
+      ch: "/cn/Hotels/"
     },
     "/instructor": {
-      fr: "/fr/instructor/",
+      fr: "/fr/Moniteurs_skischool/",
       en: "/instructor/",
       ru: "/ru/instructor/",
       uk: "/uk/instructor/",
@@ -45,18 +61,10 @@ const config = {
     "/contact": {
       fr: "/fr/contact",
       en: "/contact/",
-      ru: "/ru/contact/",
-      uk: "/uk/contact/",
-      pt: "/pt/contact/",
+      ru: "/ru/контакт/",
+      uk: "/uk/дотик/",
+      pt: "/pt/contato/",
       ch: "/cn/contact/"
-    },
-    "/hotels": {
-      fr: "/fr/hotels/",
-      en: "/hotels/",
-      ru: "/ru/hotels/",
-      uk: "/uk/hotels/",
-      pt: "/pt/hotels/",
-      ch: "/cn/hotels/"
     },
     "/skipass": {
       fr: "/Articles/Forfait-de-ski/",

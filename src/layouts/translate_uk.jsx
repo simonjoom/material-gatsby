@@ -53,7 +53,7 @@ const translate = () => {
           let t = namespace => i18n.getFixedT(null, [namespace, "common"]);
 
           global.postEdges = data.allMarkdownRemark.edges;
-          let array = []; 
+          let array = [];
           Object.keys(router).forEach(function(element, key, _array) {
             global.postEdges.forEach(postEdge => {
               const { title } = postEdge.node.frontmatter;
@@ -70,6 +70,11 @@ const translate = () => {
           });
 
           let item = {
+            path: router["/hotel/"][lang],
+            title: t("Index")("hotel")
+          };
+          array.splice(2, 0, item);
+          item = {
             path: router["/instructor/"][lang],
             title: t("Index")("instructor")
           };

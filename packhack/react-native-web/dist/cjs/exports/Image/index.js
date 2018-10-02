@@ -25,14 +25,14 @@ var _ImageLoader2 = _interopRequireDefault(_ImageLoader);
 var _ImageResizeMode = require('./ImageResizeMode');
 
 var _ImageResizeMode2 = _interopRequireDefault(_ImageResizeMode);
-
+/*
 var _ImageSourcePropType = require('./ImageSourcePropType');
 
 var _ImageSourcePropType2 = _interopRequireDefault(_ImageSourcePropType);
 
 var _ImageStylePropTypes = require('./ImageStylePropTypes');
 
-var _ImageStylePropTypes2 = _interopRequireDefault(_ImageStylePropTypes);
+var _ImageStylePropTypes2 = _interopRequireDefault(_ImageStylePropTypes);*/
 
 var _ImageUriCache = require('./ImageUriCache');
 
@@ -41,18 +41,14 @@ var _ImageUriCache2 = _interopRequireDefault(_ImageUriCache);
 var _StyleSheet = require('../StyleSheet');
 
 var _StyleSheet2 = _interopRequireDefault(_StyleSheet);
-
+/*
 var _StyleSheetPropType = require('../../modules/StyleSheetPropType');
 
-var _StyleSheetPropType2 = _interopRequireDefault(_StyleSheetPropType);
+var _StyleSheetPropType2 = _interopRequireDefault(_StyleSheetPropType);*/
 
 var _View = require('../View');
 
 var _View2 = _interopRequireDefault(_View);
-
-var _ViewPropTypes = require('../ViewPropTypes');
-
-var _ViewPropTypes2 = _interopRequireDefault(_ViewPropTypes);
 
 var _propTypes = require('prop-types');
 
@@ -176,7 +172,30 @@ var Image = function (_Component) {
     _this._imageRequestId = null;
     _this._imageState = null;
     _this._isMounted = false;
+    
+    _this.simUpd = function (prevProps) {
+      var finalResizeMode = _this.props.resizeMode || _this.props.style.resizeMode || _ImageResizeMode2.default.cover; // CSS filters
+ var that=_this;
+if(isSSR)
+_this.setState({
+          backgroundStyle: that._getBackgroundSize(finalResizeMode)
+        });
+        else
+      window.setTimeout(function () {
+        return that.setState({
+          backgroundStyle: that._getBackgroundSize(finalResizeMode)
+        });
+      }, 10);
 
+      if (_this._imageState === STATUS_PENDING) {
+        _this._createImageLoader();
+      } else if (_this._imageState === STATUS_LOADED) {
+        _this._onLoad({
+          target: _this._imageRef
+        });
+      }
+    };
+    
     _this._createLayoutHandler = function (resizeMode) {
       var onLayout = _this.props.onLayout;
 
@@ -186,28 +205,30 @@ var Image = function (_Component) {
 
           onLayout && onLayout(e);
           _this.setState(function () {
-            return { layout: layout };
+            return { layout: layout,
+              backgroundStyle: _this._getBackgroundSize(resizeMode, layout) 
+              }
           });
         };
       }
     };
 
-    _this._getBackgroundSize = function (resizeMode) {
+    _this._getBackgroundSize = function (resizeMode, layout) {
       if (_this._imageRef && (resizeMode === 'center' || resizeMode === 'repeat')) {
         var _this$_imageRef = _this._imageRef,
             naturalHeight = _this$_imageRef.naturalHeight,
             naturalWidth = _this$_imageRef.naturalWidth;
-        var _this$state$layout = _this.state.layout,
+        var _this$state$layout = layout || _this.state.layout, 
             height = _this$state$layout.height,
             width = _this$state$layout.width;
-
-        if (naturalHeight && naturalWidth && height && width) {
-          var scaleFactor = Math.min(1, width / naturalWidth, height / naturalHeight);
+		 if (naturalHeight && naturalWidth > 50 && height && width) {
+         /* var scaleFactor = Math.min(1, width / naturalWidth, height / naturalHeight);
           var x = Math.ceil(scaleFactor * naturalWidth);
-          var y = Math.ceil(scaleFactor * naturalHeight);
+          var y = Math.ceil(scaleFactor * naturalHeight);*/ 
           return {
-            backgroundSize: x + 'px ' + y + 'px'
-          };
+          backgroundSize:(naturalWidth>width||naturalHeight>height)?"contain":"auto"
+         //   backgroundSize: width + "px " + height + "px"
+          }
         }
       }
     };
@@ -248,7 +269,8 @@ var Image = function (_Component) {
 
     var uri = resolveAssetUri(props.source);
     var shouldDisplaySource = _ImageUriCache2.default.has(uri);
-    _this.state = { layout: {}, shouldDisplaySource: shouldDisplaySource };
+    _this.state = { layout: {},
+      backgroundStyle: {}, shouldDisplaySource: shouldDisplaySource };
     _this._imageState = getImageState(uri, shouldDisplaySource);
     _this._filterId = filterId;
     filterId++;
@@ -257,11 +279,7 @@ var Image = function (_Component) {
 
   Image.prototype.componentDidMount = function componentDidMount() {
     this._isMounted = true;
-    if (this._imageState === STATUS_PENDING) {
-      this._createImageLoader();
-    } else if (this._imageState === STATUS_LOADED) {
-      this._onLoad({ target: this._imageRef });
-    }
+    this.simUpd();
   };
 
   Image.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
@@ -272,10 +290,12 @@ var Image = function (_Component) {
       var isPreviouslyLoaded = _ImageUriCache2.default.has(uri);
       isPreviouslyLoaded && _ImageUriCache2.default.add(uri);
       this._updateImageState(getImageState(uri, isPreviouslyLoaded));
-    }
-    if (this._imageState === STATUS_PENDING) {
+    
+    this.simUpd();
+    } 
+    /*if (this._imageState === STATUS_PENDING) {
       this._createImageLoader();
-    }
+    }*/
   };
 
   Image.prototype.componentWillUnmount = function componentWillUnmount() {
@@ -290,6 +310,7 @@ var Image = function (_Component) {
 
     var _props = this.props,
         accessibilityLabel = _props.accessibilityLabel,
+        styleAccessibilityImage = _props.styleAccessibilityImage,
         accessible = _props.accessible,
         blurRadius = _props.blurRadius,
         defaultSource = _props.defaultSource,
@@ -297,6 +318,7 @@ var Image = function (_Component) {
         source = _props.source,
         testID = _props.testID,
         capInsets = _props.capInsets,
+        styleImage = _props.styleImage,
         onError = _props.onError,
         onLayout = _props.onLayout,
         onLoad = _props.onLoad,
@@ -357,8 +379,9 @@ var Image = function (_Component) {
       alt: accessibilityLabel || '',
       draggable: draggable || false,
       ref: this._setImageRef,
-      src: displayImageUri,
-      style: styles.accessibilityImage
+      src: resolveAssetUri(defaultSource),
+      style: _StyleSheet2.default.flatten([styles.accessibilityImage, styleAccessibilityImage])
+  //    style: styles.accessibilityImage
     }) : null;
 
     return _react2.default.createElement(
@@ -371,7 +394,9 @@ var Image = function (_Component) {
         testID: testID
       }),
       _react2.default.createElement(_View2.default, {
-        style: [styles.image, resizeModeStyles[finalResizeMode], this._getBackgroundSize(finalResizeMode), backgroundImage && { backgroundImage: backgroundImage }, filters.length > 0 && { filter: filters.join(' ') }]
+        style: [styles.image,styleImage, resizeModeStyles[finalResizeMode], 
+        this.state.backgroundStyle,
+        backgroundImage && { backgroundImage: backgroundImage }, filters.length > 0 && { filter: filters.join(' ') }]
       }),
       hiddenImage,
       createTintColorSVG(tintColor, this._filterId)
@@ -435,6 +460,7 @@ Image.defaultProps = {
   style: emptyObject
 };
 Image.resizeMode = _ImageResizeMode2.default;
+/*
 Image.propTypes = process.env.NODE_ENV !== "production" ? Object.assign({}, _ViewPropTypes2.default, {
   blurRadius: _propTypes.number,
   defaultSource: _ImageSourcePropType2.default,
@@ -446,14 +472,11 @@ Image.propTypes = process.env.NODE_ENV !== "production" ? Object.assign({}, _Vie
   onLoadStart: _propTypes.func,
   resizeMode: (0, _propTypes.oneOf)(Object.keys(_ImageResizeMode2.default)),
   source: _ImageSourcePropType2.default,
-  style: (0, _StyleSheetPropType2.default)(_ImageStylePropTypes2.default),
-  // compatibility with React Native
-  /* eslint-disable react/sort-prop-types */
+  style: (0, _StyleSheetPropType2.default)(_ImageStylePropTypes2.default), 
   capInsets: (0, _propTypes.shape)({ top: _propTypes.number, left: _propTypes.number, bottom: _propTypes.number, right: _propTypes.number }),
-  resizeMethod: (0, _propTypes.oneOf)(['auto', 'resize', 'scale'])
-  /* eslint-enable react/sort-prop-types */
+  resizeMethod: (0, _propTypes.oneOf)(['auto', 'resize', 'scale']) 
 }) : {};
-
+*/
 
 var styles = _StyleSheet2.default.create({
   root: {

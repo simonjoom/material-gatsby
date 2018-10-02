@@ -26,8 +26,7 @@ import ImageStylePropTypes from './ImageStylePropTypes';
 import ImageUriCache from './ImageUriCache';
 import StyleSheet from '../StyleSheet';
 import StyleSheetPropType from '../../modules/StyleSheetPropType';
-import View from '../View';
-import ViewPropTypes from '../ViewPropTypes';
+import View from '../View'; 
 import { bool, func, number, oneOf, shape } from 'prop-types';
 import React, { Component } from 'react';
 var emptyObject = {};
@@ -139,7 +138,7 @@ function (_Component) {
     _this.simUpd = function (prevProps) {
       var finalResizeMode = _this.props.resizeMode || _this.props.style.resizeMode || ImageResizeMode.cover; // CSS filters
 
-      var that = _assertThisInitialized(_assertThisInitialized(_this));
+      var that = _this;
 if(isSSR)
 that.setState({
           backgroundStyle: that._getBackgroundSize(finalResizeMode)
@@ -189,12 +188,13 @@ that.setState({
             width = _ref.width;
 
         if (naturalHeight && naturalWidth > 50 && height && width) {
-          var scaleFactor = Math.min(1, width / naturalWidth, height / naturalHeight);
+         /* var scaleFactor = Math.min(1, width / naturalWidth, height / naturalHeight);
           var x = Math.ceil(scaleFactor * naturalWidth);
-          var y = Math.ceil(scaleFactor * naturalHeight);
+          var y = Math.ceil(scaleFactor * naturalHeight);*/ 
           return {
-            backgroundSize: x + "px " + y + "px"
-          };
+          backgroundSize:(naturalWidth>width||naturalHeight>height)?"contain":"auto"
+         //   backgroundSize: width + "px " + height + "px"
+          }
         }
       }
     };
@@ -366,7 +366,7 @@ that.setState({
       alt: accessibilityLabel || '',
       draggable: draggable || false,
       ref: this._setImageRef,
-      src: displayImageUri,
+      src: resolveAssetUri(defaultSource),
       style: StyleSheet.flatten([styles.accessibilityImage, styleAccessibilityImage])
     }) : null;
     return React.createElement(View, _extends({}, other, {

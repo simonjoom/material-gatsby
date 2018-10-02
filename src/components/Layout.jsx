@@ -29,7 +29,7 @@ class Layout extends React.Component {
               <FrontCarousel
                 data={carouselList}
                 ismain={ismain}
-                height={carouselList.length > 1 ? "0px" : "50%"}
+                height={carouselList.length > 1 ? "400px" : "50%"}
               />
             )}
         </div>

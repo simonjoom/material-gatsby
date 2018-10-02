@@ -15,8 +15,8 @@ const GetImage = ({
   t,
   maxWidth = "1024px",
   directory = ""
-}) => {
-  const dir = directory !== "" ? "/" + directory : "";
+}) => { 
+  const dir = directory !== "" ? "/" + directory : ""; 
   const MapImg = dataList
     .map((el, ind) => {
       const FileNode = CarouselQuery.find(function(element) {
@@ -30,7 +30,6 @@ const GetImage = ({
           ) !== -1
         );
       });
-
       if (FileNode)
         return (
           <Img

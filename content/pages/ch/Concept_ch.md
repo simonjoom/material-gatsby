@@ -1,6 +1,6 @@
 ---
 title: "Concept"
-cover: "starter-logo-1024.png"
+cover: "snowboard.jpg"
 category: "concept"
 slug: "concept"
 tags:

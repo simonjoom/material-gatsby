@@ -17,7 +17,7 @@ date: "2018-07-02"
 
 Especialista em serviços e qualidade, eu personalizo meus serviços para suas necessidades.
 
-* %langspoken% falante.
+* speak: french and english falante.
 * 10 anos de experiência em ensino e coaching.
 * Guiando, com conhecimento extensivo dos Três Vallees, prioridade em todos os teleféricos.
 * Organização flexível do seu tempo de esqui.
