@@ -22,13 +22,13 @@ var io;
 var listeners = [];
 
 function getIO() {
-  if (typeof io === "undefined" && typeof window !== "undefined" && window.IntersectionObserver) {
+  if (typeof io === "undefined" && typeof window !== "undefined" && window.IntersectionObserver) { 
     io = new window.IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         listeners.forEach(function (l) {
           if (l[0] === entry.target) {
             // Edge doesn't currently support isIntersecting, so also test for an intersectionRatio > 0
-            if (entry.isIntersecting || entry.intersectionRatio > 0) {
+            if (entry.isIntersecting || entry.intersectionRatio > 0) { 
               io.unobserve(l[0]);
               l[1]();
             }
@@ -121,7 +121,7 @@ function (_React$Component) {
       IOSupported = true;
     } // Always don't render image while server rendering
 
-if(process.env.GATSBY_BUILD_STAGE=="build-html"){
+if(false){
      isVisible = true;
      imgLoaded = false;
 }
@@ -134,7 +134,7 @@ if(process.env.GATSBY_BUILD_STAGE=="build-html"){
     };
     _this.handleRef = _this.handleRef.bind(babelHelpers.assertThisInitialized(babelHelpers.assertThisInitialized(_this)));
     
-    
+    //_this.handleRef = _this.handleRef.bind(this)
    var width = _convertProps.width; 
     var  height = _convertProps.height;
     var image = _convertProps.fluid;
@@ -230,8 +230,7 @@ maxWidth=maxHeight/ratio
 
   _proto.handleRef = function handleRef(ref) {
     var _this2 = this;
-
-    if (this.state.IOSupported && ref) {
+    if (_this2.state.IOSupported && ref) {
       listenToIntersections(ref, function () {
         _this2.setState({
           isVisible: true,

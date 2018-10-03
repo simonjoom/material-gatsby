@@ -73,7 +73,7 @@ class StyleSheetValidation {
 }
 
 const styleError = function(message1, style, caller?, message2?) {
-  warning(
+  console.log(
     false,
     message1 +
       '\n' +

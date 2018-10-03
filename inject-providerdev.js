@@ -1,25 +1,17 @@
-import React from "react";
+import React, { Component } from "react";
 import i18n from "i18next";
 import AppRegistry from "./src/react-native-web/src/exports/AppRegistry";
-import { ThemeContext } from "./src/withContext";  
+import { ThemeContext } from "./src/withContext";
 global.M = undefined;
 const getLanguage = () =>
   i18n.language ||
   (typeof window !== "undefined" && window.localStorage.i18nextLng);
 
-var canUseDOM = !!(
-  typeof window !== "undefined" &&
-  window.document &&
-  window.document.createElement
-);
-
-global.isSSR=!canUseDOM
-
 const filetranslate = lng => import(`./src/layouts/translate_${lng}`);
 const MAsync = () =>
   import(/* webpackChunkName: "materialize" */ "./src/components/materialize");
-  
-  global.locale= { en: [], ru: [], pt: [], uk: [], ch: [], fr: [] };
+
+global.locale = { en: [], ru: [], pt: [], uk: [], ch: [], fr: [] };
 global.menuList = { en: [], ru: [], pt: [], uk: [], ch: [], fr: [] };
 global.filesQuery = [];
 const preferDefault = m => (m && m.default) || m;
@@ -38,11 +30,11 @@ try {
 }
 export const onClientEntry = async () => {
   if (!global.M) {
-  //  const Zep = await MAsync();
-  //  global.M = Zep.default;
+      const Zep = await MAsync();
+      global.M = Zep.default;
   }
 
-  /*if (/comp|inter|loaded/.test(document.readyState)) {
+   if (/comp|inter|loaded/.test(document.readyState)) {
     Waves.displayEffect();
   } else {
     document.addEventListener(
@@ -52,17 +44,18 @@ export const onClientEntry = async () => {
       },
       false
     );
-  }*/
-}
+  } 
+};
 
-export const replaceHydrateFunction = () => { 
+export const replaceHydrateFunction = () => {
   return (element, container, callback) => {
-    class App extends React.Component {
+   // const el=element.children?; 
+    class App extends Component {
       render() {
         return <div id="App">{element}</div>;
       }
     }
-    
+
     AppRegistry.registerComponent("App", () => App);
     AppRegistry.runApplication("App", {
       initialProps: {},
@@ -72,18 +65,25 @@ export const replaceHydrateFunction = () => {
   };
 };
 
-export const wrapPageElement = async ({ element, props }) => {
-  const { lng } = props.pageContext;
-  let Red, Red2;
+export const wrapPageElement =  async ({ element, props }) => {
+  const { lng } = props.pageContext;   
+ if (!lng)
+    return (
+      <div>
+        <div />
+        <Layout>{element}</Layout>
+      </div>
+    );
+ let Red, Red2;
   if (global.menuList[lng].length == 0) {
     try {
       const Obj = await filetranslate(lng);
       Red = Obj.default;
-    } catch (e) { 
+    } catch (e) {
       Red = "div";
     }
   } else {
-    console.log("dev",global.locale)
+    console.log("dev", global.locale);
     global.locale[lng].forEach(({ node }) => {
       const { lng, ns, data } = node;
       if (!i18n.hasResourceBundle(lng, ns)) {
@@ -92,32 +92,24 @@ export const wrapPageElement = async ({ element, props }) => {
     });
     Red = "div";
   } 
-/*
-  if (global.filesQuery.length == 0) {
-    const Obj = await Statics();
-    Red2 = Obj.default;
-  } else {
-    Red2 = "div";
-  }  */
-  // console.log("Red2", Red2, lng);
   const { slug, slugbase, route, carousel } = props.pageContext;
   const namespace = slugbase === "/" ? "Index" : "Post";
   const ismain = slugbase === "/";
   console.log("runMainNavLayout");
   return (
     <div>
-      <Red /> 
+      <Red />
       <Layout lng={lng}>{element}</Layout>
     </div>
-  );
+  ); 
 };
 
-const stateProvider={translate: namespace => i18n.getFixedT(null, [namespace, "common"])}
-export const wrapRootElement = ({ element }) => { 
+const stateProvider = {
+  translate: namespace => i18n.getFixedT(null, [namespace, "common"])
+};
+export const wrapRootElement = ({ element }) => {
   return (
-    <ThemeContext.Provider
-      value={stateProvider}
-    >
+    <ThemeContext.Provider value={stateProvider}>
       {element}
     </ThemeContext.Provider>
   );

@@ -65,6 +65,7 @@ const pointerEventsStyles = StyleSheet.create({
 const defaultStyleResolver = style => styleResolver.resolve(style);
 
 const createDOMProps = (component, props, styleResolver) => {
+
   if (!styleResolver) {
     styleResolver = defaultStyleResolver;
   }
@@ -89,7 +90,7 @@ const createDOMProps = (component, props, styleResolver) => {
     /* eslint-enable */
     ...domProps
   } = props;
-
+  
   const disabled = AccessibilityUtil.isDisabled(props);
   const role = AccessibilityUtil.propsToAriaRole(props);
 
@@ -159,6 +160,7 @@ const createDOMProps = (component, props, styleResolver) => {
   if (className && className.constructor === String) {
     domProps.className = props.className ? `${props.className} ${className}` : className;
   }
+  
   if (style) {
     domProps.style = style;
   }

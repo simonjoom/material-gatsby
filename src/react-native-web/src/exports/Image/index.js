@@ -93,7 +93,7 @@ type State = {
   shouldDisplaySource: boolean
 };
 
-class Image extends Component<*, State> {
+class Image extends Component {
   static displayName = 'Image';
 
   static contextTypes = {
@@ -143,33 +143,59 @@ class Image extends Component<*, State> {
     // If an image has been loaded before, render it immediately
     const uri = resolveAssetUri(props.source);
     const shouldDisplaySource = ImageUriCache.has(uri);
-    this.state = { layout: {}, shouldDisplaySource };
+    this.state = { layout: {}, shouldDisplaySource,backgroundStyle:{} };
     this._imageState = getImageState(uri, shouldDisplaySource);
     this._filterId = filterId;
     filterId++;
   }
+   simUpd=(prevProps)=>{
+      var finalResizeMode = this.props.resizeMode || this.props.style.resizeMode || ImageResizeMode.cover; // CSS filters
 
+      var that = this;
+//if(false)
+that.setState({
+          backgroundStyle: that._getBackgroundSize(finalResizeMode)
+        });
+  /*      else
+      window.setTimeout(function () {
+        return that.setState({
+          backgroundStyle: that._getBackgroundSize(finalResizeMode)
+        });
+      }, 10);*/
+
+      if (this._imageState === STATUS_PENDING) {
+        this._createImageLoader();
+      } else if (this._imageState === STATUS_LOADED) {
+        this._onLoad({
+          target: this._imageRef
+        });
+      }
+    };
+    
   componentDidMount() {
     this._isMounted = true;
-    if (this._imageState === STATUS_PENDING) {
+    this.simUpd();
+    /*if (this._imageState === STATUS_PENDING) {
       this._createImageLoader();
     } else if (this._imageState === STATUS_LOADED) {
       this._onLoad({ target: this._imageRef });
-    }
+    }*/
   }
 
   componentDidUpdate(prevProps) {
     const prevUri = resolveAssetUri(prevProps.source);
-    const uri = resolveAssetUri(this.props.source);
+    const uri = resolveAssetUri(this.props.source); 
     if (prevUri !== uri) {
       ImageUriCache.remove(prevUri);
       const isPreviouslyLoaded = ImageUriCache.has(uri);
       isPreviouslyLoaded && ImageUriCache.add(uri);
       this._updateImageState(getImageState(uri, isPreviouslyLoaded));
+      
+    this.simUpd();
     }
-    if (this._imageState === STATUS_PENDING) {
+  /*  if (this._imageState === STATUS_PENDING) {
       this._createImageLoader();
-    }
+    }*/
   }
 
   componentWillUnmount() {
@@ -218,8 +244,10 @@ class Image extends Component<*, State> {
 
     const selectedSource = shouldDisplaySource ? source : defaultSource;
     const displayImageUri = resolveAssetUri(selectedSource);
+    
     const imageSizeStyle = resolveAssetDimensions(selectedSource);
-    const backgroundImage = displayImageUri ? `url("${displayImageUri}")` : null;
+    const backgroundImage = displayImageUri ? "url("+displayImageUri+")" : null;
+    
     const flatStyle = { ...StyleSheet.flatten(this.props.style) };
     const finalResizeMode = resizeMode || flatStyle.resizeMode || ImageResizeMode.cover;
 
@@ -262,7 +290,7 @@ class Image extends Component<*, State> {
           style: StyleSheet.flatten([styles.accessibilityImage, styleAccessibilityImage])
         })
       : null;
-
+      
     return (
       <View
         {...other}
@@ -282,6 +310,7 @@ class Image extends Component<*, State> {
             styles.image,
             styleImage,
             resizeModeStyles[finalResizeMode],
+            this.state.backgroundStyle,
             this._getBackgroundSize(finalResizeMode),
             backgroundImage && { backgroundImage },
             filters.length > 0 && { filter: filters.join(' ') }
@@ -314,15 +343,17 @@ class Image extends Component<*, State> {
       return e => {
         const { layout } = e.nativeEvent;
         onLayout && onLayout(e);
-        this.setState(() => ({ layout }));
+        this.setState(() => ({ layout,
+              backgroundStyle: this._getBackgroundSize(resizeMode, layout) }));
       };
     }
   };
 
-  _getBackgroundSize = resizeMode => {
+  _getBackgroundSize = (resizeMode, layout) => {
     if (this._imageRef && (resizeMode === 'center' || resizeMode === 'repeat')) {
       const { naturalHeight, naturalWidth } = this._imageRef;
-      const { height, width } = this.state.layout;
+      
+      const { height, width } = layout || this.state.layout;
       if (naturalHeight && naturalWidth && height && width) {
         const scaleFactor = Math.min(1, width / naturalWidth, height / naturalHeight);
         const x = Math.ceil(scaleFactor * naturalWidth);
@@ -413,7 +444,7 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
     height: '100%',
     opacity: 0,
-    width: '100%',
+   width: '100%',
     zIndex: -1
   }
 });
