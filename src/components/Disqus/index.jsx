@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import ReactDisqusComments from "react-disqus-comments";
 import moment from "moment";
 import urljoin from "url-join";
-import Avatar from "react-md/lib/Avatars";
+import Avatar from "../Avatars";
 //import Snackbar from "react-md/lib/Snackbars";
 import config from "../../../data/SiteConfig";
 import Card from "../../reactLIB/Card";
@@ -17,7 +17,7 @@ class Disqus extends Component {
       toasts: []
     };*/
     this.notifyAboutComment = this.notifyAboutComment.bind(this);
-   // this.onSnackbarDismiss = this.onSnackbarDismiss.bind(this);
+    // this.onSnackbarDismiss = this.onSnackbarDismiss.bind(this);
   }
 
   /* onSnackbarDismiss() {
@@ -33,7 +33,7 @@ class Disqus extends Component {
       "<span>" +
       comment.text +
       "</span><button class='btn-flat toast-action'>Undo</button>";
-    M.toast({ html: toastHTML });
+    typeof M !== "undefined" && M.toast({ html: toastHTML });
   }
   render() {
     const { postNode } = this.props;
@@ -48,7 +48,7 @@ class Disqus extends Component {
     );
 
     return (
-      <>
+      <div>
         <Card
           key={post.path}
           waves="light"
@@ -79,7 +79,7 @@ class Disqus extends Component {
             onNewComment={this.notifyAboutComment}
           />
         </Card>
-      </>
+      </div>
     );
   }
 }

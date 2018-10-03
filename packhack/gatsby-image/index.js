@@ -121,7 +121,7 @@ function (_React$Component) {
       IOSupported = true;
     } // Always don't render image while server rendering
 
-if(isSSR){
+if(process.env.GATSBY_BUILD_STAGE=="build-html"){
      isVisible = true;
      imgLoaded = false;
 }

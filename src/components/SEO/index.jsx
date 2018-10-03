@@ -9,7 +9,7 @@ const siteUrlpt = "https://pt.skiscool.com";
 const siteUrluk = "https://uk.skiscool.com";
 const siteUrlru = "https://ru.skiscool.com";
 const siteUrlch = "https://cn.skiscool.com";
-const pathPrefix="";
+const pathPrefix = "";
 class SEO extends Component {
   render() {
     const {
@@ -24,14 +24,17 @@ class SEO extends Component {
     let image;
     let title;
     let postURL;
-
-    let routefr = route.fr.replace("/fr", "");
-    let routeen = route.en.replace("/en", "");
-    let routeuk = route.uk.replace("/uk", "");
-    let routept = route.pt.replace("/pt", "");
-    let routeru = route.ru.replace("/ru", "");
-    let routech = route.ch.replace("/cn", "");
-
+    let routefr, routeen, routeuk, routept, routeru, routech;
+    if (route && route.fr) {
+      routefr = route.fr.replace("/fr", "");
+      routeen = route.en.replace("/en", "");
+      routeuk = route.uk.replace("/uk", "");
+      routept = route.pt.replace("/pt", "");
+      routeru = route.ru.replace("/ru", "");
+      routech = route.ch.replace("/cn", "");
+    } else {
+      console.warn("noroute", postNode);
+    }
     if (postSEO) {
       const postMeta = postNode.frontmatter;
       if (!titleprop) ({ title } = postMeta);

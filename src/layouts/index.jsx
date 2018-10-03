@@ -9,8 +9,7 @@ import config from "../../data/SiteConfig";
 
 
 export default class MainNavLayout extends React.Component {
-  render() { 
-    console.log("MainNavLayout",this.props)
+  render() {  
     const {
       children, 
       lng, 

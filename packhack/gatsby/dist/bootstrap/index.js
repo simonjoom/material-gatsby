@@ -208,7 +208,9 @@ function () {
 
       try {
         if (env === `browser` && plugin.name === `default-site-plugin`) {
-          return slash(require.resolve(path.join(plugin.resolve, `gatsby-${env}`)));
+        console.log(process.env.NODE_ENV)
+        const dev=process.env.NODE_ENV=="production"?"-prod":"";
+          return slash(require.resolve(path.join(plugin.resolve, `gatsby-${env}${dev}`)));
         }
       } catch (e) {// ignore
       }

@@ -16,6 +16,7 @@ class CategoryTemplate extends React.Component {
       <Layout
         carouselList={[]}
         path={path}
+        route={route}
         lng={lng}
         ismain={false}
         location={this.props.location}

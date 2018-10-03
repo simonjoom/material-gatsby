@@ -38,7 +38,8 @@ const createKey = require(`./create-key`);
 
 const _require5 = require(`./data-tree-utils`),
       getExampleValues = _require5.getExampleValues,
-      isEmptyObjectOrArray = _require5.isEmptyObjectOrArray;
+      isEmptyObjectOrArray = _require5.isEmptyObjectOrArray,
+      INVALID_VALUE = _require5.INVALID_VALUE;
 
 const DateType = require(`./types/type-date`);
 
@@ -335,7 +336,7 @@ function _inferObjectStructureFromNodes({
   _.each(resolvedExample, (value, key) => {
     // Remove fields common to the top-level of all nodes.  We add these
     // elsewhere so don't need to infer their type.
-    if (isRoot && EXCLUDE_KEYS[key]) return; // Several checks to see if a field is pointing to custom type
+    if (value === INVALID_VALUE || isRoot && EXCLUDE_KEYS[key]) return; // Several checks to see if a field is pointing to custom type
     // before we try automatic inference.
 
     const nextSelector = selector ? `${selector}.${key}` : key;

@@ -1,7 +1,9 @@
 import React from "react";
+import i18n from "i18next"; 
+import createContext from 'create-react-context';
 
-export const ThemeContext = React.createContext({  
-  translate: false
+export const ThemeContext = createContext({  
+  translate: namespace => i18n.getFixedT(null, [namespace, "common"])
 });
 
 // This function takes a component...

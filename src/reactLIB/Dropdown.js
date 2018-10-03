@@ -19,11 +19,13 @@ class Dropdown extends Component {
   componentDidMount() {
     const { options } = this.props;
     this.elems = document.querySelectorAll('.dropdown-trigger');
+    if(typeof M !== 'undefined')
     this.instances = M.Dropdown.init(this.elems, options);
   }
 
   componentWillUnmount() {
-    $(this.elems).map((i, el) => {
+    if(typeof M !== 'undefined')
+    cash(this.elems).map((i, el) => {
         var instance = M.Dropdown.getInstance(el);
         instance.destroy();
       });

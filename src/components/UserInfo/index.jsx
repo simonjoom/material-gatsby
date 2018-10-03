@@ -1,12 +1,11 @@
-import React, { Component } from "react";
+import React, { Component,Fragment } from "react";
 import withTheme from "../../withContext";
 import Card from "../../reactLIB/Card";
 import Icon from "../../reactLIB/Icon"; 
 import config from "../../../data/SiteConfig";
-import Avatar from "react-md/lib/Avatars"; 
-import IconSeparator from "react-md/lib/Helpers/IconSeparator";
-import { Follow } from "react-twitter-widgets";
-import UserLinks from "../UserLinks";
+import Avatar from "../Avatars";
+//import { Follow } from "react-twitter-widgets";
+//import UserLinks from "../UserLinks";
 import "./UserInfo.scss";
 
 class UserInfo extends Component {
@@ -41,6 +40,34 @@ class UserInfo extends Component {
         title={
           <div>
             {userName}
+          </div>
+        }
+        reveal={
+          <div>
+            {userLocation && (
+              <div label={userLocation}>
+              <span>{userLocation}</span>
+                <Icon className="map-marker" />
+              </div>
+            )}
+            <p>{userDescription && userDescription}</p>
+            {userLinksElement}
+          </div>
+        }
+        contentImage={
+          userAvatar && <Avatar src={userAvatar} role="presentation" />
+        }
+      >
+        <p className="about-text md-body-1">{t("UserDescription")}</p>
+      </Card>
+    );
+  }
+}
+
+export default withTheme(UserInfo); 
+
+
+/*
             {userTwitter ? (
               <Follow
                 username={userTwitter}
@@ -49,28 +76,7 @@ class UserInfo extends Component {
             ) : (
               "Author"
             )}
-          </div>
-        }
-        reveal={
-          <>
-            {userLocation && (
-              <IconSeparator label={userLocation} iconBefore>
-                <Icon className="map-marker" />
-              </IconSeparator>
-            )}
-            <p>{userDescription && userDescription}</p>
-            {userLinksElement}
-          </>
-        }
-        contentImage={
-          userAvatar && <Avatar src={userAvatar} role="presentation" />
-        }
-      >
-        <p className="about-text md-body-1">{t("UserDescription")}</p>
+            
+            
         <UserLinks labeled config={config} />
-      </Card>
-    );
-  }
-}
-
-export default withTheme(UserInfo); 
+            */

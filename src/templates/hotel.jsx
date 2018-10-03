@@ -2,7 +2,7 @@ import React from "react";
 import { graphql, Link } from "gatsby";
 import { kebabCase } from "lodash";
 import moment from "moment";
-import Avatar from "react-md/lib/Avatars";
+import Avatar from "../components/Avatars";
 import withTheme from "../withContext";
 import Card from "../reactLIB/Card";
 import Icon from "../reactLIB/Icon";

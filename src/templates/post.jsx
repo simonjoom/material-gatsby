@@ -4,9 +4,8 @@ import { graphql, Link } from "gatsby";
 import { kebabCase } from "lodash";
 import moment from "moment";
 import RehypeReact from "rehype-react";
-import Avatar from "react-md/lib/Avatars";
+import Avatar from "../components/Avatars";
 import withTheme from "../withContext";
-import UserInfo from "../components/UserInfo";
 import PostTags from "../components/PostTags";
 import Layout from "../components/Layout";
 // import PostCover from "../PostCover";
@@ -90,6 +89,7 @@ class PostTemplate extends React.Component {
           </Helmet>
           <SEO
             postPath={slug}
+            route={route}
             postNode={postNode}
             postSEO
             translate={t("Post")}

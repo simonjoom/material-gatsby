@@ -13,7 +13,7 @@ class SideNav extends Component {
   componentDidMount() {
     const { options } = this.props;
     var elems = document.querySelectorAll('.sidenav');
-    M.Sidenav.init(elems, options);
+    if (typeof M !== 'undefined') M.Sidenav.init(elems, options);
   }
 
   render() {

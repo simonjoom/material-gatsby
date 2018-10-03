@@ -35,7 +35,7 @@ const prepareOptions = (babel, resolve = require.resolve) => {
   const requiredPresets = []; // Stage specific plugins to add
 
   if (stage === `build-html` || stage === `develop-html`) {
-    requiredPlugins.push(babel.createConfigItem([resolve(`babel-plugin-dynamic-import-node`)], {
+requiredPlugins.push(babel.createConfigItem([resolve(`babel-plugin-dynamic-import-node`)], {
       type: `plugin`
     }));
   }
@@ -50,7 +50,14 @@ const prepareOptions = (babel, resolve = require.resolve) => {
   const fallbackPresets = [];
   const fallbackPlugins = [];
   let targets;
-
+    
+fallbackPlugins.push(babel.createConfigItem([resolve(`@babel/plugin-external-helpers`)], {
+    type: `plugin`
+  }));
+fallbackPlugins.push(babel.createConfigItem([resolve(`@babel/plugin-transform-flow-strip-types`)], {
+    type: `plugin`
+  }));
+  
   if (stage === `build-html`) {
     targets = {
       node: `current`
@@ -60,8 +67,6 @@ const prepareOptions = (babel, resolve = require.resolve) => {
       browsers: pluginBabelConfig.browserslist
     };
   }
-  
-  
   
   if (stage !== `develop`)
 fallbackPlugins.push(babel.createConfigItem([resolve(`babel-plugin-transform-react-remove-prop-types`)], {
@@ -79,11 +84,16 @@ fallbackPlugins.push(babel.createConfigItem([resolve(`babel-plugin-transform-rea
   }));
   fallbackPresets.push(babel.createConfigItem([resolve(`@babel/preset-react`), {
     useBuiltIns: true,
-    pragma: `React.createElement`,
+    pragma: `React.createElement`, 
     development: stage === `develop`
   }], {
     type: `preset`
   }));
+  /*
+fallbackPlugins.push(babel.createConfigItem([resolve(`babel-plugin-react-native-web`)], {
+    type: `plugin`
+  }));*/
+  
   fallbackPlugins.push(babel.createConfigItem([resolve(`@babel/plugin-proposal-class-properties`), {
     loose: true
   }], {

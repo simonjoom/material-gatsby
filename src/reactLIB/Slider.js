@@ -11,7 +11,7 @@ class Slider extends Component {
   }
 
   initSlider() {
-    this.instance = M.Slider.init(this._slider, this.props.options);
+    this.instance = typeof M !== 'undefined' &&M.Slider.init(this._slider, this.props.options);
   }
 
   /**

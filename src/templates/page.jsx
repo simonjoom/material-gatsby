@@ -1,8 +1,7 @@
 import React from "react";
 import RehypeReact from "rehype-react";
 import Helmet from "react-helmet";
-import { graphql, Link } from "gatsby";
-import { View } from "react-native";
+import { graphql } from "gatsby"; 
 //import UserInfo from "../components/UserInfo";
 import withTheme from "../withContext";
 import PostTags from "../components/PostTags";
@@ -37,8 +36,7 @@ class PostTemplate extends React.Component {
     const { mobile } = this.state;
     const { translate: t } = this.props;
     const { slug, slugbase, route, lng, carousel,files } = this.props.pageContext;
-    global.filesQuery=files; 
-    const expanded = !mobile;
+    global.filesQuery=files;  
     const ismain = slugbase === "/";
     let carouselList = [];
     let background;

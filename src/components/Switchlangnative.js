@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import classNames from "classnames";
 import { translate } from "react-i18next";
 import { push } from "gatsby";
-import { StyleSheet,View,TouchableHighlight,Text } from "react-native";
+import { StyleSheet,View,Text } from "react-native";
 import ModalDropdown from "./Modaldropdown";
 import {
   Icon_Flag_FR,

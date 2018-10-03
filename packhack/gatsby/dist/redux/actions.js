@@ -22,6 +22,8 @@ const path = require(`path`);
 
 const fs = require(`fs`);
 
+const url = require(`url`);
+
 const kebabHash = require(`kebab-hash`);
 
 const _require3 = require(`./index`),
@@ -1055,15 +1057,20 @@ actions.createRedirect = (_ref) => {
 
   if (store.getState().program.prefixPaths) {
     pathPrefix = store.getState().config.pathPrefix;
-  }
+  } // Parse urls to get their protocols
+  // url.parse will not cover protocol-relative urls so do a separate check for those
 
+
+  const parsed = url.parse(toPath);
+  const isRelativeProtocol = toPath.startsWith(`//`);
+  const toPathPrefix = parsed.protocol != null || isRelativeProtocol ? `` : pathPrefix;
   return {
     type: `CREATE_REDIRECT`,
     payload: Object.assign({
       fromPath: `${pathPrefix}${fromPath}`,
       isPermanent,
       redirectInBrowser,
-      toPath: `${pathPrefix}${toPath}`
+      toPath: `${toPathPrefix}${toPath}`
     }, rest)
   };
 };

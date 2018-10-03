@@ -18,7 +18,9 @@ const cache = require(`./cache`);
 
 const apiList = require(`./api-node-docs`);
 
-const createNodeId = require(`./create-node-id`); // Bind action creators per plugin so we can auto-add
+const createNodeId = require(`./create-node-id`);
+
+const createContentDigest = require(`./create-content-digest`); // Bind action creators per plugin so we can auto-add
 // metadata to actions they create.
 
 
@@ -120,6 +122,7 @@ const runAPI = (plugin, api, args) => {
       getNodeAndSavePathDependency,
       cache,
       createNodeId: namespacedCreateNodeId,
+      createContentDigest,
       tracing
     }), plugin.pluginOptions]; // If the plugin is using a callback use that otherwise
     // expect a Promise to be returned.

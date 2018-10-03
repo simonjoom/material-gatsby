@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component,Fragment } from "react";
 import Icon from "../../reactLIB/Icon";
 import Button from "../../reactLIB/Button";
 import Disqus from "../../components/Disqus";
@@ -9,8 +9,7 @@ import UserLinks from "../UserLinks";
 //import config from "../../../data/SiteConfig"
 
 //import ToolbarActions from "../ToolbarActions";
-
-//import GetNavList from "./NavList";
+ 
 import "./Navigation.scss";
 
 class Navigation extends Component {
@@ -27,7 +26,7 @@ class Navigation extends Component {
           }
         >
           {SideNavItem && (
-            <>
+            <div>
               <SideNavItem href="/" icon="home">
                 HOME
               </SideNavItem>
@@ -46,7 +45,7 @@ class Navigation extends Component {
                   email: "jdandturk@gmail.com"
                 }}
               />
-            </>
+            </div>
           )}
         </SideNav>
         <div className="main-container">{children}</div>

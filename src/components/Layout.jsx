@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Link } from "gatsby";
 import withTheme from "../withContext";
 import FrontCarousel from "./FrontCarousel";
@@ -16,9 +16,9 @@ class Layout extends React.Component {
       path,
       location
     } = this.props;
- console.log("route",route)
+    console.log("route", route);
     return (
-      <>
+      <div>
         <div
           className={
             carouselList ? (ismain ? "carousel-main" : "carousel-nomain") : null
@@ -37,7 +37,8 @@ class Layout extends React.Component {
         <div className="toolbar-main md-paper md-paper--1">
           <div className="toolbar-container">
             <div className="rowlink toolbar-menu">
-              {global.menuList&&global.menuList[lng].length > 0 &&
+              {global.menuList &&
+                global.menuList[lng].length > 0 &&
                 global.menuList[lng].map(post => (
                   <Link
                     key={post.path}
@@ -50,11 +51,17 @@ class Layout extends React.Component {
                   </Link>
                 ))}
             </div>
-            {(route||path)&&<LanguageSwitcher path={path} route={route} className="flex-end" />}
+            {(route || path) && (
+              <LanguageSwitcher
+                path={path}
+                route={route}
+                className="flex-end"
+              />
+            )}
           </div>
         </div>
         {children}
-      </>
+      </div>
     );
   }
 }
