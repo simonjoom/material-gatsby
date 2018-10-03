@@ -346,7 +346,7 @@ function () {
         sourceMap: true,
         terserOptions: Object.assign({
         mangle: true,
-         output: {
+        output: {
         beautify: false,
         comments:false
          },

@@ -39,13 +39,13 @@ requiredPlugins.push(babel.createConfigItem([resolve(`babel-plugin-dynamic-impor
       type: `plugin`
     }));
   }
-
+/*
   if (stage === `develop`) {
     requiredPlugins.push(babel.createConfigItem([resolve(`react-hot-loader/babel`)], {
       type: `plugin`
     }));
   } // Fallback presets/plugins
-
+*/
 
   const fallbackPresets = [];
   const fallbackPlugins = [];
@@ -89,10 +89,7 @@ fallbackPlugins.push(babel.createConfigItem([resolve(`babel-plugin-transform-rea
   }], {
     type: `preset`
   }));
-  /*
-fallbackPlugins.push(babel.createConfigItem([resolve(`babel-plugin-react-native-web`)], {
-    type: `plugin`
-  }));*/
+   
   
   fallbackPlugins.push(babel.createConfigItem([resolve(`@babel/plugin-proposal-class-properties`), {
     loose: true

@@ -34,18 +34,19 @@ const prepareOptions = (babel, resolve = require.resolve) => {
   })];
   const requiredPresets = []; // Stage specific plugins to add
 
+
   if (stage === `build-html` || stage === `develop-html`) {
     requiredPlugins.push(babel.createConfigItem([resolve(`babel-plugin-dynamic-import-node`)], {
       type: `plugin`
     }));
   }
-
+/*
   if (stage === `develop`) {
     requiredPlugins.push(babel.createConfigItem([resolve(`react-hot-loader/babel`)], {
       type: `plugin`
     }));
   } // Fallback presets/plugins
-
+*/
 
   const fallbackPresets = [];
   const fallbackPlugins = [];
@@ -78,18 +79,19 @@ fallbackPlugins.push(babel.createConfigItem([resolve(`@babel/plugin-transform-fl
   }], {
     type: `preset`
   }));
+  
+  
   fallbackPresets.push(babel.createConfigItem([resolve(`@babel/preset-react`), {
     useBuiltIns: true,
-    pragma: `React.createElement`,
+   pragma: `React.createElement`,
      //   pragmaFrag: (stage === `develop`)?`React.Fragment`:"DFrag",
-    development: stage === `develop`
+  //  development: stage === `develop`
   }], {
     type: `preset`
   }));
-  /*
-fallbackPlugins.push(babel.createConfigItem([resolve(`babel-plugin-react-native-web`)], {
-    type: `plugin`
-  }));*/
+  
+   
+
   
   fallbackPlugins.push(babel.createConfigItem([resolve(`@babel/plugin-proposal-class-properties`), {
     loose: true

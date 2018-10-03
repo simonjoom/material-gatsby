@@ -156,7 +156,11 @@ function () {
       switch (stage) {
         case `develop`:
           return {
-            commons: [require.resolve(`react-hot-loader/patch`), `${require.resolve(`webpack-hot-middleware/client`)}?path=${getHmrPath()}`, directoryPath(`.cache/app`)]
+            commons: [
+           // require.resolve(`react-hot-loader/patch`), 
+           `${require.resolve(`webpack-hot-middleware/client`)}?path=${getHmrPath()}`, 
+            directoryPath(`.cache/app`)
+            ]
           };
 
         case `develop-html`:
@@ -195,7 +199,9 @@ function () {
         defs.__DEV__=true;
         defs.__PROD__=false;
         
-        configPlugins = configPlugins.concat([plugins.hotModuleReplacement(), plugins.noEmitOnErrors(), new FriendlyErrorsWebpackPlugin({
+        configPlugins = configPlugins.concat([
+        plugins.hotModuleReplacement(), 
+        plugins.noEmitOnErrors(), new FriendlyErrorsWebpackPlugin({
             clearConsole: false
           })]);
           break;
@@ -354,8 +360,7 @@ function () {
             oneOf: [rules.cssModules(), rules.css()]
           }]);
           break;
-      }
-console.log(configRules)
+      } 
       return {
         rules: configRules
       };
@@ -394,7 +399,7 @@ if((process.env.NODE_ENV)=="production")
           // See https://stackoverflow.com/a/49455609/6420957 for more details
           "@babel/runtime": path.dirname(require.resolve(`@babel/runtime/package.json`)),
           "core-js": path.dirname(require.resolve(`core-js/package.json`)),
-          "react-hot-loader": path.dirname(require.resolve(`react-hot-loader/package.json`)),
+        // "react-hot-loader": path.dirname(require.resolve(`react-hot-loader/package.json`)),
           "react-lifecycles-compat": directoryPath(`.cache/react-lifecycles-compat.js`),
           //"create-react-context": directoryPath(`.cache/create-react-context.js`),  
            "lodash":"lodash-es", 
@@ -449,10 +454,19 @@ if((process.env.NODE_ENV)=="production")
           // See https://stackoverflow.com/a/49455609/6420957 for more details
           "@babel/runtime": path.dirname(require.resolve(`@babel/runtime/package.json`)),
           "core-js": path.dirname(require.resolve(`core-js/package.json`)),
-          "react-hot-loader": path.dirname(require.resolve(`react-hot-loader/package.json`)),
+         // "react-hot-loader": path.dirname(require.resolve(`react-hot-loader/package.json`)),
           "react-lifecycles-compat": directoryPath(`.cache/react-lifecycles-compat.js`),
-          "create-react-context": directoryPath(`.cache/create-react-context.js`),  
+          //"create-react-context": directoryPath(`.cache/create-react-context.js`),  
            "lodash":"lodash-es",
+           "inferno":"inferno/dist/index.dev.esm.js",
+           "inferno-create-element":"inferno-create-element/dist/index.dev.esm.js",
+           "inferno-create-class":"inferno-create-class/dist/index.dev.esm.js",
+           "inferno-hydrate":"inferno-hydrate/dist/index.dev.esm.js",
+           "inferno-shared":"inferno-shared/dist/index.dev.esm.js",
+           "inferno-vnode-flags":"inferno-vnode-flags/dist/index.dev.esm.js",
+            'react-dom/server': 'inferno-server/dist/index.dev.esm.js',
+            'react': 'inferno-compat/dist/index.dev.esm.js',
+            'react-dom': 'inferno-compat/dist/index.dev.esm.js',
         'react-native-vector-icons/FontAwesome':
           'expo-web/dist/exports/FontAwesome',
         'react-native-vector-icons/MaterialIcons':

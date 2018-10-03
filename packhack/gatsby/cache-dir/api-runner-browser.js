@@ -5,6 +5,7 @@ const {
   getResourceURLsForPathname,
 } = require(`./loader`).publicLoader
 
+
 exports.apiRunner = (api, args = {}, defaultReturn, argTransform) => {
   // Hooks for cypress-gatsby's API handler
 
@@ -35,12 +36,34 @@ exports.apiRunner = (api, args = {}, defaultReturn, argTransform) => {
     return []
   }
 }
-
+/*
 exports.apiRunnerAsync = (api, args, defaultReturn) =>
   plugins.reduce(
     (previous, next) =>
       next.plugin[api]
         ? previous.then(() => next.plugin[api](args, next.options))
+        : previous,
+    Promise.resolve()
+  )*/
+exports.apiRunnerAsync = (api, args = {}, defaultReturn, argTransform) =>
+  plugins.reduce(
+    (previous, next) =>
+      next.plugin[api]
+        ?  previous.then(() => {
+    if (!next.plugin[api]) {
+      return undefined
+    }
+
+    args.getResourcesForPathnameSync = getResourcesForPathnameSync
+    args.getResourcesForPathname = getResourcesForPathname
+    args.getResourceURLsForPathname = getResourceURLsForPathname
+    
+          const result =  next.plugin[api](args, next.options)
+      if (result && argTransform) {
+        args = argTransform({ args, result,next })
+      }
+      return result
+          })
         : previous,
     Promise.resolve()
   )
