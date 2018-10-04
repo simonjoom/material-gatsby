@@ -7,21 +7,11 @@ const FancyImage = React.forwardRef((props, ref) => (
 ))
 const ref = React.createRef()*/
 // Handle legacy names for image queries.
-const convertProps = props => {
-  let convertedProps = { ...props }
-  if (convertedProps.sizes) {
-    convertedProps.fluid = convertedProps.sizes
-    delete convertedProps.sizes
-  }
-
-  return convertedProps
-}
-
+ 
 // Cache if we've seen an image before so we don't both with
 // lazy-loading & fading in on subsequent mounts.
 const imageCache = {}
-const inImageCache = props => {
-  const convertedProps = convertProps(props)
+const inImageCache = convertedProps => { 
   // Find src
   const src = convertedProps.fluid.src
   // ? convertedProps.fluid.src
@@ -129,8 +119,10 @@ class GatsbyImage extends React.Component {
 
     // If this image has already been loaded before then we can assume it's
     // already in the browser cache so it's cheap to just show directly.
-    const seenBefore = inImageCache(props)
-
+    
+    var _convertProps = babelHelpers.extends({},props,{fluid:props.fluid?props.fluid:props.sizes}); 
+    const seenBefore = inImageCache(_convertProps)    
+    
     if (
       !seenBefore &&
       typeof window !== `undefined` &&
@@ -238,10 +230,10 @@ class GatsbyImage extends React.Component {
       className,
       outerWrapperClassName,
       imgStyle = {},
-      placeholderStyle = {},
-      fluid,
+      placeholderStyle = {}, 
       backgroundColor,
-    } = convertProps(this.props)
+    } = this.props
+     const fluid = this.props.fluid?this.props.fluid:this.props.sizes;
     let bgColor
     if (typeof backgroundColor === `boolean`) {
       bgColor = `lightgray`
@@ -271,16 +263,22 @@ class GatsbyImage extends React.Component {
           }
         }
       }*/
+      
+      const posImag1=positionImage=="right"?{right:"0px"}:{}
       const imagePlaceholderStyle = {
         opacity: this.state.imgLoaded ? 0 : 1,
         transitionDelay: `0.25s`,
+        left:"auto",
         ...imgStyle,
         ...placeholderStyle,
+        ...posImag
       }
 
+      const posImagback=positionImage=="right"?{backgroundPosition: "right top"}:{}
       const imageStyle = {
         opacity: this.state.imgLoaded || this.props.fadeIn === false ? 1 : 0,
         ...imgStyle,
+        ...posImagback
       }
 
       // Use webp by default if browser supports it

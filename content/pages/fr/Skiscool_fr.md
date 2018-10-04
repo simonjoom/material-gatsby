@@ -2,6 +2,7 @@
 title: Ski School
 date: '2018-07-02'
 cover: carousel/snowboard4.jpg
+deps: lm-pistes|helico|years-experience|envelope|shield|thumbs|certified|guide
 category: ski school
 slug: ""
 tags:
@@ -19,7 +20,8 @@ tags:
 <div class="md-block-centered md-cell--6-tablet">
  <h3>Sélection du Profil et réservation:</h3>
  <p>Trouver un moniteur adapté ne se fait pas en quelques clic de souris;</p>
- <p>SkiScool n'est pas une équipe de geek.<br><b style="color:#3f51b5;background-color:#ccff90">Nous connaissons nos coachs</b> ainsi que leur l'expérience d'enseignement sur les 3 vallées <b style="color:#3f51b5;background-color:#ccff90">depuis 10 ans</b>. <br> Le meilleur moyen d'obtenir une réponse adaptée à votre situation est encore de nous appeler.</p></div>
+ <p>SkiScool n'est pas une équipe de geek.<br><b style="color:#3f51b5;background-color:#ccff90">Nous connaissons nos coachs</b> ainsi que leur l'expérience d'enseignement sur les 3 vallées <b style="color:#3f51b5;background-color:#ccff90">depuis 10 ans</b>. <br> Le meilleur moyen d'obtenir une réponse adaptée à votre situation est encore de nous appeler.</p>
+ </div>
 </div>
  
 
@@ -59,7 +61,7 @@ tags:
 </span></p>
 <ul style="padding: 5px;"><li>Professionnels: Apprendre plus rapidement avec plus de plaisir!!</li> </ul>
 <ul style="padding: 10px;">Nos moniteurs sont choisis suivant 2 critères importants: 
-<li>Pas de moniteur stagiaire </b><br>Ils sont tous <b>diplômés de l'État français</b></li>
+<li>Pas de moniteur stagiaire<br>Ils sont tous <b>diplômés de l'État français</b></li>
 <li>Leur expérience d'enseignement notamment dans le coaching personnalisé. </li>
 <li>Nous les selectionnons parmis les moniteurs des différents réseaux</b>.</li>
 </div>
@@ -95,7 +97,7 @@ Notre rapport qualité-prix. Nos tarifs ne sont pas définis<br>
 <a title="La Sécurité" style="display: flex; flex-direction: row;">
 <imgtest data="helico.jpg" height="75" width="300px" directory="pages" alt="Sécurité" coverclassname=""></imgtest>
 <div style="margin-left: 1%;">
-<span>Nous Privilégions toujours <b>la sécurité</b><br> Ainsi nous n'intégrons pas les stagiaires des écoles de ski sans expérience. <br>La montagne est dangereuse à ceux qui ne la connaissent pas!, <br>Un coach qui connait bien la station est essentiel.</span></span>
+<p>Nous Privilégions toujours <b>la sécurité</b><br> Ainsi nous n'intégrons pas les stagiaires des écoles de ski sans expérience. <br>La montagne est dangereuse à ceux qui ne la connaissent pas!, <br>Un coach qui connait bien la station est essentiel.</p>
 </div>
 </a>
 </div>
@@ -104,7 +106,7 @@ Notre rapport qualité-prix. Nos tarifs ne sont pas définis<br>
 <h3>Convivial</h3>
 <a title="Convivial coach" href="/Hotels/" style="display: flex; flex-direction: row;">
 <div style="margin-right: 1%;"> 
-<span>Votre coach réserve les restaurants, Il est bilingue français/anglais; il se consacre à la pratique du ski de compétition et de hors piste."</span>
+<p>Votre coach réserve les restaurants, Il est bilingue français/anglais; il se consacre à la pratique du ski de compétition et de hors piste."</p>
 <imgtest data="years-experience.png" height="75" width="300px" directory="pages" alt="Courchevel"></imgtest>
 </div>
 </a>
@@ -115,7 +117,6 @@ Notre rapport qualité-prix. Nos tarifs ne sont pas définis<br>
 <div style="flex-direction: column;padding-bottom: 4%;" class="md-grid md-cell md-cell--12">
 <reactfb language="fr" newDivName="sel" appId="562112907171338" type="post" desc="moniteur de ski courchevel 1850 Dubai - courchevel"/></reactfb>
 </div>
-
 
 <div class="md-grid md-cell--middle">
 <div id="questions" style="flex: 1;background-color: rgb(66, 88, 161); flex-direction: column;" class="md-paper md-paper--1 md-grid md-cell md-cell--4"><imgtest data="envelope.jpg" maxwidth="200px" class="boxshad rounded bg-white"  height="75" directory="pages" alt="Courchevel"></imgtest>

@@ -1,7 +1,6 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Link } from "gatsby";
 import withTheme from "../withContext";
-import { router } from "../config";
 import FrontCarousel from "./FrontCarousel";
 import LanguageSwitcher from "./Switchlang";
 
@@ -17,9 +16,9 @@ class Layout extends React.Component {
       path,
       location
     } = this.props;
- console.log("route",lng,global.menuList[lng])
+    console.log("route", route);
     return (
-      <>
+      <div>
         <div
           className={
             carouselList ? (ismain ? "carousel-main" : "carousel-nomain") : null
@@ -30,7 +29,7 @@ class Layout extends React.Component {
               <FrontCarousel
                 data={carouselList}
                 ismain={ismain}
-                height={carouselList.length > 1 ? "0px" : "50%"}
+                height={carouselList.length > 1 ? "400px" : "50%"}
               />
             )}
         </div>
@@ -50,30 +49,18 @@ class Layout extends React.Component {
                     {post.title}
                   </Link>
                 ))}
-              <Link
-                key={router["/instructor/"][lng]}
-                style={{ textDecoration: "none" }}
-                to={router["/instructor/"][lng]}
-                className="Menulink toolbar-link"
-              >
-                <i className="mr1 fa fa-lg fa-circle-o" />
-                {translate("Index")("instructor")}
-              </Link>
-              <Link
-                key={router["/blog/"][lng]}
-                style={{ textDecoration: "none" }}
-                to={router["/blog/"][lng]}
-                className="Menulink toolbar-link"
-              >
-                <i className="mr1 fa fa-lg fa-circle-o" />
-                {translate("Index")("blog")}
-              </Link>
             </div>
-            {(route||path)&&<LanguageSwitcher path={path} route={route} className="flex-end" />}
+            {(route || path) && (
+              <LanguageSwitcher
+                path={path}
+                route={route}
+                className="flex-end"
+              />
+            )}
           </div>
         </div>
         {children}
-      </>
+      </div>
     );
   }
 }

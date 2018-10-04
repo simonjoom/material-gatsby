@@ -1,7 +1,7 @@
 import React from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
-import withTheme from "../withContext"; 
+import withTheme from "../withContext";
 import Layout from "../components/Layout";
 import PostListing from "../components/PostListing";
 import SEO from "../components/SEO";
@@ -10,8 +10,9 @@ import "../articleApp.scss";
 
 class Blog extends React.Component {
   render() {
-    const {translate: t} = this.props;
-    const { slug, lng, route } = this.props.pageContext;
+    const { translate: t } = this.props;
+    const { slug, lng, route, files } = this.props.pageContext;
+    global.filesQuery = files;
     const postEdges = this.props.data.allMarkdownRemark.edges;
     return (
       <Layout
@@ -22,16 +23,8 @@ class Blog extends React.Component {
         location={this.props.location}
       >
         <div className="index-container">
-          <Helmet>
-            <title>{config.siteTitle}</title>
-            <link rel="canonical" href={`${config.siteUrl}`} />
-          </Helmet>
-          <SEO postEdges={postEdges} translate={t("Index")} />
-          <PostListing
-            postEdges={postEdges} 
-            sizebig={12}
-            size={6}
-          />
+          <SEO postEdges={postEdges} route={route} translate={t("Blog")} />  
+          <PostListing postEdges={postEdges} sizebig={12} size={6} />
         </div>
       </Layout>
     );
@@ -69,4 +62,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`; 
+`;

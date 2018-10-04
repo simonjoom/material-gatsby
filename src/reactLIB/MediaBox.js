@@ -4,7 +4,7 @@ import cx from 'classnames';
 
 class MediaBox extends Component {
   componentDidMount() {
-    Zepto('.materialboxed').materialbox();
+    M('.materialboxed').materialbox();
   }
 
   render() {

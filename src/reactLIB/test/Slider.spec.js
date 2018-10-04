@@ -16,7 +16,7 @@ describe('<Slider />', () => {
           removeAttribute: jest.fn(),
           childNodes: [{ removeAttribute: jest.fn() }]
         },
-        Zeptoindicators: [{ className: 'indicator-item' }]
+        $indicators: [{ className: 'indicator-item' }]
       };
     }
   };

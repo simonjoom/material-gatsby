@@ -1,8 +1,13 @@
 // https://github.com/necolas/react-native-web/pull/850
-// https://github.com/Dekoruma/react-native-web-modal 
-//const reactnative = require("react-native-web/dist/cjs").default;
+// https://github.com/Dekoruma/react-native-web-modal  
 import { canUseDOM } from "fbjs/lib/ExecutionEnvironment";
 import { Component } from "react"; 
+import Text from './react-native-web/src/exports/Text';
+import View from './react-native-web/src/exports/View';
+import Image from './react-native-web/src/exports/Image';
+import ActivityIndicator from './react-native-web/src/exports/ActivityIndicator';
+import Dimensions from './react-native-web/src/exports/Dimensions';
+import StyleSheet from './react-native-web/src/exports/StyleSheet';
 //import { ColorPropType } from "react-native-web";
 //import MyModal from './helpers/Modal'
 /*
@@ -117,15 +122,11 @@ class StatusB extends Component {
 
 //RNWeb.StatusB = StatusB;
 export const StatusBar = StatusB;
-
 export {
   View,
   Image,
   ActivityIndicator,
-  Dimensions,
-  Modal, 
+  Dimensions, 
   StyleSheet,
-  Text,
-  TouchableHighlight,
-  TouchableOpacity
-} from "react-native-web"
+  Text
+} 

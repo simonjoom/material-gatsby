@@ -76,7 +76,7 @@ var AppContainer = function (_Component) {
     return _react2.default.createElement(
       _View2.default,
       { pointerEvents: 'box-none', style: styles.appContainer },
-      innerView
+      children
     );
   };
 
@@ -95,7 +95,7 @@ AppContainer.propTypes = process.env.NODE_ENV !== "production" ? {
 
 
 var styles = _StyleSheet2.default.create({
-  appContainer: {
+  appContainer: { 
     flex: 1
   }
 });

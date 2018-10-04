@@ -1,6 +1,6 @@
 import React from "react";
 import Img from "gatsby-image";
-import withTheme from '../../withContext'; 
+import withTheme from "../../withContext";
 import Carousel from "./carousel.js";
 import "./carousel.css";
 import Button from "../../reactLIB/Button";
@@ -17,8 +17,8 @@ const GetImage = ({
   t,
   maxWidth = "1024px",
   directory = ""
-}) => {
-  const dir = directory !== "" ? "/" + directory : "";
+}) => { 
+  const dir = directory !== "" ? "/" + directory : ""; 
   const MapImg = dataList
     .map((el, ind) => {
       const FileNode = CarouselQuery.find(function(element) {
@@ -32,7 +32,6 @@ const GetImage = ({
           ) !== -1
         );
       });
-
       if (FileNode)
         return (
           <Img
@@ -105,13 +104,7 @@ const GetImage = ({
               )
             }
             resizeMode={ismain ? "contain" : "center"}
-            imgStyle={
-              ismain
-                ? {
-                    backgroundPosition: "right top"
-                  }
-                : {}
-            }
+            positionImage={ismain ? "right" : null}
             fluid={FileNode.node.childImageSharp.fluid}
             height={height}
             width={width}
@@ -142,7 +135,7 @@ const FrontCarousel = ({
   ismain,
   translate,
   alt = ""
-}) => { 
+}) => {
   if (!data) return null;
   let datas = typeof data == "string" ? data.split() : data;
   let Query = global.filesQuery;

@@ -1,5 +1,9 @@
 const config = require("./data/SiteConfig");
 const urljoin = require("url-join");
+console.log(process.env.NODE_ENV)
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 
 const regexExcludeRobots = /^(?!\/(dev-404-page|404|offline-plugin-app-shell-fallback|tags|categories)).*$/;
 //    "gatsby-plugin-offline",
@@ -62,7 +66,6 @@ module.exports = {
           {
             resolve: "gatsby-remark-responsive-iframe"
           },
-          "gatsby-remark-prismjs",
           "gatsby-remark-copy-linked-files",
           "gatsby-remark-autolink-headers"
         ]
@@ -74,14 +77,7 @@ module.exports = {
         trackingId: config.siteGATrackingID
       }
     },
-    {
-      resolve: "gatsby-plugin-nprogress",
-      options: {
-        color: "#c62828"
-      }
-    },
     "gatsby-transformer-sharp",
-    "gatsby-plugin-netlify-cms",
     "gatsby-plugin-sharp",
     "gatsby-plugin-catch-links",
     "gatsby-plugin-twitter",
@@ -167,7 +163,9 @@ module.exports = {
           {
             serialize(ctx) {
               const { rssMetadata } = ctx.query.site.siteMetadata;
-              return ctx.query.allMarkdownRemark.edges.map(edge => ({
+              return ctx.query.allMarkdownRemark.edges.filter(
+                a => a.node && a.node.frontmatter && a.node.frontmatter.title !== ""
+              ).map(edge => ({
                 categories: edge.node.frontmatter.tags,
                 date: edge.node.frontmatter.date,
                 title: edge.node.frontmatter.title,
@@ -211,3 +209,16 @@ module.exports = {
 };
 
 //    "gatsby-plugin-netlify-cms",
+/*
+to do 
+  <div data-netlify-identity-button>Login with Netlify Identity</div>
+
+          "gatsby-remark-prismjs",
+  
+    "gatsby-plugin-netlify-cms",
+    {
+      resolve: "gatsby-plugin-nprogress",
+      options: {
+        color: "#c62828"
+      }
+    },*/

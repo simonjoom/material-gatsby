@@ -35,7 +35,7 @@ class PostListing extends React.Component {
         <PostPreview key={el.title} postInfo={el} size={size} />
       );
     });
-    !isSSR && this.runAnim();
+    !(process.env.GATSBY_BUILD_STAGE=="build-html") && this.runAnim();
   }
   runAnim() {
     this.running = true;
@@ -60,7 +60,7 @@ class PostListing extends React.Component {
     return (
       <div className="md-grid md-grid--no-spacing md-cell--middle">
         <div className={`md-grid md-cell--${sizebig} mobile-fix`}>
-          {!isSSR ? this.state.arr : this.arrSSR}
+          {!(process.env.GATSBY_BUILD_STAGE=="build-html") ? this.state.arr : this.arrSSR}
         </div>
       </div>
     );

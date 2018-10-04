@@ -1,8 +1,8 @@
-import React, { Component } from "react"; 
+import React, { Component,Fragment } from "react"; 
 import { Link } from "gatsby";
 import moment from "moment"; 
 import FrontCarousel from "components/FrontCarousel";
-import Avatar from "react-md/lib/Avatars"; 
+import Avatar from "../Avatars";
 import Button from "../../reactLIB/Button"
 // import Media, { MediaOverlay } from "react-md/lib/Media";
 import PostTags from "../PostTags";
@@ -73,12 +73,12 @@ class PostPreview extends Component {
           </div>
         }
         reveal={
-          <>
+          <div>
             <div
-              dangerouslySetInnerHTML={{ __html: isSSR ? postInfo.html : "" }}
+              dangerouslySetInnerHTML={{ __html: (process.env.GATSBY_BUILD_STAGE=="build-html") ? postInfo.html : "" }}
             />
             <PostTags tags={postInfo.tags} />
-          </>
+          </div>
         }
       >
         {postInfo.excerpt}

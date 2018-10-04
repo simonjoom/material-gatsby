@@ -41,7 +41,7 @@ const generateType = (value) => {
   }
 
   if (value.arguments[0].elements && value.arguments[0].elements.length) {
-    return 'one of: ' + value.arguments[0].elements.map(el => ` Zepto{el.value}`);
+    return 'one of: ' + value.arguments[0].elements.map(el => ` ${el.value}`);
   }
 
   return value.arguments[0].property.name;

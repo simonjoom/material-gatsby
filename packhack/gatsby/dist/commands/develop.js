@@ -401,7 +401,7 @@ function () {
         printDeprecationWarnings();
 
         if (program.open) {
-          require(`opn`)(urls.localUrlForBrowser);
+          require(`opn`)(urls.localUrlForBrowser).catch(err => console.log(`${chalk.yellow(`warn`)} Browser not opened because no browser was found`));
         }
       }
 

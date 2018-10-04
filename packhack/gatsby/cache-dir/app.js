@@ -1,7 +1,7 @@
 import React from "react"
 import ReactDOM from "react-dom"
 import domReady from "domready"
-import { hot } from "react-hot-loader"
+//import { hot } from "react-hot-loader"
 
 import socketIo from "./socketIo"
 import emitter from "./emitter"
@@ -40,28 +40,20 @@ apiRunnerAsync(`onClientEntry`).then(() => {
 
   const rootElement = document.getElementById(`___gatsby`)
 
-      const renderer2 = apiRunnerAsync(
-        `replaceHydrateFunction`,
-        undefined,
-        ReactDOM.hydrate
-      )
+  const renderer = apiRunner(
+    `replaceHydrateFunction`,
+    undefined,
+    ReactDOM.render
+  )[0]
 
-       
   loader.addPagesArray(pages)
   loader.addDevRequires(syncRequires)
 
   loader.getResourcesForPathname(window.location.pathname).then(() => {
-    let Root = hot(module)(preferDefault(require(`./root`)))
-
-      domReady(async () => {
-      let renderer;
-       try {
-    renderer = await renderer2;
-  }
-  catch (rejectedValue) {
-  console.log("rejectedValue",rejectedValue)
-  }
-      return renderer(<Root />, rootElement, () => {
+  //  let Root = hot(module)(preferDefault(require(`./root`)))
+  let Root = preferDefault(require(`./root`))
+    domReady(() => {
+      renderer(<Root />, rootElement, () => {
         apiRunner(`onInitialClientRender`)
       })
     })

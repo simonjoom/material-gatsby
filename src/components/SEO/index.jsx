@@ -3,28 +3,54 @@ import Helmet from "react-helmet";
 import urljoin from "url-join";
 import config from "../../../data/SiteConfig";
 
+const siteUrlfr = "https://www.skiscool.fr";
+const siteUrlen = "https://www.ski-courchevel.deals";
+const siteUrlpt = "https://pt.skiscool.com";
+const siteUrluk = "https://uk.skiscool.com";
+const siteUrlru = "https://ru.skiscool.com";
+const siteUrlch = "https://cn.skiscool.com";
+const pathPrefix = "";
 class SEO extends Component {
   render() {
-    const { postNode, postPath, postSEO, translate } = this.props;
-    let title;
+    const {
+      postNode,
+      postPath,
+      postSEO,
+      translate,
+      route,
+      title: titleprop
+    } = this.props;
     let description;
     let image;
+    let title;
     let postURL;
+    let routefr, routeen, routeuk, routept, routeru, routech;
+    if (route && route.fr) {
+      routefr = route.fr.replace("/fr", "");
+      routeen = route.en.replace("/en", "");
+      routeuk = route.uk.replace("/uk", "");
+      routept = route.pt.replace("/pt", "");
+      routeru = route.ru.replace("/ru", "");
+      routech = route.ch.replace("/cn", "");
+    } else {
+      console.warn("noroute", postNode);
+    }
     if (postSEO) {
       const postMeta = postNode.frontmatter;
-      ({ title } = postMeta);
+      if (!titleprop) ({ title } = postMeta);
+      else title = titleprop;
       description = postMeta.description
         ? postMeta.description
         : postNode.excerpt;
       image = postMeta.cover || "";
-      postURL = urljoin(translate("siteUrl"), config.pathPrefix, postPath);
+      postURL = urljoin(translate("siteUrl"), pathPrefix, postPath);
     } else {
-      title = config.siteTitle;
+      title = titleprop || config.siteTitle;
       description = config.siteDescription;
       image = config.siteLogo;
     }
-    image = urljoin(config.siteUrl, config.pathPrefix, image);
-    const blogURL = urljoin(translate("siteUrl"), config.pathPrefix);
+    image = urljoin(config.siteUrl, pathPrefix, image);
+    const blogURL = urljoin(translate("siteUrl"), pathPrefix);
     const schemaOrgJSONLD = [
       {
         "@context": "http://schema.org",
@@ -66,8 +92,16 @@ class SEO extends Component {
         }
       ]);
     }
+    console.log(route);
     return (
       <Helmet>
+        <title>{`${translate(title)} | ${config.siteTitle}`}</title>
+        <link rel="canonical" href={`${siteUrlfr}${routefr}`} />
+        <link rel="canonical" href={`${siteUrlen}${routeen}`} />
+        <link rel="canonical" href={`${siteUrlpt}${routept}`} />
+        <link rel="canonical" href={`${siteUrluk}${routeuk}`} />
+        <link rel="canonical" href={`${siteUrlru}${routeru}`} />
+        <link rel="canonical" href={`${siteUrlch}${routech}`} />
         {/* General tags */}
         <meta name="description" content={description} />
         <meta name="image" content={image} />

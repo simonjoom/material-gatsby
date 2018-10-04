@@ -156,7 +156,11 @@ function () {
       switch (stage) {
         case `develop`:
           return {
-            commons: [require.resolve(`react-hot-loader/patch`), `${require.resolve(`webpack-hot-middleware/client`)}?path=${getHmrPath()}`, directoryPath(`.cache/app`)]
+            commons: [
+           // require.resolve(`react-hot-loader/patch`), 
+           `${require.resolve(`webpack-hot-middleware/client`)}?path=${getHmrPath()}`, 
+            directoryPath(`.cache/app`)
+            ]
           };
 
         case `develop-html`:
@@ -180,31 +184,33 @@ function () {
     }
 
     function getPlugins() {
-      let configPlugins = [plugins.moment(),
-      plugins.babelHelpers(),
-       // Add a few global variables. Set NODE_ENV to production (enables
-      // optimizations for React) and what the link prefix is (__PATH_PREFIX__).
-      plugins.define({
+    const defs={ 
         "process.env": processEnv(stage, `development`),
         __PATH_PREFIX__: JSON.stringify(program.prefixPaths ? store.getState().config.pathPrefix : ``)
-      })];
+      }
+      let configPlugins = [plugins.moment(),
+      plugins.babelHelpers()
+       // Add a few global variables. Set NODE_ENV to production (enables
+      // optimizations for React) and what the link prefix is (__PATH_PREFIX__).
+       ];
 
       switch (stage) {
         case `develop`:
-          configPlugins = configPlugins.concat([plugins.hotModuleReplacement(), plugins.noEmitOnErrors(),plugins.define({
-      __DEV__: true,
-      __PROD__: false,
-    }), new FriendlyErrorsWebpackPlugin({
+        defs.__DEV__=true;
+        defs.__PROD__=false;
+        
+        configPlugins = configPlugins.concat([
+        plugins.hotModuleReplacement(), 
+        plugins.noEmitOnErrors(), new FriendlyErrorsWebpackPlugin({
             clearConsole: false
           })]);
           break;
 
         case `build-javascript`:
           {
-            configPlugins = configPlugins.concat([plugins.extractText(),plugins.define({
-      __DEV__: false,
-      __PROD__: true,
-    }),
+        defs.__DEV__=false;
+        defs.__PROD__=true;
+            configPlugins = configPlugins.concat([plugins.extractText(),
          // Write out stats object mapping named dynamic imports (aka page
             // components) to all their async chunks.
             {
@@ -265,8 +271,11 @@ function () {
             }]);
             break;
           }
+          default:
+        defs.__DEV__=false;
+        defs.__PROD__=true; 
       }
-
+      configPlugins = configPlugins.concat([plugins.define(defs)]) 
       return configPlugins;
     }
 
@@ -279,11 +288,10 @@ function () {
 
         case `develop-html`:
         case `build-html`:
-        case `build-javascript`:
-        return false;
+        case `build-javascript`: 
           return `source-map`;
 
-        default:
+        default: 
           return false;
       }
     }
@@ -352,8 +360,7 @@ function () {
             oneOf: [rules.cssModules(), rules.css()]
           }]);
           break;
-      }
-
+      } 
       return {
         rules: configRules
       };
@@ -362,7 +369,7 @@ function () {
     function getResolve() {
       const _store$getState2 = store.getState(),
             program = _store$getState2.program;
-
+if((process.env.NODE_ENV)=="production")
       return {
         // Use the program's extension list (generated via the
         // 'resolvableExtensions' API hook).       
@@ -392,10 +399,13 @@ function () {
           // See https://stackoverflow.com/a/49455609/6420957 for more details
           "@babel/runtime": path.dirname(require.resolve(`@babel/runtime/package.json`)),
           "core-js": path.dirname(require.resolve(`core-js/package.json`)),
-          "react-hot-loader": path.dirname(require.resolve(`react-hot-loader/package.json`)),
+        // "react-hot-loader": path.dirname(require.resolve(`react-hot-loader/package.json`)),
           "react-lifecycles-compat": directoryPath(`.cache/react-lifecycles-compat.js`),
-          "create-react-context": directoryPath(`.cache/create-react-context.js`),  
-           "lodash":"lodash-es",
+          //"create-react-context": directoryPath(`.cache/create-react-context.js`),  
+           "lodash":"lodash-es", 
+            'react-dom/server': 'inferno-server',
+            'react': 'inferno-compat',
+            'react-dom': 'inferno-compat',
         'react-native-vector-icons/FontAwesome':
           'expo-web/dist/exports/FontAwesome',
         'react-native-vector-icons/MaterialIcons':
@@ -410,9 +420,71 @@ function () {
         './assets/images/slack-icon.png': './assets/images/slack-icon@2x.png',
          'react-native-picker': directoryPath(`./src/myPicker.js`),
            "react-native-linear-gradient": "react-native-web-linear-gradient",
+   //   "react-dom/unstable-native-dependencies": directoryPath(`./react-master/packages/react-dom/unstable-native-dependencies`),
       "react-native": directoryPath(`./src/RNW.js`)
         }
-      };
+      }
+      else
+      return {
+        // Use the program's extension list (generated via the
+        // 'resolvableExtensions' API hook).       
+         extensions: [
+        '.web.js',
+        '.mjs',
+        '.ts',
+        '.tsx',
+        '.js',
+        '.json',
+        '.md',
+        '.mdx',
+        '.web.jsx',
+        '.jsx',
+        '.gql',
+        '.graphql',
+        ],
+        // Default to using the site's node_modules directory to look for
+        // modules. But also make it possible to install modules within the src
+        // directory if you need to install a specific version of a module for a
+        // part of your site.
+        modules: [directoryPath(path.join(`node_modules`)), `node_modules`,`./`],
+        alias: {
+          gatsby$: directoryPath(path.join(`.cache`, `gatsby-browser-entry.js`)),
+          // Using directories for module resolution is mandatory because
+          // relative path imports are used sometimes
+          // See https://stackoverflow.com/a/49455609/6420957 for more details
+          "@babel/runtime": path.dirname(require.resolve(`@babel/runtime/package.json`)),
+          "core-js": path.dirname(require.resolve(`core-js/package.json`)),
+         // "react-hot-loader": path.dirname(require.resolve(`react-hot-loader/package.json`)),
+          "react-lifecycles-compat": directoryPath(`.cache/react-lifecycles-compat.js`),
+          //"create-react-context": directoryPath(`.cache/create-react-context.js`),  
+           "lodash":"lodash-es",
+           "inferno":"inferno/dist/index.dev.esm.js",
+           "inferno-create-element":"inferno-create-element/dist/index.dev.esm.js",
+           "inferno-create-class":"inferno-create-class/dist/index.dev.esm.js",
+           "inferno-hydrate":"inferno-hydrate/dist/index.dev.esm.js",
+           "inferno-shared":"inferno-shared/dist/index.dev.esm.js",
+           "inferno-vnode-flags":"inferno-vnode-flags/dist/index.dev.esm.js",
+            'react-dom/server': 'inferno-server/dist/index.dev.esm.js',
+            'react': 'inferno-compat/dist/index.dev.esm.js',
+            'react-dom': 'inferno-compat/dist/index.dev.esm.js',
+        'react-native-vector-icons/FontAwesome':
+          'expo-web/dist/exports/FontAwesome',
+        'react-native-vector-icons/MaterialIcons':
+          'expo-web/dist/exports/MaterialIcons',
+        'react-native-vector-icons/Ionicons': 'expo-web/dist/exports/Ionicons',
+        'react-native-vector-icons/MaterialCommunityIcons':
+          'expo-web/dist/exports/MaterialCommunityIcons',
+        'react-native-vector-icons/SimpleLineIcons':
+          'expo-web/dist/exports/SimpleLineIcons',
+        'react-native-vector-icons/Entypo': 'expo-web/dist/exports/Entypo',
+        './assets/images/expo-icon.png': './assets/images/expo-icon@2x.png',
+        './assets/images/slack-icon.png': './assets/images/slack-icon@2x.png',
+         'react-native-picker': directoryPath(`./src/myPicker.js`),
+           "react-native-linear-gradient": "react-native-web-linear-gradient",
+   //   "react-dom/unstable-native-dependencies": directoryPath(`./react-master/packages/react-dom/unstable-native-dependencies`),
+      "react-native": directoryPath(`./src/RNW.js`)
+        }
+      }
     }
 
     function getResolveLoader() {
@@ -467,14 +539,14 @@ function () {
           name: false
         }, 
     //    nodeEnv:"development",
-     minimizer: [  !program.noUglify && plugins.minifyJs(), plugins.minifyCss()].filter(Boolean)
+     minimizer: [ !program.noUglify && plugins.minifyJs(), plugins.minifyCss()].filter(Boolean)
       };
     }
 
     if (stage === `build-html` || stage === `develop-html`) {
       const externalList = [// match `lodash` and `lodash/foo`
-      // but not things like `lodash-es`
-  `lodash`, /^lodash\//, `react`, /^react-dom\//, `pify`, `@reach/router`, `@reach/router/lib/history`, `common-tags`, `path`, `semver`, `react-helmet`, `minimatch`, `fs`, /^core-js\//, `es6-promise`, `crypto`, `zlib`, `http`, `https`, `debug`];
+      // but not things like `@reach/router`, `@reach/router/lib/history`, `react-helmet`  `lodash-es``react`, /^react-dom\//,
+  `lodash`, /^lodash\//,  `pify`, `common-tags`, `path`, `semver`, `minimatch`, `fs`, /^core-js\//, `es6-promise`, `crypto`, `zlib`, `http`, `https`, `debug`];
       config.externals = [function (context, request, callback) {
         if (externalList.some(item => {
           if (typeof item === `string` && item === request) {

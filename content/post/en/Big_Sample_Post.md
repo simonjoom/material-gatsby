@@ -1,5 +1,5 @@
 ---
-title: "Big Test"
+title: "default"
 cover: "5.jpg"
 category: "moar"
 date: "2018-03-01"

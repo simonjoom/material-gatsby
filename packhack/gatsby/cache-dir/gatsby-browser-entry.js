@@ -7,11 +7,11 @@ import Link, {
   replace,
   navigateTo,
 } from "gatsby-link"
-import { waitForRouteChange } from "./wait-for-route-change"
 import PageRenderer from "./public-page-renderer"
 import parsePath from "./parse-path"
+import createContext from 'create-react-context';
 
-const StaticQueryContext = React.createContext({})
+const StaticQueryContext = createContext({})
 
 const StaticQuery = props => (
   <StaticQueryContext.Consumer>
@@ -58,5 +58,4 @@ export {
   StaticQueryContext,
   StaticQuery,
   PageRenderer,
-  waitForRouteChange,
 }

@@ -1,6 +1,6 @@
 import { apiRunner, apiRunnerAsync } from "./api-runner-browser"
 import React, { createElement } from "react"
-import ReactDOM from "react-dom"
+import ReactDOM, {hydrate} from "react-dom"
 import { Router, navigate } from "@reach/router"
 import { match } from "@reach/router/lib/utils"
 import { ScrollContext } from "gatsby-react-router-scroll"
@@ -12,7 +12,7 @@ import {
 } from "./navigation"
 import emitter from "./emitter"
 window.___emitter = emitter
-import PageRenderer from "./page-renderer-prod"
+import PageRenderer from "./page-renderer"
 import asyncRequires from "./async-requires"
 import loader from "./loader"
 import loadDirectlyOr404 from "./load-directly-or-404"
@@ -39,12 +39,6 @@ apiRunnerAsync(`onClientEntry`).then(() => {
   class RouteHandler extends React.Component {
     render() {
       let { location } = this.props
-      // TODO
-      // check if hash + if element and if so scroll
-      // remove hash handling from gatsby-link
-      // check if scrollbehavior handles back button for
-      // restoring old position
-      // if not, add that.
 
       return (
         <EnsureResources location={location}>
@@ -86,18 +80,15 @@ apiRunnerAsync(`onClientEntry`).then(() => {
 
   loader
     .getResourcesForPathname(browserLoc.pathname)
-    .then(() => {
-      if (!loader.getPage(browserLoc.pathname)) {
-        return loader
-          .getResourcesForPathname(`/404.html`)
-          .then(resources =>
-            loadDirectlyOr404(
-              resources,
-              browserLoc.pathname + browserLoc.search + browserLoc.hash,
-              true
-            )
-          )
+    .then(resources => {
+      if (!resources || resources.page.path === `/404.html`) {
+        return loadDirectlyOr404(
+          resources,
+          browserLoc.pathname + browserLoc.search + browserLoc.hash,
+          true
+        )
       }
+
       return null
     })
     .then(() => {
@@ -121,21 +112,14 @@ apiRunnerAsync(`onClientEntry`).then(() => {
 
       let NewRoot = () => WrappedRoot
 
-      const renderer2 = apiRunnerAsync(
+      const renderer = apiRunner(
         `replaceHydrateFunction`,
         undefined,
-        ReactDOM.hydrate
-      )
+        hydrate
+      )[0]
 
-      domReady(async () => {
-      let renderer;
-       try {
-    renderer = await renderer2;
-  }
-  catch (rejectedValue) {
-  console.log("rejectedValue",rejectedValue)
-  }
-      return renderer(
+      domReady(() => {
+        renderer(
           <NewRoot />,
           typeof window !== `undefined`
             ? document.getElementById(`___gatsby`)

@@ -11,8 +11,8 @@ class Navbar extends Component {
   }
 
   componentDidMount() {
-    if (typeof Zepto !== 'undefined') {
-      Zepto('.button-collapse').sideNav(this.props.options);
+    if (typeof M !== 'undefined') {
+      M('.button-collapse').sideNav(this.props.options);
     }
   }
 

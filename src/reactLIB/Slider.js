@@ -11,7 +11,7 @@ class Slider extends Component {
   }
 
   initSlider() {
-    this.instance = M.Slider.init(this._slider, this.props.options);
+    this.instance = typeof M !== 'undefined' &&M.Slider.init(this._slider, this.props.options);
   }
 
   /**
@@ -31,7 +31,7 @@ class Slider extends Component {
     // In case this option is not defined, we assume true, as per default
     let showIndicators = typeof indicators === 'undefined' || indicators;
     if (showIndicators && activeIndex) {
-      this.instance['Zeptoindicators'][activeIndex].className =
+      this.instance['$indicators'][activeIndex].className =
         'indicator-item active';
     }
   }

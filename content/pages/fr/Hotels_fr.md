@@ -1,8 +1,8 @@
 ---
 title: "Hotel"
-cover: "starter-logo-1024.png"
+cover: "carousel/airelles.png,carousel/chabichou.jpg,carousel/apogee.jpg,carousel/manali.jpg,carousel/spa.jpg,carousel/strato.jpg,carousel/manali.jpg"
 category: "hotel"
-slug: "hotels"
+slug: "hotelpage"
 tags:
     - hotel
     - courchevel

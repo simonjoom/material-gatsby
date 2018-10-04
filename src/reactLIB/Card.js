@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component,Fragment } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Icon from './Icon';
@@ -66,11 +66,11 @@ class Card extends Component {
   }
   renderAll(title, titlereveal, reveal, textClassName, children, actions) {
     return (
-      <React.Fragment>
+      <div>
         {this.renderContent(title, reveal, textClassName, children)}
         {this.renderReveal(titlereveal, reveal)}
         {actions && this.renderAction(actions)}
-      </React.Fragment>
+      </div>
     );
   }
 
@@ -89,8 +89,7 @@ class Card extends Component {
       horizontal,
       waves,
       ...other
-    } = this.props;
-
+    } = this.props; 
     const classes = {
       card: true,
       horizontal: horizontal
@@ -119,7 +118,7 @@ class Card extends Component {
               )}
             </div>
           ) : (
-            <>
+            <div>
               {this.renderAll(
                 title,
                 titlereveal,
@@ -128,7 +127,7 @@ class Card extends Component {
                 children,
                 actions
               )}
-            </>
+            </div>
           )}
         </div>
       </div>

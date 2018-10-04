@@ -14,20 +14,12 @@ import warning from "warning";
 import PropTypes from "prop-types";
 import invariant from "invariant";
 import createContext from "create-react-context";
-import { polyfill } from "react-lifecycles-compat";
-import ReactDOM from "react-dom";
+import { polyfill } from "react-lifecycles-compat"; 
 import { startsWith, pick, resolve, match, insertParams, validateRedirect } from "./lib/utils";
 import { globalHistory, navigate, createHistory, createMemorySource } from "./lib/history";
 
 ////////////////////////////////////////////////////////////////////////////////
-// React polyfill
-var unstable_deferredUpdates = ReactDOM.unstable_deferredUpdates;
 
-if (unstable_deferredUpdates === undefined) {
-  unstable_deferredUpdates = function unstable_deferredUpdates(fn) {
-    return fn();
-  };
-}
 
 var createNamedContext = function createNamedContext(name, defaultValue) {
   var Ctx = createContext(defaultValue);
@@ -107,7 +99,7 @@ var LocationProvider = function (_React$Component) {
 
     refs.unlisten = history.listen(function () {
       Promise.resolve().then(function () {
-        unstable_deferredUpdates(function () {
+        requestAnimationFrame(function () {
           if (!_this2.unmounted) {
             _this2.setState(function () {
               return { context: _this2.getContext() };

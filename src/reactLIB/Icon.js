@@ -4,9 +4,14 @@ import constants from './constants';
 import cx from 'classnames';
 
 class Icon extends React.Component {
+  static defaultProps = {
+    type: 'awesome'
+  };
   render() {
+    const awesome = this.props.type == 'awesome';
     const classes = {
-      'fa': true
+      fa: awesome,
+      'material-icons': !awesome
     };
     constants.PLACEMENTS.forEach(p => {
       classes[p] = this.props[p];
@@ -15,12 +20,18 @@ class Icon extends React.Component {
       classes[s] = this.props[s];
     });
     return (
-      <i className={cx(classes, "fa-"+this.props.className)}></i>
+      <i
+        style={this.props.style}
+        className={cx(classes, awesome ? 'fa-' + this.props.className : '')}
+      >
+        {!awesome && this.props.className}
+      </i>
     );
   }
 }
 
 Icon.propTypes = {
+  type: PropTypes.string,
   /*
    * Classname passed to i tag
    */

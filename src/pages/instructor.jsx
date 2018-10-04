@@ -1,16 +1,15 @@
-import React from "react";
-import Helmet from "react-helmet";
+import React from "react"; 
 import { graphql } from "gatsby";
 import withTheme from "../withContext";
 import PostListing from "../components/PostListing";
 import Layout from "../components/Layout";
-import SEO from "../components/SEO";
-import config from "../../data/SiteConfig";
+import SEO from "../components/SEO"; 
 
 class Instructor extends React.Component {
   render() {
     const {translate: t} = this.props;
-    const { lng, route } = this.props.pageContext;
+    const { lng, route,files } = this.props.pageContext;
+    global.filesQuery=files;  
     const postEdges = this.props.data.allMarkdownRemark.edges;
     return (
       <Layout
@@ -20,12 +19,8 @@ class Instructor extends React.Component {
         ismain={false}
         location={this.props.location}
       >
-        <div className="index-container">
-          <Helmet>
-            <title>{config.siteTitle}</title>
-            <link rel="canonical" href={`${config.siteUrl}`} />
-          </Helmet>
-          <SEO postEdges={postEdges} translate={t("Instructor")} />
+        <div className="index-container"> 
+          <SEO postEdges={postEdges} route={route} translate={t("Instructor")} />
           <PostListing postEdges={postEdges} size="3" sizebig="11" />
         </div>
       </Layout>
@@ -35,7 +30,7 @@ class Instructor extends React.Component {
 export default withTheme(Instructor);
 
 export const pageQuery = graphql`
-  query InstructorQuery($lng: String!) {
+  query InstQuery($lng: String!) {
     allMarkdownRemark(
       limit: 2000
       filter: {

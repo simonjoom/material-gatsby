@@ -1,19 +1,15 @@
 import React from "react";
 import RehypeReact from "rehype-react";
 import Helmet from "react-helmet";
-import { graphql, Link } from "gatsby";
-import { View } from "react-native";
+import { graphql } from "gatsby"; 
 //import UserInfo from "../components/UserInfo";
-import Disqus from "../components/Disqus";
 import withTheme from "../withContext";
 import PostTags from "../components/PostTags";
 import Layout from "../components/Layout";
 //import PostInfo from "../components/PostInfo";
 import SocialLinks from "../components/SocialLinks";
 import SEO from "../components/SEO";
-import Card from "../reactLIB/Card";
-import Icon from "../reactLIB/Icon";
-import Button from "../reactLIB/Button";
+import Card from "../reactLIB/Card"; 
 import SiteConfig from "../../data/SiteConfig";
 import FrontCarousel from "../components/FrontCarousel";
 import ReactFB from "../components/ReactFB";
@@ -39,9 +35,8 @@ class PostTemplate extends React.Component {
   render() {
     const { mobile } = this.state;
     const { translate: t } = this.props;
-    const { slug, slugbase, route, lng, carousel } = this.props.pageContext;
- 
-    const expanded = !mobile;
+    const { slug, slugbase, route, lng, carousel,files } = this.props.pageContext;
+    global.filesQuery=files;  
     const ismain = slugbase === "/";
     let carouselList = [];
     let background;
@@ -75,7 +70,52 @@ class PostTemplate extends React.Component {
           <link rel="canonical" href={`${SiteConfig.siteUrl}${post.id}`} />
         </Helmet>
 
-        {/*slug == "/" && (
+        <Card className="post" title={title}>
+          {renderAst(postNode.htmlAst)}
+        </Card>
+        <div className="post-meta">
+          <PostTags tags={post.tags} />
+          <SocialLinks
+            postPath={slug}
+            postNode={postNode}
+            mobile={this.state.mobile}
+          />
+        </div> 
+      </Layout>
+    );
+  }
+}
+
+export default withTheme(PostTemplate);
+
+export const pageQuery = graphql`
+ 
+  query PagesBySlug($slug: String!) {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
+      htmlAst
+      timeToRead
+      excerpt
+      rawMarkdownBody
+      frontmatter {
+        title
+        description
+        cover
+        date
+        category
+        tags
+      }
+      fields {
+        inmenu
+        carousel
+        slug
+        lng
+        date
+      }
+    }
+  }
+`;
+
+     /*   {slug == "/" && (
             <View className="rowlink">
               <Link
                 primary
@@ -102,47 +142,4 @@ class PostTemplate extends React.Component {
             postNode={postNode}
             postSEO 
           />
-          */}
-        <Card className="post" title={title}>
-          {renderAst(postNode.htmlAst)}
-        </Card>
-        <div className="post-meta">
-          <PostTags tags={post.tags} />
-          <SocialLinks
-            postPath={slug}
-            postNode={postNode}
-            mobile={this.state.mobile}
-          />
-        </div>
-        <Disqus postNode={postNode} expanded={expanded} />
-      </Layout>
-    );
-  }
-}
-
-export default withTheme(PostTemplate);
-
-export const pageQuery = graphql`
-  query PagesBySlug($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      htmlAst
-      timeToRead
-      excerpt
-      rawMarkdownBody
-      frontmatter {
-        title
-        cover
-        date
-        category
-        tags
-      }
-      fields {
-        inmenu
-        carousel
-        slug
-        lng
-        date
-      }
-    }
-  }
-`;
+         } */

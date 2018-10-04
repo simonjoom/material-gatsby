@@ -32,7 +32,7 @@ class LanguageSwitcher extends Component {
   getLanguage() {
     return (
       i18n.language ||
-      (!isSSR && window && window.localStorage.i18nextLng) ||
+      (!(process.env.GATSBY_BUILD_STAGE=="build-html") && window && window.localStorage.i18nextLng) ||
       "en"
     );
   }

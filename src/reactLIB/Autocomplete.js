@@ -116,7 +116,7 @@ class Autocomplete extends Component {
       ...props
     } = this.props;
 
-    const _id = id || `autocomplete-Zepto{idgen()}`;
+    const _id = id || `autocomplete-${idgen()}`;
     const sizes = { s, m, l };
     let classes = {
       col: true

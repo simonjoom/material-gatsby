@@ -1,6 +1,6 @@
 ---
 title: "Concept"
-cover: "starter-logo-1024.png"
+cover: "snowboard.jpg"
 category: "concept"
 slug: "concept"
 tags:
@@ -25,7 +25,7 @@ date: "2018-07-02"
 * 专业资格教练引导课程,
 * 视频技术和进步的后续指导,
 
-![ski school courchevel](https://skiscool.com/dist/offpiste.jpg){.col-8 .block .mx-auto .rounded}
+![ski school courchevel](https://skiscool.com/dist/offpiste.jpg)
 
 ---
 <br/>

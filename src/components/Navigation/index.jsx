@@ -1,27 +1,26 @@
-import React, { Component } from "react";
+import React, { Component,Fragment } from "react";
 import Icon from "../../reactLIB/Icon";
 import Button from "../../reactLIB/Button";
+import Disqus from "../../components/Disqus";
 import SideNavItem from "../../reactLIB/SideNavItem";
 import SideNav from "../../reactLIB/SideNav";
 import Footer from "../../reactLIB/Footer";
 import UserLinks from "../UserLinks";
 import config from "../../../data/SiteConfig"
 
-//import NavigationDrawer from "react-md/lib/NavigationDrawers";
 //import ToolbarActions from "../ToolbarActions";
 
 // import Footer from "../Footer";
 //import GetNavList from "./NavList";
 import "./Navigation.scss";
 
-class Navigation extends Component { 
+class Navigation extends Component {
   render() {
-    const { children, config, LocalTitle, translate } = this.props;  
-    const {userLinks} = config;
+    const { children, config, LocalTitle, translate, postNode } = this.props;
     const footerLinks = LocalTitle !== "About";
     return (
       <div className="main-content">
-        <SideNav 
+        <SideNav
           trigger={
             <Button className="right" tooltip="open">
               <Icon className="bars" />

@@ -4,10 +4,8 @@ import { graphql, Link } from "gatsby";
 import { kebabCase } from "lodash";
 import moment from "moment";
 import RehypeReact from "rehype-react";
-import Avatar from "react-md/lib/Avatars";
+import Avatar from "../components/Avatars";
 import withTheme from "../withContext";
-import UserInfo from "../components/UserInfo";
-import Disqus from "../components/Disqus";
 import PostTags from "../components/PostTags";
 import Layout from "../components/Layout";
 // import PostCover from "../PostCover";
@@ -61,7 +59,8 @@ class PostTemplate extends React.Component {
   render() {
     const { mobile } = this.state;
     const { translate: t } = this.props;
-    const { slug, route, lng } = this.props.pageContext; 
+    const { slug, route, lng, files } = this.props.pageContext;
+    global.filesQuery = files;
     const postOverlapClass = mobile ? "post-overlap-mobile" : "post-overlap";
     const postNode = this.props.data.markdownRemark;
     const post = postNode.frontmatter;
@@ -73,7 +72,7 @@ class PostTemplate extends React.Component {
     if (!post.category_id) {
       post.category_id = config.postDefaultCategoryID;
     }
- 
+
     return (
       <Layout
         carouselList={carouselList}
@@ -90,6 +89,7 @@ class PostTemplate extends React.Component {
           </Helmet>
           <SEO
             postPath={slug}
+            route={route}
             postNode={postNode}
             postSEO
             translate={t("Post")}
@@ -97,7 +97,7 @@ class PostTemplate extends React.Component {
           <div className="md-grid md-cell--12 post-page-contents mobile-fix">
             <Card
               waves="light"
-              className="md-cell md-cell--12-phone md-cell--6 md-cell--4-tablet"
+              className="post md-cell md-cell--12-phone md-cell--12 md-cell--4-tablet"
               contentImage={
                 carouselList.length > 0 && (
                   <FrontCarousel
@@ -126,12 +126,6 @@ class PostTemplate extends React.Component {
                   <Button className="btn md-cell--right">Read </Button>
                 </Link>
               }
-              reveal={
-                <>
-                  {renderAst(postNode.htmlAst)}
-                  <PostTags tags={post.tags} />
-                </>
-              }
             >
               <div className="post-meta">
                 <PostTags tags={post.tags} />
@@ -141,10 +135,9 @@ class PostTemplate extends React.Component {
                   mobile={this.state.mobile}
                 />
               </div>
-              {post.excerpt}
+
+              {renderAst(postNode.htmlAst)}
             </Card>
-            <UserInfo className="md-grid md-cell md-cell--12" config={config} />
-            <Disqus postNode={postNode} />
           </div>
 
           <PostSuggestions postNode={postNode} />

@@ -115,9 +115,7 @@ var styles = _StyleSheet2.default.create({
     flexDirection: 'column',
     margin: 0,
     padding: 0,
-    position: 'relative',
-    zIndex: 0,
-    // fix flexbox bugs
+    position: 'relative', 
     minHeight: 0,
     minWidth: 0
   },

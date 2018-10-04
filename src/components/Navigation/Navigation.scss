@@ -1,5 +1,4 @@
 @import "../../layouts/theme.scss";
-
 .main-content {
     display: flex;
     flex-direction: column;
@@ -15,7 +14,6 @@
         }
     }
 }
-
 .footer__main{
     background-color: $md-primary-color !important;
 

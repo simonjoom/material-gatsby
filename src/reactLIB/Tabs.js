@@ -9,7 +9,7 @@ import Col from './Col';
 class Tabs extends Component {
   constructor(props) {
     super(props);
-    this.scope = `Zepto{idgen()}`;
+    this.scope = `${idgen()}`;
   }
 
   _onSelect(idx, e) {
@@ -48,7 +48,7 @@ class Tabs extends Component {
         <Col s={12}>
           <ul className={cx('tabs', className)} ref={el => (this._tabsEl = el)}>
             {React.Children.map(children, (child, id) => {
-              const idx = `Zepto{this.scope}Zepto{id}`;
+              const idx = `${this.scope}${id}`;
               const {
                 active,
                 className,
@@ -58,7 +58,7 @@ class Tabs extends Component {
               } = child.props;
 
               const classes = {
-                [`sZepto{tabWidth}`]: tabWidth,
+                [`s${tabWidth}`]: tabWidth,
                 tab: true,
                 disabled,
                 col: true
@@ -67,7 +67,7 @@ class Tabs extends Component {
               return (
                 <li className={cx(classes, className)} key={idx}>
                   <a
-                    href={`#tab_Zepto{idx}`}
+                    href={`#tab_${idx}`}
                     className={active || defaultValue === idx ? 'active' : ''}
                     {...(disabled
                       ? {}
@@ -81,12 +81,12 @@ class Tabs extends Component {
           </ul>
         </Col>
         {React.Children.map(children, (child, id) => {
-          const idx = `Zepto{this.scope}Zepto{id}`;
+          const idx = `${this.scope}${id}`;
           return (
             <Col
-              id={`tab_Zepto{idx}`}
+              id={`tab_${idx}`}
               s={12}
-              key={`tabZepto{idx}`}
+              key={`tab${idx}`}
               style={{
                 display:
                   child.props.active || defaultValue === idx ? 'block' : 'none'

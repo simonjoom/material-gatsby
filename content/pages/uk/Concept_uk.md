@@ -1,6 +1,6 @@
 ---
 title: "Concept"
-cover: "starter-logo-1024.png"
+cover: "snowboard.jpg"
 category: "concept"
 slug: "concept"
 tags:
@@ -22,7 +22,7 @@ date: "2018-07-02"
 * Керована програма повністю кваліфікованим інструктором,
 * Технічне і прогресивне спостереження з відео,
 
-![ski school courchevel](https://skiscool.com/dist/offpiste.jpg){.col-8 .block .mx-auto .rounded}
+![ski school courchevel](https://skiscool.com/dist/offpiste.jpg)
 
 ---
 <br/>

@@ -4,7 +4,7 @@ import cx from 'classnames';
 
 class Parallax extends Component {
   componentDidMount() {
-    Zepto('.parallax').parallax();
+    M('.parallax').parallax();
   }
 
   render() {

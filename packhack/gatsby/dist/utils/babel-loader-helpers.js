@@ -34,18 +34,19 @@ const prepareOptions = (babel, resolve = require.resolve) => {
   })];
   const requiredPresets = []; // Stage specific plugins to add
 
+
   if (stage === `build-html` || stage === `develop-html`) {
     requiredPlugins.push(babel.createConfigItem([resolve(`babel-plugin-dynamic-import-node`)], {
       type: `plugin`
     }));
   }
-
+/*
   if (stage === `develop`) {
     requiredPlugins.push(babel.createConfigItem([resolve(`react-hot-loader/babel`)], {
       type: `plugin`
     }));
   } // Fallback presets/plugins
-
+*/
 
   const fallbackPresets = [];
   const fallbackPlugins = [];
@@ -64,35 +65,34 @@ const prepareOptions = (babel, resolve = require.resolve) => {
 fallbackPlugins.push(babel.createConfigItem([resolve(`@babel/plugin-external-helpers`)], {
     type: `plugin`
   }));
-fallbackPlugins.push(babel.createConfigItem([resolve(`babel-plugin-react-native-web`)], {
-    type: `plugin`
-  }));
   
 fallbackPlugins.push(babel.createConfigItem([resolve(`@babel/plugin-transform-flow-strip-types`)], {
     type: `plugin`
   }));
   
-  if (stage !== `develop`)
-fallbackPlugins.push(babel.createConfigItem([resolve(`babel-plugin-transform-react-remove-prop-types`)], {
-    type: `plugin`
-  }));
-  
-  
+
   fallbackPresets.push(babel.createConfigItem([resolve(`@babel/preset-env`), {
     loose: true,
     modules: false,
     useBuiltIns: `usage`,
-    targets
+     targets
   }], {
     type: `preset`
   }));
+  
+  
   fallbackPresets.push(babel.createConfigItem([resolve(`@babel/preset-react`), {
     useBuiltIns: true,
-    pragma: `React.createElement`,
-    development: stage === `develop`
+   pragma: `React.createElement`,
+     //   pragmaFrag: (stage === `develop`)?`React.Fragment`:"DFrag",
+  //  development: stage === `develop`
   }], {
     type: `preset`
   }));
+  
+   
+
+  
   fallbackPlugins.push(babel.createConfigItem([resolve(`@babel/plugin-proposal-class-properties`), {
     loose: true
   }], {
@@ -113,19 +113,15 @@ fallbackPlugins.push(babel.createConfigItem([resolve(`babel-plugin-transform-rea
     type: `plugin`
   })); // Go through babel state and create config items for presets/plugins from.
 
-  const reduxPlugins = [];
-  const reduxPresets = [];
-  pluginBabelConfig[stage].plugins.forEach(plugin => {
-    reduxPlugins.push(babel.createConfigItem([resolve(plugin.name), plugin.options], {
-      type: `plugin`
-    }));
-  });
-  pluginBabelConfig[stage].presets.forEach(preset => {
-    reduxPresets.push(babel.createConfigItem([resolve(preset.name), preset.options], {
-      type: `preset`
-    }));
-  });
-  return [reduxPresets, reduxPlugins, requiredPresets, requiredPlugins, fallbackPlugins, fallbackPresets];
+  if (stage !== `develop`){
+fallbackPlugins.push(babel.createConfigItem([resolve(`babel-plugin-transform-react-remove-prop-types`)], {
+    type: `plugin`
+  })); 
+  
+}
+  
+ 
+  return [0, 0, requiredPresets, requiredPlugins, fallbackPlugins, fallbackPresets];
 };
 
 const mergeConfigItemOptions = ({

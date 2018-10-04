@@ -36,7 +36,6 @@ function () {
     const supportedBrowsers = program.browserslist;
     const PRODUCTION = !stage.includes(`develop`);
     const isSSR = stage.includes(`html`);
-console.log("PRODUCTION",PRODUCTION)
     const makeExternalOnly = original => (options = {}) => {
       let rule = original(options);
       rule.include = vendorRegex;
@@ -175,12 +174,13 @@ console.log("PRODUCTION",PRODUCTION)
     const rules = {};
     /**
      * Javascript loader via babel, excludes node_modules
+    
      */ 
     {
       let js = (options = {}) => {
         return {
           test: /\.jsx?$/,
-          exclude: /(node_modules|babelHelper|gatsby-|inject-|bower_components)/,
+          exclude: /(node_modules|public|babelHelper|gatsby-|inject-|.cache|bower_components)/,
           use: [loaders.js(options)]
         };
       };
@@ -191,7 +191,8 @@ console.log("PRODUCTION",PRODUCTION)
       let jso = (options = {}) => {
         return {
           test: /\.jsx?$/,
-          exclude: /(node_modules|babelHelper|bower_components)/,
+          include:/(gatsby-|inject-|.cache)/,
+          exclude: /(node_modules|public|src|babelHelper|bower_components)/,
           use: [loaders.jso(options)]
         };
       };
@@ -342,8 +343,13 @@ console.log("PRODUCTION",PRODUCTION)
         cache: true,
         parallel: true,
         exclude: /\.min\.js/,
-        sourceMap: false,
+        sourceMap: true,
         terserOptions: Object.assign({
+        mangle: true,
+        output: {
+        beautify: false,
+        comments:false
+         },
           compress: {
             drop_console: true
           },

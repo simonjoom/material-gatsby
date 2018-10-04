@@ -4,24 +4,9 @@ import { View, Image } from 'react-native';
 
 // Handle legacy names for image queries.
 
-var convertProps = function convertProps(props) {
-  var convertedProps = babelHelpers.extends({}, props);
-
-  if (convertedProps.sizes) {
-    convertedProps.fluid = convertedProps.sizes;
-    delete convertedProps.sizes;
-  }
-
-  return convertedProps;
-}; // Cache if we've seen an image before so we don't both with
-// lazy-loading & fading in on subsequent mounts.
-
-
 var imageCache = {};
 
-var inImageCache = function inImageCache(props) {
-  var convertedProps = convertProps(props); // Find src
-
+var inImageCache = function inImageCache(convertedProps) { 
   var src = convertedProps.fluid.src; // ? convertedProps.fluid.src
   // : convertedProps.fixed.src
 
@@ -37,13 +22,13 @@ var io;
 var listeners = [];
 
 function getIO() {
-  if (typeof io === "undefined" && typeof window !== "undefined" && window.IntersectionObserver) {
+  if (typeof io === "undefined" && typeof window !== "undefined" && window.IntersectionObserver) { 
     io = new window.IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         listeners.forEach(function (l) {
           if (l[0] === entry.target) {
             // Edge doesn't currently support isIntersecting, so also test for an intersectionRatio > 0
-            if (entry.isIntersecting || entry.intersectionRatio > 0) {
+            if (entry.isIntersecting || entry.intersectionRatio > 0) { 
               io.unobserve(l[0]);
               l[1]();
             }
@@ -127,18 +112,20 @@ function (_React$Component) {
     var Imgheight; // If this image has already been loaded before then we can assume it's
     // already in the browser cache so it's cheap to just show directly.
 
-    var seenBefore = inImageCache(props);
-
+    var _convertProps = babelHelpers.extends({},props,{fluid:props.fluid?props.fluid:props.sizes}); 
+    var seenBefore = inImageCache(_convertProps);
+    
     if (!seenBefore && typeof window !== "undefined" && window.IntersectionObserver) {
       isVisible = false;
       imgLoaded = false;
       IOSupported = true;
     } // Always don't render image while server rendering
 
-if(isSSR){
-    var isVisible = true;
-    var imgLoaded = false;
+if(false){
+     isVisible = true;
+     imgLoaded = false;
 }
+
     _this.state = {
       Imgheight: Imgheight,
       isVisible: isVisible,
@@ -146,6 +133,19 @@ if(isSSR){
       IOSupported: IOSupported
     };
     _this.handleRef = _this.handleRef.bind(babelHelpers.assertThisInitialized(babelHelpers.assertThisInitialized(_this)));
+    
+    //_this.handleRef = _this.handleRef.bind(this)
+   var width = _convertProps.width; 
+    var  height = _convertProps.height;
+    var image = _convertProps.fluid;
+      if (image.srcWebp && image.srcSetWebp && isWebpSupported()) {
+        _this.srcImage = this.srcset(image.srcSetWebp, width, height, image.aspectRatio);
+        _this.srcSet = image.srcSetWebp;
+      } else {
+        _this.srcImage = this.srcset(image.srcSet, width, height, image.aspectRatio);
+        _this.srcSet = image.srcSet;
+      } 
+      
     return _this;
   } // Implement srcset
 
@@ -178,6 +178,10 @@ if(isSSR){
     maxWidth = this.props.maxWidth && parseInt(this.props.maxWidth) < maxWidth ? parseInt(this.props.maxWidth) : maxWidth;
     var maxDensity = 1;
     var ratio = 1 / aspectRatio;
+    
+if(maxWidth * ratio>maxHeight){
+maxWidth=maxHeight/ratio
+} 
 
     if (typeof window !== 'undefined') {
       maxDensity = window.devicePixelRatio;
@@ -226,8 +230,7 @@ if(isSSR){
 
   _proto.handleRef = function handleRef(ref) {
     var _this2 = this;
-
-    if (this.state.IOSupported && ref) {
+    if (_this2.state.IOSupported && ref) {
       listenToIntersections(ref, function () {
         _this2.setState({
           isVisible: true,
@@ -240,7 +243,7 @@ if(isSSR){
   _proto.render = function render() {
     var _this3 = this;
 
-    var _convertProps = convertProps(this.props),
+    var _convertProps = this.props,
         title = _convertProps.title,
         alt = _convertProps.alt,
         resizeMode = _convertProps.resizeMode,
@@ -251,12 +254,13 @@ if(isSSR){
         className = _convertProps.className,
         outerWrapperClassName = _convertProps.outerWrapperClassName,
         _convertProps$imgStyl = _convertProps.imgStyle,
+        positionImage= _convertProps.positionImage,
         imgStyle = _convertProps$imgStyl === void 0 ? {} : _convertProps$imgStyl,
         _convertProps$placeho = _convertProps.placeholderStyle,
         placeholderStyle = _convertProps$placeho === void 0 ? {} : _convertProps$placeho,
-        fluid = _convertProps.fluid,
+        fluid = _convertProps.fluid?_convertProps.fluid:_convertProps.sizes,
         backgroundColor = _convertProps.backgroundColor;
-
+ 
     var bgColor;
 
     if (typeof backgroundColor === "boolean") {
@@ -270,52 +274,38 @@ if(isSSR){
 
       var srcImage, src, srcSet, presentationHeight, Pattern, match;
 		presentationHeight = height?height:"50%"
-      /*if (height) {
-        Pattern = /(.*)px/;
-        match = height.match(Pattern);
-
-        if (match) {
-          presentationHeight = parseInt(match[1], 10) / 2 + 'px'; //|| match[2] + 'px'
-        } else {
-          Pattern = /(.*)%/;
-          match = height.match(Pattern);
-
-          if (match) {
-            presentationHeight = parseInt(match[1], 10) / 2 + '%'; //|| match[2] + 'px'
-          } else {
-            presentationHeight = height + 'px';
-          }
-        }
-      }*/
+ 
 
       var imagePlaceholderStyle = babelHelpers.extends({
-        opacity: this.state.imgLoaded ? 0 : 1,
-        transitionDelay: "0.25s"
-      }, imgStyle, placeholderStyle);
+        opacity: !this.state.imgLoaded ? 1 : 0,
+        transitionDelay: "0.25s",
+        left:"auto"
+      }, imgStyle, placeholderStyle,positionImage=="right"?{right:"0px"}:{});
+      
       var imageStyle = babelHelpers.extends({
-        opacity: this.state.imgLoaded || this.props.fadeIn === false ? 1 : 0
-      }, imgStyle); // Use webp by default if browser supports it
-
+        opacity: this.state.imgLoaded ? 1 : 0,
+        transitionDelay: "0.25s"
+      }, imgStyle,positionImage=="right"?
+{backgroundPosition: "right top"}:{backgroundPosition: "center top"}); // Use webp by default if browser supports it
+ 
+/*
       if (image.srcWebp && image.srcSetWebp && isWebpSupported()) {
         srcImage = this.srcset(image.srcSetWebp, width, height, image.aspectRatio);
         srcSet = image.srcSetWebp;
       } else {
         srcImage = this.srcset(image.srcSet, width, height, image.aspectRatio);
         srcSet = image.srcSet;
-      }
-
-      src = srcImage.result;
-      image.width = srcImage.width;
-      image.height = srcImage.height;
-      var srcFront = image.tracedSVG; //|| image.base64 not good
-
+      }*/
+ 
+      src = this.srcImage.result;
+      image.width = this.srcImage.width;
+      image.height = this.srcImage.height;
+      var srcFront = image.tracedSVG; //|| image.base64 not good 
       var bgStyle = {
         backgroundColor: bgColor,
         position: "absolute",
         top: 0,
         bottom: 0,
-        opacity: !this.state.imgLoaded ? 1 : 0,
-        transitionDelay: "0.35s",
         right: 0,
         left: 0
       };
@@ -340,7 +330,7 @@ if(isSSR){
         style: bgStyle
       }), React.createElement("div", {
         ref: this.handleRef
-      }, content), this.state.isVisible && React.createElement(Image, {
+      }, content), _this3.state.isVisible && React.createElement(Image, {
         accessibilityLabel: alt,
         resizeMode: resizeMode,
         title: title,
@@ -351,7 +341,7 @@ if(isSSR){
         styleAccessibilityImage: imagePlaceholderStyle,
         styleImage: imageStyle,
         style: {
-          paddingBottom: presentationHeight ? presentationHeight : '60%',
+          paddingBottom: presentationHeight,
           maxWidth: '100%',
           opacity: 1,
           transitionDelay: "0.35s"

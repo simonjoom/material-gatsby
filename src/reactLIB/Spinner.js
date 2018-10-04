@@ -4,8 +4,8 @@ import cx from 'classnames';
 
 const Spinner = ({ color, only, className }) => {
   const spinnerClasses = cx('spinner-layer', {
-    [`spinner-Zepto{color}-only`]: only,
-    [`spinner-Zepto{color}`]: !only
+    [`spinner-${color}-only`]: only,
+    [`spinner-${color}`]: !only
   });
 
   return (

@@ -8,17 +8,16 @@ const config = require("./src/config");
 const router = config.router;
 require("babel-polyfill");
 
-const arraymenu = [
-  "/",
-  "/about",
-  "/jumpsuit",
-  "/concept",
-  "/contact",
-  "/hotels"
-];
+const arraymenu = ["/", "/about", "/concept", "/contact"];
 const arraygallery = ["/", "/about", "/concept"];
+const postTypes = ["post", "instructor", "hotel"];
+//const postNodes = { fr: [], en: [], pt: [], ru: [], uk: [], ch: [] };
+const postNodes = {
+  post: { fr: [], en: [], pt: [], ru: [], uk: [], ch: [] },
+  instructor: { fr: [], en: [], pt: [], ru: [], uk: [], ch: [] },
+  hotel: { fr: [], en: [], pt: [], ru: [], uk: [], ch: [] }
+};
 
-const postNodes = [];
 let didRunAlready = false;
 let absoluteComponentPath;
 
@@ -53,44 +52,60 @@ exports.onCreateWebpackConfig = ({ actions, plugins }) => {
 };
 
 function addSiblingNodes(createNodeField) {
-  postNodes.sort(
-    ({ frontmatter: { date: date1 } }, { frontmatter: { date: date2 } }) => {
-      const dateA = moment(date1, siteConfig.dateFromFormat);
-      const dateB = moment(date2, siteConfig.dateFromFormat);
+  for (let k in postTypes) {
+    const type = postTypes[k];
+    for (let l in config.locales) {
+      const lng = config.locales[l];
+      const el = postNodes[type][lng].filter(
+        a => a && a.frontmatter && a.frontmatter.title !== ""
+      );
+      el.sort(
+        (
+          { frontmatter: { date: date1 } },
+          { frontmatter: { date: date2 } }
+        ) => {
+          const dateA = moment(date1, siteConfig.dateFromFormat);
+          const dateB = moment(date2, siteConfig.dateFromFormat);
 
-      if (dateA.isBefore(dateB)) return 1;
+          if (dateA.isBefore(dateB)) return 1;
 
-      if (dateB.isBefore(dateA)) return -1;
+          if (dateB.isBefore(dateA)) return -1;
 
-      return 0;
+          return 0;
+        }
+      );
+      var index = 0;
+      for (let i = 0; i < el.length; i += 1) {
+        const nextID = index + 1 < el.length ? index + 1 : 0;
+        const prevID = index - 1 > 0 ? index - 1 : el.length - 1;
+        const currNode = el[index];
+        const nextNode = el[nextID];
+        const prevNode = el[prevID];
+        if (nextNode.frontmatter.title !== "default") {
+          createNodeField({
+            node: currNode,
+            name: "nextTitle",
+            value: nextNode.frontmatter.title
+          });
+          createNodeField({
+            node: currNode,
+            name: "nextSlug",
+            value: nextNode.fields.slug
+          });
+          createNodeField({
+            node: currNode,
+            name: "prevTitle",
+            value: prevNode.frontmatter.title
+          });
+          createNodeField({
+            node: currNode,
+            name: "prevSlug",
+            value: prevNode.fields.slug
+          });
+          index++;
+        }
+      }
     }
-  );
-  for (let i = 0; i < postNodes.length; i += 1) {
-    const nextID = i + 1 < postNodes.length ? i + 1 : 0;
-    const prevID = i - 1 > 0 ? i - 1 : postNodes.length - 1;
-    const currNode = postNodes[i];
-    const nextNode = postNodes[nextID];
-    const prevNode = postNodes[prevID];
-    createNodeField({
-      node: currNode,
-      name: "nextTitle",
-      value: nextNode.frontmatter.title
-    });
-    createNodeField({
-      node: currNode,
-      name: "nextSlug",
-      value: nextNode.fields.slug
-    });
-    createNodeField({
-      node: currNode,
-      name: "prevTitle",
-      value: prevNode.frontmatter.title
-    });
-    createNodeField({
-      node: currNode,
-      name: "prevSlug",
-      value: prevNode.fields.slug
-    });
   }
 }
 
@@ -115,10 +130,6 @@ exports.onCreateNode = async ({
   ) {
     const content = await loadNodeContent(node);
     const data = JSON.stringify(JSON.parse(content), undefined, "");
-    /*const contentDigest = crypto
-      .createHash(`md5`)
-      .update(data)
-      .digest(`hex`);contentDigest,*/
     const localeNode = {
       id: createNodeId(`${node.id} >>> Locale`),
       children: [],
@@ -158,7 +169,7 @@ exports.onCreateNode = async ({
       fields: { lng, type }
     } = fileNode;
     // console.log("MarkdownRemark", lng, type);
-
+    if (node.frontmatter && node.frontmatter.title === "") return;
     const parsedFilePath = path.parse(fileNode.relativePath);
     if (
       Object.prototype.hasOwnProperty.call(node, "frontmatter") &&
@@ -192,7 +203,7 @@ exports.onCreateNode = async ({
     let slugfin;
     if (router[slug]) slugfin = router[slug][lng];
 
-    if (type === "instructor")
+    if (type === "instructor" || type === "hotel")
       slugfin = slugfin + _.kebabCase(node.frontmatter.title) + "/";
 
     if (!slugfin) {
@@ -218,180 +229,314 @@ exports.onCreateNode = async ({
     createNodeField({ node, name: `type`, value: type });
     createNodeField({ node, name: "slugbase", value: slug });
     createNodeField({ node, name: "slug", value: slugfin });
-    if (type !== "pages") postNodes.push(node);
+    if (type !== "pages") postNodes[type][lng].push(node);
   }
 };
 
 exports.setFieldsOnGraphQLNodeType = ({ type, actions }) => {
-  // console.log("setFieldsOnGraphQLNodeType", type);
-  const { name } = type;
+  const { name, nodes } = type;
   const { createNodeField } = actions;
+  //console.log("setFieldsOnGraphQLNodeType", nodes);
+
   if (name === "MarkdownRemark") {
     addSiblingNodes(createNodeField);
   }
 };
+const MarkdownQueries = `
+  {
+    allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date] }
+    ) {
+      edges {
+        node {
+          html
+          id
+          fileAbsolutePath
+          frontmatter {
+            title
+            deps
+            cover
+            date
+            category
+            tags
+          }
+          fields {
+            lng
+            slugbase
+            slug
+            inmenu
+            carousel
+            type
+          }
+        }
+      }
+    }
+  } 
+`;
 
+const filesArrayCache = [];
+const QueryFiles = depsfiles => `
+{
+  allFile(
+    filter: { 
+      absolutePath:{regex:"\/assets\/\.\*\(${depsfiles}\)\\\\.\(jpg\$|png\$\)\/"}
+    }
+    )
+    {
+      edges {
+        node {
+      id
+      absolutePath
+      childImageSharp {
+        id
+        fluid(maxWidth: 1300) {
+          tracedSVG
+          aspectRatio
+          src
+          srcSet
+          sizes
+          srcWebp
+          srcSetWebp
+          originalName
+        }
+      }
+    }
+  }
+}
+}`;
+let arraydepfilesInstructor = [];
+let arraydepfilesBlog = [];
+let arraydepfilesHotel = [];
+async function asyncForEach(array, callback) {
+  for (let index = 0; index < array.length; index++) {
+    await callback(array[index], index, array);
+  }
+}
+let MarkdownQueriesCache = null;
 exports.createPages = ({ graphql, actions }) => {
   const { createPage, deleteNode } = actions;
 
-  return new Promise((resolve, reject) => {
-    const pagePage = path.resolve("src/templates/page.jsx");
-    const postPage = path.resolve("src/templates/post.jsx");
-    const instructorPage = path.resolve("src/templates/instructor.jsx");
-    const tagPage = path.resolve("src/templates/tag.jsx");
-    const categoryPage = path.resolve("src/templates/category.jsx");
-    resolve(
-      graphql(
-        `
-          {
-            allMarkdownRemark(
-              sort: { order: DESC, fields: [frontmatter___date] }
-            ) {
-              edges {
-                node {
-                  id
-                  fileAbsolutePath
-                  frontmatter {
-                    title
-                    cover
-                    date
-                    category
-                    tags
-                  }
-                  fields {
-                    lng
-                    slugbase
-                    slug
-                    inmenu
-                    carousel
-                    type
-                  }
-                }
-              }
-            }
-          }
-        `
-      ).then(result => {
-        if (result.errors) {
-          /* eslint no-console: "off" */
-          console.log(result.errors);
-          reject(result.errors);
+  // return new Promise((resolve, reject) => {
+  const hotelPage = path.resolve("src/templates/hotel.jsx");
+  const pagePage = path.resolve("src/templates/page.jsx");
+  const postPage = path.resolve("src/templates/post.jsx");
+  const instructorPage = path.resolve("src/templates/instructor.jsx");
+  const tagPage = path.resolve("src/templates/tag.jsx");
+  const categoryPage = path.resolve("src/templates/category.jsx");
+
+  return new Promise(async (resolve, reject) => {
+    if (!MarkdownQueriesCache) {
+      let mak = await graphql(MarkdownQueries);
+      if (mak.errors) {
+        /* eslint no-console: "off" */
+
+        reject(mak.errors);
+      }
+      MarkdownQueriesCache = mak.data.allMarkdownRemark.edges.filter(
+        a => a.node && a.node.frontmatter && a.node.frontmatter.title !== ""
+      );
+    }
+    //.then(result => {
+
+    let tagSets = [];
+    let categorySets = [];
+    let langs = [];
+    // const tagSet = new Set();
+    // const categorySet = new Set();
+    await asyncForEach(MarkdownQueriesCache, async ({ node }) => {
+      const lng = node.fields.lng;
+      if (!tagSets[lng]) tagSets[lng] = new Set();
+      if (!categorySets[lng]) categorySets[lng] = new Set();
+      if (!langs[lng]) langs.push(lng);
+      let route = Object.assign({}, router[node.fields.slugbase]);
+      if (!route || (router[node.fields.slug] && node.fields.slug !== "/")) {
+        console.warn(
+          "routepages not defined from ",
+          node.fields.slugbase,
+          node.fields.slug
+        );
+      }
+      if (node.fields.type == "instructor" || node.fields.type == "hotel") {
+        route.fr = route.fr + _.kebabCase(node.frontmatter.title) + "/";
+        route.en = route.en + _.kebabCase(node.frontmatter.title) + "/";
+        route.ru = route.ru + _.kebabCase(node.frontmatter.title) + "/";
+        route.uk = route.uk + _.kebabCase(node.frontmatter.title) + "/";
+        route.pt = route.pt + _.kebabCase(node.frontmatter.title) + "/";
+        route.ch = route.ch + _.kebabCase(node.frontmatter.title) + "/";
+      }
+
+      const next =
+        node.frontmatter && node.frontmatter.cover
+          ? node.frontmatter.cover.replace(/(.jpg|.jpeg|.png)/g, "").split(",")
+          : [];
+
+      //add for the page frontmatter instructor type
+      if (node.fields.type === "instructor") {
+        arraydepfilesInstructor = Array.from(
+          new Set(arraydepfilesInstructor.concat(next))
+        );
+      }
+      //add for the page frontmatter post type
+      if (node.fields.type === "post") {
+        arraydepfilesBlog = Array.from(new Set(arraydepfilesBlog.concat(next)));
+      }
+      if (node.fields.type === "hotel") {
+        arraydepfilesHotel = Array.from(
+          new Set(arraydepfilesHotel.concat(next))
+        );
+      }
+
+      let depsfiles = "";
+
+      if (node.frontmatter.deps) {
+        depsfiles = node.frontmatter.deps;
+      } else {
+        var regex = /imgtest data=['|"](.*)\..*["|']/g;
+        var matches = [];
+        var str = node.html;
+        if (str && str != "") {
+          str.replace(regex, function() {
+            var match = Array.prototype.slice.call(arguments, 0, -1);
+            matches.push(match[1]);
+            // example: ['test1', 'e', 'st1', '1'] with properties `index` and `input`
+          });
+          depsfiles = matches.join("|");
+          //console.log(depsfiles);
         }
-        let tagSets = [];
-        let categorySets = [];
-        let langs = [];
-        // const tagSet = new Set();
-        // const categorySet = new Set();
-        result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-          let lng = node.fields.lng;
-          if (!tagSets[lng]) tagSets[lng] = new Set();
-          if (!categorySets[lng]) categorySets[lng] = new Set();
-          if (!langs[lng]) langs.push(lng);
-          let route = Object.assign({}, router[node.fields.slugbase]);
+      }
+      const extra = next.join("|");
+
+      // console.log(depsfiles, node.frontmatter.cover);
+      depsfiles = extra === "" ? depsfiles : depsfiles + "|" + extra;
+
+      const myquery = QueryFiles(depsfiles);
+      if (!filesArrayCache[depsfiles]) {
+        const {
+          data: {
+            allFile: { edges: filedeps }
+          }
+        } = await graphql(myquery);
+        filesArrayCache[depsfiles] = filedeps;
+      }
+      const files = filesArrayCache[depsfiles];
+
+      switch (node.fields.type) {
+        case "post":
+        case "hotel":
+        case "instructor":
+          if (node.frontmatter.tags) {
+            node.frontmatter.tags.forEach(tag => {
+              tagSets[lng].add(tag);
+            });
+          }
+
+          if (node.frontmatter.category) {
+            categorySets[lng].add(node.frontmatter.category);
+          }
+
+          createPage({
+            path: node.fields.slug,
+            component:
+              node.fields.type == "post"
+                ? postPage
+                : node.fields.type == "instructor"
+                  ? instructorPage
+                  : hotelPage,
+            context: {
+              route,
+              files,
+              id: node.id,
+              ...node.fields
+            }
+          });
+          break;
+        case "pages":
+          route = router[node.fields.slugbase];
           if (
             !route ||
             (router[node.fields.slug] && node.fields.slug !== "/")
           ) {
-            console.warn(
-              "routepages not defined from ",
-              node.fields.slugbase,
-              node.fields.slug
-            );
+            return;
           }
-          if (node.fields.type == "instructor") {
-            route.fr = route.fr + _.kebabCase(node.frontmatter.title) + "/";
-            route.en = route.en + _.kebabCase(node.frontmatter.title) + "/";
-            route.ru = route.ru + _.kebabCase(node.frontmatter.title) + "/";
-            route.uk = route.uk + _.kebabCase(node.frontmatter.title) + "/";
-            route.pt = route.pt + _.kebabCase(node.frontmatter.title) + "/";
-            route.ch = route.ch + _.kebabCase(node.frontmatter.title) + "/";
-          }
-          switch (node.fields.type) {
-            case `post`:
-            case `instructor`:
-              if (node.frontmatter.tags) {
-                node.frontmatter.tags.forEach(tag => {
-                  tagSets[lng].add(tag);
-                });
-              }
+          createPage({
+            path: node.fields.slug,
+            component: pagePage,
+            context: {
+              route,
+              files,
+              id: node.id,
+              ...node.fields
+            }
+          });
+          break;
+        default:
+          console.log("????");
+          break;
+      }
 
-              if (node.frontmatter.category) {
-                categorySets[lng].add(node.frontmatter.category);
-              }
-
-              createPage({
-                path: node.fields.slug,
-                component:
-                  node.fields.type == "post" ? postPage : instructorPage,
-                context: {
-                  route,
-                  id: node.id,
-                  ...node.fields
-                }
-              });
-              break;
-            case `pages`:
-              route = router[node.fields.slugbase];
-              if (
-                !route ||
-                (router[node.fields.slug] && node.fields.slug !== "/")
-              ) {
-                return;
-              }
-
-              createPage({
-                path: node.fields.slug,
-                component: pagePage,
-                context: {
-                  route,
-                  id: node.id,
-                  ...node.fields
-                }
-              });
-          }
-        });
-
-        langs.forEach(lng => {
-          const tagList = Array.from(tagSets[lng]);
+      if (node.frontmatter.title !== "default") {
+        langs.forEach(lg => {
+          const tagList = Array.from(tagSets[lg]);
           tagList.forEach(tag => {
+            const route = {};
+            const kbtag = _.kebabCase(tag);
+            route.fr = `/tags_fr/${kbtag}/`;
+            route.en = `/tags_en/${kbtag}/`;
+            route.ru = `/tags_ru/${kbtag}/`;
+            route.uk = `/tags_uk/${kbtag}/`;
+            route.pt = `/tags_pt/${kbtag}/`;
+            route.ch = `/tags_ch/${kbtag}/`;
             createPage({
-              path: `/tags_${lng}/${_.kebabCase(tag)}/`,
+              path: `/tags_${lg}/${kbtag}/`,
               component: tagPage,
               context: {
+                route,
                 tag,
-                lng
+                lng: lg
               }
             });
           });
-          const categoryList = Array.from(categorySets[lng]);
+          const categoryList = Array.from(categorySets[lg]);
           categoryList.forEach(category => {
+            const route = {};
+            const kbcategory = _.kebabCase(category);
+            route.fr = `/categories_fr/${kbcategory}/`;
+            route.en = `/categories_en/${kbcategory}/`;
+            route.ru = `/categories_ru/${kbcategory}/`;
+            route.uk = `/categories_uk/${kbcategory}/`;
+            route.pt = `/categories_pt/${kbcategory}/`;
+            route.ch = `/categories_ch/${kbcategory}/`;
             createPage({
-              path: `/categories_${lng}/${_.kebabCase(category)}/`,
+              path: `/categories_${lg}/${kbcategory}/`,
               component: categoryPage,
               context: {
+                route,
                 category,
-                lng
+                lng: lg
               }
             });
+            // });
+            // });
           });
         });
-      })
-    );
+      }
+    });
+    resolve();
   });
 };
 
-exports.onCreatePage = ({ page, actions }) => {
+exports.onCreatePage = async ({ page, actions }) => {
   const { createPage, deletePage } = actions;
 
   const route = router[page.path];
   if (!route) {
-    console.warn("no route", page.path);  
+    console.warn("no route", page.path);
   }
 
   const { locales, defaultLocale } = config;
   let oldPage = Object.assign({}, page);
   const newPage = {};
-  locales.forEach(locale => {
+  await asyncForEach(locales, async locale => {
     if (!route) {
       if (oldPage) deletePage(oldPage);
       oldPage = null;
@@ -411,6 +556,36 @@ exports.onCreatePage = ({ page, actions }) => {
       };
       createPage(newPage);
     } else if (route[locale]) {
+      const _require2 = require(`gatsby/dist/redux`);
+      const store = _require2.store;
+      const schema = store.getState().schema;
+      const graphqlo = require(`graphql`).graphql;
+      //console.log("oncreate", page.path);
+      let depsfiles;
+      if (page.path === "/instructor/")
+        depsfiles = arraydepfilesInstructor.join("|");
+      else if (page.path === "/blog/") depsfiles = arraydepfilesBlog.join("|");
+      else if (page.path === "/hotel/")
+        depsfiles = arraydepfilesHotel.join("|");
+     // console.log(page.path, depsfiles);
+      if (depsfiles) {
+        const myquery = QueryFiles(depsfiles);
+        if (!filesArrayCache[depsfiles]) {
+          let res = await graphqlo(schema, myquery, {}, {}, {}); 
+          if (res.data.allFile) {
+            const { edges: filedeps } = res.data.allFile;
+            // console.log("filesArrayCache", filedeps);
+            filesArrayCache[depsfiles] = filedeps;
+          } else {
+            console.warn("lack of deps:", depsfiles);
+            filesArrayCache[depsfiles] = [];
+          }
+        }
+      } else {
+        filesArrayCache[depsfiles] = [];
+      }
+      const files = filesArrayCache[depsfiles];
+
       if (oldPage) deletePage(oldPage);
       oldPage = null;
       newPage.component = page.component;
@@ -418,6 +593,7 @@ exports.onCreatePage = ({ page, actions }) => {
       newPage.context = {
         lng: locale,
         slug: newPage.path,
+        files,
         route
       };
       createPage(newPage);

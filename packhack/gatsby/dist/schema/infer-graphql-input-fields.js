@@ -27,7 +27,8 @@ const createKey = require(`./create-key`);
 const _require3 = require(`./data-tree-utils`),
       getExampleValues = _require3.getExampleValues,
       extractFieldNames = _require3.extractFieldNames,
-      isEmptyObjectOrArray = _require3.isEmptyObjectOrArray;
+      isEmptyObjectOrArray = _require3.isEmptyObjectOrArray,
+      INVALID_VALUE = _require3.INVALID_VALUE;
 
 const _require4 = require(`./infer-graphql-type`),
       findLinkedNode = _require4.findLinkedNode;
@@ -333,7 +334,7 @@ function inferInputObjectStructureFromNodes({
     let key = k; // Remove fields for traversing through nodes as we want to control
     // setting traversing up not try to automatically infer them.
 
-    if (isRoot && EXCLUDE_KEYS[key]) return;
+    if (value === INVALID_VALUE || isRoot && EXCLUDE_KEYS[key]) return;
 
     if (_.includes(key, `___NODE`)) {
       // TODO: Union the objects in array

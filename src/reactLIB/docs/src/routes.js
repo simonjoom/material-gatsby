@@ -64,7 +64,7 @@ const parseRoutes = (compObj) => {
   const ret = [];
   Object.keys(compObj).forEach((el) => {
     ret.push({
-      path: `/Zepto{el}`,
+      path: `/${el}`,
       component: compObj[el]
     });
   });
