@@ -30,9 +30,6 @@
     "url": "https://opencollective.com/inferno",
     "logo": "https://opencollective.com/inferno/logo.txt"
   },
-  "scripts": {
-    "postinstall": "opencollective postinstall"
-  },
   "rollup": {
     "bundledDependencies": [
       "inferno-shared",
@@ -44,13 +41,5 @@
   "module": "index.esm.js",
   "dev:module": "dist/index.dev.esm.js",
   "typings": "dist/index.d.ts",
-  "repository": "https://github.com/infernojs/inferno",
-  "devDependencies": {
-    "inferno-utils": "^6.0.0-rc.1"
-  },
-  "dependencies": {
-    "inferno-shared": "^6.0.0-rc.1",
-    "inferno-vnode-flags": "^6.0.0-rc.1",
-    "opencollective": "^1.0.3"
-  }
+  "repository": "https://github.com/infernojs/inferno"
 }

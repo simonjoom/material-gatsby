@@ -1,12 +1,11 @@
 {
-  "name": "inferno-clone-vnode",
+  "name": "inferno-create-class",
   "version": "6.0.0-rc.1",
   "license": "MIT",
-  "description": "provides helper function to clone Inferno's vNodes",
+  "description": "Provides a helper to create Inferno Components without needing ES2015",
   "author": {
-    "name": "Sampo Kivistö<Havunen>",
-    "email": "sampo.kivisto@live.fi",
-    "url": "https://github.com/havunen"
+    "name": "Dominic Gannaway",
+    "email": "dg@domgan.com"
   },
   "bugs": {
     "url": "https://github.com/infernojs/inferno/issues"
@@ -26,14 +25,6 @@
     "class",
     "vdom"
   ],
-  "dependencies": {
-    "inferno": "^6.0.0-rc.1"
-  },
-  "devDependencies": {
-    "inferno": "5.5.0",
-    "inferno-shared": "^6.0.0-rc.1",
-    "inferno-vnode-flags": "^6.0.0-rc.1"
-  },
   "rollup": {
     "bundledDependencies": [
       "inferno-shared"

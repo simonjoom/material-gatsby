@@ -33,17 +33,6 @@
   "engines": {
     "node": ">=8"
   },
-  "devDependencies": {
-    "inferno-create-class": "^6.0.0-rc.1",
-    "inferno-create-element": "^6.0.0-rc.1",
-    "inferno-hydrate": "^6.0.0-rc.1",
-    "inferno-shared": "^6.0.0-rc.1",
-    "inferno-vnode-flags": "^6.0.0-rc.1",
-    "mobx": "*"
-  },
-  "dependencies": {
-    "inferno": "^6.0.0-rc.1"
-  },
   "rollup": {
     "bundledDependencies": [
       "inferno-shared",
