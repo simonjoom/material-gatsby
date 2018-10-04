@@ -39,13 +39,12 @@ requiredPlugins.push(babel.createConfigItem([resolve(`babel-plugin-dynamic-impor
       type: `plugin`
     }));
   }
-/*
-  if (stage === `develop`) {
+
+  if (stage === `develop`&&process.env.NODE_ENV !== `inferno`) {
     requiredPlugins.push(babel.createConfigItem([resolve(`react-hot-loader/babel`)], {
       type: `plugin`
     }));
   } // Fallback presets/plugins
-*/
 
   const fallbackPresets = [];
   const fallbackPlugins = [];

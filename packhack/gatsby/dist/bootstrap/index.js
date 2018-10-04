@@ -357,7 +357,7 @@ function () {
     yield extractQueries();
     activity.end(); // Start the createPages hot reloader.
 
-    if (process.env.NODE_ENV !== `production`) {
+    if (process.env.NODE_ENV !== `production`&&process.env.NODE_ENV !== `inferno`) {
       require(`./page-hot-reloader`)(graphqlRunner);
     } // Run queries
 

@@ -46,7 +46,7 @@ function () {
     // webpack config.
 
     const stage = suppliedStage;
-
+console.log("suppliedStage",stage)
     const _ref2 = yield createUtils({
       stage,
       program
@@ -153,14 +153,17 @@ function () {
     }
 
     function getEntry() {
+      var commons=[];
+        if (process.env.NODE_ENV!=="inferno"&&process.env.NODE_ENV!=="production")
+        commons.push(require.resolve(`react-hot-loader/patch`))
+        
       switch (stage) {
         case `develop`:
           return {
-            commons: [
-           // require.resolve(`react-hot-loader/patch`), 
+            commons:commons.concat([
            `${require.resolve(`webpack-hot-middleware/client`)}?path=${getHmrPath()}`, 
             directoryPath(`.cache/app`)
-            ]
+            ])
           };
 
         case `develop-html`:
@@ -315,7 +318,7 @@ function () {
     function getModule(config) {
       // Common config for every env.
       // prettier-ignore
-      let configRules = [rules.js(),rules.jso(), rules.yaml(), rules.fonts(), rules.images(), rules.media(), rules.miscAssets()];
+      let configRules = [rules.js(),rules.yaml(), rules.fonts(), rules.images(), rules.media(), rules.miscAssets()];
 
       switch (stage) {
         case `develop`:
@@ -367,6 +370,7 @@ function () {
     }
 
     function getResolve() {
+    var res;
       const _store$getState2 = store.getState(),
             program = _store$getState2.program;
 if((process.env.NODE_ENV)=="production")
@@ -425,7 +429,7 @@ if((process.env.NODE_ENV)=="production")
         }
       }
       else
-      return {
+      res= {
         // Use the program's extension list (generated via the
         // 'resolvableExtensions' API hook).       
          extensions: [
@@ -458,15 +462,6 @@ if((process.env.NODE_ENV)=="production")
           "react-lifecycles-compat": directoryPath(`.cache/react-lifecycles-compat.js`),
           //"create-react-context": directoryPath(`.cache/create-react-context.js`),  
            "lodash":"lodash-es",
-           "inferno":"inferno/dist/index.dev.esm.js",
-           "inferno-create-element":"inferno-create-element/dist/index.dev.esm.js",
-           "inferno-create-class":"inferno-create-class/dist/index.dev.esm.js",
-           "inferno-hydrate":"inferno-hydrate/dist/index.dev.esm.js",
-           "inferno-shared":"inferno-shared/dist/index.dev.esm.js",
-           "inferno-vnode-flags":"inferno-vnode-flags/dist/index.dev.esm.js",
-            'react-dom/server': 'inferno-server/dist/index.dev.esm.js',
-            'react': 'inferno-compat/dist/index.dev.esm.js',
-            'react-dom': 'inferno-compat/dist/index.dev.esm.js',
         'react-native-vector-icons/FontAwesome':
           'expo-web/dist/exports/FontAwesome',
         'react-native-vector-icons/MaterialIcons':
@@ -485,6 +480,21 @@ if((process.env.NODE_ENV)=="production")
       "react-native": directoryPath(`./src/RNW.js`)
         }
       }
+      if (process.env.NODE_ENV=="inferno"){
+      res.alias["inferno"]="inferno/dist/index.dev.esm.js";
+      res.alias["inferno-create-element"]="inferno-create-element/dist/index.dev.esm.js";
+      res.alias["inferno-create-class"]="inferno-create-class/dist/index.dev.esm.js";
+      res.alias["inferno-hydrate"]="inferno-hydrate/dist/index.dev.esm.js";
+      res.alias["inferno-shared"]="inferno-shared/dist/index.dev.esm.js";
+      res.alias["inferno-vnode-flags"]="inferno-vnode-flags/dist/index.dev.esm.js";
+       res.alias['react-dom/server']='inferno-server/dist/index.dev.esm.js';
+       res.alias['react']='inferno-compat/dist/index.dev.esm.js';
+       res.alias['react-dom']='inferno-compat/dist/index.dev.esm.js';
+     res.alias["react-hot-loader"]= path.dirname(require.resolve(`react-hot-loader/package.json`));
+      }else{
+     res.alias["react-hot-loader"]= path.dirname(require.resolve(`react-hot-loader/package.json`));
+      }
+      return res;
     }
 
     function getResolveLoader() {

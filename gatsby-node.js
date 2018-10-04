@@ -410,15 +410,18 @@ exports.createPages = ({ graphql, actions }) => {
       depsfiles = extra === "" ? depsfiles : depsfiles + "|" + extra;
 
       const myquery = QueryFiles(depsfiles);
-      if (!filesArrayCache[depsfiles]) {
+      let files = [];
+      if (
+        !filesArrayCache[depsfiles] &&
+        (process.env.NODE_ENV === "production" || node.fields.slug === "/")
+      ) {
         const {
           data: {
             allFile: { edges: filedeps }
           }
         } = await graphql(myquery);
-        filesArrayCache[depsfiles] = filedeps;
+        files = filesArrayCache[depsfiles] = filedeps;
       }
-      const files = filesArrayCache[depsfiles];
 
       switch (node.fields.type) {
         case "post":
@@ -474,7 +477,10 @@ exports.createPages = ({ graphql, actions }) => {
           break;
       }
 
-      if (node.frontmatter.title !== "default") {
+      if (
+        node.frontmatter.title !== "default" &&
+        process.env.NODE_ENV === "production"
+      ) {
         langs.forEach(lg => {
           const tagList = Array.from(tagSets[lg]);
           tagList.forEach(tag => {
@@ -567,11 +573,11 @@ exports.onCreatePage = async ({ page, actions }) => {
       else if (page.path === "/blog/") depsfiles = arraydepfilesBlog.join("|");
       else if (page.path === "/hotel/")
         depsfiles = arraydepfilesHotel.join("|");
-     // console.log(page.path, depsfiles);
+      // console.log(page.path, depsfiles);
       if (depsfiles) {
         const myquery = QueryFiles(depsfiles);
         if (!filesArrayCache[depsfiles]) {
-          let res = await graphqlo(schema, myquery, {}, {}, {}); 
+          let res = await graphqlo(schema, myquery, {}, {}, {});
           if (res.data.allFile) {
             const { edges: filedeps } = res.data.allFile;
             // console.log("filesArrayCache", filedeps);
