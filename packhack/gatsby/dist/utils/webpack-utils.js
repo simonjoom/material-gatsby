@@ -141,12 +141,12 @@ function () {
           loader: require.resolve(`./babel-loader`)
         };
       },
-      jso: options => {
+     /* jso: options => {
         return {
           options,
           loader: require.resolve(`./babel-loadero`)
         };
-      },
+      },*/
       eslint: (schema = ``) => {
         const options = eslintConfig(schema);
         return {
@@ -180,14 +180,14 @@ function () {
       let js = (options = {}) => {
         return {
           test: /\.jsx?$/,
-          exclude: /(node_modules|public|babelHelper|gatsby-|inject-|.cache|bower_components)/,
+          exclude: /(node_modules|public|babelHelper|bower_components)/,
           use: [loaders.js(options)]
         };
       };
 
       rules.js = js;
     }
-    {
+   /* {
       let jso = (options = {}) => {
         return {
           test: /\.jsx?$/,
@@ -198,7 +198,7 @@ function () {
       };
 
       rules.jso = jso;
-    }
+    }*/
     {
       let eslint = schema => {
         return {

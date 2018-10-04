@@ -40,8 +40,8 @@ module.exports = babelLoader.custom(babel => {
       let options = partialConfig.options;
 
       const _prepareOptions = prepareOptions(babel),
-        //    reduxPresets = _prepareOptions[0],
-        //    reduxPlugins = _prepareOptions[1],
+            reduxPresets = _prepareOptions[0],
+            reduxPlugins = _prepareOptions[1],
             requiredPresets = _prepareOptions[2],
             requiredPlugins = _prepareOptions[3],
             fallbackPlugins = _prepareOptions[4],
@@ -62,7 +62,7 @@ module.exports = babelLoader.custom(babel => {
         });
       } // Merge in presets/plugins added from gatsby plugins.
 
-/*
+
       reduxPresets.forEach(preset => {
         options.presets = mergeConfigItemOptions({
           items: options.presets,
@@ -78,7 +78,7 @@ module.exports = babelLoader.custom(babel => {
           type: `plugin`,
           babel
         });
-      });*/
+      });
       return options;
     }
 

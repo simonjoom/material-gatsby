@@ -4,14 +4,7 @@ import i18next from "../../utils/i18n";
 import { Link } from "gatsby";
 import "./PostTags.scss";
 
-class PostTags extends Component {
-  componentDidMount() {
-    if (typeof M !== "undefined")
-      document.addEventListener("DOMContentLoaded", function() {
-        var elems = document.querySelectorAll(".chips");
-        var instances = M.Chips.init(elems, options);
-      });
-  }
+class PostTags extends Component { 
   render() {
     const lng = i18next.language;
     const { tags } = this.props;
@@ -19,6 +12,7 @@ class PostTags extends Component {
 
     return (
       <div className="post-tag-container">
+      <div className="chips">
         {tags &&
           tags.map(tag => (
             <Link
@@ -26,9 +20,12 @@ class PostTags extends Component {
               style={{ textDecoration: "none" }}
               to={`/tags_${lng}/${kebabCase(tag)}`}
             >
-              <div className="chips">{tag}</div>
+                <div className="chip">
+                  {tag}
+                </div>
             </Link>
           ))}
+          </div>
       </div>
     );
   }

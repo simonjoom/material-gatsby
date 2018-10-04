@@ -46,7 +46,7 @@ exports.initCache = () => {
     directory = require(`os`).tmpdir();
   } else {
     directory = process.cwd() + `/.cache/cache`;
-  }
+   }
 
   let previousState;
 
@@ -89,7 +89,7 @@ if (process.env.NODE_ENV !== `test`) {
   save = _.debounce(() => {
     fs.writeFile(`${directory}/db.json`, JSON.stringify(mapToObject(db)));
   }, 250);
-} else {
+ } else {
   save = _.noop;
 }
 //# sourceMappingURL=cache.js.map

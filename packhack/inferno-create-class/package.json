@@ -25,14 +25,6 @@
     "class",
     "vdom"
   ],
-  "dependencies": {
-    "inferno": "^6.0.0-rc.1"
-  },
-  "devDependencies": {
-    "inferno": "5.5.0",
-    "inferno-create-element": "^6.0.0-rc.1",
-    "inferno-shared": "^6.0.0-rc.1"
-  },
   "rollup": {
     "bundledDependencies": [
       "inferno-shared"

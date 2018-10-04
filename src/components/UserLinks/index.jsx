@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import cx from "classnames";
 import { Link } from "gatsby";
-import Button from "../../reactLIB/Button"; 
+import Button from "../../reactLIB/Button";
 import "./UserLinks.scss";
 
 class EmulateItem extends Component {
@@ -24,20 +24,20 @@ class EmulateItem extends Component {
     const { icon, to } = this.props;
     return (
       <li style={liClass}>
-        <Link to={to} className="link">
-          <Button
-            className={cx(this.props.className, "btn-flat")}
-            type={this.props.type}
-            iconStyle={{
-              color: "rgba(0, 0, 0, 0.54)",
-              flexShrink: 0,
-              marginRight: "16px"
-            }}
-            icon={icon}
-          >
-            <span style={subHeading}>{this.props.children}</span>
-          </Button>
-        </Link>
+        <Button
+          node={Link}
+          to={to}
+          className={cx(this.props.className, "btn-flat")}
+          type={this.props.type}
+          iconStyle={{
+            color: "rgba(0, 0, 0, 0.54)",
+            flexShrink: 0,
+            marginRight: "16px"
+          }}
+          icon={icon}
+        >
+          <span style={subHeading}>{this.props.children}</span>
+        </Button>
       </li>
     );
   }
@@ -46,7 +46,7 @@ class EmulateItem extends Component {
 class UserLinks extends Component {
   getLinkElements() {
     const { userLinks } = this.props.config;
-    const { labeled } = this.props; 
+    const { labeled } = this.props;
     return userLinks.map(link => (
       <EmulateItem
         key={link.label}

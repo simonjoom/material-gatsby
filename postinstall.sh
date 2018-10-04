@@ -9,6 +9,7 @@ cp -Rf ./packhack/@reach ./node_modules/
 cp -Rf ./packhack/gatsby ./node_modules/ 
 cp -Rf ./packhack/htmltojsx ./node_modules/ 
 cp -Rf ./packhack/gatsby-image ./node_modules/ 
+cp -Rf ./packhack/inferno ./node_modules/ 
 cp -Rf ./packhack/inferno-* ./node_modules/ 
 # cp -Rf ./packhack/gatsby-plugin-page-creator ./node_modules/ 
 # cp -Rf ./packhack/gatsby-react-router-scroll ./node_modules/ 
