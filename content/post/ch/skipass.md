@@ -2,12 +2,11 @@
 title: "Ski Pass"
 cover: "starter-logo-1024.png"
 category: "ski resort"
-slug: "skipass"
+slug: "/skipass/"
 tags:
     - ski resort
     - skipass
-
-date: "2018-07-02"
+date: "2018-07-17"
 ---
 
 ### ++SkiPass 3 valleys++{.h1 .table .mx-auto}

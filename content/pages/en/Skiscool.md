@@ -1,16 +1,15 @@
 ---
-title: "Ski School"
+title: "Ski school, selected ski instructors , Courchevel Meribel Val-Thorens"
 cover: carousel/snowboard4.jpg
 category: "skischool"
 deps: lm-pistes|helico|years-experience|envelope|shield|thumbs|certified|guide
-slug: ""
+slug: "/"
 tags:
     - ski school
     - courchevel
     - meribel
     - valthorens
-
-date: "2018-07-02"
+date: "2018-07-06"
 ---
 
 # Ski and Snowboard Instructors

@@ -2,12 +2,11 @@
 title: "Menuires ski Resort"
 cover: "meribel.png"
 category: "ski resort"
-slug: "menuires"
+slug: "/menuires/"
 tags:
     - ski resort
     - menuires
-
-date: "2018-07-02"
+date: "2018-07-17"
 ---
 
 <div class="edito-wrapper station">

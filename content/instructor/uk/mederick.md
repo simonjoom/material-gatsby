@@ -2,14 +2,13 @@
 title: "Mederick"
 category: "profile"
 cover: "mederick.jpg"
-slug: "instructor"
+slug: "/instructor/"
 tags:
     - ski instructor
     - courchevel
     - meribel
     - valthorens
-
-date: "2018-07-02"
+date: "2018-07-06"
 ---
 
 ### Mederick опис

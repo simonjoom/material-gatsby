@@ -9,7 +9,7 @@ import withTheme from "../withContext";
 import PostTags from "../components/PostTags";
 import Layout from "../components/Layout";
 // import PostCover from "../PostCover";
-import config from "../../data/SiteConfig";
+import config from "../data/SiteConfig";
 import Card from "../reactLIB/Card";
 import Icon from "../reactLIB/Icon";
 import Button from "../reactLIB/Button";

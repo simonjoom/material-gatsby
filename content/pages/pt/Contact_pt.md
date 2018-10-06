@@ -2,14 +2,13 @@
 title: "Ski School contact"
 cover: "starter-logo-1024.png"
 category: "contact"
-slug: "contact"
+slug: "/contact/"
 tags:
     - escola de esqui
     - courchevel
     - meribel
     - valthorens
-
-date: "2018-07-02"
+date: "2018-07-06"
 ---
 
 # Contato escola de esquis

@@ -93,6 +93,7 @@ try {
 
 export const wrapPageElement = ({ element, props }) => {
   const { lng } = props.pageContext; 
+  i18n.changeLanguage(lng);
   if (!lng)
     return (
       <div>
@@ -107,7 +108,6 @@ export const wrapPageElement = ({ element, props }) => {
       i18n.addResources(lng, ns, JSON.parse(data));
     }
   });
-  i18n.changeLanguage(lng);
   /*const { slug, slugbase, route, carousel } = props.pageContext;
   const namespace = slugbase === "/" ? "Index" : "Post";
   const ismain = slugbase === "/"; */

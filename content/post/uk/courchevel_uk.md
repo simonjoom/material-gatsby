@@ -2,12 +2,11 @@
 title: "Courchevel ski Resort"
 cover: "courchevel.png"
 category: "ski resort courchevel"
-slug: "courchevel"
+slug: "/courchevel/"
 tags:
     - ski resort
     - courchevel
-
-date: "2018-07-02"
+date: "2018-07-17"
 ---
 
 

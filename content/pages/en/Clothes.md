@@ -2,18 +2,17 @@
 title: "Clothes"
 cover: "starter-logo-1024.png"
 category: "jumpsuit"
-slug: "jumpsuit"
+slug: "/jumpsuit/"
 tags:
     - escola de esqui
     - courchevel
     - meribel
     - valthorens
-
-date: "2018-07-02"
+date: "2018-07-06"
 ---
 
-### Jumpsuit %User% Caractéristiques
-%User% 
+### Jumpsuit Caractéristiques
+
 
 *4 poches : 2 poches kangourous (1 brodé) et 2 poches laterales zippées (YKK)
 *Zip frontal à double sens YKK

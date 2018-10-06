@@ -2,12 +2,11 @@
 title: "Meribel ski Resort"
 cover: "meribel.png"
 category: "ski resort"
-slug: "meribel"
+slug: "/meribel/"
 tags:
     - ski resort
     - meribel
-
-date: "2018-07-02"
+date: "2018-07-17"
 ---
 
 <div class="edito-wrapper station"><div class="banner-station">

@@ -1,5 +1,6 @@
 import React from "react";
 import i18n from "i18next";
+const _ = require("lodash");
 import { router } from "../config";
 import { graphql, StaticQuery } from "gatsby";
 const translate = () => {
@@ -31,7 +32,7 @@ const translate = () => {
                     slug
                   }
                   frontmatter {
-                    title
+                    category
                   }
                 }
               }
@@ -53,22 +54,21 @@ const translate = () => {
           let t = namespace => i18n.getFixedT(null, [namespace, "common"]);
           global.postEdges = data.allMarkdownRemark.edges;
           let array = [];
-         
+
           Object.keys(router).forEach(function(element, key, _array) {
             global.postEdges.forEach(postEdge => {
-              const { title } = postEdge.node.frontmatter;
-              const tr = t("Index")(title);
+              const { category } = postEdge.node.frontmatter;
+              const tr = t("Index")(_.kebabCase(category));
               if (
                 postEdge.node.fields.inmenu &&
                 postEdge.node.fields.slug == router[element][lang]
               )
                 array.push({
                   path: postEdge.node.fields.slug,
-                  title: tr
+                  title: tr 
                 });
             });
           });
-
 
           let item = {
             path: router["/hotel/"][lang],

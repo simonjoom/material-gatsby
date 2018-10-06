@@ -1,15 +1,14 @@
 ---
 title: "Pascal"
 category: "profile"
-slug: "instructor"
+slug: "/instructor/"
 cover: "pascal.jpg"
 tags:
     - ski instructor
     - courchevel
     - meribel
     - valthorens
-
-date: "2018-07-02"
+date: "2018-07-06"
 ---
 
 

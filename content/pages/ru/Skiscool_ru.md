@@ -1,15 +1,15 @@
 ---
-title: "Ski School"
-date: "2018-07-02"
+title: "Лыжная школа Courchevel, Meribel Val-Thorens - 3 valleys"
 cover: carousel/snowboard4.jpg
 deps: lm-pistes|helico|years-experience|envelope|shield|thumbs|certified|guide
 category: "skischool"
-slug: ""
+slug: "/"
 tags:
     - escola de esqui
     - courchevel
     - meribel
     - valthorens
+date: "2018-07-06"
 ---
 
 # Школа горных лыж и сноуборда ЧАСТНЫЕ ЗАНЯТИЯ

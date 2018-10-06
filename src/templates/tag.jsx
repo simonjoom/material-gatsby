@@ -4,7 +4,7 @@ import withTheme from "../withContext";
 import Layout from "../components/Layout";
 import PostListing from "../components/PostListing";
 import SEO from "../components/SEO";
-import config from "../../data/SiteConfig";
+import config from "../data/SiteConfig";
 
 class TagTemplate extends React.Component {
   render() { 

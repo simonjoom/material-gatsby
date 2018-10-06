@@ -1,15 +1,14 @@
 ---
 title: "Ski Instructors"
-cover: "starter-logo-1024.png"
-category: "ski instructor"
-slug: "instructorpage"
+cover: "carousel/chisto1.jpg,carousel/jeremie.jpg,carousel/snowboard.jpg,carousel/chisto.jpg,carousel/richesmont.jpg"
+category: "instructor"
+slug: "/instructorpage/"
 tags:
     - ski instructor
     - courchevel
     - meribel
     - valthorens
-
-date: "2018-07-02"
+date: "2018-07-06"
 ---
 
 # Ecole de ski et guides de ski

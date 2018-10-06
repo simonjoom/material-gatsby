@@ -1,20 +1,20 @@
 ---
 title: "Allodis"
-category: "hotel_meribel_pt"
+category: "hotel_meribel"
 cover: "allodis.jpg"
-slug: "hotel"
+star: "5"
+slug: "/pt/Hoteis/Meribel/"
 tags:
     - hotel
     - meribel
-description: O Allodis é um hotel de 4 estrelas localizado em Meribel. Descubra os quartos e suites personalizados. Descubra seus estilos acolhedores e acolhedores.
-date: "2018-07-02" 
+description: "O Allodis é um hotel de 4 estrelas localizado em Meribel. Descubra os quartos e suites personalizados. Descubra seus estilos acolhedores e acolhedores."
+date: "2018-07-07" 
 ---
 
 
- ### Descrição do Allodis:
+# Descrição do Allodis:
 
 Aninhado nas alturas e encostas de Méribel, o Hotel Allodis "skis on feet" recebe-o num ambiente acolhedor e acolhedor.
- 
 Esqueça sua vida diária e escape para uma estadia excepcional nesta jóia de madeira e pedras.
 
 

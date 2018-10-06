@@ -1,15 +1,14 @@
 ---
 title: "Philippe"
-category: "profile_ch"
-slug: "instructor"
+category: "profile"
+slug: "/instructor/"
 cover: "philippe.jpg"
 tags:
     - ski instructor
     - courchevel
     - meribel
     - valthorens
-
-date: "2018-07-02"
+date: "2018-07-06"
 ---
 
 ### Philippe's description

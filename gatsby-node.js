@@ -8,8 +8,8 @@ const config = require("./src/config");
 const router = config.router;
 require("babel-polyfill");
 
-const arraymenu = ["/", "/about", "/concept", "/contact"];
-const arraygallery = ["/", "/about", "/concept"];
+const arraymenu = ["/", "/about/", "/concept/", "/contact/"];
+const arraygallery = ["/", "/about/", "/concept/"];
 const postTypes = ["post", "instructor", "hotel"];
 //const postNodes = { fr: [], en: [], pt: [], ru: [], uk: [], ch: [] };
 const postNodes = {
@@ -17,7 +17,9 @@ const postNodes = {
   instructor: { fr: [], en: [], pt: [], ru: [], uk: [], ch: [] },
   hotel: { fr: [], en: [], pt: [], ru: [], uk: [], ch: [] }
 };
+console.log("process.env.NODE_ENV", process.env.NODE_ENV);
 
+const isProd = process.env.NODE_ENV === "production"||true;
 let didRunAlready = false;
 let absoluteComponentPath;
 
@@ -186,7 +188,7 @@ exports.onCreateNode = async ({
 
     if (Object.prototype.hasOwnProperty.call(node, "frontmatter")) {
       if (Object.prototype.hasOwnProperty.call(node.frontmatter, "slug"))
-        slug = `/${_.kebabCase(node.frontmatter.slug)}`;
+        slug = node.frontmatter.slug;
       if (Object.prototype.hasOwnProperty.call(node.frontmatter, "date")) {
         const date = moment(node.frontmatter.date, siteConfig.dateFromFormat);
         if (!date.isValid)
@@ -202,6 +204,7 @@ exports.onCreateNode = async ({
 
     let slugfin;
     if (router[slug]) slugfin = router[slug][lng];
+    else slugfin = slug;
 
     if (type === "instructor" || type === "hotel")
       slugfin = slugfin + _.kebabCase(node.frontmatter.title) + "/";
@@ -225,6 +228,10 @@ exports.onCreateNode = async ({
       });
     }
 
+    if (type === "hotel") {
+      console.log("star", node.frontmatter.star);
+      createNodeField({ node, name: `star`, value: node.frontmatter.star });
+    }
     createNodeField({ node, name: `lng`, value: lng });
     createNodeField({ node, name: `type`, value: type });
     createNodeField({ node, name: "slugbase", value: slug });
@@ -262,6 +269,7 @@ const MarkdownQueries = `
           }
           fields {
             lng
+            star
             slugbase
             slug
             inmenu
@@ -329,7 +337,7 @@ exports.createPages = ({ graphql, actions }) => {
       let mak = await graphql(MarkdownQueries);
       if (mak.errors) {
         /* eslint no-console: "off" */
-
+        console.log(mak);
         reject(mak.errors);
       }
       MarkdownQueriesCache = mak.data.allMarkdownRemark.edges.filter(
@@ -345,6 +353,7 @@ exports.createPages = ({ graphql, actions }) => {
     // const categorySet = new Set();
     await asyncForEach(MarkdownQueriesCache, async ({ node }) => {
       const lng = node.fields.lng;
+      const isIndex = node.fields.slugbase === "/";
       if (!tagSets[lng]) tagSets[lng] = new Set();
       if (!categorySets[lng]) categorySets[lng] = new Set();
       if (!langs[lng]) langs.push(lng);
@@ -411,18 +420,15 @@ exports.createPages = ({ graphql, actions }) => {
 
       const myquery = QueryFiles(depsfiles);
       let files = [];
-      if (
-        !filesArrayCache[depsfiles] &&
-        (process.env.NODE_ENV === "production" || node.fields.slug === "/")
-      ) {
+      if (!filesArrayCache[depsfiles] && (isProd || isIndex)) {
         const {
           data: {
             allFile: { edges: filedeps }
           }
         } = await graphql(myquery);
-        files = filesArrayCache[depsfiles] = filedeps;
+        filesArrayCache[depsfiles] = filedeps;
       }
-
+      files = filesArrayCache[depsfiles];
       switch (node.fields.type) {
         case "post":
         case "hotel":
@@ -455,12 +461,11 @@ exports.createPages = ({ graphql, actions }) => {
           break;
         case "pages":
           route = router[node.fields.slugbase];
-          if (
-            !route ||
-            (router[node.fields.slug] && node.fields.slug !== "/")
-          ) {
+          if (!route) {
+            console.log("no route pages", node.fields.slug);
             return;
           }
+          if (node.fields.slug == "/fr/") console.log(node.fields.slugbase);
           createPage({
             path: node.fields.slug,
             component: pagePage,
@@ -477,10 +482,7 @@ exports.createPages = ({ graphql, actions }) => {
           break;
       }
 
-      if (
-        node.frontmatter.title !== "default" &&
-        process.env.NODE_ENV === "production"
-      ) {
+      if (node.frontmatter.title !== "default" && isProd) {
         langs.forEach(lg => {
           const tagList = Array.from(tagSets[lg]);
           tagList.forEach(tag => {
@@ -535,10 +537,13 @@ exports.onCreatePage = async ({ page, actions }) => {
   const { createPage, deletePage } = actions;
 
   const route = router[page.path];
-  if (!route) {
-    console.warn("no route", page.path);
+  if (!route || page.path == "/dev-404-page/" || page.path == "/404.html") {
+    // if(page.path == "/dev-404-page/"||page.path == "/404.html")
+    // page.matchPath="/*";
+    console.warn("no route", page);
+    return;
   }
-
+  console.log("remakefor", page.path);
   const { locales, defaultLocale } = config;
   let oldPage = Object.assign({}, page);
   const newPage = {};

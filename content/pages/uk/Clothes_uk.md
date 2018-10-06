@@ -2,19 +2,18 @@
 title: "Clothes"
 cover: "starter-logo-1024.png"
 category: "jumpsuit"
-slug: "jumpsuit"
+slug: "/jumpsuit/"
 tags:
     - jumpsuit
     - courchevel
     - meribel
     - valthorens
-
-date: "2018-07-02"
+date: "2018-07-06"
 ---
 
 
-### Jumpsuit %User% Спецификации
-%User% 
+### Jumpsuit Спецификации
+
 
 * 4 кармана:2 кенгуру кишені (1 вишита) і 2 бічні блискавки (YKK)
 * Zip frontal двостороння YKK

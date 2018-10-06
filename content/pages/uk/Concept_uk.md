@@ -2,20 +2,16 @@
 title: "Concept"
 cover: "snowboard.jpg"
 category: "concept"
-slug: "concept"
+slug: "/concept/"
 tags:
     - escola de esqui
     - courchevel
     - meribel
     - valthorens
-
-date: "2018-07-02"
+date: "2018-07-06"
 ---
 
-## з SKISCOOL:
-
----
-
+## з SKISCOOL: 
 * Приватні уроки катання на лижах чи сноуборді,
 * Гнучка організація і графік з вашої придатності,
 * Задоволення і почуття,
@@ -23,7 +19,6 @@ date: "2018-07-02"
 * Технічне і прогресивне спостереження з відео,
 
 ![ski school courchevel](https://skiscool.com/dist/offpiste.jpg)
-
 ---
 <br/>
 <br/>
@@ -43,7 +38,6 @@ date: "2018-07-02"
 
 <br/>
 <br/>
-
 ---
 
 ### ставки 2016/2017

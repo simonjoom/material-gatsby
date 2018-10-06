@@ -3,7 +3,7 @@ title: "default"
 cover: "5.jpg"
 category: "moar"
 date: "2018-03-01"
-slug: "Big-Sample_Test"
+slug: "/Big-Sample_Test/"
 tags:
     - test
     - huge
@@ -337,7 +337,6 @@ You can also use raw HTML in your Markdown, and it'll mostly work pretty well.
 
 ```
 Three or more...
-
 ---
 
 Hyphens
@@ -352,7 +351,6 @@ Underscores
 ```
 
 Three or more...
-
 ---
 
 Hyphens

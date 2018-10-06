@@ -1,15 +1,14 @@
 ---
 title: "Thibault"
-category: "profile_fr"
+category: "profile"
 cover: "thomas.jpg"
-slug: "instructor"
+slug: "/instructor/"
 tags:
     - ski instructor
     - courchevel
     - meribel
     - valthorens
-
-date: "2018-07-02"
+date: "2018-07-06"
 ---
 ### Description de Thibault
 Thibault est un moniteur de ski expérimenté, Skiscool a pu, à plusieurs reprise travailler avec lui pour ses clients russes. Ses compétences de la langue et de l'enseignement est un atout inestimable.  

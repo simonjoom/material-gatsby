@@ -2,18 +2,17 @@
 title: "Clothes"
 cover: "starter-logo-1024.png"
 category: "jumpsuit"
-slug: "jumpsuit"
+slug: "/jumpsuit/"
 tags:
     - escola de esqui
     - courchevel
     - meribel
     - valthorens
-
-date: "2018-07-02"
+date: "2018-07-06"
 ---
 
-### Jumpsuit %User% Спецификации
-%User% 
+### Jumpsuit Спецификации
+
 
 * 4 кармана: 2 кенгуру карманы (1 вышитая) и 2 боковые молнии (YKK)
 * Zip frontal двухсторонняя YKK

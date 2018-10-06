@@ -1,15 +1,14 @@
 ---
 title: "Florian"
-category: "profile_en"
+category: "profile"
 cover: "florian.jpg"
-slug: "instructor"
+slug: "/instructor/"
 tags:
     - ski instructor
     - courchevel
     - meribel
     - valthorens
-
-date: "2018-07-02"
+date: "2018-07-06"
 ---
 
 ### Florian's description

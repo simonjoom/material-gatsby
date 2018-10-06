@@ -16,7 +16,7 @@ class Layout extends React.Component {
       path,
       location
     } = this.props;
-    console.log("route", route);
+    console.log("route", lng);
     return (
       <div>
         <div

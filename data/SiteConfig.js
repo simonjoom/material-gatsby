@@ -1,4 +1,4 @@
-module.exports = {
+module.exports= {
   siteTitle: "SkiScool", // Site title.
   siteTitleShort: "GM Starter", // Short site title for homescreen (PWA). Preferably should be under 12 characters to prevent truncation.
   siteTitleAlt: "SKi School courchevel", // Alternative site title for SEO.
@@ -18,7 +18,7 @@ module.exports = {
   userTwitter: "", // Optionally renders "Follow Me" in the UserInfo segment.
   userLocation: "", // User location to display in the author segment.
   userAvatar: "https://api.adorable.io/avatars/150/test.png", // User avatar to display in the author segment.
- // User description to display in the author segment.
+  // User description to display in the author segment.
   // Links to social profiles/projects you want to display in the author segment/navigation bar.
   userLinks: [
     {

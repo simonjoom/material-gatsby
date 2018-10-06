@@ -6,15 +6,15 @@ import SideNavItem from "../../reactLIB/SideNavItem";
 import SideNav from "../../reactLIB/SideNav";
 import Footer from "../../reactLIB/Footer";
 import UserLinks from "../UserLinks";
+import route from "../../config";
 //import config from "../../../data/SiteConfig"
 
 //import ToolbarActions from "../ToolbarActions";
- 
 import "./Navigation.scss";
 
 class Navigation extends Component {
   render() {
-    const { children, config, LocalTitle, translate, postNode } = this.props;
+    const { children, config, LocalTitle, translate, postNode,lng } = this.props; 
     const footerLinks = LocalTitle !== "About";
     return (
       <div className="main-content">
@@ -27,11 +27,14 @@ class Navigation extends Component {
         >
           {SideNavItem && (
             <div>
-              <SideNavItem href="/" icon="home">
+              <SideNavItem href={route.router["/"][lng]} icon="home">
                 HOME
               </SideNavItem>
-              <SideNavItem href="/instructor" icon="group">
+              <SideNavItem href={route.router["/instructor/"][lng]} icon="group">
                 INSTRUCTORS
+              </SideNavItem>
+              <SideNavItem href={route.router["/about/"][lng]} icon="group">
+                About Us
               </SideNavItem>
               <SideNavItem divider />
               <SideNavItem subheader>Social</SideNavItem>

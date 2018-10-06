@@ -2,6 +2,7 @@ import React from "react";
 import Img from "gatsby-image";
 import withTheme from "../../withContext";
 import Carousel from "./carousel.js";
+import route from "../../config";
 import "./carousel.css";
 
 const GetImage = ({
@@ -16,6 +17,7 @@ const GetImage = ({
   maxWidth = "1024px",
   directory = ""
 }) => { 
+  const lng=t("lang");
   const dir = directory !== "" ? "/" + directory : ""; 
   const MapImg = dataList
     .map((el, ind) => {
@@ -67,7 +69,7 @@ const GetImage = ({
                     <div className="md-cell">
                       <a
                         tabIndex="0"
-                        href="/instructors_skischool/"
+                        href={route.router["/instructor/"][lng]}
                         style={{
                           color: "#3f51b5",
                           backgroundColor: "#ccff90"

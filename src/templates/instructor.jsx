@@ -12,7 +12,7 @@ import SocialLinks from "../components/SocialLinks";
 import Layout from "../components/Layout";
 import PostSuggestions from "../components/PostSuggestions";
 import SEO from "../components/SEO";
-import config from "../../data/SiteConfig";
+import config from "../data/SiteConfig";
 import "./b16-tomorrow-dark.css";
 import "./post.scss";
 

@@ -1,15 +1,14 @@
 ---
 title: "Djampal"
-category: "profile_pt"
+category: "profile"
 cover: "djampal.jpg"
-slug: "instructor"
+slug: "/instructor/"
 tags:
     - ski instructor
     - courchevel
     - meribel
     - valthorens
-
-date: "2018-07-02"
+date: "2018-07-06"
 ---
 ### Djampal descrição
 Djampal é um instrutor de esqui competente, ele está trabalhando com ESF 1850 como um freelancer e fala fluentemente russo, a Skiscool o contratou em muitos momentos e seus clientes estavam sempre satisfeitos com sua jornada com ele.

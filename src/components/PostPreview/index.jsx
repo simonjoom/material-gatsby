@@ -1,20 +1,21 @@
-import React, { Component,Fragment } from "react"; 
+import React, { Component } from "react";
 import { Link } from "gatsby";
-import moment from "moment"; 
+import moment from "moment";
 import FrontCarousel from "components/FrontCarousel";
 import Avatar from "../Avatars";
-import Button from "../../reactLIB/Button"
+import Button from "../../reactLIB/Button";
 // import Media, { MediaOverlay } from "react-md/lib/Media";
 import PostTags from "../PostTags";
 // import PostCover from "../PostCover";
-import config from "../../../data/SiteConfig";
-import Card from "../../reactLIB/Card"; 
+import config from "../../data/SiteConfig";
+import Card from "../../reactLIB/Card";
 import Icon from "../../reactLIB/Icon";
 import "./PostPreview.scss";
 
 class PostPreview extends Component {
   constructor(props) {
     super(props);
+    this.Elextra = this.props.extra;
     /*this.state = {
       mobile: true
     }; */
@@ -37,7 +38,7 @@ class PostPreview extends Component {
     }
   } */
   render() {
-    const { postInfo, size } = this.props; 
+    const { postInfo, size } = this.props;
     //  const { mobile } = this.state;
     const { carouselList, type } = postInfo;
     const expand = true;
@@ -50,14 +51,17 @@ class PostPreview extends Component {
         waves="light"
         className={`md-cell md-cell--12-phone md-cell--${size} md-cell--4-tablet`}
         contentImage={
-          carouselList.length > 0 && (
-            <FrontCarousel
-              data={carouselList}
-              height="0"
-              maxwidth={size>6?"200px":"600px"}
-              directory={type}
-            />
-          )
+          <div>
+            {this.props.star && <this.Elextra star={this.props.star} />}
+            {carouselList.length > 0 && (
+              <FrontCarousel
+                data={carouselList}
+                height="0"
+                maxwidth={size > 6 ? "200px" : "600px"}
+                directory={type}
+              />
+            )}
+          </div>
         }
         titlereveal={postInfo.title}
         title={
@@ -75,7 +79,12 @@ class PostPreview extends Component {
         reveal={
           <div>
             <div
-              dangerouslySetInnerHTML={{ __html: (process.env.GATSBY_BUILD_STAGE=="build-html") ? postInfo.html : "" }}
+              dangerouslySetInnerHTML={{
+                __html:
+                  process.env.GATSBY_BUILD_STAGE == "build-html"
+                    ? postInfo.html
+                    : ""
+              }}
             />
             <PostTags tags={postInfo.tags} />
           </div>

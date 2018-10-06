@@ -1,17 +1,16 @@
 import React from "react";
-import RehypeReact from "rehype-react";
-import Helmet from "react-helmet";
+import RehypeReact from "rehype-react"; 
 import { graphql } from "gatsby"; 
 //import UserInfo from "../components/UserInfo";
 import withTheme from "../withContext";
 import PostTags from "../components/PostTags";
 import Layout from "../components/Layout";
 //import PostInfo from "../components/PostInfo";
-import SocialLinks from "../components/SocialLinks";
-import SEO from "../components/SEO";
+import SocialLinks from "../components/SocialLinks"; 
 import Card from "../reactLIB/Card"; 
-import SiteConfig from "../../data/SiteConfig";
+import SiteConfig from "../data/SiteConfig";
 import FrontCarousel from "../components/FrontCarousel";
+import SEO from "../components/SEO";
 import ReactFB from "../components/ReactFB";
 import "./b16-tomorrow-dark.css";
 import "./post.scss";
@@ -55,6 +54,7 @@ class PostTemplate extends React.Component {
     if (!post.category_id) {
       post.category_id = SiteConfig.postDefaultCategoryID;
     }
+    console.log("lng",lng)
     const title = t("index")(post.title);
     //render current markdownRemark
     return (
@@ -65,11 +65,13 @@ class PostTemplate extends React.Component {
         ismain={ismain}
         location={this.props.location}
       >
-        <Helmet>
-          <title>{`${title} | ${SiteConfig.siteTitle}`}</title>
-          <link rel="canonical" href={`${SiteConfig.siteUrl}${post.id}`} />
-        </Helmet>
-
+      <SEO
+        postPath={slug}
+        route={route}
+        postNode={postNode}
+        postSEO
+        translate={t("Index")}
+      /> 
         <Card className="post" title={title}>
           {renderAst(postNode.htmlAst)}
         </Card>

@@ -2,7 +2,7 @@ import React, { Component,Fragment } from "react";
 import withTheme from "../../withContext";
 import Card from "../../reactLIB/Card";
 import Icon from "../../reactLIB/Icon"; 
-import config from "../../../data/SiteConfig";
+import config from "../data/SiteConfig";
 import Avatar from "../Avatars";
 //import { Follow } from "react-twitter-widgets";
 //import UserLinks from "../UserLinks";

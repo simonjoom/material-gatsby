@@ -1,13 +1,14 @@
 ---
 title: "Airelles"
-category: "hotel_courchevel_fr"
-cover: "airelles.jpg"
-slug: "hotel"
+category: "hotel_courchevel"
+star: "5"
+cover: "airelles.png"
+slug: "/fr/Hotels/Courchevel/"
 tags:
     - hotel
     - courchevel
-description: 5-étoiles Courchevel, Palace couchevel, courchevel 1850 hôtel, courchevel 1850 Chalet, Charme, Confidentiel, Cosy, Animé, Palais, Traditionnel, Luxe, Montagne, Activités culturelles, Activités sportives, Business courchevel, Bar, Bien-être, Wedding & Honeymoon, Star Chef, Gastronomie, Famille Piscine, Restaurant, Shopping, Spa
-date: "2018-07-02" 
+description: "5-étoiles Courchevel, Palace couchevel, courchevel 1850 hôtel, courchevel 1850 Chalet, Charme, Confidentiel, Cosy, Animé, Palais, Traditionnel, Luxe, Montagne, Activités culturelles, Activités sportives, Business courchevel, Bar, Bien-être, Wedding & Honeymoon, Star Chef, Gastronomie, Famille Piscine, Restaurant, Shopping, Spa"
+date: "2018-07-04" 
 ---
 
  ### Description

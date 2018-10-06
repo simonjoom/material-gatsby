@@ -1,3 +1,16 @@
+---
+title: "Ski School contact"
+cover: "starter-logo-1024.png"
+category: "contact"
+slug: "/contact/"
+tags:
+    - ski school
+    - courchevel
+    - meribel
+    - valthorens
+date: "2018-07-06"
+---
+
 # 联系滑雪教学学校
 
 ## 为什么会更加推荐你预定SkiScool 的滑雪教练呢? ## 

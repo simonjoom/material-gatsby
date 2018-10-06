@@ -4,7 +4,7 @@ import withTheme from "../withContext";
 import SEO from "../components/SEO";
 import PostListing from "../components/PostListing";
 import Layout from "../components/Layout";
-import config from "../../data/SiteConfig";
+import config from "../data/SiteConfig";
 
 class CategoryTemplate extends React.Component {
   render() {
