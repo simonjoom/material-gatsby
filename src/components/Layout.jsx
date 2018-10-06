@@ -10,7 +10,7 @@ class Layout extends React.Component {
       translate,
       children,
       route,
-      lng,
+      lng="en",
       carouselList,
       ismain,
       path,
@@ -37,7 +37,7 @@ class Layout extends React.Component {
         <div className="toolbar-main md-paper md-paper--1">
           <div className="toolbar-container">
             <div className="rowlink toolbar-menu">
-              {global.menuList &&
+              {global.menuList && global.menuList[lng]&&
                 global.menuList[lng].length > 0 &&
                 global.menuList[lng].map(post => (
                   <Link
