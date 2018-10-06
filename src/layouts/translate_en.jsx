@@ -58,10 +58,8 @@ const translate = () => {
           let array = [];
 
           Object.keys(router).forEach(function(element, key, _array) {
-           console.log("element",element)
             global.postEdges.forEach(postEdge => {  
               const { category } = postEdge.node.frontmatter;
-              console.log("element",category)
               const tr = t("Index")(_.kebabCase(category));
               if (
                 postEdge.node.fields.inmenu &&
@@ -74,8 +72,6 @@ const translate = () => {
               }
             })
           })
-
-          console.log("element",array)
 
           let item = {
             path: router["/hotel/"][lang],

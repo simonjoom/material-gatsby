@@ -66,8 +66,7 @@ module.exports = {
           {
             resolve: "gatsby-remark-responsive-iframe"
           },
-          "gatsby-remark-copy-linked-files",
-          "gatsby-remark-autolink-headers"
+          "gatsby-remark-copy-linked-files"
         ]
       }
     },
@@ -215,6 +214,7 @@ to do
 
           "gatsby-remark-prismjs",
   
+          "gatsby-remark-autolink-headers"
     "gatsby-plugin-netlify-cms",
     {
       resolve: "gatsby-plugin-nprogress",

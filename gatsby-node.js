@@ -23,7 +23,6 @@ const getObj = async name => {
     const res = JSON.parse(packageObj);
     return res.value;
   } catch (err) {
-    console.error(err);
     return [{ node: {} }];
   }
 };
@@ -361,6 +360,7 @@ const QueryFiles = depsfiles => `
   }
 }
 }`;
+
 let arraydepfilesInstructor = [];
 let arraydepfilesBlog = [];
 let arraydepfilesHotel = [];
@@ -382,9 +382,8 @@ exports.createPages = ({ graphql, actions }) => {
   const categoryPage = path.resolve("src/templates/category.jsx");
 
   return new Promise(async (resolve, reject) => {
-    if (!MarkdownQueriesCache)
-      MarkdownQueriesCache = await getObj("MarkdownQueriesCache");
-    if (!MarkdownQueriesCache) {
+    MarkdownQueriesCache = await getObj("MarkdownQueriesCache");
+    if (!MarkdownQueriesCache[0].node.fields) {
       let mak = await graphql(MarkdownQueries);
       if (mak.errors) {
         /* eslint no-console: "off" */
@@ -427,16 +426,19 @@ exports.createPages = ({ graphql, actions }) => {
         route.ch = route.ch + _.kebabCase(node.frontmatter.title) + "/";
       }
 
-      const next =
+      const nextstr =
         node.frontmatter && node.frontmatter.cover
           ? node.frontmatter.cover.replace(/(.jpg|.jpeg|.png)/g, "")
           : "";
-
-      const extra = next.split(",").join("|");
-      const extrat = next.split(",").join("-");
+      const next = nextstr === "" ? [] : nextstr.split(",");
+      const extra = next.join("|");
+      const extrat = next.join("-");
 
       //add for the page frontmatter instructor type
-      if (node.fields.type === "instructor") {
+      if (
+        node.fields.type === "instructor" ||
+        node.frontmatter.category === "instructor"
+      ) {
         arraydepfilesInstructor = Array.from(
           new Set(arraydepfilesInstructor.concat(next))
         );
@@ -445,7 +447,10 @@ exports.createPages = ({ graphql, actions }) => {
       if (node.fields.type === "post") {
         arraydepfilesBlog = Array.from(new Set(arraydepfilesBlog.concat(next)));
       }
-      if (node.fields.type === "hotel") {
+      if (
+        node.fields.type === "hotel" ||
+        node.frontmatter.category === "hotel"
+      ) {
         arraydepfilesHotel = Array.from(
           new Set(arraydepfilesHotel.concat(next))
         );
@@ -489,7 +494,7 @@ exports.createPages = ({ graphql, actions }) => {
       if (depsfilest !== "") {
         if (depsfilest.length > 15) depsfilest = encode(depsfilest);
         files = await getObj(depsfilest);
-        if (!files) {
+        if (!files[0].node.fields) {
           if (!filesArrayCache[depsfilest]) {
             const myquery = QueryFiles(depsfiles);
             const res = await graphql(myquery);
@@ -666,11 +671,12 @@ exports.onCreatePage = async ({ page, actions }) => {
         if (!filesArrayCache[depsfilest]) {
           if (depsfilest.length > 15) depsfilest = encode(depsfilest);
           files = await getObj(depsfilest);
-          if (!files) {
+          if (!files[0].node.fields) {
             const _require2 = require(`gatsby/dist/redux`);
             const store = _require2.store;
             const schema = store.getState().schema;
             const graphqlo = require(`graphql`).graphql;
+            console.log(depsfiles);
             const myquery = QueryFiles(depsfiles);
             let res = await graphqlo(schema, myquery, {}, {}, {});
             if (res.data.allFile) {
@@ -680,7 +686,7 @@ exports.onCreatePage = async ({ page, actions }) => {
               storeObj({ name: depsfilest, value: filedeps });
             } else {
               console.warn("lack of deps:", depsfiles);
-              filesArrayCache[depsfilest] = [];
+              filesArrayCache[depsfilest] = [{ node: {} }];
             }
           } else {
             filesArrayCache[depsfilest] = files;
@@ -688,9 +694,9 @@ exports.onCreatePage = async ({ page, actions }) => {
         }
       } else {
         console.log("nothing for", page.path);
-        files = filesArrayCache[depsfilest] = [];
+        files = filesArrayCache[depsfilest] = [{ node: {} }];
       }
-
+      if (page.path === "/instructor/") console.log(files);
       if (oldPage) deletePage(oldPage);
       oldPage = null;
       newPage.component = page.component;

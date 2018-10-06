@@ -1,26 +1,39 @@
-import React from "react"; 
+import React from "react";
 import { graphql } from "gatsby";
 import withTheme from "../withContext";
 import PostListing from "../components/PostListing";
 import Layout from "../components/Layout";
-import SEO from "../components/SEO"; 
+import SEO from "../components/SEO";
 
 class Instructor extends React.Component {
   render() {
-    const {translate: t} = this.props;
-    const { lng, route,files } = this.props.pageContext;
-    global.filesQuery=files;  
-    const postEdges = this.props.data.allMarkdownRemark.edges;
+    const { translate: t, data } = this.props;
+    const { lng, route, files } = this.props.pageContext;
+    global.filesQuery = files;
+    const postEdges = data.allMarkdownRemark.edges.filter(
+      el => el.node.frontmatter.category !== "instructor"
+    );
+    const postNode = data.allMarkdownRemark.edges.find(
+      el => el.node.frontmatter.category === "instructor"
+    ).node;
+    console.log("inst", files);
+    const post = postNode.frontmatter;
+    const carouselList = post.cover ? post.cover.split(",") : [];
+
     return (
       <Layout
-        carouselList={[]}
+        carouselList={carouselList}
         route={route}
         lng={lng}
         ismain={false}
         location={this.props.location}
       >
-        <div className="index-container"> 
-          <SEO postEdges={postEdges} route={route} translate={t("Instructor")} />
+        <div className="index-container">
+          <SEO
+            postEdges={postEdges}
+            route={route}
+            translate={t("Instructor")}
+          />
           <PostListing postEdges={postEdges} size="3" sizebig="11" />
         </div>
       </Layout>
@@ -34,8 +47,11 @@ export const pageQuery = graphql`
     allMarkdownRemark(
       limit: 2000
       filter: {
-        fields: { lng: { eq: $lng }, type: { eq: "instructor" } }
-        frontmatter: { title: { ne: "default" } }
+        fields: { lng: { eq: $lng } }
+        frontmatter: {
+          title: { ne: "default" }
+          category: { regex: "/(instructor|profile)/" }
+        }
       }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
@@ -54,6 +70,7 @@ export const pageQuery = graphql`
             title
             tags
             cover
+            category
             date
           }
         }

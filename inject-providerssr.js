@@ -61,7 +61,6 @@ function injectState() {
       dangerouslySetInnerHTML={{
         __html: `window.__INITIAL_STATE__=${JSON.stringify({
           menuList: global.menuList,
-          filesQuery: global.filesQuery,
           locale: global.locale
         })};`
       }}

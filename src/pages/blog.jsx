@@ -1,11 +1,9 @@
-import React from "react";
-import Helmet from "react-helmet";
+import React from "react"; 
 import { graphql } from "gatsby";
 import withTheme from "../withContext";
 import Layout from "../components/Layout";
 import PostListing from "../components/PostListing";
-import SEO from "../components/SEO";
-import config from "../data/SiteConfig";
+import SEO from "../components/SEO"; 
 import "../articleApp.scss";
 
 class Blog extends React.Component {

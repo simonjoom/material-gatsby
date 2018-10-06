@@ -91,7 +91,6 @@ class PostTemplate extends React.Component {
 export default withTheme(PostTemplate);
 
 export const pageQuery = graphql`
- 
   query PagesBySlug($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       htmlAst
