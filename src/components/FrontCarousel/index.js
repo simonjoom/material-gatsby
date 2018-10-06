@@ -16,9 +16,9 @@ const GetImage = ({
   t,
   maxWidth = "1024px",
   directory = ""
-}) => { 
-  const lng=t("lang");
-  const dir = directory !== "" ? "/" + directory : ""; 
+}) => {
+  const lng = t("lang");
+  const dir = directory !== "" ? "/" + directory : "";
   const MapImg = dataList
     .map((el, ind) => {
       const FileNode = CarouselQuery.find(function(element) {
@@ -27,6 +27,7 @@ const GetImage = ({
           element.node.absolutePath
         );*/
         return (
+          element.node.absolutePath &&
           element.node.absolutePath.indexOf(
             "/static/assets" + dir + "/" + el
           ) !== -1

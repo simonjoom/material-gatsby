@@ -12,7 +12,7 @@ const router = config.router;
 require("babel-polyfill");
 mkdirp("./cachedir");
 function encode(name) {
-  return uuidv5(name, '8e884ace-cee4-11e4-8dfc-aa07a5b093db');
+  return uuidv5(name, "8e884ace-cee4-11e4-8dfc-aa07a5b093db");
 }
 
 const getObj = async name => {
@@ -24,7 +24,7 @@ const getObj = async name => {
     return res.value;
   } catch (err) {
     console.error(err);
-    return false;
+    return [{ node: {} }];
   }
 };
 
@@ -692,7 +692,7 @@ exports.onCreatePage = async ({ page, actions }) => {
       }
 
       if (oldPage) deletePage(oldPage);
-      oldPage = null; 
+      oldPage = null;
       newPage.component = page.component;
       newPage.path = route[locale];
       newPage.context = {
