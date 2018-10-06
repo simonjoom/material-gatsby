@@ -1,6 +1,6 @@
 ---
 title: "Hotel"
-cover: "carousel/La sivoliere.png,carousel/chabichou.jpg,carousel/apogee.jpg,carousel/manali.jpg,carousel/spa.jpg,carousel/strato.jpg,carousel/manali.jpg"
+cover: "carousel/sivoliere.jpg,carousel/chabichou.jpg,carousel/apogee.jpg,carousel/manali.jpg,carousel/spa.jpg,carousel/strato.jpg,carousel/manali.jpg"
 category: "hotel"
 slug: "/hotelpage/"
 tags:

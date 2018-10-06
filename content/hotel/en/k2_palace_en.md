@@ -2,7 +2,7 @@
 title: "La sivoliere"
 category: "hotel_courchevel"
 star: "5"
-cover: "La sivoliere.png"
+cover: "sivoliere.jpg"
 slug: "/Hotels/Courchevel/"
 tags:
     - hotel

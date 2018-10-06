@@ -2,7 +2,7 @@
 title: "La ferme de mon grand pere"
 category: "hotel_courchevel"
 star: "5"
-cover: "ferme_grand_pere.png"
+cover: "sivoliere.jpg"
 slug: "/ru/Гостиница/Courchevel/"
 tags:
     - hotel
