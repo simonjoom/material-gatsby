@@ -1,6 +1,7 @@
 import React from "react";
 import Img from "gatsby-image";
 import withTheme from "../../withContext";
+import ReactFB from "../ReactFB";
 import Carousel from "./carousel.js";
 import route from "../../config";
 import "./carousel.css";
@@ -10,22 +11,20 @@ const GetImage = ({
   dataList,
   coverclassname,
   width,
-  ismain,
-  height = "50%",
-  alt = "",
+  page,
+  height = "50%", 
   t,
   maxWidth = "1024px",
-  directory = ""
+  directory = "",
+  ...other
 }) => {
+  const isContact = page === "/contact/";
+  const ismain = page === "/"; 
   const lng = t("lang");
   const dir = directory !== "" ? "/" + directory : "";
   const MapImg = dataList
     .map((el, ind) => {
-      const FileNode = CarouselQuery.find(function(element) {
-        /* console.log(
-          "/static/assets" + dir + "/" + el,
-          element.node.absolutePath
-        );*/
+      const FileNode = CarouselQuery.find(function(element) { 
         return (
           element.node.absolutePath &&
           element.node.absolutePath.indexOf(
@@ -37,8 +36,7 @@ const GetImage = ({
         return (
           <Img
             className={coverclassname}
-            key={ind}
-            alt={alt}
+            key={ind} 
             content={
               ismain ? (
                 <div
@@ -83,6 +81,8 @@ const GetImage = ({
                     </div>
                   </div>
                 </div>
+              ) : isContact ? (
+                <ReactFB />
               ) : (
                 ""
               )
@@ -93,6 +93,7 @@ const GetImage = ({
             height={height}
             width={width}
             maxWidth={maxWidth}
+            {...other}
           />
         );
     })
@@ -112,13 +113,14 @@ const GetImage = ({
 const FrontCarousel = ({
   data,
   coverclassname,
+  imgStyle,
   width,
   maxwidth = "1024px",
   directory,
   height = "50%",
-  ismain,
-  translate,
-  alt = ""
+  page,
+  translate, 
+  ...other
 }) => {
   if (!data) return null;
   let datas = typeof data == "string" ? data.split() : data;
@@ -132,11 +134,12 @@ const FrontCarousel = ({
         directory={directory}
         width={width}
         height={height}
+        imgStyle={imgStyle}
         maxWidth={maxwidth}
-        ismain={ismain}
+        page={page}
         t={translate("Index")}
-        coverclassname={coverclassname}
-        alt={alt}
+        coverclassname={coverclassname} 
+        {...other}
       />
     );
   return null;

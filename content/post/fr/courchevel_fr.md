@@ -1,10 +1,10 @@
 ---
 title: Courchevel ski Resort
-
+cover: "saulire.jpg"
+avatar: "courchevel.png"
 deps: "aquamotion|saulire|familypark|luge-courchevel|altiport|larosiere|leforum|courchevel"
-cover: courchevel.png
 slug: courchevel
-category: ski resort courchevel
+category: "ski-resort"
 tags:
   - station de ski
   - courchevel

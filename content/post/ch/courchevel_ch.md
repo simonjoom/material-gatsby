@@ -1,7 +1,8 @@
 ---
 title: "Courchevel ski Resort"
-cover: "courchevel.png"
-category: "ski resort courchevel"
+cover: "saulire.jpg"
+avatar: "courchevel.png"
+category: "ski-resort"
 slug: "/courchevel/"
 tags:
     - ski resort

@@ -1,10 +1,10 @@
 ---
 title: "Ski School contact"
-cover: "starter-logo-1024.png"
+cover: "pages/skilessons.jpg"
 category: "contact"
 slug: "/contact/"
 tags:
-    - escola de esqui
+    - лыжная школа
     - courchevel
     - meribel
     - valthorens
@@ -18,7 +18,6 @@ date: "2018-07-06"
 Количество инструкторов, тем более знающих русский язык, ограничено и, находясь непосредственно на горнолыжном курорте,  
 найти свободного инструктора в сезон можно только при большом везении. Именно поэтому мы предлагаем позаботиться о своем отдыхе заранее.  
 
-%FBpage%
 
 Смело обращайтесь, указывайте даты, горнолыжный курорт, количество лыжников в группе и Ваши особые предпочтения, и мы с коллегами подберем для Вас лучшие варианты.  
 Каждый из инструкторов имеет большой опыт работы с любителями горных лыж. Мы можем предложить обучение и сопровождение индивидуальных лыжников, семей и групп с любым опытом катания и любого возраста.  
@@ -47,11 +46,7 @@ date: "2018-07-06"
 
 ### Поздровіенія:
             
-        Благодарю русских разработчиков, которые помогли мне создать этот сайт:
+Благодарю русских разработчиков, которые помогли мне создать этот сайт:
         
- **[++Nicoloas Hagenov++{.table-cell .text-decoration-none}![Nicoloas Hagenov](http://graph.facebook.com/100010587453193/picture?type=large)](https://www.facebook.com/profile.php?id=100010587453193&fref=ts){.pl3 .table-cell}[++Konstantin Tarkus++{.table-cell .text-decoration-none}![Konstantin Tarkus](https://pbs.twimg.com/profile_images/916383839609675777/N2nNNxx3_400x400.jpg)](https://twitter.com/koistya?lang=fr){.pl3 .table-cell}**{.h2 .table .mx-auto}
- 
-Если вам нужен сайт с развитыми техническими возможностями (чат, карты, геолокации ...), как у нас, свяжитесь со мной и 
-мы предложим Вам хорошую цену, а также бесплатный урок катания на горных лыжах **<i class="fa fa-smile-o"> </i>**  
-
-Simon  
+ ![Nicoloas Hagenov](http://graph.facebook.com/100010587453193/picture?type=large)](https://www.facebook.com/profile.php?id=100010587453193&fref=ts)
+ ![Konstantin Tarkus](https://pbs.twimg.com/profile_images/916383839609675777/N2nNNxx3_400x400.jpg)](https://twitter.com/koistya?lang=fr)

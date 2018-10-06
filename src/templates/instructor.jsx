@@ -27,7 +27,7 @@ class PostTemplate extends React.Component {
   render() {
     const { mobile } = this.state;
     const { translate: t } = this.props;
-    const { slug, lng, route, slugbase, files } = this.props.pageContext;
+    const { slug, lng, route, slugbase, files,type } = this.props.pageContext;
     global.filesQuery = files;
     const expanded = !mobile;
     // const postOverlapClass = mobile ? "post-overlap-mobile" : "post-overla";
@@ -46,7 +46,7 @@ class PostTemplate extends React.Component {
         carouselList={carouselList}
         route={route}
         lng={lng}
-        ismain={false}
+        page={slugbase}
         location={this.props.location}
       >
         <div className="post-page md-grid">

@@ -1,10 +1,10 @@
 ---
 title: "Ski School contact"
-cover: "starter-logo-1024.png"
+cover: "pages/skilessons.jpg"
 category: "contact"
 slug: "/contact/"
 tags:
-    - escola de esqui
+    - лижна школа
     - courchevel
     - meribel
     - valthorens
@@ -16,8 +16,7 @@ date: "2018-07-06"
 ## Навіщо потрібно бронювати інструктора заздалегідь?
 Число інструкторів, тим більше, що знають російську мову, обмежена і, перебуваючи безпосередньо на гірськолижному курорті,   
 знайти вільного інструктора в сезон можна тільки при великому везінні. Саме тому ми пропонуємо подбати про свій відпочинок заздалегідь.
-
-%FBpage%
+ 
 
 Сміливо звертайтеся, вказуйте дати, гірськолижний курорт, кількість лижників в групі і Ваші особливі переваги і ми з колегами підберемо для Вас кращі варіанти.
 Кожен з інструкторів має великий досвід роботи з любителями гірських лиж. Ми можемо запропонувати навчання і супровід індивідуальних лижників, сімей і груп з будь-яким досвідом катання і будь-якого віку.
@@ -47,8 +46,10 @@ Merci et dans l'attente de vous rencontrer sur les pistes des 3 vallées
             
         Благодаря разработчикам русские помогают мне создавать это:
         
- **[++Nicoloas Hagenov++{.table-cell .text-decoration-none}![Nicoloas Hagenov](http://graph.facebook.com/100010587453193/picture?type=large)](https://www.facebook.com/profile.php?id=100010587453193&fref=ts){.pl3 .table-cell}[++Konstantin Tarkus++{.table-cell .text-decoration-none}![Konstantin Tarkus](https://pbs.twimg.com/profile_images/916383839609675777/N2nNNxx3_400x400.jpg)](https://twitter.com/koistya?lang=fr){.pl3 .table-cell}**{.h2 .table .mx-auto}
+ ![Nicoloas Hagenov](http://graph.facebook.com/100010587453193/picture?type=large)](https://www.facebook.com/profile.php?id=100010587453193&fref=ts)
+ ![Konstantin Tarkus](https://pbs.twimg.com/profile_images/916383839609675777/N2nNNxx3_400x400.jpg)](https://twitter.com/koistya?lang=fr)
  
+  
 Якщо вам потрібен сайт в режимі реального часу (чат системи, карти, геолокації ...), як цей, не соромтеся зв'язатися зі мною,
 зробимо хорошу ціну з деякими безкоштовними уроки катання на лижах **<i class="fa fa-smile-o"> </i>**  
 

@@ -17,7 +17,7 @@ class TagTemplate extends React.Component {
         path={path}
         route={route}
         lng={lng}
-        ismain={false}
+        page={slugbase}
         location={this.props.location}
       >
         <div className="tag-container">

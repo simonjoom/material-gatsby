@@ -41,6 +41,7 @@ class PostPreview extends Component {
     const { postInfo, size } = this.props;
     //  const { mobile } = this.state;
     const { carouselList, type } = postInfo;
+    console.log("carouselList",carouselList,type)
     const expand = true;
     /* eslint no-undef: "off" */
     const coverHeight = 200;
@@ -53,6 +54,24 @@ class PostPreview extends Component {
         contentImage={
           <div>
             {this.props.star && <this.Elextra star={this.props.star} />}
+            {this.props.avatar && (
+              <Avatar
+                icon={
+                  <FrontCarousel
+                    data={[this.props.avatar]}
+                    directory="post"
+                    height="0"
+                    style={{
+                      right: "50%",
+                      position: "absolute",
+                      zIndex: 111
+                    }}
+                    alt={postInfo.title}
+                    maxwidth="80px"
+                  />
+                }
+              />
+            )}
             {carouselList.length > 0 && (
               <FrontCarousel
                 data={carouselList}

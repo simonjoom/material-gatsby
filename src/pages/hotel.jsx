@@ -8,12 +8,11 @@ import SEO from "../components/SEO";
 class Hotel extends React.Component {
   render() {
     const { translate: t, data } = this.props;
-    const { lng, route, files, slug } = this.props.pageContext;
+    const { lng, route, files, slug,slugbase } = this.props.pageContext;
     global.filesQuery = files;
     const postEdges = data.allMarkdownRemark.edges.filter(
       el => el.node.frontmatter.category !== "hotel"
-    );
-    console.log("postEdges",postEdges)
+    ); 
     const postNode = data.allMarkdownRemark.edges.find(
       el => el.node.frontmatter.category === "hotel"
     ).node;
@@ -45,7 +44,7 @@ class Hotel extends React.Component {
         carouselList={carouselList}
         route={route}
         lng={lng}
-        ismain={false}
+        page={slugbase}
         location={this.props.location}
       >
         <div className="index-container">

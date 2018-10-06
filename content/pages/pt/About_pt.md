@@ -26,8 +26,8 @@ Confie em nós; Seleccionamos os nossos profissionais entre todas as escolas fra
 
 Com Skiscool, você seleciona e reserva seu ski-coach no melhor valor. 
 
-![ski lessons courchevel](https://skiscool.com/dist/skilessons.jpg)
- 
+
+<imgtest data="skilessons.jpg" directory="pages" alt="ski lessons courchevel"></imgtest>
 
 ### Preços
 

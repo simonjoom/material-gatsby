@@ -4,7 +4,7 @@ cover: "snowboard.jpg"
 category: "concept"
 slug: "/concept/"
 tags:
-    - escola de esqui
+    - école de ski
     - courchevel
     - meribel
     - valthorens

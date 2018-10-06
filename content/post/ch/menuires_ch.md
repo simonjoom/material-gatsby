@@ -1,7 +1,8 @@
 ---
 title: "Menuires ski Resort"
-cover: "meribel.png"
-category: "ski resort"
+cover: "lm-montdelachambre.jpg"
+avatar: "les-menuires.png"
+category: "ski-resort"
 slug: "/menuires/"
 tags:
     - ski resort
@@ -12,7 +13,7 @@ date: "2018-07-17"
 <div class="edito-wrapper station">
 <div class="banner-station">
 <div class="banner-station-logo">
-<imgtest data="57e2af19a8f82_les-menuires.png" directory="post" alt="Les Menuires"></imgtest>
+<imgtest data="les-menuires.png" directory="post" alt="Les Menuires"></imgtest>
 </div>
 </div>
 

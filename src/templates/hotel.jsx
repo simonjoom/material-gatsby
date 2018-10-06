@@ -66,7 +66,7 @@ class HotelTemplate extends React.Component {
         carouselList={carouselList}
         route={route}
         lng={lng}
-        ismain={false}
+        page={slugbase}
         location={this.props.location}
       >
         <div className="post-page md-grid">

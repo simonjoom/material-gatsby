@@ -1,7 +1,7 @@
 ---
 title: "Val-Thorens ski resort"
 cover: "starter-logo-1024.png"
-category: "ski resort"
+category: ski-resort
 slug: "/valthorens/"
 tags:
     - ski resort

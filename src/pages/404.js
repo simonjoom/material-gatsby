@@ -7,13 +7,13 @@ import "../articleApp.scss";
 class Comp_404 extends React.Component {
   render() {
     const { translate: t } = this.props; 
-    const { slug, lng } = this.props.pageContext;
+    const { slug, lng,slugbase } = this.props.pageContext;
     console.log("lng",lng)
     return (
       <Layout
         carouselList={[]}  
         lng={lng}
-        ismain={false}
+        page={slugbase}
         location={this.props.location}
       >
         404 Page

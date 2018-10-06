@@ -143,7 +143,7 @@ class ReactFB extends PureComponent {
       desc,
       comp
     } = this.props;
-    console.log("renderFB", this.props.type);
+
     let mpost = postId + "?" + Math.floor(Math.random() * 10000 + 1) + "";
     if (this.props.type == "page")
       return (
@@ -186,7 +186,7 @@ class ReactFB extends PureComponent {
       return (
         <div
           className="fbpost"
-          id={this.newDivName}
+          id={"fbpost" + this.newDivName}
           style={{
             display: "flex",
             flexDirection: "column",
@@ -225,7 +225,11 @@ class ReactFB extends PureComponent {
       );
     else
       return (
-        <div className="fblike" id={this.newDivName} ref={this.handleRef}>
+        <div
+          className="fblike"
+          id={"fblike" + this.newDivName}
+          ref={this.handleRef}
+        >
           {this.state.isVisible && (
             <div
               className="fb-like"
@@ -247,6 +251,7 @@ class ReactFB extends PureComponent {
 }
 ReactFB.defaultProps = {
   language: "en",
+  appId: "562112907171338",
   postId: "1347567485317204",
   layout: "standard",
   action: "like",

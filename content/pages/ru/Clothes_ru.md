@@ -4,7 +4,7 @@ cover: "starter-logo-1024.png"
 category: "jumpsuit"
 slug: "/jumpsuit/"
 tags:
-    - escola de esqui
+    - лыжная школа
     - courchevel
     - meribel
     - valthorens

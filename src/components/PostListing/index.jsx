@@ -17,11 +17,11 @@ class PostListing extends React.Component {
         html: postEdge.node.html,
         path: postEdge.node.fields.slug,
         star: postEdge.node.fields.star,
+        avatar:postEdge.node.frontmatter.avatar,
         tags: postEdge.node.frontmatter.tags,
         type: postEdge.node.fields.type,
         carouselList,
-        title: postEdge.node.frontmatter.title,
-title: postEdge.node.frontmatter.title,
+        title: postEdge.node.frontmatter.title, 
         date: postEdge.node.fields.date,
         excerpt: postEdge.node.excerpt,
         timeToRead: postEdge.node.timeToRead
@@ -37,6 +37,7 @@ title: postEdge.node.frontmatter.title,
       this.arrSSR.push(
         <PostPreview
           key={el.title}
+          avatar={el.avatar}
           postInfo={el}
           size={size}
           extra={this.props.extra}

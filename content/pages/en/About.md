@@ -25,9 +25,9 @@ We select our professionnals among all French ski schools according to their qua
 
 We offer great services, secure bookings at no additional costs.
 You will find all the ski equipment that you need, but also many accessories for the whole family.
+ 
 
-![ski lessons courchevel](https://skiscool.com/dist/skilessons.jpg) 
-
+<imgtest data="skilessons.jpg" directory="pages" alt="ski lessons courchevel"></imgtest>
 
 ### Prices  
 Prices are set by the instructor, ski instructor gives you its best rates depending on his schedule filling.

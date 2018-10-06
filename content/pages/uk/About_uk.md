@@ -4,7 +4,7 @@ cover: "carousel/dog.jpg,carousel/snowboard2.jpg,carousel/clown.jpg,carousel/des
 category: "about"
 slug: "/about/"
 tags:
-    - escola de esqui
+    - лижна школа
     - courchevel
     - meribel
     - valthorens
@@ -25,8 +25,8 @@ date: "2018-07-06"
    Довіртеся нам; ми вибираємо наші серед всіх професіоналів французьких лижних шкіл відповідно до їх кваліфікації, своїми знаннями і мовний рівень в Куршевель і Мерібель.   
 </div>
 
-![ski lessons courchevel](https://skiscool.com/dist/skilessons.jpg) 
-  
+
+<imgtest data="skilessons.jpg" directory="pages" alt="ski lessons courchevel"></imgtest>
 
 З Skiscool, Ви вибираєте і забронювати лижний тренер по самій вигідною ціною.
 

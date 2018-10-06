@@ -1,7 +1,8 @@
 ---
 title: "Meribel ski Resort"
-cover: "starter-logo-1024.png"
-category: "ski resort"
+cover: "meribel-familycool.jpg"
+avatar: "meribel.png"
+category: "ski-resort"
 slug: "/meribel/"
 tags:
     - ski resort

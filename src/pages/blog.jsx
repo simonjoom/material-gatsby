@@ -9,7 +9,7 @@ import "../articleApp.scss";
 class Blog extends React.Component {
   render() {
     const { translate: t } = this.props;
-    const { slug, lng, route, files } = this.props.pageContext;
+    const { slug, lng, route, files,slugbase } = this.props.pageContext;
     global.filesQuery = files;
     const postEdges = this.props.data.allMarkdownRemark.edges;
     return (
@@ -17,7 +17,7 @@ class Blog extends React.Component {
         carouselList={[]}
         route={route}
         lng={lng}
-        ismain={false}
+        page={slugbase}
         location={this.props.location}
       >
         <div className="index-container">
@@ -54,6 +54,7 @@ export const pageQuery = graphql`
             title
             tags
             cover
+            avatar
             date
           }
         }

@@ -1,7 +1,8 @@
 ---
 title: "Menuires ski Resort"
-cover: "starter-logo-1024.png"
-category: "ski resort"
+cover: "lm-montdelachambre.jpg"
+avatar: "les-menuires.png"
+category: "ski-resort"
 slug: "/menuires/"
 tags:
     - ski resort

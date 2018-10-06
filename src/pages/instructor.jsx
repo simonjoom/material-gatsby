@@ -8,7 +8,7 @@ import SEO from "../components/SEO";
 class Instructor extends React.Component {
   render() {
     const { translate: t, data } = this.props;
-    const { lng, route, files } = this.props.pageContext;
+    const { lng, route, files, slugbase } = this.props.pageContext;
     global.filesQuery = files;
     const postEdges = data.allMarkdownRemark.edges.filter(
       el => el.node.frontmatter.category !== "instructor"
@@ -25,7 +25,7 @@ class Instructor extends React.Component {
         carouselList={carouselList}
         route={route}
         lng={lng}
-        ismain={false}
+        page={slugbase}
         location={this.props.location}
       >
         <div className="index-container">

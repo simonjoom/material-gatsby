@@ -29,8 +29,8 @@ En solo, en groupe, ou en famille. Du niveau débutant à expert, enfants ou adu
 
 Avec Skiscool, sélectionnez et réservez votre coach sportif au meilleur prix.
 
-![ski lessons courchevel](https://skiscool.com/dist/skilessons.jpg)
 
+<imgtest data="skilessons.jpg" directory="pages" alt="ski lessons courchevel"></imgtest>
  
 ### Tarifs
 

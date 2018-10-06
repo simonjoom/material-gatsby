@@ -35,8 +35,7 @@ class PostTemplate extends React.Component {
     const { mobile } = this.state;
     const { translate: t } = this.props;
     const { slug, slugbase, route, lng, carousel,files } = this.props.pageContext;
-    global.filesQuery=files;  
-    const ismain = slugbase === "/";
+    global.filesQuery=files;   
     let carouselList = [];
     let background;
     //render current markdownRemark
@@ -53,8 +52,7 @@ class PostTemplate extends React.Component {
     }
     if (!post.category_id) {
       post.category_id = SiteConfig.postDefaultCategoryID;
-    }
-    console.log("lng",lng)
+    } 
     const title = t("index")(post.title);
     //render current markdownRemark
     return (
@@ -62,7 +60,7 @@ class PostTemplate extends React.Component {
         carouselList={carouselList}
         route={route}
         lng={lng}
-        ismain={ismain}
+        page={slugbase}
         location={this.props.location}
       >
       <SEO

@@ -5,7 +5,7 @@ deps: lm-pistes|helico|years-experience|envelope|shield|thumbs|certified|guide
 category: "skischool"
 slug: "/"
 tags:
-    - escola de esqui
+    - лижна школа
     - courchevel
     - meribel
     - valthorens

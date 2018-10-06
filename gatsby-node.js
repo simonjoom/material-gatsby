@@ -311,6 +311,7 @@ const MarkdownQueries = `
             title
             deps
             cover
+            avatar
             date
             category
             tags
@@ -405,7 +406,6 @@ exports.createPages = ({ graphql, actions }) => {
     // const categorySet = new Set();
     await asyncForEach(MarkdownQueriesCache, async ({ node }) => {
       const lng = node.fields.lng;
-      const isIndex = node.fields.slugbase === "/";
       if (!tagSets[lng]) tagSets[lng] = new Set();
       if (!categorySets[lng]) categorySets[lng] = new Set();
       if (!langs[lng]) langs.push(lng);
@@ -426,10 +426,15 @@ exports.createPages = ({ graphql, actions }) => {
         route.ch = route.ch + _.kebabCase(node.frontmatter.title) + "/";
       }
 
-      const nextstr =
+      const coverstr =
         node.frontmatter && node.frontmatter.cover
           ? node.frontmatter.cover.replace(/(.jpg|.jpeg|.png)/g, "")
           : "";
+      const avatarstr =
+        node.frontmatter && node.frontmatter.avatar
+          ? node.frontmatter.avatar.replace(/(.jpg|.jpeg|.png)/g, "")
+          : "";
+      const nextstr = avatarstr === "" ? coverstr : coverstr + "," + avatarstr;
       const next = nextstr === "" ? [] : nextstr.split(",");
       const extra = next.join("|");
       const extrat = next.join("-");
@@ -444,7 +449,10 @@ exports.createPages = ({ graphql, actions }) => {
         );
       }
       //add for the page frontmatter post type
-      if (node.fields.type === "post") {
+      if (
+        node.fields.type === "post" ||
+        node.frontmatter.category === "ski-resort"
+      ) {
         arraydepfilesBlog = Array.from(new Set(arraydepfilesBlog.concat(next)));
       }
       if (
@@ -550,7 +558,7 @@ exports.createPages = ({ graphql, actions }) => {
             console.log("no route pages", node.fields.slug);
             return;
           }
-          if (node.fields.slug == "/fr/") console.log(node.fields.slugbase);
+
           createPage({
             path: node.fields.slug,
             component: pagePage,

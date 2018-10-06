@@ -1,6 +1,6 @@
 ---
 title: "Ski School contact"
-cover: "starter-logo-1024.png"
+cover: "pages/skilessons.jpg"
 category: "contact"
 slug: "/contact/"
 tags:
@@ -35,9 +35,7 @@ Obrigado e um prazer conhecê-lo em breve nas pistas dos 3 Vales!
 ### Greetings:
             
         Thanks to Russians developpers help me to create this :
-        
- **[++Nicoloas Hagenov++{.table-cell .text-decoration-none}![Nicoloas Hagenov](http://graph.facebook.com/100010587453193/picture?type=large)](https://www.facebook.com/profile.php?id=100010587453193&fref=ts){.pl3 .table-cell}[++Konstantin Tarkus++{.table-cell .text-decoration-none}![Konstantin Tarkus](https://pbs.twimg.com/profile_images/916383839609675777/N2nNNxx3_400x400.jpg)](https://twitter.com/koistya?lang=fr){.pl3 .table-cell}**{.h2 .table .mx-auto}
+
+![Nicoloas Hagenov](http://graph.facebook.com/100010587453193/picture?type=large)](https://www.facebook.com/profile.php?id=100010587453193&fref=ts)
+ ![Konstantin Tarkus](https://pbs.twimg.com/profile_images/916383839609675777/N2nNNxx3_400x400.jpg)](https://twitter.com/koistya?lang=fr)
  
- If you need a website in real time (chat system, map, ...) like this one, don't hesitate to contact me ,  
-will do a nice price with some free ski lessons **<i class="fa fa-smile-o"> </i>** 
-Simon

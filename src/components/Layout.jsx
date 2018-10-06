@@ -12,7 +12,7 @@ class Layout extends React.Component {
       route,
       lng="en",
       carouselList,
-      ismain,
+      page,
       path,
       location
     } = this.props;
@@ -21,14 +21,14 @@ class Layout extends React.Component {
       <div>
         <div
           className={
-            carouselList ? (ismain ? "carousel-main" : "carousel-nomain") : null
+            carouselList ? (page==="/" ? "carousel-main" : "carousel-nomain") : null
           }
         >
           {carouselList &&
             carouselList.length > 0 && (
               <FrontCarousel
                 data={carouselList}
-                ismain={ismain}
+                page={page}
                 height={carouselList.length > 1 ? "400px" : "50%"}
               />
             )}
