@@ -19,8 +19,7 @@ class SEO extends Component {
       translate,
       route,
       title: titleprop
-    } = this.props;
-    console.log("config",config);
+    } = this.props; 
     let description;
     let image;
     let title;

@@ -121,8 +121,7 @@ export const wrapPageElement = ({ element, props }) => {
   } else {
     Red2 = "div";
   }*/
-  // console.log("Red2", Red2, lng);
-  const { slug, slugbase, route, carousel } = props.pageContext; 
+  // console.log("Red2", Red2, lng); 
   //console.log("runMainNavLayout");
 
   return (

@@ -7,9 +7,9 @@ import SEO from "../components/SEO";
 import config from "../data/SiteConfig";
 
 class TagTemplate extends React.Component {
-  render() { 
+  render() {
     const { translate: t, path } = this.props;
-    const { tag, lng, route } = this.props.pageContext;
+    const { tag, lng, route, slugbase } = this.props.pageContext;
     const postEdges = this.props.data.allMarkdownRemark.edges;
     return (
       <Layout

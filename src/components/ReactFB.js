@@ -99,8 +99,7 @@ class ReactFB extends PureComponent {
             insertFB(language, appId, () => {
               _this2.setState({
                 isVisible: true
-              });
-              console.log("FB.loaded", global.FB);
+              }); 
             });
             global.doneFB = true;
           } else {

@@ -15,8 +15,7 @@ class Instructor extends React.Component {
     );
     const postNode = data.allMarkdownRemark.edges.find(
       el => el.node.frontmatter.category === "instructor"
-    ).node;
-    console.log("inst", files);
+    ).node; 
     const post = postNode.frontmatter;
     const carouselList = post.cover ? post.cover.split(",") : [];
 

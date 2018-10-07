@@ -684,15 +684,15 @@ exports.onCreatePage = async ({ page, actions }) => {
             const store = _require2.store;
             const schema = store.getState().schema;
             const graphqlo = require(`graphql`).graphql;
-            console.log(depsfiles);
             const myquery = QueryFiles(depsfiles);
             let res = await graphqlo(schema, myquery, {}, {}, {});
-            if (res.data.allFile) {
+            if (res.data && res.data.allFile) {
               const { edges: filedeps } = res.data.allFile;
               // console.log("filesArrayCache", filedeps);
               filesArrayCache[depsfilest] = filedeps;
               storeObj({ name: depsfilest, value: filedeps });
             } else {
+              console.log(myquery);
               console.warn("lack of deps:", depsfiles);
               filesArrayCache[depsfilest] = [{ node: {} }];
             }

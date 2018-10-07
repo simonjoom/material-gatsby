@@ -40,9 +40,7 @@ class PostPreview extends Component {
   render() {
     const { postInfo, size } = this.props;
     //  const { mobile } = this.state;
-    const { carouselList, type } = postInfo;
-    console.log("carouselList",carouselList,type)
-    const expand = true;
+    const { carouselList, type } = postInfo; 
     /* eslint no-undef: "off" */
     const coverHeight = 200;
     // console.log("preview", carouselList, type);
