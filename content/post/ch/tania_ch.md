@@ -1,13 +1,12 @@
 ---
 title: "La Tania ski resort"
 cover: "starter-logo-1024.png"
-category: "ski resort"
-slug: "latania"
+category: ski-resort
+slug: "/latania/"
 tags:
     - ski resort
     - skipass
-
-date: "2018-07-02"
+date: "2018-07-17"
 ---
 
 <div class="edito-wrapper station">

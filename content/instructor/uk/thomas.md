@@ -1,15 +1,14 @@
 ---
 title: "Thomas"
 category: "profile"
-slug: "instructor"
+slug: "/instructor/"
 cover: "thomas.jpg"
 tags:
     - ski instructor
     - courchevel
     - meribel
     - valthorens
-
-date: "2018-07-02"
+date: "2018-07-06"
 ---
 
 ### Thomas description

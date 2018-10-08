@@ -1,13 +1,13 @@
 ---
 title: "Menuires ski Resort"
-cover: "les-menuires.png"
-category: "ski resort"
-slug: "menuires"
+cover: "lm-montdelachambre.jpg"
+avatar: "les-menuires.png"
+category: "ski-resort"
+slug: "/menuires/"
 tags:
     - ski resort
     - menuires
-
-date: "2018-07-02"
+date: "2018-07-17"
 ---
 
 <div class="edito-wrapper station">

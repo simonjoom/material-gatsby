@@ -16,10 +16,12 @@ class PostListing extends React.Component {
       this.postList.push({
         html: postEdge.node.html,
         path: postEdge.node.fields.slug,
+        star: postEdge.node.fields.star,
+        avatar:postEdge.node.frontmatter.avatar,
         tags: postEdge.node.frontmatter.tags,
         type: postEdge.node.fields.type,
         carouselList,
-        title: postEdge.node.frontmatter.title,
+        title: postEdge.node.frontmatter.title, 
         date: postEdge.node.fields.date,
         excerpt: postEdge.node.excerpt,
         timeToRead: postEdge.node.timeToRead
@@ -31,11 +33,19 @@ class PostListing extends React.Component {
     const size = this.props.size || "12";
     this.arrSSR = [];
     this.postList.forEach((el, index) => {
+      const st = el.star ? parseInt(el.star) : 0;
       this.arrSSR.push(
-        <PostPreview key={el.title} postInfo={el} size={size} />
+        <PostPreview
+          key={el.title}
+          avatar={el.avatar}
+          postInfo={el}
+          size={size}
+          extra={this.props.extra}
+          star={st}
+        />
       );
     });
-    !(process.env.GATSBY_BUILD_STAGE=="build-html") && this.runAnim();
+    !(process.env.GATSBY_BUILD_STAGE == "build-html") && this.runAnim();
   }
   runAnim() {
     this.running = true;
@@ -60,7 +70,9 @@ class PostListing extends React.Component {
     return (
       <div className="md-grid md-grid--no-spacing md-cell--middle">
         <div className={`md-grid md-cell--${sizebig} mobile-fix`}>
-          {!(process.env.GATSBY_BUILD_STAGE=="build-html") ? this.state.arr : this.arrSSR}
+          {!(process.env.GATSBY_BUILD_STAGE == "build-html")
+            ? this.state.arr
+            : this.arrSSR}
         </div>
       </div>
     );

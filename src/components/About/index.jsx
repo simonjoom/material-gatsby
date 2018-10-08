@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import withTheme from "../../withContext";
 import Card from "../../reactLIB/Card"; 
-
 import UserLinks from "../UserLinks";
-import config from "../../../data/SiteConfig";
+import config from "../../data/SiteConfig";
 import "./About.scss";
 
 class About extends Component {

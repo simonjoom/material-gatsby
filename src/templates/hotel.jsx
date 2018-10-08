@@ -12,7 +12,7 @@ import SocialLinks from "../components/SocialLinks";
 import Layout from "../components/Layout";
 import PostSuggestions from "../components/PostSuggestions";
 import SEO from "../components/SEO";
-import config from "../../data/SiteConfig";
+import config from "../data/SiteConfig";
 import "./b16-tomorrow-dark.css";
 import "./post.scss";
 
@@ -22,6 +22,26 @@ class HotelTemplate extends React.Component {
     this.state = {
       mobile: true
     };
+    this.Mynode = ({ star }) => (
+      <div
+        className="center"
+        style={{
+          color: "white",
+          position: "absolute",
+          zIndex: "1",
+          width: "100%"
+        }}
+      >
+        <span>
+          SkiScool <i className="fa fa-copyright" />
+        </span>
+        <div>
+          {Array.from(new Array(star),a => (
+            <i className="yellow-text fa fa-star" />
+          ))}
+        </div>
+      </div>
+    );
   }
 
   render() {
@@ -46,7 +66,7 @@ class HotelTemplate extends React.Component {
         carouselList={carouselList}
         route={route}
         lng={lng}
-        ismain={false}
+        page={slugbase}
         location={this.props.location}
       >
         <div className="post-page md-grid">
@@ -59,17 +79,22 @@ class HotelTemplate extends React.Component {
           />
           <div className="md-grid post-page-contents mobile-fix">
             <Card
-              className="md-cell md-cell--12-phone md-cell--12 post md-cell--4-tablet"
+              className="md-cell md-cell--12-phone md-cell--12 post md-cell--12-tablet"
               waves="light"
               contentImage={
-                carouselList.length > 0 && (
-                  <FrontCarousel
-                    data={carouselList}
-                    directory={directory}
-                    height="0"
-                    maxwidth="600px"
-                  />
-                )
+                <div>
+                  {postNode.fields.star && (
+                    <this.Mynode star={postNode.fields.star} />
+                  )}
+                  {carouselList.length > 0 && (
+                    <FrontCarousel
+                      data={carouselList}
+                      directory={directory}
+                      height="0"
+                      maxwidth="600px"
+                    />
+                  )}
+                </div>
               }
               titlereveal={post.title}
               imgtitle={
@@ -133,6 +158,7 @@ export const pageQuery = graphql`
         prevSlug
         type
         slug
+        star
         lng
         date
       }

@@ -1,15 +1,14 @@
 ---
 title: "Ski School"
 cover: "carousel/dog.jpg,carousel/snowboard2.jpg,carousel/clown.jpg,carousel/desert.jpg,carousel/ski-room.jpg"
-category: "skischool"
-slug: "about"
+category: "about"
+slug: "/about/"
 tags:
-    - escola de esqui
+    - лыжная школа
     - courchevel
     - meribel
     - valthorens
-
-date: "2018-07-02"
+date: "2018-07-06"
 ---
 
 # Про нас
@@ -25,7 +24,9 @@ date: "2018-07-02"
 Найти своего лыжного инструктора является трудной задачей, потому что многие лыжные инструкторы не имеют достаточного опыта в обучении клиентов.   
 Доверьтесь нам; мы подберем лучших инструкторов среди всех профессиональных французских лыжных школ в Куршевель и Мерибель исходя из их квалификации, опыта работы и уровня владения русским языком.</div>
 
-![лыжные уроки Куршевель](https://skiscool.com/dist/skilessons.jpg)
+
+<imgtest data="skilessons.jpg" directory="pages" alt="ski lessons courchevel"></imgtest>
+
 
 Со школой Skiscool, Вы бронируете лыжного инструктора по самой выгодной цене.
 

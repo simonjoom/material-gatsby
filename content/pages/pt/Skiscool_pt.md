@@ -1,15 +1,15 @@
 ---
 title: "Ski School"
-date: "2018-07-02"
 cover: carousel/snowboard4.jpg
 category: "skischool"
 deps: lm-pistes|helico|years-experience|envelope|shield|thumbs|certified|guide
-slug: ""
+slug: "/"
 tags:
     - escola de esqui
     - courchevel
     - meribel
     - valthorens
+date: "2018-07-06"
 ---
 
 # ESCOLA DE ESQUI E SNOWBOARD

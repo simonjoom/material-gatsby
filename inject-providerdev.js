@@ -66,7 +66,9 @@ export const replaceHydrateFunction = () => {
 };
 
 export const wrapPageElement =  async ({ element, props }) => {
-  const { lng } = props.pageContext;   
+  
+  const { lng } = props.pageContext;
+  i18n.changeLanguage(lng);
  if (!lng)
     return (
       <div>
@@ -92,10 +94,11 @@ export const wrapPageElement =  async ({ element, props }) => {
     });
     Red = "div";
   } 
+  console.log("props",global.menuList)
   const { slug, slugbase, route, carousel } = props.pageContext;
   const namespace = slugbase === "/" ? "Index" : "Post";
   const ismain = slugbase === "/";
-  console.log("runMainNavLayout");
+  console.log("postNodeBefrunMainNavLayout");
   return (
     <div>
       <Red />
@@ -108,6 +111,7 @@ const stateProvider = {
   translate: namespace => i18n.getFixedT(null, [namespace, "common"])
 };
 export const wrapRootElement = ({ element }) => {
+  console.log("postNodeBef")
   return (
     <ThemeContext.Provider value={stateProvider}>
       {element}

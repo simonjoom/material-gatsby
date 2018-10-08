@@ -1,23 +1,21 @@
 ---
 title: "Ski School"
 cover: "carousel/dog.jpg,carousel/snowboard2.jpg,carousel/clown.jpg,carousel/desert.jpg,carousel/ski-room.jpg"
-category: "skischool"
-slug: "about"
+category: "about"
+slug: "/about/"
 tags:
     - escola de esqui
     - courchevel
     - meribel
     - valthorens
-
-date: "2018-07-02"
+date: "2018-07-06"
 ---
 
-## SkiScool
+# O SkiScool
 
 * Os instrutores por trás de sua criação querem um sistema diferente;
 * Um que recebe jovens instrutores envolvidos e desenvolve para atender às necessidades dos clientes.
 * Pequenas e amigáveis escolas cujas prioridades são ouvir os clientes e flexibilidade.
-
 ---
 
 ## Por que é melhor reservar o seu instrutor com SkiScool? 
@@ -28,8 +26,8 @@ Confie em nós; Seleccionamos os nossos profissionais entre todas as escolas fra
 
 Com Skiscool, você seleciona e reserva seu ski-coach no melhor valor. 
 
-![ski lessons courchevel](https://skiscool.com/dist/skilessons.jpg)
- 
+
+<imgtest data="skilessons.jpg" directory="pages" alt="ski lessons courchevel"></imgtest>
 
 ### Preços
 

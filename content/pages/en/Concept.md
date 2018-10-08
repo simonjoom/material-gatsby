@@ -2,20 +2,18 @@
 title: "Concept"
 cover: "snowboard.jpg"
 category: "concept"
-slug: "concept"
+slug: "/concept/"
 tags:
     - escola de esqui
     - courchevel
     - meribel
     - valthorens
-
-date: "2018-07-02"
+date: "2018-07-06"
 ---
 
 # Private ski lessons
 
 ## With SKISCOOL:
-
 ---
 
 * Private ski lessons or snowboard tuitions,
@@ -25,7 +23,6 @@ date: "2018-07-02"
 * Technical and progressive follow-up with video,
 
 ![ski school courchevel](https://skiscool.com/dist/offpiste.jpg)
-
 ---
 <br/>
 <br/>
@@ -44,7 +41,6 @@ date: "2018-07-02"
 
 <br/>
 <br/>
-
 ---
 
 ### Prices ski school 2016/2017

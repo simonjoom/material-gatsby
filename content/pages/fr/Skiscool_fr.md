@@ -1,15 +1,15 @@
 ---
-title: Ski School
-date: '2018-07-02'
+title: Ski courchevel, Courchevel Meribel Val-Thorens
 cover: carousel/snowboard4.jpg
 deps: lm-pistes|helico|years-experience|envelope|shield|thumbs|certified|guide
 category: ski school
-slug: ""
+slug: "/"
 tags:
-    - escola de esqui
+    - école de ski
     - courchevel
     - meribel
     - valthorens
+date: '2018-07-02'
 ---
 
 # Ecole de Ski & Snowboard

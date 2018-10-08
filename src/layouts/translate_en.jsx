@@ -1,7 +1,8 @@
 import React from "react";
 import i18n from "i18next";
 import { router } from "../config";
-import { graphql, StaticQuery } from "gatsby"; 
+const _ = require("lodash");
+import { graphql, StaticQuery } from "gatsby";
 
 const translate = () => {
   if (global.locale["en"].length == 0) {
@@ -28,11 +29,11 @@ const translate = () => {
               edges {
                 node {
                   fields {
-                    inmenu 
-                    slug 
+                    inmenu
+                    slug
                   }
                   frontmatter {
-                    title
+                    category
                   }
                 }
               }
@@ -40,8 +41,8 @@ const translate = () => {
           }
         `}
         render={data => {
-          let lang; 
-          console.log("changeLanguage", data); 
+          let lang;
+          console.log("changeLanguage", data);
           data.allLocale.edges.forEach(({ node }) => {
             const { lng, ns, data } = node;
             lang = lng;
@@ -55,23 +56,22 @@ const translate = () => {
 
           global.postEdges = data.allMarkdownRemark.edges;
           let array = [];
-          
+
           Object.keys(router).forEach(function(element, key, _array) {
-            global.postEdges.forEach(postEdge => {
-              const { title } = postEdge.node.frontmatter;
-              const tr = t("Index")(title);
+            global.postEdges.forEach(postEdge => {  
+              const { category } = postEdge.node.frontmatter;
+              const tr = t("Index")(_.kebabCase(category));
               if (
                 postEdge.node.fields.inmenu &&
                 postEdge.node.fields.slug == router[element][lang]
-              )
+              ){
                 array.push({
                   path: postEdge.node.fields.slug,
                   title: tr
-                });
-            });
-          });
-
-          
+                });  
+              }
+            })
+          })
 
           let item = {
             path: router["/hotel/"][lang],
@@ -86,7 +86,7 @@ const translate = () => {
           item = { path: router["/blog/"][lang], title: t("Index")("blog") };
           array.splice(array.length, 0, item);
           global.menuList[lang] = array;
-           
+
           return <div />;
         }}
       />

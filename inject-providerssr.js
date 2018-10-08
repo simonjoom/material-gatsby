@@ -61,7 +61,6 @@ function injectState() {
       dangerouslySetInnerHTML={{
         __html: `window.__INITIAL_STATE__=${JSON.stringify({
           menuList: global.menuList,
-          filesQuery: global.filesQuery,
           locale: global.locale
         })};`
       }}
@@ -122,9 +121,7 @@ export const wrapPageElement = ({ element, props }) => {
   } else {
     Red2 = "div";
   }*/
-  // console.log("Red2", Red2, lng);
-  const { slug, slugbase, route, carousel } = props.pageContext;
-  const ismain = slugbase === "/";
+  // console.log("Red2", Red2, lng); 
   //console.log("runMainNavLayout");
 
   return (

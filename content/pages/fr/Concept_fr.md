@@ -2,14 +2,13 @@
 title: "Concept"
 cover: "snowboard.jpg"
 category: "concept"
-slug: "concept"
+slug: "/concept/"
 tags:
-    - escola de esqui
+    - école de ski
     - courchevel
     - meribel
     - valthorens
-
-date: "2018-07-02"
+date: "2018-07-06"
 ---
 
 # Cours de ski particuliers
@@ -24,7 +23,6 @@ date: "2018-07-02"
 * Feed-back with video,
 
 ![ecole ski courchevel](https://skiscool.com/dist/offpiste.jpg)
-
 ---
 <br/>
 <br/>
@@ -43,7 +41,6 @@ date: "2018-07-02"
 
 <br/>
 <br/>
-
 ---
 
 ### Tarifs de l'école de ski 2016/2017

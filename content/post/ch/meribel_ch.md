@@ -1,13 +1,13 @@
 ---
 title: "Meribel ski Resort"
-cover: "starter-logo-1024.png"
-category: "ski resort"
-slug: "meribel"
+cover: "meribel-familycool.jpg"
+avatar: "meribel.png"
+category: "ski-resort"
+slug: "/meribel/"
 tags:
     - ski resort
     - meribel
-
-date: "2018-07-02"
+date: "2018-07-17"
 ---
 
 

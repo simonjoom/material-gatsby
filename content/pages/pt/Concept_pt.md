@@ -2,14 +2,13 @@
 title: "Concept"
 cover: "snowboard.jpg"
 category: "concept"
-slug: "concept"
+slug: "/concept/"
 tags:
     - escola de esqui
     - courchevel
     - meribel
     - valthorens
-
-date: "2018-07-02"
+date: "2018-07-06"
 ---
 
 # Aulas particulares
@@ -17,7 +16,6 @@ date: "2018-07-02"
 * Chame-nos em +33675505209
 
 ## SKISCOOL para você:
-
 ---
 
 * Aulas particulares de esqui ou tutoriais de snowboard,
@@ -25,7 +23,6 @@ date: "2018-07-02"
 * Prazer e sentimentos,
 * Um programa orientado por um instrutor totalmente qualificado,
 * Acompanhamento técnico e progressivo com vídeo,
-
 ---
 <br/>
 <br/>
@@ -44,7 +41,6 @@ date: "2018-07-02"
 
 <br/>
 <br/>
-
 ---
 
 ### Preços escola de esqui 2016/2017

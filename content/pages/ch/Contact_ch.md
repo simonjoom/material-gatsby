@@ -1,3 +1,16 @@
+---
+title: "Ski School contact"
+cover: "pages/skilessons.jpg"
+category: "contact"
+slug: "/contact/"
+tags:
+    - ski school
+    - courchevel
+    - meribel
+    - valthorens
+date: "2018-07-06"
+---
+
 # 联系滑雪教学学校
 
 ## 为什么会更加推荐你预定SkiScool 的滑雪教练呢? ## 
@@ -21,7 +34,7 @@
             
         Thanks to Russians developpers help me to create this :
         
- **[++Nicoloas Hagenov++{.table-cell .text-decoration-none}![Nicoloas Hagenov](https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/12631362_188622528167328_5371768496074497012_n.jpg?oh=6bdb6bb8bccf8f7be789b4f9bcf3f1c3&oe=589CEA46)](https://www.facebook.com/profile.php?id=100010587453193&fref=ts){.pl3 .table-cell}[++Konstantin Tarkus++{.table-cell .text-decoration-none}![Konstantin Tarkus](https://pbs.twimg.com/profile_images/916383839609675777/N2nNNxx3_400x400.jpg)](https://twitter.com/koistya?lang=fr){.pl3 .table-cell}**{.h2 .table .mx-auto}
+![Nicoloas Hagenov](https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/12631362_188622528167328_5371768496074497012_n.jpg?oh=6bdb6bb8bccf8f7be789b4f9bcf3f1c3&oe=589CEA46)](https://www.facebook.com/profile.php?id=100010587453193&fref=ts)![Konstantin Tarkus](https://pbs.twimg.com/profile_images/916383839609675777/N2nNNxx3_400x400.jpg)](https://twitter.com/koistya?lang=fr)
  
- If you need a website in real time (chat system, map, ...) like this one, don't hesitate to contact me ,  will do a nice price with some free ski lessons **<i class="fa fa-smile-o"> </i>** 
+ 
 Simon    

@@ -4,12 +4,12 @@ import withTheme from "../withContext";
 import Layout from "../components/Layout";
 import PostListing from "../components/PostListing";
 import SEO from "../components/SEO";
-import config from "../../data/SiteConfig";
+import config from "../data/SiteConfig";
 
 class TagTemplate extends React.Component {
-  render() { 
+  render() {
     const { translate: t, path } = this.props;
-    const { tag, lng, route } = this.props.pageContext;
+    const { tag, lng, route, slugbase } = this.props.pageContext;
     const postEdges = this.props.data.allMarkdownRemark.edges;
     return (
       <Layout
@@ -17,7 +17,7 @@ class TagTemplate extends React.Component {
         path={path}
         route={route}
         lng={lng}
-        ismain={false}
+        page={slugbase}
         location={this.props.location}
       >
         <div className="tag-container">

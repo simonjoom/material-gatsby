@@ -1,14 +1,17 @@
 ---
 title: Courchevel ski Resort
-deps: aquamotion|saulire|familypark|luge-courchevel|altiport|larosiere|leforum|courchevel
-date: '2018-07-02'
-cover: courchevel.png
+cover: "saulire.jpg"
+avatar: "courchevel.png"
+deps: "aquamotion|saulire|familypark|luge-courchevel|altiport|larosiere|leforum|courchevel"
 slug: courchevel
-category: ski resort courchevel
+category: "ski-resort"
 tags:
   - station de ski
   - courchevel
+date: '2018-07-02'
 ---
+
+
 <div class="edito-wrapper station">
     <div class="banner-station">
 <div class="banner-station-logo">

@@ -10,6 +10,22 @@ const config = {
       pt: "/pt/",
       ch: "/cn/"
     },
+    "/about/": {
+      fr: "/fr/L_ecole_de_ski/",
+      en: "/About_Skiscool/",
+      ru: "/ru/Около_Skiscool/",
+      uk: "/uk/про_Skiscool/",
+      pt: "/pt/About_Skiscool/",
+      ch: "/cn/About_Skiscool/"
+    },
+    "/404/": {
+      fr: "/fr/404/",
+      en: "/404/",
+      ru: "/ru/404/",
+      uk: "/uk/404/",
+      pt: "/pt/404/",
+      ch: "/cn/404/"
+    },
     "/blog/": {
       fr: "/fr/ecole-de-ski-courchevel-meribel/",
       en: "/blog/",
@@ -28,7 +44,7 @@ const config = {
     },
     "/hotel/": {
       fr: "/fr/Hotels/",
-      en: "/hotels/",
+      en: "/Hotels/",
       ru: "/ru/Гостиница/",
       uk: "/uk/отель/",
       pt: "/pt/Hoteis/",
@@ -44,13 +60,13 @@ const config = {
     },
     "/instructor": {
       fr: "/fr/Moniteurs_skischool/",
-      en: "/instructor/",
-      ru: "/ru/instructor/",
-      uk: "/uk/instructor/",
-      pt: "/pt/instructor/",
-      ch: "/cn/instructor/"
+      en: "/Instructors_skischool/",
+      ru: "/ru/Инструкторы_skischool/",
+      uk: "/uk/інструкторів_skischool/",
+      pt: "/pt/instructors_skischool/",
+      ch: "/cn/Instructors_skischool/"
     },
-    "/concept": {
+    "/concept/": {
       fr: "/fr/concept",
       en: "/concept/",
       ru: "/ru/concept/",
@@ -58,7 +74,7 @@ const config = {
       pt: "/pt/concept/",
       ch: "/cn/concept/"
     },
-    "/contact": {
+    "/contact/": {
       fr: "/fr/contact",
       en: "/contact/",
       ru: "/ru/контакт/",
@@ -66,15 +82,15 @@ const config = {
       pt: "/pt/contato/",
       ch: "/cn/contact/"
     },
-    "/skipass": {
-      fr: "/Articles/Forfait-de-ski/",
+    "/skipass/": {
+      fr: "/fr/Articles/Forfait-de-ski/",
       en: "/Articles/SkiPass/",
-      ru: "/Articles/Ски-пасс/",
-      uk: "/Articles/Ски-пас/",
+      ru: "/ru/Articles/Ски-пасс/",
+      uk: "/uk/Articles/Ски-пас/",
       pt: "/pt/Articles/SkiPass/",
       ch: "/cn/Articles/SkiPass/"
     },
-    "/meribel": {
+    "/meribel/": {
       fr: "/fr/Articles/Meribel/",
       en: "/en/Articles/Meribel/",
       ru: "/ru/Articles/Meribel/",
@@ -82,7 +98,7 @@ const config = {
       pt: "/pt/Articles/Meribel/",
       ch: "/cn/Articles/Meribel/"
     },
-    "/menuires": {
+    "/menuires/": {
       fr: "/fr/Articles/Menuires/",
       en: "/en/Articles/Menuires/",
       ru: "/ru/Articles/Menuires/",
@@ -90,7 +106,7 @@ const config = {
       pt: "/pt/Articles/Menuires/",
       ch: "/cn/Articles/Menuires/"
     },
-    "/courchevel": {
+    "/courchevel/": {
       fr: "/fr/Articles/Courchevel/",
       en: "/en/Articles/Courchevel/",
       ru: "/ru/Articles/Courchevel/",
@@ -98,7 +114,7 @@ const config = {
       pt: "/pt/Articles/Courchevel/",
       ch: "/cn/Articles/Courchevel/"
     },
-    "/valthorens": {
+    "/valthorens/": {
       fr: "/fr/Articles/Valthorens/",
       en: "/en/Articles/Valthorens/",
       ru: "/ru/Articles/Valthorens/",
@@ -106,21 +122,13 @@ const config = {
       pt: "/pt/Articles/Valthorens/",
       ch: "/cn/Articles/Valthorens/"
     },
-    "/latania": {
+    "/latania/": {
       fr: "/fr/Articles/Tania/",
       en: "/en/Articles/Tania/",
       ru: "/ru/Articles/Tania/",
       uk: "/uk/Articles/Tania/",
       pt: "/pt/Articles/Tania/",
       ch: "/cn/Articles/Tania/"
-    },
-    "/about": {
-      fr: "/L_ecole_de_ski/",
-      en: "/en/About_Skiscool/",
-      ru: "/Около_Skiscool/",
-      uk: "/про_Skiscool/",
-      pt: "/pt/About_Skiscool/",
-      ch: "/cn/About_Skiscool/"
     }
   }
 };

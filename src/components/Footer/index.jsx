@@ -4,7 +4,7 @@ import { Link } from "gatsby";
 import Button from "../../reactLIB/Button";
 import Icon from "../../reactLIB/Icon";
 import UserLinks from "../UserLinks";
-import config from "../../../data/SiteConfig";
+import config from "../../data/SiteConfig";
 import "./Footer.scss";
 
 class Footer extends Component {

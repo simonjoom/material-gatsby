@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Link } from "gatsby";
 import withTheme from "../withContext";
 import FrontCarousel from "./FrontCarousel";
@@ -10,25 +10,25 @@ class Layout extends React.Component {
       translate,
       children,
       route,
-      lng,
+      lng="en",
       carouselList,
-      ismain,
+      page,
       path,
       location
     } = this.props;
-    console.log("route", route);
+    console.log("route", lng);
     return (
       <div>
         <div
           className={
-            carouselList ? (ismain ? "carousel-main" : "carousel-nomain") : null
+            carouselList ? (page==="/" ? "carousel-main" : "carousel-nomain") : null
           }
         >
           {carouselList &&
             carouselList.length > 0 && (
               <FrontCarousel
                 data={carouselList}
-                ismain={ismain}
+                page={page}
                 height={carouselList.length > 1 ? "400px" : "50%"}
               />
             )}

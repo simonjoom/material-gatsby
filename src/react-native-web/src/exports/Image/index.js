@@ -355,9 +355,12 @@ that.setState({
       
       const { height, width } = layout || this.state.layout;
       if (naturalHeight && naturalWidth && height && width) {
-        const scaleFactor = Math.min(1, width / naturalWidth, height / naturalHeight);
-        const x = Math.ceil(scaleFactor * naturalWidth);
-        const y = Math.ceil(scaleFactor * naturalHeight);
+      const x = Math.ceil((height / naturalHeight)*naturalWidth)
+      const y = height
+      
+       // const scaleFactor = Math.min(1, width / naturalWidth, height / naturalHeight);
+       // const x = Math.ceil(scaleFactor * naturalWidth);
+       // const y = Math.ceil(scaleFactor * naturalHeight);
         return {
           backgroundSize: `${x}px ${y}px`
         };

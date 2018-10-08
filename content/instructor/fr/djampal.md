@@ -1,14 +1,13 @@
 ---
 title: "Djampal"
-category: "profile_fr"
+category: "profile"
 cover: "djampal.jpg"
-slug: "instructor"
+slug: "/instructor/"
 tags:
     - ski instructor
     - courchevel
     - meribel
     - valthorens
-
 date: "2018-08-02"
 ---
 

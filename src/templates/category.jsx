@@ -4,12 +4,12 @@ import withTheme from "../withContext";
 import SEO from "../components/SEO";
 import PostListing from "../components/PostListing";
 import Layout from "../components/Layout";
-import config from "../../data/SiteConfig";
+import config from "../data/SiteConfig";
 
 class CategoryTemplate extends React.Component {
   render() {
     const { translate: t, path } = this.props;
-    const { category, lng, route, files } = this.props.pageContext; 
+    const { category, lng, route, files,slugbase } = this.props.pageContext; 
     global.filesQuery = files;
     const postEdges = this.props.data.allMarkdownRemark.edges;
     return (
@@ -18,7 +18,7 @@ class CategoryTemplate extends React.Component {
         path={path}
         route={route}
         lng={lng}
-        ismain={false}
+        page={slugbase}
         location={this.props.location}
       >
         <div className="category-container"> 

@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import urljoin from "url-join";
+import config from "../../data/SiteConfig";
+import "./SocialLinks.scss";
 import {
   FacebookShareButton,
   GooglePlusShareButton,
@@ -20,10 +23,6 @@ RedditShareCount,
 TelegramShareButton,
 RedditShareButton,
 } from "react-share";*/
-import urljoin from "url-join";
-import config from "../../../data/SiteConfig";
-import "./SocialLinks.scss";
-
 class SocialLinks extends Component {
   render() {
     const { postNode, postPath, mobile } = this.props;

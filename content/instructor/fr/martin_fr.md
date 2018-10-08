@@ -1,15 +1,14 @@
 ---
 title: "Martin"
-category: "profile_fr"
+category: "profile"
 cover: "martin.jpg"
-slug: "instructor"
+slug: "/instructor/"
 tags:
     - ski instructor
     - courchevel
     - meribel
     - valthorens
-
-date: "2018-07-02"
+date: "2018-07-06"
 ---
 ### Description de Martin
 Le ski ? Une passion, un plaisir. Nous sommes privilégiés de pouvoir le pratiquer dans notre commune.   

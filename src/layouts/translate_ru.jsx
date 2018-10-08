@@ -1,7 +1,8 @@
 import React from "react";
 import i18n from "i18next";
+const _ = require("lodash");
 import { router } from "../config";
-import { graphql, StaticQuery } from "gatsby"; 
+import { graphql, StaticQuery } from "gatsby";
 const translate = () => {
   if (global.locale["ru"].length == 0) {
     console.log("runtranslate");
@@ -27,19 +28,19 @@ const translate = () => {
               edges {
                 node {
                   fields {
-                    inmenu 
-                    slug 
+                    inmenu
+                    slug
                   }
                   frontmatter {
-                    title
+                    category
                   }
                 }
               }
             }
           }
         `}
-        render={data => { 
-          let lang; 
+        render={data => {
+          let lang;
           console.log("changeLanguage", data);
           data.allLocale.edges.forEach(({ node }) => {
             const { lng, ns, data } = node;
@@ -52,13 +53,13 @@ const translate = () => {
           i18n.changeLanguage("ru");
           let t = namespace => i18n.getFixedT(null, [namespace, "common"]);
 
-          global.postEdges = data.allMarkdownRemark.edges; 
+          global.postEdges = data.allMarkdownRemark.edges;
           let array = [];
 
           Object.keys(router).forEach(function(element, key, _array) {
             global.postEdges.forEach(postEdge => {
-              const { title } = postEdge.node.frontmatter;
-              const tr = t("Index")(title);
+              const { category } = postEdge.node.frontmatter;
+              const tr = t("Index")(_.kebabCase(category));
               if (
                 postEdge.node.fields.inmenu &&
                 postEdge.node.fields.slug == router[element][lang]
@@ -69,8 +70,6 @@ const translate = () => {
                 });
             });
           });
-        
-
 
           let item = {
             path: router["/hotel/"][lang],

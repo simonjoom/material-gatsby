@@ -1,15 +1,14 @@
 ---
 title: "Christo"
-category: "profile_ru"
+category: "profile"
 cover: "christo.jpg"
-slug: "instructor"
+slug: "/instructor/"
 tags:
     - ski instructor
     - courchevel
     - meribel
     - valthorens
-
-date: "2018-07-02"
+date: "2018-07-06"
 ---
 
 ### Christo описание

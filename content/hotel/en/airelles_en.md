@@ -1,13 +1,14 @@
 ---
 title: "Airelles"
-category: "hotel_courchevel_en"
-cover: "airelles.jpg"
-slug: "hotel"
+category: "hotel_courchevel"
+cover: "airelles.png"
+star: "5"
+slug: "/Hotels/Meribel/"
 tags:
     - hotel
     - courchevel
-description: 5-star, Authentic, Boutique-hotel, Chalet, Charm, Confidential, Cozy, Lively, Palace, Traditional, Luxury, Mountain, Cultural Activities, Sports Activities, Business, Bar, Wellness, Wedding & Honeymoon, Star Chef, Gastronomy, Family, Swimming Pool, Restaurant, Shopping, Spa
-date: "2018-07-02"
+description: "5-star, Authentic, Boutique-hotel, Chalet, Charm, Confidential, Cozy, Lively, Palace, Traditional, Luxury, Mountain, Cultural Activities, Sports Activities, Business, Bar, Wellness, Wedding & Honeymoon, Star Chef, Gastronomy, Family, Swimming Pool, Restaurant, Shopping, Spa"
+date: "2018-07-03"
 ---
  
  ### Description

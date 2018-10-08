@@ -9,7 +9,7 @@ import withTheme from "../withContext";
 import PostTags from "../components/PostTags";
 import Layout from "../components/Layout";
 // import PostCover from "../PostCover";
-import config from "../../data/SiteConfig";
+import config from "../data/SiteConfig";
 import Card from "../reactLIB/Card";
 import Icon from "../reactLIB/Icon";
 import Button from "../reactLIB/Button";
@@ -59,7 +59,7 @@ class PostTemplate extends React.Component {
   render() {
     const { mobile } = this.state;
     const { translate: t } = this.props;
-    const { slug, route, lng, files } = this.props.pageContext;
+    const { slug, route, lng, files, slugbase } = this.props.pageContext;
     global.filesQuery = files;
     const postOverlapClass = mobile ? "post-overlap-mobile" : "post-overlap";
     const postNode = this.props.data.markdownRemark;
@@ -78,15 +78,10 @@ class PostTemplate extends React.Component {
         carouselList={carouselList}
         route={route}
         lng={lng}
-        ismain={false}
+        page={slugbase}
         location={this.props.location}
       >
-        >
         <div className="post-page md-grid md-grid--no-spacing">
-          <Helmet>
-            <title>{`${post.title} | ${config.siteTitle}`}</title>
-            <link rel="canonical" href={`${config.siteUrl}${post.id}`} />
-          </Helmet>
           <SEO
             postPath={slug}
             route={route}
@@ -99,14 +94,33 @@ class PostTemplate extends React.Component {
               waves="light"
               className="post md-cell md-cell--12-phone md-cell--12 md-cell--4-tablet"
               contentImage={
-                carouselList.length > 0 && (
-                  <FrontCarousel
-                    data={carouselList}
-                    directory={directory}
-                    height="0"
-                    maxwidth="600px"
-                  />
-                )
+                <div>
+                  {post.avatar && (
+                    <Avatar
+                      icon={
+                        <FrontCarousel
+                          data={[post.avatar]}
+                          directory={directory}
+                          height="0"
+                          style={{
+                            right: "50%",
+                            position: "absolute",
+                            zIndex: 111
+                          }}
+                          maxwidth="80px"
+                        />
+                      }
+                    />
+                  )}
+                  {carouselList.length > 0 && (
+                    <FrontCarousel
+                      data={carouselList}
+                      directory={directory}
+                      height="0"
+                      maxwidth="600px"
+                    />
+                  )}
+                </div>
               }
               titlereveal={post.title}
               imgtitle={
@@ -159,6 +173,7 @@ export const postQuery = graphql`
       frontmatter {
         title
         cover
+        avatar
         date
         category
         tags

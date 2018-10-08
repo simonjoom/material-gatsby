@@ -41,7 +41,7 @@ class LanguageSwitcher extends Component {
     return (
       <View style={styles.dropdown_2_row}>
         <Text style={[styles.dropdown_2_row_text]}>
-          <Flag style={{ height: "20px" }} /> {`${label}`}
+          <Flag style={{ height: "35px" }} /> {`${label}`}
         </Text>
       </View>
     );

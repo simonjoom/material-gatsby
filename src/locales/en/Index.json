@@ -1,6 +1,13 @@
 {
-  "siteUrl":"https://www.ski-courchevel.deals",
-  "blog":"Blog Information",
-  "main1":"I was a noob, not anymore!",
-  "main2":"Get more accurate tips with freelancers"
+  "lang": "en",
+  "hotel": "Hotel",
+  "concept": "Concept",
+  "contact": "Contact",
+  "blog": "blog",
+  "about": "About Skiscool",
+  "instructor": "Ski Instructors",
+  "skischool": "About SKISCOOL",
+  "siteUrl": "https://www.ski-courchevel.deals",
+  "main1": "I was a nerd, not anymore!",
+  "main2": "Get more accurate tips with freelancers"
 }

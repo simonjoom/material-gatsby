@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
 import urljoin from "url-join";
-import config from "../../../data/SiteConfig";
+import config from "../../data/SiteConfig";
 
 const siteUrlfr = "https://www.skiscool.fr";
 const siteUrlen = "https://www.ski-courchevel.deals";
@@ -19,7 +19,7 @@ class SEO extends Component {
       translate,
       route,
       title: titleprop
-    } = this.props;
+    } = this.props; 
     let description;
     let image;
     let title;
@@ -91,8 +91,7 @@ class SEO extends Component {
           description
         }
       ]);
-    }
-    console.log(route);
+    } 
     return (
       <Helmet>
         <title>{`${translate(title)} | ${config.siteTitle}`}</title>

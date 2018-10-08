@@ -1,5 +1,13 @@
 {
+  "lang":"pt",
+  "about":"O Skiscool",
+  "hotel":"Hotel",
+  "concept": "Concept",
+  "contact": "Contato",
+  "blog": "blog",
+  "instructor": "Ski Instructors",
+  "skischool":"About SKISCOOL",
   "siteUrl":"https://pt.skiscool.com",
-  "main1":"I was a nerb, not anymore!",
+  "main1":"I was a nerd, not anymore!",
   "main2":"Get more accurate tips with freelancers"
 }

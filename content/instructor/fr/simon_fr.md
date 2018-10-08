@@ -1,15 +1,14 @@
 ---
 title: "Simon"
-category: "profile_fr"
+category: "profile"
 cover: "simon.jpg"
-slug: "instructor"
+slug: "/instructor/"
 tags:
     - ski instructor
     - courchevel
     - meribel
     - valthorens
-
-date: "2018-07-02"
+date: "2018-07-06"
 ---
 
 ### Description de Simon

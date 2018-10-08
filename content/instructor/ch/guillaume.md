@@ -1,15 +1,14 @@
 ---
 title: "Guillaume"
-category: "profile_ch"
+category: "profile"
 cover: "guillaume.jpg"
-slug: "instructor"
+slug: "/instructor/"
 tags:
     - ski instructor
     - courchevel
     - meribel
     - valthorens
-
-date: "2018-07-02"
+date: "2018-07-05"
 ---
 
 ### Description Guillaume

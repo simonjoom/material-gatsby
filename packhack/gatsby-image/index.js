@@ -254,6 +254,7 @@ maxWidth=maxHeight/ratio
         className = _convertProps.className,
         outerWrapperClassName = _convertProps.outerWrapperClassName,
         _convertProps$imgStyl = _convertProps.imgStyle,
+        style = _convertProps.style,
         positionImage= _convertProps.positionImage,
         imgStyle = _convertProps$imgStyl === void 0 ? {} : _convertProps$imgStyl,
         _convertProps$placeho = _convertProps.placeholderStyle,
@@ -315,15 +316,16 @@ maxWidth=maxHeight/ratio
            height: presentationHeight ? presentationHeight : 'auto',
            width: width !== '100%' ? srcImage.width : '100%',
          }}*/
-
-      return React.createElement("div", {
-        style: {
+var stylecontainer=babelHelpers.extends({
           width: width ? width : "100%",
           maxWidth: maxWidth,
           margin: '0 auto',
           position: 'relative',
           alignSelf: "center"
-        },
+        },style);
+        
+      return React.createElement("div", {
+        style: stylecontainer,
         className: className
       }, bgColor && React.createElement(View, {
         title: title,

@@ -4,7 +4,7 @@ import moment from "moment";
 import urljoin from "url-join";
 import Avatar from "../Avatars";
 //import Snackbar from "react-md/lib/Snackbars";
-import config from "../../../data/SiteConfig";
+import config from "../../data/SiteConfig";
 import Card from "../../reactLIB/Card";
 import Icon from "../../reactLIB/Icon";
 import Button from "../../reactLIB/Button";

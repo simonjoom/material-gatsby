@@ -1,15 +1,14 @@
 ---
 title: "Ski School"
 cover: "carousel/dog.jpg,carousel/snowboard2.jpg,carousel/clown.jpg,carousel/desert.jpg,carousel/ski-room.jpg"
-category: "skischool"
-slug: "about"
+category: "about"
+slug: "/about/"
 tags:
     - école de ski
     - courchevel
     - meribel
     - valthorens
-
-date: "2018-07-02"
+date: "2018-07-06"
 ---
 
 # Skiscool
@@ -30,8 +29,8 @@ En solo, en groupe, ou en famille. Du niveau débutant à expert, enfants ou adu
 
 Avec Skiscool, sélectionnez et réservez votre coach sportif au meilleur prix.
 
-![ski lessons courchevel](https://skiscool.com/dist/skilessons.jpg)
 
+<imgtest data="skilessons.jpg" directory="pages" alt="ski lessons courchevel"></imgtest>
  
 ### Tarifs
 

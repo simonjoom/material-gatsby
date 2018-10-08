@@ -1,15 +1,64 @@
 const path = require("path");
 const _ = require("lodash");
 const fs = require("fs-extra");
+const uuid = require("uuid");
+const uuidv5 = require("uuid/v5");
 const moment = require("moment");
 const crypto = require("crypto");
 const siteConfig = require("./data/SiteConfig");
 const config = require("./src/config");
+const mkdirp = require("mkdirp");
 const router = config.router;
 require("babel-polyfill");
+mkdirp("./cachedir");
+function encode(name) {
+  return uuidv5(name, "8e884ace-cee4-11e4-8dfc-aa07a5b093db");
+}
 
-const arraymenu = ["/", "/about", "/concept", "/contact"];
-const arraygallery = ["/", "/about", "/concept"];
+const getObj = async name => {
+  try {
+    const packageObj = await fs.readJson(
+      path.join("./cachedir", name + ".json")
+    );
+    const res = JSON.parse(packageObj);
+    return res.value;
+  } catch (err) {
+    return [{ node: {} }];
+  }
+};
+
+const storeObj = async obj => {
+  let json;
+  try {
+    json = JSON.stringify(obj, null, 2);
+  } catch (e) {
+    console.log("error JSON", e);
+  }
+
+  obj.id = obj.name || obj.id || uuid.v4();
+
+  try {
+    await fs.writeJson(path.join("./cachedir", obj.id + ".json"), json, err => {
+      if (err) return console.error(err);
+      console.log("success!");
+    });
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+const arraymenu = ["/", "/about/", "/concept/", "/contact/"];
+const arraygallery = [
+  "/",
+  "/about/",
+  "/concept/",
+  "/hotel/",
+  "/instructor/",
+  "/concept/",
+  "/contact/"
+];
+const tagListDone = {};
+const catListDone = {};
 const postTypes = ["post", "instructor", "hotel"];
 //const postNodes = { fr: [], en: [], pt: [], ru: [], uk: [], ch: [] };
 const postNodes = {
@@ -17,7 +66,9 @@ const postNodes = {
   instructor: { fr: [], en: [], pt: [], ru: [], uk: [], ch: [] },
   hotel: { fr: [], en: [], pt: [], ru: [], uk: [], ch: [] }
 };
+console.log("process.env.NODE_ENV", process.env.NODE_ENV);
 
+const isProd = process.env.NODE_ENV === "production" || true;
 let didRunAlready = false;
 let absoluteComponentPath;
 
@@ -186,7 +237,7 @@ exports.onCreateNode = async ({
 
     if (Object.prototype.hasOwnProperty.call(node, "frontmatter")) {
       if (Object.prototype.hasOwnProperty.call(node.frontmatter, "slug"))
-        slug = `/${_.kebabCase(node.frontmatter.slug)}`;
+        slug = node.frontmatter.slug;
       if (Object.prototype.hasOwnProperty.call(node.frontmatter, "date")) {
         const date = moment(node.frontmatter.date, siteConfig.dateFromFormat);
         if (!date.isValid)
@@ -202,6 +253,7 @@ exports.onCreateNode = async ({
 
     let slugfin;
     if (router[slug]) slugfin = router[slug][lng];
+    else slugfin = slug;
 
     if (type === "instructor" || type === "hotel")
       slugfin = slugfin + _.kebabCase(node.frontmatter.title) + "/";
@@ -225,6 +277,9 @@ exports.onCreateNode = async ({
       });
     }
 
+    if (type === "hotel") {
+      createNodeField({ node, name: `star`, value: node.frontmatter.star });
+    }
     createNodeField({ node, name: `lng`, value: lng });
     createNodeField({ node, name: `type`, value: type });
     createNodeField({ node, name: "slugbase", value: slug });
@@ -256,12 +311,14 @@ const MarkdownQueries = `
             title
             deps
             cover
+            avatar
             date
             category
             tags
           }
           fields {
             lng
+            star
             slugbase
             slug
             inmenu
@@ -279,7 +336,7 @@ const QueryFiles = depsfiles => `
 {
   allFile(
     filter: { 
-      absolutePath:{regex:"\/assets\/\.\*\(${depsfiles}\)\\\\.\(jpg\$|png\$\)\/"}
+      absolutePath:{regex:"\/assets\/.*(${depsfiles})\\\\.(jpg\$|png\$)\/"}
     }
     )
     {
@@ -304,6 +361,7 @@ const QueryFiles = depsfiles => `
   }
 }
 }`;
+
 let arraydepfilesInstructor = [];
 let arraydepfilesBlog = [];
 let arraydepfilesHotel = [];
@@ -325,17 +383,20 @@ exports.createPages = ({ graphql, actions }) => {
   const categoryPage = path.resolve("src/templates/category.jsx");
 
   return new Promise(async (resolve, reject) => {
-    if (!MarkdownQueriesCache) {
+    MarkdownQueriesCache = await getObj("MarkdownQueriesCache");
+    if (!MarkdownQueriesCache[0].node.fields) {
       let mak = await graphql(MarkdownQueries);
       if (mak.errors) {
         /* eslint no-console: "off" */
-
+        console.log(mak);
         reject(mak.errors);
       }
       MarkdownQueriesCache = mak.data.allMarkdownRemark.edges.filter(
         a => a.node && a.node.frontmatter && a.node.frontmatter.title !== ""
       );
+      storeObj({ name: "MarkdownQueriesCache", value: MarkdownQueriesCache });
     }
+
     //.then(result => {
 
     let tagSets = [];
@@ -365,31 +426,50 @@ exports.createPages = ({ graphql, actions }) => {
         route.ch = route.ch + _.kebabCase(node.frontmatter.title) + "/";
       }
 
-      const next =
+      const coverstr =
         node.frontmatter && node.frontmatter.cover
-          ? node.frontmatter.cover.replace(/(.jpg|.jpeg|.png)/g, "").split(",")
-          : [];
+          ? node.frontmatter.cover.replace(/(.jpg|.jpeg|.png)/g, "")
+          : "";
+      const avatarstr =
+        node.frontmatter && node.frontmatter.avatar
+          ? node.frontmatter.avatar.replace(/(.jpg|.jpeg|.png)/g, "")
+          : "";
+      const nextstr = avatarstr === "" ? coverstr : coverstr + "," + avatarstr;
+      const next = nextstr === "" ? [] : nextstr.split(",");
+      const extra = next.join("|");
+      const extrat = next.join("-");
 
       //add for the page frontmatter instructor type
-      if (node.fields.type === "instructor") {
+      if (
+        node.fields.type === "instructor" ||
+        node.frontmatter.category === "instructor"
+      ) {
         arraydepfilesInstructor = Array.from(
           new Set(arraydepfilesInstructor.concat(next))
         );
       }
       //add for the page frontmatter post type
-      if (node.fields.type === "post") {
+      if (
+        node.fields.type === "post" ||
+        node.frontmatter.category === "ski-resort"
+      ) {
         arraydepfilesBlog = Array.from(new Set(arraydepfilesBlog.concat(next)));
       }
-      if (node.fields.type === "hotel") {
+      if (
+        node.fields.type === "hotel" ||
+        node.frontmatter.category === "hotel"
+      ) {
         arraydepfilesHotel = Array.from(
           new Set(arraydepfilesHotel.concat(next))
         );
       }
 
       let depsfiles = "";
+      let depsfilest = "";
 
       if (node.frontmatter.deps) {
         depsfiles = node.frontmatter.deps;
+        depsfilest = depsfiles.split("|").join("_");
       } else {
         var regex = /imgtest data=['|"](.*)\..*["|']/g;
         var matches = [];
@@ -397,30 +477,49 @@ exports.createPages = ({ graphql, actions }) => {
         if (str && str != "") {
           str.replace(regex, function() {
             var match = Array.prototype.slice.call(arguments, 0, -1);
-            matches.push(match[1]);
+            matches.push(_.kebabCase(match[1]));
             // example: ['test1', 'e', 'st1', '1'] with properties `index` and `input`
           });
+          depsfilest = matches.join("_");
           depsfiles = matches.join("|");
           //console.log(depsfiles);
         }
       }
-      const extra = next.join("|");
-
       // console.log(depsfiles, node.frontmatter.cover);
-      depsfiles = extra === "" ? depsfiles : depsfiles + "|" + extra;
-
-      const myquery = QueryFiles(depsfiles);
-      let files = [];
-      if (
-        !filesArrayCache[depsfiles] &&
-        (process.env.NODE_ENV === "production" || node.fields.slug === "/")
-      ) {
-        const {
-          data: {
-            allFile: { edges: filedeps }
+      depsfiles =
+        extra === ""
+          ? depsfiles
+          : depsfiles !== ""
+            ? depsfiles + "|" + extra
+            : extra;
+      depsfilest =
+        extrat === ""
+          ? depsfilest
+          : depsfilest !== ""
+            ? depsfilest + "_" + extrat
+            : extrat;
+      let files;
+      if (depsfilest !== "") {
+        if (depsfilest.length > 15) depsfilest = encode(depsfilest);
+        files = await getObj(depsfilest);
+        if (!files[0].node.fields) {
+          if (!filesArrayCache[depsfilest]) {
+            const myquery = QueryFiles(depsfiles);
+            const res = await graphql(myquery);
+            if (res.data.allFile && res.data.allFile.edges) {
+              const {
+                data: {
+                  allFile: { edges: filedeps }
+                }
+              } = res;
+              filesArrayCache[depsfilest] = filedeps;
+              storeObj({ name: depsfilest, value: filedeps });
+            } else {
+              console.log("problem pictures with", depsfiles);
+            }
           }
-        } = await graphql(myquery);
-        files = filesArrayCache[depsfiles] = filedeps;
+          files = filesArrayCache[depsfilest];
+        }
       }
 
       switch (node.fields.type) {
@@ -455,12 +554,11 @@ exports.createPages = ({ graphql, actions }) => {
           break;
         case "pages":
           route = router[node.fields.slugbase];
-          if (
-            !route ||
-            (router[node.fields.slug] && node.fields.slug !== "/")
-          ) {
+          if (!route) {
+            console.log("no route pages", node.fields.slug);
             return;
           }
+
           createPage({
             path: node.fields.slug,
             component: pagePage,
@@ -477,50 +575,53 @@ exports.createPages = ({ graphql, actions }) => {
           break;
       }
 
-      if (
-        node.frontmatter.title !== "default" &&
-        process.env.NODE_ENV === "production"
-      ) {
+      if (node.frontmatter.title !== "default" && isProd) {
         langs.forEach(lg => {
           const tagList = Array.from(tagSets[lg]);
           tagList.forEach(tag => {
             const route = {};
             const kbtag = _.kebabCase(tag);
-            route.fr = `/tags_fr/${kbtag}/`;
-            route.en = `/tags_en/${kbtag}/`;
-            route.ru = `/tags_ru/${kbtag}/`;
-            route.uk = `/tags_uk/${kbtag}/`;
-            route.pt = `/tags_pt/${kbtag}/`;
-            route.ch = `/tags_ch/${kbtag}/`;
-            createPage({
-              path: `/tags_${lg}/${kbtag}/`,
-              component: tagPage,
-              context: {
-                route,
-                tag,
-                lng: lg
-              }
-            });
+            if (!tagListDone[kbtag]) {
+              route.fr = `/tags_fr/${kbtag}/`;
+              route.en = `/tags_en/${kbtag}/`;
+              route.ru = `/tags_ru/${kbtag}/`;
+              route.uk = `/tags_uk/${kbtag}/`;
+              route.pt = `/tags_pt/${kbtag}/`;
+              route.ch = `/tags_ch/${kbtag}/`;
+              createPage({
+                path: `/tags_${lg}/${kbtag}/`,
+                component: tagPage,
+                context: {
+                  route,
+                  tag,
+                  lng: lg
+                }
+              });
+              tagListDone[kbtag] = true;
+            }
           });
           const categoryList = Array.from(categorySets[lg]);
           categoryList.forEach(category => {
             const route = {};
             const kbcategory = _.kebabCase(category);
-            route.fr = `/categories_fr/${kbcategory}/`;
-            route.en = `/categories_en/${kbcategory}/`;
-            route.ru = `/categories_ru/${kbcategory}/`;
-            route.uk = `/categories_uk/${kbcategory}/`;
-            route.pt = `/categories_pt/${kbcategory}/`;
-            route.ch = `/categories_ch/${kbcategory}/`;
-            createPage({
-              path: `/categories_${lg}/${kbcategory}/`,
-              component: categoryPage,
-              context: {
-                route,
-                category,
-                lng: lg
-              }
-            });
+            if (!catListDone[kbcategory]) {
+              route.fr = `/categories_fr/${kbcategory}/`;
+              route.en = `/categories_en/${kbcategory}/`;
+              route.ru = `/categories_ru/${kbcategory}/`;
+              route.uk = `/categories_uk/${kbcategory}/`;
+              route.pt = `/categories_pt/${kbcategory}/`;
+              route.ch = `/categories_ch/${kbcategory}/`;
+              createPage({
+                path: `/categories_${lg}/${kbcategory}/`,
+                component: categoryPage,
+                context: {
+                  route,
+                  category,
+                  lng: lg
+                }
+              });
+              catListDone[kbcategory] = true;
+            }
             // });
             // });
           });
@@ -535,10 +636,13 @@ exports.onCreatePage = async ({ page, actions }) => {
   const { createPage, deletePage } = actions;
 
   const route = router[page.path];
-  if (!route) {
-    console.warn("no route", page.path);
+  if (!route || page.path == "/dev-404-page/" || page.path == "/404.html") {
+    // if(page.path == "/dev-404-page/"||page.path == "/404.html")
+    // page.matchPath="/*";
+    console.warn("no route", page);
+    return;
   }
-
+  console.log("remakefor", page.path);
   const { locales, defaultLocale } = config;
   let oldPage = Object.assign({}, page);
   const newPage = {};
@@ -562,36 +666,45 @@ exports.onCreatePage = async ({ page, actions }) => {
       };
       createPage(newPage);
     } else if (route[locale]) {
-      const _require2 = require(`gatsby/dist/redux`);
-      const store = _require2.store;
-      const schema = store.getState().schema;
-      const graphqlo = require(`graphql`).graphql;
       //console.log("oncreate", page.path);
-      let depsfiles;
-      if (page.path === "/instructor/")
-        depsfiles = arraydepfilesInstructor.join("|");
-      else if (page.path === "/blog/") depsfiles = arraydepfilesBlog.join("|");
-      else if (page.path === "/hotel/")
-        depsfiles = arraydepfilesHotel.join("|");
+      let files;
+      let fileres;
+      if (page.path === "/instructor/") fileres = arraydepfilesInstructor;
+      else if (page.path === "/blog/") fileres = arraydepfilesBlog;
+      else if (page.path === "/hotel/") fileres = arraydepfilesHotel;
+      const depsfiles = fileres && fileres.join("|");
+      let depsfilest = fileres && fileres.join("-");
       // console.log(page.path, depsfiles);
-      if (depsfiles) {
-        const myquery = QueryFiles(depsfiles);
-        if (!filesArrayCache[depsfiles]) {
-          let res = await graphqlo(schema, myquery, {}, {}, {});
-          if (res.data.allFile) {
-            const { edges: filedeps } = res.data.allFile;
-            // console.log("filesArrayCache", filedeps);
-            filesArrayCache[depsfiles] = filedeps;
+      if (depsfilest && depsfilest !== "") {
+        if (!filesArrayCache[depsfilest]) {
+          if (depsfilest.length > 15) depsfilest = encode(depsfilest);
+          files = await getObj(depsfilest);
+          if (!files[0].node.fields) {
+            const _require2 = require(`gatsby/dist/redux`);
+            const store = _require2.store;
+            const schema = store.getState().schema;
+            const graphqlo = require(`graphql`).graphql;
+            const myquery = QueryFiles(depsfiles);
+            let res = await graphqlo(schema, myquery, {}, {}, {});
+            if (res.data && res.data.allFile) {
+              const { edges: filedeps } = res.data.allFile;
+              // console.log("filesArrayCache", filedeps);
+              filesArrayCache[depsfilest] = filedeps;
+              storeObj({ name: depsfilest, value: filedeps });
+            } else {
+              console.log(myquery);
+              console.warn("lack of deps:", depsfiles);
+              filesArrayCache[depsfilest] = [{ node: {} }];
+            }
           } else {
-            console.warn("lack of deps:", depsfiles);
-            filesArrayCache[depsfiles] = [];
+            filesArrayCache[depsfilest] = files;
           }
         }
       } else {
-        filesArrayCache[depsfiles] = [];
+        console.log("nothing for", page.path);
+        files = filesArrayCache[depsfilest] = [{ node: {} }];
       }
-      const files = filesArrayCache[depsfiles];
-
+      if (page.path === "/instructor/") console.log(files);
       if (oldPage) deletePage(oldPage);
       oldPage = null;
       newPage.component = page.component;

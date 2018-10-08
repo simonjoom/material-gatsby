@@ -1,21 +1,17 @@
 ---
-title: "Ski Instructors"
-cover: "starter-logo-1024.png"
-category: "ski instructor"
-slug: "instructorpage"
+title: "Ski Instructors" 
+cover: "carousel/chisto1.jpg,carousel/jeremie.jpg,carousel/snowboard.jpg,carousel/chisto.jpg,carousel/richesmont.jpg"
+category: "instructor"
+slug: "/instructorpage/"
 tags:
     - ski instructor
     - courchevel
     - meribel
     - valthorens
-
-date: "2018-07-02"
+date: "2018-07-06"
 ---
 
 # Instructor ski school and ski guides
-
-<reactfb style="display:block" language="fr" href="https://ru.skiscool.com" appid="562112907171338"/></reactfb>
-
 Ski course includes:
 
 A lesson with SkiScool is guaranteed to improve your skiing technique and increase your confidence on the mountain.

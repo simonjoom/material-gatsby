@@ -1,5 +1,13 @@
 {
+  "lang":"ch",
+  "hotel":"酒店",
+  "concept": "Concept",
+  "contact": "联系我们",
+  "blog":"联系方式（微博，微信，Facebook等等）",
+  "about":"关于 Skiscool",
+  "instructor": "Ski Instructors",
+  "skischool":"你对滑雪的看法",
   "siteUrl":"https://www.ski-courchevel.deals",
-  "main1":"I was a nerb, not anymore!",
+  "main1":"I was a nerd, not anymore!",
   "main2":"Get more accurate tips with freelancers"
 }

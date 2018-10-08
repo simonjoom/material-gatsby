@@ -2,21 +2,19 @@
 title: "Concept"
 cover: "snowboard.jpg"
 category: "concept"
-slug: "concept"
+slug: "/concept/"
 tags:
     - escola de esqui
     - courchevel
     - meribel
     - valthorens
-
-date: "2018-07-02"
+date: "2018-07-06"
 ---
 
 
 # 私人滑雪课程
 
 ## 开启 SKISCOOL:
-
 ---
 
 * 私人滑雪课或出租滑雪板,
@@ -26,7 +24,6 @@ date: "2018-07-02"
 * 视频技术和进步的后续指导,
 
 ![ski school courchevel](https://skiscool.com/dist/offpiste.jpg)
-
 ---
 <br/>
 <br/>
@@ -45,7 +42,6 @@ date: "2018-07-02"
 
 <br/>
 <br/>
-
 ---
 
 ### Prices ski school 2016/2017

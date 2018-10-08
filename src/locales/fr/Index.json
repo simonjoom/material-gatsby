@@ -1,6 +1,13 @@
 {
-  "siteUrl":"https://www.skiscool.fr",
-  "blog":"Blog Info",
-  "main1":"I was a nerb, not anymore!",
-  "main2":"Get more accurate tips with freelancers"
+  "lang": "fr",
+  "about": "Skiscool",
+  "hotel":"Hotel",
+  "contact": "Contact",
+  "blog": "blog",
+  "concept": "Concept",
+  "instructor": "Moniteur",
+  "skischool": "L'Ecole de ski",
+  "siteUrl": "https://www.skiscool.fr",
+  "main1": "Je ne tombe plus",
+  "main2": "Get more accurate tips with freelancers"
 }

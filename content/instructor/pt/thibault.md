@@ -1,15 +1,14 @@
 ---
 title: "Thibault"
-category: "profile_pt"
+category: "profile"
 cover: "thibault.jpg"
-slug: "instructor"
+slug: "/instructor/"
 tags:
     - ski instructor
     - courchevel
     - meribel
     - valthorens
-
-date: "2018-07-02"
+date: "2018-07-06"
 ---
 
 ### Thibault descrição

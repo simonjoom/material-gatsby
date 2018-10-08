@@ -1,7 +1,6 @@
 ---
 title: Christo
-date: "2018-07-02"
-category: "profile_fr"
+category: "profile"
 cover: christo.jpg
 slug: instructor
 tags:
@@ -9,10 +8,10 @@ tags:
     - courchevel
     - meribel
     - valthorens
-
+date: "2018-07-06"
 ---
 
-### Description de Christo
+# Description de Christo
 
 Christo est un moniteur de ski expérimenté, Skiscool a pu, à plusieurs reprise travailler avec lui pour ses clients. Ses compétences de la langue russe et de l'enseignement sont des atouts inestimables.  
 
