@@ -1,7 +1,6 @@
 import React from "react";
 import Navigation from "../components/Navigation";
 import "font-awesome/scss/font-awesome.scss";
-import "./index.scss";
 import "./global.scss";
 import "./toolbar.scss";
 import "./carousel.scss";

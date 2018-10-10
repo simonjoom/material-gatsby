@@ -36,6 +36,7 @@ class ChatsPageList extends React.Component {
       <div
         style={{ height: "350px", overflow: "scroll" }}
         className="listChats"
+        id="listChats"
       >
         {edges &&
           edges.map(chat => <Chat key={chat.node.id} chat={chat.node} />)}

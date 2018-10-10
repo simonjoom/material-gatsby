@@ -5,9 +5,7 @@ import { SideBarContext } from "../../SideBarContext";
 class BackButton extends Component {
   render() {
     console.log("BackButton", this.props);
-    return (
-      <SideBarContext.Consumer>
-        {context => (
+    return ( 
           <div>
             {this.props.location.pathname !== "/" ? (
               <Button onClick={() => window.history.back()} icon="arrow_back" flat
@@ -17,8 +15,7 @@ class BackButton extends Component {
               type="material"/>
             )}
           </div>
-        )}
-      </SideBarContext.Consumer>
+      
     );
   }
 }

@@ -10507,7 +10507,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "getInstance",
       value: function getInstance(el) {
-        var domElem = !!el.jquery ? el[0] : el;
+        var domElem = !!el.jquery ? el[0] : el; 
         return domElem.M_TapTarget;
       }
     }, {

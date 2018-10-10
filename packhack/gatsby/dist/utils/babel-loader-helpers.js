@@ -32,7 +32,8 @@ const prepareOptions = (babel, resolve = require.resolve) => {
   const requiredPlugins = [babel.createConfigItem([resolve(`babel-plugin-remove-graphql-queries`)], {
     type: `plugin`
   })];
-    if (process.env.NODE_ENV === `inferno`) {
+  
+   if (process.env.NODE_ENV === `inferno`||process.env.NODE_ENV === `production`) {
    requiredPlugins.unshift(babel.createConfigItem([resolve(`babel-plugin-inferno`),{import:true,pragma: "h"}], {
     type: `plugin`
   }));
@@ -94,7 +95,7 @@ fallbackPlugins.push(babel.createConfigItem([resolve(`babel-plugin-transform-rea
   }));
   fallbackPresets.push(babel.createConfigItem([resolve(`@babel/preset-react`), {
     useBuiltIns: true,
-    pragma: "h", 
+    pragma: (process.env.NODE_ENV === `inferno`||process.env.NODE_ENV === `prouction`)?"h":"React.createElement",
     development: stage === `develop`
   }], {
     type: `preset`

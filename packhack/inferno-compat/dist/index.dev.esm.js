@@ -571,7 +571,7 @@ function normalizeFormProps(name, props) {
     if ((name === 'input' || name === 'textarea') && props.type !== 'radio' && props.onChange) {
         var type = props.type;
         var eventName;
-        if (!type || type === 'text') {
+        if (!type || type === 'text'|| type === 'password') {
             eventName = 'oninput';
         }
         if (eventName && !props[eventName]) {

@@ -14,7 +14,6 @@ class Chat extends Component {
     console.log("createdAt", this.props.chat.createdAt);
     return (
       <Card
-        className="card-panel cardchat"
         horizontal
         style={cardStyle}
         contentImage={
@@ -32,16 +31,25 @@ class Chat extends Component {
             </Button>
           )
         }
-        title={<b>{this.props.chat.message}</b>}
+      //  title={<b>{this.props.chat.message}</b>}
         children={format(parse(this.props.chat.createdAt), "MM/DD/YYYY hh:mma")}
-      />
+      >
+        <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+        <p style={{fontSize: '1.2em', textAlign: 'left'}}>{this.props.chat.message}</p>
+        <p style={{fontSize:'0.8em', color: 'grey'}}>{format(parse(this.props.chat.createdAt), "MM/DD/YYYY hh:mma")}</p>
+      </div>
+      
+      </Card>
     );
   }
 }
-const cardStyle = {
-  boxShadow: "0px 0px 10px 0px black",
-  padding: 0,
-  borderRadius: "10px"
+const cardStyle = { 
+  margin: 30,
+  backgroundColor: '#F9FAFD',
+  borderRadius: "10px",
+  height: 'auto',
+  minHeight: '70px'
+
 };
 
 export default Chat;

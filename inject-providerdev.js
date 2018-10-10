@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import i18n from "i18next";
 import AppRegistry from "./src/react-native-web/src/exports/AppRegistry";
 import { ThemeContext } from "./src/withContext";
@@ -45,19 +45,17 @@ export const onClientEntry = async () => {
 
   if (/comp|inter|loaded/.test(document.readyState)) {
     Waves.displayEffect();
-    M.startTextFields()
   } else {
     document.addEventListener(
       "DOMContentLoaded",
       function() {
-        M.startTextFields()
         Waves.displayEffect();
       },
       false
     );
   }
 };
-
+ 
 export const replaceHydrateFunction = () => {
   return (element, container, callback) => {
     // const el=element.children?;
@@ -83,21 +81,27 @@ class App extends Component {
       Chat: false
     };
   }
-  async componentDidMount() {
+  componentDidMount() {
+    console.log("didmount");
     if (!global.Chat) {
-      const Chat = await sleep(chatAsync);
-      global.Chat = Chat.default;
-      this.setState({ Chat: true })
+      const th = this;
+      (async function() {
+        const Chat = await sleep(chatAsync);
+        global.Chat = Chat.default;
+        th.setState({ Chat: true });
+      })();
     }
   }
 
   render() {
     const Chat = global.Chat;
-    console.log("Chatsleep", this.props.location);
+    console.log("Chatsleepdev", this.props.location);
     return (
       <div>
         <Layout>{this.props.children}</Layout>
-        {this.state.Chat && <Chat location={this.props.location} />}
+        <div>
+          {this.state.Chat ? <Chat location={this.props.location} /> : <div />}
+        </div>
       </div>
     );
   }
@@ -105,14 +109,14 @@ class App extends Component {
 
 export const wrapPageElement = async ({ element, props }) => {
   const { lng } = props.pageContext;
-  console.log("wrapPageElement", props);
+  console.log("wrapPageElement", lng);
   i18n.changeLanguage(lng);
   if (!lng)
     return (
-      <>
+      <div>
         <div />
         <App location={props.location}>{element}</App>
-      </>
+      </div>
     );
   let Red, Red2;
   if (global.menuList[lng].length == 0) {
@@ -135,12 +139,12 @@ export const wrapPageElement = async ({ element, props }) => {
 
   console.log("postNodeBefrunMainNavLayout");
   return (
-    <>
+    <div>
       <Red />
       <App lng={lng} location={props.location}>
         {element}
       </App>
-    </>
+    </div>
   );
 };
 

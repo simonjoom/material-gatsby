@@ -28,6 +28,21 @@ html {
 @include react-md-media;
 @include react-md-buttons;
 //@include react-md-everything;
+.transition-group {
+  flex: 1;
+  min-height: 600px;
+  position: relative;
+}
+
+.router {
+  width: 100%;
+   position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0; 
+}
+
 
 .cardchat.card-content {
   padding: 4px;
@@ -94,27 +109,6 @@ html {
   );
   background-size: 10px 10px;
   background-position: 0px -23px;
-}
-
-.headerchat {
-  text-align: center;
-  background-color: $md-primary-color;
-  margin: 0;
-}
-.page {
-  font-style: italic;
-  font-family: Times;
-}
-.paperOut {
-  margin: 10px;
-}
-.containerchat {
-  background: rgb(246, 246, 246);
-  width: 600px;
-  position: fixed;
-  z-index: 1111;
-  right: 0;
-  bottom: 0;
 }
 
 .md-btn:hover {
@@ -6185,7 +6179,7 @@ body.keyboard-focused .dropdown-content li:focus {
   -webkit-tap-highlight-color: transparent;
   line-height: 1.5;
   padding: 1rem;
-  background-color: #fff;
+ /* background-color: #fff;*/
   border-bottom: 1px solid #ddd;
 }
 
@@ -8871,7 +8865,7 @@ input[type="range"]::-ms-thumb {
 .carousel .carousel-item:not(.active) .materialboxed {
   pointer-events: none;
 }
-
+*/
 .tap-target-wrapper {
   width: 800px;
   height: 800px;
@@ -8997,7 +8991,7 @@ input[type="range"]::-ms-thumb {
 .tap-target-origin:not(.btn):not(.btn-large):not(.btn-small),
 .tap-target-origin:not(.btn):not(.btn-large):not(.btn-small):hover {
   background: none;
-}*/
+}
 
 @media only screen and (max-width: 600px) {
   .tap-target,

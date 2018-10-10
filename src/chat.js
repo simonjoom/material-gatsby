@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { graphql, compose } from "react-apollo";
-import { Router } from "@reach/router";
+import { Router, Location, Match } from "@reach/router";
 import gql from "graphql-tag";
 import { AUTH_TOKEN } from "./constants/constants";
 import { ApolloProvider } from "react-apollo";
@@ -14,6 +14,7 @@ import { split } from "apollo-link";
 import { WebSocketLink } from "apollo-link-ws";
 //import { createUploadLink } from "apollo-upload-client";
 import { getMainDefinition } from "apollo-utilities";
+//import CSSTransition from "react-transition-group/CSSTransition";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import Loading from "./chatcomponents/error/Loading";
 import NotAuth from "./chatcomponents/error/NotAuth";
@@ -42,6 +43,7 @@ import CreatePage from "./chatcomponents/post/CreatePage";
 import DetailPage from "./chatcomponents/post/DetailPage";
 import FeedPage from "./chatcomponents/post/FeedPage";*/
 import ChatsPage from "./chatcomponents/chat/ChatsPage";
+import Badge from './reactLIB/Badge'
 
 const wsLink = new WebSocketLink({
   uri: "ws://localhost:4000/subscriptions",
@@ -93,7 +95,12 @@ const USER_QUERY = gql`
     }
   }
 `;
+const Page = props => {
+  // const p = props.page ? 1 : 0;
 
+  // style={{ background: `hsl(${p * 75}, 60%, 60%)` }}
+  return <div className="page">{props.page}</div>;
+};
 class ChatLayoutJSX extends Component {
   state = {
     isSideBarOpen: true,
@@ -102,17 +109,56 @@ class ChatLayoutJSX extends Component {
   };
   componentDidMount() {
     console.log("mountLayout");
-    console.log("Materialize Ready?", global.M);
+    console.log("Materialize Ready?", M);
 
-    M.startTextFields();
+    var that = this;
+    this.manualclose = true;
     var elems = document.querySelectorAll(".collapsible");
-    this.instances = global.M.Collapsible.init(elems, {});
+    this.instances = M.Collapsible.init(elems, {
+      onOpenStart: () => {
+        that.instance.close();
+      },
+      onOpenEnd: () => {
+        var objDiv = $("#listChats");
+        console.log("objDiv", objDiv);
+        if (objDiv[0]) {
+          var t = objDiv[0].scrollHeight;
+          objDiv[0].scrollTop = t;
+        }
+      }
+    });
+
+    var el = document.querySelectorAll(".tap-target");
+    var instancestap = M.TapTarget.init(el, {
+      onClose: () => {
+        if (that.manualclose) {
+          var instance = that.instances[0];
+          setTimeout(function() {
+            instance.open();
+          }, 400);
+        }
+        // console.log("opentrae",instance);
+      }
+    });
+    this.instance = M.TapTarget.getInstance(instancestap[0].el);
+    M.startTextFields();
+
+    setTimeout(function() {
+      that.instance.open();
+      setTimeout(function() {
+        that.manualclose = false;
+        that.instance.close();
+      }, 5000);
+    }, 400);
   }
 
   componentWillUnmount() {
     console.log("unmountLayout");
     if (this.instance) {
       this.instance.destroy();
+    }
+    if (this.instancestap) {
+      this.instancestap.destroy();
     }
   }
 
@@ -146,22 +192,11 @@ resize = () => {
   isMobile = () => (window.innerWidth < 600 ? true : false);
 
   render() {
-    const child = this.props.children;
-    const Page = props => {
-      return (
-        <div
-          className="page"
-          default={!!props.default}
-          path={props.path}
-          style={{ background: `hsl(${props.page * 75}, 60%, 60%)` }}
-        >
-          {child}
-        </div>
-      );
-    };
     // const propstoshare = this.props.children ? this.props.children.props : {};
-    const { me: Me, validation } = this.props;
+    const { me: Me, validation, location } = this.props;
+    const authToken = localStorage.getItem(AUTH_TOKEN);
 
+    console.log("renderchat", authToken);
     return (
       <SideBarContext.Provider
         value={{
@@ -170,13 +205,11 @@ resize = () => {
         }}
       >
         <div className="containerchat">
-          {" "}
           <ul className="collapsible popout">
             <li>
               <div className="collapsible-body">
                 <div className="md-grid">
                   <SideBar />
-
                   <div className="md-cell md-cell--10">
                     {Me.loading && <Loading />}
                     {Me.error && <NotAuth />}
@@ -186,34 +219,66 @@ resize = () => {
                       validation && (
                         <EmailValidated emailvalidated={Me.me.emailvalidated} />
                       )}
-
                     <FadeTransitionRouter location={this.props.location}>
-                      <Page path="/car/create" />
-                      <Page path="/car/:id" />
-                      <Page path="/cars" />
-                      <Page path="/z/drafts" />
-                      <Page path="/z/users" />
-                      <Page path="/z/user/create" />
-                      <Page path="/z/user/:id" />
-                      <Page path="/z/create" />
-                      <Page path="/z/post/:id" />
-                      <Page path="/z/login" />
-                      <Page path="/z/signup" />
-                      <Page path="/z/forgetPassword" />
-                      <Page path="/z/resetPassword" />
-                      <Page path="/z/updatePassword" />
-                      <Page path="/z/validateEmail" />
-                      <Page path="/" default />
+                      <Page path="/z/users" page={<UsersPage />} />
+                      <Page path="/z/user/create" page={<UserPageCreate />} />
+                      <Page
+                        path="/z/user/:id"
+                        page={<UserPage path="/z/user/:id" />}
+                      />
+                      <Page path="/z/chats" page={<ChatsPage />} />
+                      <Page path="/z/login" page={<Login />} />
+                      <Page path="/z/signup" page={<Signup />} />
+                      <Page
+                        path="/z/forgetPassword"
+                        page={<ForgetPassword />}
+                      />
+                      <Page path="/z/resetPassword" page={<ResetPassword />} />
+                      <Page
+                        path="/z/updatePassword"
+                        page={<UpdatePassword />}
+                      />
+                      <Page
+                        key={"users9"}
+                        path="/z/validateEmail"
+                        page={<ValidateEmail />}
+                      />
+                      <Page
+                        key={"users10"}
+                        path="/"
+                        default
+                        page={
+                          !authToken ? (
+                            <Login path="/" />
+                          ) : (
+                            <ChatsPage path="/" />
+                          )
+                        }
+                      />
                     </FadeTransitionRouter>
                   </div>
                 </div>
               </div>
-              <div className="collapsible-header">
-                <i className="material-icons">whatshot</i>
-                OPENCHAT
+              <div
+                className="collapsible-header waves-effect waves-light btn"
+                id="chat"
+              >
+                <img
+                  src="/assets/starter-logo-1024.png"
+                  width="40px"
+                  height="40px"
+                />
+                <p style={{ marginLeft: 20 }}>Need Help?</p>
+                <Badge newIcon>4</Badge>
               </div>
             </li>
           </ul>
+          <div className="tap-target bgprimary" data-target="chat">
+            <div className="tap-target-content white">
+              <h5 className="h3">Hello </h5>
+              <h6 className="h5">Chat with the ski instructors now :)</h6>
+            </div>
+          </div>
         </div>
       </SideBarContext.Provider>
     );
@@ -222,22 +287,23 @@ resize = () => {
 
 const FadeTransitionRouter = ({ location, children }) => {
   // const childrenpass = React.cloneElement(children, propstoshare);
+  console.log("startFadeTransitionRouter");
   return (
     <TransitionGroup className="transition-group">
-      <CSSTransition
-        key={location.key}
-        classNames="fade"
-        timeout={{ enter: 500, exit: 300 }}
-      >
-        <Router location={location}>{children}</Router>
+      <CSSTransition classNames="fade" timeout={300}>
+        <Router location={location} className="router">
+          {children}
+        </Router>
       </CSSTransition>
     </TransitionGroup>
   );
 };
 
 ChatLayoutJSX.defaultProps = {
-  validation: false
+  validation: false,
+  me: {}
 };
+/*
 const ChatLayout = compose(
   graphql(USER_QUERY, {
     name: "me",
@@ -248,51 +314,13 @@ const ChatLayout = compose(
       };
     }
   })
-)(ChatLayoutJSX);
+)(ChatLayoutJSX);*/
 
 const Chat = ({ location }) => {
-  const authToken = localStorage.getItem(AUTH_TOKEN);
-  const Comp =
-    location.pathname == "/z/user/create"
-      ? UserPageCreate
-      : location.pathname == "/z/users"
-        ? UsersPage
-        : location.pathname.indexOf("/user/") == !-1 //:id
-          ? UserPage
-          : /* : location.pathname == "/z/car/create"
-            ? CreateCar
-            : location.pathname == "/z/cars"
-              ? CarsPage
-              : location.pathname.indexOf("/car/") == !-1 //:id
-                ? DetailCar
-                : location.pathname == "/z/create"
-                  ? CreatePage
-                  : location.pathname == "/z/drafts"
-                    ? DraftsPage
-                      : location.pathname == "/z/posts"
-                        ? FeedPage
-                        : location.pathname.indexOf("/post/") == !-1 //:id
-                          ? DetailPage*/
-            location.pathname == "/z/forgetPassword"
-            ? ForgetPassword
-            : location.pathname == "/z/resetPassword"
-              ? ResetPassword
-              : location.pathname == "/z/updatePassword"
-                ? UpdatePassword
-                : location.pathname == "/z/validateEmail"
-                  ? ValidateEmail
-                  : location.pathname == "/z/signup"
-                    ? Signup
-                    : location.pathname == "/z/login"
-                      ? Login
-                      : !authToken
-                        ? Login
-                        : ChatsPage;
+  console.log("ChatProvider");
   return (
     <ApolloProvider client={client}>
-      <ChatLayout location={location}>
-        <Comp />
-      </ChatLayout>
+      {!!client && <ChatLayoutJSX location={location} />}
     </ApolloProvider>
   );
 };
