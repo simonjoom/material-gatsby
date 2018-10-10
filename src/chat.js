@@ -26,9 +26,10 @@ import { SideBarContext } from "./chatcomponents/SideBarContext";
 import UsersPage from "./chatcomponents/user/UsersPage";
 import UserPageCreate from "./chatcomponents/user/UserPageCreate";
 import UserPage from "./chatcomponents/user/UserPage";
+/*
 import CreateCar from "./chatcomponents/car/CreateCar";
 import DetailCar from "./chatcomponents/car/DetailCar";
-import CarsPage from "./chatcomponents/car/CarsPage";
+import CarsPage from "./chatcomponents/car/CarsPage";*/
 //import Api from "./chatcomponents/api/Api";
 import ForgetPassword from "./chatcomponents/user/auth/ForgetPassword";
 import Login from "./chatcomponents/user/auth/Login";

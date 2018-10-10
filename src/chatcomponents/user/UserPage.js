@@ -7,10 +7,8 @@ import NotAuth from "../error/NotAuth";
 import { getIdfromRegexPath } from "../../utils";
 import { AUTH_TOKEN } from "../../constants/constants";
 import Card from "../../reactLIB/Card";
-import Button from "../../reactLIB/Button";
-//import Icon from "@material-ui/core/Icon";
-import NotFound from "../error/NotFound"; 
-//import UploadFile from "../nav/UploadFile";
+import Button from "../../reactLIB/Button"; 
+import NotFound from "../error/NotFound";  
 import { withApollo } from "react-apollo";
 import Loading from "../error/Loading";
 import UserPageForm from "./UserPageForm";
@@ -98,14 +96,14 @@ class UserPage extends React.Component {
             {this.state.isEditMode && (
               <div>
                 <a
-                  className="f6 dim br1 ba ph3 pv2 mb2 dib black pointer"
+                  className="black pointer"
                   onClick={() => this.updateUser(this.props.userQuery.user.id)}
                 >
                   Save
                 </a>{" "}
                 {!this.isUserMyself() && (
                   <a
-                    className="f6 dim br1 ba ph3 pv2 mb2 dib black pointer"
+                    className="black pointer"
                     onClick={() => this.deleteUser(this.state.user.id)}
                   >
                     Delete

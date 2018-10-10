@@ -46,7 +46,7 @@ class UserPageCreate extends React.Component {
 
               <div>
                 <a
-                  className='f6 dim br1 ba ph3 pv2 mb2 dib black pointer'
+                  className='black pointer'
                   onClick={() => this.createUser()}
                 >
                   Save

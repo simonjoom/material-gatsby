@@ -1,15 +1,9 @@
 import React from "react";
-import gql from "graphql-tag";
-// import Paper from '@material-ui/core/Paper'
+import gql from "graphql-tag"; 
 import Button from "../../reactLIB/Button";
 import Input from "../../reactLIB/Input";
 import { graphql, compose } from "react-apollo";
 import { withApollo } from "react-apollo";
-// import FormControl from '@material-ui/core/FormControl'
-// import InputLabel from '@material-ui/core/InputLabel'
-//import Input from '@material-ui/core/Input'
-// import InputAdornment from '@material-ui/core/InputAdornment'
-// import Icon from '@material-ui/core/Icon'
 
 class CreateChat extends React.Component {
   state = {

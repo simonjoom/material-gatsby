@@ -57,10 +57,12 @@ export const onClientEntry = async () => {
 
   if (/comp|inter|loaded/.test(document.readyState)) {
     Waves.displayEffect();
+    M.startTextFields()
   } else {
     document.addEventListener(
       "DOMContentLoaded",
       function() {
+        M.startTextFields()
         Waves.displayEffect();
       },
       false

@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-//mport ImageTemplate from '../nav/ImageTemplate'
+import React, { Component } from "react"; 
 import Card from "../../reactLIB/Card";
 import Button from "../../reactLIB/Button";
 import { navigate } from "gatsby";
