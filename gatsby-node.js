@@ -558,7 +558,7 @@ exports.createPages = ({ graphql, actions }) => {
             console.log("no route pages", node.fields.slug);
             return;
           }
-
+//matchPath: node.fields.slug == "/" ? `/z/*` : undefined,
           createPage({
             path: node.fields.slug,
             component: pagePage,
@@ -642,10 +642,11 @@ exports.onCreatePage = async ({ page, actions }) => {
     console.warn("no route", page);
     return;
   }
+
   console.log("remakefor", page.path);
   const { locales, defaultLocale } = config;
   let oldPage = Object.assign({}, page);
-  const newPage = {};
+  const newPage = page.path == "/" ? { matchPath: `/z/*` } : {};
   await asyncForEach(locales, async locale => {
     if (!route) {
       if (oldPage) deletePage(oldPage);

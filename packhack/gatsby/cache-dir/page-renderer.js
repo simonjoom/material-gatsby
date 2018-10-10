@@ -46,8 +46,7 @@ componentDidMount(){
 } 
 
 
-componentDidUpdate(nextprops, prevState) { 
-if(!!prevState.wrappedPage)
+componentDidUpdate(nextprops, prevState) {  
 if(nextprops.location!==this.props.location){
 	const props = {
       ...this.props,

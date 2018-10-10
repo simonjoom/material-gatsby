@@ -34,6 +34,7 @@ type RequiredProps<ItemT> = {
    *         <View style={[style.separator, highlighted && {marginLeft: 0}]} />
    *       )}
    *       data={[{title: 'Title Text', key: 'item1'}]}
+title: 'Title Text', key: 'item1'}]}
    *       renderItem={({item, separators}) => (
    *         <TouchableHighlight
    *           onPress={() => this._onPress(item)}

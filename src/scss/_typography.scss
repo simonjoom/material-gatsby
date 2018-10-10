@@ -173,7 +173,7 @@ $md-font-icon-size: 24px !default;
 /// The dense font icon size
 /// @type Number
 /// @group icons
-$md-font-icon-dense-size: 20px !default;
+$md-font-icon-dense-size: 30px !default;
 
 /// The line height to use on almost all elements.
 /// @type Number
@@ -439,7 +439,7 @@ $md-line-height: 20 / $md-font-size-base !default;
 ///     text helper class names should be included.
 @mixin react-md-typography(
   $light-theme: $md-light-theme,
-  $include-media: $md-media-included,
+ // $include-media: $md-media-included,
   $extend-html-tags: $md-typography-extended,
   $include-text-container: $md-typography-include-text-container,
   $include-utilities: $md-typography-include-utilities
@@ -449,10 +449,10 @@ $md-line-height: 20 / $md-font-size-base !default;
   $md-hint-text-color: get-color('hint', $light-theme);
   $md-disabled-text-color: get-color('disabled', $light-theme);
 
-  @if $include-media {
-    @include react-md-typography-media($extend-html-tags);
-  }
-
+//  @if $include-media {
+//    @include react-md-typography-media($extend-html-tags);
+//  }
+/*
   *,
   *::before,
   *::after {
@@ -466,138 +466,26 @@ $md-line-height: 20 / $md-font-size-base !default;
     background: if($light-theme, $md-light-theme-background-color, $md-dark-theme-background-color);
     font-size: #{$md-font-size-base}px;
     min-width: $md-html-min-width;
-  }
+  }*/
 
   body {
-    font-family: $md-font-family;
+ //   font-family: $md-font-family;
+ margin:0;
+    font-family: 'Open Sans', sans-serif;
+    background: rgba(0, 0, 0, 0.05);
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     font-weight: $md-font-regular;
     line-height: $md-line-height;
     text-rendering: optimizeLegibility;
   }
-
-  %md-headline,
-  %md-title,
-  %md-subheading-2,
-  %md-subheading-1,
-  %md-body-2,
-  %md-body-1 {
-    color: $md-text-color;
-  }
-
-  %md-display-4,
-  %md-display-3,
-  %md-display-2,
-  %md-display-1,
-  %md-caption {
-    color: $md-secondary-text-color;
-  }
-
-  @if $extend-html-tags {
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    p,
-    button,
-    input,
-    textarea,
-    html {
-      font-family: $md-font-family;
-    }
-
-    h1 {
-      @extend %md-display-1;
-    }
-
-    h2 {
-      @extend %md-headline;
-    }
-
-    h3 {
-      @extend %md-title;
-    }
-
-    h4 {
-      @extend %md-subheading-2;
-    }
-
-    h5 {
-      @extend %md-subheading-1;
-    }
-
-    h6 {
-      @extend %md-body-2;
-    }
-
-    p {
-      @extend %md-body-1;
-    }
-
-    caption {
-      @extend %md-caption;
-    }
-  }
-
-  .md-display-1 {
-    @extend %md-display-1;
-  }
-
-  .md-display-2 {
-    @extend %md-display-2;
-  }
-
-  .md-display-3 {
-    @extend %md-display-3;
-  }
-
-  .md-display-4 {
-    @extend %md-display-4;
-  }
-
-  .md-headline {
-    @extend %md-headline;
-  }
-
-  .md-title {
-    @extend %md-title;
-  }
-
-  .md-subheading-1 {
-    @extend %md-subheading-1;
-  }
-
-  .md-subheading-2 {
-    @extend %md-subheading-2;
-  }
-
-  .md-body-1 {
-    @extend %md-body-1;
-  }
-
-  .md-body-2 {
-    @extend %md-body-2;
-  }
-
-  .md-caption {
-    @extend %md-caption;
-  }
-
-  @if $include-utilities {
-    @include react-md-typography-utilities;
-  }
-
- /* @if $include-text-container {
-    @include react-md-typography-text-container;
-  }*/
+ 
 }
 
 /// Creates a utility class name for containing long amounts of text. This is set up
 /// to center the text in the page and keep the line width to the `$md-typography-max-line-length`.
-/*@mixin react-md-typography-text-container {
+/*
+@mixin react-md-typography-text-container {
   .md-text-container {
   //  @extend %md-block-centered;
 
@@ -609,387 +497,9 @@ $md-line-height: 20 / $md-font-size-base !default;
       margin-right: auto;
     }
   }
-}*/
+} 
+*/
 
-/// Creates utility class names for common text positioning and transforms.
-@mixin react-md-typography-utilities {
-  .md-text-left {
-    @extend %md-text-left;
-  }
-
-  .md-text-center {
-    @extend %md-text-center;
-  }
-
-  .md-text-right {
-    @extend %md-text-right;
-  }
-
-  .md-text-justify {
-    @extend %md-text-justify;
-  }
-
-  .md-text-capitalize {
-    @extend %md-text-capitalize;
-  }
-
-  .md-text-lowercalse {
-    @extend %md-text-lowercalse;
-  }
-
-  .md-text-uppercase {
-    @extend %md-text-uppercase;
-  }
-
-  .md-text-nowrap {
-    @extend %md-text-nowrap;
-  }
-
-  .md-text-no-select {
-    @extend %md-text-no-select;
-  }
-
-  .md-font-light {
-    @extend %md-font-light;
-  }
-
-  .md-font-regular {
-    @extend %md-font-regular;
-  }
-
-  .md-font-medium {
-    @extend %md-font-medium;
-  }
-
-  .md-font-semibold {
-    @extend %md-font-semibold;
-  }
-
-  .md-font-bold {
-    @extend %md-font-bold;
-  }
-}
-
-/// Creates the CSS for typography on mobile devices. If the `$extend-html-tags` param is true,
-/// the `h6`, `h5`, `h4`, and `p` tags will also be modified. This should most likely be used within
-/// a media query.
-///
-/// @example scss - Example Usage SCSS
-///   @media #{$md-mobile-media} {
-///     @include react-md-typography-mobile;
-///   }
-///
-/// @param {Boolean} extend-html-tags [$md-typography-extended] - Boolean if the base html tags should
-///     be updated.
-/// @group typography, media-queries
-@mixin react-md-typography-mobile($extend-html-tags: $md-typography-extended) {
-  .md-subheading-2,
-  .md-subheading-1 {
-    font-size: $md-subheading-mobile-font-size;
-  }
-
-  .md-body-2,
-  .md-body-1 {
-    font-size: $md-body-mobile-font-size;
-  }
-
-  @if $extend-html-tags {
-    h5,
-    h4 {
-      font-size: $md-subheading-mobile-font-size;
-    }
-
-    h6,
-    p {
-      font-size: $md-body-mobile-font-size;
-    }
-  }
-}
-
-/// Creates the CSS for typography on desktop screens. If the `$extend-html-tags` param is true,
-/// the `h6`, `h5`, `h4`, and `p` tags will also be modified. This should most likely be used within
-/// a media query.
-///
-/// @example scss - Example Usage SCSS
-///   @media #{$md-desktop-media} {
-///     @include react-md-typography-desktop;
-///   }
-///
-/// @param {Boolean} extend-html-tags [$md-typography-extended] - Boolean if the base html tags should
-///     be updated.
-/// @group typography, media-queries
-@mixin react-md-typography-desktop($extend-html-tags: $md-typography-extended) {
-  .md-subheading-2,
-  .md-subheading-1 {
-    font-size: $md-subheading-desktop-font-size;
-  }
-
-  .md-body-2,
-  .md-body-1 {
-    font-size: $md-body-desktop-font-size;
-  }
-
-  @if $extend-html-tags {
-    h5,
-    h4 {
-      font-size: $md-subheading-desktop-font-size;
-    }
-
-    h6,
-    p {
-      font-size: $md-body-desktop-font-size;
-    }
-  }
-}
-
-/// Includes the mobile and desktop media queries for typography. If the `$extend-html-tags` param is true,
-/// the `h6`, `h5`, `h4`, and `p` tags will also be modified.
-///
-/// @example scss - Example Usage SCSS
-///   @include react-md-typography-media;
-///
-/// @param {Boolean} extend-html-tags [$md-typography-extended] - Boolean if the base html tags should
-///     be updated.
-/// @group typography, media-queries
-@mixin react-md-typography-media($extend-html-tags: $md-typography-extended) {
-  @media #{$md-mobile-media} {
-    @include react-md-typography-mobile($extend-html-tags);
-  }
-
-  @media #{$md-desktop-media} {
-    @include react-md-typography-desktop($extend-html-tags);
-  }
-}
-
-/// Updates the theme of the typography ONLY if the `$light-theme` does not equal `$md-light-theme`.
-/// You will need to apply this `$html-class-name` to the `html` tag to get the effects. This is because
-/// the base `html` tag had the background color set which everything inherits.
-///
-/// @example scss - Example Usage SCSS
-///   @include react-md-theme-typography(dark-theme, false);
-///
-/// @example scss - Example Usage CSS Output
-///   .dark-theme {
-///     background: #303030;
-///   }
-///
-///   .dark-theme .md-headline,
-///   .dark-theme .md-title,
-///   .dark-theme .md-subheading-2,
-///   .dark-theme .md-subheading-1,
-///   .dark-theme .md-body-2,
-///   .dark-theme .md-body-1,
-///   .dark-theme h4,
-///   .dark-theme h3,
-///   .dark-theme h2,
-///   .dark-theme h1,
-///   .dark-theme p {
-///     color: #fff;
-///   }
-///
-///   .dark-theme .md-display-1,
-///   .dark-theme .md-caption,
-///   .dark-theme h1,
-///   .dark-theme caption {
-///     color: rgba(#fff, .7);
-///   }
-///
-/// @param {String} html-class-name - The class name to use for the html tag.
-/// @param {Boolean} light-theme [$md-light-theme] - Boolean if using the light theme.
-/// @param {Boolean} extend-html-tags [$md-typography-extended] - Boolean if the base html tags should be
-///     styled as well.
-/// @group typography, themes
-@mixin react-md-theme-typography($html-class-name, $light-theme: $md-light-theme, $extend-html-tags: $md-typography-extended) {
-  @if $light-theme != $md-light-theme {
-    .#{$html-class-name} {
-      background: get-color('background', $light-theme);
-
-      .md-headline,
-      .md-title,
-      .md-subheading-2,
-      .md-subheading-1,
-      .md-body-2,
-      .md-body-1 {
-        color: get-color('text', $light-theme);
-      }
-
-      .md-display-4,
-      .md-display-3,
-      .md-display-2,
-      .md-display-1,
-      .md-caption {
-        color: get-color('secondary', $light-theme);
-      }
-
-      @if $extend-html-tags {
-        h6,
-        h5,
-        h4,
-        h3,
-        h2,
-        h1,
-        p {
-          color: get-color('text', $light-theme);
-        }
-
-        h1,
-        caption {
-          color: get-color('secondary', $light-theme);
-        }
-
-      }
-
-    }
-  }
-}
-
-/// Converts a font weight into the google font suffix.
-///
-/// @param {Number} $font-weight - The font weight to convert
-/// @return {String} the font suffix
-@function get-font-suffix($font-weight) {
-  $font-weights: (
-    $md-font-light: '-Light',
-    $md-font-regular: '-Regular',
-    $md-font-medium: '-Medium',
-    $md-font-semibold: '-SemiBold',
-    $md-font-bold: '-Bold',
-  );
-
-  $suffix: map-get($font-weights, $font-weight);
-  @if not $suffix {
-    @warn "The given font weight '#{$font-weight}' is not one of the four material design weights.";
-  }
-
-  @return $suffix;
-}
-
-/// Creates a font face for a locally hosted google font
-///
-/// @example scss - Basic Usage Sass
-///   @include host-google-font(Roboto, 400);
-///   @include host-google-font(Roboto, 500, my-special-fonts);
-///
-/// @example scss - Basic Usage CSS Output
-///   @font-face {
-///     font-family: 'Roboto';
-///     font-style: normal;
-///     font-weight: 400;
-///     src: local('Roboto'),
-///          local('Roboto-Regular'),
-///          url(/fonts/roboto/Roboto-Regular.ttf) format('truetype');
-///   }
-///
-///   @font-face {
-///     font-family: 'Roboto';
-///     font-style: normal;
-///     font-weight: 500;
-///     src: local('Roboto'),
-///          local('Roboto-Medium'),
-///          url(my-sepcial-fonts/Roboto-Medium.ttf) format('truetype');
-///   }
-///
-/// @param {String} $font-name [Roboto] - The font name to create a font face for
-/// @param {Number} $font-weight [400] - The font weight of the google font
-/// @param {String} $fonts-url - The url to your fonts.
-/// @require get-font-suffix - The function to convert a font weight to a font suffix.
-@mixin host-google-font($font-name: Roboto, $font-weight: 400, $fonts-url: null) {
-  $full-font-name: str-replace($font-name, ' ') + get-font-suffix($font-weight);
-
-  $fonts-url: if($fonts-url == null, '/fonts/' + to-lower-case(str-replace($font-name, ' ', '-')), $fonts-url);
-  $fonts-url: if(char-at($fonts-url) != '/', $fonts-url + '/', $fonts-url);
-
-  @font-face {
-    font-family: quote($font-name);
-    font-style: normal;
-    font-weight: $font-weight;
-
-    src: local(#{quote($font-name)}), local(#{quote($full-font-name)}), url($fonts-url + $full-font-name + '.ttf') format('truetype');
-  }
-}
-
-/// Hosts the material icon font library locally by declaring the font face
-/// and the .material-icons CSS class.
-///
-/// @example scss - Basic Usage Sass
-///   @include host-material-icons('/fonts/material-icons');
-///
-/// @example scss - Basic Usage CSS Output
-///   @font-face {
-///     font-family: 'Material Icons';
-///     font-style: normal;
-///     font-weight: 400;
-///     src: url(/fonts/material-icons/MaterialIcons-Regular.eot');
-///     src: local('Material Icons'),
-///          local('MaterialIcons-Regular'),
-///          url(/fonts/material-icons/MaterialIcons-Regular.woff2') format('woff2'),
-///          url(/fonts/material-icons/MaterialIcons-Regular.woff') format('woff'),
-///          url(/fonts/material-icons/MaterialIcons-Regular.ttf') format('truetype');
-///   }
-///
-///   .material-icons {
-///     direction: ltr;
-///     display: inline-block;
-///     font-family: 'Material Icons';
-///     // Support for IE.
-///     font-feature-settings: 'liga';
-///     font-size: $md-font-icon-size;
-///     // Support for Firefox.
-///     -moz-osx-font-smoothing: grayscale;
-///     // Support for all WebKit browsers.
-///     -webkit-font-smoothing: antialiased;
-///     font-style: normal;
-///     font-weight: normal;
-///     height: 1em;
-///     letter-spacing: normal;
-///     line-height: 1;
-///     // Support for Safari and Chrome.
-///     text-rendering: optimizeLegibility;
-///     text-transform: none;
-///     white-space: nowrap;
-///     width: 1em;
-///     word-wrap: normal;
-/// 	}
-///
-/// @param {String} $font-url ['/fonts/material-icons'] - The path to the material icons fonts
-@mixin host-material-icons($font-url: '/fonts/material-icons') {
-  $icon-link: $font-url + '/MaterialIcons-Regular';
-  @font-face {
-    font-family: 'Material Icons';
-    font-style: normal;
-    font-weight: 400;
-    src: url($icon-link + '.eot');
-    // scss-lint:disable SpaceAfterComma
-    src: local('Material Icons'),
-         local('MaterialIcons-Regular'),
-         url($icon-link + '.woff2') format('woff2'),
-         url($icon-link + '.woff') format('woff'),
-         url($icon-link + '.ttf') format('truetype');
-    // scss-lint:enable SpaceAfterComma
-  }
-
-  .material-icons {
-    direction: ltr;
-    display: inline-block;
-    font-family: 'Material Icons';
-    // Support for IE.
-    font-feature-settings: 'liga';
-    font-size: $md-font-icon-size;
-    // Support for Firefox.
-    -moz-osx-font-smoothing: grayscale;
-    // Support for all WebKit browsers.
-    -webkit-font-smoothing: antialiased;
-    font-style: normal;
-    font-weight: normal;
-    letter-spacing: normal;
-    line-height: 1;
-    // Support for Safari and Chrome.
-    text-rendering: optimizeLegibility;
-    text-transform: none;
-    white-space: nowrap;
-    word-wrap: normal;
-	}
-}
 
 /// Replace `$search` with `$replace` in `$string`
 /// @author Hugo Giraudel

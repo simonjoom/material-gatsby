@@ -1,7 +1,8 @@
 import React from "react";
 import { graphql, Link } from "gatsby";
 import { kebabCase } from "lodash";
-import moment from "moment";
+import parse from "date-fns/parse";
+import format from "date-fns/format"
 import Avatar from "../components/Avatars";
 import withTheme from "../withContext";
 import Card from "../reactLIB/Card";
@@ -12,9 +13,7 @@ import SocialLinks from "../components/SocialLinks";
 import Layout from "../components/Layout";
 import PostSuggestions from "../components/PostSuggestions";
 import SEO from "../components/SEO";
-import config from "../data/SiteConfig";
-import "./b16-tomorrow-dark.css";
-import "./post.scss";
+import config from "../data/SiteConfig"; 
 
 class HotelTemplate extends React.Component {
   constructor(props) {
@@ -36,7 +35,7 @@ class HotelTemplate extends React.Component {
           SkiScool <i className="fa fa-copyright" />
         </span>
         <div>
-          {Array.from(new Array(star),a => (
+          {Array.from(new Array(star), a => (
             <i className="yellow-text fa fa-star" />
           ))}
         </div>
@@ -48,9 +47,7 @@ class HotelTemplate extends React.Component {
     const { mobile } = this.state;
     const { translate: t } = this.props;
     const { slug, lng, route, slugbase, files } = this.props.pageContext;
-    global.filesQuery = files;
-    const expanded = !mobile;
-    // const postOverlapClass = mobile ? "post-overlap-mobile" : "post-overla";
+    global.filesQuery = files; 
     const postNode = this.props.data.markdownRemark;
     const post = postNode.frontmatter;
     if (!post.id) {
@@ -59,6 +56,7 @@ class HotelTemplate extends React.Component {
     if (!post.category_id) {
       post.category_id = config.postDefaultCategoryID;
     }
+    const date=format(parse(postNode.fields.date), config.dateFormat);
     const directory = postNode.fields.type;
     const carouselList = post.cover ? [post.cover] : [];
     return (
@@ -69,7 +67,7 @@ class HotelTemplate extends React.Component {
         page={slugbase}
         location={this.props.location}
       >
-        <div className="post-page md-grid">
+        <div className="post-page md-grid md-grid--stacked">
           <SEO
             postPath={slug}
             route={route}
@@ -77,56 +75,54 @@ class HotelTemplate extends React.Component {
             postSEO
             translate={t("Index")}
           />
-          <div className="md-grid post-page-contents mobile-fix">
-            <Card
-              className="md-cell md-cell--12-phone md-cell--12 post md-cell--12-tablet"
-              waves="light"
-              contentImage={
-                <div>
-                  {postNode.fields.star && (
-                    <this.Mynode star={postNode.fields.star} />
-                  )}
-                  {carouselList.length > 0 && (
-                    <FrontCarousel
-                      data={carouselList}
-                      directory={directory}
-                      height="0"
-                      maxwidth="600px"
-                    />
-                  )}
-                </div>
-              }
-              titlereveal={post.title}
-              imgtitle={
-                <div>
-                  <Avatar icon={<Icon className="calendar" />} />
-                  Published on{" "}
-                  {`${moment(postNode.fields.date).format(config.dateFormat)}`}
-                </div>
-              }
-              title={
-                <Link
-                  className="category-link"
-                  to={`/categories_${lng}/${kebabCase(post.category)}`}
-                >
-                  <Avatar icon={<Icon className="folder-open" />} />
-                  {post.title} In category {post.category}
-                </Link>
-              }
-            >
-              <div className="post-meta">
-                <PostTags tags={post.tags} />
-                <SocialLinks
-                  postPath={slug}
-                  postNode={postNode}
-                  mobile={this.state.mobile}
-                />
+          <Card
+            className="md-cell md-cell--12-phone md-cell--10 md-cell--8-tablet mobile-fix"
+            waves="light"
+            contentImage={
+              <div>
+                {postNode.fields.star && (
+                  <this.Mynode star={postNode.fields.star} />
+                )}
+                {carouselList.length > 0 && (
+                  <FrontCarousel
+                    data={carouselList}
+                    directory={directory}
+                    height="0"
+                    maxwidth="600px"
+                  />
+                )}
               </div>
+            }
+            titlereveal={post.title}
+            imgtitle={
+              <div>
+                <Avatar icon={<Icon className="calendar" />} />
+                Published on{" "}
+                {date}
+              </div>
+            }
+            title={
+              <Link
+                className="category-link"
+                to={`/categories_${lng}/${kebabCase(post.category)}`}
+              >
+                <Avatar icon={<Icon className="folder-open" />} />
+                {post.title} In category {post.category}
+              </Link>
+            }
+          >
+            <div className="post-meta">
+              <PostTags tags={post.tags} />
+              <SocialLinks
+                postPath={slug}
+                postNode={postNode}
+                mobile={this.state.mobile}
+              />
+            </div>
 
-              <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
-              {post.excerpt}
-            </Card>
-          </div>
+            <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
+            {post.excerpt}
+          </Card>
 
           <PostSuggestions postNode={postNode} />
         </div>

@@ -1,7 +1,7 @@
 ---
 title: "info ski Resort"
-cover: "starter-logo-1024.png"
-category: "info resort"
+avatar: "les-menuires.png"
+category: "ski-resort"
 slug: "/info/"
 tags:
     - ski resort

@@ -8,14 +8,14 @@ import SEO from "../components/SEO";
 class Instructor extends React.Component {
   render() {
     const { translate: t, data } = this.props;
-    const { lng, route, files, slugbase } = this.props.pageContext;
+    const { lng, route, files, slugbase, slug } = this.props.pageContext;
     global.filesQuery = files;
     const postEdges = data.allMarkdownRemark.edges.filter(
       el => el.node.frontmatter.category !== "instructor"
     );
     const postNode = data.allMarkdownRemark.edges.find(
       el => el.node.frontmatter.category === "instructor"
-    ).node; 
+    ).node;
     const post = postNode.frontmatter;
     const carouselList = post.cover ? post.cover.split(",") : [];
 
@@ -29,7 +29,10 @@ class Instructor extends React.Component {
       >
         <div className="index-container">
           <SEO
-            postEdges={postEdges}
+            postNode={postNode}
+            postPath={slug}
+            lng={lng}
+            title={t("Instructor")("Instructors")}
             route={route}
             translate={t("Instructor")}
           />

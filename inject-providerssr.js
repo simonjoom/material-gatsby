@@ -3,6 +3,7 @@ import i18n from "i18next";
 import { renderToString, renderToStaticMarkup } from "react-dom/server";
 import AppRegistry from "./src/react-native-web/src/exports/AppRegistry";
 import { ThemeContext } from "./src/withContext";
+
 import trfr from "./src/layouts/translate_fr";
 import tren from "./src/layouts/translate_en";
 import trpt from "./src/layouts/translate_pt";
@@ -13,7 +14,6 @@ import trch from "./src/layouts/translate_ch";
 
 global.M = undefined;
 const getLanguage = () => i18n.language;
- 
 
 global.menuList = { en: [], ru: [], pt: [], uk: [], ch: [], fr: [] };
 global.filesQuery = [];
@@ -73,7 +73,7 @@ export const replaceRenderer = ({
   replaceBodyHTMLString,
   setHeadComponents
 }) => {
-  console.log("replaceRenderer")
+  console.log("replaceRenderer");
   class App extends React.Component {
     render() {
       return <div id="App">{bodyComponent}</div>;
@@ -82,7 +82,7 @@ export const replaceRenderer = ({
   AppRegistry.registerComponent("App", () => App);
   const { element, getStyleElement } = AppRegistry.getApplication("App");
   const html = renderToString(element);
-  const styleElement = getStyleElement(); 
+  const styleElement = getStyleElement();
   replaceBodyHTMLString(html);
   setHeadComponents([styleElement, injectState()]);
 };
@@ -92,10 +92,10 @@ export const wrapPageElement = ({ element, props }) => {
   let Red, Red2;
   if (!lng)
     return (
-      <div>
+      <>
         <div />
         <Layout>{element}</Layout>
-      </div>
+      </>
     );
   // console.log("global.menuList", lng);
   // console.log("global.menuList", global.menuList[lng]);
@@ -121,14 +121,14 @@ export const wrapPageElement = ({ element, props }) => {
   } else {
     Red2 = "div";
   }*/
-  // console.log("Red2", Red2, lng); 
+  // console.log("Red2", Red2, lng);
   //console.log("runMainNavLayout");
 
   return (
-    <div>
+    <>
       <Red />
       <Layout lng={lng}>{element}</Layout>
-    </div>
+    </>
   );
 };
 

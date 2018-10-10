@@ -1,0 +1,36 @@
+@import "../layouts/theme.scss";
+$phone-status-bar-height: 12px;
+
+/*
+@media (min-width: 840px) {
+  .md-grid { 
+    margin: 37px auto ;
+  }
+}
+*/
+img {    
+  max-width: 100%;
+  vertical-align: middle;
+}
+.flex-end {
+  flex: 1;
+  align-self: flex-end;
+}
+.rowlink {
+  flex-direction: row;
+  padding: 10px;
+}
+.Menulink {
+  color: $md-primary-color !important;
+  font-size: 1.125em;
+  padding: 6px;
+} 
+.link1 {
+  background-color: $md-primary-color;
+  color: $md-secondary-color !important;
+}
+.link2 {
+  background-color: $md-secondary-color;
+  color: $md-primary-color !important;
+} 
+ 

@@ -285,17 +285,17 @@ console.log("suppliedStage",stage)
     function getDevtool() {
       switch (stage) {
         case `develop`:
-          return `eval`;
+          return "eval";
         // use a normal `source-map` for the html phases since
         // it gives better line and column numbers
 
         case `develop-html`:
         case `build-html`:
         case `build-javascript`: 
-          return `source-map`;
+          return "none";
 
         default: 
-          return false;
+          return "none";
       }
     }
 
@@ -489,8 +489,7 @@ if((process.env.NODE_ENV)=="production")
       res.alias["inferno-vnode-flags"]="inferno-vnode-flags/dist/index.dev.esm.js";
        res.alias['react-dom/server']='inferno-server/dist/index.dev.esm.js';
        res.alias['react']='inferno-compat/dist/index.dev.esm.js';
-       res.alias['react-dom']='inferno-compat/dist/index.dev.esm.js';
-     res.alias["react-hot-loader"]= path.dirname(require.resolve(`react-hot-loader/package.json`));
+       res.alias['react-dom']='inferno-compat/dist/index.dev.esm.js'; 
       }else{
      res.alias["react-hot-loader"]= path.dirname(require.resolve(`react-hot-loader/package.json`));
       }
@@ -548,6 +547,7 @@ if((process.env.NODE_ENV)=="production")
         splitChunks: {
           name: false
         }, 
+        //concatenateModules: true ,
     //    nodeEnv:"development",
      minimizer: [ !program.noUglify && plugins.minifyJs(), plugins.minifyCss()].filter(Boolean)
       };

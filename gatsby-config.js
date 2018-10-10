@@ -52,7 +52,12 @@ module.exports = {
     },
     {
       resolve: "gatsby-transformer-remark",
-      options: {
+      options: { 
+        gfm: true,
+        commonmark: true,
+        footnotes: true,
+        pedantic: true,
+      	blocks: ["imgtest"],
         plugins: [
           {
             resolve: "gatsby-remark-relative-images"

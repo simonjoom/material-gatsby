@@ -22,6 +22,7 @@ class Button extends Component<*> {
     onPress: func.isRequired,
     testID: string,
     title: string.isRequired
+title: string.isRequired
   };
 
   render() {

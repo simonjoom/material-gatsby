@@ -2,6 +2,14 @@ import React, { Component } from "react";
 import i18n from "i18next";
 import AppRegistry from "./src/react-native-web/src/exports/AppRegistry";
 import { ThemeContext } from "./src/withContext";
+function timeout(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+async function sleep(fn, ...args) {
+  await timeout(3000);
+  return fn(...args);
+}
+
 global.M = undefined;
 const getLanguage = () =>
   i18n.language ||
@@ -10,6 +18,7 @@ const getLanguage = () =>
 const filetranslate = lng => import(`./src/layouts/translate_${lng}`);
 const MAsync = () =>
   import(/* webpackChunkName: "materialize" */ "./src/components/materialize");
+const chatAsync = () => import(/* webpackChunkName: "chat" */ "./src/chat");
 
 global.locale = { en: [], ru: [], pt: [], uk: [], ch: [], fr: [] };
 global.menuList = { en: [], ru: [], pt: [], uk: [], ch: [], fr: [] };
@@ -30,26 +39,28 @@ try {
 }
 export const onClientEntry = async () => {
   if (!global.M) {
-      const Zep = await MAsync();
-      global.M = Zep.default;
+    const Zep = await MAsync();
+    global.M = Zep.default;
   }
 
-   if (/comp|inter|loaded/.test(document.readyState)) {
+  if (/comp|inter|loaded/.test(document.readyState)) {
     Waves.displayEffect();
+    M.startTextFields()
   } else {
     document.addEventListener(
       "DOMContentLoaded",
       function() {
+        M.startTextFields()
         Waves.displayEffect();
       },
       false
     );
-  } 
+  }
 };
 
 export const replaceHydrateFunction = () => {
   return (element, container, callback) => {
-   // const el=element.children?; 
+    // const el=element.children?;
     class App extends Component {
       render() {
         return <div id="App">{element}</div>;
@@ -64,19 +75,46 @@ export const replaceHydrateFunction = () => {
     });
   };
 };
+global.Chat = undefined;
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      Chat: false
+    };
+  }
+  async componentDidMount() {
+    if (!global.Chat) {
+      const Chat = await sleep(chatAsync);
+      global.Chat = Chat.default;
+      this.setState({ Chat: true })
+    }
+  }
 
-export const wrapPageElement =  async ({ element, props }) => {
-  
-  const { lng } = props.pageContext;
-  i18n.changeLanguage(lng);
- if (!lng)
+  render() {
+    const Chat = global.Chat;
+    console.log("Chatsleep", this.props.location);
     return (
       <div>
-        <div />
-        <Layout>{element}</Layout>
+        <Layout>{this.props.children}</Layout>
+        {this.state.Chat && <Chat location={this.props.location} />}
       </div>
     );
- let Red, Red2;
+  }
+}
+
+export const wrapPageElement = async ({ element, props }) => {
+  const { lng } = props.pageContext;
+  console.log("wrapPageElement", props);
+  i18n.changeLanguage(lng);
+  if (!lng)
+    return (
+      <>
+        <div />
+        <App location={props.location}>{element}</App>
+      </>
+    );
+  let Red, Red2;
   if (global.menuList[lng].length == 0) {
     try {
       const Obj = await filetranslate(lng);
@@ -93,25 +131,23 @@ export const wrapPageElement =  async ({ element, props }) => {
       }
     });
     Red = "div";
-  } 
-  console.log("props",global.menuList)
-  const { slug, slugbase, route, carousel } = props.pageContext;
-  const namespace = slugbase === "/" ? "Index" : "Post";
-  const ismain = slugbase === "/";
+  }
+
   console.log("postNodeBefrunMainNavLayout");
   return (
-    <div>
+    <>
       <Red />
-      <Layout lng={lng}>{element}</Layout>
-    </div>
-  ); 
+      <App lng={lng} location={props.location}>
+        {element}
+      </App>
+    </>
+  );
 };
 
 const stateProvider = {
   translate: namespace => i18n.getFixedT(null, [namespace, "common"])
 };
 export const wrapRootElement = ({ element }) => {
-  console.log("postNodeBef")
   return (
     <ThemeContext.Provider value={stateProvider}>
       {element}

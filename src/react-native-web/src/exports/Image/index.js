@@ -279,7 +279,7 @@ that.setState({
     // these styles are not supported on View
     delete flatStyle.overlayColor;
     delete flatStyle.resizeMode;
-
+    
     // Accessibility image allows users to trigger the browser's image context menu
     const hiddenImage = displayImageUri
       ? createElement('img', {
@@ -446,8 +446,10 @@ const styles = StyleSheet.create({
   accessibilityImage: {
     ...StyleSheet.absoluteFillObject,
     height: '100%',
-    opacity: 0,
-   width: '100%',
+    opacity: 0, 
+    left: 0,
+    right: 0,
+    margin: "auto",
     zIndex: -1
   }
 });

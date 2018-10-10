@@ -1,10 +1,18 @@
-import React from "react";
-import i18n from "i18next"; 
+import React, { Component } from "react";
+import i18n from "i18next";
 import AppRegistry from "./src/react-native-web/src/exports/AppRegistry";
 import { ThemeContext } from "./src/withContext";
+
 global.menuList = window.__INITIAL_STATE__.menuList;
 global.filesQuery = window.__INITIAL_STATE__.filesQuery;
 global.locale = window.__INITIAL_STATE__.locale;
+function timeout(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+async function sleep(fn, ...args) {
+  await timeout(3000);
+  return fn(...args);
+}
 
 /*const initialState = {
   menuList: global.menuList,
@@ -25,6 +33,8 @@ console.log("getState", store.getState());*/
 
 const MAsync = () =>
   import(/* webpackChunkName: "materialize" */ "./src/components/materialize");
+
+const chatAsync = () => import(/* webpackChunkName: "chat" */ "./src/chat");
 
 global.M = undefined;
 
@@ -56,12 +66,11 @@ export const onClientEntry = async () => {
       false
     );
   }
-}
+};
 
 export const replaceHydrateFunction = () => {
-
   return (element, container, callback) => {
-    class App extends React.Component {
+    class App extends Component {
       render() {
         return <div id="App">{element}</div>;
       }
@@ -75,6 +84,33 @@ export const replaceHydrateFunction = () => {
     });
   };
 };
+global.Chat = undefined;
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      Chat: false
+    };
+  }
+  async componentDidMount() {
+    if (!global.Chat) {
+      const Chat = await sleep(chatAsync);
+      global.Chat = Chat.default;
+      this.setState({ Chat: true });
+    }
+  }
+
+  render() {
+    const Chat = global.Chat;
+    console.log("Chatsleep", this.props.location);
+    return (
+      <>
+        <Layout>{this.props.children}</Layout>
+        {this.state.Chat && <Chat location={this.props.location} />}
+      </>
+    );
+  }
+}
 
 const preferDefault = m => (m && m.default) || m;
 let Layout;
@@ -92,14 +128,14 @@ try {
 }
 
 export const wrapPageElement = ({ element, props }) => {
-  const { lng } = props.pageContext; 
+  const { lng } = props.pageContext;
   i18n.changeLanguage(lng);
   if (!lng)
     return (
-      <div>
+      <>
         <div />
-        <Layout>{element}</Layout>
-      </div>
+        <App location={props.location}>{element}</App>
+      </>
     );
 
   global.locale[lng].forEach(({ node }) => {
@@ -112,19 +148,21 @@ export const wrapPageElement = ({ element, props }) => {
   const namespace = slugbase === "/" ? "Index" : "Post";
   const ismain = slugbase === "/"; */
   return (
-    <div>
+    <>
       <div />
-      <Layout lng={lng}>{element}</Layout>
-    </div>
+      <App location={props.location} lng={lng}>
+        {element}
+      </App>
+    </>
   );
 };
-const stateProvider={translate: namespace => i18n.getFixedT(null, [namespace, "common"])}
+const stateProvider = {
+  translate: namespace => i18n.getFixedT(null, [namespace, "common"])
+};
 export const wrapRootElement = ({ element }) => {
-  console.log("stateProvider")
+  console.log("stateProvider");
   return (
-    <ThemeContext.Provider
-      value={stateProvider}
-    >
+    <ThemeContext.Provider value={stateProvider}>
       {element}
     </ThemeContext.Provider>
   );

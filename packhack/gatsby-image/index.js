@@ -279,8 +279,8 @@ maxWidth=maxHeight/ratio
 
       var imagePlaceholderStyle = babelHelpers.extends({
         opacity: !this.state.imgLoaded ? 1 : 0,
-        transitionDelay: "0.25s",
-        left:"auto"
+        width:"auto !important",
+        transitionDelay: "0.25s"
       }, imgStyle, placeholderStyle,positionImage=="right"?{right:"0px"}:{});
       
       var imageStyle = babelHelpers.extends({
