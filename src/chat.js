@@ -160,16 +160,13 @@ class ChatLayoutJSX extends Component {
       this.instancestap.destroy();
     }
   }
-
+  toggleDrawer = () => {
+    this.setState({
+      isSideBarOpen: !this.state.isSideBarOpen
+    });
+  };
   /*
-toggleDrawer = isSideBarOpen => () => {
-  if (!isSideBarOpen && !this.isMobile()) {
-    return;
-  }
-  this.setState({
-    isSideBarOpen: isSideBarOpen
-  });
-};*/
+*/
   /*
 componentDidMount() {
   window.addEventListener("resize", this.resize);
@@ -196,9 +193,11 @@ resize = () => {
     const authToken = localStorage.getItem(AUTH_TOKEN);
 
     console.log("renderchat", Me, authToken);
+    const size = this.state.isSideBarOpen ? "10" : "12";
     return (
       <SideBarContext.Provider
         value={{
+          toggleDrawer: this.toggleDrawer,
           state: this.state,
           Me: !Me.loading && !Me.error && Me.me
         }}
@@ -209,17 +208,20 @@ resize = () => {
               <div className="collapsible-body">
                 <div className="md-grid">
                   <SideBar />
-                  <div className="md-cell md-cell--10">
+                  <div className={`md-cell md-cell--${size}`}>
                     {Me.loading && <Loading />}
                     {Me.error && <NotAuth />}
-                    <Header />
+
+                    <Location>
+                      {({ location }) => <Header location={location} />}
+                    </Location>
                     {!Me.loading &&
                       !Me.error &&
                       validation && (
                         <EmailValidated emailvalidated={Me.me.emailvalidated} />
                       )}
 
-                    <FadeTransitionRouter >
+                    <FadeTransitionRouter>
                       <Page path="/z/users" page={<UsersPage />} />
                       <Page path="/z/user/create" page={<UserPageCreate />} />
                       <Page
@@ -302,7 +304,7 @@ ChatLayoutJSX.defaultProps = {
   validation: false,
   me: {}
 };
-/*
+
 const ChatLayout = compose(
   graphql(USER_QUERY, {
     name: "me",
@@ -313,12 +315,12 @@ const ChatLayout = compose(
       };
     }
   })
-)(ChatLayoutJSX);*/
+)(ChatLayoutJSX);
 
 const Chat = () => {
   return (
     <ApolloProvider client={client}>
-      <ChatLayoutJSX />
+      <ChatLayout />
     </ApolloProvider>
   );
 };

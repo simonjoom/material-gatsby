@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
-import i18n from "i18next";
 import AppRegistry from "./src/react-native-web/src/exports/AppRegistry";
 import { ThemeContext } from "./src/withContext";
+import i18n from "i18next";
 
 import trfr from "./src/layouts/translate_fr";
 import tren from "./src/layouts/translate_en";
@@ -106,6 +106,7 @@ global.Red = undefined;
 export const wrapPageElement = ({ element, props }) => {
   const { location } = props;
   const { lng } = props.pageContext;
+  i18n.changeLanguage(lng);
   let Red
   console.log("wrap",lng);
   if (!lng)
@@ -133,48 +134,7 @@ export const wrapPageElement = ({ element, props }) => {
       <Layout>{element}</Layout>
     </div>
   );
-};
-/*
-export const wrapPageElement = async ({ element, props }) => {
-  const { lng } = props.pageContext;
-  console.log("wrapPageElement", lng);
-  i18n.changeLanguage(lng);
-  if (!lng)
-    return (
-      <div>
-        <div />
-        <App location={props.location}>{element}</App>
-      </div>
-    );
-  let Red, Red2;
-  if (global.menuList[lng].length == 0) {
-    try {
-      const Obj = await filetranslate(lng);
-      Red = Obj.default;
-    } catch (e) {
-      Red = "div";
-    }
-  } else {
-    console.log("dev", global.locale);
-    global.locale[lng].forEach(({ node }) => {
-      const { lng, ns, data } = node;
-      if (!i18n.hasResourceBundle(lng, ns)) {
-        i18n.addResources(lng, ns, JSON.parse(data));
-      }
-    });
-    Red = "div";
-  }
-
-  console.log("postNodeBefrunMainNavLayout");
-  return (
-    <div>
-      <Red />
-      <App lng={lng} location={props.location}>
-        {element}
-      </App>
-    </div>
-  );
-};*/
+}; 
 
 const stateProvider = {
   translate: namespace => i18n.getFixedT(null, [namespace, "common"])

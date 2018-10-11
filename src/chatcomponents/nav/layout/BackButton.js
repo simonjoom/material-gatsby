@@ -1,32 +1,31 @@
 import React, { Component } from "react";
-import { Location } from "@reach/router";
 import Button from "../../../reactLIB/Button";
 import { SideBarContext } from "../../SideBarContext";
 
 class BackButton extends Component {
-  render() {
+  render() { 
     return (
-      <Location>
-        {({ location }) => (
-          <div>
-            {location.pathname !== "/" ? (
+      <div>
+        {this.props.location.action === "PUSH" ? (
+          <Button
+            onClick={() => window.history.back()}
+            icon="arrow_back"
+            flat
+            type="material"
+          />
+        ) : (
+          <SideBarContext.Consumer>
+            {context => (
               <Button
-                onClick={() => window.history.back()}
-                icon="arrow_back"
-                flat
-                type="material"
-              />
-            ) : (
-              <Button
-                onClick={() => context.toggleDrawer(true)}
+                onClick={() => context.toggleDrawer()}
                 icon="menu"
                 flat
                 type="material"
               />
             )}
-          </div>
+          </SideBarContext.Consumer>
         )}
-      </Location>
+      </div>
     );
   }
 }
