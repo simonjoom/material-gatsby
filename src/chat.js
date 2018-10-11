@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { graphql, compose } from "react-apollo";
-import { Router, Location, Match } from "@reach/router";
+import { Router, Location, globalHistory } from "@reach/router";
 import gql from "graphql-tag";
 import { AUTH_TOKEN } from "./constants/constants";
 import { ApolloProvider } from "react-apollo";
@@ -43,7 +43,7 @@ import CreatePage from "./chatcomponents/post/CreatePage";
 import DetailPage from "./chatcomponents/post/DetailPage";
 import FeedPage from "./chatcomponents/post/FeedPage";*/
 import ChatsPage from "./chatcomponents/chat/ChatsPage";
-import Badge from './reactLIB/Badge'
+import Badge from "./reactLIB/Badge";
 
 const wsLink = new WebSocketLink({
   uri: "ws://localhost:4000/subscriptions",
@@ -153,7 +153,6 @@ class ChatLayoutJSX extends Component {
   }
 
   componentWillUnmount() {
-    console.log("unmountLayout");
     if (this.instance) {
       this.instance.destroy();
     }
@@ -193,10 +192,10 @@ resize = () => {
 
   render() {
     // const propstoshare = this.props.children ? this.props.children.props : {};
-    const { me: Me, validation, location } = this.props;
+    const { me: Me, validation } = this.props;
     const authToken = localStorage.getItem(AUTH_TOKEN);
 
-    console.log("renderchat", authToken);
+    console.log("renderchat", Me, authToken);
     return (
       <SideBarContext.Provider
         value={{
@@ -213,13 +212,14 @@ resize = () => {
                   <div className="md-cell md-cell--10">
                     {Me.loading && <Loading />}
                     {Me.error && <NotAuth />}
-                    <Header location={this.props.location} />
+                    <Header />
                     {!Me.loading &&
                       !Me.error &&
                       validation && (
                         <EmailValidated emailvalidated={Me.me.emailvalidated} />
                       )}
-                    <FadeTransitionRouter location={this.props.location}>
+
+                    <FadeTransitionRouter >
                       <Page path="/z/users" page={<UsersPage />} />
                       <Page path="/z/user/create" page={<UserPageCreate />} />
                       <Page
@@ -238,13 +238,8 @@ resize = () => {
                         path="/z/updatePassword"
                         page={<UpdatePassword />}
                       />
+                      <Page path="/z/validateEmail" page={<ValidateEmail />} />
                       <Page
-                        key={"users9"}
-                        path="/z/validateEmail"
-                        page={<ValidateEmail />}
-                      />
-                      <Page
-                        key={"users10"}
                         path="/"
                         default
                         page={
@@ -285,17 +280,21 @@ resize = () => {
   }
 }
 
-const FadeTransitionRouter = ({ location, children }) => {
+const FadeTransitionRouter = ({ children }) => {
   // const childrenpass = React.cloneElement(children, propstoshare);
   console.log("startFadeTransitionRouter");
   return (
-    <TransitionGroup className="transition-group">
-      <CSSTransition classNames="fade" timeout={300}>
-        <Router location={location} className="router">
-          {children}
-        </Router>
-      </CSSTransition>
-    </TransitionGroup>
+    <Location>
+      {({ location }) => (
+        <TransitionGroup className="transition-group">
+          <CSSTransition key={location.key} classNames="fade" timeout={400}>
+            <Router location={location} className="router">
+              {children}
+            </Router>
+          </CSSTransition>
+        </TransitionGroup>
+      )}
+    </Location>
   );
 };
 
@@ -316,11 +315,10 @@ const ChatLayout = compose(
   })
 )(ChatLayoutJSX);*/
 
-const Chat = ({ location }) => {
-  console.log("ChatProvider");
+const Chat = () => {
   return (
     <ApolloProvider client={client}>
-      {!!client && <ChatLayoutJSX location={location} />}
+      <ChatLayoutJSX />
     </ApolloProvider>
   );
 };

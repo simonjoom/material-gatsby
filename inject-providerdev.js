@@ -2,6 +2,17 @@ import React, { Component, Fragment } from "react";
 import i18n from "i18next";
 import AppRegistry from "./src/react-native-web/src/exports/AppRegistry";
 import { ThemeContext } from "./src/withContext";
+
+import trfr from "./src/layouts/translate_fr";
+import tren from "./src/layouts/translate_en";
+import trpt from "./src/layouts/translate_pt";
+import trru from "./src/layouts/translate_ru";
+import truk from "./src/layouts/translate_uk";
+import trch from "./src/layouts/translate_ch";
+
+import { render, hydrate } from "react-dom";
+const renderFn = process.env.NODE_ENV !== "production" ? render : hydrate;
+
 function timeout(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -19,7 +30,7 @@ const filetranslate = lng => import(`./src/layouts/translate_${lng}`);
 const MAsync = () =>
   import(/* webpackChunkName: "materialize" */ "./src/components/materialize");
 const chatAsync = () => import(/* webpackChunkName: "chat" */ "./src/chat");
-
+//const Chat = require("./src/chat").default;
 global.locale = { en: [], ru: [], pt: [], uk: [], ch: [], fr: [] };
 global.menuList = { en: [], ru: [], pt: [], uk: [], ch: [], fr: [] };
 global.filesQuery = [];
@@ -55,58 +66,75 @@ export const onClientEntry = async () => {
     );
   }
 };
- 
+
 export const replaceHydrateFunction = () => {
   return (element, container, callback) => {
     // const el=element.children?;
     class App extends Component {
       render() {
-        return <div id="App">{element}</div>;
+        return (
+          <div id="App">
+            {element}
+            <div id="myChat" />
+          </div>
+        );
       }
     }
+    const runChat = async () => {
+      const Chat = await chatAsync();
+      return Chat.default;
+    };
+    const firstcall = () => {
+      const ct = document.getElementById("myChat");
+      timeout(3000).then(() => {
+        runChat().then(El => renderFn(<El/>, ct, () => {}));
+      });
+      return callback;
+    };
 
     AppRegistry.registerComponent("App", () => App);
     AppRegistry.runApplication("App", {
       initialProps: {},
       rootTag: container,
-      callback
+      callback: firstcall
     });
   };
 };
-global.Chat = undefined;
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      Chat: false
-    };
-  }
-  componentDidMount() {
-    console.log("didmount");
-    if (!global.Chat) {
-      const th = this;
-      (async function() {
-        const Chat = await sleep(chatAsync);
-        global.Chat = Chat.default;
-        th.setState({ Chat: true });
-      })();
-    }
+
+global.Red = undefined;
+
+export const wrapPageElement = ({ element, props }) => {
+  const { location } = props;
+  const { lng } = props.pageContext;
+  let Red
+  console.log("wrap",lng);
+  if (!lng)
+  console.log("nolang")
+  else if (global.menuList[lng].length == 0) {
+    Red =
+      lng == "fr"
+        ? trfr
+        : lng == "pt"
+          ? trpt
+          : lng == "uk"
+            ? truk
+            : lng == "ru"
+              ? trru
+              : lng == "ch"
+                ? trch
+                : tren;
+  } else {
+    Red = "div";
   }
 
-  render() {
-    const Chat = global.Chat;
-    console.log("Chatsleepdev", this.props.location);
-    return (
-      <div>
-        <Layout>{this.props.children}</Layout>
-        <div>
-          {this.state.Chat ? <Chat location={this.props.location} /> : <div />}
-        </div>
-      </div>
-    );
-  }
-}
-
+  return (
+    <div>
+    <Red />
+      <Layout>{element}</Layout>
+    </div>
+  );
+};
+/*
 export const wrapPageElement = async ({ element, props }) => {
   const { lng } = props.pageContext;
   console.log("wrapPageElement", lng);
@@ -146,12 +174,13 @@ export const wrapPageElement = async ({ element, props }) => {
       </App>
     </div>
   );
-};
+};*/
 
 const stateProvider = {
   translate: namespace => i18n.getFixedT(null, [namespace, "common"])
 };
 export const wrapRootElement = ({ element }) => {
+
   return (
     <ThemeContext.Provider value={stateProvider}>
       {element}

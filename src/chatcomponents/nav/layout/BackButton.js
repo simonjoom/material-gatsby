@@ -1,21 +1,32 @@
-import React, { Component } from "react"; 
-import Button from "../../../reactLIB/Button"; 
+import React, { Component } from "react";
+import { Location } from "@reach/router";
+import Button from "../../../reactLIB/Button";
 import { SideBarContext } from "../../SideBarContext";
 
 class BackButton extends Component {
   render() {
-    console.log("BackButton", this.props);
-    return ( 
+    return (
+      <Location>
+        {({ location }) => (
           <div>
-            {this.props.location.pathname !== "/" ? (
-              <Button onClick={() => window.history.back()} icon="arrow_back" flat
-              type="material"/>
+            {location.pathname !== "/" ? (
+              <Button
+                onClick={() => window.history.back()}
+                icon="arrow_back"
+                flat
+                type="material"
+              />
             ) : (
-              <Button onClick={() => context.toggleDrawer(true)} icon="menu" flat
-              type="material"/>
+              <Button
+                onClick={() => context.toggleDrawer(true)}
+                icon="menu"
+                flat
+                type="material"
+              />
             )}
           </div>
-      
+        )}
+      </Location>
     );
   }
 }
