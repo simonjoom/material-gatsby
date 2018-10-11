@@ -21,7 +21,7 @@ class EmulateItem extends Component {
           to={to}
           node={Link}
           className={cx(this.props.className, "link btn-flat")}
-          type="material"
+          type="mat"
           iconStyle={{
             color: "rgba(0, 0, 0, 0.54)",
             flexShrink: 0,
@@ -37,7 +37,8 @@ class EmulateItem extends Component {
 }
 class ListSideBar extends Component {
   state = {
-    isSideBarOpen: false
+    isSideBarOpen: false,
+    href: "#"
   };
   /*
   toggleDrawer = (isSideBarOpen) => () => {
@@ -56,6 +57,15 @@ class ListSideBar extends Component {
         )}
   */
 
+  onMouseEnter(href) {
+    this.setState({
+      href: href.replace("O0O", ".").replace("_", "@")
+    });
+  }
+
+  onClick() {
+    window.location.href = `mailto:${this.state.href}`;
+  }
   render() {
     const authToken = localStorage.getItem(AUTH_TOKEN);
     return (
@@ -66,9 +76,15 @@ class ListSideBar extends Component {
         {this.props.role &&
           this.props.role !== "CUSTOMER" && (
             <>
-              <EmulateItem icon="directions_car" to="/z/cars">
-                Cars
-              </EmulateItem>
+              <Button
+                icon="mail"
+                flat
+                type="mat"
+                onClick={() => this.onClick()}
+                onMouseEnter={() => this.onMouseEnter("simon_skiscoolO0Ocom")}
+              >
+                Mail us
+              </Button>
             </>
           )}
 

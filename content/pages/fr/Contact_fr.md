@@ -25,15 +25,14 @@ Veuillez nous envoyer un email:
 
 Merci et dans l'attente de vous rencontrer sur les pistes des 3 vallées
 
-<a href="%mail%?subject=request_skiscool" class="mail">%dico.contact%</a>
+<email href="simon_skiscoolO0Ocom" >Contact</email>
  
 ### Remerciements:
             
         Merci aux developpeurs russes de m'avoir aider à développer ce site web :
         
- ![Nicoloas Hagenov](http://graph.facebook.com/100010587453193/picture?type=large)](https://www.facebook.com/profile.php?id=100010587453193&fref=ts)
- ![Konstantin Tarkus](https://pbs.twimg.com/profile_images/916383839609675777/N2nNNxx3_400x400.jpg)](https://twitter.com/koistya?lang=fr)
- 
- Si vous avez besoin d'un site-web utilisant les dernière technologie (chat system, map, geo-location) comme le notre, ne pas hésiter à me contacter ,  
-nous ferons un bon prix incluant des cours de ski  **<i class="fa fa-smile-o"> </i>** 
-Simon    
+| Nicoloas Hagenov | Konstantin Tarkus |
+| :-- | :-: |
+| [![Nicoloas Hagenov](http://graph.facebook.com/100010587453193/picture?type=large)](https://www.facebook.com/profile.php?id=100010587453193&fref=ts) | [![Konstantin Tarkus](https://pbs.twimg.com/profile_images/916383839609675777/N2nNNxx3_400x400.jpg)](https://twitter.com/koistya?lang=fr) |
+
+

@@ -4488,8 +4488,7 @@ $jscomp.polyfill = function (e, r, p, m) {
       _this31._createDragTarget();
       _this31._setupEventHandlers();
       _this31._setupClasses();
-      _this31._setupFixed();
-
+      _this31._setupFixed(); 
       Sidenav._sidenavs.push(_this31);
       return _this31;
     }
@@ -7308,8 +7307,7 @@ $jscomp.polyfill = function (e, r, p, m) {
        * @prop {Boolean} [hoverEnabled=true] - Enable hover vs click
        * @prop {Boolean} [toolbarEnabled=false] - Enable toolbar transition
        */
-      _this48.options = $.extend({}, FloatingActionButton.defaults, options);
-
+      _this48.options = $.extend({}, FloatingActionButton.defaults, options); 
       _this48.isOpen = false;
       _this48.$anchor = _this48.$el.children('a').first();
       _this48.$menu = _this48.$el.children('ul').first();

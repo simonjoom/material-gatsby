@@ -41,12 +41,15 @@ date: "2018-07-06"
 Спасибо за Ваш интерес и надеемся на скорую встречу с Вами на склонах Трех Долин!
 Следуйте за нами в социальных сетях!
 
-<a href="%mail%?subject=request_skiscool" class="mail">%dico.contact%</a>
+<email href="simon_skiscoolO0Ocom">Contact</email>
  
 
 ### Поздровіенія:
             
 Благодарю русских разработчиков, которые помогли мне создать этот сайт:
         
- ![Nicoloas Hagenov](http://graph.facebook.com/100010587453193/picture?type=large)](https://www.facebook.com/profile.php?id=100010587453193&fref=ts)
- ![Konstantin Tarkus](https://pbs.twimg.com/profile_images/916383839609675777/N2nNNxx3_400x400.jpg)](https://twitter.com/koistya?lang=fr)
+| Nicoloas Hagenov | Konstantin Tarkus |
+| :-- | :-: |
+| [![Nicoloas Hagenov](http://graph.facebook.com/100010587453193/picture?type=large)](https://www.facebook.com/profile.php?id=100010587453193&fref=ts) | [![Konstantin Tarkus](https://pbs.twimg.com/profile_images/916383839609675777/N2nNNxx3_400x400.jpg)](https://twitter.com/koistya?lang=fr) |
+
+

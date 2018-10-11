@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "gatsby";
-import LogoSkiscool from "../logo"; 
+import LogoSkiscool from "../logo";
 import Button from "../../reactLIB/Button";
 import Disqus from "../../components/Disqus";
 import SideNavItem from "../../reactLIB/SideNavItem";
@@ -29,11 +29,46 @@ class Navigation extends Component {
       <div className="main-content">
         <SideNav
           trigger={
-            <Button className="right" tooltip="open" icon="bars" type="awesome"/> 
+            <Button
+              floating
+              fab="horizontal"
+              tooltip="open"
+              icon="bars"
+              type="awesome"
+              className="right"
+              large
+              style={{
+                top: 0,
+                bottom: 0,
+                right: "14px",
+                height: 50,
+                width: 200
+              }}
+            >
+              <Button
+                floating
+                type="mat"
+                icon="attach_file"
+                className="bgblue"
+              />
+              <Button
+                floating
+                type="mat"
+                icon="format_quote"
+                className="bgwhite"
+              />
+              <Button
+                floating
+                tooltip="open"
+                icon="publish"
+                type="mat"
+                className="bgred"
+              />
+            </Button>
           }
         >
           <Button flat className="right" tooltip="Skiscool">
-            <LogoSkiscool/>
+            <LogoSkiscool />
           </Button>{" "}
           {SideNavItem && (
             <>

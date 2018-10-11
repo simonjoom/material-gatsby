@@ -88,7 +88,7 @@ class PostTemplate extends React.Component {
             translate={t("Post")}
           />
           <Card
-            className="md-cell md-cell--12-phone md-cell--10 md-cell--8-tablet mobile-fix"
+            className="md-cell md-cell--6-phone md-cell--10 md-cell--8-tablet mobile-fix"
             waves="light"
             contentImage={
               <div>

@@ -44,9 +44,10 @@ date: "2018-07-06"
 
 
 <div class="md-grid md-cell--middle" style="padding:12px;flex-flow: column wrap;">
- <div class="md-cell--middle" style="flex-direction: column;width: 120px;"><h3 style="font-size:1.2em">Call Simon</h3><a href="tel:France+33675505209" class="h2 black"><button type="button" class="btn btn-flat">
+ <div class="md-cell--middle" style="flex-direction: column;width: 120px;"><h3 style="font-size:1.2em">Call Simon</h3><a href="tel:France+33675505209" class="h2 black">
+ <buttontest cls="btn btn-flat">
  <div class="mr1 fa-stack-big">
- <i class="fa fa-circle fa-stack-8x gray" style="color: rgb(178, 255, 89);"></i><i class="fa fa-phone fa-stack-4x navy"></i></div></button></a>
+ <i class="fa fa-circle fa-stack-8x gray" style="color: rgb(178, 255, 89);"></i><i class="fa fa-phone fa-stack-4x navy"></i></div></buttontest></a>
  </div>
 
 <div class="md-cell--middle" style="flex-direction: column; padding-bottom: 8%;">

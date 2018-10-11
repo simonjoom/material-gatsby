@@ -6,7 +6,7 @@ const SideBar = () => (
   <SideBarContext.Consumer>
     {context =>
       context.state.isSideBarOpen && (
-        <div className="md-cell md-cell--2" tabIndex={0} role="button">
+        <div className="md-cell md-cell--2 md-cell--1-tablet md-cell--1-phone" tabIndex={0} role="button">
           <ListSideBar
             isMobile={context.state.isMobile}
             role={context.Me.role}
