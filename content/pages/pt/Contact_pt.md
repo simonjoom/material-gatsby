@@ -23,19 +23,18 @@ Entre em contato conosco! Durante a baixa e alta temporada, nós quebramos taxas
 Utilize o nosso aplicativo on-line para verificar os preços. 
 
 <span>Comentários? Dúvidas? Por favor envie-nos um e-mail</span>
-%FBpage%
    
 Obrigado e um prazer conhecê-lo em breve nas pistas dos 3 Vales!   
 
 
-<a href="%mail%?subject=request_skiscool" class="mail">%dico.contact%</a>
-
-
+<email href="simon_skiscoolO0Ocom">Contact</email>
 
 ### Greetings:
             
         Thanks to Russians developpers help me to create this :
 
-![Nicoloas Hagenov](http://graph.facebook.com/100010587453193/picture?type=large)](https://www.facebook.com/profile.php?id=100010587453193&fref=ts)
- ![Konstantin Tarkus](https://pbs.twimg.com/profile_images/916383839609675777/N2nNNxx3_400x400.jpg)](https://twitter.com/koistya?lang=fr)
- 
+| Nicoloas Hagenov | Konstantin Tarkus |
+| :-- | :-: |
+| [![Nicoloas Hagenov](http://graph.facebook.com/100010587453193/picture?type=large)](https://www.facebook.com/profile.php?id=100010587453193&fref=ts) | [![Konstantin Tarkus](https://pbs.twimg.com/profile_images/916383839609675777/N2nNNxx3_400x400.jpg)](https://twitter.com/koistya?lang=fr) |
+
+

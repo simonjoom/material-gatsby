@@ -7,6 +7,53 @@ div .mobile-fix {
   }
 }
 
+i.fa-stack-4x,
+i.fa-stack-8x {
+  font-size: 8em;
+  text-align: center;
+  width: 100%;
+}
+i.fa-stack-4x{
+  position: relative;
+  left: 0.05em;
+  bottom: 1.25em;
+  font-size: 7em;
+}
+.fa-stack-big {
+  display: inline-block;
+  height: 8em;
+  position: relative;
+  vertical-align: middle;
+  width: 8em;
+}
+.md-display-3,
+.md-display-4,
+h3,
+.md-title {
+  white-space: pre-wrap;
+}
+
+.red {
+  color: #ff0000;
+}
+.green {
+  color: #00ff00;
+}
+.blue {
+  color: #0000ff;
+}
+.bgred {
+  background-color: #ff0000;
+}
+.bgwhite {
+  background-color: white;
+}
+.bggreen {
+  background-color: #00ff00;
+}
+.bgblue {
+  background-color: #0000ff;
+}
 .primary {
   color: $md-primary-color;
 }
@@ -31,53 +78,53 @@ div .mobile-fix {
 }
 
 .page {
-   /*
+  /*
    color: white;
    font-size: 100px;*/
-   text-align: center;
-   font-style: italic;
-   font-family: Times;
-   padding-top: 20px;
- }
- 
- .fade-exit .page {
-    position: absolute;
-   top: 0;
-   left: 0;
-   bottom: 0;
-   right: 0;
-   opacity: 1;
-   z-index: 2;
- }
- .fade-exit.fade-exit-active .page {
-    position: absolute;
-   top: 0;
-   left: 0;
-   bottom: 0;
-   right: 0;
-   opacity: 0;
-   transition: opacity 450ms ease-out;
- }
- 
- .fade-enter .page {
-    position: absolute;
-   top: 0;
-   left: 0;
-   bottom: 0;
-   right: 0;
-   opacity: 0;
-   z-index: 1;
- }
- 
- .fade-enter.fade-enter-active .page {
-    position: absolute;
-   top: 0;
-   left: 0;
-   bottom: 0;
-   right: 0;
-   opacity: 1;
-   transition: opacity 450ms ease-in;
- }
+  text-align: center;
+  font-style: italic;
+  font-family: Times;
+  padding-top: 20px;
+}
+
+.fade-exit .page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 1;
+  z-index: 2;
+}
+.fade-exit.fade-exit-active .page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 0;
+  transition: opacity 450ms ease-out;
+}
+
+.fade-enter .page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 0;
+  z-index: 1;
+}
+
+.fade-enter.fade-enter-active .page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 1;
+  transition: opacity 450ms ease-in;
+}
 
 .paperOut {
   margin: 10px;
@@ -99,6 +146,6 @@ div .mobile-fix {
   color: white;
 }
 
-.collapsible-body{
-background-color: white;
+.collapsible-body {
+  background-color: white;
 }

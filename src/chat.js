@@ -197,6 +197,8 @@ resize = () => {
 
     console.log("renderchat", Me, authToken);
     const size = this.state.isSideBarOpen ? "10" : "12";
+    const sizet=this.state.isSideBarOpen ? "7" : "8";
+    const sizem=this.state.isSideBarOpen ? "3" : "4";
     return (
       <SideBarContext.Provider
         value={{
@@ -219,7 +221,7 @@ resize = () => {
                 />
                 <div className="md-grid">
                   <SideBar />
-                  <div className={`md-cell md-cell--${size}`}>
+                  <div className={`md-cell md-cell--${size} md-cell--${sizet}-tablet md-cell--${sizem}-phone`}>
                     {Me.loading && <Loading />}
                     {Me.error && <NotAuth />}
 
@@ -267,6 +269,7 @@ resize = () => {
                   </div>
                 </div>
               </div>
+              
               <div
                 className="collapsible-header waves-effect waves-light btn"
                 id="chat"

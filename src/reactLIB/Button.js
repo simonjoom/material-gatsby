@@ -20,6 +20,9 @@ class Button extends Component {
     typeof M !== 'undefined' &&
       this.tooltip &&
       M.Tooltip.init(elems, tooltipOptions);
+
+    var els = document.querySelectorAll('.fixed-action-btn');
+    typeof M !== 'undefined' && els && M.FloatingActionButton.init(els, {});
   }
 
   render() {
@@ -37,9 +40,10 @@ class Button extends Component {
       tooltip,
       iconStyle,
       type,
+      style,
       ...other
     } = this.props;
-
+console.log("flat",flat,this.props)
     const toggle = fabClickOnly ? 'click-to-toggle' : '';
     let C = node;
     let classes = {
@@ -62,11 +66,14 @@ class Button extends Component {
       classes['modal-' + modal] = true;
     }
     if (fab) {
-      return this.renderFab(cx(classes, className), fab, toggle);
+      return this.renderFab(cx(classes, className), fab, toggle, style, {
+        'data-target': this.props['data-target']
+      });
     } else {
       return (
         <C
           {...other}
+          style={style}
           disabled={!!disabled}
           onClick={this.props.onClick}
           className={cx(this.tooltip ? 'tooltipped' : '', classes, className)}
@@ -79,11 +86,13 @@ class Button extends Component {
     }
   }
 
-  renderFab(className, orientation, clickOnly) {
+  renderFab(className, orientation, clickOnly, style, other) {
     const classes = cx(orientation, clickOnly);
     return (
-      <div className={cx('fixed-action-btn', classes)}>
-        <a className={className}>{this.renderIcon()}</a>
+      <div className={cx('fixed-action-btn', classes)} style={style}>
+        <a className={className} {...other}>
+          {this.renderIcon()}
+        </a>
         <ul>
           {React.Children.map(this.props.children, child => {
             return <li key={idgen()}>{child}</li>;

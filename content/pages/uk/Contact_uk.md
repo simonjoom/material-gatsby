@@ -39,8 +39,7 @@ date: "2018-07-06"
 
 Merci et dans l'attente de vous rencontrer sur les pistes des 3 vallées
 
-<a href="%mail%?subject=request_skiscool" class="mail">%dico.contact%</a>
- 
+<email href="simon_skiscoolO0Ocom">Contact</email>
 
 ### Поздровіенія:
             

@@ -12,12 +12,16 @@ import SiteConfig from "../data/SiteConfig";
 import FrontCarousel from "../components/FrontCarousel";
 import SEO from "../components/SEO";
 import ReactFB from "../components/ReactFB";
+import Email from "../components/Email"; 
+import ButtonT from "../components/Button";
 
 const renderAst = new RehypeReact({
   createElement: React.createElement,
   components: {
     imgtest: FrontCarousel,
-    reactfb: ReactFB
+    reactfb: ReactFB,
+    email: Email,
+    buttontest: ButtonT
   }
 }).Compiler;
 
@@ -58,7 +62,7 @@ class PostTemplate extends React.Component {
     if (!post.category_id) {
       post.category_id = SiteConfig.postDefaultCategoryID;
     }
-    console.log("htmlAst",postNode.htmlAst)
+    console.log("htmlAst", postNode.htmlAst);
     const title = t("index")(post.title);
     //render current markdownRemark
     return (
@@ -76,10 +80,10 @@ class PostTemplate extends React.Component {
           postSEO
           translate={t("Index")}
         />
-        
+
         <Card className="post" title={title}>
           {renderAst(postNode.htmlAst)}
-        </Card> 
+        </Card>
         <div className="post-meta">
           <PostTags tags={post.tags} />
           <SocialLinks
@@ -88,7 +92,6 @@ class PostTemplate extends React.Component {
             mobile={this.state.mobile}
           />
         </div>
-      
       </Layout>
     );
   }
