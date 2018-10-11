@@ -192,7 +192,7 @@ const DELETE_MUTATION = gql`
 
 export default compose(
   graphql(USER_QUERY, {
-    name: "userQuery",
+    name: "userQuery",  
     options: props => {
       let id;
       const pathname = globalHistory.location.pathname;
@@ -201,6 +201,8 @@ export default compose(
       if(matchPath)
        id = getIdfromRegexPath(pathname, matchPath);
       return {
+        fetchPolicy: "cache-and-network",
+        ssr: false,
         variables: {
           where: {
             id

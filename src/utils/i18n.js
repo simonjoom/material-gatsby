@@ -1,8 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import i18n from "i18next";
-import Backend from "i18next-xhr-backend"; 
-//import LanguageDetector from "i18next-browser-languagedetector";
-//import { reactI18nextModule } from "react-i18next";
+import Backend from "i18next-xhr-backend";  
 import config from "../config";
 
 const options = {
@@ -36,63 +34,4 @@ if (process.browser) {
 if (!i18n.isInitialized) i18n.init(options);
 
 export default i18n;
-/*
-export function withPathnameObserver(WrappedComponent) {
-  return class extends Component {
-    componentWillMount() {
-      this.changePathname(this.props.location.pathname);
-    }
-    componentWillUpdate(nextProps) {
-      if (this.props.location.pathname !== nextProps.location.pathname) {
-        this.changePathname(nextProps.location.pathname);
-      }
-    }
-    changePathname(pathname) {
-      const { locales, defaultLocale } = config;
-      const locale = pathname.substr(1, 2);
-      const language =
-        locale && locales.indexOf(locale) > -1 ? locale : defaultLocale;
-      if (i18n.language !== language) {
-        i18n.changeLanguage(language);
-      }
-    }
-    render() {
-      return <WrappedComponent {...this.props} />;
-    }
-  };
-}
-
-export function withLocales(WrappedComponent) {
-  return class extends Component {
-    componentWillMount() {
-      console.log("withLocales",this.props.data)
-      if (this.props.data&&this.props.data.locales) {
-        let lang;
-        this.props.data.locales.edges.forEach(({ node }) => {
-          const { lng, ns, data } = node;
-lang=lng;
-          if (!i18n.hasResourceBundle(lng, ns)) {
-            i18n.addResources(lng, ns, JSON.parse(data));
-          }
-        });
-        console.log("changeLanguage",lang)
-        i18n.changeLanguage(lang)
-      }
-    }
-    render() {
-      return <WrappedComponent {...this.props} />;
-    }
-  };
-}
-
-
-export function translate(ns = ["common"]) {
-  return function Wrapper(WrappedComponent) {
-    const Extended = t(ns, { i18n, wait: process.browser })(WrappedComponent);
-    return withLocales(Extended);
-
-    //return withLocales(t(ns, options)(WrappedComponent));
-  };
-}
-
-*/
+ 
