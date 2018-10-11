@@ -1,6 +1,6 @@
 ---
 title: "Ski Pass"
-cover: "starter-logo-1024.png"
+cover: "vt-3vallees.jpg"
 category: ski-resort
 slug: "/skipass/"
 tags:

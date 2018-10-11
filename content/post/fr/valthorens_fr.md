@@ -1,6 +1,7 @@
 ---
 title: "Val-Thorens ski resort"
-cover: "starter-logo-1024.png"
+cover: "vt-cimecaron.jpg"
+avatar: "val-thorens.png"
 category: ski-resort
 slug: "/valthorens/"
 tags:

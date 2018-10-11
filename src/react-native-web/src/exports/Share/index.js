@@ -28,11 +28,13 @@ class Share {
     invariant(
       !content.title || typeof content.title === 'string',
       'Invalid title: title should be a string.'
+title: title should be a string.'
     );
 
     if (window.navigator.share !== undefined) {
       return window.navigator.share({
         title: content.title,
+title: content.title,
         text: content.message,
         url: content.url
       });

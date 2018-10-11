@@ -5,7 +5,6 @@
 }(this, (function (exports,inferno,infernoCloneVnode,infernoCreateClass,infernoCreateElement,infernoExtras) { 'use strict';
 
     var ERROR_MSG = 'a runtime error occured! Use Inferno in development environment to find the error.';
-    var isBrowser = !!(typeof window !== 'undefined' && window.document);
     function isNullOrUndef(o) {
         return isUndefined(o) || isNull(o);
     }
@@ -36,6 +35,27 @@
         tempdom.innerHTML = innerHTML;
         return tempdom.innerHTML === dom.innerHTML;
     }
+    function findLastDOMFromVNode(vNode) {
+        var flags;
+        var children;
+        while (vNode) {
+            flags = vNode.flags;
+            if (flags & 2033 /* DOMRef */) {
+                return vNode.dom;
+            }
+            children = vNode.children;
+            if (flags & 8192 /* Fragment */) {
+                vNode = vNode.childFlags === 2 /* HasVNodeChildren */ ? children : children[children.length - 1];
+            }
+            else if (flags & 4 /* ComponentClass */) {
+                vNode = children.$LI;
+            }
+            else {
+                vNode = children;
+            }
+        }
+        return null;
+    }
     function isSamePropsInnerHTML(dom, props) {
         return Boolean(props && props.dangerouslySetInnerHTML && props.dangerouslySetInnerHTML.__html && isSameInnerHTML(dom, props.dangerouslySetInnerHTML.__html));
     }
@@ -65,15 +85,13 @@
         var props = parentVNode.props;
         var flags = parentVNode.flags;
         if (childFlags !== 1 /* HasInvalidChildren */) {
-            var nextNode;
             if (childFlags === 2 /* HasVNodeChildren */) {
                 if (isNull(currentNode)) {
                     inferno._M(children, parentNode, context, isSVG, null);
                 }
                 else {
-                    nextNode = currentNode.nextSibling;
                     currentNode = hydrateVNode(children, parentNode, currentNode, context, isSVG);
-                    currentNode = currentNode ? currentNode.nextSibling : nextNode;
+                    currentNode = currentNode ? currentNode.nextSibling : null;
                 }
             }
             else if (childFlags === 16 /* HasTextChildren */) {
@@ -98,9 +116,8 @@
                         inferno._M(child, parentNode, context, isSVG, currentNode);
                     }
                     else {
-                        nextNode = currentNode.nextSibling;
                         currentNode = hydrateVNode(child, parentNode, currentNode, context, isSVG);
-                        currentNode = currentNode ? currentNode.nextSibling : nextNode;
+                        currentNode = currentNode ? currentNode.nextSibling : null;
                     }
                     prevVNodeIsTextNode = (child.flags & 16 /* Text */) > 0;
                 }
@@ -172,10 +189,10 @@
         var children = vNode.children;
         if (vNode.childFlags === 2 /* HasVNodeChildren */) {
             hydrateText(children, parentDOM, dom);
-            return (vNode.dom = children.dom);
+            return children.dom;
         }
         hydrateChildren(vNode, parentDOM, dom, context, isSVG);
-        return (vNode.dom = children[children.length - 1].dom);
+        return findLastDOMFromVNode(children[children.length - 1]);
     }
     function hydrateVNode(vNode, parentDOM, currentDom, context, isSVG) {
         var flags = (vNode.flags |= 16384 /* InUse */);
@@ -199,7 +216,10 @@
     }
     function hydrate(input, parentDOM, callback) {
         var dom = parentDOM.firstChild;
-        if (!isNull(dom)) {
+        if (isNull(dom)) {
+            inferno.render(input, parentDOM, callback);
+        }
+        else {
             if (!isInvalid(input)) {
                 dom = hydrateVNode(input, parentDOM, dom, {}, false);
             }
@@ -220,7 +240,6 @@
         }
     }
 
-    var isBrowser$1 = !!(typeof window !== 'undefined' && window.document);
     var isArray = Array.isArray;
     function isNullOrUndef$1(o) {
         return isUndefined$1(o) || isNull$1(o);
@@ -706,25 +725,43 @@
         }
     }
     // Mask React global in browser enviornments when React is not used.
-    if (isBrowser$1 && typeof window.React === 'undefined') {
+    if (typeof window !== 'undefined' && typeof window.React === 'undefined') {
         var exports$1 = {
             Children: Children,
             Component: inferno.Component,
             EMPTY_OBJ: inferno.EMPTY_OBJ,
+            Fragment: inferno.Fragment,
             PropTypes: PropTypes,
             PureComponent: PureComponent,
+            // Internal methods
+            _CI: inferno._CI,
+            _HI: inferno._HI,
+            _L: inferno._L,
+            _M: inferno._M,
+            _MCCC: inferno._MCCC,
+            _ME: inferno._ME,
+            _MFCC: inferno._MFCC,
+            _MP: inferno._MP,
+            _MR: inferno._MR,
+            _MT: inferno._MT,
+            __render: inferno.__render,
+            // Public methods
             cloneElement: infernoCloneVnode.cloneVNode,
             cloneVNode: infernoCloneVnode.cloneVNode,
             createClass: infernoCreateClass.createClass,
             createComponentVNode: inferno.createComponentVNode,
             createElement: infernoCreateElement.createElement,
             createFactory: createFactory,
+            createFragment: inferno.createFragment,
             createPortal: inferno.createPortal,
+            createRef: inferno.createRef,
             createRenderer: inferno.createRenderer,
             createTextVNode: inferno.createTextVNode,
             createVNode: inferno.createVNode,
             directClone: inferno.directClone,
             findDOMNode: infernoExtras.findDOMNode,
+            findDOMfromVNode: inferno.findDOMfromVNode,
+            forwardRef: inferno.forwardRef,
             getFlagsForElementVnode: inferno.getFlagsForElementVnode,
             hydrate: hydrate,
             isValidElement: isValidElement,
@@ -732,6 +769,7 @@
             normalizeProps: inferno.normalizeProps,
             options: inferno.options,
             render: render,
+            rerender: inferno.rerender,
             unmountComponentAtNode: unmountComponentAtNode,
             unstable_renderSubtreeIntoContainer: unstable_renderSubtreeIntoContainer,
             version: version
@@ -743,21 +781,38 @@
         Children: Children,
         Component: inferno.Component,
         EMPTY_OBJ: inferno.EMPTY_OBJ,
+        Fragment: inferno.Fragment,
         PropTypes: PropTypes,
         PureComponent: PureComponent,
+        // Internal methods
+        _CI: inferno._CI,
+        _HI: inferno._HI,
+        _L: inferno._L,
+        _M: inferno._M,
+        _MCCC: inferno._MCCC,
+        _ME: inferno._ME,
+        _MFCC: inferno._MFCC,
+        _MP: inferno._MP,
+        _MR: inferno._MR,
+        _MT: inferno._MT,
+        __render: inferno.__render,
+        // Public methods
         cloneElement: infernoCloneVnode.cloneVNode,
         cloneVNode: infernoCloneVnode.cloneVNode,
         createClass: infernoCreateClass.createClass,
         createComponentVNode: inferno.createComponentVNode,
         createElement: infernoCreateElement.createElement,
         createFactory: createFactory,
+        createFragment: inferno.createFragment,
         createPortal: inferno.createPortal,
+        createRef: inferno.createRef,
         createRenderer: inferno.createRenderer,
         createTextVNode: inferno.createTextVNode,
         createVNode: inferno.createVNode,
         directClone: inferno.directClone,
         findDOMNode: infernoExtras.findDOMNode,
         findDOMfromVNode: inferno.findDOMfromVNode,
+        forwardRef: inferno.forwardRef,
         getFlagsForElementVnode: inferno.getFlagsForElementVnode,
         hydrate: hydrate,
         isValidElement: isValidElement,
@@ -765,6 +820,7 @@
         normalizeProps: inferno.normalizeProps,
         options: inferno.options,
         render: render,
+        rerender: inferno.rerender,
         unmountComponentAtNode: unmountComponentAtNode,
         unstable_renderSubtreeIntoContainer: unstable_renderSubtreeIntoContainer,
         version: version
@@ -772,16 +828,33 @@
 
     exports.Component = inferno.Component;
     exports.EMPTY_OBJ = inferno.EMPTY_OBJ;
+    exports.Fragment = inferno.Fragment;
+    exports._CI = inferno._CI;
+    exports._HI = inferno._HI;
+    exports._L = inferno._L;
+    exports._M = inferno._M;
+    exports._MCCC = inferno._MCCC;
+    exports._ME = inferno._ME;
+    exports._MFCC = inferno._MFCC;
+    exports._MP = inferno._MP;
+    exports._MR = inferno._MR;
+    exports._MT = inferno._MT;
+    exports.__render = inferno.__render;
     exports.createComponentVNode = inferno.createComponentVNode;
+    exports.createFragment = inferno.createFragment;
     exports.createPortal = inferno.createPortal;
+    exports.createRef = inferno.createRef;
     exports.createRenderer = inferno.createRenderer;
     exports.createTextVNode = inferno.createTextVNode;
     exports.createVNode = inferno.createVNode;
     exports.directClone = inferno.directClone;
+    exports.findDOMfromVNode = inferno.findDOMfromVNode;
+    exports.forwardRef = inferno.forwardRef;
     exports.getFlagsForElementVnode = inferno.getFlagsForElementVnode;
     exports.linkEvent = inferno.linkEvent;
     exports.normalizeProps = inferno.normalizeProps;
     exports.options = inferno.options;
+    exports.rerender = inferno.rerender;
     exports.cloneElement = infernoCloneVnode.cloneVNode;
     exports.cloneVNode = infernoCloneVnode.cloneVNode;
     exports.createClass = infernoCreateClass.createClass;

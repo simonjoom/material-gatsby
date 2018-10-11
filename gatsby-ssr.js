@@ -1,3 +1,4 @@
+require('isomorphic-fetch')
 const provider = require(`./inject-providerssr`)  
 
 exports.wrapRootElement = provider.wrapRootElement

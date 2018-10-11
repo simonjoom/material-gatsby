@@ -1,12 +1,10 @@
 import React from "react";
+import Navigation from "../components/Navigation";
 import "font-awesome/scss/font-awesome.scss";
-import "./index.scss";
 import "./global.scss";
 import "./toolbar.scss";
 import "./carousel.scss";
-import Chat from "../components/Chat/Chat"
-//import Paper from "react-md/lib/Papers/Paper";
-import Navigation from "../components/Navigation";
+import "./post.scss";
 import config from "../data/SiteConfig";
 
 export default class MainNavLayout extends React.Component {

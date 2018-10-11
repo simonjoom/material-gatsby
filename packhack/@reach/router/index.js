@@ -25,7 +25,7 @@ var _createReactContext = require("create-react-context");
 
 var _createReactContext2 = _interopRequireDefault(_createReactContext);
 
-var _reactLifecyclesCompat = require("react-lifecycles-compat"); 
+var _reactLifecyclesCompat = require("react-lifecycles-compat");
 
 var _utils = require("./lib/utils");
 
@@ -43,7 +43,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 ////////////////////////////////////////////////////////////////////////////////
-// React polyfill
 
 var createNamedContext = function createNamedContext(name, defaultValue) {
   var Ctx = (0, _createReactContext2.default)(defaultValue);
@@ -123,6 +122,7 @@ var LocationProvider = function (_React$Component) {
 
     refs.unlisten = history.listen(function () {
       Promise.resolve().then(function () {
+        // TODO: replace rAF with react deferred update API when it's ready https://github.com/facebook/react/issues/13306
         requestAnimationFrame(function () {
           if (!_this2.unmounted) {
             _this2.setState(function () {
@@ -438,7 +438,7 @@ var FocusHandlerImpl = function (_React$Component2) {
   return FocusHandlerImpl;
 }(_react2.default.Component);
 
-(0, _reactLifecyclesCompat.polyfill)(FocusHandlerImpl);
+//(0, _reactLifecyclesCompat.polyfill)(FocusHandlerImpl);
 
 var k = function k() {};
 

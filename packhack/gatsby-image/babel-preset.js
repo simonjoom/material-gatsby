@@ -4,7 +4,7 @@ function preset(context, options = {}) {
   const { browser = false, debug = false } = options
   const { NODE_ENV, BABEL_ENV } = process.env
 
-  const PRODUCTION = (BABEL_ENV || NODE_ENV) === "production"
+  const PRODUCTION = "production"
 
   const browserConfig = {
     useBuiltIns: false,
@@ -17,8 +17,7 @@ function preset(context, options = {}) {
 
   const nodeConfig = {
     targets: {
-     // node: PRODUCTION ? 7.0 : "current",
-      node:  "current",
+      node: "current",
     },
   }
 
@@ -29,21 +28,23 @@ function preset(context, options = {}) {
         Object.assign(
           {
             loose: true,
-            debug: !!debug,
-            useBuiltIns: "entry",
-            shippedProposals: true,
-            modules: "commonjs",
-          },
-          browser ? browserConfig : nodeConfig
+            debug: !!debug, 
+            modules: false,
+          }
         ),
       ],
-      [r("@babel/preset-react"), { development: !PRODUCTION }],
-      r("@babel/preset-flow"),
+      [r("@babel/preset-react"), { development: false }]
     ],
     plugins: [
+    r("@babel/plugin-external-helpers"),
+    r("babel-plugin-transform-react-remove-prop-types"),
+    r("@babel/plugin-transform-flow-strip-types"),
+    [
       r("@babel/plugin-proposal-class-properties"),
-      r("@babel/plugin-proposal-optional-chaining"),
-      r("@babel/plugin-transform-runtime"),
+      {
+        "loose": true
+      }
+    ]
     ],
   }
 }

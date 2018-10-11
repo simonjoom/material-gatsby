@@ -217,8 +217,11 @@ type DefaultProps = typeof defaultProps;
  *       renderSectionHeader={({section}) => <Header title={section.title} />}
  *       sections={[ // homogeneous rendering between sections
  *         {data: [...], title: ...},
+title: ...},
  *         {data: [...], title: ...},
+title: ...},
  *         {data: [...], title: ...},
+title: ...},
  *       ]}
  *     />
  *

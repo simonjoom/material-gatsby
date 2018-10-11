@@ -1,6 +1,104 @@
+@import "./index.scss";
+
 div .mobile-fix {
-    @media (max-width: 360px - 1px) {
-        padding-left: 0;
-        padding-right: 0;
-    }
+  @media (max-width: 360px - 1px) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.primary {
+  color: $md-primary-color;
+}
+.secondary {
+  color: $md-secondary-color;
+}
+.bgprimary {
+  background-color: $md-primary-color;
+}
+.bgsecondary {
+  background-color: $md-secondary-color;
+}
+
+.headerchat {
+  text-align: center;
+  background-color: $md-primary-color;
+  margin: 0;
+}
+.page {
+  font-style: italic;
+  font-family: Times;
+}
+
+.page {
+   /*
+   color: white;
+   font-size: 100px;*/
+   text-align: center;
+   font-style: italic;
+   font-family: Times;
+   padding-top: 20px;
+ }
+ 
+ .fade-exit .page {
+    position: absolute;
+   top: 0;
+   left: 0;
+   bottom: 0;
+   right: 0;
+   opacity: 1;
+   z-index: 2;
+ }
+ .fade-exit.fade-exit-active .page {
+    position: absolute;
+   top: 0;
+   left: 0;
+   bottom: 0;
+   right: 0;
+   opacity: 0;
+   transition: opacity 450ms ease-out;
+ }
+ 
+ .fade-enter .page {
+    position: absolute;
+   top: 0;
+   left: 0;
+   bottom: 0;
+   right: 0;
+   opacity: 0;
+   z-index: 1;
+ }
+ 
+ .fade-enter.fade-enter-active .page {
+    position: absolute;
+   top: 0;
+   left: 0;
+   bottom: 0;
+   right: 0;
+   opacity: 1;
+   transition: opacity 450ms ease-in;
+ }
+
+.paperOut {
+  margin: 10px;
+}
+
+.containerchat .active {
+  width: 600px;
+}
+.containerchat .popout {
+}
+.containerchat {
+  position: fixed;
+  z-index: 1111;
+  right: 0;
+  bottom: 0;
+}
+
+.white {
+  color: white;
+}
+
+.collapsible-body{
+background-color: white;
 }

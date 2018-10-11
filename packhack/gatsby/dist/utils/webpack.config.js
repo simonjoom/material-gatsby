@@ -285,17 +285,17 @@ console.log("suppliedStage",stage)
     function getDevtool() {
       switch (stage) {
         case `develop`:
-          return `eval`;
+          return "eval";
         // use a normal `source-map` for the html phases since
         // it gives better line and column numbers
 
         case `develop-html`:
         case `build-html`:
         case `build-javascript`: 
-          return `source-map`;
+          return "none";
 
         default: 
-          return false;
+          return "none";
       }
     }
 
@@ -407,6 +407,7 @@ if((process.env.NODE_ENV)=="production")
           "react-lifecycles-compat": directoryPath(`.cache/react-lifecycles-compat.js`),
           //"create-react-context": directoryPath(`.cache/create-react-context.js`),  
            "lodash":"lodash-es", 
+"react-transition-group/CSSTransition":"rc-css-transition-group-modern",
             'react-dom/server': 'inferno-server',
             'react': 'inferno-compat',
             'react-dom': 'inferno-compat',
@@ -481,6 +482,8 @@ if((process.env.NODE_ENV)=="production")
         }
       }
       if (process.env.NODE_ENV=="inferno"){
+//res.alias["react-transition-group"]="inferno-transition-group/dist/inferno-transition-group.esm.js";
+//res.alias["react-transition-group/CSSTransition"]="rc-css-transition-group-modern";
       res.alias["inferno"]="inferno/dist/index.dev.esm.js";
       res.alias["inferno-create-element"]="inferno-create-element/dist/index.dev.esm.js";
       res.alias["inferno-create-class"]="inferno-create-class/dist/index.dev.esm.js";
@@ -490,7 +493,7 @@ if((process.env.NODE_ENV)=="production")
        res.alias['react-dom/server']='inferno-server/dist/index.dev.esm.js';
        res.alias['react']='inferno-compat/dist/index.dev.esm.js';
        res.alias['react-dom']='inferno-compat/dist/index.dev.esm.js';
-     res.alias["react-hot-loader"]= path.dirname(require.resolve(`react-hot-loader/package.json`));
+   //res.alias['inferno-transition-group']='inferno-transition-group/dist/inferno-transition-group.esm.js'; 
       }else{
      res.alias["react-hot-loader"]= path.dirname(require.resolve(`react-hot-loader/package.json`));
       }
@@ -548,6 +551,7 @@ if((process.env.NODE_ENV)=="production")
         splitChunks: {
           name: false
         }, 
+        //concatenateModules: true ,
     //    nodeEnv:"development",
      minimizer: [ !program.noUglify && plugins.minifyJs(), plugins.minifyCss()].filter(Boolean)
       };

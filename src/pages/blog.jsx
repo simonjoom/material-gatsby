@@ -8,20 +8,37 @@ import "../articleApp.scss";
 
 class Blog extends React.Component {
   render() {
-    const { translate: t } = this.props;
+    const { translate: t, data } = this.props;
     const { slug, lng, route, files, slugbase } = this.props.pageContext;
     global.filesQuery = files;
-    const postEdges = this.props.data.allMarkdownRemark.edges;
+    console.log(data.allMarkdownRemark.edges);
+    const postEdges = data.allMarkdownRemark.edges.filter(
+      el => el.node.frontmatter.category !== "blog"
+    );
+    const postNode = data.allMarkdownRemark.edges.find(
+      el => el.node.frontmatter.category === "blog"
+    ).node;
+    const post = postNode.frontmatter;
+    const carouselList = post.cover ? post.cover.split(",") : [];
+
     return (
       <Layout
-        carouselList={[]}
+        carouselList={carouselList}
         route={route}
         lng={lng}
         page={slugbase}
         location={this.props.location}
       >
         <div className="index-container">
-          <SEO postEdges={postEdges} route={route} translate={t("Blog")} />
+          <SEO
+            postSEO
+            postNode={postNode}
+            postPath={slug}
+            lng={lng}
+            title={t("")("Blog")}
+            route={route}
+            translate={t("")}
+          />
           <PostListing postEdges={postEdges} sizebig={12} size={6} />
         </div>
       </Layout>
@@ -35,8 +52,11 @@ export const pageQuery = graphql`
     allMarkdownRemark(
       limit: 2000
       filter: {
-        fields: { lng: { eq: $lng }, type: { eq: "post" } }
-        frontmatter: { title: { ne: "default" } }
+        fields: { lng: { eq: $lng } }
+        frontmatter: {
+          title: { ne: "default" }
+          category: { regex: "/(blog|ski-resort)/" }
+        }
       }
       sort: { fields: [fields___date], order: DESC }
     ) {
@@ -53,6 +73,7 @@ export const pageQuery = graphql`
           frontmatter {
             title
             tags
+            category
             cover
             avatar
             date

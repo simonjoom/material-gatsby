@@ -1,8 +1,8 @@
 import React from "react";
-import Helmet from "react-helmet";
 import { graphql, Link } from "gatsby";
 import { kebabCase } from "lodash";
-import moment from "moment";
+import parse from "date-fns/parse";
+import format from "date-fns/format";
 import RehypeReact from "rehype-react";
 import Avatar from "../components/Avatars";
 import withTheme from "../withContext";
@@ -20,8 +20,6 @@ import FrontCarousel from "../components/FrontCarousel";
 import SocialLinks from "../components/SocialLinks";
 import PostSuggestions from "../components/PostSuggestions";
 import SEO from "../components/SEO";
-import "./b16-tomorrow-dark.css";
-import "./post.scss";
 
 const renderAst = new RehypeReact({
   createElement: React.createElement,
@@ -61,7 +59,6 @@ class PostTemplate extends React.Component {
     const { translate: t } = this.props;
     const { slug, route, lng, files, slugbase } = this.props.pageContext;
     global.filesQuery = files;
-    const postOverlapClass = mobile ? "post-overlap-mobile" : "post-overlap";
     const postNode = this.props.data.markdownRemark;
     const post = postNode.frontmatter;
     const directory = postNode.fields.type;
@@ -73,6 +70,7 @@ class PostTemplate extends React.Component {
       post.category_id = config.postDefaultCategoryID;
     }
 
+    const date = format(parse(postNode.fields.date), config.dateFormat);
     return (
       <Layout
         carouselList={carouselList}
@@ -81,7 +79,7 @@ class PostTemplate extends React.Component {
         page={slugbase}
         location={this.props.location}
       >
-        <div className="post-page md-grid md-grid--no-spacing">
+        <div className="post-page md-grid md-grid--stacked">
           <SEO
             postPath={slug}
             route={route}
@@ -89,70 +87,64 @@ class PostTemplate extends React.Component {
             postSEO
             translate={t("Post")}
           />
-          <div className="md-grid md-cell--12 post-page-contents mobile-fix">
-            <Card
-              waves="light"
-              className="post md-cell md-cell--12-phone md-cell--12 md-cell--4-tablet"
-              contentImage={
-                <div>
-                  {post.avatar && (
-                    <Avatar
-                      icon={
-                        <FrontCarousel
-                          data={[post.avatar]}
-                          directory={directory}
-                          height="0"
-                          style={{
-                            right: "50%",
-                            position: "absolute",
-                            zIndex: 111
-                          }}
-                          maxwidth="80px"
-                        />
-                      }
-                    />
-                  )}
-                  {carouselList.length > 0 && (
-                    <FrontCarousel
-                      data={carouselList}
-                      directory={directory}
-                      height="0"
-                      maxwidth="600px"
-                    />
-                  )}
-                </div>
-              }
-              titlereveal={post.title}
-              imgtitle={
-                <div>
-                  <Avatar icon={<Icon className="calendar" />} />
-                  Published on{" "}
-                  {`${moment(postNode.fields.date).format(config.dateFormat)}`}
-                </div>
-              }
-              title={
-                <Link
-                  className="category-link"
-                  to={`/categories_${lng}/${kebabCase(post.category)}`}
-                >
-                  <Avatar icon={<Icon className="folder-open" />} />
-                  {post.title} In category {post.category}
-                  <Button className="btn md-cell--right">Read </Button>
-                </Link>
-              }
-            >
-              <div className="post-meta">
-                <PostTags tags={post.tags} />
-                <SocialLinks
-                  postPath={slug}
-                  postNode={postNode}
-                  mobile={this.state.mobile}
-                />
+          <Card
+            className="md-cell md-cell--12-phone md-cell--10 md-cell--8-tablet mobile-fix"
+            waves="light"
+            contentImage={
+              <div>
+                {post.avatar && (
+                  <Avatar
+                    centered
+                    iconSized
+                    icon={
+                      <FrontCarousel
+                        data={[post.avatar]}
+                        directory={directory}
+                        height="0"
+                        maxwidth="80px"
+                      />
+                    }
+                  />
+                )}
+                {carouselList.length > 0 && (
+                  <FrontCarousel
+                    data={carouselList}
+                    directory={directory}
+                    height="0"
+                    maxwidth="600px"
+                  />
+                )}
               </div>
+            }
+            titlereveal={post.title}
+            imgtitle={
+              <div>
+                <Avatar icon={<Icon className="calendar" />} />
+                Published on {date}
+              </div>
+            }
+            title={
+              <Link
+                className="category-link"
+                to={`/categories_${lng}/${kebabCase(post.category)}`}
+              >
+                <Avatar icon={<Icon className="folder-open" />} />
+                {post.title} In category {post.category}
+                <Button className="btn md-cell--right">Read </Button>
+              </Link>
+            }
+          >
+            <div className="post-meta">
+              <PostTags tags={post.tags} />
+              <SocialLinks
+                postPath={slug}
+                postNode={postNode}
+                mobile={this.state.mobile}
+              />
+            </div>
 
-              {renderAst(postNode.htmlAst)}
-            </Card>
-          </div>
+            {renderAst(postNode.htmlAst)}
+          </Card>
 
           <PostSuggestions postNode={postNode} />
         </div>

@@ -1,8 +1,9 @@
 ////
 /// @group avatars
 ////
-@import 'icons';
+//@import 'icons';
 
+$md-font-icon-include-dense: true !default;
 
 /// The default size for an avatar
 /// @type Number
@@ -190,8 +191,8 @@ $md-avatar-colors: (
       }
 
       .md-avatar--icon-sized {
-        height: $md-font-icon-dense-size;
-        width: $md-font-icon-dense-size;
+        height: #{$md-font-icon-dense-size*2};
+        width: #{$md-font-icon-dense-size*2};
       }
     }
   }

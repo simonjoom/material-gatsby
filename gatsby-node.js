@@ -558,8 +558,7 @@ exports.createPages = ({ graphql, actions }) => {
             console.log("no route pages", node.fields.slug);
             return;
           }
-
-          createPage({
+          const page = {
             path: node.fields.slug,
             component: pagePage,
             context: {
@@ -568,7 +567,83 @@ exports.createPages = ({ graphql, actions }) => {
               id: node.id,
               ...node.fields
             }
-          });
+          };
+          if (page.path == "/") {
+            let newPage = {
+              component: page.component,
+              path: "/",
+              context: { ...node.fields }
+            };
+            /* let newPage1 = Object.assign({}, newPage, {
+              matchPath: `/z/create`
+            });
+            createPage(newPage1);
+            let newPage2 = Object.assign({}, newPage, { matchPath: `/z/api` });
+            createPage(newPage2);
+            let newPage3 = Object.assign({}, newPage, {
+              matchPath: `/z/post/:id`
+            });
+            createPage(newPage3);
+            let newPage4 = Object.assign({}, newPage, {
+              matchPath: `/z/drafts`
+            });
+            createPage(newPage4);*/
+            let newPage5 = Object.assign({}, newPage, {
+              matchPath: `/z/chats`
+            });
+            createPage(newPage5);
+            /* let newPage6 = Object.assign({}, newPage, {
+              matchPath: `/z/car/:id`
+            });
+            createPage(newPage6);
+            let newPage7 = Object.assign({}, newPage, { matchPath: `/z/cars` });
+            createPage(newPage7);*/
+            let newPage8 = Object.assign({}, newPage, {
+              matchPath: `/z/users`
+            });
+            createPage(newPage8);
+            let newPage9 = Object.assign({}, newPage, {
+              matchPath: `/z/user/:id`
+            });
+            createPage(newPage9);
+            let newPage10 = Object.assign({}, newPage, {
+              matchPath: `/z/forgetPassword`
+            });
+            createPage(newPage10);
+            let newPage11 = Object.assign({}, newPage, {
+              matchPath: `/z/resetPassword`
+            });
+            createPage(newPage11);
+            let newPage12 = Object.assign({}, newPage, {
+              matchPath: `/z/updatePassword`
+            });
+            createPage(newPage12);
+            let newPage13 = Object.assign({}, newPage, {
+              matchPath: `/z/validateEmail`
+            });
+            createPage(newPage13);
+            let newPage14 = Object.assign({}, newPage, {
+              matchPath: `/z/signup`
+            });
+            createPage(newPage14);
+            let newPage15 = Object.assign({}, newPage, {
+              matchPath: `/z/login`
+            });
+            createPage(
+              newPage15
+            ); /*
+            let newPage16 = Object.assign({}, newPage, {
+              matchPath: `/z/posts`
+            });
+            createPage(newPage16);
+            let newPage17 = Object.assign({}, newPage, {
+              matchPath: `/z/post/:id`
+            });
+            createPage(newPage17);*/
+          }
+
+          //matchPath: node.fields.slug == "/" ? `/z/*` : undefined,
+          createPage(page);
           break;
         default:
           console.log("????");
@@ -642,10 +717,11 @@ exports.onCreatePage = async ({ page, actions }) => {
     console.warn("no route", page);
     return;
   }
+
   console.log("remakefor", page.path);
   const { locales, defaultLocale } = config;
   let oldPage = Object.assign({}, page);
-  const newPage = {};
+  const newPage = page.path == "/" ? { matchPath: `/z/*` } : {};
   await asyncForEach(locales, async locale => {
     if (!route) {
       if (oldPage) deletePage(oldPage);

@@ -1,6 +1,7 @@
 ---
 title: "La Tania ski resort"
-cover: "starter-logo-1024.png"
+cover: "latania-chalet.jpg"
+avatar: "la-tania.png"
 category: ski-resort
 slug: "/latania/"
 tags:
@@ -99,7 +100,7 @@ date: "2018-07-17"
 <div class="o-actu fullWidth">
 <div class="grid-noGutter-equalHeight_sm-1">
 <div class="col">
-<imgtest data="57e4e0b210e4c_latania-skiforet.jpg" directory="post" alt="Ski in the forest"></imgtest>
+<imgtest data="latania-skiforet.jpg" directory="post" alt="Ski in the forest"></imgtest>
 </div>
 <div class="col">
 <div class="pl2 rich-text">

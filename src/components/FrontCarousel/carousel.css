@@ -57,7 +57,7 @@
     border: 0;
     background: none; }
   .carousel img {
-    width: 100%;
+   /* width: 100%;*/
     display: inline-block;
     pointer-events: none; }
   .carousel .carousel {
@@ -164,7 +164,7 @@
     background: #000; }
     
     .carousel .slide img {
-      width: 100%;
+   /*   width: 100%;*/
       vertical-align: top;
       border: 0; }
     .carousel .slide iframe {

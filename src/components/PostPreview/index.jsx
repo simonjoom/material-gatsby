@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "gatsby";
-import moment from "moment";
+import parse from "date-fns/parse";
+import format from "date-fns/format";
 import FrontCarousel from "components/FrontCarousel";
 import Avatar from "../Avatars";
 import Button from "../../reactLIB/Button";
@@ -40,9 +41,11 @@ class PostPreview extends Component {
   render() {
     const { postInfo, size } = this.props;
     //  const { mobile } = this.state;
-    const { carouselList, type } = postInfo; 
+    const { carouselList, type } = postInfo;
     /* eslint no-undef: "off" */
     const coverHeight = 200;
+
+    const date = format(parse(postInfo.date), config.dateFormat);
     // console.log("preview", carouselList, type);
     return (
       <Card
@@ -50,20 +53,24 @@ class PostPreview extends Component {
         waves="light"
         className={`md-cell md-cell--12-phone md-cell--${size} md-cell--4-tablet`}
         contentImage={
-          <div>
+          <>
             {this.props.star && <this.Elextra star={this.props.star} />}
             {this.props.avatar && (
               <Avatar
+                random
+                style={{
+                  left: 0,
+                  right: 0,
+                  position: "absolute",
+                  zIndex: 1111
+                }}
+                centered
+                iconSized
                 icon={
                   <FrontCarousel
                     data={[this.props.avatar]}
                     directory="post"
                     height="0"
-                    style={{
-                      right: "50%",
-                      position: "absolute",
-                      zIndex: 111
-                    }}
                     alt={postInfo.title}
                     maxwidth="80px"
                   />
@@ -78,7 +85,7 @@ class PostPreview extends Component {
                 directory={type}
               />
             )}
-          </div>
+          </>
         }
         titlereveal={postInfo.title}
         title={
@@ -88,11 +95,7 @@ class PostPreview extends Component {
             <Button className="btn md-cell--right">Read </Button>
           </Link>
         }
-        imgtitle={
-          <div>
-            Published on {`${moment(postInfo.date).format(config.dateFormat)}`}
-          </div>
-        }
+        imgtitle={<div>Published on {date}</div>}
         reveal={
           <div>
             <div

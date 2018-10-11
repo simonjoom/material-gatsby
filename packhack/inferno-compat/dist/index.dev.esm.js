@@ -1,5 +1,5 @@
-import { _CI, _HI, _L, _MT, _M, _MCCC, _ME, _MFCC, _MR, _MP, Component, createComponentVNode, createPortal, createRenderer, createTextVNode, createVNode, directClone, EMPTY_OBJ, getFlagsForElementVnode, linkEvent, normalizeProps, options, __render, findDOMfromVNode } from 'inferno';
-export { Component, EMPTY_OBJ, createComponentVNode, createPortal, createRenderer, createTextVNode, createVNode, directClone, getFlagsForElementVnode, linkEvent, normalizeProps, options } from 'inferno';
+import { _CI, _HI, _L, _MT, _M, _MCCC, _ME, _MFCC, _MR, _MP, render, Component, createComponentVNode, createPortal, createRenderer, createTextVNode, createVNode, directClone, EMPTY_OBJ, getFlagsForElementVnode, linkEvent, normalizeProps, options, __render, findDOMfromVNode, Fragment, createFragment, createRef, forwardRef, rerender } from 'inferno';
+export { Component, EMPTY_OBJ, Fragment, _CI, _HI, _L, _M, _MCCC, _ME, _MFCC, _MP, _MR, _MT, __render, createComponentVNode, createFragment, createPortal, createRef, createRenderer, createTextVNode, createVNode, directClone, findDOMfromVNode, forwardRef, getFlagsForElementVnode, linkEvent, normalizeProps, options, rerender } from 'inferno';
 import { cloneVNode } from 'inferno-clone-vnode';
 export { cloneVNode as cloneElement, cloneVNode } from 'inferno-clone-vnode';
 import { createClass } from 'inferno-create-class';
@@ -10,7 +10,6 @@ import { findDOMNode } from 'inferno-extras';
 export { findDOMNode } from 'inferno-extras';
 
 var ERROR_MSG = 'a runtime error occured! Use Inferno in development environment to find the error.';
-var isBrowser = !!(typeof window !== 'undefined' && window.document);
 function isNullOrUndef(o) {
     return isUndefined(o) || isNull(o);
 }
@@ -41,6 +40,27 @@ function isSameInnerHTML(dom, innerHTML) {
     tempdom.innerHTML = innerHTML;
     return tempdom.innerHTML === dom.innerHTML;
 }
+function findLastDOMFromVNode(vNode) {
+    var flags;
+    var children;
+    while (vNode) {
+        flags = vNode.flags;
+        if (flags & 2033 /* DOMRef */) {
+            return vNode.dom;
+        }
+        children = vNode.children;
+        if (flags & 8192 /* Fragment */) {
+            vNode = vNode.childFlags === 2 /* HasVNodeChildren */ ? children : children[children.length - 1];
+        }
+        else if (flags & 4 /* ComponentClass */) {
+            vNode = children.$LI;
+        }
+        else {
+            vNode = children;
+        }
+    }
+    return null;
+}
 function isSamePropsInnerHTML(dom, props) {
     return Boolean(props && props.dangerouslySetInnerHTML && props.dangerouslySetInnerHTML.__html && isSameInnerHTML(dom, props.dangerouslySetInnerHTML.__html));
 }
@@ -70,15 +90,13 @@ function hydrateChildren(parentVNode, parentNode, currentNode, context, isSVG) {
     var props = parentVNode.props;
     var flags = parentVNode.flags;
     if (childFlags !== 1 /* HasInvalidChildren */) {
-        var nextNode;
         if (childFlags === 2 /* HasVNodeChildren */) {
             if (isNull(currentNode)) {
                 _M(children, parentNode, context, isSVG, null);
             }
             else {
-                nextNode = currentNode.nextSibling;
                 currentNode = hydrateVNode(children, parentNode, currentNode, context, isSVG);
-                currentNode = currentNode ? currentNode.nextSibling : nextNode;
+                currentNode = currentNode ? currentNode.nextSibling : null;
             }
         }
         else if (childFlags === 16 /* HasTextChildren */) {
@@ -103,9 +121,8 @@ function hydrateChildren(parentVNode, parentNode, currentNode, context, isSVG) {
                     _M(child, parentNode, context, isSVG, currentNode);
                 }
                 else {
-                    nextNode = currentNode.nextSibling;
                     currentNode = hydrateVNode(child, parentNode, currentNode, context, isSVG);
-                    currentNode = currentNode ? currentNode.nextSibling : nextNode;
+                    currentNode = currentNode ? currentNode.nextSibling : null;
                 }
                 prevVNodeIsTextNode = (child.flags & 16 /* Text */) > 0;
             }
@@ -177,10 +194,10 @@ function hydrateFragment(vNode, parentDOM, dom, context, isSVG) {
     var children = vNode.children;
     if (vNode.childFlags === 2 /* HasVNodeChildren */) {
         hydrateText(children, parentDOM, dom);
-        return (vNode.dom = children.dom);
+        return children.dom;
     }
     hydrateChildren(vNode, parentDOM, dom, context, isSVG);
-    return (vNode.dom = children[children.length - 1].dom);
+    return findLastDOMFromVNode(children[children.length - 1]);
 }
 function hydrateVNode(vNode, parentDOM, currentDom, context, isSVG) {
     var flags = (vNode.flags |= 16384 /* InUse */);
@@ -204,7 +221,10 @@ function hydrateVNode(vNode, parentDOM, currentDom, context, isSVG) {
 }
 function hydrate(input, parentDOM, callback) {
     var dom = parentDOM.firstChild;
-    if (!isNull(dom)) {
+    if (isNull(dom)) {
+        render(input, parentDOM, callback);
+    }
+    else {
         if (!isInvalid(input)) {
             dom = hydrateVNode(input, parentDOM, dom, {}, false);
         }
@@ -225,7 +245,6 @@ function hydrate(input, parentDOM, callback) {
     }
 }
 
-var isBrowser$1 = !!(typeof window !== 'undefined' && window.document);
 var isArray = Array.isArray;
 function isNullOrUndef$1(o) {
     return isUndefined$1(o) || isNull$1(o);
@@ -552,7 +571,7 @@ function normalizeFormProps(name, props) {
     if ((name === 'input' || name === 'textarea') && props.type !== 'radio' && props.onChange) {
         var type = props.type;
         var eventName;
-        if (!type || type === 'text') {
+        if (!type || type === 'text'|| type === 'password') {
             eventName = 'oninput';
         }
         if (eventName && !props[eventName]) {
@@ -681,7 +700,7 @@ var WrapperComponent = (function (Component$$1) {
         // tslint:disable-next-line
         return this.props.context;
     };
-    WrapperComponent.prototype.render = function render (props) {
+    WrapperComponent.prototype.render = function render$$1 (props) {
         return props.children;
     };
 
@@ -692,7 +711,7 @@ function unstable_renderSubtreeIntoContainer(parentComponent, vNode, container, 
         children: vNode,
         context: parentComponent.context
     });
-    render(wrapperVNode, container, null);
+    render$1(wrapperVNode, container, null);
     var component = vNode.children;
     if (callback) {
         // callback gets the component as context, no other argument.
@@ -703,7 +722,7 @@ function unstable_renderSubtreeIntoContainer(parentComponent, vNode, container, 
 function createFactory(type) {
     return createElement.bind(null, type);
 }
-function render(rootInput, container, cb, context) {
+function render$1(rootInput, container, cb, context) {
     __render(rootInput, container, cb, context);
     var input = container.$V;
     if (input && input.flags & 14 /* Component */) {
@@ -711,32 +730,51 @@ function render(rootInput, container, cb, context) {
     }
 }
 // Mask React global in browser enviornments when React is not used.
-if (isBrowser$1 && typeof window.React === 'undefined') {
+if (typeof window !== 'undefined' && typeof window.React === 'undefined') {
     var exports$1 = {
         Children: Children,
         Component: Component,
         EMPTY_OBJ: EMPTY_OBJ,
+        Fragment: Fragment,
         PropTypes: PropTypes,
         PureComponent: PureComponent,
+        // Internal methods
+        _CI: _CI,
+        _HI: _HI,
+        _L: _L,
+        _M: _M,
+        _MCCC: _MCCC,
+        _ME: _ME,
+        _MFCC: _MFCC,
+        _MP: _MP,
+        _MR: _MR,
+        _MT: _MT,
+        __render: __render,
+        // Public methods
         cloneElement: cloneVNode,
         cloneVNode: cloneVNode,
         createClass: createClass,
         createComponentVNode: createComponentVNode,
         createElement: createElement,
         createFactory: createFactory,
+        createFragment: createFragment,
         createPortal: createPortal,
+        createRef: createRef,
         createRenderer: createRenderer,
         createTextVNode: createTextVNode,
         createVNode: createVNode,
         directClone: directClone,
         findDOMNode: findDOMNode,
+        findDOMfromVNode: findDOMfromVNode,
+        forwardRef: forwardRef,
         getFlagsForElementVnode: getFlagsForElementVnode,
         hydrate: hydrate,
         isValidElement: isValidElement,
         linkEvent: linkEvent,
         normalizeProps: normalizeProps,
         options: options,
-        render: render,
+        render: render$1,
+        rerender: rerender,
         unmountComponentAtNode: unmountComponentAtNode,
         unstable_renderSubtreeIntoContainer: unstable_renderSubtreeIntoContainer,
         version: version
@@ -748,32 +786,50 @@ var index = {
     Children: Children,
     Component: Component,
     EMPTY_OBJ: EMPTY_OBJ,
+    Fragment: Fragment,
     PropTypes: PropTypes,
     PureComponent: PureComponent,
+    // Internal methods
+    _CI: _CI,
+    _HI: _HI,
+    _L: _L,
+    _M: _M,
+    _MCCC: _MCCC,
+    _ME: _ME,
+    _MFCC: _MFCC,
+    _MP: _MP,
+    _MR: _MR,
+    _MT: _MT,
+    __render: __render,
+    // Public methods
     cloneElement: cloneVNode,
     cloneVNode: cloneVNode,
     createClass: createClass,
     createComponentVNode: createComponentVNode,
     createElement: createElement,
     createFactory: createFactory,
+    createFragment: createFragment,
     createPortal: createPortal,
+    createRef: createRef,
     createRenderer: createRenderer,
     createTextVNode: createTextVNode,
     createVNode: createVNode,
     directClone: directClone,
     findDOMNode: findDOMNode,
     findDOMfromVNode: findDOMfromVNode,
+    forwardRef: forwardRef,
     getFlagsForElementVnode: getFlagsForElementVnode,
     hydrate: hydrate,
     isValidElement: isValidElement,
     linkEvent: linkEvent,
     normalizeProps: normalizeProps,
     options: options,
-    render: render,
+    render: render$1,
+    rerender: rerender,
     unmountComponentAtNode: unmountComponentAtNode,
     unstable_renderSubtreeIntoContainer: unstable_renderSubtreeIntoContainer,
     version: version
 };
-
+global.h=index.createElement;
 export default index;
-export { Children, PropTypes, PureComponent, createFactory, hydrate, isValidElement, render, unmountComponentAtNode, unstable_renderSubtreeIntoContainer, version };
+export { Children, PropTypes, PureComponent, createFactory, hydrate, isValidElement, render$1 as render, unmountComponentAtNode, unstable_renderSubtreeIntoContainer, version };

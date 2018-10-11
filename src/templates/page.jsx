@@ -1,19 +1,17 @@
 import React from "react";
-import RehypeReact from "rehype-react"; 
-import { graphql } from "gatsby"; 
+import RehypeReact from "rehype-react";
+import { graphql } from "gatsby";
 //import UserInfo from "../components/UserInfo";
 import withTheme from "../withContext";
 import PostTags from "../components/PostTags";
 import Layout from "../components/Layout";
 //import PostInfo from "../components/PostInfo";
-import SocialLinks from "../components/SocialLinks"; 
-import Card from "../reactLIB/Card"; 
+import SocialLinks from "../components/SocialLinks";
+import Card from "../reactLIB/Card";
 import SiteConfig from "../data/SiteConfig";
 import FrontCarousel from "../components/FrontCarousel";
 import SEO from "../components/SEO";
 import ReactFB from "../components/ReactFB";
-import "./b16-tomorrow-dark.css";
-import "./post.scss";
 
 const renderAst = new RehypeReact({
   createElement: React.createElement,
@@ -34,8 +32,15 @@ class PostTemplate extends React.Component {
   render() {
     const { mobile } = this.state;
     const { translate: t } = this.props;
-    const { slug, slugbase, route, lng, carousel,files } = this.props.pageContext;
-    global.filesQuery=files;   
+    const {
+      slug,
+      slugbase,
+      route,
+      lng,
+      carousel,
+      files
+    } = this.props.pageContext;
+    global.filesQuery = files;
     let carouselList = [];
     let background;
     //render current markdownRemark
@@ -52,7 +57,8 @@ class PostTemplate extends React.Component {
     }
     if (!post.category_id) {
       post.category_id = SiteConfig.postDefaultCategoryID;
-    } 
+    }
+    console.log("htmlAst",postNode.htmlAst)
     const title = t("index")(post.title);
     //render current markdownRemark
     return (
@@ -63,16 +69,17 @@ class PostTemplate extends React.Component {
         page={slugbase}
         location={this.props.location}
       >
-      <SEO
-        postPath={slug}
-        route={route}
-        postNode={postNode}
-        postSEO
-        translate={t("Index")}
-      /> 
+        <SEO
+          postPath={slug}
+          route={route}
+          postNode={postNode}
+          postSEO
+          translate={t("Index")}
+        />
+        
         <Card className="post" title={title}>
           {renderAst(postNode.htmlAst)}
-        </Card>
+        </Card> 
         <div className="post-meta">
           <PostTags tags={post.tags} />
           <SocialLinks
@@ -80,7 +87,8 @@ class PostTemplate extends React.Component {
             postNode={postNode}
             mobile={this.state.mobile}
           />
-        </div> 
+        </div>
+      
       </Layout>
     );
   }
@@ -114,7 +122,7 @@ export const pageQuery = graphql`
   }
 `;
 
-     /*   {slug == "/" && (
+/*   {slug == "/" && (
             <View className="rowlink">
               <Link
                 primary

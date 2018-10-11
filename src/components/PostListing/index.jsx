@@ -33,7 +33,7 @@ class PostListing extends React.Component {
     const size = this.props.size || "12";
     this.arrSSR = [];
     this.postList.forEach((el, index) => {
-      const st = el.star ? parseInt(el.star) : 0;
+      const st = el.star ? parseInt(el.star) : false;
       this.arrSSR.push(
         <PostPreview
           key={el.title}

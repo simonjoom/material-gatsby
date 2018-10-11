@@ -1,11 +1,10 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('react'), require('react-dom')) :
-	typeof define === 'function' && define.amd ? define(['exports', 'react', 'react-dom'], factory) :
-	(factory((global.ReachRouter = {}),global.React,global.ReactDOM));
-}(this, (function (exports,React,ReactDOM) { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('react')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'react'], factory) :
+	(factory((global.ReachRouter = {}),global.React));
+}(this, (function (exports,React) { 'use strict';
 
 React = React && React.hasOwnProperty('default') ? React['default'] : React;
-ReactDOM = ReactDOM && ReactDOM.hasOwnProperty('default') ? ReactDOM['default'] : ReactDOM;
 
 /**
  * Copyright 2014-2015, Facebook, Inc.
@@ -1740,14 +1739,6 @@ var navigate = globalHistory.navigate;
 /* eslint-disable jsx-a11y/anchor-has-content */
 
 ////////////////////////////////////////////////////////////////////////////////
-// React polyfill
-var unstable_deferredUpdates = ReactDOM.unstable_deferredUpdates;
-
-if (unstable_deferredUpdates === undefined) {
-  unstable_deferredUpdates = function unstable_deferredUpdates(fn) {
-    return fn();
-  };
-}
 
 var createNamedContext = function createNamedContext(name, defaultValue) {
   var Ctx = createContext(defaultValue);
@@ -1827,7 +1818,8 @@ var LocationProvider = function (_React$Component) {
 
     refs.unlisten = history.listen(function () {
       Promise.resolve().then(function () {
-        unstable_deferredUpdates(function () {
+        // TODO: replace rAF with react deferred update API when it's ready https://github.com/facebook/react/issues/13306
+        requestAnimationFrame(function () {
           if (!_this2.unmounted) {
             _this2.setState(function () {
               return { context: _this2.getContext() };

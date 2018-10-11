@@ -31,7 +31,8 @@ Avec Skiscool, sélectionnez et réservez votre coach sportif au meilleur prix.
 
 
 <imgtest data="skilessons.jpg" directory="pages" alt="ski lessons courchevel"></imgtest>
- 
+
+
 ### Tarifs
 
 Les prix sont fixés directement par le moniteur, le moniteur de ski vous donne ses meilleurs tarifs en fonction de son remplissage de planning.

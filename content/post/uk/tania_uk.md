@@ -1,6 +1,7 @@
 ---
 title: "La Tania ski resort"
-cover: "starter-logo-1024.png"
+cover: "latania-chalet.jpg"
+avatar: "la-tania.png"
 category: ski-resort
 slug: "/latania/"
 tags:

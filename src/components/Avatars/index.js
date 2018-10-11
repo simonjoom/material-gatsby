@@ -29,8 +29,8 @@ export default class Avatar extends PureComponent {
       'amber',
       'orange',
       'deep-orange',
-      'brown',
-      'grey',
+     // 'brown',
+     // 'grey',
       'blue-grey',
     ],
   };
@@ -79,6 +79,7 @@ export default class Avatar extends PureComponent {
       children,
       suffix,
       suffixes,
+      centered,
       iconSized,
       role,
       random, // eslint-disable-line no-unused-vars
@@ -109,7 +110,9 @@ export default class Avatar extends PureComponent {
     return (
       <div
         {...props}
-        className={cn('md-inline-block md-avatar', this._getColor(suffix, suffixes, this.state.color), {
+        className={cn('md-avatar', this._getColor(suffix, suffixes, this.state.color),{
+          'md-block-centered': centered,
+        }, {
           'md-avatar--icon-sized': iconSized,
         }, className)}
       >

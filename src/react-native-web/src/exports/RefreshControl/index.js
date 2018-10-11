@@ -26,6 +26,7 @@ class RefreshControl extends Component<*> {
     size: oneOf([0, 1]),
     tintColor: ColorPropType,
     title: string,
+title: string,
     titleColor: ColorPropType
   };
 

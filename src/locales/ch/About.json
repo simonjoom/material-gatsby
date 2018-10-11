@@ -1,5 +1,5 @@
 {
-  "UserDescription":"Yeah, I like animals better than people sometimes... Especially dogs. Dogs are the best. Every time you come home, they act like they haven't seen you in a year. And the good thing about dogs... is they got different dogs for different people.",
+  "UserDescription":"Hello.",
   "login": "Log In",
   "logout": "Log out",
   "forgot_password": "You don't have access to your account anymore?",
@@ -26,7 +26,6 @@
   "address_resort": "address resort",
   "zipCode_resort": "zipcode resort",
   "Create_resort": "New resort",
-  "APIREADME": "API README", 
   "yes": "Yes",
   "loading": "Loading...",
   "cancel_sign_up": "Cancel sign up",

@@ -14,12 +14,11 @@ import warning from "warning";
 import PropTypes from "prop-types";
 import invariant from "invariant";
 import createContext from "create-react-context";
-import { polyfill } from "react-lifecycles-compat"; 
+import { polyfill } from "react-lifecycles-compat";
 import { startsWith, pick, resolve, match, insertParams, validateRedirect } from "./lib/utils";
 import { globalHistory, navigate, createHistory, createMemorySource } from "./lib/history";
 
 ////////////////////////////////////////////////////////////////////////////////
-
 
 var createNamedContext = function createNamedContext(name, defaultValue) {
   var Ctx = createContext(defaultValue);
@@ -99,6 +98,7 @@ var LocationProvider = function (_React$Component) {
 
     refs.unlisten = history.listen(function () {
       Promise.resolve().then(function () {
+        // TODO: replace rAF with react deferred update API when it's ready https://github.com/facebook/react/issues/13306
         requestAnimationFrame(function () {
           if (!_this2.unmounted) {
             _this2.setState(function () {
@@ -396,8 +396,7 @@ var FocusHandlerImpl = function (_React$Component2) {
     return React.createElement(
       Comp,
       _extends({
-        style: _extends({ outline: "none",flexGrow: 1,
-    flexShrink: 1 }, style),
+        style: _extends({ outline: "none" }, style),
         tabIndex: "-1",
         role: role,
         ref: function ref(n) {
@@ -415,7 +414,7 @@ var FocusHandlerImpl = function (_React$Component2) {
   return FocusHandlerImpl;
 }(React.Component);
 
-polyfill(FocusHandlerImpl);
+//polyfill(FocusHandlerImpl);
 
 var k = function k() {};
 
@@ -589,8 +588,8 @@ var createRoute = function createRoute(basepath) {
     if (!element) {
       return null;
     }
-    
-    !(element.props.path || element.props.default || element.type === Redirect) ? process.env.NODE_ENV !== "production" ? invariant(false, "<Router>: Children of <Router> must have a `path` or `default` prop, or be a `<Redirect>`. None found on element type") : invariant(false) : void 0;
+
+    !(element.props.path || element.props.default || element.type === Redirect) ? process.env.NODE_ENV !== "production" ? invariant(false, "<Router>: Children of <Router> must have a `path` or `default` prop, or be a `<Redirect>`. None found on element type `" + element.type + "`") : invariant(false) : void 0;
 
     !!(element.type === Redirect && (!element.props.from || !element.props.to)) ? process.env.NODE_ENV !== "production" ? invariant(false, "<Redirect from=\"" + element.props.from + " to=\"" + element.props.to + "\"/> requires both \"from\" and \"to\" props when inside a <Router>.") : invariant(false) : void 0;
 

@@ -66,11 +66,11 @@ class Card extends Component {
   }
   renderAll(title, titlereveal, reveal, textClassName, children, actions) {
     return (
-      <div>
+      <>
         {this.renderContent(title, reveal, textClassName, children)}
         {this.renderReveal(titlereveal, reveal)}
         {actions && this.renderAction(actions)}
-      </div>
+      </>
     );
   }
 
