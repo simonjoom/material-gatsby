@@ -1,123 +1,243 @@
 @import "./theme.scss";
 
+@function fv-strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+/**
+* We use a percentage value when instead of a rem value on the fluid font size
+* so that it plays nice with IE and Safari.
+*/
+@function fv-rem-to-percent($percent) {
+  $value: fv-strip-unit($percent);
+  @return ($value * 100) + "%";
+}
+
+/**
+* Convert line height to percentage for cross browser compatibility.
+*/
+@function fv-line-height($line-height) {
+  @return ($line-height * 100) + "%";
+}
+
+/**
+* Mixin to create fluid type based on options provided - defaults to base options.
+*/
+@mixin fluid($options: $fluid-base) {
+  font-size: map-get($options, min-fs);
+  line-height: fv-line-height(map-get($options, line-height));
+
+  //We assume that browsers default font is 16px.
+  $min-vw: (fv-strip-unit(map-get($options, min-vw)) / 16) * 1rem;
+  $max-vw: (fv-strip-unit(map-get($options, max-vw)) / 16) * 1rem;
+  $min-fs: (fv-strip-unit(map-get($options, min-fs)) / 16) * 1rem;
+  $max-fs: (fv-strip-unit(map-get($options, max-fs)) / 16) * 1rem;
+
+  @media screen and (min-width: $min-vw) {
+    font-size: calc(
+      #{fv-rem-to-percent($min-fs)} + #{fv-strip-unit($max-fs - $min-fs)} *
+        (
+          (100vw - #{fv-rem-to-percent($min-vw)}) / #{fv-strip-unit(
+              $max-vw - $min-vw
+            )}
+        )
+    );
+  }
+
+  @media screen and (min-width: $max-vw) {
+    font-size: $max-fs;
+  }
+}
+
+/**
+* Helper function to get a key value from the base options map.
+*/
+@function fv-base($key) {
+  @return map-get($fluid-base, $key);
+}
+
+/**
+* Helper function to convert px to rem for the baseline. This will help keep things fluid.
+*/
+@function fv-px-to-rem($pxval, $base: fv-strip-unit(fv-base(max-fs))) {
+  @if not unitless($pxval) {
+    $pxval: fv-strip-unit($pxval);
+  }
+
+  @return $pxval / $base + rem;
+}
+
+/**
+* Optional mixin to help create a nice vertical rythm. Search "vertical ryhtm golden ratio".
+*/
+@mixin fluid-baseline($size, $cap-height, $scale: 2) {
+  $rhythm: fv-base(line-height) * $size / $scale;
+  $lines: ceil(($size + 0.001px) / $rhythm);
+  $line-height: $rhythm * $lines / $size;
+
+  line-height: ($line-height * 100) + %;
+  font-size: fv-px-to-rem($size);
+
+  $baseline-distance: (fv-base(line-height) - $cap-height) / 2;
+
+  padding-top: $baseline-distance + rem;
+  margin-bottom: fv-base(line-height) - $baseline-distance + rem;
+}
+
 * {
   box-sizing: border-box;
 }
-
+/*
 html {
   height: 100%;
-} 
+} */
 /* cyrillic-ext */
 @font-face {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 300;
-  src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v15/mem5YaGs126MiZpBA-UN_r8OX-hpKKSTj5PW.woff2) format('woff2');
-  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+  src: local("Open Sans Light"), local("OpenSans-Light"),
+    url(https://fonts.gstatic.com/s/opensans/v15/mem5YaGs126MiZpBA-UN_r8OX-hpKKSTj5PW.woff2)
+      format("woff2");
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F,
+    U+FE2E-FE2F;
 }
 /* cyrillic */
 @font-face {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 300;
-  src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v15/mem5YaGs126MiZpBA-UN_r8OVuhpKKSTj5PW.woff2) format('woff2');
+  src: local("Open Sans Light"), local("OpenSans-Light"),
+    url(https://fonts.gstatic.com/s/opensans/v15/mem5YaGs126MiZpBA-UN_r8OVuhpKKSTj5PW.woff2)
+      format("woff2");
   unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
 /* greek-ext */
 @font-face {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 300;
-  src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v15/mem5YaGs126MiZpBA-UN_r8OXuhpKKSTj5PW.woff2) format('woff2');
+  src: local("Open Sans Light"), local("OpenSans-Light"),
+    url(https://fonts.gstatic.com/s/opensans/v15/mem5YaGs126MiZpBA-UN_r8OXuhpKKSTj5PW.woff2)
+      format("woff2");
   unicode-range: U+1F00-1FFF;
 }
 /* greek */
 @font-face {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 300;
-  src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v15/mem5YaGs126MiZpBA-UN_r8OUehpKKSTj5PW.woff2) format('woff2');
+  src: local("Open Sans Light"), local("OpenSans-Light"),
+    url(https://fonts.gstatic.com/s/opensans/v15/mem5YaGs126MiZpBA-UN_r8OUehpKKSTj5PW.woff2)
+      format("woff2");
   unicode-range: U+0370-03FF;
 }
 /* vietnamese */
 @font-face {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 300;
-  src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v15/mem5YaGs126MiZpBA-UN_r8OXehpKKSTj5PW.woff2) format('woff2');
+  src: local("Open Sans Light"), local("OpenSans-Light"),
+    url(https://fonts.gstatic.com/s/opensans/v15/mem5YaGs126MiZpBA-UN_r8OXehpKKSTj5PW.woff2)
+      format("woff2");
   unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
 }
 /* latin-ext */
 @font-face {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 300;
-  src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v15/mem5YaGs126MiZpBA-UN_r8OXOhpKKSTj5PW.woff2) format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  src: local("Open Sans Light"), local("OpenSans-Light"),
+    url(https://fonts.gstatic.com/s/opensans/v15/mem5YaGs126MiZpBA-UN_r8OXOhpKKSTj5PW.woff2)
+      format("woff2");
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB,
+    U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 /* latin */
 @font-face {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 300;
-  src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v15/mem5YaGs126MiZpBA-UN_r8OUuhpKKSTjw.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  src: local("Open Sans Light"), local("OpenSans-Light"),
+    url(https://fonts.gstatic.com/s/opensans/v15/mem5YaGs126MiZpBA-UN_r8OUuhpKKSTjw.woff2)
+      format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
 }
 /* cyrillic-ext */
 @font-face {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 400;
-  src: local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v15/mem8YaGs126MiZpBA-UFWJ0bf8pkAp6a.woff2) format('woff2');
-  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+  src: local("Open Sans Regular"), local("OpenSans-Regular"),
+    url(https://fonts.gstatic.com/s/opensans/v15/mem8YaGs126MiZpBA-UFWJ0bf8pkAp6a.woff2)
+      format("woff2");
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F,
+    U+FE2E-FE2F;
 }
 /* cyrillic */
 @font-face {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 400;
-  src: local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v15/mem8YaGs126MiZpBA-UFUZ0bf8pkAp6a.woff2) format('woff2');
+  src: local("Open Sans Regular"), local("OpenSans-Regular"),
+    url(https://fonts.gstatic.com/s/opensans/v15/mem8YaGs126MiZpBA-UFUZ0bf8pkAp6a.woff2)
+      format("woff2");
   unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
 /* greek-ext */
 @font-face {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 400;
-  src: local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v15/mem8YaGs126MiZpBA-UFWZ0bf8pkAp6a.woff2) format('woff2');
+  src: local("Open Sans Regular"), local("OpenSans-Regular"),
+    url(https://fonts.gstatic.com/s/opensans/v15/mem8YaGs126MiZpBA-UFWZ0bf8pkAp6a.woff2)
+      format("woff2");
   unicode-range: U+1F00-1FFF;
 }
 /* greek */
 @font-face {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 400;
-  src: local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v15/mem8YaGs126MiZpBA-UFVp0bf8pkAp6a.woff2) format('woff2');
+  src: local("Open Sans Regular"), local("OpenSans-Regular"),
+    url(https://fonts.gstatic.com/s/opensans/v15/mem8YaGs126MiZpBA-UFVp0bf8pkAp6a.woff2)
+      format("woff2");
   unicode-range: U+0370-03FF;
 }
 /* vietnamese */
 @font-face {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 400;
-  src: local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v15/mem8YaGs126MiZpBA-UFWp0bf8pkAp6a.woff2) format('woff2');
+  src: local("Open Sans Regular"), local("OpenSans-Regular"),
+    url(https://fonts.gstatic.com/s/opensans/v15/mem8YaGs126MiZpBA-UFWp0bf8pkAp6a.woff2)
+      format("woff2");
   unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
 }
 /* latin-ext */
 @font-face {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 400;
-  src: local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v15/mem8YaGs126MiZpBA-UFW50bf8pkAp6a.woff2) format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  src: local("Open Sans Regular"), local("OpenSans-Regular"),
+    url(https://fonts.gstatic.com/s/opensans/v15/mem8YaGs126MiZpBA-UFW50bf8pkAp6a.woff2)
+      format("woff2");
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB,
+    U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 /* latin */
 @font-face {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 400;
-  src: local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v15/mem8YaGs126MiZpBA-UFVZ0bf8pkAg.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  src: local("Open Sans Regular"), local("OpenSans-Regular"),
+    url(https://fonts.gstatic.com/s/opensans/v15/mem8YaGs126MiZpBA-UFVZ0bf8pkAg.woff2)
+      format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
 }
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 //@import '~react-md/src/scss/react-md';
@@ -141,6 +261,57 @@ html {
 @include react-md-media;
 @include react-md-buttons;
 //@include react-md-everything;
+
+
+$fluid-base: (
+  min-vw: 320px,
+  max-vw: 1200px,
+  min-fs: 15px,
+  max-fs: 22px,
+  line-height: 1.5
+);
+
+html {
+  @include fluid();
+}
+
+$header-sizes: (
+  h1: 28px,
+  h2: 26px,
+  h3: 24px,
+  h4: 22px,
+  h5: 20px,
+  h6: 18px
+);
+
+
+
+@for $i from 1 through 6 {
+  h#{$i} {
+    @include fluid-baseline(map-get($header-sizes, h#{$i}), 0.88);
+  }
+}
+$fluid-h1: (
+    min-vw: 320px,
+    max-vw: 1200px,
+    min-fs: 24px,
+    max-fs: 32px,
+    line-height: 1
+);
+h1,.h1 {
+    @include fluid($fluid-h1);
+}
+$fluid-h2: (
+    min-vw: 320px,
+    max-vw: 1200px,
+    min-fs: 20px,
+    max-fs: 28px,
+    line-height: 1
+);
+h2,.h2 {
+    @include fluid($fluid-h2);
+}
+
 .transition-group {
   flex: 1;
   min-height: 600px;
@@ -149,13 +320,12 @@ html {
 
 .router {
   width: 100%;
-   position: absolute;
+  position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
-  right: 0; 
+  right: 0;
 }
-
 
 .cardchat.card-content {
   padding: 4px;
@@ -164,8 +334,8 @@ html {
 .cardchat.card-panel {
   padding: 4px;
 }
-.cardchat .card{
-  margin:0;
+.cardchat .card {
+  margin: 0;
 }
 .bar2Buffer {
   transition: transform 0.4s linear;
@@ -238,7 +408,6 @@ html {
   height: 24px;
   z-index: 44;
 }
-
 
 /*!
  * Materialize v1.0.0 (http://materializecss.com)
@@ -2389,13 +2558,10 @@ html {
  * 2. Prevent adjustments of font size after orientation changes in
  *    IE on Windows Phone and in iOS.
  */
-html {
-  line-height: 1.15;
-  /* 1 */
-  -ms-text-size-adjust: 100%;
-  /* 2 */
-  -webkit-text-size-adjust: 100%;
-  /* 2 */
+/*html {
+  line-height: 1.15; 
+  -ms-text-size-adjust: 100%; 
+  -webkit-text-size-adjust: 100%; 
 }
 
 /* Sections
@@ -4806,23 +4972,6 @@ html {
   color: rgba(0, 0, 0, 0.87);
 }
 
-@media only screen and (min-width: 0) {
-  html {
-    font-size: 14px;
-  }
-}
-
-@media only screen and (min-width: 992px) {
-  html {
-    font-size: 14.5px;
-  }
-}
-
-@media only screen and (min-width: 1200px) {
-  html {
-    font-size: 15px;
-  }
-}
 
 h1,
 h2,
@@ -4830,8 +4979,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 400;
-  line-height: 1.3;
+  font-weight: 400; 
 }
 
 h1 a,
@@ -4843,77 +4991,6 @@ h6 a {
   font-weight: inherit;
 }
 
-.h1 {
-  font-size: 4.2rem;
-  line-height: 110%;
-  margin: 2.8rem 0 1.68rem 0;
-}
-
-.h2 {
-  font-size: 3.56rem;
-  line-height: 110%;
-  margin: 2.3733333333rem 0 1.424rem 0;
-}
-
-.h3 {
-  font-size: 2.92rem;
-  line-height: 110%;
-  margin: 1.9466666667rem 0 1.168rem 0;
-}
-
-.h4 {
-  font-size: 2.28rem;
-  line-height: 110%;
-  margin: 1.52rem 0 0.912rem 0;
-}
-
-.h5 {
-  font-size: 1.64rem;
-  line-height: 110%;
-  margin: 1.0933333333rem 0 0.656rem 0;
-}
-
-.h6 {
-  font-size: 1.15rem;
-  line-height: 110%;
-  margin: 0.7666666667rem 0 0.46rem 0;
-}
-
-h1 {
-  font-size: 4.2rem;
-  line-height: 110%;
-  margin: 2.8rem 0 1.68rem 0;
-}
-
-h2 {
-  font-size: 3.56rem;
-  line-height: 110%;
-  margin: 2.3733333333rem 0 1.424rem 0;
-}
-
-h3 {
-  font-size: 2.92rem;
-  line-height: 110%;
-  margin: 1.9466666667rem 0 1.168rem 0;
-}
-
-h4 {
-  font-size: 2.28rem;
-  line-height: 110%;
-  margin: 1.52rem 0 0.912rem 0;
-}
-
-h5 {
-  font-size: 1.64rem;
-  line-height: 110%;
-  margin: 1.0933333333rem 0 0.656rem 0;
-}
-
-h6 {
-  font-size: 1.15rem;
-  line-height: 110%;
-  margin: 0.7666666667rem 0 0.46rem 0;
-}
 
 em {
   font-style: italic;
@@ -4933,138 +5010,6 @@ small {
 
 .thin {
   font-weight: 200;
-}
-
-@media only screen and (min-width: 360px) {
-  .flow-text {
-    font-size: 1.2rem;
-  }
-}
-
-@media only screen and (min-width: 390px) {
-  .flow-text {
-    font-size: 1.224rem;
-  }
-}
-
-@media only screen and (min-width: 420px) {
-  .flow-text {
-    font-size: 1.248rem;
-  }
-}
-
-@media only screen and (min-width: 450px) {
-  .flow-text {
-    font-size: 1.272rem;
-  }
-}
-
-@media only screen and (min-width: 480px) {
-  .flow-text {
-    font-size: 1.296rem;
-  }
-}
-
-@media only screen and (min-width: 510px) {
-  .flow-text {
-    font-size: 1.32rem;
-  }
-}
-
-@media only screen and (min-width: 540px) {
-  .flow-text {
-    font-size: 1.344rem;
-  }
-}
-
-@media only screen and (min-width: 570px) {
-  .flow-text {
-    font-size: 1.368rem;
-  }
-}
-
-@media only screen and (min-width: 600px) {
-  .flow-text {
-    font-size: 1.392rem;
-  }
-}
-
-@media only screen and (min-width: 630px) {
-  .flow-text {
-    font-size: 1.416rem;
-  }
-}
-
-@media only screen and (min-width: 660px) {
-  .flow-text {
-    font-size: 1.44rem;
-  }
-}
-
-@media only screen and (min-width: 690px) {
-  .flow-text {
-    font-size: 1.464rem;
-  }
-}
-
-@media only screen and (min-width: 720px) {
-  .flow-text {
-    font-size: 1.488rem;
-  }
-}
-
-@media only screen and (min-width: 750px) {
-  .flow-text {
-    font-size: 1.512rem;
-  }
-}
-
-@media only screen and (min-width: 780px) {
-  .flow-text {
-    font-size: 1.536rem;
-  }
-}
-
-@media only screen and (min-width: 810px) {
-  .flow-text {
-    font-size: 1.56rem;
-  }
-}
-
-@media only screen and (min-width: 840px) {
-  .flow-text {
-    font-size: 1.584rem;
-  }
-}
-
-@media only screen and (min-width: 870px) {
-  .flow-text {
-    font-size: 1.608rem;
-  }
-}
-
-@media only screen and (min-width: 900px) {
-  .flow-text {
-    font-size: 1.632rem;
-  }
-}
-
-@media only screen and (min-width: 930px) {
-  .flow-text {
-    font-size: 1.656rem;
-  }
-}
-
-@media only screen and (min-width: 1040px) {
-  .flow-text {
-    font-size: 1.68rem;
-  }
-}
-
-@media only screen and (max-width: 360px) {
-  .flow-text {
-    font-size: 1.2rem;
-  }
 }
 
 .scale-transition {
@@ -6270,7 +6215,7 @@ body.keyboard-focused .dropdown-content li:focus {
   -webkit-tap-highlight-color: transparent;
   line-height: 1.5;
   padding: 1rem;
- /* background-color: #fff;*/
+  /* background-color: #fff;*/
   border-bottom: 1px solid #ddd;
 }
 
