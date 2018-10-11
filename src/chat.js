@@ -44,6 +44,7 @@ import DetailPage from "./chatcomponents/post/DetailPage";
 import FeedPage from "./chatcomponents/post/FeedPage";*/
 import ChatsPage from "./chatcomponents/chat/ChatsPage";
 import Badge from "./reactLIB/Badge";
+import Button from "./reactLIB/Button";
 
 const wsLink = new WebSocketLink({
   uri: "ws://localhost:4000/subscriptions",
@@ -110,11 +111,11 @@ class ChatLayoutJSX extends Component {
   componentDidMount() {
     console.log("mountLayout");
     console.log("Materialize Ready?", M);
-
+   // this.closeChat = this.closeChat.bind(this);
     var that = this;
     this.manualclose = true;
     var elems = document.querySelectorAll(".collapsible");
-    this.instances = M.Collapsible.init(elems, {
+    this.instCollaps = M.Collapsible.init(elems, {
       onOpenStart: () => {
         that.instance.close();
       },
@@ -132,7 +133,7 @@ class ChatLayoutJSX extends Component {
     var instancestap = M.TapTarget.init(el, {
       onClose: () => {
         if (that.manualclose) {
-          var instance = that.instances[0];
+          var instance = that.instCollaps[0];
           setTimeout(function() {
             instance.open();
           }, 400);
@@ -151,13 +152,15 @@ class ChatLayoutJSX extends Component {
       }, 5000);
     }, 400);
   }
-
+  closeChat = () => {
+    this.instCollaps[0].close();
+  };
   componentWillUnmount() {
+    if (this.instCollaps) {
+      this.instCollaps.destroy();
+    }
     if (this.instance) {
       this.instance.destroy();
-    }
-    if (this.instancestap) {
-      this.instancestap.destroy();
     }
   }
   toggleDrawer = () => {
@@ -206,6 +209,14 @@ resize = () => {
           <ul className="collapsible popout">
             <li>
               <div className="collapsible-body">
+                <Button
+                  onClick={() => this.closeChat()}
+                  icon="close"
+                  style={{ padding: "0 10px" }}
+                  className="right btn-large"
+                  flat
+                  type="material"
+                />
                 <div className="md-grid">
                   <SideBar />
                   <div className={`md-cell md-cell--${size}`}>
