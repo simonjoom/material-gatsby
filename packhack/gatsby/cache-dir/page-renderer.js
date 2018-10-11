@@ -4,7 +4,7 @@ import { publicLoader } from "./loader"
 import { apiRunner,apiRunnerAsync } from "./api-runner-browser"
 
 import shallowCompare from 'shallow-compare';
-
+/*
 // Renders page
 class PageRenderer extends React.Component {
 
@@ -83,7 +83,7 @@ if(nextprops.location!==this.props.location){
     return this.state.wrappedPage 
   }
 }
-/*
+*/
 // Renders page
 class PageRenderer extends React.Component {
   render() {
@@ -115,7 +115,7 @@ class PageRenderer extends React.Component {
 
     return wrappedPage
   }
-}*/
+}
 
 PageRenderer.propTypes = {
   location: PropTypes.object.isRequired,
