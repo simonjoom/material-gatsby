@@ -37,7 +37,13 @@ class Navigation extends Component {
               type="awesome"
               className="right"
               large
-              style={{ top: 0, bottom: 0, right: "14px" }}
+              style={{
+                top: 0,
+                bottom: 0,
+                right: "14px",
+                height: 50,
+                width: 200
+              }}
             >
               <Button
                 floating

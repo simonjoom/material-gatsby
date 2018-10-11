@@ -22,7 +22,7 @@ class Button extends Component {
       M.Tooltip.init(elems, tooltipOptions);
 
     var els = document.querySelectorAll('.fixed-action-btn');
-    typeof M !== 'undefined' && els && M.FloatingActionButton.init(els, {});
+    typeof M !== 'undefined' && els && M.FloatingActionButton.init(els, {direction:"left"});
   }
 
   render() {
@@ -42,8 +42,7 @@ class Button extends Component {
       type,
       style,
       ...other
-    } = this.props;
-console.log("flat",flat,this.props)
+    } = this.props; 
     const toggle = fabClickOnly ? 'click-to-toggle' : '';
     let C = node;
     let classes = {
