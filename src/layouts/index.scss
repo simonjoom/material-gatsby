@@ -1,89 +1,5 @@
 @import "./theme.scss";
 
-@function fv-strip-unit($value) {
-  @return $value / ($value * 0 + 1);
-}
-
-/**
-* We use a percentage value when instead of a rem value on the fluid font size
-* so that it plays nice with IE and Safari.
-*/
-@function fv-rem-to-percent($percent) {
-  $value: fv-strip-unit($percent);
-  @return ($value * 100) + "%";
-}
-
-/**
-* Convert line height to percentage for cross browser compatibility.
-*/
-@function fv-line-height($line-height) {
-  @return ($line-height * 100) + "%";
-}
-
-/**
-* Mixin to create fluid type based on options provided - defaults to base options.
-*/
-@mixin fluid($options: $fluid-base) {
-  font-size: map-get($options, min-fs);
-  line-height: fv-line-height(map-get($options, line-height));
-
-  //We assume that browsers default font is 16px.
-  $min-vw: (fv-strip-unit(map-get($options, min-vw)) / 16) * 1rem;
-  $max-vw: (fv-strip-unit(map-get($options, max-vw)) / 16) * 1rem;
-  $min-fs: (fv-strip-unit(map-get($options, min-fs)) / 16) * 1rem;
-  $max-fs: (fv-strip-unit(map-get($options, max-fs)) / 16) * 1rem;
-
-  @media screen and (min-width: $min-vw) {
-    font-size: calc(
-      #{fv-rem-to-percent($min-fs)} + #{fv-strip-unit($max-fs - $min-fs)} *
-        (
-          (100vw - #{fv-rem-to-percent($min-vw)}) / #{fv-strip-unit(
-              $max-vw - $min-vw
-            )}
-        )
-    );
-  }
-
-  @media screen and (min-width: $max-vw) {
-    font-size: $max-fs;
-  }
-}
-
-/**
-* Helper function to get a key value from the base options map.
-*/
-@function fv-base($key) {
-  @return map-get($fluid-base, $key);
-}
-
-/**
-* Helper function to convert px to rem for the baseline. This will help keep things fluid.
-*/
-@function fv-px-to-rem($pxval, $base: fv-strip-unit(fv-base(max-fs))) {
-  @if not unitless($pxval) {
-    $pxval: fv-strip-unit($pxval);
-  }
-
-  @return $pxval / $base + rem;
-}
-
-/**
-* Optional mixin to help create a nice vertical rythm. Search "vertical ryhtm golden ratio".
-*/
-@mixin fluid-baseline($size, $cap-height, $scale: 2) {
-  $rhythm: fv-base(line-height) * $size / $scale;
-  $lines: ceil(($size + 0.001px) / $rhythm);
-  $line-height: $rhythm * $lines / $size;
-
-  line-height: ($line-height * 100) + %;
-  font-size: fv-px-to-rem($size);
-
-  $baseline-distance: (fv-base(line-height) - $cap-height) / 2;
-
-  padding-top: $baseline-distance + rem;
-  margin-bottom: fv-base(line-height) - $baseline-distance + rem;
-}
-
 * {
   box-sizing: border-box;
 }
@@ -261,56 +177,118 @@ html {
 @include react-md-media;
 @include react-md-buttons;
 //@include react-md-everything;
+@function pow($number, $exponent) {
+  $value: 1;
 
+  @if $exponent > 0 {
+    @for $i from 1 through $exponent {
+      $value: $value * $number;
+    }
+  }
 
-$fluid-base: (
-  min-vw: 320px,
-  max-vw: 1200px,
-  min-fs: 15px,
-  max-fs: 22px,
-  line-height: 1.5
-);
-
-html {
-  @include fluid();
+  @return $value;
 }
 
-$header-sizes: (
-  h1: 28px,
-  h2: 26px,
-  h3: 24px,
-  h4: 22px,
-  h5: 20px,
-  h6: 18px
+$bp-sizes: (
+  default: (
+    base-font-size: 14px,
+    base-line-height: 1.3,
+    scale: 1.2
+  ),
+  small: (
+    base-font-size: 16px,
+    base-line-height: 1.3,
+    scale: 1.25
+  ),
+  medium: (
+    base-font-size: 18px,
+    base-line-height: 1.4,
+    scale: 1.4
+  ),
+  large: (
+    base-font-size: 20px,
+    base-line-height: 1.5,
+    scale: 1.4
+  )
 );
 
+$breakpoints: (
+  default: '',
+  small: 480px,
+  medium: 720px,
+  large: 960px
+);
 
+$font-sizes: ( p, bq, ssh, sh, h, hero );
 
-@for $i from 1 through 6 {
-  h#{$i} {
-    @include fluid-baseline(map-get($header-sizes, h#{$i}), 0.88);
+@mixin breakpoint($name) {
+  @if not map-has-key($breakpoints, $name) {
+    @warn "Invalid breakpoint `#{$name}`.";
+  } @else {
+    @if map-get($breakpoints, $name) == '' {
+      @content;
+    } @else {
+      @media (min-width: map-get($breakpoints, $name)) {
+        @content;
+      } 
+    }
   }
 }
-$fluid-h1: (
-    min-vw: 320px,
-    max-vw: 1200px,
-    min-fs: 24px,
-    max-fs: 32px,
-    line-height: 1
-);
+
+@function get-breakpoint-property($prop, $bp) {
+  @return map-get(map-get($bp-sizes, $bp), $prop);
+}
+
+@mixin generate-font-properties($label, $scale, $base-font-size, $base-line-height) {
+  $scale-value: index($font-sizes, $label) - 1;
+
+  $fs: pow($scale, $scale-value) * $base-font-size;
+    $lh: $base-font-size * $base-line-height / $fs;
+
+    @while $lh < 1 {
+      $lh: $lh + $lh;
+    }
+  
+  font-size: $fs;
+  line-height: $lh;
+}
+
+@each $size, $data in $bp-sizes {
+
+  $bsf: get-breakpoint-property(base-font-size, $size);
+  $blh: get-breakpoint-property(base-line-height, $size);
+  $s: get-breakpoint-property(scale, $size);
+  
+  @include breakpoint($size) {
+    @each $label in $font-sizes {
+      %#{$label} {
+        @include generate-font-properties($label, $s, $bsf, $blh);
+      }  
+    }
+  }
+}
+ 
 h1,.h1 {
-    @include fluid($fluid-h1);
+  @extend %h;
 }
-$fluid-h2: (
-    min-vw: 320px,
-    max-vw: 1200px,
-    min-fs: 20px,
-    max-fs: 28px,
-    line-height: 1
-);
 h2,.h2 {
-    @include fluid($fluid-h2);
+  @extend %sh;
 }
+h3,.h3 {
+  @extend %ssh;
+}
+blockquote,.Menulink {
+  @extend %bq;
+}
+p {
+  @extend %p;
+}
+
+ 
+html {
+  @extend %p;
+}
+ 
 
 .transition-group {
   flex: 1;
