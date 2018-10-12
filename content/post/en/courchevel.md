@@ -2,6 +2,7 @@
 title: "Courchevel ski Resort"
 cover: "saulire.jpg"
 avatar: "courchevel.png"
+deps: "aquamotion|saulire|familypark|luge-courchevel|altiport|larosiere|leforum|courchevel"
 category: "ski-resort"
 slug: "/courchevel/"
 tags:

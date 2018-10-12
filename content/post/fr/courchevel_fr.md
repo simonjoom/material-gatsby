@@ -3,7 +3,7 @@ title: Courchevel ski Resort
 cover: "saulire.jpg"
 avatar: "courchevel.png"
 deps: "aquamotion|saulire|familypark|luge-courchevel|altiport|larosiere|leforum|courchevel"
-slug: courchevel
+slug: "/courchevel/"
 category: "ski-resort"
 tags:
   - station de ski
@@ -15,7 +15,7 @@ date: '2018-07-02'
 <div class="edito-wrapper station">
     <div class="banner-station">
 <div class="banner-station-logo">
-!\[Courchevel]("/assets/courchevel.png")
+<imgtest data="courchevel.png" directory="post" alt="Courchevel"></imgtest>
 </div>
     </div>
 <h3 class="main-title-1 h-margin-bottom-0">Courchevel</h1>

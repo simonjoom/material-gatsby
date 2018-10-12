@@ -22,12 +22,6 @@ const Localetosrc = {
   uk: Icon_Flag_UK
 };
 class LanguageSwitcher extends Component {
-  constructor(props) {
-    super(props);
-    // console.log("i18n.language", i18n.language);
-    this.language = this.getLanguage();
-    this.route = this.props.route;
-  }
   getLanguage() {
     return (
       i18n.language ||
@@ -57,6 +51,8 @@ class LanguageSwitcher extends Component {
           .replace("_ru", "_" + lng)
           .replace("_ch", "_" + lng)
           .replace("_uk", "_" + lng);
+
+    if (!path) console.log(this.props);
     if (process.env.NODE_ENV === "production") {
       if (code == "fr") href = "https://www.skiscool.fr";
       else if (code == "en") href = "https://www.ski-courchevel.deals";
@@ -64,11 +60,11 @@ class LanguageSwitcher extends Component {
       else if (code == "ru") href = "https://www.skiscool.com";
       else if (code == "uk") href = "https://uk.skiscool.com";
       else href = "https://cn.skiscool.com";
-      path = path.replace(/\/(fr|ru|uk|ch|pt|en)/, "");
+      path = path.replace(/\/(fr|ru|uk|cn|pt|en)/, "");
     }
     return href + path;
   }
-  
+
   render() {
     const languages = [
       { code: "en", label: "English" },

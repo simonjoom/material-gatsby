@@ -61,8 +61,7 @@ class PostTemplate extends React.Component {
     }
     if (!post.category_id) {
       post.category_id = SiteConfig.postDefaultCategoryID;
-    }
-    console.log("htmlAst", postNode.htmlAst);
+    } 
     const title = t("index")(post.title);
     //render current markdownRemark
     return (
