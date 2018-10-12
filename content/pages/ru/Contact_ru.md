@@ -47,9 +47,11 @@ date: "2018-07-06"
 ### Поздровіенія:
             
 Благодарю русских разработчиков, которые помогли мне создать этот сайт:
-        
+
+     
 | Nicoloas Hagenov | Konstantin Tarkus |
 | :-- | :-: |
 | [![Nicoloas Hagenov](http://graph.facebook.com/100010587453193/picture?type=large)](https://www.facebook.com/profile.php?id=100010587453193&fref=ts) | [![Konstantin Tarkus](https://pbs.twimg.com/profile_images/916383839609675777/N2nNNxx3_400x400.jpg)](https://twitter.com/koistya?lang=fr) |
+
 
 

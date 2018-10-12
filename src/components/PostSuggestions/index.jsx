@@ -7,6 +7,7 @@ export default class PostSuggestions extends Component {
   render() {
     const { postNode } = this.props;
     const postFields = postNode.fields;
+    console.log("postFields", postFields);
     return (
       <div className="post-suggestions md-grid md-cell--12">
         <Button
@@ -24,10 +25,8 @@ export default class PostSuggestions extends Component {
           }}
         >
           <div className="headline-container hide-on-mobile">
-            <h2 className="md-body-2 secondary-color">Previous</h2>
-            <h6 className="md-headline secondary-color">
-              {postFields.prevTitle}
-            </h6>
+            <h4 className="h2 secondary-color">Previous</h4>
+            <h5 className="h3 secondary-color">{postFields.prevTitle}</h5>
           </div>
         </Button>
         <Button
@@ -45,10 +44,8 @@ export default class PostSuggestions extends Component {
           }}
         >
           <div className="headline-container">
-            <h2 className="md-body-2 secondary-color">Next</h2>
-            <h6 className="md-headline secondary-color">
-              {postFields.nextTitle}
-            </h6>
+            <h4 className="h2 secondary-color">Next</h4>
+            <h5 className="h3 secondary-color">{postFields.nextTitle}</h5>
           </div>
         </Button>
       </div>

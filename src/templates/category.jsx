@@ -1,4 +1,4 @@
-import React from "react"; 
+import React from "react";
 import { graphql } from "gatsby";
 import withTheme from "../withContext";
 import SEO from "../components/SEO";
@@ -9,7 +9,7 @@ import config from "../data/SiteConfig";
 class CategoryTemplate extends React.Component {
   render() {
     const { translate: t, path } = this.props;
-    const { category, lng, route, files,slugbase } = this.props.pageContext; 
+    const { category, lng, route, files, slugbase } = this.props.pageContext;
     global.filesQuery = files;
     const postEdges = this.props.data.allMarkdownRemark.edges;
     return (
@@ -21,8 +21,12 @@ class CategoryTemplate extends React.Component {
         page={slugbase}
         location={this.props.location}
       >
-        <div className="category-container"> 
-          <SEO title={`Posts in category "${category}" | ${config.siteTitle}`} route={route} translate={t("Index")} />  
+        <div className="category-container">
+          <SEO
+            title={`Posts in category "${category}" | ${config.siteTitle}`}
+            route={route}
+            translate={t("Index")}
+          />
           <PostListing postEdges={postEdges} />
         </div>
       </Layout>
@@ -33,11 +37,14 @@ class CategoryTemplate extends React.Component {
 export default withTheme(CategoryTemplate);
 
 export const pageQuery = graphql`
-  query CategoryPage($category: String) {
+  query CategoryPage($category: String, $lng: String!) {
     allMarkdownRemark(
       limit: 1000
       sort: { fields: [fields___date], order: DESC }
-      filter: { frontmatter: { category: { eq: $category } } }
+      filter: {
+        fields: { lng: { eq: $lng } }
+        frontmatter: { title: { ne: "default" }, category: { eq: $category } }
+      }
     ) {
       totalCount
       edges {

@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql, Link } from "gatsby";
-import { kebabCase } from "lodash"; 
+import { kebabCase } from "lodash";
 import Avatar from "../components/Avatars";
 import withTheme from "../withContext";
 import Card from "../reactLIB/Card";
@@ -11,9 +11,9 @@ import SocialLinks from "../components/SocialLinks";
 import Layout from "../components/Layout";
 import PostSuggestions from "../components/PostSuggestions";
 import SEO from "../components/SEO";
-import config from "../data/SiteConfig"; 
+import config from "../data/SiteConfig";
 import parse from "date-fns/parse";
-import format from "date-fns/format"
+import format from "date-fns/format";
 
 class PostTemplate extends React.Component {
   constructor(props) {
@@ -40,8 +40,8 @@ class PostTemplate extends React.Component {
     }
     const directory = postNode.fields.type;
     const carouselList = post.cover ? [post.cover] : [];
-    
-    const date=format(parse(postNode.fields.date), config.dateFormat);
+
+    const date = format(parse(postNode.fields.date), config.dateFormat);
     return (
       <Layout
         carouselList={carouselList}
@@ -71,11 +71,15 @@ class PostTemplate extends React.Component {
                 />
               )
             }
-            titlereveal={post.title} 
+            titlereveal={post.title}
             title={
               <Link
                 className="category-link"
-                to={`/categories_${lng}/${kebabCase(post.category)}`}
+                to={
+                  lng == "en"
+                    ? `/${kebabCase(post.category)}`
+                    : `/${lng}/${kebabCase(post.category)}`
+                }
               >
                 <Avatar icon={<Icon className="folder-open" />} />
                 {post.title} In category {post.category}
@@ -83,10 +87,9 @@ class PostTemplate extends React.Component {
             }
           >
             <div className="post-meta">
-            <div>
+              <div>
                 <Avatar icon={<Icon className="calendar" />} />
-                Published on{" "}
-                {date}
+                Published on {date}
               </div>
               <PostTags tags={post.tags} />
               <SocialLinks

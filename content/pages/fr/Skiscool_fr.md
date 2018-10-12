@@ -2,7 +2,7 @@
 title: Ski courchevel, Courchevel Meribel Val-Thorens
 cover: carousel/snowboard4.jpg
 deps: lm-pistes|helico|years-experience|envelope|shield|thumbs|certified|guide
-category: ski school
+category: skischool
 slug: "/"
 tags:
     - école de ski

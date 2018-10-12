@@ -5,8 +5,8 @@ import AppRegistry from "./src/react-native-web/src/exports/AppRegistry";
 import { ThemeContext } from "./src/withContext";
 const renderFn = process.env.NODE_ENV !== "production" ? render : hydrate;
  
+global.filesQuery = [];
 global.menuList = window.__INITIAL_STATE__.menuList;
-global.filesQuery = window.__INITIAL_STATE__.filesQuery;
 global.locale = window.__INITIAL_STATE__.locale;
 function timeout(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -128,7 +128,7 @@ export const wrapPageElement = ({ element, props }) => {
       </div>
     );
 
-  global.locale[lng].forEach(({ node }) => {
+  global.locale.forEach(({ node }) => {
     const { lng, ns, data } = node;
     if (!i18n.hasResourceBundle(lng, ns)) {
       i18n.addResources(lng, ns, JSON.parse(data));

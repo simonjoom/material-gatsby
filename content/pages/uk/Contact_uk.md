@@ -43,13 +43,11 @@ Merci et dans l'attente de vous rencontrer sur les pistes des 3 vallées
 
 ### Поздровіенія:
             
-        Благодаря разработчикам русские помогают мне создавать это:
-        
- ![Nicoloas Hagenov](http://graph.facebook.com/100010587453193/picture?type=large)](https://www.facebook.com/profile.php?id=100010587453193&fref=ts)
- ![Konstantin Tarkus](https://pbs.twimg.com/profile_images/916383839609675777/N2nNNxx3_400x400.jpg)](https://twitter.com/koistya?lang=fr)
- 
-  
-Якщо вам потрібен сайт в режимі реального часу (чат системи, карти, геолокації ...), як цей, не соромтеся зв'язатися зі мною,
-зробимо хорошу ціну з деякими безкоштовними уроки катання на лижах **<i class="fa fa-smile-o"> </i>**  
+ Благодаря разработчикам русские помогают мне создавать это:
 
-Simon    
+        
+
+| Nicoloas Hagenov | Konstantin Tarkus |
+| :-- | :-: |
+| [![Nicoloas Hagenov](http://graph.facebook.com/100010587453193/picture?type=large)](https://www.facebook.com/profile.php?id=100010587453193&fref=ts) | [![Konstantin Tarkus](https://pbs.twimg.com/profile_images/916383839609675777/N2nNNxx3_400x400.jpg)](https://twitter.com/koistya?lang=fr) |
+

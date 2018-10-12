@@ -9,6 +9,7 @@ const NavItem = ({
   href = '',
   onClick,
   waves,
+  external,
   ...props
 }) => {
   const mywaves = waves;
@@ -20,7 +21,11 @@ const NavItem = ({
   });
 
   if (divider) return <li className="divider" />;
-  const el = (
+  const el = external ? (
+    <a href={href} className={classes}>
+      {children}
+    </a>
+  ) : (
     <Link to={href} onClick={onClick} className={classes}>
       {children}
     </Link>
