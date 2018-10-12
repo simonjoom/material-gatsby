@@ -74,7 +74,7 @@ date: "2018-07-06"
 </div>
 
 
-<div class="md-grid md-cell md-cell--2-tablet md-cell--3  md-cell--4-phone" style="display: flex; align-items: center;">
+<div class="md-grid md-cell md-cell--2-tablet md-cell--3  md-cell--4-phone">
 <imgtest data="certified.png" height="75" width="70px" directory="pages" alt="Courchevel" ></imgtest>
 </div>
 </div>
@@ -82,7 +82,7 @@ date: "2018-07-06"
 
 <h3 style="text-align:center;">Best Service</h3>
 <div class="md-grid" style="margin-bottom: 10%;">
-<div class="md-grid md-cell md-cell--2-tablet md-cell--3 md-cell--4-phone" style="display: flex; alignItems: center;">
+<div class="md-grid md-cell md-cell--2-tablet md-cell--3 md-cell--4-phone">
 <imgtest data="lm-pistes.jpg" height="75" width="300px" directory="pages" alt="service client"></imgtest>
 </div>
 
@@ -122,7 +122,7 @@ date: "2018-07-06"
 <p>Your coach books restaurants, he is bilingual, he speaks English and is dedicated to the practice of ski racing and off track skiing.</p>
 </div>
 
-<div class="md-grid md-cell md-cell--2-tablet md-cell--3 md-cell--4-phone" style="display: flex; align-items: center;">
+<div class="md-grid md-cell md-cell--2-tablet md-cell--3 md-cell--4-phone">
 <imgtest data="years-experience.png" height="75" width="300px" directory="pages" alt="Courchevel"></imgtest>
 </div>
 </div>
@@ -130,7 +130,7 @@ date: "2018-07-06"
 
 
 <!-- Start FB Section -->
-<div style="flex-direction: column">
+<div class="md-grid">
 <reactfb language="fr" newDivName="sel" appId="562112907171338" type="post" desc="Private ski instructor courchevel 1850 Dubai - courchevel"/></reactfb>
 </div>
 <!-- End FB Section -->
