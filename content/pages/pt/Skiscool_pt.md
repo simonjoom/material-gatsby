@@ -20,7 +20,7 @@ date: "2018-07-06"
 <div class="md-block-centered md-cell--6-tablet">
  <h3>Seleção de perfil e reserva:</h3>
  <p>Encontrar um monitor adequado não é uma questão de um clique do mouse;</p>
- <p>O SkiScool não é uma equipe nerd.<br><b style="color:#3f51b5;background-color:#ccff90">Conhecemos nossos treinadores,</b> bem como sua experiência de ensino nos 3 vales <b style="color:#3f51b5;background-color:#ccff90">desde 10 anos</b>. <br> A melhor maneira de obter uma resposta adaptada à sua situação ainda é nos chamar.</p>
+ <p>O SkiScool não é uma equipe nerd.<br><b>Conhecemos nossos treinadores,</b> bem como sua experiência de ensino nos 3 vales <b>desde 10 anos</b>. <br> A melhor maneira de obter uma resposta adaptada à sua situação ainda é nos chamar.</p>
  </div>
 </div>
  
@@ -29,7 +29,7 @@ date: "2018-07-06"
  <imgtest data="certified.png" height="75" width="200px" directory="pages" alt="Courchevel"></imgtest>
  <div class="md-block-centered md-cell--6-tablet">
 <h3>Profissionais de pós-graduação, preço de serviço de qualidade</h3>
-<p>Todos os instrutores de esqui oferecidos em nossa plataforma são <b style="color:#3f51b5;background-color:#ccff90">profissionais graduados</b> do estado.<br><p> Aqui, nenhum estagiário ou monitor sem experiência não conhecendo a área dos 3 vales. (Courchevel, Méribel e Val-thorens)</p>
+<p>Todos os instrutores de esqui oferecidos em nossa plataforma são <b>profissionais graduados</b> do estado.<br><p> Aqui, nenhum estagiário ou monitor sem experiência não conhecendo a área dos 3 vales. (Courchevel, Méribel e Val-thorens)</p>
 </div>
 </div>
 
@@ -37,7 +37,7 @@ date: "2018-07-06"
   <imgtest data="years-experience.png" height="75" width="200px" directory="pages" alt="Courchevel"></imgtest>
 <div class="md-block-centered md-cell--6-tablet">
   <h3>Tire partido da nossa experiência nos 3 vales </h3>
-  <p> A Skiscool é uma plataforma reconhecida pela sua selecção de instrutores de esqui nos três vales há mais de 10 anos. <b style="color:#3f51b5;background-color:#ccff90">ofertas exclusivas</b>! :<br>Transferências gratuitas </b> para uma semana de reserva com um treinador.</p>
+  <p> A Skiscool é uma plataforma reconhecida pela sua selecção de instrutores de esqui nos três vales há mais de 10 anos. <b>ofertas exclusivas</b>! :<br>Transferências gratuitas </b> para uma semana de reserva com um treinador.</p>
   </div>
 </div>
 </div>
@@ -82,7 +82,7 @@ Nossos instrutores são escolhidos seguindo três critérios importantes:
 
 
 <div style="flex-direction: column;" class="md-cell--8 md-cell--middle">
-<p style="font-size: 1.8em; line-height: 150%">
+<p class="h3">
 <i class="fa fa-quote-left"></i>
 Bom preço /qualidade.<br> Nossa comissão é no mínimo para garantir o melhor preço.<b> Dependendo do período escolhido e o tempo de lições você pode beneficiar até 15% de desconto!</b>
 <i class="fa fa-quote-right"></i>

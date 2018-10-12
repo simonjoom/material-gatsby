@@ -19,7 +19,7 @@ date: "2018-07-06"
 <imgtest data="guide.png" height="75" width="200px" directory="pages" alt="Courchevel"></imgtest>
 <div class="md-block-centered md-cell--6-tablet">
   <h3 class="h4">Profile Selection</h3>
-    <p>Finding a suitable instructor is just 3 mouse clicks away</p> <p>SkiScool is not a geek team.<br> <b style="color:#3f51b5;background-color:#ccff90">We know our coaches</b> and their teaching experience on the 3 valleys <b style="color:#3f51b5;background-color:#ccff90">for 10 years</b>. <br>The best way to get an answer to your question is to call us</p>
+    <p>Finding a suitable instructor is just 3 mouse clicks away</p> <p>SkiScool is not a geek team.<br> <b>We know our coaches</b> and their teaching experience on the 3 valleys <b>for 10 years</b>. <br>The best way to get an answer to your question is to call us</p>
   </div>
 </div>
  
@@ -28,8 +28,8 @@ date: "2018-07-06"
  <imgtest data="certified.png" height="75" width="200px" directory="pages" alt="Courchevel"></imgtest>
  <div class="md-block-centered md-cell--6-tablet">
 <h3 class="h4">Professionals, Graduate Program, Cost Effective</h3>
- <p>All skiscool's instructors are <br><b style="color:#3f51b5;background-color:#ccff90">certified professionals</b></p>
- <p>Here, there is <b style="color:#3f51b5;background-color:#ccff90">no trainee</b> or instructor without experience teaching on the 3 valleys.  (Courchevel, Méribel and Val-thorens)</p>
+ <p>All skiscool's instructors are <br><b>certified professionals</b></p>
+ <p>Here, there is <b>no trainee</b> or instructor without experience teaching on the 3 valleys.  (Courchevel, Méribel and Val-thorens)</p>
 </div>
 </div>
  
@@ -37,7 +37,7 @@ date: "2018-07-06"
 <div class="md-cell md-cell--4 md-cell--8-tablet">
   <imgtest data="years-experience.png" height="75" width="200px" directory="pages" alt="Courchevel"></imgtest>
 <div class="md-block-centered md-cell--6-tablet">
-  <h3 class="h4">Take advantage of our expertise on the 3 valleys</h3> <p>Skiscool is a platform recognized for its selection of ski instructor on the three valleys for over 10 years.<br> Enjoy our <b style="color:#3f51b5;background-color:#ccff90">exclusive offers</b>! :<br> <b style="color:#3f51b5;background-color:#ccff90">Free transfers</b> for one week booking with a coach.</p>
+  <h3 class="h4">Take advantage of our expertise on the 3 valleys</h3> <p>Skiscool is a platform recognized for its selection of ski instructor on the three valleys for over 10 years.<br> Enjoy our <b>exclusive offers</b>! :<br> <b>Free transfers</b> for one week booking with a coach.</p>
   </div> 
 </div>
 </div>
@@ -82,7 +82,7 @@ date: "2018-07-06"
 </div> 
 
 <div style="flex-direction: column;" class="md-cell--8 md-cell--middle">
-<p class="h2">
+<p class="h3">
 <i class="fa fa-quote-left"></i>
  Our commission is kept at the minimum to ensure you get the best price. Depending on the period chosen and the lesson time, you can benefit up to a 15% discount. We fit our service for your budget. 
 <i class="fa fa-quote-right"></i>

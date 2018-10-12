@@ -20,7 +20,7 @@ date: '2018-07-02'
 <div class="md-block-centered md-cell--6-tablet">
  <h3>Sélection du Profil et réservation:</h3>
  <p>Trouver un moniteur adapté ne se fait pas en quelques clic de souris;</p>
- <p>SkiScool n'est pas une équipe de geek.<br><b style="color:#3f51b5;background-color:#ccff90">Nous connaissons nos coachs</b> ainsi que leur l'expérience d'enseignement sur les 3 vallées <b style="color:#3f51b5;background-color:#ccff90">depuis 10 ans</b>. <br> Le meilleur moyen d'obtenir une réponse adaptée à votre situation est encore de nous appeler.</p>
+ <p>SkiScool n'est pas une équipe de geek.<br><b>Nous connaissons nos coachs</b> ainsi que leur l'expérience d'enseignement sur les 3 vallées <b>depuis 10 ans</b>. <br> Le meilleur moyen d'obtenir une réponse adaptée à votre situation est encore de nous appeler.</p>
  </div>
 </div>
  
@@ -29,7 +29,7 @@ date: '2018-07-02'
  <imgtest data="certified.png" height="75" width="200px" directory="pages" alt="moniteur de ski Courchevel"></imgtest>
  <div class="md-block-centered md-cell--6-tablet">
 <h3>Professionnels diplômés, Service qualité prix</h3>
-<p>Tous les moniteurs de ski proposés sur notre plateforme sont des <b style="color:#3f51b5;background-color:#ccff90">professionnels diplômés</b> d'État.<br><p> Ici, pas de stagiaire ou de moniteur sans expérience ne connaissant pas le domaine des 3 vallées.  (Courchevel, Méribel et Val-thorens)</p>
+<p>Tous les moniteurs de ski proposés sur notre plateforme sont des <b>professionnels diplômés</b> d'État.<br><p> Ici, pas de stagiaire ou de moniteur sans expérience ne connaissant pas le domaine des 3 vallées.  (Courchevel, Méribel et Val-thorens)</p>
 </div>
 </div>
 
@@ -38,7 +38,7 @@ date: '2018-07-02'
   <imgtest data="years-experience.png" height="75" width="200px" directory="pages" alt="Courchevel"></imgtest>
 <div class="md-block-centered md-cell--6-tablet">
   <h3>Expérience SkiScool sur les 3 Vallées</h3>
-  <p>Skiscool est une plateforme reconnue pour sa sélection de moniteur de ski sur les trois vallées depuis 10 ans.<br> Profitez de nos <b style="color:#3f51b5;background-color:#ccff90">offres exclusives</b>, comme:<br> Le <b style="color:#3f51b5;background-color:#ccff90">transfert gratuit</b> pour le booking d'une semaine d'engagement avec un coach.</p>
+  <p>Skiscool est une plateforme reconnue pour sa sélection de moniteur de ski sur les trois vallées depuis 10 ans.<br> Profitez de nos <b>offres exclusives</b>, comme:<br> Le <b>transfert gratuit</b> pour le booking d'une semaine d'engagement avec un coach.</p>
   </div>
   </div>
 </div>
@@ -83,7 +83,7 @@ date: '2018-07-02'
 </div> 
 
 <div style="flex-direction: column;" class="md-cell--8 md-cell--middle">
-<p style="font-size: 1.8em; line-height: 150%">
+<p class="h3">
 <i class="fa fa-quote-left"></i>
 Notre rapport qualité-prix. Nos tarifs ne sont pas définis<br>
 <b>En fonction de la période choisie et la durée des cours vous pouvez bénéficier ~15% de réduction</b>
