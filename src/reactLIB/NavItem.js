@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+import { Link } from 'gatsby';
 
 const NavItem = ({
   divider,
@@ -8,6 +9,7 @@ const NavItem = ({
   href = '',
   onClick,
   waves,
+  external,
   ...props
 }) => {
   const mywaves = waves;
@@ -19,16 +21,16 @@ const NavItem = ({
   });
 
   if (divider) return <li className="divider" />;
-  const a = onClick ? (
-    <a onClick={onClick} className={classes}>
-      {children}
-    </a>
-  ) : (
+  const el = external ? (
     <a href={href} className={classes}>
       {children}
     </a>
+  ) : (
+    <Link to={href} onClick={onClick} className={classes}>
+      {children}
+    </Link>
   );
-  return <li {...props}>{a}</li>;
+  return <li {...props}>{el}</li>;
 };
 
 NavItem.propTypes = {

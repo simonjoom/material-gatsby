@@ -15,6 +15,7 @@ import trch from "./src/layouts/translate_ch";
 global.M = undefined;
 const getLanguage = () => i18n.language;
 
+global.lng="en";
 global.menuList = { en: [], ru: [], pt: [], uk: [], ch: [], fr: [] };
 global.filesQuery = [];
 global.locale = { en: [], ru: [], pt: [], uk: [], ch: [], fr: [] };
@@ -52,8 +53,7 @@ try {
     throw e;
   }
 }
-
-function injectState() {
+function injectState(lng) {
   // const state = store.getState();
   // appends apollo state to the global client window object
   return (
@@ -61,7 +61,7 @@ function injectState() {
       dangerouslySetInnerHTML={{
         __html: `window.__INITIAL_STATE__=${JSON.stringify({
           menuList: global.menuList,
-          locale: global.locale
+          locale: global.locale[lng]
         })};`
       }}
     />
@@ -76,7 +76,12 @@ export const replaceRenderer = ({
   console.log("replaceRenderer");
   class App extends React.Component {
     render() {
-      return <div id="App">{bodyComponent}</div>;
+      return (
+        <div id="App">
+          {bodyComponent}
+          <div id="myChat" />
+        </div>
+      ); 
     }
   }
   AppRegistry.registerComponent("App", () => App);
@@ -84,18 +89,19 @@ export const replaceRenderer = ({
   const html = renderToString(element);
   const styleElement = getStyleElement();
   replaceBodyHTMLString(html);
-  setHeadComponents([styleElement, injectState()]);
+  setHeadComponents([styleElement, injectState(global.lng)]);
 };
 
 export const wrapPageElement = ({ element, props }) => {
   const { lng } = props.pageContext;
+  global.lng=lng;
   let Red, Red2;
   if (!lng)
     return (
-      <>
+      <div>
         <div />
         <Layout>{element}</Layout>
-      </>
+      </div>
     );
   // console.log("global.menuList", lng);
   // console.log("global.menuList", global.menuList[lng]);
@@ -125,10 +131,10 @@ export const wrapPageElement = ({ element, props }) => {
   //console.log("runMainNavLayout");
 
   return (
-    <>
+    <div>
       <Red />
       <Layout lng={lng}>{element}</Layout>
-    </>
+    </div>
   );
 };
 

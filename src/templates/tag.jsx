@@ -41,7 +41,7 @@ export const pageQuery = graphql`
       sort: { fields: [fields___date], order: DESC }
       filter: {
         fields: { lng: { eq: $lng } }
-        frontmatter: { tags: { in: [$tag] } }
+        frontmatter: { title: { ne: "default" }, tags: { in: [$tag] } }
       }
     ) {
       totalCount

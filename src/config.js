@@ -92,7 +92,7 @@ const config = {
     },
     "/meribel/": {
       fr: "/fr/Articles/Meribel/",
-      en: "/en/Articles/Meribel/",
+      en: "/Articles/Meribel/",
       ru: "/ru/Articles/Meribel/",
       uk: "/uk/Articles/Meribel/",
       pt: "/pt/Articles/Meribel/",
@@ -100,7 +100,7 @@ const config = {
     },
     "/menuires/": {
       fr: "/fr/Articles/Menuires/",
-      en: "/en/Articles/Menuires/",
+      en: "/Articles/Menuires/",
       ru: "/ru/Articles/Menuires/",
       uk: "/uk/Articles/Menuires/",
       pt: "/pt/Articles/Menuires/",
@@ -108,7 +108,7 @@ const config = {
     },
     "/courchevel/": {
       fr: "/fr/Articles/Courchevel/",
-      en: "/en/Articles/Courchevel/",
+      en: "/Articles/Courchevel/",
       ru: "/ru/Articles/Courchevel/",
       uk: "/uk/Articles/Courchevel/",
       pt: "/pt/Articles/Courchevel/",
@@ -116,7 +116,7 @@ const config = {
     },
     "/valthorens/": {
       fr: "/fr/Articles/Valthorens/",
-      en: "/en/Articles/Valthorens/",
+      en: "/Articles/Valthorens/",
       ru: "/ru/Articles/Valthorens/",
       uk: "/uk/Articles/Valthorens/",
       pt: "/pt/Articles/Valthorens/",
@@ -124,7 +124,7 @@ const config = {
     },
     "/latania/": {
       fr: "/fr/Articles/Tania/",
-      en: "/en/Articles/Tania/",
+      en: "/Articles/Tania/",
       ru: "/ru/Articles/Tania/",
       uk: "/uk/Articles/Tania/",
       pt: "/pt/Articles/Tania/",

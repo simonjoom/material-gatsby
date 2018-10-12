@@ -59,7 +59,7 @@ const translate = () => {
           Object.keys(router).forEach(function(element, key, _array) {
             global.postEdges.forEach(postEdge => {
               const { category } = postEdge.node.frontmatter;
-              const tr = t("Index")(_.kebabCase(category));
+              const tr = t("Index")(_.kebabCase(category)); 
               if (
                 postEdge.node.fields.inmenu &&
                 postEdge.node.fields.slug == router[element][lang]

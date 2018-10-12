@@ -25,8 +25,7 @@ global.M = undefined;
 const getLanguage = () =>
   i18n.language ||
   (typeof window !== "undefined" && window.localStorage.i18nextLng);
-
-const filetranslate = lng => import(`./src/layouts/translate_${lng}`);
+ 
 const MAsync = () =>
   import(/* webpackChunkName: "materialize" */ "./src/components/materialize");
 const chatAsync = () => import(/* webpackChunkName: "chat" */ "./src/chat");
@@ -53,13 +52,14 @@ export const onClientEntry = async () => {
     const Zep = await MAsync();
     global.M = Zep.default;
   }
-
   if (/comp|inter|loaded/.test(document.readyState)) {
     Waves.displayEffect();
+    M.startTextFields();
   } else {
     document.addEventListener(
       "DOMContentLoaded",
       function() {
+        M.startTextFields();
         Waves.displayEffect();
       },
       false
@@ -86,8 +86,8 @@ export const replaceHydrateFunction = () => {
     };
     const firstcall = () => {
       const ct = document.getElementById("myChat");
-      timeout(3000).then(() => {
-        runChat().then(El => renderFn(<El/>, ct, () => {}));
+      timeout(2000).then(() => {
+        runChat().then(El => renderFn(<El />, ct, () => {}));
       });
       return callback;
     };
@@ -107,10 +107,9 @@ export const wrapPageElement = ({ element, props }) => {
   const { location } = props;
   const { lng } = props.pageContext;
   i18n.changeLanguage(lng);
-  let Red
-  console.log("wrap",lng);
-  if (!lng)
-  console.log("nolang")
+  let Red;
+  console.log("wrap", lng);
+  if (!lng) console.log("nolang");
   else if (global.menuList[lng].length == 0) {
     Red =
       lng == "fr"
@@ -130,17 +129,17 @@ export const wrapPageElement = ({ element, props }) => {
 
   return (
     <div>
-    <Red />
+      <Red />
       <Layout>{element}</Layout>
     </div>
   );
-}; 
+};
 
 const stateProvider = {
   translate: namespace => i18n.getFixedT(null, [namespace, "common"])
 };
 export const wrapRootElement = ({ element }) => {
-
+  global.tr = namespace => i18n.getFixedT(null, [namespace, "common"]);
   return (
     <ThemeContext.Provider value={stateProvider}>
       {element}

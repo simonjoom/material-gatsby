@@ -1,0 +1,13 @@
+{
+  "your_cart": "Your cart",
+  "continue": "Continue",
+  "see_product": "See the product",
+  "remove_product": "Remove the product",
+  "sub_total": "Sub total",
+  "total_price": "Total price",
+  "product_deleted": "Product deleted. Please remove it from your cart.",
+  "product_not_available": "Product not available. Please remove it from your cart.",
+  "invalid_cart_title": "Invalid cart",
+  "invalid_cart_deleted": "Your cart contains deleted products. Please remove them before continuing.",
+  "invalid_cart_not_available": "Your cart contains unavailable products. Please remove them before continuing."
+}

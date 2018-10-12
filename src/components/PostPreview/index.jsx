@@ -90,12 +90,11 @@ class PostPreview extends Component {
         titlereveal={postInfo.title}
         title={
           <Link style={{ textDecoration: "none" }} to={postInfo.path}>
-            <Avatar icon={<Icon className="calendar" />} />
+            <div style={{ fontSize: "10px" }}><Avatar icon={<Icon className="calendar" />}/>Published on {date}</div>
             {postInfo.title}
             <Button className="btn md-cell--right">Read </Button>
           </Link>
         }
-        imgtitle={<div>Published on {date}</div>}
         reveal={
           <div>
             <div
@@ -117,48 +116,3 @@ class PostPreview extends Component {
 }
 
 export default PostPreview;
-
-// <PostCover postNode={postInfo} coverHeight={coverHeight} />
-/* <Card
-        key={postInfo.path}
-        raise
-        className={`md-grid md-cell md-cell--${size}`}
-      >
-        <Link style={{ textDecoration: "none" }} to={postInfo.path}>
-          <Media
-            style={{
-              height: coverHeight,
-              paddingBottom: "0px",
-              display: "flex"
-            }}
-          >
-            {carouselList.length > 0 && (
-              <FrontCarousel
-                data={carouselList}
-                directory={type}
-                coverClassName="md-grid md-cell--9 post-cover"
-              />
-            )}
-            <MediaOverlay>
-              <CardTitle title={postInfo.title}>
-                <Button className="btn md-cell--right">
-                  Read
-                </Button>
-              </CardTitle>
-            </MediaOverlay>
-          </Media>
-        </Link>
-        <CardTitle
-          expander={expand}
-          avatar={<Avatar icon={<FontIcon iconClassName="fa fa-calendar" />} />}
-          title={`Published on ${moment(postInfo.date).format(
-            config.dateFormat
-          )}`}
-          subtitle={`${postInfo.timeToRead} min read`}
-        />
-
-        <CardText expandable={expand}>
-          {postInfo.excerpt}
-          <PostTags tags={postInfo.tags} />
-        </CardText>
-      </Card>*/

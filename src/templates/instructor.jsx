@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql, Link } from "gatsby";
-import { kebabCase } from "lodash"; 
+import { kebabCase } from "lodash";
 import Avatar from "../components/Avatars";
 import withTheme from "../withContext";
 import Card from "../reactLIB/Card";
@@ -11,9 +11,9 @@ import SocialLinks from "../components/SocialLinks";
 import Layout from "../components/Layout";
 import PostSuggestions from "../components/PostSuggestions";
 import SEO from "../components/SEO";
-import config from "../data/SiteConfig"; 
+import config from "../data/SiteConfig";
 import parse from "date-fns/parse";
-import format from "date-fns/format"
+import format from "date-fns/format";
 
 class PostTemplate extends React.Component {
   constructor(props) {
@@ -40,8 +40,8 @@ class PostTemplate extends React.Component {
     }
     const directory = postNode.fields.type;
     const carouselList = post.cover ? [post.cover] : [];
-    
-    const date=format(parse(postNode.fields.date), config.dateFormat);
+
+    const date = format(parse(postNode.fields.date), config.dateFormat);
     return (
       <Layout
         carouselList={carouselList}
@@ -59,7 +59,7 @@ class PostTemplate extends React.Component {
             translate={t("Instructor")}
           />
           <Card
-            className="md-cell md-cell--6-phone md-cell--10 md-cell--8-tablet mobile-fix"
+            className="md-cell md-cell--4-phone md-cell--12 md-cell--8-tablet mobile-fix"
             waves="light"
             contentImage={
               carouselList.length > 0 && (
@@ -72,17 +72,14 @@ class PostTemplate extends React.Component {
               )
             }
             titlereveal={post.title}
-            imgtitle={
-              <div>
-                <Avatar icon={<Icon className="calendar" />} />
-                Published on{" "}
-                {date}
-              </div>
-            }
             title={
               <Link
                 className="category-link"
-                to={`/categories_${lng}/${kebabCase(post.category)}`}
+                to={
+                  lng == "en"
+                    ? `/${kebabCase(post.category)}`
+                    : `/${lng}/${kebabCase(post.category)}`
+                }
               >
                 <Avatar icon={<Icon className="folder-open" />} />
                 {post.title} In category {post.category}
@@ -90,6 +87,10 @@ class PostTemplate extends React.Component {
             }
           >
             <div className="post-meta">
+              <div>
+                <Avatar icon={<Icon className="calendar" />} />
+                Published on {date}
+              </div>
               <PostTags tags={post.tags} />
               <SocialLinks
                 postPath={slug}
@@ -130,10 +131,10 @@ export const pageQuery = graphql`
         nextSlug
         prevTitle
         prevSlug
-        type
         slug
         lng
         date
+        type
       }
     }
   }

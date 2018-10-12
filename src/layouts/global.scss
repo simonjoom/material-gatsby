@@ -9,6 +9,20 @@ div .mobile-fix {
 .btn-flags{
   background-color: transparent;
 }
+.nolineheight{
+  line-height:0;
+}
+
+
+#listChats .card.horizontal .btn-floating{
+width: 22px;
+height: 24px;
+min-height: 20px;
+}
+
+#listChats .card.horizontal .card-image img{
+width:100%;
+}
 .visuallyhidden {
   position: absolute;
   overflow: hidden;
@@ -16,7 +30,12 @@ div .mobile-fix {
   height: 1px;
   width: 1px;
 }
-
+.tap-target-content{
+    top: 60px;
+    right: 0px;
+    bottom: 0px;
+    left: 60px
+}
 .menubars {
   background-color: black;
 }

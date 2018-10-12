@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import Dropdown from "../reactLIB/Dropdown";
-import Button from "../reactLIB/Button";
 import NavItem from "../reactLIB/NavItem";
 import i18n from "i18next";
 import { StyleSheet, View, Text } from "react-native";
@@ -25,14 +24,16 @@ const Localetosrc = {
 class LanguageSwitcher extends Component {
   constructor(props) {
     super(props);
-   // console.log("i18n.language", i18n.language);
+    // console.log("i18n.language", i18n.language);
     this.language = this.getLanguage();
     this.route = this.props.route;
   }
   getLanguage() {
     return (
       i18n.language ||
-      (!(process.env.GATSBY_BUILD_STAGE=="build-html") && window && window.localStorage.i18nextLng) ||
+      (!(process.env.GATSBY_BUILD_STAGE == "build-html") &&
+        window &&
+        window.localStorage.i18nextLng) ||
       "en"
     );
   }
@@ -46,6 +47,28 @@ class LanguageSwitcher extends Component {
       </View>
     );
   }
+  buildhref(code, lng) {
+    let href = "";
+    let path = this.props.route
+      ? this.props.route[code]
+      : this.props.path
+          .replace("_fr", "_" + lng)
+          .replace("_pt", "_" + lng)
+          .replace("_ru", "_" + lng)
+          .replace("_ch", "_" + lng)
+          .replace("_uk", "_" + lng);
+    if (process.env.NODE_ENV === "production") {
+      if (code == "fr") href = "https://www.skiscool.fr";
+      else if (code == "en") href = "https://www.ski-courchevel.deals";
+      else if (code == "pt") href = "https://pt.skiscool.com";
+      else if (code == "ru") href = "https://www.skiscool.com";
+      else if (code == "uk") href = "https://uk.skiscool.com";
+      else href = "https://cn.skiscool.com";
+      path = path.replace(/\/(fr|ru|uk|ch|pt|en)/, "");
+    }
+    return href + path;
+  }
+  
   render() {
     const languages = [
       { code: "en", label: "English" },
@@ -54,32 +77,33 @@ class LanguageSwitcher extends Component {
       { code: "pt", label: "Portuguese" },
       { code: "uk", label: "Ukrainien" },
       { code: "ch", label: "Chinese" }
-    ]; 
+    ];
     const lng = this.getLanguage();
     const label = languages.find(el => el.code == lng).label;
     return (
       <div className="md-cell md-cell--1 md-cell--1-phone">
-        <Dropdown trigger={<div className="btn btn-large btn-flags">{this.renderRow(label, lng)}</div>}>
+        <Dropdown
+          trigger={
+            <div className="btn btn-large btn-flags">
+              {this.renderRow(label, lng)}
+            </div>
+          }
+        >
           {languages.map((el, i) => {
-            if (el.code !== lng)
+            if (el.code !== lng) {
+              const href = this.buildhref(el.code, lng);
               return (
                 <NavItem
                   key={"nav" + i}
-                  href={
-                    this.route
-                      ? this.route[el.code]
-                      : this.props.path
-                          .replace("_fr", "_" + lng)
-                          .replace("_pt", "_" + lng)
-                          .replace("_ru", "_" + lng)
-                          .replace("_ch", "_" + lng)
-                          .replace("_uk", "_" + lng)
-                  }
+                  href={href}
+                  external={process.env.NODE_ENV === "production"}
+                  //    onClick={() => i18n.changeLanguage(el.code)}
                   waves="light"
                 >
                   {this.renderRow(el.label, el.code)}
                 </NavItem>
               );
+            }
           })}
         </Dropdown>
       </div>
@@ -88,16 +112,6 @@ class LanguageSwitcher extends Component {
 }
 
 const styles = StyleSheet.create({
-  dropdown_2: {
-    alignSelf: "flex-end",
-    width: 30,
-    // marginTop: 32,
-    right: 8,
-    borderWidth: 0,
-    borderRadius: 3,
-    backgroundColor: "cornflowerblue",
-    margin: 10
-  },
   dropdown_2_text: {
     marginVertical: 10,
     flex: 1,
@@ -106,14 +120,6 @@ const styles = StyleSheet.create({
     color: "white",
     textAlign: "center",
     textAlignVertical: "center"
-  },
-  dropdown_2_dropdown: {
-    width: 150,
-    height: "auto",
-    borderColor: "cornflowerblue",
-    borderWidth: 2,
-    borderRadius: 3,
-    padding: 5
   },
   dropdown_2_row_text: {
     flex: 1

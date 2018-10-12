@@ -392,7 +392,11 @@ exports.createPages = ({ graphql, actions }) => {
         reject(mak.errors);
       }
       MarkdownQueriesCache = mak.data.allMarkdownRemark.edges.filter(
-        a => a.node && a.node.frontmatter && a.node.frontmatter.title !== ""
+        a =>
+          a.node &&
+          a.node.frontmatter &&
+          a.node.frontmatter.title !== "" &&
+          a.node.frontmatter.title !== "default"
       );
       storeObj({ name: "MarkdownQueriesCache", value: MarkdownQueriesCache });
     }
@@ -534,6 +538,8 @@ exports.createPages = ({ graphql, actions }) => {
 
           if (node.frontmatter.category) {
             categorySets[lng].add(node.frontmatter.category);
+          } else {
+            console.warn("nocategoriesfor", node.frontmatter);
           }
 
           createPage({
@@ -656,15 +662,15 @@ exports.createPages = ({ graphql, actions }) => {
           tagList.forEach(tag => {
             const route = {};
             const kbtag = _.kebabCase(tag);
-            if (!tagListDone[kbtag]) {
-              route.fr = `/tags_fr/${kbtag}/`;
-              route.en = `/tags_en/${kbtag}/`;
-              route.ru = `/tags_ru/${kbtag}/`;
-              route.uk = `/tags_uk/${kbtag}/`;
-              route.pt = `/tags_pt/${kbtag}/`;
-              route.ch = `/tags_ch/${kbtag}/`;
+            if (!tagListDone[kbtag + "" + lg]) {
+              route.fr = `/fr/${kbtag}/`;
+              route.en = `/${kbtag}/`;
+              route.ru = `/ru/${kbtag}/`;
+              route.uk = `/uk/${kbtag}/`;
+              route.pt = `/pt/${kbtag}/`;
+              route.ch = `/ch/${kbtag}/`;
               createPage({
-                path: `/tags_${lg}/${kbtag}/`,
+                path: lg == "en" ? `/${kbtag}/` : `/${lg}/${kbtag}/`,
                 component: tagPage,
                 context: {
                   route,
@@ -672,22 +678,22 @@ exports.createPages = ({ graphql, actions }) => {
                   lng: lg
                 }
               });
-              tagListDone[kbtag] = true;
+              tagListDone[kbtag + "" + lg] = true;
             }
           });
           const categoryList = Array.from(categorySets[lg]);
           categoryList.forEach(category => {
             const route = {};
             const kbcategory = _.kebabCase(category);
-            if (!catListDone[kbcategory]) {
-              route.fr = `/categories_fr/${kbcategory}/`;
-              route.en = `/categories_en/${kbcategory}/`;
-              route.ru = `/categories_ru/${kbcategory}/`;
-              route.uk = `/categories_uk/${kbcategory}/`;
-              route.pt = `/categories_pt/${kbcategory}/`;
-              route.ch = `/categories_ch/${kbcategory}/`;
+            if (!catListDone[kbcategory + "" + lg]) {
+              route.fr = `/fr/${kbcategory}/`;
+              route.en = `/${kbcategory}/`;
+              route.ru = `/ru/${kbcategory}/`;
+              route.uk = `/uk/${kbcategory}/`;
+              route.pt = `/pt/${kbcategory}/`;
+              route.ch = `/ch/${kbcategory}/`;
               createPage({
-                path: `/categories_${lg}/${kbcategory}/`,
+                path: lg == "en" ? `/${kbcategory}/` : `/${lg}/${kbcategory}/`,
                 component: categoryPage,
                 context: {
                   route,
@@ -695,7 +701,7 @@ exports.createPages = ({ graphql, actions }) => {
                   lng: lg
                 }
               });
-              catListDone[kbcategory] = true;
+              catListDone[kbcategory + "" + lg] = true;
             }
             // });
             // });

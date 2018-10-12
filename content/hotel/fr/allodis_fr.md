@@ -1,6 +1,6 @@
 ---
 title: "Allodis"
-category: "hotel_meribel_fr"
+category: "hotel_meribel"
 star: "5"
 cover: "allodis.jpg"
 slug: "/fr/Hotels/Meribel/"
