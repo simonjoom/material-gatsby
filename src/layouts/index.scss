@@ -243,7 +243,6 @@ $font-sizes: ( p, bq, ssh, sh, h, hero );
     @while $lh < 1 {
       $lh: $lh + $lh;
     }
-    font-trace:$fs;
   font-size: $fs;
   line-height: $lh;
 }
