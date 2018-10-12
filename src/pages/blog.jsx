@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { graphql } from "gatsby";
 import withTheme from "../withContext";
 import Layout from "../components/Layout";
@@ -6,12 +6,11 @@ import PostListing from "../components/PostListing";
 import SEO from "../components/SEO";
 import "../articleApp.scss";
 
-class Blog extends React.Component {
+class Blog extends Component {
   render() {
     const { translate: t, data } = this.props;
     const { slug, lng, route, files, slugbase } = this.props.pageContext;
     global.filesQuery = files;
-    console.log(data.allMarkdownRemark.edges);
     const postEdges = data.allMarkdownRemark.edges.filter(
       el => el.node.frontmatter.category !== "blog"
     );

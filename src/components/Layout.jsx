@@ -1,27 +1,32 @@
-import React from "react";
+import React, { Component } from "react";
 import { Link } from "gatsby";
 import withTheme from "../withContext";
 import FrontCarousel from "./FrontCarousel";
 import LanguageSwitcher from "./Switchlang";
 
-class Layout extends React.Component {
+class Layout extends Component {
   render() {
     const {
       translate,
       children,
       route,
-      lng="en",
+      lng = "en",
       carouselList,
       page,
       path,
       location
     } = this.props;
-    console.log("route", lng);
+    if (route && Object.keys(route).length === 0)
+      console.log("route", lng, this.props);
     return (
       <div>
         <div
           className={
-            carouselList ? (page==="/" ? "carousel-main" : "carousel-nomain") : null
+            carouselList
+              ? page === "/"
+                ? "carousel-main"
+                : "carousel-nomain"
+              : null
           }
         >
           {carouselList &&
@@ -37,7 +42,8 @@ class Layout extends React.Component {
         <div className="toolbar-main md-paper md-paper--1">
           <div className="md-grid md-grid--no-spacing toolbar-container">
             <div className="md-grid md-grid--no-spacing md-cell md-cell--11 md-cell--6-tablet md-cell--3-phone toolbar-menu toolbar-menu">
-              {global.menuList && global.menuList[lng]&&
+              {global.menuList &&
+                global.menuList[lng] &&
                 global.menuList[lng].length > 0 &&
                 global.menuList[lng].map(post => (
                   <Link
@@ -50,11 +56,8 @@ class Layout extends React.Component {
                   </Link>
                 ))}
             </div>
-            {(route || path) && (
-              <LanguageSwitcher
-                path={path}
-                route={route}
-              />
+            {((route && Object.keys(route).length !== 0) || path) && (
+              <LanguageSwitcher path={path} route={route} />
             )}
           </div>
         </div>

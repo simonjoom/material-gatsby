@@ -82,6 +82,14 @@ const config = {
       pt: "/pt/contato/",
       ch: "/cn/contact/"
     },
+    "/info/": {
+      fr: "/fr/Articles/info/",
+      en: "/Articles/info/",
+      ru: "/ru/Articles/info/",
+      uk: "/uk/Articles/info/",
+      pt: "/pt/Articles/info/",
+      ch: "/cn/Articles/info/"
+    },
     "/skipass/": {
       fr: "/fr/Articles/Forfait-de-ski/",
       en: "/Articles/SkiPass/",
