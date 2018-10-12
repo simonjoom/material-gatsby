@@ -1,6 +1,7 @@
 import React, { Component } from "react"; 
 import Card from "../../reactLIB/Card";
 import Button from "../../reactLIB/Button";
+import Logo from "../../components/logo";
 import { navigate } from "gatsby";
 
 var parse = require("date-fns/parse");
@@ -23,11 +24,7 @@ class Chat extends Component {
               tooltip={this.props.chat.author.name}
               onClick={() => this.openProfile(this.props.chat.author)}
             >
-              <img
-                src="/assets/starter-logo-1024.png"
-                width="40px"
-                height="40px"
-              />
+              <Logo width={20} height={20} />
             </Button>
           )
         }

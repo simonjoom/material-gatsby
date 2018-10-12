@@ -10428,12 +10428,12 @@ $jscomp.polyfill = function (e, r, p, m) {
 
         // Setting content
         $(this.contentEl).css({
-          width: tapTargetTextWidth + 'px',
-          height: tapTargetTextHeight + 'px',
-          top: tapTargetTextTop + 'px',
+        //  width: tapTargetTextWidth + 'px',
+        //  height: tapTargetTextHeight + 'px',
+        /*  top: tapTargetTextTop + 'px',
           right: tapTargetTextRight + 'px',
           bottom: tapTargetTextBottom + 'px',
-          left: tapTargetTextLeft + 'px',
+          left: tapTargetTextLeft + 'px',*/
           padding: tapTargetTextPadding + 'px',
           verticalAlign: tapTargetTextAlign
         });

@@ -27,6 +27,7 @@ import { SideBarContext } from "./chatcomponents/SideBarContext";
 import UsersPage from "./chatcomponents/user/UsersPage";
 import UserPageCreate from "./chatcomponents/user/UserPageCreate";
 import UserPage from "./chatcomponents/user/UserPage";
+import Logo from "./components/logo";
 /*
 import CreateCar from "./chatcomponents/car/CreateCar";
 import DetailCar from "./chatcomponents/car/DetailCar";
@@ -111,13 +112,14 @@ class ChatLayoutJSX extends Component {
   componentDidMount() {
     console.log("mountLayout");
     console.log("Materialize Ready?", M);
-   // this.closeChat = this.closeChat.bind(this);
+    // this.closeChat = this.closeChat.bind(this);
     var that = this;
     this.manualclose = true;
     var elems = document.querySelectorAll(".collapsible");
     this.instCollaps = M.Collapsible.init(elems, {
       onOpenStart: () => {
-        that.instance.close();
+        that.clickonCollaps = true;
+        that.instanceTap.close();
       },
       onOpenEnd: () => {
         var objDiv = $("#listChats");
@@ -141,16 +143,19 @@ class ChatLayoutJSX extends Component {
         // console.log("opentrae",instance);
       }
     });
-    this.instance = M.TapTarget.getInstance(instancestap[0].el);
+    this.instanceTap = M.TapTarget.getInstance(instancestap[0].el);
     M.startTextFields();
 
     setTimeout(function() {
-      that.instance.open();
-      setTimeout(function() {
-        that.manualclose = false;
-        that.instance.close();
-      }, 5000);
-    }, 400);
+      // only show the tip after 4sec if the chat Collapsible was never activated on a click
+      if (!that.clickonCollaps) {
+        that.instanceTap.open();
+        setTimeout(function() {
+          that.manualclose = false;
+          that.instanceTap.close();
+        }, 5000);
+      }
+    }, 4800);
   }
   closeChat = () => {
     this.instCollaps[0].close();
@@ -197,8 +202,8 @@ resize = () => {
 
     console.log("renderchat", Me, authToken);
     const size = this.state.isSideBarOpen ? "10" : "12";
-    const sizet=this.state.isSideBarOpen ? "7" : "8";
-    const sizem=this.state.isSideBarOpen ? "3" : "4";
+    const sizet = this.state.isSideBarOpen ? "7" : "8";
+    const sizem = this.state.isSideBarOpen ? "3" : "4";
     return (
       <SideBarContext.Provider
         value={{
@@ -221,7 +226,9 @@ resize = () => {
                 />
                 <div className="md-grid">
                   <SideBar />
-                  <div className={`md-cell md-cell--${size} md-cell--${sizet}-tablet md-cell--${sizem}-phone`}>
+                  <div
+                    className={`md-cell md-cell--${size} md-cell--${sizet}-tablet md-cell--${sizem}-phone`}
+                  >
                     {Me.loading && <Loading />}
                     {Me.error && <NotAuth />}
 
@@ -269,16 +276,9 @@ resize = () => {
                   </div>
                 </div>
               </div>
-              
-              <div
-                className="collapsible-header waves-effect waves-light btn"
-                id="chat"
-              >
-                <img
-                  src="/assets/starter-logo-1024.png"
-                  width="40px"
-                  height="40px"
-                />
+
+              <div className="collapsible-header waves-effect waves-light btn">
+                <Logo id="chat" width={40} height={40} />
                 <p style={{ marginLeft: 20 }}>Need Help?</p>
                 <Badge newIcon>4</Badge>
               </div>
@@ -286,8 +286,10 @@ resize = () => {
           </ul>
           <div className="tap-target bgprimary" data-target="chat">
             <div className="tap-target-content white">
-              <h5 className="h3">Hello </h5>
-              <h6 className="h5">Chat with the ski instructors now :)</h6>
+              <h5 className="h2 nolineheight">Hello </h5>
+              <h6 className="h3 nolineheight">
+                Chat with your ski instructors :)
+              </h6>
             </div>
           </div>
         </div>

@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { navigate } from "gatsby"; 
+import { navigate } from "gatsby";
 import { AUTH_TOKEN } from "../../../constants/constants";
 
 import Dropdown from "../../../reactLIB/Dropdown";
 import NavItem from "../../../reactLIB/NavItem";
+import Logo from "../../../components/logo";
 
 class MenuAvatar extends Component {
   handleClick = event => {
@@ -27,7 +28,7 @@ class MenuAvatar extends Component {
       <Dropdown
         trigger={
           <div className="btn btn-medium">
-              <img src="/assets/starter-logo-1024.png" width="25px" style={{marginTop: '6px'}}/>
+            <Logo width={30} height={30} />
           </div>
         }
       >
