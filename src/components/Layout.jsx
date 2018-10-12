@@ -34,10 +34,11 @@ class Layout extends React.Component {
             )}
         </div>
 
-        <div className="toolbar-main md-paper md-paper--1" style={{}}>
-          <div className="toolbar-container">
-            <div className="rowlink toolbar-menu" style={{margin: 'auto 0', padding: '0', display: 'flex'}}>
-              {global.menuList&&global.menuList[lng].length > 0 &&
+        <div className="toolbar-main md-paper md-paper--1">
+          <div className="md-grid md-grid--no-spacing toolbar-container">
+            <div className="md-grid md-grid--no-spacing md-cell md-cell--11 md-cell--6-tablet md-cell--3-phone toolbar-menu toolbar-menu">
+              {global.menuList && global.menuList[lng]&&
+                global.menuList[lng].length > 0 &&
                 global.menuList[lng].map(post => (
                   <Link
                     key={post.path}
@@ -45,7 +46,6 @@ class Layout extends React.Component {
                     to={post.path}
                     className="Menulink toolbar-link"
                   >
-                    <i className="mr1 fa fa-lg fa-circle-o" />
                     {post.title}
                   </Link>
                 ))}
@@ -54,7 +54,6 @@ class Layout extends React.Component {
               <LanguageSwitcher
                 path={path}
                 route={route}
-                className="flex-end"
               />
             )}
           </div>

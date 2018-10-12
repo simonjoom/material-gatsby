@@ -58,16 +58,8 @@ class LanguageSwitcher extends Component {
     const lng = this.getLanguage();
     const label = languages.find(el => el.code == lng).label;
     return (
-      <div className="LanguageSwitcher flex-end">
-        <Dropdown
-          trigger={
-            <Button
-              style={{margin: '10px 0px',paddingBottom: '20px', width:'150px'}}
-            >
-              {this.renderRow(label, lng)}
-            </Button>
-          }
-        >
+      <div className="md-cell md-cell--1 md-cell--1-phone">
+        <Dropdown trigger={<div className="btn btn-large btn-flags">{this.renderRow(label, lng)}</div>}>
           {languages.map((el, i) => {
             if (el.code !== lng)
               return (

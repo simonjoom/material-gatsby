@@ -108,7 +108,11 @@ function addSiblingNodes(createNodeField) {
     for (let l in config.locales) {
       const lng = config.locales[l];
       const el = postNodes[type][lng].filter(
-        a => a && a.frontmatter && a.frontmatter.title !== ""
+        a =>
+          a &&
+          a.frontmatter &&
+          a.frontmatter.title !== "" &&
+          a.frontmatter.title !== "default"
       );
       el.sort(
         (
@@ -125,36 +129,32 @@ function addSiblingNodes(createNodeField) {
           return 0;
         }
       );
-      var index = 0;
       for (let i = 0; i < el.length; i += 1) {
-        const nextID = index + 1 < el.length ? index + 1 : 0;
-        const prevID = index - 1 > 0 ? index - 1 : el.length - 1;
-        const currNode = el[index];
+        const nextID = i + 1 < el.length ? i + 1 : 0;
+        const prevID = i - 1 > 0 ? i - 1 : el.length - 1;
+        const currNode = el[i];
         const nextNode = el[nextID];
         const prevNode = el[prevID];
-        if (nextNode.frontmatter.title !== "default") {
-          createNodeField({
-            node: currNode,
-            name: "nextTitle",
-            value: nextNode.frontmatter.title
-          });
-          createNodeField({
-            node: currNode,
-            name: "nextSlug",
-            value: nextNode.fields.slug
-          });
-          createNodeField({
-            node: currNode,
-            name: "prevTitle",
-            value: prevNode.frontmatter.title
-          });
-          createNodeField({
-            node: currNode,
-            name: "prevSlug",
-            value: prevNode.fields.slug
-          });
-          index++;
-        }
+        createNodeField({
+          node: currNode,
+          name: "nextTitle",
+          value: nextNode.frontmatter.title
+        });
+        createNodeField({
+          node: currNode,
+          name: "nextSlug",
+          value: nextNode.fields.slug
+        });
+        createNodeField({
+          node: currNode,
+          name: "prevTitle",
+          value: prevNode.frontmatter.title
+        });
+        createNodeField({
+          node: currNode,
+          name: "prevSlug",
+          value: prevNode.fields.slug
+        });
       }
     }
   }
