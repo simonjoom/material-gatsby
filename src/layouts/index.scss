@@ -1,4 +1,5 @@
 @import "./theme.scss";
+@import "./math.scss";
 
 * {
   box-sizing: border-box;
@@ -177,17 +178,6 @@ html {
 @include react-md-media;
 @include react-md-buttons;
 //@include react-md-everything;
-@function pow($number, $exponent) {
-  $value: 1;
-
-  @if $exponent > 0 {
-    @for $i from 1 through $exponent {
-      $value: $value * $number;
-    }
-  }
-
-  @return $value;
-}
 
 $bp-sizes: (
   default: (
@@ -240,15 +230,20 @@ $font-sizes: ( p, bq, ssh, sh, h, hero );
 }
 
 @mixin generate-font-properties($label, $scale, $base-font-size, $base-line-height) {
-  $scale-value: index($font-sizes, $label) - 1;
-
-  $fs: pow($scale, $scale-value) * $base-font-size;
+  $scale-value: index($font-sizes, $label) - 1 ;
+  $fs:0;
+  @if $scale-value == 1 {
+    $scalevalue: ($scale-value * 0.4);
+    $fs: math-pow-polyfill($scale, $scalevalue) * $base-font-size;
+  }@else{
+    $fs: pow($scale, $scale-value) * $base-font-size;
+  }
     $lh: $base-font-size * $base-line-height / $fs;
 
     @while $lh < 1 {
       $lh: $lh + $lh;
     }
-  
+    font-trace:$fs;
   font-size: $fs;
   line-height: $lh;
 }
@@ -268,6 +263,12 @@ $font-sizes: ( p, bq, ssh, sh, h, hero );
   }
 }
  
+//%h is ultrabig size
+//%sh is big size
+//%ssh is medium size
+//%bq is big size
+//%p is normal size
+
 h1,.h1 {
   @extend %h;
 }
