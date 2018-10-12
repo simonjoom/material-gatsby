@@ -14,11 +14,13 @@ date: '2018-07-02'
 
 # Ecole de Ski & Snowboard
 
-<div class="md-grid md-cell--middle">
-<div class="md-cell md-cell--4 md-cell--8-tablet">
+<div class="md-grid expertise__container">
+
+  <!-- first col item -->
+  <div class="md-cell md-cell--4 md-cell--8-tablet">
 <imgtest data="guide.png" height="75" width="200px" directory="pages" alt="Courchevel"></imgtest>
-<div class="md-block-centered md-cell--6-tablet">
- <h3>Sélection du Profil et réservation:</h3>
+<div class="md-grid md-cell--6-tablet">
+<h3 class="h3">Sélection du Profil et réservation:</h3>
  <p>Trouver un moniteur adapté ne se fait pas en quelques clic de souris;</p>
  <p>SkiScool n'est pas une équipe de geek.<br><b>Nous connaissons nos coachs</b> ainsi que leur l'expérience d'enseignement sur les 3 vallées <b>depuis 10 ans</b>. <br> Le meilleur moyen d'obtenir une réponse adaptée à votre situation est encore de nous appeler.</p>
  </div>
@@ -27,117 +29,133 @@ date: '2018-07-02'
 
 <div class="md-cell md-cell--4 md-cell--8-tablet">
  <imgtest data="certified.png" height="75" width="200px" directory="pages" alt="moniteur de ski Courchevel"></imgtest>
- <div class="md-block-centered md-cell--6-tablet">
-<h3>Professionnels diplômés, Service qualité prix</h3>
+ <div class="md-grid md-cell--6-tablet">
+<h3 class="h3">Professionnels diplômés, Service qualité prix</h3>
 <p>Tous les moniteurs de ski proposés sur notre plateforme sont des <b>professionnels diplômés</b> d'État.<br><p> Ici, pas de stagiaire ou de moniteur sans expérience ne connaissant pas le domaine des 3 vallées.  (Courchevel, Méribel et Val-thorens)</p>
 </div>
 </div>
 
-
 <div class="md-cell md-cell--4 md-cell--8-tablet">
   <imgtest data="years-experience.png" height="75" width="200px" directory="pages" alt="Courchevel"></imgtest>
-<div class="md-block-centered md-cell--6-tablet">
-  <h3>Expérience SkiScool sur les 3 Vallées</h3>
+<div class="md-grid md-cell--6-tablet">
+<h3 class="h3">Expérience SkiScool sur les 3 Vallées</h3>
   <p>Skiscool est une plateforme reconnue pour sa sélection de moniteur de ski sur les trois vallées depuis 10 ans.<br> Profitez de nos <b>offres exclusives</b>, comme:<br> Le <b>transfert gratuit</b> pour le booking d'une semaine d'engagement avec un coach.</p>
   </div>
   </div>
 </div>
 
 
-<div class="md-grid md-cell--middle" style="padding:12px;flex-flow: column wrap;">
- <div class="md-cell--middle" style="flex-direction: column;width: 120px;">Appelez Simon<a href="tel:France+33675505209" class=" h2 black">
- <buttontest flat="true"> 
- <i class="fa fa-circle fa-stack-8x gray" style="color: rgb(178, 255, 89);"></i><i class="fa fa-phone fa-stack-4x navy"></i>
- </buttontest></a></div>
+<div class="md-grid md-grid--stacked">
+<div class="md-grid bgg">
+<h3 class="md-cell">Appelez Simon</h3>
+<a href="tel:France+33675505209" class="md-cell">
+<buttontest class="btn-flat"><div class="mr1 fa-stack-big">
+ <i class="fa fa-circle fa-stack-8x gray" style="color: rgb(178, 255, 89);"></i><i class="fa fa-phone fa-stack-4x navy"></i></div></buttontest></a>
+ </div>
 
 
-<div class="md-cell--middle" style="flex-direction: column; padding-bottom: 8%;">
-<h3 style="margin-bottom: 5%;">Qualité d'enseignement</h3> 
-<a title="Enseignement" style="display: flex; flex-direction: row;">
-<imgtest data="certified.png" height="75" width="300px" directory="pages" alt="Courchevel"></imgtest>
-<div>
- <p>Notre diplôme est le BEES français<br>
-<span classname="h6">délivré par l'organisation officiel: <em>ENSA</em>
-</span></p>
+<h3 style="text-align:center;">Qualité d'enseignement</h3>
+<div class="md-grid md-cell--middle" style="margin-bottom: 10%;">
+<div class="md-cell md-cell--9">
+ <p>Notre diplôme est le BEES français</p>
+<p>délivré par l'organisation officiel: <em>ENSA</em></p>
+</div>
+</div>
+
+
+<h3 style="text-align:center;">Professionals</h3>
+<div class="md-grid" style="margin-bottom: 10%;">
+<div class="md-cell md-cell--6-tablet md-cell--9">
+
 <ul style="padding: 5px;"><li>Professionnels: Apprendre plus rapidement avec plus de plaisir!!</li> </ul>
 <ul style="padding: 10px;">Nos moniteurs sont choisis suivant 2 critères importants: 
 <li>Pas de moniteur stagiaire<br>Ils sont tous <b>diplômés de l'État français</b></li>
 <li>Leur expérience d'enseignement notamment dans le coaching personnalisé. </li>
 <li>Nous les selectionnons parmis les moniteurs des différents réseaux</b>.</li>
+</ul>
 </div>
-</a>
-</div> 
+<div class="md-grid md-cell md-cell--2-tablet md-cell--3  md-cell--4-phone">
+<imgtest data="certified.png" height="75" width="70px" directory="pages" alt="Courchevel" ></imgtest>
+</div>
+</div>
 
 
-<div class="md-cell--middle" style="flex-direction: column; padding-bottom: 8%;">
-<h3>Le service client</h3>
-<a title="Notre Service" href="/L_ecole_de_ski/" style="display: flex; flex-direction: row;">
-<div style="margin-right: 1%;">
+
+<h3 style="text-align:center;">Le service client</h3>
+<div class="md-grid" style="margin-bottom: 10%;">
+<div class="md-grid md-cell md-cell--2-tablet md-cell--3 md-cell--4-phone">
+<imgtest data="lm-pistes.jpg" height="75" width="300px" directory="pages" alt="service client"></imgtest>
+</div>
+ 
+<div class="md-cell md-cell--6-tablet md-cell--9">
 <p>Un service client différent des standards habituels.</p> 
 <p>Pour un meilleur service, SkiScool fait le lien entre le professionnel et votre demande.</p>
 <p> - Your coach knows the resort, he is informed of the après-ski activities. </p>
 <p> - Your coach is a passionate instructor: he will be taking the time needed to provide you with any advice, uses demonstration and repetition to thoroughly improve your skills.</p>
 </div>
-<imgtest data="lm-pistes.jpg" height="75" width="300px" directory="pages" alt="service client"></imgtest>
-</a>
 </div> 
 
-<div style="flex-direction: column;" class="md-cell--8 md-cell--middle">
+
+<div style="margin:10% 5%;" class="md-grid md-cell--12 md-cell--middle">
 <p class="h3">
 <i class="fa fa-quote-left"></i>
-Notre rapport qualité-prix. Nos tarifs ne sont pas définis<br>
-<b>En fonction de la période choisie et la durée des cours vous pouvez bénéficier ~15% de réduction</b>
+<b>Notre rapport qualité-prix. Nos tarifs ne sont pas définis
+En fonction de la période choisie et la durée des cours vous pouvez bénéficier ~15% de réduction</b>
 <i class="fa fa-quote-right"></i>
 </p>
+</div> 
+
+
+<h3 style="text-align:center;">L'aspect Sécurité : Moniteurs diplômés</h3>
+<div class="md-grid" style="margin-bottom: 10%;">
+<div class="md-grid md-cell md-cell--2-tablet md-cell--3 md-cell--4-phone">
+<imgtest data="helico.jpg" height="75" width="300px" directory="pages" alt="service client"></imgtest>
 </div>
-
-
-<div class="md-cell--middle" style="flex-direction: column;padding-top: 4%;padding-bottom: 4%;">
-<h3>L'aspect Sécurité : Moniteurs diplômés</h3>
-<a title="La Sécurité" style="display: flex; flex-direction: row;">
-<imgtest data="helico.jpg" height="75" width="300px" directory="pages" alt="Sécurité" coverclassname=""></imgtest>
-<div style="margin-left: 1%;">
+<div class="md-cell md-cell--6-tablet md-cell--9">
 <p>Nous Privilégions toujours <b>la sécurité</b><br> Ainsi nous n'intégrons pas les stagiaires des écoles de ski sans expérience. <br>La montagne est dangereuse à ceux qui ne la connaissent pas!, <br>Un coach qui connait bien la station est essentiel.</p>
 </div>
-</a>
 </div>
 
-<div class="md-cell--middle" style="flex-direction: column;padding-bottom: 4%;">
-<h3>Convivial</h3>
-<a title="Convivial coach" href="/Hotels/" style="display: flex; flex-direction: row;">
+
+
+<!-- Start Section -->
+<h3 style="text-align:center;">Convivial</h3>
+<div class="md-grid" style="margin-bottom: 10%;">
+<div class="md-cell md-cell--6-tablet md-cell--9">
 <div style="margin-right: 1%;"> 
 <p>Votre coach réserve les restaurants, Il est bilingue français/anglais; il se consacre à la pratique du ski de compétition et de hors piste."</p>
+</div>
+<div class="md-grid md-cell md-cell--2-tablet md-cell--3 md-cell--4-phone">
 <imgtest data="years-experience.png" height="75" width="300px" directory="pages" alt="Courchevel"></imgtest>
 </div>
-</a>
 </div>
-</div>
+<!-- End Section -->
 
 
-<div style="flex-direction: column;padding-bottom: 4%;" class="md-grid md-cell md-cell--12">
+<!-- Start FB Section -->
+<div class="md-grid">
 <reactfb language="fr" newDivName="sel" appId="562112907171338" type="post" desc="moniteur de ski courchevel 1850 Dubai - courchevel"/></reactfb>
 </div>
+<!-- End FB Section -->
+ 
 
 <div class="md-grid md-cell--middle">
-<div id="questions" style="flex: 1;background-color: rgb(66, 88, 161); flex-direction: column;" class="md-paper md-paper--1 md-grid md-cell md-cell--4"><imgtest data="envelope.jpg" maxwidth="200px" class="boxshad rounded bg-white"  height="75" directory="pages" alt="Courchevel"></imgtest>
-<h4 style="color: rgb(178, 255, 89);">QUESTIONS?</h4><p>Chat avec ton moniteur de ski</p></div>
+<div id="questions" style="background-color: rgb(66, 88, 161);flex:1;" class="md-paper md-paper--1 md-grid md-grid--stacked md-cell md-cell--4">
+<imgtest data="envelope.jpg" maxwidth="200px" class="boxshad rounded bg-white"  height="75" directory="pages" alt="Courchevel"></imgtest>
+<h3 style="color: #fff; text-align:center;">QUESTIONS?</h3><p>Chat avec ton moniteur de ski</p></div>
 
-<div id="topQualification" style="flex: 1; flex-direction: column;" class="md-paper md-paper--1 md-grid md-cell md-cell--4">
-  <imgtest data="shield.png" maxwidth="200px" class="boxshad rounded bg-white"  height="75" directory="pages" alt="Courchevel"></imgtest>
-<h4 style="color: rgb(178, 255, 89);">TOP QUALIFIÉ:</h4><p>Seuls les moniteurs diplômés peuvent s'inscrire sur SkiScool</p></div>
+<div id="topQualification" style="flex:1;" class="md-paper md-paper--1 md-grid md-grid--stacked md-cell md-cell--4">
+<imgtest data="shield.png" maxwidth="200px" class="boxshad rounded bg-white"  height="75" directory="pages" alt="Courchevel"></imgtest>
+<h3 style="color: #fff; text-align:center;">TOP QUALIFIÉ:</h3><p>Seuls les moniteurs diplômés peuvent s'inscrire sur SkiScool</p></div>
 
-<div id="thumbsUp" style="flex: 1; background-color: rgb(66, 88, 161);flex-direction: column;" class="md-paper md-paper--1 md-grid md-cell md-cell--4">
-  <imgtest data="thumbs.jpg" maxwidth="200px" class="boxshad rounded bg-white"  height="75" directory="pages" alt="Courchevel"></imgtest>
-<h4 style="color: rgb(178, 255, 89);">VOUS CHOISISSEZ:</h4>
-<p>C'est important d'avoir le moniteur qui vous convient</p>
+<div id="thumbsUp" style="background-color: rgb(66, 88, 161);flex:1;" class="md-grid--stacked md-paper md-paper--1 md-grid md-cell md-cell--4">
+<imgtest data="thumbs.jpg" maxwidth="200px" class="boxshad rounded bg-white"  height="75" directory="pages" alt="Courchevel"></imgtest>
+<h3 style="color: #fff; text-align:center;">VOUS CHOISISSEZ:</h3><p>C'est important d'avoir le moniteur qui vous convient</p>
 </div>
 </div>
 
-<div style="justify-content: center;" class="md-paper md-paper--1 md-grid md-cell--middle md-cell--4">
-<a class="emailrot silver" href="mailto:simon@skiscool.com?subject=question">Posez une question</a><span class="px2">|</span><a class="emailrot silver" href="mailto:simon@skiscool.com?subject=contact">Contactez nous</a>
+<div style="justify-content:space-around;align-items: center;margin-top: 5%" class="md-paper md-paper--1 md-grid md-cell--middle"><email href="simon_skiscoolO0Ocom?subject=question">Posez une question</email><span class="px2">|</span><email href="simon_skiscoolO0Ocom?subject=question">Contactez nous</email>
 </div>
-
-
 
 
 ## Courchevel Meribel val-thorens

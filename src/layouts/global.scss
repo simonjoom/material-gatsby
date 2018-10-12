@@ -6,22 +6,21 @@ div .mobile-fix {
     padding-right: 0;
   }
 }
-.btn-flags{
+.btn-flags {
   background-color: transparent;
 }
-.nolineheight{
-  line-height:0;
+.nolineheight {
+  line-height: 0;
 }
 
-
-#listChats .card.horizontal .btn-floating{
-width: 22px;
-height: 24px;
-min-height: 20px;
+#listChats .card.horizontal .btn-floating {
+  width: 22px;
+  height: 24px;
+  min-height: 20px;
 }
 
-#listChats .card.horizontal .card-image img{
-width:100%;
+#listChats .card.horizontal .card-image img {
+  width: 100%;
 }
 .visuallyhidden {
   position: absolute;
@@ -30,11 +29,11 @@ width:100%;
   height: 1px;
   width: 1px;
 }
-.tap-target-content{
-    top: 60px;
-    right: 0px;
-    bottom: 0px;
-    left: 60px
+.tap-target-content {
+  top: 60px;
+  right: 0px;
+  bottom: 0px;
+  left: 60px;
 }
 .menubars {
   background-color: black;
@@ -166,7 +165,7 @@ h3,
   transition: opacity 450ms ease-in;
 }
 
-.paperOut {
+.paperOut,.px2 {
   margin: 10px;
 }
 
@@ -181,7 +180,9 @@ h3,
   right: 0;
   bottom: 0;
 }
-
+.bgg {
+  background-color: #f9f9f9;
+}
 .white {
   color: white;
 }
@@ -190,10 +191,9 @@ h3,
   background-color: white;
 }
 
-.expertise__container{
+.expertise__container {
   margin-top: 5%;
 }
 
-.contact__simon__main{
-  
+.contact__simon__main {
 }

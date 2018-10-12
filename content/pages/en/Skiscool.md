@@ -53,8 +53,6 @@ date: "2018-07-06"
  </div>
 
 
-
-
 <h3 style="text-align:center;">Teaching quality</h3>
 <div class="md-grid md-cell--middle" style="margin-bottom: 10%;">
 <div class="md-cell md-cell--9">
@@ -156,7 +154,7 @@ date: "2018-07-06"
 </div>
 
 
-<div style="justify-content:space-around;align-items: center;margin-top: 5%" class="md-paper md-paper--1 md-grid md-cell--middle md-cell--4"><email href="simon_skiscoolO0Ocom?subject=question">Request</email><span class="px2">|</span><email href="simon_skiscoolO0Ocom?subject=question">Contact us</email>
+<div style="justify-content:space-around;align-items: center;margin-top: 5%" class="md-paper md-paper--1 md-grid md-cell--middle"><email href="simon_skiscoolO0Ocom?subject=question">Request</email><span class="px2">|</span><email href="simon_skiscoolO0Ocom?subject=question">Contact us</email>
 </div>
 
 <div class="md-paper" style="margin-bottom: 4%;">
