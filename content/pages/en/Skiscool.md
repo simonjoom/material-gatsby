@@ -157,6 +157,4 @@ All our teachers are fully qualified with many years of experience in the 3 Vall
 
 <p>Our coaches are all bilingual, French and English. Some speak languages like Russian, Spanish and Italian.</p> <a href='Map/Valthorens' title='Valthorens'>Valthorens</a>
 </div>
-
-
-
+</div>
