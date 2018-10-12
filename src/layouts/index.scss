@@ -2670,6 +2670,7 @@ strong {
 code,
 kbd,
 samp {
+  white-space: normal;
   font-family: monospace, monospace;
   /* 1 */
   font-size: 1em;

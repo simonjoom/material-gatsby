@@ -76,7 +76,12 @@ export const replaceRenderer = ({
   console.log("replaceRenderer");
   class App extends React.Component {
     render() {
-      return <div id="App">{bodyComponent}</div>;
+      return (
+        <div id="App">
+          {bodyComponent}
+          <div id="myChat" />
+        </div>
+      ); 
     }
   }
   AppRegistry.registerComponent("App", () => App);
@@ -92,10 +97,10 @@ export const wrapPageElement = ({ element, props }) => {
   let Red, Red2;
   if (!lng)
     return (
-      <>
+      <div>
         <div />
         <Layout>{element}</Layout>
-      </>
+      </div>
     );
   // console.log("global.menuList", lng);
   // console.log("global.menuList", global.menuList[lng]);
@@ -125,10 +130,10 @@ export const wrapPageElement = ({ element, props }) => {
   //console.log("runMainNavLayout");
 
   return (
-    <>
+    <div>
       <Red />
       <Layout lng={lng}>{element}</Layout>
-    </>
+    </div>
   );
 };
 

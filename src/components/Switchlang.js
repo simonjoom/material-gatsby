@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import Dropdown from "../reactLIB/Dropdown";
-import Button from "../reactLIB/Button";
+import Dropdown from "../reactLIB/Dropdown"; 
 import NavItem from "../reactLIB/NavItem";
 import i18n from "i18next";
 import { StyleSheet, View, Text } from "react-native";
@@ -25,14 +24,16 @@ const Localetosrc = {
 class LanguageSwitcher extends Component {
   constructor(props) {
     super(props);
-   // console.log("i18n.language", i18n.language);
+    // console.log("i18n.language", i18n.language);
     this.language = this.getLanguage();
     this.route = this.props.route;
   }
   getLanguage() {
     return (
       i18n.language ||
-      (!(process.env.GATSBY_BUILD_STAGE=="build-html") && window && window.localStorage.i18nextLng) ||
+      (!(process.env.GATSBY_BUILD_STAGE == "build-html") &&
+        window &&
+        window.localStorage.i18nextLng) ||
       "en"
     );
   }
@@ -54,12 +55,18 @@ class LanguageSwitcher extends Component {
       { code: "pt", label: "Portuguese" },
       { code: "uk", label: "Ukrainien" },
       { code: "ch", label: "Chinese" }
-    ]; 
+    ];
     const lng = this.getLanguage();
     const label = languages.find(el => el.code == lng).label;
     return (
       <div className="md-cell md-cell--1 md-cell--1-phone">
-        <Dropdown trigger={<div className="btn btn-large btn-flags">{this.renderRow(label, lng)}</div>}>
+        <Dropdown
+          trigger={
+            <div className="btn btn-large btn-flags">
+              {this.renderRow(label, lng)}
+            </div>
+          }
+        >
           {languages.map((el, i) => {
             if (el.code !== lng)
               return (
@@ -75,6 +82,7 @@ class LanguageSwitcher extends Component {
                           .replace("_ch", "_" + lng)
                           .replace("_uk", "_" + lng)
                   }
+                  onClick={() => i18n.changeLanguage(el.code)}
                   waves="light"
                 >
                   {this.renderRow(el.label, el.code)}

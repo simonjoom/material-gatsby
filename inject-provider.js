@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import i18n from "i18next";
+import { render, hydrate } from "react-dom";
 import AppRegistry from "./src/react-native-web/src/exports/AppRegistry";
 import { ThemeContext } from "./src/withContext";
-
+const renderFn = process.env.NODE_ENV !== "production" ? render : hydrate;
+ 
 global.menuList = window.__INITIAL_STATE__.menuList;
 global.filesQuery = window.__INITIAL_STATE__.filesQuery;
 global.locale = window.__INITIAL_STATE__.locale;
@@ -37,10 +39,7 @@ const MAsync = () =>
 const chatAsync = () => import(/* webpackChunkName: "chat" */ "./src/chat");
 
 global.M = undefined;
-
-const getLanguage = () =>
-  i18n.language ||
-  (typeof window !== "undefined" && window.localStorage.i18nextLng);
+ 
 
 var canUseDOM = !!(
   typeof window !== "undefined" &&
@@ -57,12 +56,12 @@ export const onClientEntry = async () => {
 
   if (/comp|inter|loaded/.test(document.readyState)) {
     Waves.displayEffect();
-    M.startTextFields()
+    M.startTextFields();
   } else {
     document.addEventListener(
       "DOMContentLoaded",
       function() {
-        M.startTextFields()
+        M.startTextFields();
         Waves.displayEffect();
       },
       false
@@ -74,45 +73,34 @@ export const replaceHydrateFunction = () => {
   return (element, container, callback) => {
     class App extends Component {
       render() {
-        return <div id="App">{element}</div>;
+        return (
+          <div id="App">
+            {element}
+            <div id="myChat" />
+          </div>
+        );
       }
     }
+    const runChat = async () => {
+      const Chat = await chatAsync();
+      return Chat.default;
+    };
+    const firstcall = () => {
+      const ct = document.getElementById("myChat");
+      timeout(2000).then(() => {
+        runChat().then(El => renderFn(<El />, ct, () => {}));
+      });
+      return callback;
+    };
 
     AppRegistry.registerComponent("App", () => App);
     AppRegistry.runApplication("App", {
       initialProps: {},
       rootTag: container,
-      callback
+      callback: firstcall
     });
   };
 };
-global.Chat = undefined;
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      Chat: false
-    };
-  }
-  async componentDidMount() {
-    if (!global.Chat) {
-      const Chat = await sleep(chatAsync);
-      global.Chat = Chat.default;
-      this.setState({ Chat: true });
-    }
-  }
-
-  render() {
-    const Chat = global.Chat;
-    console.log("Chatsleep", this.props.location);
-    return (
-      <>
-        <Layout>{this.props.children}</Layout>
-        {this.state.Chat && <Chat location={this.props.location} />}
-      </>
-    );
-  }
-}
 
 const preferDefault = m => (m && m.default) || m;
 let Layout;
@@ -134,10 +122,10 @@ export const wrapPageElement = ({ element, props }) => {
   i18n.changeLanguage(lng);
   if (!lng)
     return (
-      <>
+      <div>
         <div />
-        <App location={props.location}>{element}</App>
-      </>
+        <Layout>{element}</Layout>
+      </div>
     );
 
   global.locale[lng].forEach(({ node }) => {
@@ -150,19 +138,19 @@ export const wrapPageElement = ({ element, props }) => {
   const namespace = slugbase === "/" ? "Index" : "Post";
   const ismain = slugbase === "/"; */
   return (
-    <>
+    <div>
       <div />
-      <App location={props.location} lng={lng}>
-        {element}
-      </App>
-    </>
+      <Layout>{element}</Layout>
+    </div>
   );
 };
+
 const stateProvider = {
   translate: namespace => i18n.getFixedT(null, [namespace, "common"])
 };
+
 export const wrapRootElement = ({ element }) => {
-  console.log("stateProvider");
+  global.tr = namespace => i18n.getFixedT(null, [namespace, "common"]);
   return (
     <ThemeContext.Provider value={stateProvider}>
       {element}

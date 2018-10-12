@@ -9,6 +9,7 @@ import { createHttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { setContext } from "apollo-link-context";
 import { split } from "apollo-link";
+import withTheme from "./withContext";
 //import { onError } from "apollo-link-error";
 //import { ApolloClient, InMemoryCache, HttpLink, split } from 'apollo-client-preset';
 import { WebSocketLink } from "apollo-link-ws";
@@ -119,7 +120,7 @@ class ChatLayoutJSX extends Component {
     this.instCollaps = M.Collapsible.init(elems, {
       onOpenStart: () => {
         that.clickonCollaps = true;
-        that.instanceTap.close();
+        that.instanceTap && that.instanceTap.close();
       },
       onOpenEnd: () => {
         var objDiv = $("#listChats");
@@ -143,12 +144,12 @@ class ChatLayoutJSX extends Component {
         // console.log("opentrae",instance);
       }
     });
-    this.instanceTap = M.TapTarget.getInstance(instancestap[0].el);
     M.startTextFields();
 
     setTimeout(function() {
       // only show the tip after 4sec if the chat Collapsible was never activated on a click
       if (!that.clickonCollaps) {
+        that.instanceTap = M.TapTarget.getInstance(instancestap[0].el);
         that.instanceTap.open();
         setTimeout(function() {
           that.manualclose = false;
@@ -200,7 +201,6 @@ resize = () => {
     const { me: Me, validation } = this.props;
     const authToken = localStorage.getItem(AUTH_TOKEN);
 
-    console.log("renderchat", Me, authToken);
     const size = this.state.isSideBarOpen ? "10" : "12";
     const sizet = this.state.isSideBarOpen ? "7" : "8";
     const sizem = this.state.isSideBarOpen ? "3" : "4";
@@ -248,7 +248,14 @@ resize = () => {
                         path="/z/user/:id"
                         page={<UserPage path="/z/user/:id" />}
                       />
-                      <Page path="/z/chats" page={<ChatsPage />} />
+                      <Page
+                        path="/z/chats"
+                        page={
+                          <ChatsPage
+                            startChat={global.tr("Index")("startChat")}
+                          />
+                        }
+                      />
                       <Page path="/z/login" page={<Login />} />
                       <Page path="/z/signup" page={<Signup />} />
                       <Page
@@ -268,7 +275,10 @@ resize = () => {
                           !authToken ? (
                             <Login path="/" />
                           ) : (
-                            <ChatsPage path="/" />
+                            <ChatsPage
+                              path="/"
+                              startChat={global.tr("Index")("startChat")}
+                            />
                           )
                         }
                       />
@@ -277,21 +287,33 @@ resize = () => {
                 </div>
               </div>
 
-              <div className="collapsible-header waves-effect waves-light btn">
-                <Logo id="chat" width={40} height={40} />
-                <p style={{ marginLeft: 20 }}>Need Help?</p>
-                <Badge newIcon>4</Badge>
-              </div>
+              <Location>
+                {({ location }) => {
+                  return (
+                    <>
+                      <div className="collapsible-header waves-effect waves-light btn">
+                        <Logo id="chat" width={40} height={40} />
+                        <p style={{ marginLeft: 20 }}>
+                          {global.tr("Index")("Chathello")}?
+                        </p>
+                        <Badge newIcon>4</Badge>
+                      </div>
+                      <div className="tap-target bgprimary" data-target="chat">
+                        <div className="tap-target-content white">
+                          <h5 className="h2 nolineheight">
+                            {global.tr("Index")("hello")}
+                          </h5>
+                          <h6 className="h3 nolineheight">
+                            {global.tr("Index")("chatwith")}
+                          </h6>
+                        </div>
+                      </div>
+                    </>
+                  );
+                }}
+              </Location>
             </li>
           </ul>
-          <div className="tap-target bgprimary" data-target="chat">
-            <div className="tap-target-content white">
-              <h5 className="h2 nolineheight">Hello </h5>
-              <h6 className="h3 nolineheight">
-                Chat with your ski instructors :)
-              </h6>
-            </div>
-          </div>
         </div>
       </SideBarContext.Provider>
     );
