@@ -656,7 +656,7 @@ exports.createPages = ({ graphql, actions }) => {
           tagList.forEach(tag => {
             const route = {};
             const kbtag = _.kebabCase(tag);
-            if (!tagListDone[kbtag]) {
+            if (!tagListDone[kbtag + "" + lg]) {
               route.fr = `/tags_fr/${kbtag}/`;
               route.en = `/tags_en/${kbtag}/`;
               route.ru = `/tags_ru/${kbtag}/`;
@@ -672,14 +672,14 @@ exports.createPages = ({ graphql, actions }) => {
                   lng: lg
                 }
               });
-              tagListDone[kbtag] = true;
+              tagListDone[kbtag + "" + lg] = true;
             }
           });
           const categoryList = Array.from(categorySets[lg]);
           categoryList.forEach(category => {
             const route = {};
             const kbcategory = _.kebabCase(category);
-            if (!catListDone[kbcategory]) {
+            if (!catListDone[kbcategory + "" + lg]) {
               route.fr = `/categories_fr/${kbcategory}/`;
               route.en = `/categories_en/${kbcategory}/`;
               route.ru = `/categories_ru/${kbcategory}/`;
@@ -695,7 +695,7 @@ exports.createPages = ({ graphql, actions }) => {
                   lng: lg
                 }
               });
-              catListDone[kbcategory] = true;
+              catListDone[kbcategory + "" + lg] = true;
             }
             // });
             // });

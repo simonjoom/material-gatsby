@@ -76,7 +76,7 @@ class HotelTemplate extends React.Component {
             translate={t("Index")}
           />
           <Card
-            className="md-cell md-cell--6-phone md-cell--10 md-cell--8-tablet mobile-fix"
+            className="md-cell md-cell--4-phone md-cell--12 md-cell--8-tablet mobile-fix"
             waves="light"
             contentImage={
               <div>
@@ -93,14 +93,7 @@ class HotelTemplate extends React.Component {
                 )}
               </div>
             }
-            titlereveal={post.title}
-            imgtitle={
-              <div>
-                <Avatar icon={<Icon className="calendar" />} />
-                Published on{" "}
-                {date}
-              </div>
-            }
+            titlereveal={post.title} 
             title={
               <Link
                 className="category-link"
@@ -112,6 +105,11 @@ class HotelTemplate extends React.Component {
             }
           >
             <div className="post-meta">
+              <div>
+                <Avatar icon={<Icon className="calendar" />} />
+                Published on{" "}
+                {date}
+              </div>
               <PostTags tags={post.tags} />
               <SocialLinks
                 postPath={slug}
