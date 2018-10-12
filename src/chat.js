@@ -8,7 +8,7 @@ import { ApolloClient } from "apollo-client";
 import { createHttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { setContext } from "apollo-link-context";
-import { split } from "apollo-link"; 
+import { split } from "apollo-link";
 //import { onError } from "apollo-link-error";
 //import { ApolloClient, InMemoryCache, HttpLink, split } from 'apollo-client-preset';
 import { WebSocketLink } from "apollo-link-ws";
@@ -144,18 +144,20 @@ class ChatLayoutJSX extends Component {
       }
     });
     M.startTextFields();
-
-    setTimeout(function() {
-      // only show the tip after 4sec if the chat Collapsible was never activated on a click
-      if (!that.clickonCollaps) {
-        that.instanceTap = M.TapTarget.getInstance(instancestap[0].el);
-        that.instanceTap.open();
-        setTimeout(function() {
-          that.manualclose = false;
-          that.instanceTap.close();
-        }, 5000);
-      }
-    }, 4800);
+    const run = localStorage.getItem("Tapinstance");
+    if (run !== "run")
+      setTimeout(function() {
+        // only show the tip after 4sec if the chat Collapsible was never activated on a click
+        if (!that.clickonCollaps) {
+          that.instanceTap = M.TapTarget.getInstance(instancestap[0].el);
+          that.instanceTap.open();
+          localStorage.setItem("Tapinstance", "run");
+          setTimeout(function() {
+            that.manualclose = false;
+            that.instanceTap.close();
+          }, 5000);
+        }
+      }, 4800);
   }
   closeChat = () => {
     this.instCollaps[0].close();
