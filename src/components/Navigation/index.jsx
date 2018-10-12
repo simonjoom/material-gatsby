@@ -35,15 +35,8 @@ class Navigation extends Component {
               tooltip="open"
               icon="bars"
               type="awesome"
-              className="right"
+              className="right menubars"
               large
-              style={{
-                top: 0,
-                bottom: 0,
-                right: "14px",
-                height: 50,
-                width: 200
-              }}
             >
               <Button
                 floating

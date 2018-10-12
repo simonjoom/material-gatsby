@@ -40,6 +40,7 @@ class Button extends Component {
       tooltip,
       iconStyle,
       type,
+      icon,
       style,
       ...other
     } = this.props; 

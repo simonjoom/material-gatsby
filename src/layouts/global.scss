@@ -6,14 +6,32 @@ div .mobile-fix {
     padding-right: 0;
   }
 }
+.visuallyhidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px);
+  height: 1px;
+  width: 1px;
+}
 
+.menubars {
+  background-color: black;
+}
+.fixed-action-btn {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 14px;
+  height: 50px;
+  width: 200px;
+}
 i.fa-stack-4x,
 i.fa-stack-8x {
   font-size: 8em;
   text-align: center;
   width: 100%;
 }
-i.fa-stack-4x{
+i.fa-stack-4x {
   position: relative;
   left: 0.05em;
   bottom: 1.25em;
