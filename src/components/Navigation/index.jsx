@@ -61,7 +61,7 @@ class Navigation extends Component {
           }
         >
           <Button flat className="right" tooltip="Skiscool">
-            <LogoSkiscool />
+            <LogoSkiscool style={{marginTop: 10}}/>
           </Button>{" "}
           {SideNavItem && (
             <>

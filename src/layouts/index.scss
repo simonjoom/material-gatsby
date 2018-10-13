@@ -4025,6 +4025,12 @@ body.keyboard-focused .dropdown-content li:focus {
   padding: 1rem;
   /* background-color: #fff;*/
   border-bottom: 1px solid #ddd;
+  // width:40vw;
+  max-width: 100%;
+
+  @media screen and (max-width: 480px){
+    width:100vw;
+  }
 }
 
 .collapsible-header:focus {
@@ -4048,6 +4054,13 @@ body.keyboard-focused .dropdown-content li:focus {
   border-bottom: 1px solid #ddd;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  max-height: 70vh !important;
+  overflow: scroll;
+  width: 40vw;
+  max-width: 100%;
+  @media screen and (max-width: 480px){
+    width: 100vw;
+  }
 }
 
 .sidenav .collapsible,

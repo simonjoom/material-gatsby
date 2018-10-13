@@ -115,31 +115,33 @@ Bom preço /qualidade.<br> Nossa comissão é no mínimo para garantir o melhor 
 
 
 
-<div style="flex-direction: column;padding-bottom: 4%;" class="md-grid md-cell md-cell--12">
-<reactfb language="fr" newDivName="sel" appId="562112907171338" type="post" desc="moniteur de ski courchevel 1850 Dubai - courchevel"/></reactfb>
+<!-- Start FB Section -->
+<div class="md-grid">
+<reactfb language="pt" newDivName="sel" appId="562112907171338" type="post" desc="moniteur de ski courchevel 1850 Dubai - courchevel"/></reactfb>
 </div>
-
+<!-- End FB Section -->
 
 
 <div class="md-grid md-cell--middle">
-<div id="questions" style="flex: 1;background-color: rgb(66, 88, 161); flex-direction: column;" class="md-paper md-paper--1 md-grid md-cell md-cell--4"><imgtest data="envelope.jpg" maxwidth="200px" class="boxshad rounded bg-white"  height="75" directory="pages" alt="Courchevel"></imgtest>
-<h4 style="color: rgb(178, 255, 89);">Perguntas?</h4><p>Conversar com o seu instrutor</p></div>
+<div id="questions" style="background-color: rgb(66, 88, 161);flex:1;" class="md-paper md-paper--1 md-grid md-grid--stacked md-cell md-cell--4">
+<imgtest data="envelope.jpg" maxwidth="200px" class="boxshad rounded bg-white"  height="75" directory="pages" alt="Courchevel"></imgtest>
+<h3 style="color: #fff; text-align:center;">Perguntas?</h3><p>Conversar com o seu instrutor</p></div>
 
-<div id="topQualification" style="flex: 1; flex-direction: column;" class="md-paper md-paper--1 md-grid md-cell md-cell--4">
+<div id="topQualification" style="flex:1;" class="md-paper md-paper--1 md-grid md-grid--stacked md-cell md-cell--4">
   <imgtest data="shield.png" maxwidth="200px" class="boxshad rounded bg-white"  height="75" directory="pages" alt="Courchevel"></imgtest>
-<h4 style="color: rgb(178, 255, 89);">Top Qualified:</h4><p>Apenas instrutores licenciados at SkiScool</p></div>
+<h3 style="color: #fff; text-align:center;">Top Qualified:</h3><p>Apenas instrutores licenciados at SkiScool</p></div>
 
-<div id="thumbsUp" style="flex: 1; background-color: rgb(66, 88, 161);flex-direction: column;" class="md-paper md-paper--1 md-grid md-cell md-cell--4">
+<div id="thumbsUp" style="background-color: rgb(66, 88, 161);flex:1;" class="md-grid--stacked md-paper md-paper--1 md-grid md-cell md-cell--4">
   <imgtest data="thumbs.jpg" maxwidth="200px" class="boxshad rounded bg-white"  height="75" directory="pages" alt="Courchevel"></imgtest>
-<h4 style="color: rgb(178, 255, 89);">Você escolhe:</h4>
+<h3 style="color: #fff; text-align:center;">Você escolhe:</h3>
 <p>É importante ter um instrutor que combina com você</p>
 </div>
 </div>
 
-<div style="justify-content: center;" class="md-paper md-paper--1 md-grid md-cell--middle md-cell--4">
-<a class="emailrot silver" href="mailto:simon@skiscool.com?subject=question">Preguntas</a><span class="px2">|</span><a class="emailrot silver" href="mailto:simon@skiscool.com?subject=contact">Contato nos</a>
+
+<div style="justify-content:space-around;align-items: center;margin-top: 5%" class="md-paper md-paper--1 md-grid md-cell--middle"><email href="simon_skiscoolO0Ocom?subject=question">Preguntas</email><span class="px2">|</span><email href="simon_skiscoolO0Ocom?subject=question">Contato nos</email>
 </div>
- 
+
 
 ## Courchevel Meribel val-thorens
 

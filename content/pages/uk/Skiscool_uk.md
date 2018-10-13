@@ -16,56 +16,60 @@ date: "2018-07-06"
 
 ## Чому обирають нас ? 
 
+<div class="md-grid expertise__container">
 
-<div class="md-grid md-cell--middle">
+  <!-- first col item -->
 <div class="md-cell md-cell--4 md-cell--8-tablet">
 <imgtest data="guide.png" height="75" width="200px" directory="pages" alt="Courchevel"></imgtest>
-<div class="md-block-centered md-cell--6-tablet">
- <h3>Підбір інструктора і бронь</h3>
-  <p>В нашей работе по подбору подходящего для Вас инструктора мы не ограничиваемся несколькими кликами компьютерной мыши.</p>
-  <p>SkiScool is not a geek team.<br><b>Мы знаем</b>
-  наших инструкторов а также их опыт в обучении катанию на лыжах в Трех Долинах на протяжении <b>10ти лет</b>. <br>
+<div class="md-grid md-cell--6-tablet">
+<h3 class="h3">Підбір інструктора і бронь</h3>
+<p>В нашей работе по подбору подходящего для Вас инструктора мы не ограничиваемся несколькими кликами компьютерной мыши.</p>
+<p>SkiScool is not a geek team.<br><b>Мы знаем</b>
+наших инструкторов а также их опыт в обучении катанию на лыжах в Трех Долинах на протяжении <b>10ти лет</b>. <br>
 Позвоните нам, чтобы мы подобрали наилучший вариант по Вашему запросу.</p>
-  </div>
+</div>
 </div>
 
-
 <div class="md-cell md-cell--4 md-cell--8-tablet">
- <imgtest data="certified.png" height="75" width="200px" directory="pages" alt="moniteur de ski Courchevel"></imgtest>
- <div class="md-block-centered md-cell--6-tablet">
-<h3>Дипломовані фахівці, найкраще співвідношення «ціна / якість»</h3>
+<imgtest data="certified.png" height="75" width="200px" directory="pages" alt="Courchevel"></imgtest>
+<div class="md-grid md-cell--6-tablet">
+<h3 class="h3">Дипломовані фахівці, найкраще співвідношення «ціна / якість»</h3>
  <p>Все инструкторы, предлагаемые на нашей платформе, 
 специалисты <br><b>с дипломом государственного образц</b></p>
  <p>Мы не работаем ни <b>со стажерами,</b> ни с начинающими инструкторами, которые не знают специфики Трех Долин. (Куршевель, Мерибель и Валь-Торенс)</p>
 </div>
 </div>
- 
 
 
 <div class="md-cell md-cell--4 md-cell--8-tablet">
-  <imgtest data="years-experience.png" height="75" width="200px" directory="pages" alt="Courchevel"></imgtest>
-<div class="md-block-centered md-cell--6-tablet">
-  <h3>Досвід роботи в Трьох Долина</h3> <p>Skiscool признанная платформа по бронированию лыжных инструкторов в Трех Долинах с 10-тилетним опытом работы.<br> Воспользуйтесь <b>нашими специальным предложением</b>! :<br> <b>Бесплатный трансфер</b> при бронировании 1 недели занятий с нашим инструктором..</p>
-  </div>
-  </div>
+<imgtest data="years-experience.png" height="75" width="200px" directory="pages" alt="Courchevel"></imgtest>
+<div class="md-grid md-cell--6-tablet">
+<h3 class="h3">Досвід роботи в Трьох Долина</h3> <p>Skiscool признанная платформа по бронированию лыжных инструкторов в Трех Долинах с 10-тилетним опытом работы.<br> Воспользуйтесь <b>нашими специальным предложением</b>! :<br> <b>Бесплатный трансфер</b> при бронировании 1 недели занятий с нашим инструктором..</p>
+</div>
+</div>
 </div>
 
 
-<div class="md-grid md-cell--middle" style="padding:12px;flex-flow: column wrap;">
- <div class="md-cell--middle" style="flex-direction: column;width: 120px;">Позвоните Симону<a href="tel:France+33675505209" class=" h2 black"><buttontest cls="btn-flat btn">
- <div class="mr1 fa-stack-big">
- <i class="fa fa-circle fa-stack-8x gray" style="color: rgb(178, 255, 89);"></i><i class="fa fa-phone fa-stack-4x navy"></i></div>
- </buttontest></a></div>
+<div class="md-grid md-grid--stacked">
+<div class="md-grid bgg">
+<h3 class="md-cell">Позвоните Симону</h3>
+<a href="tel:France+33675505209" class="md-cell">
+<buttontest class="btn-flat"><div class="mr1 fa-stack-big">
+ <i class="fa fa-circle fa-stack-8x gray" style="color: rgb(178, 255, 89);"></i><i class="fa fa-phone fa-stack-4x navy"></i></div></buttontest></a>
+ </div>
 
 
+<h3 style="text-align:center;">Teaching quality</h3>
+<div class="md-grid md-cell--middle" style="margin-bottom: 10%;">
+<div class="md-cell md-cell--9">
+<p>Государственный диплом: = BEES </p>
+<p>Французский государственный диплом инструкторa :  <em>ENSA</em></p>
+</div>
+</div>
 
-<div class="md-cell--middle" style="flex-direction: column; padding-bottom: 8%;">
-<h3 style="margin-bottom: 5%;">Qualité d'enseignement</h3> 
-<a title="Enseignement" style="display: flex; flex-direction: row;">
-<imgtest data="certified.png" height="75" width="300px" directory="pages" alt="Courchevel"></imgtest>
-<div>
- <p>Государственный диплом:  <br>Французский государственный диплом инструкторa :  <br>
-<span classname="h6"><em>ENSA</em></span></p>
+<h3 style="text-align:center;">Professionals</h3>
+<div class="md-grid" style="margin-bottom: 10%;">
+<div class="md-cell md-cell--6-tablet md-cell--9">
 <ul style="padding: 5px;"><li>Professionnels: Learn faster with more confidence!!</li> </ul>
 <ul style="padding: 10px;">Всі наші викладачі мають невід'ємними критеріями професійних інструкторі:
 <li><b>Немає стажистів</b></li>
@@ -73,43 +77,42 @@ date: "2018-07-06"
 <li>Досвід педагогічної роботи з клієнтами на посаді тренерa-інструктора. </li>
 <li>Це гарантія того, що тренування будуть результативними і не минуть марно..</li>
 </div>
-</a>
+<div class="md-grid md-cell md-cell--2-tablet md-cell--3  md-cell--4-phone">
+<imgtest data="certified.png" height="75" width="70px" directory="pages" alt="Courchevel" ></imgtest>
+</div> 
 </div>
 
 
-<div class="md-cell--middle" style="flex-direction: column; padding-bottom: 8%;">
-<h3>Le service client</h3>
-<a title="Notre Service" href="/L_ecole_de_ski/" style="display: flex; flex-direction: row;">
-<div style="margin-right: 1%;">
+<h3 style="text-align:center;">Service client</h3>
+<div class="md-grid" style="margin-bottom: 10%;">
+<div class="md-grid md-cell md-cell--2-tablet md-cell--3 md-cell--4-phone">
+<imgtest data="lm-pistes.jpg" height="75" width="300px" directory="pages" alt="service client"></imgtest>
+</div>
+<div class="md-cell md-cell--6-tablet md-cell--9">
 <p>Ваш тренер тільки ваш тренер:</p>
 <p> Инструктор, гид, и просто 'свой' человек.</p>
 <p>- Виключно індивідуальний підхід з складанням персонального комплексу занять.</p>
 <p> - Не кожен гід зможе так професійно допомогти Вам з вибором місця для відпочинку після лижного дня.</p>
 <p> - У спілкуванні з клієнтами інструктора SkiScool не обмежуються робочими годинами і тривалістю гірськолижного сезону.</p>
 <p>- ВИ, в першу чергу, людина з яким ваш тренер розділяє захоплення.</p>
-</div>
-<imgtest data="lm-pistes.jpg" height="75" width="300px" directory="pages" alt="service client"></imgtest>
-</a>
 </div> 
+</div>  
 
-
-
-<div style="flex-direction: column;" class="md-cell--8 md-cell--middle">
+<div style="margin:10% 5%;" class="md-grid md-cell--12 md-cell--middle">
 <p class="h3">
 <i class="fa fa-quote-left"></i>
-Багаторічний досвід роботи наших інструкторів в Трьох Долина (Куршевель) дозволив досягти ідеального співвідношення ціни і якості:<br>
-<b>ви знаєте за що платите, а інструктор працює виправдано. Залежно від обраного періоду і кількості уроків ви можете отримати знижку до 15%.</b>
+Багаторічний досвід роботи наших інструкторів в Трьох Долина (Куршевель) дозволив досягти ідеального співвідношення ціни і якості . ви знаєте за що платите, а інструктор працює виправдано. Залежно від обраного періоду і кількості уроків ви можете отримати знижку до 15%.
 <i class="fa fa-quote-right"></i>
 </p>
 </div>
 
 
-
-<div class="md-cell--middle" style="flex-direction: column;padding-top: 4%;padding-bottom: 4%;">
-<h3>Безопасность : Moniteurs diplômés</h3>
-<a title="Безопасность" href="/Chalets/" style="display: flex; flex-direction: row;">
-<imgtest data="helico.jpg" height="75" width="300px" directory="pages" alt="Sécurité" coverclassname=""></imgtest>
-<div style="margin-left: 1%;">
+<h3 style="text-align:center;">Безопасность</h3>
+<div class="md-grid" style="margin-bottom: 10%;">
+<div class="md-grid md-cell md-cell--2-tablet md-cell--3 md-cell--4-phone">
+<imgtest data="helico.jpg" height="75" width="300px" directory="pages" alt="service client"></imgtest>
+</div>
+<div class="md-cell md-cell--6-tablet md-cell--9">
 <p><b>Безопасность in first:<</b></p>
 <p><b>Ваш тренер</b><br/>
 Дипломований інструктор володіє обов'язковими навичками поведінки в екстрених ситуаціях і надання першої допомоги. <br/> підкріплені досвідом і відмінним знанням місцевості,<br/> ці якості додадуть вам впевненості під час тренувань.</p>
@@ -118,47 +121,50 @@ date: "2018-07-06"
 <li>Навчаємо <b>всіх рівнях катання</b>,Навчаємо дітей і дорослих. від новачка до експерта!</li>
 <li><b>Організуємо - Freeride- поїздки </b>, лижні сафарі; Freestyle, Slope, Pipe.</li>
 </ul>
-</div>
-</a>
+</div> 
 </div>
 
 
-<div class="md-cell--middle" style="flex-direction: column;padding-bottom: 4%;">
-<h3>Відсутність мовного бар'єру</h3>
-<a title="Convivial coach" href="/Hotels/" style="display: flex; flex-direction: row;">
-<div style="margin-right: 1%;">
+<!-- Start Section -->
+<h3 style="text-align:center;">Friendly</h3>
+<div class="md-grid" style="margin-bottom: 10%;">
+<div class="md-cell md-cell--6-tablet md-cell--9">
 <p>Російськомовний інструктаж клієнтів з Росії і України орієнтований на необхідність взаєморозуміння і відсутності 'прогалин' в тренуваннях. Всі фахівці SkiScool пройшли навчання російській мові в мовному середовищі.</p>
+</div>
+<div class="md-grid md-cell md-cell--2-tablet md-cell--3 md-cell--4-phone">
 <imgtest data="years-experience.png" height="75" width="300px" directory="pages" alt="Courchevel"></imgtest>
 </div>
-</a>
 </div>
-</div>
+<!-- End Section -->
 
-<div style="flex-direction: column;padding-bottom: 4%;" class="md-grid md-cell md-cell--12">
-<reactfb language="ru" newDivName="sel" appId="562112907171338" type="post" desc="moniteur de ski courchevel 1850 Dubai - courchevel"/></reactfb>
-</div>
 
+<!-- Start FB Section -->
+<div class="md-grid">
+<reactfb language="ru" newDivName="sel" appId="562112907171338" type="post" desc="Private ski instructor courchevel 1850 Dubai - courchevel"/></reactfb>
+</div>
+<!-- End FB Section -->
 
 <div class="md-grid md-cell--middle">
-<div id="questions" style="flex: 1;background-color: rgb(66, 88, 161); flex-direction: column;" class="md-paper md-paper--1 md-grid md-cell md-cell--4"><imgtest data="envelope.jpg" maxwidth="200px" class="boxshad rounded bg-white"  height="75" directory="pages" alt="Courchevel"></imgtest>
-<h4 style="color: rgb(178, 255, 89);">Питання?</h4><p>Чат з інструктором</p></div>
+<div id="questions" style="background-color: rgb(66, 88, 161);flex:1;" class="md-paper md-paper--1 md-grid md-grid--stacked md-cell md-cell--4">
+<imgtest data="envelope.jpg" maxwidth="200px" class="boxshad rounded bg-white"  height="75" directory="pages" alt="Courchevel"></imgtest>
+<h3 style="color: #fff; text-align:center;">Питання?</h3><p>Чат з інструктором</p>
+</div>
  
+<div id="topQualification" style="flex:1;" class="md-paper md-paper--1 md-grid md-grid--stacked md-cell md-cell--4">
+<imgtest data="shield.png" maxwidth="200px" class="boxshad rounded bg-white"  height="75" directory="pages" alt="Courchevel"></imgtest>
+<h3 style="color: #fff; text-align:center;">Top Qualified:</h3>
+<p>Только лицензированные инструкторы в SkiScool</p>
+</div>
 
-<div id="topQualification" style="flex: 1; flex-direction: column;" class="md-paper md-paper--1 md-grid md-cell md-cell--4">
-  <imgtest data="shield.png" maxwidth="200px" class="boxshad rounded bg-white"  height="75" directory="pages" alt="Courchevel"></imgtest>
-<h4 style="color: rgb(178, 255, 89);">Top Qualified:</h4><p>Только лицензированные инструкторы в SkiScool</p></div>
-
-<div id="thumbsUp" style="flex: 1; background-color: rgb(66, 88, 161);flex-direction: column;" class="md-paper md-paper--1 md-grid md-cell md-cell--4">
+<div id="thumbsUp" style="background-color: rgb(66, 88, 161);flex:1;" class="md-grid--stacked md-paper md-paper--1 md-grid md-cell md-cell--4">
   <imgtest data="thumbs.jpg" maxwidth="200px" class="boxshad rounded bg-white"  height="75" directory="pages" alt="Courchevel"></imgtest>
-<h4 style="color: rgb(178, 255, 89);">ви вибираєте:</h4>
+<h3 style="color: #fff; text-align:center;">ви вибираєте:</h3>
 <p>Важно иметь инструктора, который вам подходит</p>
 </div>
 </div>
 
 
-
-<div style="justify-content: center;" class="md-paper md-paper--1 md-grid md-cell--middle md-cell--4">
-<a class="emailrot silver" href="mailto:simon@skiscool.com?subject=question">Задать вопрос</a><span class="px2">|</span><a class="emailrot silver" href="mailto:simon@skiscool.com?subject=contact">Связаться с нами</a>
+<div style="justify-content:space-around;align-items: center;margin-top: 5%" class="md-paper md-paper--1 md-grid md-cell--middle"><email href="simon_skiscoolO0Ocom?subject=question">Задать вопрос</email><span class="px2">|</span><email href="simon_skiscoolO0Ocom?subject=question">Связаться с нами</email>
 </div>
 
 

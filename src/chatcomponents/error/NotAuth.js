@@ -10,7 +10,7 @@ class NotAuth extends Component {
           Not authentificated!
           <br />
           <br />
-          <Link to="/login">Login</Link>
+          <Link to="z/login">Login</Link>
         </Card>
       </div>
     );

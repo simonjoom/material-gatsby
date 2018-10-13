@@ -125,31 +125,33 @@ date: "2018-07-06"
 </div>
 </div>
 
-<div style="flex-direction: column;padding-bottom: 4%;" class="md-grid md-cell md-cell--12">
+<!-- Start FB Section -->
+<div class="md-grid">
 <reactfb language="ru" newDivName="sel" appId="562112907171338" type="post" desc="moniteur de ski courchevel 1850 Dubai - courchevel"/></reactfb>
 </div>
-
+<!-- End FB Section -->
 
 
 <div class="md-grid md-cell--middle">
-<div id="questions" style="flex: 1;background-color: rgb(66, 88, 161); flex-direction: column;" class="md-paper md-paper--1 md-grid md-cell md-cell--4"><imgtest data="envelope.jpg" maxwidth="200px" class="boxshad rounded bg-white"  height="75" directory="pages" alt="Courchevel"></imgtest>
-<h4 style="color: rgb(178, 255, 89);">Вопрос?</h4><p>Чат с инструктором</p></div>
-
-<div id="topQualification" style="flex: 1; flex-direction: column;" class="md-paper md-paper--1 md-grid md-cell md-cell--4">
+<div id="questions" style="background-color: rgb(66, 88, 161);flex:1;" class="md-paper md-paper--1 md-grid md-grid--stacked md-cell md-cell--4">
+<imgtest data="envelope.jpg" maxwidth="200px" class="boxshad rounded bg-white"  height="75" directory="pages" alt="Courchevel"></imgtest>
+<h3 style="color: #fff; text-align:center;">Вопрос?</h3><p>Чат с инструктором</p></div>
+ 
+<div id="topQualification" style="flex:1;" class="md-paper md-paper--1 md-grid md-grid--stacked md-cell md-cell--4">
   <imgtest data="shield.png" maxwidth="200px" class="boxshad rounded bg-white"  height="75" directory="pages" alt="Courchevel"></imgtest>
-<h4 style="color: rgb(178, 255, 89);">Top Qualified:</h4><p>Только лицензированные инструкторы в SkiScool</p></div>
+<h3 style="color: #fff; text-align:center;">Top Qualified:</h3><p>Только лицензированные инструкторы в SkiScool</p></div>
 
-<div id="thumbsUp" style="flex: 1; background-color: rgb(66, 88, 161);flex-direction: column;" class="md-paper md-paper--1 md-grid md-cell md-cell--4">
+<div id="thumbsUp" style="background-color: rgb(66, 88, 161);flex:1;" class="md-grid--stacked md-paper md-paper--1 md-grid md-cell md-cell--4">
   <imgtest data="thumbs.jpg" maxwidth="200px" class="boxshad rounded bg-white"  height="75" directory="pages" alt="Courchevel"></imgtest>
-<h4 style="color: rgb(178, 255, 89);">Твой выбор:</h4>
+<h3 style="color: #fff; text-align:center;">Твой выбор:</h3>
 <p>Важно иметь инструктора, который вам подходит</p>
 </div>
 </div>
  
-
-<div style="justify-content: center;" class="md-paper md-paper--1 md-grid md-cell--middle md-cell--4">
-<a class="emailrot silver" href="mailto:simon@skiscool.com?subject=question">Запрос</a><span class="px2">|</span><a class="emailrot silver" href="mailto:simon@skiscool.com?subject=contact">Свяжитесь с нами</a>
+ 
+<div style="justify-content:space-around;align-items: center;margin-top: 5%" class="md-paper md-paper--1 md-grid md-cell--middle"><email href="simon_skiscoolO0Ocom?subject=question">Запрос</email><span class="px2">|</span><email href="simon_skiscoolO0Ocom?subject=question">Свяжитесь с нами</email>
 </div>
+ 
 
 <div class="md-paper">
 Skiscool это не просто система онлайн бронирования, это полноценная лыжная школа, созданная инструктором по горным лыжам для помощи клиентам в поиске идеального частного инструктора. 

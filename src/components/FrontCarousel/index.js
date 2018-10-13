@@ -85,9 +85,9 @@ const GetImage = ({
                         href="/instructors_skischool/"
                         waves= "light"
                         style={{
-                          // color: "#ccff90",
+                          color: "#5c6bc0",
                           fontWeight: 'bold',
-                          // backgroundColor: "#ccff90",
+                          backgroundColor: "#ccff90",
                           // padding: '0 10%',
                           fontSize: '0.5em',
                           // width: '200px',

@@ -1,8 +1,8 @@
 import React from "react";
 
 export default ({
-  width = 50,
-  height = 50,
+  width = 30,
+  height = 30,
   alt = "ski leçons courchevel",
   ...other
 }) => (
