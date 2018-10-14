@@ -52,10 +52,9 @@ date: "2018-07-06"
 
 <div class="md-grid md-grid--stacked">
 <!-- Start Call  stacked section -->
-<buttontest type="awesome" icon="phone-square h1 md-cell" cls="md-grid btn md-cell md-cell--3 md-cell--2-tablet md-cell--2-phone md-cell--middle" style="margin: 1em;border-radius: 5%;">
-<a href="tel:France+33675505209" class="h3" style="line-height: 1;"> Call Simon</a>
+<buttontest type="awesome" icon="phone-square h1 md-cell md-cell--12" cls="md-grid btn md-cell md-cell--3 md-cell--2-tablet md-cell--2-phone md-cell--middle" style="margin: 1em;border-radius: 5%;">
+<a href="tel:France+33675505209" class="md-grid md-grid--stacked h3" style="line-height: 1;">Call Simon</a>
 </buttontest>
- 
 
 
 <h3 style="text-align:center;">Teaching quality</h3>
