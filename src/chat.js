@@ -47,8 +47,18 @@ import ChatsPage from "./chatcomponents/chat/ChatsPage";
 import Badge from "./reactLIB/Badge";
 import Button from "./reactLIB/Button";
 
+let pathbackend="https://ns327841.ip-37-187-112.eu/graphql";
+let uriwebsocket="wss://ns327841.ip-37-187-112.eu/subscriptions";
+//+process.env.REACT_APP_ENDPOINT;
+if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+  // dev code
+  pathbackend="http://localhost:4000/graphql";
+  uriwebsocket="ws://localhost:4000/subscriptions";
+}
+
+
 const wsLink = new WebSocketLink({
-  uri: "ws://localhost:4000/subscriptions",
+  uri: uriwebsocket,
   options: {
     reconnect: true,
     connectionParams: () => ({
@@ -56,7 +66,7 @@ const wsLink = new WebSocketLink({
     })
   }
 });
-const httpLink = new createHttpLink({ uri: "http://localhost:4000" });
+const httpLink = new createHttpLink({ uri: pathbackend });
 
 const middlewareAuthLink = setContext((_, { headers }) => {
   console.log("middlewareAuthLink", localStorage.getItem(AUTH_TOKEN));
@@ -234,7 +244,7 @@ resize = () => {
                     {Me.error && <NotAuth />}
 
                     <Location>
-                      {({ location }) => <Header location={location} />}
+                      {({ location }) => <Header location={location} me={Me} />}
                     </Location>
                     {!Me.loading &&
                       !Me.error &&
@@ -292,7 +302,7 @@ resize = () => {
                 {({ location }) => {
                   return (
                     <>
-                      <div className="collapsible-header waves-effect waves-light btn">
+                      <div className="collapsible-header waves-effect waves-light btn" style={{display:"flex", alignItems: 'center'}}>
                         <Logo id="chat" width={40} height={40} />
                         <p style={{ marginLeft: 20 }}>
                           {global.tr("Index")("Chathello")}?

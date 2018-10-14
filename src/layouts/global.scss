@@ -164,6 +164,9 @@ h3,
   opacity: 1;
   transition: opacity 450ms ease-in;
 }
+.fa.fa-phone-square.h1{
+  font-size: 3em  ;  
+}
 li {
   margin:0;
 }
@@ -177,6 +180,7 @@ li {
 .containerchat .popout {
 }
 .containerchat {
+  min-width: 60vw;
   position: fixed;
   z-index: 1111;
   right: 0;
