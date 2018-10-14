@@ -4,7 +4,7 @@ import { navigate } from "gatsby";
 import Button from "../../../reactLIB/Button"; 
 import BackButton from "./BackButton";
 
-const Header = ({location}) => {
+const Header = ({location,me}) => {
   return (
     <div className="flexGrow md-grid md-grid--stacked">
       <header className="headerchat md-grid md-grid--no-spacing">
@@ -22,7 +22,7 @@ const Header = ({location}) => {
           />
         </div>
         <div className="md-cell md-cell-4">
-          <TopHello />
+          <TopHello me={me}/>
         </div>
       </header>
     </div>

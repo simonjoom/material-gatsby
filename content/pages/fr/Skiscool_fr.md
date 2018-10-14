@@ -14,7 +14,11 @@ date: '2018-07-02'
 
 # Ecole de Ski & Snowboard
 
-<div class="md-grid expertise__container">
+
+<div class="container">
+  <!-- Start of First section -->
+  <div class="md-grid">
+<!-- Start Call section 1 --><div class="md-grid expertise__container">
 
   <!-- first col item -->
   <div class="md-cell md-cell--4 md-cell--8-tablet">
@@ -46,21 +50,16 @@ date: '2018-07-02'
 
 
 <div class="md-grid md-grid--stacked">
-<div class="md-grid bgg">
-<h3 class="md-cell">Appelez Simon</h3>
-<a href="tel:France+33675505209" class="md-cell">
-<buttontest class="btn-flat"><div class="mr1 fa-stack-big">
- <i class="fa fa-circle fa-stack-8x gray" style="color: rgb(178, 255, 89);"></i><i class="fa fa-phone fa-stack-4x navy"></i></div></buttontest></a>
- </div>
-
+<!-- Start Call  stacked section -->
+<buttontest type="awesome" icon="phone-square h1 md-cell md-cell--12" cls="md-grid btn md-cell md-cell--3 md-cell--2-tablet md-cell--2-phone md-cell--middle" style="margin: 1em;border-radius: 5%;">
+<a href="tel:France+33675505209" class="md-grid md-grid--stacked h3" style="line-height: 1;">Call Simon</a>
+</buttontest>
 
 <h3 style="text-align:center;">Qualité d'enseignement</h3>
-<div class="md-grid md-cell--middle" style="margin-bottom: 10%;">
-<div class="md-cell md-cell--9">
+<div class="md-cell md-cell--12 md-cell--8-tablet md-cell--4-phone" style="margin-bottom: 5%;padding: 5%">
  <p>Notre diplôme est le BEES français</p>
 <p>délivré par l'organisation officiel: <em>ENSA</em></p>
-</div>
-</div>
+</div> 
 
 
 <h3 style="text-align:center;">Professionals</h3>
@@ -122,7 +121,7 @@ En fonction de la période choisie et la durée des cours vous pouvez bénéfici
 <h3 style="text-align:center;">Convivial</h3>
 <div class="md-grid" style="margin-bottom: 10%;">
 <div class="md-cell md-cell--6-tablet md-cell--9">
-<div style="margin-right: 1%;"> 
+
 <p>Votre coach réserve les restaurants, Il est bilingue français/anglais; il se consacre à la pratique du ski de compétition et de hors piste."</p>
 </div>
 <div class="md-grid md-cell md-cell--2-tablet md-cell--3 md-cell--4-phone">
@@ -142,19 +141,30 @@ En fonction de la période choisie et la durée des cours vous pouvez bénéfici
 <div class="md-grid md-cell--middle">
 <div id="questions" style="background-color: rgb(66, 88, 161);flex:1;" class="md-paper md-paper--1 md-grid md-grid--stacked md-cell md-cell--4">
 <imgtest data="envelope.jpg" maxwidth="200px" class="boxshad rounded bg-white"  height="75" directory="pages" alt="Courchevel"></imgtest>
-<h3 style="color: #fff; text-align:center;">QUESTIONS?</h3><p>Chat avec ton moniteur de ski</p></div>
+<h3 style="color: #fff; text-align:center;">QUESTIONS?</h3>
+<p style="color: #fff;">Chat avec ton moniteur de ski</p>
+</div>
 
 <div id="topQualification" style="flex:1;" class="md-paper md-paper--1 md-grid md-grid--stacked md-cell md-cell--4">
 <imgtest data="shield.png" maxwidth="200px" class="boxshad rounded bg-white"  height="75" directory="pages" alt="Courchevel"></imgtest>
-<h3 style="color: #fff; text-align:center;">TOP QUALIFIÉ:</h3><p>Seuls les moniteurs diplômés peuvent s'inscrire sur SkiScool</p></div>
+<h3 style="color: black; text-align:center;">TOP QUALIFIÉ:</h3>
+<p>Seuls les moniteurs diplômés peuvent s'inscrire sur SkiScool</p></div>
 
 <div id="thumbsUp" style="background-color: rgb(66, 88, 161);flex:1;" class="md-grid--stacked md-paper md-paper--1 md-grid md-cell md-cell--4">
 <imgtest data="thumbs.jpg" maxwidth="200px" class="boxshad rounded bg-white"  height="75" directory="pages" alt="Courchevel"></imgtest>
-<h3 style="color: #fff; text-align:center;">VOUS CHOISISSEZ:</h3><p>C'est important d'avoir le moniteur qui vous convient</p>
+<h3 style="color: #fff; text-align:center;">VOUS CHOISISSEZ:</h3>
+<p style="color: #fff;">C'est important d'avoir le moniteur qui vous convient</p>
 </div>
 </div>
 
-<div style="justify-content:space-around;align-items: center;margin-top: 5%" class="md-paper md-paper--1 md-grid md-cell--middle"><email href="simon_skiscoolO0Ocom?subject=question">Posez une question</email><span class="px2">|</span><email href="simon_skiscoolO0Ocom?subject=question">Contactez nous</email>
+<div style="justify-content:space-around;align-items: center;margin-top: 5%" class="md-paper md-paper--1 md-grid md-cell--middle"><email href="simon_skiscoolO0Ocom?subject=question">Request</email><span class="px2">|</span><email href="simon_skiscoolO0Ocom?subject=question">Contact us</email>
+</div>
+<!-- End Call  stacked section -->
+</div>
+
+<!-- End Call section 1 -->
+</div>
+<!-- End Section -->
 </div>
 
 

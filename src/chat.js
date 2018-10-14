@@ -47,8 +47,17 @@ import ChatsPage from "./chatcomponents/chat/ChatsPage";
 import Badge from "./reactLIB/Badge";
 import Button from "./reactLIB/Button";
 
+let pathbackend = "https://ns327841.ip-37-187-112.eu/graphql";
+let uriwebsocket = "wss://ns327841.ip-37-187-112.eu/subscriptions";
+//+process.env.REACT_APP_ENDPOINT;
+if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
+  // dev code
+  pathbackend = "http://localhost:4000/graphql";
+  uriwebsocket = "ws://localhost:4000/subscriptions";
+}
+
 const wsLink = new WebSocketLink({
-  uri: "ws://localhost:4000/subscriptions",
+  uri: uriwebsocket,
   options: {
     reconnect: true,
     connectionParams: () => ({
@@ -56,7 +65,7 @@ const wsLink = new WebSocketLink({
     })
   }
 });
-const httpLink = new createHttpLink({ uri: "http://localhost:4000" });
+const httpLink = new createHttpLink({ uri: pathbackend });
 
 const middlewareAuthLink = setContext((_, { headers }) => {
   console.log("middlewareAuthLink", localStorage.getItem(AUTH_TOKEN));
@@ -213,109 +222,104 @@ resize = () => {
           Me: !Me.loading && !Me.error && Me.me
         }}
       >
-        <div className="containerchat">
-          <ul className="collapsible popout">
-            <li>
-              <div className="collapsible-body">
-                <Button
-                  onClick={() => this.closeChat()}
-                  icon="close"
-                  style={{ padding: "0 10px" }}
-                  className="right btn-large"
-                  flat
-                  type="material"
-                />
-                <div className="md-grid">
-                  <SideBar />
-                  <div
-                    className={`md-cell md-cell--${size} md-cell--${sizet}-tablet md-cell--${sizem}-phone`}
-                  >
-                    {Me.loading && <Loading />}
-                    {Me.error && <NotAuth />}
+        <ul className="collapsible popout">
+          <li>
+            <div className="collapsible-body">
+              <Button
+                onClick={() => this.closeChat()}
+                icon="close"
+                style={{ padding: "0 10px" }}
+                className="right btn-large"
+                flat
+                type="material"
+              />
+              <div className="md-grid">
+                <SideBar />
+                <div
+                  className={`md-cell md-cell--${size} md-cell--${sizet}-tablet md-cell--${sizem}-phone`}
+                >
+                  {Me.loading && <Loading />}
+                  {Me.error && <NotAuth />}
 
-                    <Location>
-                      {({ location }) => <Header location={location} />}
-                    </Location>
-                    {!Me.loading &&
-                      !Me.error &&
-                      validation && (
-                        <EmailValidated emailvalidated={Me.me.emailvalidated} />
-                      )}
+                  <Location>
+                    {({ location }) => <Header location={location} me={Me} />}
+                  </Location>
+                  {!Me.loading &&
+                    !Me.error &&
+                    validation && (
+                      <EmailValidated emailvalidated={Me.me.emailvalidated} />
+                    )}
 
-                    <FadeTransitionRouter>
-                      <Page path="/z/users" page={<UsersPage />} />
-                      <Page path="/z/user/create" page={<UserPageCreate />} />
-                      <Page
-                        path="/z/user/:id"
-                        page={<UserPage path="/z/user/:id" />}
-                      />
-                      <Page
-                        path="/z/chats"
-                        page={
+                  <FadeTransitionRouter>
+                    <Page path="/users" page={<UsersPage />} />
+                    <Page path="/user/create" page={<UserPageCreate />} />
+                    <Page
+                      path="/user/:id"
+                      page={<UserPage path="/user/:id" />}
+                    />
+                    <Page
+                      path="/chats"
+                      page={
+                        <ChatsPage
+                          startChat={global.tr("Index")("startChat")}
+                        />
+                      }
+                    />
+                    <Page path="/login" page={<Login />} />
+                    <Page path="/signup" page={<Signup />} />
+                    <Page path="/forgetPassword" page={<ForgetPassword />} />
+                    <Page path="/resetPassword" page={<ResetPassword />} />
+                    <Page path="/updatePassword" page={<UpdatePassword />} />
+                    <Page path="/validateEmail" page={<ValidateEmail />} />
+                    <Page
+                      path="/"
+                      default
+                      page={
+                        !authToken ? (
+                          <Login path="/" />
+                        ) : (
                           <ChatsPage
+                            path="/"
                             startChat={global.tr("Index")("startChat")}
                           />
-                        }
-                      />
-                      <Page path="/z/login" page={<Login />} />
-                      <Page path="/z/signup" page={<Signup />} />
-                      <Page
-                        path="/z/forgetPassword"
-                        page={<ForgetPassword />}
-                      />
-                      <Page path="/z/resetPassword" page={<ResetPassword />} />
-                      <Page
-                        path="/z/updatePassword"
-                        page={<UpdatePassword />}
-                      />
-                      <Page path="/z/validateEmail" page={<ValidateEmail />} />
-                      <Page
-                        path="/"
-                        default
-                        page={
-                          !authToken ? (
-                            <Login path="/" />
-                          ) : (
-                            <ChatsPage
-                              path="/"
-                              startChat={global.tr("Index")("startChat")}
-                            />
-                          )
-                        }
-                      />
-                    </FadeTransitionRouter>
-                  </div>
+                        )
+                      }
+                    />
+                  </FadeTransitionRouter>
                 </div>
               </div>
+            </div>
 
-              <Location>
-                {({ location }) => {
-                  return (
-                    <>
-                      <div className="collapsible-header waves-effect waves-light btn" style={{display:"flex", alignItems: 'center'}}>
-                        <Logo id="chat" width={40} height={40} />
-                        <p style={{ marginLeft: 20, marginRight:20 }}>
-                          {global.tr("Index")("Chathello")}?
-                        </p>
-                        <Badge newIcon>4</Badge>
+            <Location>
+              {({ location }) => {
+                return (
+                  <>
+                    <div
+                      className="collapsible-header waves-effect waves-light btn"
+                      style={{ display: "flex", alignItems: "center" }}
+                    >
+                      <Logo id="chat" width={40} height={40} />
+                      <p style={{ marginLeft: 20 }}>
+                        {global.tr("Index")("Chathello")}?
+                      </p>
+                      <Badge newIcon>4</Badge>
+                    </div>
+                    <div className="tap-target bgprimary" data-target="chat">
+                      <div className="tap-target-content white">
+                        <h5 className="h2 nolineheight">
+                          {global.tr("Index")("hello")}
+                        </h5>
+                        <h6 className="h3 nolineheight">
+                          {global.tr("Index")("chatwith")}
+                        </h6>
                       </div>
-                      <div className="tap-target bgprimary" data-target="chat">
-                        <div className="tap-target-content white">
-                          <h5 className="h2 nolineheight">
-                            {global.tr("Index")("hello")}
-                          </h5>
-                          <h6 className="h3 nolineheight">
-                            {global.tr("Index")("chatwith")}
-                          </h6>
-                        </div>
-                      </div>
-                    </>
-                  );
-                }}
-              </Location>
-            </li>
-          </ul>
-        </div>
+                    </div>
+                  </>
+                );
+              }}
+            </Location>
+          </li>
+        </ul>
       </SideBarContext.Provider>
     );
   }

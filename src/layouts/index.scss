@@ -277,10 +277,10 @@ h2,.h2 {
 h3,.h3 {
   @extend %ssh;
 }
-blockquote,.Menulink {
+blockquote,.Menulink,.h4 {
   @extend %bq;
 }
-p {
+p,.h5 {
   @extend %p;
 }
 
@@ -1693,8 +1693,7 @@ table span.badge {
 
 .container {
   margin: 0 auto;
-  max-width: 1600px;
-  width: 90%;
+  max-width: 1580px;
 }
 
 @media only screen and (max-width: 601px) {
@@ -1705,7 +1704,7 @@ table span.badge {
 
 @media only screen and (min-width: 993px) {
   .container {
-    width: 85%;
+    width: 90%;
   }
 }
 /*

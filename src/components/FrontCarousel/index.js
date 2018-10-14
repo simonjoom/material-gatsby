@@ -2,6 +2,7 @@ import React from "react";
 import Img from "gatsby-image";
 import withTheme from "../../withContext";
 import ReactFB from "../ReactFB";
+import Button from "../../reactLIB/Button";
 import Carousel from "./carousel.js";
 import route from "../../config";
 import "./carousel.css";
@@ -21,6 +22,7 @@ const GetImage = ({
   ...other
 }) => {
   const isContact = page === "/contact/";
+  console.log("CarouselQuery",CarouselQuery)
   const ismain = page === "/"; 
   const lng = t("lang");
   const dir = directory !== "" ? "/" + directory : "";
@@ -55,27 +57,23 @@ const GetImage = ({
                   <span
                     style={{
                       color: "#b2ff59",
-                      fontSize: "30px",
                       fontStyle: "italic",
                       fontWeight: 900,
                       letterSpacing: ".01em",
                       textTransform: "uppercase",
                       wordSpacing: "5px"
                     }}
+                    className="h3"
                   >
                     {t("main1")}
                   </span>
-                  <div style={{ fontSize: "30px" }}>
+                  <div className="h4">
                     {t("main2")}
                     <div className="md-cell">
                       {/* <a
                         tabIndex="0"
                         href={route.router["/instructor/"][lng]}
-                        style={{
-                          color: "#3f51b5",
-                          backgroundColor: "#ccff90"
-                        }}
-                        className="md-btn md-pointer--hover"
+                        className="h4 primary"
                       >
                         {" "}
                         Get Started

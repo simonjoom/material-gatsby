@@ -123,8 +123,7 @@ h3,
    font-size: 100px;*/
   text-align: center;
   font-style: italic;
-  font-family: Times;
-  padding-top: 20px;
+  font-family: Times; 
 }
 
 .fade-exit .page {
@@ -165,22 +164,36 @@ h3,
   opacity: 1;
   transition: opacity 450ms ease-in;
 }
+.fa.fa-phone-square.h1{
+  font-size: 3em  ;  
+}
 li {
   margin:0;
+}
+.listChats .card-content{
+  padding:0;
 }
 .paperOut,.px2 {
   margin: 10px;
 }
-
-.containerchat .active {
+.collapsible-body{
+  overflow: hidden;
+}
+.container .md-grid--stacked{
+  a:link{
+    color: wheat
+  }
+} 
+#myChat .active {
   width:100%;
   @media screen and (min-width: 1400px){
     width:500px;
   }
 }
-.containerchat .popout {
+#myChat .popout {
 }
-.containerchat {
+#myChat {
+  min-width: 50vw;
   position: fixed;
   z-index: 1111;
   right: 0;
@@ -192,7 +205,9 @@ li {
 .white {
   color: white;
 }
-
+.black{
+  color: black;
+}
 .collapsible-body {
   background-color: white;
 }
@@ -202,4 +217,10 @@ li {
 }
 
 .contact__simon__main {
+}
+
+
+a:link {
+  color: $md-primary-color;
+  text-decoration: none;
 }

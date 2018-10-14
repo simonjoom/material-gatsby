@@ -6,24 +6,22 @@ import Dropdown from "../../../reactLIB/Dropdown";
 import NavItem from "../../../reactLIB/NavItem";
 import Logo from "../../../components/logo";
 
-class MenuAvatar extends Component {
-  handleClick = event => {
-    //   this.setState({ anchorEl: event.currentTarget });
-  };
+class MenuAvatar extends Component { 
 
   handleClose = page => {
     // this.setState({ anchorEl: null });
     if (page === "profile") {
-      navigate("/z/user/" + this.props.user.id);
+      navigate("/user/" + this.props.user.id);
     }
     if (page === "logout") {
       localStorage.removeItem(AUTH_TOKEN);
-      navigate(`/z/login`);
+      navigate(`/login`);
     }
     //  this.setState({ open: false });
   };
 
   render() {
+    console.log("Menuavatar")
     return (
       <Dropdown
         trigger={

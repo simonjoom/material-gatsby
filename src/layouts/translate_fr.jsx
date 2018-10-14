@@ -2,7 +2,7 @@ import React from "react";
 import i18n from "i18next";
 const _ = require("lodash");
 import { router } from "../config";
-import { graphql, StaticQuery } from "gatsby"; 
+import { graphql, StaticQuery } from "gatsby";
 const translate = () => {
   if (global.locale["fr"].length == 0) {
     console.log("runtranslate");
@@ -40,13 +40,13 @@ const translate = () => {
           }
         `}
         render={data => {
-          let lang; 
+          let lang;
           console.log("changeLanguage", data);
           data.allLocale.edges.forEach(({ node }) => {
-            const { lng, ns, data } = node;
+            const { lng, ns, data : datan } = node;
             lang = lng;
             if (!i18n.hasResourceBundle(lng, ns)) {
-              i18n.addResources(lng, ns, JSON.parse(data));
+              i18n.addResources(lng, ns, JSON.parse(datan));
             }
           });
           global.locale[lang] = data.allLocale.edges;
@@ -55,11 +55,11 @@ const translate = () => {
 
           global.postEdges = data.allMarkdownRemark.edges;
           let array = [];
-          
+
           Object.keys(router).forEach(function(element, key, _array) {
             global.postEdges.forEach(postEdge => {
               const { category } = postEdge.node.frontmatter;
-              const tr = t("Index")(_.kebabCase(category)); 
+              const tr = t("Index")(_.kebabCase(category));
               if (
                 postEdge.node.fields.inmenu &&
                 postEdge.node.fields.slug == router[element][lang]
@@ -70,7 +70,6 @@ const translate = () => {
                 });
             });
           });
-
 
           let item = {
             path: router["/hotel/"][lang],

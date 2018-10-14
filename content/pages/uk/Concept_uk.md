@@ -18,7 +18,8 @@ date: "2018-07-06"
 * Керована програма повністю кваліфікованим інструктором,
 * Технічне і прогресивне спостереження з відео,
 
-![ski school courchevel](https://skiscool.com/dist/offpiste.jpg)
+<imgtest data="offpiste.jpg" directory="pages" alt="off track courchevel"></imgtest> 
+
 ---
 <br/>
 <br/>

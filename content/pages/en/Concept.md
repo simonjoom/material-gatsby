@@ -22,7 +22,8 @@ date: "2018-07-06"
 * A guided program by a fully qualified instructor,
 * Technical and progressive follow-up with video,
 
-![ski school courchevel](https://skiscool.com/dist/offpiste.jpg)
+<imgtest data="offpiste.jpg" directory="pages" alt="off track courchevel"></imgtest> 
+
 ---
 <br/>
 <br/>

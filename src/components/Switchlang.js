@@ -14,7 +14,7 @@ import {
   // Icon_Skype,
 } from "./flags/";
 const Localetosrc = {
-  ch: Icon_Flag_CH,
+  cn: Icon_Flag_CH,
   en: Icon_Flag_US,
   fr: Icon_Flag_FR,
   pt: Icon_Flag_BR,
@@ -60,7 +60,6 @@ class LanguageSwitcher extends Component {
       else if (code == "ru") href = "https://www.skiscool.com";
       else if (code == "uk") href = "https://uk.skiscool.com";
       else href = "https://cn.skiscool.com";
-      path = path.replace(/\/(fr|ru|uk|cn|pt|en)/, "");
     }
     return href + path;
   }
@@ -72,7 +71,7 @@ class LanguageSwitcher extends Component {
       { code: "ru", label: "Russian" },
       { code: "pt", label: "Portuguese" },
       { code: "uk", label: "Ukrainien" },
-      { code: "ch", label: "Chinese" }
+      { code: "cn", label: "Chinese" }
     ];
     const lng = this.getLanguage();
     const label = languages.find(el => el.code == lng).label;
@@ -80,7 +79,7 @@ class LanguageSwitcher extends Component {
       <div className="md-cell md-cell--1 md-cell--1-phone">
         <Dropdown
           trigger={
-            <div className="btn btn-large btn-flags">
+            <div className="btn btn-medium btn-flags">
               {this.renderRow(label, lng)}
             </div>
           }

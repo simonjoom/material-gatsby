@@ -19,6 +19,13 @@ date: "2018-07-06"
   <!-- Start of First section -->
   <div class="md-grid  md-cell--middle expertise__container">
 
+
+<div class="container">
+  <!-- Start of First section -->
+  <div class="md-grid">
+<!-- Start Call section 1 -->
+
+
 <div class="md-grid expertise__container">
 
   <!-- first col item -->
@@ -48,20 +55,16 @@ date: "2018-07-06"
 </div>
 </div>
 
-
 <div class="md-grid md-grid--stacked">
-
-<!-- Start Call section -->
-<div class="btn-large md-cell md-cell--3 md-cell--2-tablet md-cell--4-phone md-cell--middle" style="margin: 1em;">
-<a href="tel:France+33675505209">
-<p class=""><i class="fa fa-phone-square"></i> Call Simon</p>
-</a>
-</div>
+<!-- Start Call  stacked section -->
+<buttontest type="awesome" icon="phone-square h1 md-cell md-cell--12" cls="md-grid btn md-cell md-cell--3 md-cell--2-tablet md-cell--2-phone md-cell--middle" style="margin: 1em;border-radius: 5%;">
+<a href="tel:France+33675505209" class="md-grid md-grid--stacked h3" style="line-height: 1;">Call Simon</a>
+</buttontest>
 
 
 <h3 style="text-align:center;">Teaching quality</h3>
-<div class="md-grid md-cell md-cell--12 md-cell--8-tablet md-cell--4-phone" style="margin-bottom: 5%">
-<p>Ski instructor's diploma = BEES </p>
+<div class="md-cell md-cell--12 md-cell--8-tablet md-cell--4-phone" style="margin-bottom: 5%;padding: 5%">
+<p>Ski instructor's diploma = BEES <br/></p>
 <p> Issued by the Official French organisation :  <em>ENSA</em></p>
 </div>
 
@@ -178,7 +181,10 @@ All our teachers are fully qualified with many years of experience in the 3 Vall
 
 <p>Our coaches are all bilingual, French and English. Some speak languages like Russian, Spanish and Italian.</p> <a href='Map/Valthorens' title='Valthorens'>Valthorens</a>
 </div>
+<!-- End Call  stacked section -->
 </div>
 
+<!-- End Call section 1 -->
 </div>
 <!-- End Section -->
+</div>
