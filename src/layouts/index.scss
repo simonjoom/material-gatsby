@@ -1693,7 +1693,7 @@ table span.badge {
 
 .container {
   margin: 0 auto;
-  max-width: 1280px;
+  max-width: 1600px;
   width: 90%;
 }
 
@@ -4057,7 +4057,7 @@ body.keyboard-focused .dropdown-content li:focus {
   box-sizing: border-box;
   max-height: 70vh !important;
   overflow: scroll;
-  width: 40vw;
+ /* width: 40vw; */
   max-width: 100%;
   @media screen and (max-width: 480px){
     width: 100vw;

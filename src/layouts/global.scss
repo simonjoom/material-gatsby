@@ -165,13 +165,18 @@ h3,
   opacity: 1;
   transition: opacity 450ms ease-in;
 }
-
+li {
+  margin:0;
+}
 .paperOut,.px2 {
   margin: 10px;
 }
 
 .containerchat .active {
-  // width: 600px;
+  width:100%;
+  @media screen and (min-width: 1400px){
+    width:500px;
+  }
 }
 .containerchat .popout {
 }
