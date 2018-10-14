@@ -14,6 +14,13 @@ date: "2018-07-06"
 
 # Ski and Snowboard Instructors
 
+
+<div class="container">
+  <!-- Start of First section -->
+  <div class="md-grid">
+<!-- Start Call section 1 -->
+
+
 <div class="md-grid expertise__container">
 
   <!-- first col item -->
@@ -43,8 +50,14 @@ date: "2018-07-06"
 </div>
 </div>
 
-
 <div class="md-grid md-grid--stacked">
+<!-- Start Call  stacked section -->
+<buttontest type="awesome" icon="phone-square" cls="btn-large md-cell md-cell--3 md-cell--2-tablet md-cell--4-phone md-cell--middle" style="margin: 1em;">
+<a href="tel:France+33675505209">
+ Call Simon</a>
+</buttontest>
+
+
 <div class="md-grid bgg">
 <h3 class="md-cell">Call Simon</h3>
 <a href="tel:France+33675505209" class="md-cell">
@@ -54,11 +67,9 @@ date: "2018-07-06"
 
 
 <h3 style="text-align:center;">Teaching quality</h3>
-<div class="md-grid md-cell--middle" style="margin-bottom: 10%;">
-<div class="md-cell md-cell--9">
-<p>Ski instructor's diploma = BEES </p>
+<div class="md-cell md-cell--12 md-cell--8-tablet md-cell--4-phone" style="margin-bottom: 5%;padding: 5%">
+<p>Ski instructor's diploma = BEES <br/></p>
 <p> Issued by the Official French organisation :  <em>ENSA</em></p>
-</div>
 </div>
 
 <h3 style="text-align:center;">Professionals</h3>
@@ -174,7 +185,10 @@ All our teachers are fully qualified with many years of experience in the 3 Vall
 
 <p>Our coaches are all bilingual, French and English. Some speak languages like Russian, Spanish and Italian.</p> <a href='Map/Valthorens' title='Valthorens'>Valthorens</a>
 </div>
+<!-- End Call  stacked section -->
 </div>
 
+<!-- End Call section 1 -->
 </div>
 <!-- End Section -->
+</div>
