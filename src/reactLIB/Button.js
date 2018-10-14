@@ -22,7 +22,9 @@ class Button extends Component {
       M.Tooltip.init(elems, tooltipOptions);
 
     var els = document.querySelectorAll('.fixed-action-btn');
-    typeof M !== 'undefined' && els && M.FloatingActionButton.init(els, {direction:"left"});
+    typeof M !== 'undefined' &&
+      els &&
+      M.FloatingActionButton.init(els, { direction: 'left' });
   }
 
   render() {
@@ -43,7 +45,7 @@ class Button extends Component {
       icon,
       style,
       ...other
-    } = this.props; 
+    } = this.props;
     const toggle = fabClickOnly ? 'click-to-toggle' : '';
     let C = node;
     let classes = {
@@ -70,6 +72,24 @@ class Button extends Component {
         'data-target': this.props['data-target']
       });
     } else {
+      let chC, child;
+      chC = this.renderIcon();
+      if (icon && this.props.children) {
+        var c = this.props.children[0];
+        //Wrapp Icon inside children
+        if (c && typeof c == 'object') {
+          var stc = c.props.children;
+          if (stc) child = [chC, stc[0]];
+          child = React.Children.map(this.props.children, ch =>
+            React.cloneElement(ch, { children: child })
+          );
+          console.log('cezecc', c);
+          //  c.props.children = chC;
+        }
+      }
+      if (!child) {
+        child = [chC, this.props.children];
+      }
       return (
         <C
           {...other}
@@ -79,8 +99,7 @@ class Button extends Component {
           className={cx(this.tooltip ? 'tooltipped' : '', classes, className)}
           data-tooltip={tooltip}
         >
-          {this.renderIcon()}
-          {this.props.children}
+          {child}
         </C>
       );
     }
