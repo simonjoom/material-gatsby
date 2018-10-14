@@ -4,13 +4,13 @@ const _ = require("lodash");
 import { router } from "../config";
 import { graphql, StaticQuery } from "gatsby";
 const translate = () => {
-  if (global.locale["ch"].length == 0) {
+  if (global.locale["cn"].length == 0) {
     console.log("runtranslate");
     return (
       <StaticQuery
         query={graphql`
           query trchQuery {
-            allLocale(filter: { lng: { eq: "ch" } }) {
+            allLocale(filter: { lng: { eq: "cn" } }) {
               edges {
                 node {
                   id
@@ -22,7 +22,7 @@ const translate = () => {
             }
             allMarkdownRemark(
               limit: 2000
-              filter: { fields: { type: { eq: "pages" }, lng: { eq: "ch" } } }
+              filter: { fields: { type: { eq: "pages" }, lng: { eq: "cn" } } }
               sort: { fields: [fields___date], order: DESC }
             ) {
               edges {
@@ -42,11 +42,12 @@ const translate = () => {
         render={data => {
           let lang;
           console.log("changeLanguage", data);
+          
           data.allLocale.edges.forEach(({ node }) => {
-            const { lng, ns, data } = node;
+            const { lng, ns, data : datan } = node;
             lang = lng;
             if (!i18n.hasResourceBundle(lng, ns)) {
-              i18n.addResources(lng, ns, JSON.parse(data));
+              i18n.addResources(lng, ns, JSON.parse(datan));
             }
           });
           global.locale[lang] = data.allLocale.edges;
@@ -89,7 +90,7 @@ const translate = () => {
       />
     );
   } else {
-    i18n.changeLanguage("ch");
+    i18n.changeLanguage("cn");
     return <div />;
   }
 };

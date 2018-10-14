@@ -42,11 +42,12 @@ const translate = () => {
         render={data => {
           let lang;
           console.log("changeLanguage", data);
+          
           data.allLocale.edges.forEach(({ node }) => {
-            const { lng, ns, data } = node;
+            const { lng, ns, data : datan } = node;
             lang = lng;
             if (!i18n.hasResourceBundle(lng, ns)) {
-              i18n.addResources(lng, ns, JSON.parse(data));
+              i18n.addResources(lng, ns, JSON.parse(datan));
             }
           });
           global.locale["ru"] = data.allLocale.edges;

@@ -39,18 +39,21 @@ class Navigation extends Component {
               large
             >
               <Button
+                key="B1"
                 floating
                 type="mat"
                 icon="attach_file"
                 className="bgblue"
               />
               <Button
+                key="B2"
                 floating
                 type="mat"
                 icon="format_quote"
                 className="bgwhite"
               />
               <Button
+                key="B3"
                 floating
                 tooltip="open"
                 icon="publish"

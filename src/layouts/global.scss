@@ -201,7 +201,9 @@ li {
 .white {
   color: white;
 }
-
+.black{
+  color: black;
+}
 .collapsible-body {
   background-color: white;
 }
@@ -211,4 +213,10 @@ li {
 }
 
 .contact__simon__main {
+}
+
+
+a:link {
+  color: $md-primary-color;
+  text-decoration: none;
 }

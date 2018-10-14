@@ -277,10 +277,10 @@ h2,.h2 {
 h3,.h3 {
   @extend %ssh;
 }
-blockquote,.Menulink {
+blockquote,.Menulink,.h4 {
   @extend %bq;
 }
-p {
+p,.h5 {
   @extend %p;
 }
 

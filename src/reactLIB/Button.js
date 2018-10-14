@@ -43,6 +43,7 @@ class Button extends Component {
       iconStyle,
       type,
       icon,
+      icontoend,
       style,
       ...other
     } = this.props;
@@ -72,23 +73,27 @@ class Button extends Component {
         'data-target': this.props['data-target']
       });
     } else {
-      let chC, child;
+      let chC, child, childfin;
+      child = this.props.children;
       chC = this.renderIcon();
-      if (icon && this.props.children) {
-        var c = this.props.children[0];
+      if (icon && child) {
+        var c = child[0];
         //Wrapp Icon inside children
         if (c && typeof c == 'object') {
           var stc = c.props.children;
-          if (stc) child = [chC, stc[0]];
-          child = React.Children.map(this.props.children, ch =>
-            React.cloneElement(ch, { children: child })
-          );
-          console.log('cezecc', c);
-          //  c.props.children = chC;
+          if (stc)
+            childfin = React.Children.map(this.props.children, ch =>
+              React.cloneElement(ch, {
+                children: !icontoend ? [chC, stc] : [stc, chC]
+              })
+            );
         }
       }
-      if (!child) {
-        child = [chC, this.props.children];
+      if (!childfin && !!chC) {
+        childfin = !icontoend ? [chC, child] : [child, chC];
+        childfin = childfin.filter(a => !!a);
+      } else if (!childfin) {
+        childfin = child;
       }
       return (
         <C
@@ -99,7 +104,7 @@ class Button extends Component {
           className={cx(this.tooltip ? 'tooltipped' : '', classes, className)}
           data-tooltip={tooltip}
         >
-          {child}
+          {childfin}
         </C>
       );
     }
