@@ -15,7 +15,7 @@ date: "2018-07-06"
   <h2> Ski and Snowboard Instructors</h2>
 </div> -->
 
-<div class="container" style="width:85%">
+<div class="container">
   <!-- Start of First section -->
   <div class="md-grid  md-cell--middle expertise__container">
 
