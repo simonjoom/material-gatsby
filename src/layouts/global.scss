@@ -122,8 +122,7 @@ h3,
    font-size: 100px;*/
   text-align: center;
   font-style: italic;
-  font-family: Times;
-  padding-top: 20px;
+  font-family: Times; 
 }
 
 .fade-exit .page {
@@ -170,17 +169,27 @@ h3,
 li {
   margin:0;
 }
+.listChats .card-content{
+  padding:0;
+}
 .paperOut,.px2 {
   margin: 10px;
 }
-
-.containerchat .active {
+.collapsible-body{
+  overflow: hidden;
+}
+.container .md-grid--stacked{
+  a:link{
+    color: wheat
+  }
+} 
+#myChat .active {
   width:100%;
 }
-.containerchat .popout {
+#myChat .popout {
 }
-.containerchat {
-  min-width: 60vw;
+#myChat {
+  min-width: 50vw;
   position: fixed;
   z-index: 1111;
   right: 0;

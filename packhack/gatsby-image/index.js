@@ -310,6 +310,7 @@ maxWidth=maxHeight/ratio
         right: 0,
         left: 0
       };
+      var rootImg="https://cdn.skiscool.com";
       var isconstrained = width !== '100%' && width; // The outer div is necessary to reset the z-index to 0.
 
       /*   style={{
@@ -337,8 +338,8 @@ var stylecontainer=babelHelpers.extends({
         resizeMode: resizeMode,
         title: title,
         defaultSource: srcFront,
-        source: src,
-        srcSet: srcSet,
+        source: rootImg+src,
+        srcSet: rootImg+srcSet,
         sizes: image.sizes,
         styleAccessibilityImage: imagePlaceholderStyle,
         styleImage: imageStyle,

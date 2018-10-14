@@ -9,6 +9,7 @@ class Instructor extends React.Component {
   render() {
     const { translate: t, data } = this.props;
     const { lng, route, files, slugbase, slug } = this.props.pageContext;
+    console.log("this.props",files)
     global.filesQuery = files;
     const postEdges = data.allMarkdownRemark.edges.filter(
       el => el.node.frontmatter.category !== "instructor"

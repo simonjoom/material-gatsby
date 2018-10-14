@@ -1,7 +1,6 @@
 import React from "react";
 import withTheme from "../withContext";
-import Layout from "../components/Layout";
-import "../articleApp.scss";
+import Layout from "../components/Layout"; 
 
 class Comp_404 extends React.Component {
   render() {

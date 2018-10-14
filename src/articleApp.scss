@@ -1387,25 +1387,14 @@
 ::selection {
     background: #aee7ff;
     text-shadow: none
-}
-/*
-hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid #f1f1f1;
-    margin: 1em 0;
-    padding: 0
-}*/
+} 
 
 textarea {
     resize: vertical
 }
 
-
 a[href^="tel:"] {
     color: inherit;
-    cursor: text;
     text-decoration: none
 }
 
