@@ -53,9 +53,14 @@ date: "2018-07-06"
 <div class="md-grid bgg">
 <h3 class="md-cell">Call Simon</h3>
 <a href="tel:France+33675505209" class="md-cell">
-<buttontest class="btn-flat"><div class="mr1 fa-stack-big">
- <i class="fa fa-circle fa-stack-8x gray" style="color: rgb(178, 255, 89);"></i><i class="fa fa-phone fa-stack-4x navy"></i></div></buttontest></a>
- </div>
+<buttontest class="btn-flat">
+<div class="mr1 fa-stack-big">
+ <i class="fa fa-circle fa-stack-8x gray" style="color: rgb(178, 255, 89);"></i>
+ <i class="fa fa-phone fa-stack-4x navy"></i>
+</div>
+</buttontest>
+</a>
+</div>
 
 
 <h3 style="text-align:center;">Teaching quality</h3>
@@ -117,11 +122,6 @@ date: "2018-07-06"
 </div>
 </div>
 <!-- End Section-->
-
-<!-- Start Section -->
-<h3 style="text-align:center;">Friendly</h3>
-<div class="md-grid md-cell--middle" style="margin-bottom: 10%;">
-<div class="md-cell md-grid--9 md-cell--9">
 
 <!-- Start Section -->
 <h3 style="text-align:center;">Friendly</h3>
