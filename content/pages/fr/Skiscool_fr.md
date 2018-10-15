@@ -133,7 +133,7 @@ En fonction de la période choisie et la durée des cours vous pouvez bénéfici
 
 
 <!-- Start FB Section -->
-<div style="width:auto;" class="md-grid md-cell md-cell--middle">
+<div class="md-cell md-cell--middle" style="height: 600px; max-width: 280px;overflow: hidden;">
 <reactfb language="fr" newDivName="sel" appId="562112907171338" type="post" desc="moniteur de ski courchevel 1850 Dubai - courchevel"/></reactfb>
 </div>
 <!-- End FB Section -->

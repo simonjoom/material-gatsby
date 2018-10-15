@@ -145,7 +145,7 @@ date: "2018-07-06"
 
 
 <!-- Start FB Section -->
-<div style="width:auto;" class="md-grid md-cell md-cell--middle">
+<div class="md-cell md-cell--middle" style="height: 600px; max-width: 280px;overflow: hidden;">
 <reactfb language="ru" newDivName="sel" appId="562112907171338" type="post" desc="Private ski instructor courchevel 1850 Dubai - courchevel"/></reactfb>
 </div>
 <!-- End FB Section -->
