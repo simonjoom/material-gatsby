@@ -19,7 +19,7 @@ date: "2018-07-06"
   <!-- Start of First section -->
   <div class="md-grid md-grid--stacked">
 <!-- Start Call section 1 -->
-<div class="md-cell md-grid md-grid--no-spacing expertise__container">
+<div class="md-cell md-cell--12 md-grid md-grid--no-spacing expertise__container">
 
   <!-- first col item -->
   <div class="md-cell md-cell--4 md-cell--8-tablet">
@@ -48,9 +48,9 @@ date: "2018-07-06"
 </div>
 </div>
 
-<div class="md-cell md-grid md-grid--stacked md-grid--no-spacing">
+<div class="md-cell md-cell--12 md-grid md-grid--stacked md-grid--no-spacing">
 <!-- Start Call  stacked section -->
-<buttontest type="awesome" icon="phone-square h1 md-cell md-cell--12" cls="md-grid btn md-cell md-cell--3 md-cell--2-tablet md-cell--2-phone md-cell--middle" style="margin: 1em;border-radius: 5%;">
+<buttontest type="awesome" icon="phone-square h1 md-cell md-cell--12" cls="md-grid md-cell md-cell--3 md-cell--2-tablet md-cell--2-phone md-cell--middle" style="margin: 1em;border-radius: 5%;">
 <a href="tel:France+33675505209" class="md-grid md-grid--stacked h3" style="line-height: 1;">Call Simon</a>
 </buttontest>
 
@@ -62,7 +62,7 @@ date: "2018-07-06"
 </div>
 
 <h3 style="text-align:center;">Professionals</h3>
-<div class="md-grid md-cell" style="margin-bottom: 10%;">
+<div class="md-grid md-cell md-cell--12" style="margin-bottom: 10%;">
 <div class="md-cell md-cell--6-tablet md-cell--9">
 <p>Learn faster with more confidence!!</p>
 <h4>Our instructors are chosen following three important criterias</h4>
@@ -79,7 +79,7 @@ date: "2018-07-06"
 
 
 <h3 style="text-align:center;">Best Service</h3>
-<div class="md-grid md-cell" style="margin-bottom: 10%;">
+<div class="md-grid md-cell md-cell--12" style="margin-bottom: 10%;">
 <div class="md-grid md-cell md-cell--2-tablet md-cell--3 md-cell--4-phone">
 <imgtest data="lm-pistes.jpg" height="125" width="300px" directory="pages" alt="service client"></imgtest>
 </div>
@@ -101,7 +101,7 @@ date: "2018-07-06"
 </div>
 
 <h3 style="text-align:center;">Safety First</h3>
-<div class="md-grid md-cell" style="margin-bottom: 10%;">
+<div class="md-grid md-cell md-cell--12" style="margin-bottom: 10%;">
 <div class="md-grid md-cell md-cell--2-tablet md-cell--3 md-cell--4-phone">
 <imgtest data="helico.jpg" height="125" width="300px" directory="pages" alt="service client"></imgtest>
 </div>
@@ -114,7 +114,7 @@ date: "2018-07-06"
 
 <!-- Start Section -->
 <h3 style="text-align:center;">Friendly</h3>
-<div class="md-grid md-cell" style="margin-bottom: 10%;">
+<div class="md-grid md-cell md-cell--12" style="margin-bottom: 10%;">
 <div class="md-cell md-cell--6-tablet md-cell--9">
 <p>Your coach books restaurants, he is bilingual, he speaks English and is dedicated to the practice of ski racing and off track skiing.</p>
 </div>
@@ -132,7 +132,7 @@ date: "2018-07-06"
 </div>
 <!-- End FB Section -->
 
-<div class="md-grid md-cell md-cell--middle">
+<div class="md-grid md-cell md-cell--12 md-cell--middle">
 <div id="questions" style="background-color: rgb(66, 88, 161);flex:1;" class="md-paper md-paper--1 md-grid md-grid--stacked md-cell md-cell--4">
 <imgtest data="envelope.jpg" maxwidth="200px" class="boxshad rounded bg-white"  height="125" directory="pages" alt="Courchevel"></imgtest>
 <h3 style="color: #fff; text-align:center;"><b>Clarity</b></h3>
