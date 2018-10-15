@@ -188,8 +188,14 @@ li {
 }
 #myChat .popout {
 }
+
+.collapsible li:not(.active) .collapsible-header{  
+  max-width: 320px;
+  float: right;
+} 
+
 #myChat {
-  min-width: 50vw;
+  min-width: 60vw;
   position: fixed;
   z-index: 1111;
   right: 0;

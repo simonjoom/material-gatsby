@@ -63,6 +63,12 @@ class LanguageSwitcher extends Component {
     }
     return href + path;
   }
+  handleClick = e => {
+    e.preventDefault();
+    e.stopPropagation();
+      var $al = $(e.target).closest("a");
+      if (!!$al.length) window.location.replace($al[0].href);
+  };
 
   render() {
     const languages = [
@@ -91,8 +97,8 @@ class LanguageSwitcher extends Component {
                 <NavItem
                   key={"nav" + i}
                   href={href}
+                  onClick={this.handleClick}
                   external={process.env.NODE_ENV === "production"}
-                  //    onClick={() => i18n.changeLanguage(el.code)}
                   waves="light"
                 >
                   {this.renderRow(el.label, el.code)}
@@ -123,4 +129,5 @@ const styles = StyleSheet.create({
 export default LanguageSwitcher;
 
 /*
+                  //    onClick={() => i18n.changeLanguage(el.code)}
         {languages.map(language => this.renderLanguageChoice(language))}*/
