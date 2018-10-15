@@ -17,8 +17,9 @@ date: '2018-07-02'
 
 <div class="container">
   <!-- Start of First section -->
-  <div class="md-grid md-cell--middle expertise__container">
-
+  <div class="md-grid md-grid--stacked">
+<!-- Start Call section 1 -->
+<div class="md-cell md-cell--12 md-grid md-grid--no-spacing expertise__container">
 
   <!-- first col item -->
   <div class="md-cell md-cell--4 md-cell--8-tablet">
@@ -48,11 +49,9 @@ date: '2018-07-02'
   </div>
 </div>
 
-
 <div class="md-cell md-cell--12 md-grid md-grid--stacked md-grid--no-spacing">
-
 <!-- Start Call  stacked section -->
-<buttontest type="awesome" icon="phone-square h1 md-cell md-cell--12" cls="md-grid btn md-cell md-cell--3 md-cell--2-tablet md-cell--2-phone md-cell--middle" style="margin: 1em;border-radius: 5%;">
+<buttontest type="awesome" icon="phone-square h1 md-cell md-cell--12" cls="md-grid md-cell md-cell--3 md-cell--2-tablet md-cell--2-phone md-cell--middle" style="margin: 1em;border-radius: 5%;">
 <a href="tel:France+33675505209" class="md-grid md-grid--stacked h3" style="line-height: 1;">Call Simon</a>
 </buttontest>
 
@@ -139,7 +138,7 @@ En fonction de la période choisie et la durée des cours vous pouvez bénéfici
 <!-- End FB Section -->
  
 
-<div class="md-grid md-cell md-cell--middle md-cell--12">
+<div class="md-grid md-cell md-cell--12 md-cell--middle">
 <div id="questions" style="background-color: rgb(66, 88, 161);flex:1;" class="md-paper md-paper--1 md-grid md-grid--stacked md-cell md-cell--4">
 <imgtest data="envelope.jpg" maxwidth="200px" class="boxshad rounded bg-white"  height="125" directory="pages" alt="Courchevel"></imgtest>
 <h3 style="color: #fff; text-align:center;">QUESTIONS?</h3>

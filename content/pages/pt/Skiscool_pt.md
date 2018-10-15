@@ -16,15 +16,16 @@ date: "2018-07-06"
 
 <div class="container">
   <!-- Start of First section -->
-  <div class="md-grid  md-cell--middle expertise__container">
-
+  <div class="md-grid md-grid--stacked">
+<!-- Start Call section 1 -->
+<div class="md-cell md-cell--12 md-grid md-grid--no-spacing expertise__container">
 
 
   <!-- first col item -->
 <div class="md-cell md-cell--4 md-cell--8-tablet">
 <imgtest data="guide.png" height="125" width="200px" directory="pages" alt="Courchevel"></imgtest>
-<div class="md-cell--6-tablet">
-  <h3 class="h3">Seleção de perfil e reserva:</h3>
+<div class="md-grid md-cell--6-tablet">
+<h3 class="h3">Seleção de perfil e reserva:</h3>
  <p>Encontrar um monitor adequado não é uma questão de um clique do mouse;</p>
  <p>O SkiScool não é uma equipe nerd.<br><b>Conhecemos nossos treinadores,</b> bem como sua experiência de ensino nos 3 vales <b>desde 10 anos</b>. <br> A melhor maneira de obter uma resposta adaptada à sua situação ainda é nos chamar.</p>
  </div>
@@ -48,9 +49,10 @@ date: "2018-07-06"
 </div>
 </div>
 
-<div class="md-cell md-grid md-grid--stacked md-grid--no-spacing md-cell--12">
+
+<div class="md-cell md-cell--12 md-grid md-grid--stacked md-grid--no-spacing">
 <!-- Start Call  stacked section -->
-<buttontest type="awesome" icon="phone-square h1 md-cell md-cell--12" cls="md-grid btn md-cell md-cell--3 md-cell--2-tablet md-cell--2-phone md-cell--middle" style="margin: 1em;border-radius: 5%;">
+<buttontest type="awesome" icon="phone-square h1 md-cell md-cell--12" cls="md-cell--3 md-cell--2-tablet md-cell--2-phone md-cell--middle" style="margin: 1em;border-radius: 5%;">
 <a href="tel:France+33675505209" class="md-grid md-grid--stacked h3" style="line-height: 1;">Ligue para Simon</a>
 </buttontest>
  
@@ -73,8 +75,8 @@ Nossos instrutores são escolhidos seguindo três critérios importantes:
 <li> <b>Melhor desempenho:</b> Sua experiência de ensino no treinamento pessoal em 3 Vales Alpes.</li>
 </ul>
 </div> 
-<div class="md-grid md-cell md-cell--2-tablet md-cell--3  md-cell--4-phone">
-<imgtest data="certified.png" height="75" width="70px" directory="pages" alt="Courchevel" ></imgtest>
+<div class="md-grid md-cell md-cell--2-tablet md-cell--3 md-cell--4-phone">
+<imgtest data="certified.png" height="75" width="70px" directory="pages" alt="Courchevel"></imgtest>
 </div>
 </div>
 
@@ -109,9 +111,7 @@ Bom preço /qualidade.<br> Nossa comissão é no mínimo para garantir o melhor 
 <div class="md-cell md-cell--6-tablet md-cell--9">
 <p>Aspecto da segurança : Instrutores com diploma</p>
 <p>A qualidade de nossos profissionais é o nosso grande diferencial, só instrutores com diploma.</p><p>As montanhas são perigosas, tome sempre um instrutor de esqui con diploma e familiarizado com a estação o final de nunca se encontrar em apuros</p>
-
 </div>
-
 </div>
 
 
@@ -135,7 +135,7 @@ Bom preço /qualidade.<br> Nossa comissão é no mínimo para garantir o melhor 
 <!-- End FB Section -->
 
 
-<div class="md-grid md-cell md-cell--middle md-cell--12">
+<div class="md-grid md-cell md-cell--12 md-cell--middle">
 <div id="questions" style="background-color: rgb(66, 88, 161);flex:1;" class="md-paper md-paper--1 md-grid md-grid--stacked md-cell md-cell--4">
 <imgtest data="envelope.jpg" maxwidth="200px" class="boxshad rounded bg-white"  height="125" directory="pages" alt="Courchevel"></imgtest>
 <h3 style="color: #fff; text-align:center;">Perguntas?</h3>
@@ -157,7 +157,6 @@ Bom preço /qualidade.<br> Nossa comissão é no mínimo para garantir o melhor 
 
 <div style="justify-content:space-around;align-items: center;margin-top: 5%" class="md-paper md-paper--1 md-grid md-cell--middle"><email href="simon_skiscoolO0Ocom?subject=question">Request</email><span class="px2">|</span><email href="simon_skiscoolO0Ocom?subject=question">Contact us</email>
 </div>
-
 <!-- End Call  stacked section -->
 </div>
 
@@ -165,6 +164,8 @@ Bom preço /qualidade.<br> Nossa comissão é no mínimo para garantir o melhor 
 </div>
 <!-- End Section -->
 </div>
+
+
 ## Courchevel Meribel val-thorens
 
 Skiscool está localizado em <a href='Pistas/Courchevel' title='Courchevel'>Courchevel</a> e <a href='Pistas/Meribel' title='Meribel'>Meribel</a> no coração dos 3 vales, Uma das maiores áreas de esqui do mundo. Damos aulas de esqui para seus amigos e toda a sua família,  , Desde iniciantes, intermediários até esquiadores avançados.  

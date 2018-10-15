@@ -18,7 +18,9 @@ date: "2018-07-06"
 
 <div class="container">
   <!-- Start of First section -->
-  <div class="md-grid  md-cell--middle expertise__container">
+  <div class="md-grid md-grid--stacked">
+<!-- Start Call section 1 -->
+<div class="md-cell md-cell--12 md-grid md-grid--no-spacing expertise__container">
 
   <!-- first col item -->
    <div class="md-cell md-cell--4 md-cell--8-tablet">
@@ -78,7 +80,7 @@ date: "2018-07-06"
 <li>They usually work better than normal school system provide.</li>
 </ul>
 </div>
-<div class="md-grid md-cell md-cell--2-tablet md-cell--3  md-cell--4-phone">
+<div class="md-grid md-cell md-cell--2-tablet md-cell--3 md-cell--4-phone">
 <imgtest data="certified.png" height="75" width="70px" directory="pages" alt="Courchevel" ></imgtest>
 </div>
 </div>
@@ -151,7 +153,7 @@ date: "2018-07-06"
 <!-- End FB Section -->
 
 
-<div class="md-grid md-cell md-cell--middle md-cell--12">
+<div class="md-grid md-cell md-cell--12 md-cell--middle">
 <div id="questions" style="background-color: rgb(66, 88, 161);flex:1;" class="md-paper md-paper--1 md-grid md-grid--stacked md-cell md-cell--4">
 <imgtest data="envelope.jpg" maxwidth="200px" class="boxshad rounded bg-white"  height="125" directory="pages" alt="Courchevel"></imgtest>
 <h3 style="color: #fff; text-align:center;">Вопрос?</h3>
