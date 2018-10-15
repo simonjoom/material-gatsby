@@ -186,7 +186,6 @@ class ReactFB extends PureComponent {
               data-href={`https://www.facebook.com/Skicckool/posts/${mpost}`}
               data-show-text="true" 
               data-height="500px"
-              data-adapt-container-width="false"
             >
               <blockquote
                 cite={`https://fr-fr.facebook.com/Skicckool/posts/${mpost}:0`}
