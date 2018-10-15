@@ -72,7 +72,7 @@ date: "2018-07-06"
 <li><b>Better Performance:</b> They usually work better than normal school system provides.</li>
 </ul>
 </div>
-<div class="md-grid md-cell md-cell--2-tablet md-cell--3  md-cell--4-phone">
+<div class="md-grid md-cell md-cell--2-tablet md-cell--3 md-cell--4-phone">
 <imgtest data="certified.png" height="75" width="70px" directory="pages" alt="Courchevel" ></imgtest>
 </div>
 </div>

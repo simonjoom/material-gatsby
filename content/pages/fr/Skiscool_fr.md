@@ -19,7 +19,7 @@ date: '2018-07-02'
   <!-- Start of First section -->
   <div class="md-grid md-grid--stacked">
 <!-- Start Call section 1 -->
-<div class="md-cell md-grid md-grid--no-spacing expertise__container">
+<div class="md-cell md-cell--12 md-grid md-grid--no-spacing expertise__container">
 
   <!-- first col item -->
   <div class="md-cell md-cell--4 md-cell--8-tablet">
@@ -49,10 +49,9 @@ date: '2018-07-02'
   </div>
 </div>
 
-
-<div class="md-cell md-grid md-grid--stacked md-grid--no-spacing">
+<div class="md-cell md-cell--12 md-grid md-grid--stacked md-grid--no-spacing">
 <!-- Start Call  stacked section -->
-<buttontest type="awesome" icon="phone-square h1 md-cell md-cell--12" cls="md-grid btn md-cell md-cell--3 md-cell--2-tablet md-cell--2-phone md-cell--middle" style="margin: 1em;border-radius: 5%;">
+<buttontest type="awesome" icon="phone-square h1 md-cell md-cell--12" cls="md-grid md-cell md-cell--3 md-cell--2-tablet md-cell--2-phone md-cell--middle" style="margin: 1em;border-radius: 5%;">
 <a href="tel:France+33675505209" class="md-grid md-grid--stacked h3" style="line-height: 1;">Call Simon</a>
 </buttontest>
 
@@ -64,7 +63,7 @@ date: '2018-07-02'
 
 
 <h3 style="text-align:center;">Professionals</h3>
-<div class="md-grid md-cell" style="margin-bottom: 10%;">
+<div class="md-grid md-cell md-cell--12" style="margin-bottom: 10%;">
 <div class="md-cell md-cell--6-tablet md-cell--9">
 
 <ul style="padding: 5px;"><li>Professionnels: Apprendre plus rapidement avec plus de plaisir!!</li> </ul>
@@ -82,7 +81,7 @@ date: '2018-07-02'
 
 
 <h3 style="text-align:center;">Le service client</h3>
-<div class="md-grid md-cell" style="margin-bottom: 10%;">
+<div class="md-grid md-cell md-cell--12" style="margin-bottom: 10%;">
 <div class="md-grid md-cell md-cell--2-tablet md-cell--3 md-cell--4-phone">
 <imgtest data="lm-pistes.jpg" height="125" width="300px" directory="pages" alt="service client"></imgtest>
 </div>
@@ -107,7 +106,7 @@ En fonction de la période choisie et la durée des cours vous pouvez bénéfici
 
 
 <h3 style="text-align:center;">L'aspect Sécurité : Moniteurs diplômés</h3>
-<div class="md-grid md-cell" style="margin-bottom: 10%;">
+<div class="md-grid md-cell md-cell--12" style="margin-bottom: 10%;">
 <div class="md-grid md-cell md-cell--2-tablet md-cell--3 md-cell--4-phone">
 <imgtest data="helico.jpg" height="125" width="300px" directory="pages" alt="service client"></imgtest>
 </div>
@@ -120,7 +119,7 @@ En fonction de la période choisie et la durée des cours vous pouvez bénéfici
 
 <!-- Start Section -->
 <h3 style="text-align:center;">Convivial</h3>
-<div class="md-grid md-cell" style="margin-bottom: 10%;">
+<div class="md-grid md-cell md-cell--12" style="margin-bottom: 10%;">
 <div class="md-cell md-cell--6-tablet md-cell--9">
 
 <p>Votre coach réserve les restaurants, Il est bilingue français/anglais; il se consacre à la pratique du ski de compétition et de hors piste."</p>
@@ -133,13 +132,13 @@ En fonction de la période choisie et la durée des cours vous pouvez bénéfici
 
 
 <!-- Start FB Section -->
-<div style="width:200px;margin-left: -30px;">
+<div class="md-cell md-cell--middle" style="height: 600px; max-width: 280px;overflow: hidden;">
 <reactfb language="fr" newDivName="sel" appId="562112907171338" type="post" desc="moniteur de ski courchevel 1850 Dubai - courchevel"/></reactfb>
 </div>
 <!-- End FB Section -->
  
 
-<div class="md-grid md-cell md-cell--middle">
+<div class="md-grid md-cell md-cell--12 md-cell--middle">
 <div id="questions" style="background-color: rgb(66, 88, 161);flex:1;" class="md-paper md-paper--1 md-grid md-grid--stacked md-cell md-cell--4">
 <imgtest data="envelope.jpg" maxwidth="200px" class="boxshad rounded bg-white"  height="125" directory="pages" alt="Courchevel"></imgtest>
 <h3 style="color: #fff; text-align:center;">QUESTIONS?</h3>
