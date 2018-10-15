@@ -49,12 +49,12 @@ class SideNav extends Component {
     );
 
     return (
-      <div>
+      <>
         {this.el}
         <ul id={this.id} className={classNames} {...props}>
           {children}
         </ul>
-      </div>
+      </>
     );
   }
 }

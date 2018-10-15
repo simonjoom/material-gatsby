@@ -19,7 +19,7 @@ class Layout extends Component {
     if (route && Object.keys(route).length === 0)
       console.log("route", lng, this.props);
     return (
-      <div>
+      <>
         <div
           className={
             carouselList
@@ -62,7 +62,7 @@ class Layout extends Component {
           </div>
         </div>
         {children}
-      </div>
+      </>
     );
   }
 }
