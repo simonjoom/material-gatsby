@@ -15,7 +15,7 @@ class Collapsible extends Component {
   }
 
   componentDidMount() {
-    this.instance = M.Collapsible.init(this._collapsible, this.props.options);
+    this.instance = M&&M.Collapsible.init(this._collapsible, this.props.options);
   }
 
   componentWillUnmount() {

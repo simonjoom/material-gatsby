@@ -9,8 +9,6 @@ import Footer from "../../reactLIB/Footer";
 import UserLinks from "../UserLinks";
 import route from "../../config";
 
-//import config from "../../../data/SiteConfig"
-
 //import ToolbarActions from "../ToolbarActions";
 import "./Navigation.scss";
 
@@ -26,7 +24,7 @@ class Navigation extends Component {
     } = this.props;
     const footerLinks = LocalTitle !== "About";
     return (
-      <div className="main-content">
+      <>
         <SideNav
           trigger={
             <Button
@@ -95,12 +93,11 @@ class Navigation extends Component {
             </>
           )}
         </SideNav>
-        <div className="main-container">{children}</div>
-        
-        <Footer copyrights="&copy; 2018 Skiscool"
-          moreLinks={
-            <UserLinks config={config} labeled footer></UserLinks>
-          }
+        {children}
+        {/* {postNode && <Disqus postNode={postNode} />} */}
+        <Footer
+          copyrights="&copy; 2018 Skiscool"
+          moreLinks={<UserLinks config={config} labeled footer />}
           links={
             <ul>
               <li>
@@ -147,7 +144,7 @@ class Navigation extends Component {
           </div>
           
         </Footer>
-      </div>
+      </>
     );
   }
 }

@@ -16,16 +16,14 @@ date: "2018-07-06"
 
 <div class="container">
   <!-- Start of First section -->
-  <div class="md-grid">
-<!-- Start Call section 1 -->
+  <div class="md-grid  md-cell--middle expertise__container">
 
 
-<div class="md-grid expertise__container">
 
   <!-- first col item -->
 <div class="md-cell md-cell--4 md-cell--8-tablet">
-<imgtest data="guide.png" height="75" width="200px" directory="pages" alt="Courchevel"></imgtest>
-<div class="md-grid md-cell--6-tablet">
+<imgtest data="guide.png" height="125" width="200px" directory="pages" alt="Courchevel"></imgtest>
+<div class="md-cell--6-tablet">
   <h3 class="h3">Seleção de perfil e reserva:</h3>
  <p>Encontrar um monitor adequado não é uma questão de um clique do mouse;</p>
  <p>O SkiScool não é uma equipe nerd.<br><b>Conhecemos nossos treinadores,</b> bem como sua experiência de ensino nos 3 vales <b>desde 10 anos</b>. <br> A melhor maneira de obter uma resposta adaptada à sua situação ainda é nos chamar.</p>
@@ -34,7 +32,7 @@ date: "2018-07-06"
  
 
 <div class="md-cell md-cell--4 md-cell--8-tablet">
- <imgtest data="certified.png" height="75" width="200px" directory="pages" alt="Courchevel"></imgtest>
+ <imgtest data="certified.png" height="125" width="200px" directory="pages" alt="Courchevel"></imgtest>
  <div class="md-grid md-cell--6-tablet">
 <h3 class="h3">Profissionais de pós-graduação, preço de serviço de qualidade</h3>
 <p>Todos os instrutores de esqui oferecidos em nossa plataforma são <b>profissionais graduados</b> do estado.<br><p> Aqui, nenhum estagiário ou monitor sem experiência não conhecendo a área dos 3 vales. (Courchevel, Méribel e Val-thorens)</p>
@@ -42,7 +40,7 @@ date: "2018-07-06"
 </div>
 
 <div class="md-cell md-cell--4 md-cell--8-tablet">
-  <imgtest data="years-experience.png" height="75" width="200px" directory="pages" alt="Courchevel"></imgtest>
+  <imgtest data="years-experience.png" height="125" width="200px" directory="pages" alt="Courchevel"></imgtest>
  <div class="md-grid md-cell--6-tablet">
 <h3 class="h3">Tire partido da nossa experiência nos 3 vales </h3>
   <p> A Skiscool é uma plataforma reconhecida pela sua selecção de instrutores de esqui nos três vales há mais de 10 anos. <b>ofertas exclusivas</b>! :<br>Transferências gratuitas </b> para uma semana de reserva com um treinador.</p>
@@ -50,7 +48,7 @@ date: "2018-07-06"
 </div>
 </div>
 
-<div class="md-grid md-grid--stacked">
+<div class="md-cell md-grid md-grid--stacked md-grid--no-spacing md-cell--12">
 <!-- Start Call  stacked section -->
 <buttontest type="awesome" icon="phone-square h1 md-cell md-cell--12" cls="md-grid btn md-cell md-cell--3 md-cell--2-tablet md-cell--2-phone md-cell--middle" style="margin: 1em;border-radius: 5%;">
 <a href="tel:France+33675505209" class="md-grid md-grid--stacked h3" style="line-height: 1;">Ligue para Simon</a>
@@ -59,13 +57,13 @@ date: "2018-07-06"
 
 <h3 style="text-align:center;">Teaching quality</h3>
 <div class="md-cell md-cell--12 md-cell--8-tablet md-cell--4-phone" style="margin-bottom: 5%;padding: 5%">
-<p>Diploma de instrutor de esqui = BEES 
+<p>Diploma de instrutor de esqui = BEES
 <span classname="h6">Emitido pela organização oficial francesa: <em>ENSA</em>
 </span></p>
 </div>
 
 <h3 style="text-align:center;">Qualidade de ensino</h3>
-<div class="md-grid" style="margin-bottom: 10%;">
+<div class="md-grid md-cell md-cell--12" style="margin-bottom: 10%;">
 <div class="md-cell md-cell--6-tablet md-cell--9">
 <ul style="padding: 5px;"><li>Aprenda mais rápido com mais confiança !!</li> </ul>
 <ul style="padding: 10px 0px;">
@@ -82,9 +80,9 @@ Nossos instrutores são escolhidos seguindo três critérios importantes:
 
 
 <h3 style="text-align:center;">Para você Serviços de qualidade</h3>
-<div class="md-grid" style="margin-bottom: 10%;">
+<div class="md-grid md-cell md-cell--12" style="margin-bottom: 10%;">
 <div class="md-grid md-cell md-cell--2-tablet md-cell--3 md-cell--4-phone">
-<imgtest data="lm-pistes.jpg" height="75" width="300px" directory="pages" alt="service client"></imgtest>
+<imgtest data="lm-pistes.jpg" height="125" width="300px" directory="pages" alt="service client"></imgtest>
 </div>
 <div class="md-cell md-cell--6-tablet md-cell--9">
 <p>Para uma estadia agradável e um melhor serviço SkiScool vai ouvir, seus pedidos, suas necessidades e acompanhar o treinador na sua escolha de restaurantes e atividades.</p> <p>- O treinador sabe que o resort, ele é informado de atividades 'après-ski'</p>
@@ -103,9 +101,9 @@ Bom preço /qualidade.<br> Nossa comissão é no mínimo para garantir o melhor 
 </div>
 
 <h3 style="text-align:center;">Segurança</h3>
-<div class="md-grid" style="margin-bottom: 10%;">
+<div class="md-grid md-cell md-cell--12" style="margin-bottom: 10%;">
 <div class="md-grid md-cell md-cell--2-tablet md-cell--3 md-cell--4-phone">
-<imgtest data="helico.jpg" height="75" width="300px" directory="pages" alt="service client"></imgtest>
+<imgtest data="helico.jpg" height="125" width="300px" directory="pages" alt="service client"></imgtest>
 </div>
 
 <div class="md-cell md-cell--6-tablet md-cell--9">
@@ -119,37 +117,39 @@ Bom preço /qualidade.<br> Nossa comissão é no mínimo para garantir o melhor 
 
 <!-- Start Section -->
 <h3 style="text-align:center;">Agradável e legal</h3>
-<div class="md-grid" style="margin-bottom: 10%;">
+<div class="md-grid md-cell md-cell--12" style="margin-bottom: 10%;">
 <div class="md-cell md-cell--6-tablet md-cell--9"> 
 <p>Seu treinador reserva restaurantes, ele é bilíngüe,<b>el fala Inglês e Português</b> e dedicado a la práctica del esquí fora de pistas (off - piste)</p>
-<imgtest data="years-experience.png" height="75" width="300px" directory="pages" alt="Courchevel"></imgtest>
+</div>
+<div class="md-grid md-cell md-cell--2-tablet md-cell--3 md-cell--4-phone">
+<imgtest data="years-experience.png" height="125" width="300px" directory="pages" alt="Courchevel"></imgtest>
 </div>
 </div>
 <!-- End Section -->
 
 
 <!-- Start FB Section -->
-<div class="md-grid">
+<div style="width:auto;" class="md-grid md-cell md-cell--middle">
 <reactfb language="pt" newDivName="sel" appId="562112907171338" type="post" desc="moniteur de ski courchevel 1850 Dubai - courchevel"/></reactfb>
 </div>
 <!-- End FB Section -->
 
 
-<div class="md-grid md-cell--middle">
+<div class="md-grid md-cell md-cell--middle md-cell--12">
 <div id="questions" style="background-color: rgb(66, 88, 161);flex:1;" class="md-paper md-paper--1 md-grid md-grid--stacked md-cell md-cell--4">
-<imgtest data="envelope.jpg" maxwidth="200px" class="boxshad rounded bg-white"  height="75" directory="pages" alt="Courchevel"></imgtest>
+<imgtest data="envelope.jpg" maxwidth="200px" class="boxshad rounded bg-white"  height="125" directory="pages" alt="Courchevel"></imgtest>
 <h3 style="color: #fff; text-align:center;">Perguntas?</h3>
-<p>Conversar com o seu instrutor</p>
+<p style="color: #fff;">Conversar com o seu instrutor</p>
 </div>
 
 <div id="topQualification" style="flex:1;" class="md-paper md-paper--1 md-grid md-grid--stacked md-cell md-cell--4">
-  <imgtest data="shield.png" maxwidth="200px" class="boxshad rounded bg-white"  height="75" directory="pages" alt="Courchevel"></imgtest>
+  <imgtest data="shield.png" maxwidth="200px" class="boxshad rounded bg-white"  height="125" directory="pages" alt="Courchevel"></imgtest>
 <h3 style="color: black; text-align:center;">Top Qualified:</h3>
 <p>Apenas instrutores licenciados at SkiScool</p>
 </div>
 
 <div id="thumbsUp" style="background-color: rgb(66, 88, 161);flex:1;" class="md-grid--stacked md-paper md-paper--1 md-grid md-cell md-cell--4">
-  <imgtest data="thumbs.jpg" maxwidth="200px" class="boxshad rounded bg-white"  height="75" directory="pages" alt="Courchevel"></imgtest>
+  <imgtest data="thumbs.jpg" maxwidth="200px" class="boxshad rounded bg-white"  height="125" directory="pages" alt="Courchevel"></imgtest>
 <h3 style="color: #fff; text-align:center;">Você escolhe:</h3>
 <p style="color: #fff;">É importante ter um instrutor que combina com você</p>
 </div>

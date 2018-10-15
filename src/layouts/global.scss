@@ -40,7 +40,7 @@ div .mobile-fix {
   background-color: black;
 }
 .fixed-action-btn {
-  position: fixed;
+  position: absolute;
   top: 0;
   bottom: 0;
   right: 14px;
@@ -192,8 +192,14 @@ li {
 }
 #myChat .popout {
 }
+
+.collapsible li:not(.active) .collapsible-header{  
+  max-width: 320px;
+  float: right;
+} 
+
 #myChat {
-  min-width: 50vw;
+  min-width: 60vw;
   position: fixed;
   z-index: 1111;
   right: 0;

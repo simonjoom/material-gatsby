@@ -148,22 +148,14 @@ class ReactFB extends PureComponent {
       return (
         <div
           className="fbpage"
-          id={this.newDivName}
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center"
-          }}
+          id={this.newDivName} 
           ref={this.handleRef}
         >
           {this.state.isVisible && (
             <div
-              className="fb-page"
-              style={{ display: "block", width: isMobile ? 350 : 500 }}
+              className="fb-page" 
               data-href="https://www.facebook.com/Skicckool/"
-              data-tabs="timeline"
-              data-width={isMobile ? 350 : 500}
-              data-height="600"
+              data-tabs="timeline" 
               data-small-header="false"
               data-adapt-container-width="true"
               data-hide-cover="false"
@@ -186,21 +178,15 @@ class ReactFB extends PureComponent {
         <div
           className="fbpost"
           id={"fbpost" + this.newDivName}
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center"
-          }}
           ref={this.handleRef}
         >
           {this.state.isVisible && (
             <div
-              className="fb-post"
-              style={{ display: "block", width: isMobile ? 350 : 500 }}
+              className="fb-post" 
               data-href={`https://www.facebook.com/Skicckool/posts/${mpost}`}
-              data-show-text="true"
-              data-width={isMobile ? 350 : 500}
-              data-height="600"
+              data-show-text="true" 
+              data-height="500px"
+              data-adapt-container-width="false"
             >
               <blockquote
                 cite={`https://fr-fr.facebook.com/Skicckool/posts/${mpost}:0`}

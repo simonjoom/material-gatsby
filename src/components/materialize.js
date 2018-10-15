@@ -1289,18 +1289,18 @@ $jscomp.polyfill = function (e, r, p, m) {
       _this9.filterQuery = [];
 
       // Move dropdown-content after dropdown-trigger
-      if (!!_this9.options.container) {
+      /*if (!!_this9.options.container) {
         $(_this9.options.container).append(_this9.dropdownEl);
       } else {
         _this9.$el.after(_this9.dropdownEl);
-      }
+      }*/
 
       _this9._makeDropdownFocusable();
       _this9._resetFilterQueryBound = _this9._resetFilterQuery.bind(_this9);
       _this9._handleDocumentClickBound = _this9._handleDocumentClick.bind(_this9);
       _this9._handleDocumentTouchmoveBound = _this9._handleDocumentTouchmove.bind(_this9);
       _this9._handleDropdownClickBound = _this9._handleDropdownClick.bind(_this9);
-      _this9._handleDropdownKeydownBound = _this9._handleDropdownKeydown.bind(_this9);
+     // _this9._handleDropdownKeydownBound = _this9._handleDropdownKeydown.bind(_this9);
       _this9._handleTriggerKeydownBound = _this9._handleTriggerKeydown.bind(_this9);
       _this9._setupEventHandlers();
       return _this9;
@@ -1328,8 +1328,7 @@ $jscomp.polyfill = function (e, r, p, m) {
       key: "_setupEventHandlers",
       value: function _setupEventHandlers() {
         // Trigger keydown handler
-        this.el.addEventListener('keydown', this._handleTriggerKeydownBound);
-
+        this.el.addEventListener('keydown', this._handleTriggerKeydownBound); 
         // Item click handler
         this.dropdownEl.addEventListener('click', this._handleDropdownClickBound);
 
@@ -1370,19 +1369,19 @@ $jscomp.polyfill = function (e, r, p, m) {
       key: "_setupTemporaryEventHandlers",
       value: function _setupTemporaryEventHandlers() {
         // Use capture phase event handler to prevent click
-        document.body.addEventListener('click', this._handleDocumentClickBound, true);
-        document.body.addEventListener('touchend', this._handleDocumentClickBound);
-        document.body.addEventListener('touchmove', this._handleDocumentTouchmoveBound);
-        this.dropdownEl.addEventListener('keydown', this._handleDropdownKeydownBound);
+       document.body.addEventListener('click', this._handleDocumentClickBound, true);
+         document.body.addEventListener('touchend', this._handleDocumentClickBound);
+         document.body.addEventListener('touchmove', this._handleDocumentTouchmoveBound);
+      //  this.dropdownEl.addEventListener('keydown', this._handleDropdownKeydownBound);
       }
     }, {
       key: "_removeTemporaryEventHandlers",
       value: function _removeTemporaryEventHandlers() {
         // Use capture phase event handler to prevent click
-        document.body.removeEventListener('click', this._handleDocumentClickBound, true);
-        document.body.removeEventListener('touchend', this._handleDocumentClickBound);
+      document.body.removeEventListener('click', this._handleDocumentClickBound, true);
+         document.body.removeEventListener('touchend', this._handleDocumentClickBound);
         document.body.removeEventListener('touchmove', this._handleDocumentTouchmoveBound);
-        this.dropdownEl.removeEventListener('keydown', this._handleDropdownKeydownBound);
+     //   this.dropdownEl.removeEventListener('keydown', this._handleDropdownKeydownBound);
       }
     }, {
       key: "_handleClick",
@@ -1399,11 +1398,13 @@ $jscomp.polyfill = function (e, r, p, m) {
       key: "_handleMouseLeave",
       value: function _handleMouseLeave(e) {
         var toEl = e.toElement || e.relatedTarget;
-        var leaveToDropdownContent = !!$(toEl).closest('.dropdown-content').length;
+        console.log("simdebug",$(toEl))
+         console.log("simdebug",$(toEl).closest('.dropdown-content'))
+         var el=$(toEl).closest('.dropdown-content')
+        var leaveToDropdownContent = !!el.length;
         var leaveToActiveDropdownTrigger = false;
-
-        var $closestTrigger = $(toEl).closest('.dropdown-trigger');
-        if ($closestTrigger.length && !!$closestTrigger[0].M_Dropdown && $closestTrigger[0].M_Dropdown.isOpen) {
+  
+        if (el.length && !!el[0].M_Dropdown && el[0].M_Dropdown.isOpen) {
           leaveToActiveDropdownTrigger = true;
         }
 
@@ -1417,14 +1418,14 @@ $jscomp.polyfill = function (e, r, p, m) {
       value: function _handleDocumentClick(e) {
         var _this10 = this;
 
-        var $target = $(e.target);
-        if (this.options.closeOnClick && $target.closest('.dropdown-content').length && !this.isTouchMoving) {
+        var $target = $(e.target); 
+        if (this.options.closeOnClick && $target.closest('.dropdown-content').length && !this.isTouchMoving) { 
           // isTouchMoving to check if scrolling on mobile.
           setTimeout(function () {
             _this10.close();
           }, 0);
         } else if ($target.closest('.dropdown-trigger').length || !$target.closest('.dropdown-content').length) {
-          setTimeout(function () {
+          setTimeout(function () { 
             _this10.close();
           }, 0);
         }
@@ -1445,20 +1446,16 @@ $jscomp.polyfill = function (e, r, p, m) {
        * @param {Event} e
        */
 
-    }, {
+    },
+     {
       key: "_handleDocumentTouchmove",
       value: function _handleDocumentTouchmove(e) {
         var $target = $(e.target);
+        console.log("simdebugstart",$target)
         if ($target.closest('.dropdown-content').length) {
           this.isTouchMoving = true;
         }
-      }
-
-      /**
-       * Handle Dropdown Click
-       * @param {Event} e
-       */
-
+      } 
     }, {
       key: "_handleDropdownClick",
       value: function _handleDropdownClick(e) {
@@ -1474,7 +1471,7 @@ $jscomp.polyfill = function (e, r, p, m) {
        * @param {Event} e
        */
 
-    }, {
+    }/*, {
       key: "_handleDropdownKeydown",
       value: function _handleDropdownKeydown(e) {
         if (e.which === M.keys.TAB) {
@@ -1539,12 +1536,9 @@ $jscomp.polyfill = function (e, r, p, m) {
 
         this.filterTimeout = setTimeout(this._resetFilterQueryBound, 1000);
       }
+ 
 
-      /**
-       * Setup dropdown
-       */
-
-    }, {
+    }*/, {
       key: "_resetFilterQuery",
       value: function _resetFilterQuery() {
         this.filterQuery = [];
@@ -5370,13 +5364,15 @@ $jscomp.polyfill = function (e, r, p, m) {
   M.ScrollSpy = ScrollSpy;
 
 })(cash, M.anime);
+
+  /**
 ;(function ($) {
   'use strict';
 
   var _defaults = {
     data: {}, // Autocomplete data set
     limit: Infinity, // Limit of results the autocomplete shows
-    onAutocomplete: null, // Callback for when autocompleted
+   // onAutocomplete: null, // Callback for when autocompleted
     minLength: 1, // Min characters before autocomplete starts
     sortFunction: function (a, b, inputString) {
       // Sort function for sorting autocomplete results
@@ -5384,39 +5380,18 @@ $jscomp.polyfill = function (e, r, p, m) {
     }
   };
 
-  /**
    * @class
-   *
-   */
-
+   * 
   var Autocomplete = function (_Component10) {
     _inherits(Autocomplete, _Component10);
-
-    /**
-     * Construct Autocomplete instance
-     * @constructor
-     * @param {Element} el
-     * @param {Object} options
-     */
+ 
     function Autocomplete(el, options) {
       _classCallCheck(this, Autocomplete);
 
       var _this37 = _possibleConstructorReturn(this, (Autocomplete.__proto__ || Object.getPrototypeOf(Autocomplete)).call(this, Autocomplete, el, options));
 
       _this37.el.M_Autocomplete = _this37;
-
-      /**
-       * Options for the autocomplete
-       * @member Autocomplete#options
-       * @prop {Number} duration
-       * @prop {Number} dist
-       * @prop {number} shift
-       * @prop {number} padding
-       * @prop {Boolean} fullWidth
-       * @prop {Boolean} indicators
-       * @prop {Boolean} noWrap
-       * @prop {Function} onCycleTo
-       */
+ 
       _this37.options = $.extend({}, Autocomplete.defaults, options);
 
       // Setup
@@ -5435,21 +5410,13 @@ $jscomp.polyfill = function (e, r, p, m) {
 
     _createClass(Autocomplete, [{
       key: "destroy",
-
-
-      /**
-       * Teardown component
-       */
+ 
       value: function destroy() {
         this._removeEventHandlers();
         this._removeDropdown();
         this.el.M_Autocomplete = undefined;
       }
-
-      /**
-       * Setup Event Handlers
-       */
-
+ 
     }, {
       key: "_setupEventHandlers",
       value: function _setupEventHandlers() {
@@ -5473,10 +5440,7 @@ $jscomp.polyfill = function (e, r, p, m) {
           this.container.addEventListener('touchend', this._handleContainerMouseupAndTouchendBound);
         }
       }
-
-      /**
-       * Remove Event Handlers
-       */
+ 
 
     }, {
       key: "_removeEventHandlers",
@@ -5494,10 +5458,7 @@ $jscomp.polyfill = function (e, r, p, m) {
           this.container.removeEventListener('touchend', this._handleContainerMouseupAndTouchendBound);
         }
       }
-
-      /**
-       * Setup dropdown
-       */
+ 
 
     }, {
       key: "_setupDropdown",
@@ -5522,21 +5483,14 @@ $jscomp.polyfill = function (e, r, p, m) {
         // Sketchy removal of dropdown click handler
         this.el.removeEventListener('click', this.dropdown._handleClickBound);
       }
-
-      /**
-       * Remove dropdown
-       */
+ 
 
     }, {
       key: "_removeDropdown",
       value: function _removeDropdown() {
         this.container.parentNode.removeChild(this.container);
       }
-
-      /**
-       * Handle Input Blur
-       */
-
+ 
     }, {
       key: "_handleInputBlur",
       value: function _handleInputBlur() {
@@ -5545,11 +5499,7 @@ $jscomp.polyfill = function (e, r, p, m) {
           this._resetAutocomplete();
         }
       }
-
-      /**
-       * Handle Input Keyup and Focus
-       * @param {Event} e
-       */
+ 
 
     }, {
       key: "_handleInputKeyupAndFocus",
@@ -5575,11 +5525,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         // Update oldVal
         this.oldVal = val;
       }
-
-      /**
-       * Handle Input Keydown
-       * @param {Event} e
-       */
+ 
 
     }, {
       key: "_handleInputKeydown",
@@ -5620,43 +5566,28 @@ $jscomp.polyfill = function (e, r, p, m) {
           }
         }
       }
-
-      /**
-       * Handle Input Click
-       * @param {Event} e
-       */
+ 
 
     }, {
       key: "_handleInputClick",
       value: function _handleInputClick(e) {
         this.open();
       }
-
-      /**
-       * Handle Container Mousedown and Touchstart
-       * @param {Event} e
-       */
+  
 
     }, {
       key: "_handleContainerMousedownAndTouchstart",
       value: function _handleContainerMousedownAndTouchstart(e) {
         this._mousedown = true;
       }
-
-      /**
-       * Handle Container Mouseup and Touchend
-       * @param {Event} e
-       */
+ 
 
     }, {
       key: "_handleContainerMouseupAndTouchend",
       value: function _handleContainerMouseupAndTouchend(e) {
         this._mousedown = false;
       }
-
-      /**
-       * Highlight partial match
-       */
+ 
 
     }, {
       key: "_highlight",
@@ -5672,10 +5603,7 @@ $jscomp.polyfill = function (e, r, p, m) {
           $el.prepend(img);
         }
       }
-
-      /**
-       * Reset current element position
-       */
+ 
 
     }, {
       key: "_resetCurrentElement",
@@ -5683,10 +5611,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         this.activeIndex = -1;
         this.$active.removeClass('active');
       }
-
-      /**
-       * Reset autocomplete elements
-       */
+ 
 
     }, {
       key: "_resetAutocomplete",
@@ -5697,11 +5622,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         this.isOpen = false;
         this._mousedown = false;
       }
-
-      /**
-       * Select autocomplete option
-       * @param {Element} el  Autocomplete option list item element
-       */
+ 
 
     }, {
       key: "selectOption",
@@ -5717,12 +5638,7 @@ $jscomp.polyfill = function (e, r, p, m) {
           this.options.onAutocomplete.call(this, text);
         }
       }
-
-      /**
-       * Render dropdown content
-       * @param {Object} data  data set
-       * @param {String} val  current input value
-       */
+ 
 
     }, {
       key: "_renderDropdown",
@@ -5773,10 +5689,7 @@ $jscomp.polyfill = function (e, r, p, m) {
           this._highlight(val, $autocompleteOption);
         }
       }
-
-      /**
-       * Open Autocomplete Dropdown
-       */
+ 
 
     }, {
       key: "open",
@@ -5798,21 +5711,13 @@ $jscomp.polyfill = function (e, r, p, m) {
           this.dropdown.recalculateDimensions();
         }
       }
-
-      /**
-       * Close Autocomplete Dropdown
-       */
-
+ 
     }, {
       key: "close",
       value: function close() {
         this.dropdown.close();
       }
-
-      /**
-       * Update Data
-       * @param {Object} data
-       */
+ 
 
     }, {
       key: "updateData",
@@ -5829,10 +5734,7 @@ $jscomp.polyfill = function (e, r, p, m) {
       value: function init(els, options) {
         return _get(Autocomplete.__proto__ || Object.getPrototypeOf(Autocomplete), "init", this).call(this, this, els, options);
       }
-
-      /**
-       * Get Instance
-       */
+ 
 
     }, {
       key: "getInstance",
@@ -5849,18 +5751,13 @@ $jscomp.polyfill = function (e, r, p, m) {
 
     return Autocomplete;
   }(Component);
-
-  /**
-   * @static
-   * @memberof Autocomplete
-   */
-
+ 
 
   Autocomplete._keydown = false;
 
   M.Autocomplete = Autocomplete;
 
-})(cash);
+})(cash);*/
 ;(function ($) {
   // Function to update labels of text fields
   M.updateTextFields = function () {
@@ -6609,7 +6506,7 @@ $jscomp.polyfill = function (e, r, p, m) {
       _this45.chipsData = [];
       _this45.$chips = $();
       _this45._setupInput();
-      _this45.hasAutocomplete = Object.keys(_this45.options.autocompleteOptions).length > 0;
+    //  _this45.hasAutocomplete = Object.keys(_this45.options.autocompleteOptions).length > 0;
 
       // Set input id
       if (!_this45.$input.attr('id')) {
@@ -6623,9 +6520,9 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       // Setup autocomplete if needed
-      if (_this45.hasAutocomplete) {
+     /* if (_this45.hasAutocomplete) {
         _this45._setupAutocomplete();
-      }
+      }*/
 
       _this45._setPlaceholder();
       _this45._setupLabel();
@@ -6830,7 +6727,7 @@ $jscomp.polyfill = function (e, r, p, m) {
        * Setup Autocomplete
        */
 
-    }, {
+    },/* {
       key: "_setupAutocomplete",
       value: function _setupAutocomplete() {
         var _this46 = this;
@@ -6845,12 +6742,10 @@ $jscomp.polyfill = function (e, r, p, m) {
 
         this.autocomplete = M.Autocomplete.init(this.$input[0], this.options.autocompleteOptions);
       }
+ 
 
-      /**
-       * Setup Input
-       */
-
-    }, {
+    },*/ 
+    {
       key: "_setupInput",
       value: function _setupInput() {
         this.$input = this.$el.find('input');

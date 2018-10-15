@@ -10,7 +10,7 @@ class SideNav extends Component {
     this.id = props.id || `sidenav_${r}`;
   }
 
-  renderTrigger() {
+  renderTrigger = () => {
     const { trigger, fixed } = this.props;
     if (!trigger) {
       return;
@@ -22,17 +22,17 @@ class SideNav extends Component {
       'sidenav-trigger'
     );
     return React.cloneElement(trigger, {
- //     ref: t => (this._trigger = `[data-target=${this.id}]`),
-     'data-target': this.id,
+      //     ref: t => (this._trigger = `[data-target=${this.id}]`),
+      'data-target': this.id,
       className: classNames
     });
-  }
+  };
 
   componentWillMount() {
     this.el = this.renderTrigger();
   }
   componentDidMount() {
-    const { options } = this.props; 
+    const { options } = this.props;
     var elems = document.querySelectorAll('.sidenav');
     if (typeof M !== 'undefined') M.Sidenav.init(elems, options);
   }
@@ -49,12 +49,12 @@ class SideNav extends Component {
     );
 
     return (
-      <div>
+      <>
         {this.el}
         <ul id={this.id} className={classNames} {...props}>
           {children}
         </ul>
-      </div>
+      </>
     );
   }
 }

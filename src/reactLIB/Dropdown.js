@@ -24,13 +24,36 @@ class Dropdown extends Component {
   }
 
   componentWillUnmount() {
-    console.log("elems",cash(this.elems))
     if (typeof M !== 'undefined')
-      cash(this.elems).map((i, el) => {
+      $(this.elems).map((i, el) => {
         var instance = M.Dropdown.getInstance(el);
         instance && instance.destroy();
       });
   }
+
+  componentWillMount() {
+    this.el = this.renderTrigger();
+  }
+  renderTrigger = () => {
+    const { trigger } = this.props;
+    if (!trigger) {
+      return;
+    }
+    const classNames = cx(trigger.props.className, 'dropdown-trigger');
+    return React.cloneElement(trigger, {
+      //ref: t => (this._trigger = `[data-target=${this.idx}]`),
+      className: classNames,
+      'data-target': this.idx
+    });
+
+    /*  const { trigger, fixed } = this.props; 
+
+    return React.cloneElement(trigger, {
+ //     ref: t => (this._trigger = `[data-target=${this.id}]`),
+     'data-target': this.id,
+      className: classNames
+    });*/
+  };
 
   render() {
     const { children, className, ...props } = this.props;
@@ -38,23 +61,13 @@ class Dropdown extends Component {
     delete props.options;
 
     return (
-      <span>
-        {this.renderTrigger()}
+      <div>
+        {this.el}
         <ul {...props} className={cx(classes, className)} id={this.idx}>
           {children}
         </ul>
-      </span>
+      </div>
     );
-  }
-
-  renderTrigger() {
-    const { trigger } = this.props;
-
-    return React.cloneElement(trigger, {
-      ref: t => (this._trigger = `[data-target=${this.idx}]`),
-      className: cx(trigger.props.className, 'dropdown-trigger'),
-      'data-target': this.idx
-    });
   }
 }
 

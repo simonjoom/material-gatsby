@@ -1,6 +1,6 @@
-var config = {
+module.exports= {
   siteTitle: "SkiScool", // Site title.
-  siteTitleShort: "GM Starter", // Short site title for homescreen (PWA). Preferably should be under 12 characters to prevent truncation.
+  siteTitleShort: "SkiScool", // Short site title for homescreen (PWA). Preferably should be under 12 characters to prevent truncation.
   siteTitleAlt: "SKi School courchevel", // Alternative site title for SEO.
   siteLogo: "/logos/logo-1024.png", // Logo used for SEO and manifest.
   siteUrl: "https://skiscool.com", // Domain of your website without pathPrefix.
@@ -39,5 +39,3 @@ var config = {
   ],
   copyright: "Copyright © 2017. Material User" // Copyright string for the footer of the website and RSS feed.
 };
-
-export default config;
