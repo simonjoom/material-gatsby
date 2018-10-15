@@ -11,32 +11,39 @@ tags:
 date: "2018-07-06"
 ---
 
-# Contact ski school
+## Contact Us
 
-## Why is it better to book your instructor with SkiScool?
+### Why is it better to book your instructor with SkiScool?
 
+Finding the perfect instructor is a difficult task as lot of ski-instructors on the ski-resort are inexperienced trainees.
 
-Find your ski-instructor is a hard task, because a lot of ski-instructors on the ski-resort are inexperienced trainees.
+Trust us we select our professionnals from all French ski schools according to their qualifications, expertise and language level in Courchevel, Méribel and Val-thorens.
 
-Trust us; we select our professionnals among all French ski schools according to their qualifications, their expertise and language level in Courchevel, Méribel and Val-thorens.   
-**You will therefore avoid the trainee trap.**
+> This helps you avoid the famous Trainee Trap!
 
-Contact us! During low and high season, we break fees : you will have no school fees to pay with us..  
-Use our on-line application to check the prices.  
+Contact us during low and high season as we offer large discounts.
+
+<br/>
+
+Use our online application to check the prices.
+
+<br/>
 
 Comments ? Questions ? Send us an email:
 
-Thank you and a pleasure to meet you soon on the slopes of the 3 Valleys!   
+Thank you and a pleasure to meet you soon on the slopes of the 3 Valleys.
 
-<div class="center"><email href="simon_skiscoolO0Ocom">Contact</email></div>
+<br/>
 
-### Greetings:
+<div class="center"><email href="simon_skiscoolO0Ocom">Contact Us</email></div>
+
+<!-- ### Greetings:
             
         Thanks to Russians developpers help me to create this :
 
 | Nicoloas Hagenov | Konstantin Tarkus |
 | :-- | :-: |
-| [![Nicoloas Hagenov](http://graph.facebook.com/100010587453193/picture?type=large)](https://www.facebook.com/profile.php?id=100010587453193&fref=ts) | [![Konstantin Tarkus](https://pbs.twimg.com/profile_images/916383839609675777/N2nNNxx3_400x400.jpg)](https://twitter.com/koistya?lang=fr) |
+| [![Nicoloas Hagenov](http://graph.facebook.com/100010587453193/picture?type=large)](https://www.facebook.com/profile.php?id=100010587453193&fref=ts) | [![Konstantin Tarkus](https://pbs.twimg.com/profile_images/916383839609675777/N2nNNxx3_400x400.jpg)](https://twitter.com/koistya?lang=fr) | -->
 
 
 

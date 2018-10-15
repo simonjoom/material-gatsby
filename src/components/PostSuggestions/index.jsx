@@ -9,24 +9,22 @@ export default class PostSuggestions extends Component {
     const postFields = postNode.fields;
     console.log("postFields", postFields);
     return (
-      <div className="post-suggestions md-grid md-cell--12">
+      <div className="post-suggestions md-grid md-cell md-cell--12">
         <Button
           node={Link}
           to={postFields.prevSlug}
-          style={{ height: "auto" }}
+          style={{maxHeight: '60px' }}
           waves="light"
           className="post-suggestion"
           type="material"
           icon="arrow_back"
           iconStyle={{
-            height: 64,
-            width: 64,
-            fontSize: 64
+            
           }}
         >
-          <div className="headline-container hide-on-mobile">
-            <h4 className="h2 secondary-color">Previous</h4>
-            <h5 className="h3 secondary-color">{postFields.prevTitle}</h5>
+          <div className="hide-on-mobile">
+            <p className="secondary-color" style={{margin: 0}}>Previous</p>
+            <p className="secondary-color" style={{margin: 0}}><b>{postFields.prevTitle}</b></p>
           </div>
         </Button>
         <Button
@@ -38,14 +36,14 @@ export default class PostSuggestions extends Component {
           type="material"
           icon="arrow_forward"
           iconStyle={{
-            height: 64,
-            width: 64,
-            fontSize: 64
+            // height: 64,
+            // width: 64,
+            // fontSize: 64
           }}
         >
           <div className="headline-container">
-            <h4 className="h2 secondary-color">Next</h4>
-            <h5 className="h3 secondary-color">{postFields.nextTitle}</h5>
+            <p className="secondary-color" style={{margin: 0}}>Next</p>
+            <p className="secondary-color" style={{margin: 0}}><b>{postFields.nextTitle}</b></p>
           </div>
         </Button>
       </div>

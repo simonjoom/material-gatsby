@@ -81,16 +81,16 @@ class PostTemplate extends React.Component {
                     : `/${lng}/${kebabCase(post.category)}`
                 }
               >
-                <Avatar icon={<Icon className="folder-open" />} />
-                {post.title} In category {post.category}
+                {/* <Avatar icon={<Icon className="folder-open" />} />
+                {post.title} In category {post.category} */}
               </Link>
             }
           >
             <div className="post-meta">
-              <div>
+              {/* <div>
                 <Avatar icon={<Icon className="calendar" />} />
                 Published on {date}
-              </div>
+              </div> */}
               <PostTags tags={post.tags} />
               <SocialLinks
                 postPath={slug}

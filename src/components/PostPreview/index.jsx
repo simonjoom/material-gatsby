@@ -90,9 +90,9 @@ class PostPreview extends Component {
         titlereveal={postInfo.title}
         title={
           <Link style={{ textDecoration: "none" }} to={postInfo.path}>
-            <div style={{ fontSize: "10px" }}><Avatar icon={<Icon className="calendar" />}/>Published on {date}</div>
+            {/* <div style={{ fontSize: "10px" }}><Avatar icon={<Icon className="calendar" />}/>Published on {date}</div> */}
             {postInfo.title}
-            <Button className="btn md-cell--right">Read </Button>
+            <Button className="btn md-cell--right right">Read </Button>
           </Link>
         }
         reveal={

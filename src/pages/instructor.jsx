@@ -29,6 +29,7 @@ class Instructor extends React.Component {
         location={this.props.location}
       >
         <div className="index-container">
+        <p class="h2">Our Instructors</p>
           <SEO
             postNode={postNode}
             postPath={slug}
