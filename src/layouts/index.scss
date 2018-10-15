@@ -4062,6 +4062,10 @@ body.keyboard-focused .dropdown-content li:focus {
     width: 100vw;
   }
 }
+.collapsible li:not(.active) .collapsible-header{  
+  max-width: 280px;
+  float: right;
+}
 
 .sidenav .collapsible,
 .sidenav.fixed .collapsible {

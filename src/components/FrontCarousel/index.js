@@ -6,7 +6,7 @@ import Button from "../../reactLIB/Button";
 import Carousel from "./carousel.js";
 import route from "../../config";
 import "./carousel.css";
-import Button from "../../reactLIB/Button";
+// import Button from "../../reactLIB/Button";
 import { auto } from "eol";
 
 const GetImage = ({
