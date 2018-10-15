@@ -80,7 +80,7 @@ class PostTemplate extends React.Component {
           translate={t("Index")}
         />
 
-        <Card className="post" title={title}>
+        <Card className="post">
           {renderAst(postNode.htmlAst)}
         </Card>
         <div className="post-meta">
