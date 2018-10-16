@@ -84,13 +84,14 @@ const GetImage = ({
             >
               {t("main1")}
             </span>
-            <div className="h4">
+            <div className="h4 md-grid">
               {t("main2")}
               <Button
-                className="bgsecondary md-cell"
+                className="bgsecondary md-cell md-cell--5 md-cell--5-tablet md-cell--2-phone"
                 icontoend
                 icon="thumbs-up black"
                 type="awesome"
+                style={{padding:'1em'}}
               >
                 <a
                   tabIndex="0"
