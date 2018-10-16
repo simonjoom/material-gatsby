@@ -203,24 +203,24 @@ $bp-sizes: (
 );
 
 $breakpoints: (
-  default: '',
+  default: "",
   small: 480px,
   medium: 720px,
   large: 960px
 );
 
-$font-sizes: ( p, bq, ssh, sh, h, hero );
+$font-sizes: (p, bq, ssh, sh, h, hero);
 
 @mixin breakpoint($name) {
   @if not map-has-key($breakpoints, $name) {
     @warn "Invalid breakpoint `#{$name}`.";
   } @else {
-    @if map-get($breakpoints, $name) == '' {
+    @if map-get($breakpoints, $name) == "" {
       @content;
     } @else {
       @media (min-width: map-get($breakpoints, $name)) {
         @content;
-      } 
+      }
     }
   }
 }
@@ -229,66 +229,74 @@ $font-sizes: ( p, bq, ssh, sh, h, hero );
   @return map-get(map-get($bp-sizes, $bp), $prop);
 }
 
-@mixin generate-font-properties($label, $scale, $base-font-size, $base-line-height) {
-  $scale-value: index($font-sizes, $label) - 1 ;
-  $fs:0;
+@mixin generate-font-properties(
+  $label,
+  $scale,
+  $base-font-size,
+  $base-line-height
+) {
+  $scale-value: index($font-sizes, $label) - 1;
+  $fs: 0;
   @if $scale-value == 1 {
     $scalevalue: ($scale-value * 0.4);
     $fs: math-pow-polyfill($scale, $scalevalue) * $base-font-size;
-  }@else{
+  } @else {
     $fs: pow($scale, $scale-value) * $base-font-size;
   }
-    $lh: $base-font-size * $base-line-height / $fs;
+  $lh: $base-font-size * $base-line-height / $fs;
 
-    @while $lh < 1 {
-      $lh: $lh + $lh;
-    }
+  @while $lh < 1 {
+    $lh: $lh + $lh;
+  }
   font-size: $fs;
   line-height: $lh;
 }
 
 @each $size, $data in $bp-sizes {
-
   $bsf: get-breakpoint-property(base-font-size, $size);
   $blh: get-breakpoint-property(base-line-height, $size);
   $s: get-breakpoint-property(scale, $size);
-  
+
   @include breakpoint($size) {
     @each $label in $font-sizes {
       %#{$label} {
         @include generate-font-properties($label, $s, $bsf, $blh);
-      }  
+      }
     }
   }
 }
- 
+
 //%h is ultrabig size
 //%sh is big size
 //%ssh is medium size
 //%bq is big size
 //%p is normal size
 
-h1,.h1 {
+h1,
+.h1 {
   @extend %h;
 }
-h2,.h2 {
+h2,
+.h2 {
   @extend %sh;
 }
-h3,.h3 {
+h3,
+.h3 {
   @extend %ssh;
 }
-blockquote,.Menulink,.h4 {
+blockquote,
+.Menulink,
+.h4 {
   @extend %bq;
 }
-p,.h5 {
+p,
+.h5 {
   @extend %p;
 }
 
- 
 html {
   @extend %p;
 }
- 
 
 .transition-group {
   flex: 1;
@@ -381,7 +389,7 @@ html {
   height: 24px;
   z-index: 44;
 }
- 
+
 /**
  * Add the correct display in IE 9-.
  */
@@ -2779,14 +2787,13 @@ html {
   color: rgba(0, 0, 0, 0.87);
 }
 
-
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-weight: 400; 
+  font-weight: 400;
 }
 
 h1 a,
@@ -2797,7 +2804,6 @@ h5 a,
 h6 a {
   font-weight: inherit;
 }
-
 
 em {
   font-style: italic;
@@ -2852,7 +2858,12 @@ small {
   border-radius: 2px;
   background-color: #fff;
 }
-
+.card .card-reveal h1 {
+  font-size: 14px;
+}
+.card .card-reveal h2 {
+  font-size: 13px;
+}
 .card {
   position: relative;
   margin: 0.5rem 0 1rem 0;
@@ -2864,10 +2875,10 @@ small {
   border-radius: 2px;
 }
 
-.card .card-title {
-  font-size: 24px;
-  font-weight: 300;
-}
+// .card .card-title {
+//  font-size: 24px;
+//  font-weight: 300;
+// }
 
 .card .card-title.activator {
   cursor: pointer;
@@ -3010,7 +3021,7 @@ small {
 }
 
 .card .card-content {
-  padding: 24px;
+//  padding: 24px;
   border-radius: 0 0 2px 2px;
 }
 
@@ -4027,8 +4038,8 @@ body.keyboard-focused .dropdown-content li:focus {
   // width:40vw;
   max-width: 100%;
 
-  @media screen and (max-width: 480px){
-    width:100vw;
+  @media screen and (max-width: 480px) {
+    width: 100vw;
   }
 }
 
@@ -4055,9 +4066,9 @@ body.keyboard-focused .dropdown-content li:focus {
   box-sizing: border-box;
   max-height: 70vh !important;
   overflow: scroll;
- /* width: 40vw; */
+  /* width: 40vw; */
   max-width: 100%;
-  @media screen and (max-width: 480px){
+  @media screen and (max-width: 480px) {
     width: 100vw;
   }
 }
@@ -4114,7 +4125,7 @@ body.keyboard-focused .dropdown-content li:focus {
   -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
     0 2px 10px 0 rgba(0, 0, 0, 0.12);
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-  margin: 0 24px;
+  margin: 0;
   -webkit-transition: margin 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transition: margin 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
@@ -4123,7 +4134,7 @@ body.keyboard-focused .dropdown-content li:focus {
   -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18),
     0 4px 15px 0 rgba(0, 0, 0, 0.15);
   box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
-  margin: 16px 0;
+  margin: 5px 0;
 }
 
 .chip {
@@ -6539,7 +6550,6 @@ input[type="range"]::-ms-thumb {
 
 .slider {
   position: relative;
-  height: 400px;
   width: 100%;
 }
 
@@ -6632,7 +6642,6 @@ input[type="range"]::-ms-thumb {
   overflow: hidden;
   position: relative;
   width: 100%;
-  height: 400px;
   -webkit-perspective: 500px;
   perspective: 500px;
   -webkit-transform-style: preserve-3d;

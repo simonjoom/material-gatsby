@@ -8,7 +8,7 @@ import Button from "../../reactLIB/Button";
 // import Media, { MediaOverlay } from "react-md/lib/Media";
 import PostTags from "../PostTags";
 // import PostCover from "../PostCover";
-import config from "../../data/SiteConfig";
+const config = require("../../data/SiteConfig" + process.env.LANG);
 import Card from "../../reactLIB/Card";
 import Icon from "../../reactLIB/Icon";
 import "./PostPreview.scss";
@@ -87,26 +87,39 @@ class PostPreview extends Component {
             )}
           </>
         }
-        titlereveal={postInfo.title}
-        title={
-          <Link style={{ textDecoration: "none" }} to={postInfo.path}>
-            <div style={{ fontSize: "10px" }}><Avatar icon={<Icon className="calendar" />}/>Published on {date}</div>
+        titleTag={"h4"}
+        titlereveal={
+          <>
             {postInfo.title}
-            <Button className="btn md-cell--right">Read </Button>
-          </Link>
+            <div style={{ fontSize: "10px" }}>
+              <Avatar icon={<Icon className="calendar" />} />
+              Published on {date}
+            </div>
+          </>
+        }
+        title={
+          <Button
+            className="bgsecondary btn-small md-grid"
+            waves="light"
+            type="mat"
+            icontoend
+            icon="verified_user"
+          >
+            <Link to={postInfo.path} className="h4 primary">{postInfo.title}</Link>
+          </Button>
         }
         reveal={
-          <div>
+          <>
             <div
               dangerouslySetInnerHTML={{
                 __html:
-                  process.env.GATSBY_BUILD_STAGE == "build-html"
+                  process.env.GATSBY_BUILD_STAGE !== "build-html"
                     ? postInfo.html
                     : ""
               }}
             />
             <PostTags tags={postInfo.tags} />
-          </div>
+          </>
         }
       >
         {postInfo.excerpt}

@@ -3,9 +3,8 @@ import { graphql } from "gatsby";
 import withTheme from "../withContext";
 import SEO from "../components/SEO";
 import PostListing from "../components/PostListing";
-import Layout from "../components/Layout";
-import config from "../data/SiteConfig";
-
+import Layout from "../components/Layout"; 
+const config = require("../data/SiteConfig"+process.env.LANG);
 class CategoryTemplate extends React.Component {
   render() {
     const { translate: t, path } = this.props;

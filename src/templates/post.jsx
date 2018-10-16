@@ -9,7 +9,7 @@ import withTheme from "../withContext";
 import PostTags from "../components/PostTags";
 import Layout from "../components/Layout";
 // import PostCover from "../PostCover";
-import config from "../data/SiteConfig";
+const config = require("../data/SiteConfig"+process.env.LANG);
 import Card from "../reactLIB/Card";
 import Icon from "../reactLIB/Icon";
 import Button from "../reactLIB/Button";
@@ -56,7 +56,7 @@ class PostTemplate extends React.Component {
 */
   render() {
     const { mobile } = this.state;
-    const { translate: t } = this.props;
+    const { translate: t } = this.props; 
     const { slug, route, lng, files, slugbase } = this.props.pageContext;
     global.filesQuery = files;
     const postNode = this.props.data.markdownRemark;
@@ -117,16 +117,8 @@ class PostTemplate extends React.Component {
               </div>
             }
             titlereveal={post.title} 
-            title={
-              <Link
-                className="category-link"
-                to={`/categories_${lng}/${kebabCase(post.category)}`}
-              >
-                <Avatar icon={<Icon className="folder-open" />} />
-                {post.title} In category {post.category}
-                <Button className="btn md-cell--right">Read </Button>
-              </Link>
-            }
+            titleTag="h1"
+            title={post.title}
           >
             <div className="post-meta">
               <div>
@@ -142,6 +134,15 @@ class PostTemplate extends React.Component {
             </div>
 
             {renderAst(postNode.htmlAst)}
+
+              <Link
+                className="category-link"
+                to={`/categories/${kebabCase(post.category)}`}
+              >
+                <Avatar icon={<Icon className="folder-open" />} />
+                {post.title} In category {post.category}
+                <Button className="btn md-cell--right">Read </Button>
+              </Link>
           </Card>
 
           <PostSuggestions postNode={postNode} />
@@ -154,8 +155,8 @@ class PostTemplate extends React.Component {
 export default withTheme(PostTemplate);
 
 export const postQuery = graphql`
-  query PostsBySlug($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+  query PostsBySlug($slug: String!, $lng: String!) {
+    markdownRemark(fields: { slug: { eq: $slug }, lng: { eq: $lng } }) {
       htmlAst
       timeToRead
       excerpt

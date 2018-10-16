@@ -77,7 +77,8 @@ class Button extends Component {
       child = this.props.children;
       chC = this.renderIcon();
       if (icon && child) {
-        var c = child[0];
+        var c = child[0]?child[0]:child;
+        console.log("iconddddd",icon,child)
         //Wrapp Icon inside children
         if (c && typeof c == 'object') {
           var stc = c.props.children;

@@ -5,7 +5,7 @@ import format from "date-fns/format";
 import urljoin from "url-join";
 import Avatar from "../Avatars";
 //import Snackbar from "react-md/lib/Snackbars";
-import config from "../../data/SiteConfig";
+const config = require("../../data/SiteConfig"+process.env.LANG);
 import Card from "../../reactLIB/Card";
 import Icon from "../../reactLIB/Icon";
 import Button from "../../reactLIB/Button";
@@ -44,7 +44,6 @@ class Disqus extends Component {
     const post = postNode.frontmatter;
     const url = urljoin(
       config.siteUrl,
-      config.pathPrefix,
       postNode.fields.slug
     );
 
@@ -55,7 +54,7 @@ class Disqus extends Component {
         waves="light"
         className="md-grid md-cell md-cell--12-phone md-cell--4 md-cell--4-tablet"
         contentImage={
-          <Avatar icon={<Icon type="material" className="comment" />} />
+          <Avatar icon={<Icon type="mat" className="comment" />} />
         }
         titlereveal="Comments"
         title={
@@ -75,7 +74,7 @@ class Disqus extends Component {
           identifier={post.title}
           title={post.title}
           url={url}
-          category_id={post.category_id}
+          category_id="123456"
           onNewComment={this.notifyAboutComment}
         />
       </Card>

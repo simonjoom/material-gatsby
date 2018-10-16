@@ -8,7 +8,7 @@ import Layout from "../components/Layout";
 //import PostInfo from "../components/PostInfo";
 import SocialLinks from "../components/SocialLinks";
 import Card from "../reactLIB/Card";
-import SiteConfig from "../data/SiteConfig";
+const config = require("../data/SiteConfig"+process.env.LANG);
 import FrontCarousel from "../components/FrontCarousel";
 import SEO from "../components/SEO";
 import ReactFB from "../components/ReactFB";
@@ -25,7 +25,7 @@ const renderAst = new RehypeReact({
   }
 }).Compiler;
 
-class PostTemplate extends React.Component {
+class PageTemplate extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -60,7 +60,7 @@ class PostTemplate extends React.Component {
       post.id = slug;
     }
     if (!post.category_id) {
-      post.category_id = SiteConfig.postDefaultCategoryID;
+      post.category_id = config.postDefaultCategoryID;
     } 
     const title = t("index")(post.title);
     //render current markdownRemark
@@ -96,11 +96,11 @@ class PostTemplate extends React.Component {
   }
 }
 
-export default withTheme(PostTemplate);
+export default withTheme(PageTemplate);
 
 export const pageQuery = graphql`
-  query PagesBySlug($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+  query PagesBySlug($slug: String!, $lng: String!) {
+    markdownRemark(fields: { slug: { eq: $slug }, lng: { eq: $lng } }) {
       htmlAst
       timeToRead
       excerpt

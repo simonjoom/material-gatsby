@@ -1,6 +1,7 @@
 ---
 title: "Thibault"
 category: "profile"
+cover: "thibault.jpg"
 slug: "/instructor/"
 tags:
     - ski instructor
