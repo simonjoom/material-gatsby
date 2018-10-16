@@ -12,7 +12,7 @@ class CreateChat extends React.Component {
 
   render() {
     return (
-      <div style={{ backgroundColor: "#F9FAFD", height: '80px' }} className="md-cell md-cell--12"> 
+      <div style={{ backgroundColor: "#F9FAFD", height: '80px' }} className="right"> 
           <form onSubmit={this.handleChat}>
             <div className="md-grid">
               <Input 

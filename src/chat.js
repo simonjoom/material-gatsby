@@ -16,7 +16,7 @@ import { WebSocketLink } from "apollo-link-ws";
 import { getMainDefinition } from "apollo-utilities";
 //import CSSTransition from "react-transition-group/CSSTransition";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import Loading from "./chatcomponents/error/Loading"; 
+import Loading from "./chatcomponents/error/Loading";
 import EmailValidated from "./chatcomponents/nav/EmailValidated";
 import Header from "./chatcomponents/nav/layout/Header";
 import NotFound from "./chatcomponents/error/NotFound";
@@ -105,6 +105,8 @@ const USER_QUERY = gql`
     }
   }
 `;
+
+const isMobile = () => window && (window.innerWidth < 600 ? true : false);
 const Page = props => {
   // const p = props.page ? 1 : 0;
 
@@ -113,7 +115,7 @@ const Page = props => {
 };
 class ChatLayoutJSX extends Component {
   state = {
-    isSideBarOpen: false,
+    isSideBarOpen: !isMobile(),
     variant: "permanent",
     isMobile: false
   };
@@ -203,8 +205,6 @@ resize = () => {
   });
 };*/
 
-  isMobile = () => (window.innerWidth < 600 ? true : false);
-
   render() {
     // const propstoshare = this.props.children ? this.props.children.props : {};
     const { me: Me, validation } = this.props;
@@ -237,55 +237,61 @@ resize = () => {
                 <div
                   className={`md-cell md-cell--${size} md-cell--${sizet}-tablet md-cell--${sizem}-phone`}
                 >
-                  {Me.loading && <Loading />} 
+                  {Me.loading && <Loading />}
                   <Location>
-                    {({ location }) => <Header location={location} me={Me} />}
+                    {({ location }) => (
+                      <>
+                        <Header
+                          location={location}
+                          me={Me}
+                          startChat={global.tr("Index")("startChat")}
+                        />
+                        <FadeTransitionRouter location={location}>
+                          <Page path="/users" page={<UsersPage />} />
+                          <Page path="/user/create" page={<UserPageCreate />} />
+                          <Page
+                            path="/user/:id"
+                            page={<UserPage path="/user/:id" />}
+                          />
+                          <Page path="/chats" page={<ChatsPage />} />
+                          <Page path="/login" page={<Login />} />
+                          <Page path="/signup" page={<Signup />} />
+                          <Page
+                            path="/forgetPassword"
+                            page={<ForgetPassword />}
+                          />
+                          <Page
+                            path="/resetPassword"
+                            page={<ResetPassword />}
+                          />
+                          <Page
+                            path="/updatePassword"
+                            page={<UpdatePassword />}
+                          />
+                          <Page
+                            path="/validateEmail"
+                            page={<ValidateEmail />}
+                          />
+                          <Page
+                            path="/"
+                            default
+                            page={
+                              !authToken ? (
+                                <Login path="/" />
+                              ) : (
+                                <ChatsPage path="/" />
+                              )
+                            }
+                          />
+                        </FadeTransitionRouter>
+                      </>
+                    )}
                   </Location>
                   {!Me.loading &&
                     !Me.error &&
                     validation && (
                       <EmailValidated emailvalidated={Me.me.emailvalidated} />
                     )}
-                </div>
-              </div>
-              <div className="md-grid">
-                <div className="md-cell md-cell--12">
-                  <FadeTransitionRouter>
-                    <Page path="/users" page={<UsersPage />} />
-                    <Page path="/user/create" page={<UserPageCreate />} />
-                    <Page
-                      path="/user/:id"
-                      page={<UserPage path="/user/:id" />}
-                    />
-                    <Page
-                      path="/chats"
-                      page={
-                        <ChatsPage
-                          startChat={global.tr("Index")("startChat")}
-                        />
-                      }
-                    />
-                    <Page path="/login" page={<Login />} />
-                    <Page path="/signup" page={<Signup />} />
-                    <Page path="/forgetPassword" page={<ForgetPassword />} />
-                    <Page path="/resetPassword" page={<ResetPassword />} />
-                    <Page path="/updatePassword" page={<UpdatePassword />} />
-                    <Page path="/validateEmail" page={<ValidateEmail />} />
-                    <Page
-                      path="/"
-                      default
-                      page={
-                        !authToken ? (
-                          <Login path="/" />
-                        ) : (
-                          <ChatsPage
-                            path="/"
-                            startChat={global.tr("Index")("startChat")}
-                          />
-                        )
-                      }
-                    />
-                  </FadeTransitionRouter>
                 </div>
               </div>
             </div>
@@ -325,21 +331,17 @@ resize = () => {
   }
 }
 
-const FadeTransitionRouter = ({ children }) => {
+const FadeTransitionRouter = ({ children, location }) => {
   // const childrenpass = React.cloneElement(children, propstoshare);
   console.log("startFadeTransitionRouter");
   return (
-    <Location>
-      {({ location }) => (
-        <TransitionGroup className="transition-group">
-          <CSSTransition key={location.key} classNames="fade" timeout={400}>
-            <Router location={location} className="router">
-              {children}
-            </Router>
-          </CSSTransition>
-        </TransitionGroup>
-      )}
-    </Location>
+    <TransitionGroup className="transition-group">
+      <CSSTransition key={location.key} classNames="fade" timeout={400}>
+        <Router location={location} className="router">
+          {children}
+        </Router>
+      </CSSTransition>
+    </TransitionGroup>
   );
 };
 

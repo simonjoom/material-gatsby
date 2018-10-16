@@ -1,5 +1,6 @@
 import React from "react";
 import Chat from "./Chat";
+import CreateChat from "./CreateChat";
 import { graphql, compose } from "react-apollo";
 import gql from "graphql-tag";
 import NotAuth from "../error/NotAuth";
@@ -20,8 +21,8 @@ class ChatsPageList extends React.Component {
           }
         });
       }
-    }); 
-  }   
+    });
+  }
   render() {
     if (this.props.chatsQueryConnection.error) {
       return <NotAuth />;
@@ -31,20 +32,21 @@ class ChatsPageList extends React.Component {
       return <Loading />;
     }
 
-    const { edges } = this.props.chatsQueryConnection.chatsConnection;
+    //const { edges } = this.props.chatsQueryConnection.chatsConnection;
     return (
       <div
         style={{ height: "350px", overflow: "scroll" }}
-        className="listChats"
+        className="md-cell md-cell--12 listChats"
         id="listChats"
       >
         {edges &&
           edges.map(chat => <Chat key={chat.node.id} chat={chat.node} />)}
+        <CreateChat />
       </div>
     );
   }
 }
- 
+
 const CHATS_QUERY = gql`
   query ChatsQueryConnection(
     $after: String

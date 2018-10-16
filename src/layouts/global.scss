@@ -188,6 +188,7 @@ li {
 }
 .collapsible-body{
   overflow: hidden;
+  background-color: white;
 }
 .container .md-grid--stacked{
   a:link{
@@ -206,6 +207,7 @@ li {
 } 
 
 #myChat {
+  max-height: 80vh!important;
   min-width: 60vw;
   position: fixed;
   z-index: 1111;
@@ -220,10 +222,7 @@ li {
 }
 .black{
   color: black;
-}
-.collapsible-body {
-  background-color: white;
-}
+} 
 
 .expertise__container {
   margin-top: 5%;
