@@ -11,7 +11,7 @@ tags:
 date: "2018-07-06"
 ---
 
-### Martin's description
+<!-- ### Martin's description -->
 Martin is a competent ski instructor, he speaks portugueuse, Skiscool hired him at many time and his customers was everytime satisfied of their journey.
 
 * English, Portuguese, French speaking.

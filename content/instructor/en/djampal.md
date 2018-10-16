@@ -11,7 +11,7 @@ tags:
 date: "2018-07-06"
 ---
 
-### Djampal's description
+<!-- ### Djampal's description -->
 Djampal is a competent ski instructor, he speaks fluently russian, Skiscool hired him at many time and his customers was everytime satisfied of their journey,
 
 * English, Russian, French speaking.

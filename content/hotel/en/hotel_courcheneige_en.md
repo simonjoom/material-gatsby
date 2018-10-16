@@ -12,7 +12,7 @@ date: "2018-07-03"
 --- 
  
  
-# Description of hotel Courcheneige:
+<!-- # Description of hotel Courcheneige: -->
 
 A large-scale hotel with the features of a Savoyard chalet, the Courcheneige hotel has nearly 90 rooms spread over various standings. The decor is mountain, the well-equipped and spacious rooms can accommodate up to 4 people. The brasserie Courcheneige, restaurant of the hotel, proposes a varied card in room or terrace, exposed full south. The beauty salon of the hotel Courcheneige is a real relaxation area to complement the ski days.
 

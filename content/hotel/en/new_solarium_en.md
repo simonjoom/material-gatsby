@@ -11,7 +11,7 @@ description: " The New Solarium is located in Courchevel Ski Resort, this elegan
 date: "2018-07-03"
 --- 
 
-### Description of the hotel
+<!-- ### Description of the hotel -->
 Set in the Courchevel Ski Resort, this elegant Alpine-style hotel is 11 km from Méribel Golf and 15 km from Plan de Tuéda Nature Reserve.
 
 The luxurious rooms come with free Wi-Fi and flat-screen TVs. Some rooms have a sofa bed. Suites have a seating area. Room service is also available.

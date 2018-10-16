@@ -11,7 +11,7 @@ description: "Nestled in the heart of Méribel, this ski-in, ski-out chalet is o
 date: "2018-07-03"
 ---
 
-# Hotel's description
+<!-- # Hotel's description -->
 Ski in ski out. Located on the side of the Georges Mauduit piste at the end of a private road opposite La Chaudanne – the lift centre of Méribel.
 
 Nestled in the heart of Méribel, this ski-in, ski-out chalet is one of the most luxurious and best located in the valley.

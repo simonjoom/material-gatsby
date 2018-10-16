@@ -11,7 +11,7 @@ description: "The Hotel Barrière is located at the foot of the Bellecôte Courc
 date: "2018-07-03" 
 ---
  
-# Description:
+<!-- # Description: -->
 Discover the luxury of Barrière Hotels. Always more moments to live in family, in love, between friends with the Palaces Barrière.
 
 From the top of its seven floors, it will have the discreet elegance of high-end comfort. Its 42 rooms and suites (some with fireplaces), its luxurious 240m2 ski room, its 3 tasty restoration concepts, including a Fouquet's brasserie and its Petit VIP kids club, invite you to dream, with the mountains and the peaks snow-covered fir.

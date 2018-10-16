@@ -11,7 +11,7 @@ description: "Edelweiss bringing a new standard of luxury to Courchevel is truly
 date: "2018-07-03"
 --- 
 
-### Edelweiss' Description : 
+<!-- ### Edelweiss' Description :  -->
 Chalet Edelweiss, bringing a new standard of luxury to Courchevel is truly ski in ski out. It's eight bedrooms, each with private bathrooms, are furnished to the highest quality with the latest furnishings and fittings, radiating charm, with two master suites of 100m² each. 
 
 The spa floor has a state of the art gym, a double massage room and a pool area that rivals none. The bar area is the ultimate in entertainment and the profoundly elegant lounge and dining providing the charm expected of this property. Although a completely new chalet, Edelweiss has been built in a traditional and sympathetic style.

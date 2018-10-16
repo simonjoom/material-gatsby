@@ -11,7 +11,7 @@ tags:
 date: "2018-07-06"
 ---
 
-### Thomas's description
+<!-- ### Thomas's description -->
 
 Thomas speaks English and Russian fluently. He worked for Esf for 7 years before deciding to become independent.
 

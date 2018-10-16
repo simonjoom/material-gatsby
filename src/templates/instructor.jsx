@@ -98,7 +98,7 @@ class PostTemplate extends React.Component {
                 mobile={this.state.mobile}
               />
             </div>
-
+            <h2>{post.title}</h2>
             <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
             {post.excerpt}
           </Card>

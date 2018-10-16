@@ -11,7 +11,7 @@ tags:
 date: "2018-07-06"
 ---
 
-### Philippe's description
+<!-- ### Philippe's description -->
 
 Philippe is an experienced ski instructor, he is the director of a ski school in Courchevel 1850, he is self-employed and his skills in language and teaching are an invaluable asset.
 

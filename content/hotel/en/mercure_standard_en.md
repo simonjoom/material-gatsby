@@ -11,7 +11,7 @@ description: "Le Mercure hotel in Courchevel provides ski-to-door access, plus a
 date: "2018-07-03"
 --- 
  
-# Description:
+<!-- # Description: -->
 This Mercure hotel is located in the heart of the alpine resort of Courchevel 1850. It has an outdoor swimming pool and spacious en suite rooms with satellite TV and Wi-Fi.
 
 The hotel is located a short walk from the Courchevel 1850 ski slopes, and ski storage is also available.

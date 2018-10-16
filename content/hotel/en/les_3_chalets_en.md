@@ -11,7 +11,7 @@ description: "3 luxurious chalets of 270m2 each: the White Gold and its intimate
 date: "2018-07-03"
 --- 
  
-# Description
+<!-- # Description -->
 Choose the decoration that suits you among these 3 luxurious chalets of 270m2 each: the White Gold and its intimate world, the chalet M, typical and warm, the chalet S, trendy and authentic.
 
 The chalet features a garden, a balcony, a fireplace and a seating area with a TV. There is a full kitchen with a dishwasher and a microwave. The bathrooms have a bath or shower and a toilet.

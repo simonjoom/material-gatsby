@@ -12,7 +12,7 @@ date: "2018-07-03"
 --- 
  
  
- # Description:
+ <!-- # Description: -->
  The Petit-Château is located on the Bellecote track, 1500 m² of pure design and luxury, reminiscent of the spirit of a boutique chalet. Composed of 6+ floors, 7 bedrooms en suite.
 
 ### Indicative prices:

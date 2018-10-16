@@ -11,7 +11,7 @@ description: "The Allodis is a 4 star hotel located in Meribel. Discover the roo
 date: "2018-07-03" 
 ---
 
-# Description of the Allodis:
+<!-- # Description of the Allodis: -->
 Nestled on the heights and slopes of Meribel, the Hotel Allodis "skis on feet" welcomes you in a cozy and warm atmosphere.
  
 Forget your daily life and escape for an exceptional stay in this jewel of wood and stones.

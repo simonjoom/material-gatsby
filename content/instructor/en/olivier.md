@@ -11,7 +11,7 @@ tags:
 date: "2018-07-06"
 ---
 
-### Olivier's description
+<!-- ### Olivier's description -->
 Olivier is a competent ski instructor, he speaks a bit of russian, Skiscool hired him at many time and his customers was everytimes satisfied of their journey.
 
 Teaching, progression, discovery, off-piste, competition ... Any age, any level.

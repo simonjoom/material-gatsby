@@ -11,7 +11,7 @@ description: "La ferme de mon Grand Pere is located at the entrance to Méribel 
 date: "2018-07-03"
 --- 
  
-# "La ferme de mon Grand Pere"
+<!-- # "La ferme de mon Grand Pere" -->
 Come stay in this jewel of the mountain, a chalet with authentic charm and a warm atmosphere that will provide you with pleasure, relaxation and well-being for unforgettable winter holidays in Méribel in the heart of the 3 valleys.
 
 The chalet "My grandfather's farm" is located at the entrance to Méribel, 500m from the start of the slopes, the Olympic Park and shops.

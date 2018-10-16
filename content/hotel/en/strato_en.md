@@ -11,7 +11,7 @@ description: "The Strato hotel is located in Courchevel ski resort, this hotel i
 date: "2018-07-03"
 --- 
  
-# Description of Strato
+<!-- # Description of Strato -->
 Located in the Courchevel 1850 Ski Area, this rustic-chic hotel is 10.6 km from Saint-Bon-Tarentaise city center.
 
 Trendy rooms have balconies or terraces with mountain or valley views. All rooms and suites feature free Wi-Fi, flat-screen TVs, en suite bathrooms with TVs, and slate-clad showers.

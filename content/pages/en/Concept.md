@@ -10,8 +10,9 @@ tags:
     - valthorens
 date: "2018-07-06"
 ---
+<h1 class="visuallyhidden">Private Ski Lessons</h1>
 
-# Private Ski Lessons
+## Private Ski Lessons
 
 ### With SkiScool:
 

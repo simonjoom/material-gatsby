@@ -11,7 +11,7 @@ tags:
 date: "2018-07-06"
 ---
 
-### Florian's description
+<!-- ### Florian's description -->
 A passion, a pleasure. We are privileged to be able to practice it in our valley.
 It's not only a sport but also a way to find yourself in a unique environment, in contact with nature.
 Skiing well requires a lot of patience and perseverance.

@@ -11,7 +11,7 @@ description: "Nestled on the heights of Courchevel ... The Hotel du Pralong 5 *,
 date: "2018-07-03"
 --- 
  
-# Description of Hotel Pralong:
+<!-- # Description of Hotel Pralong: -->
 Its rooms are unique thanks to beautiful materials, noble materials, and colors from the palette of beige and gold that transform a simple room into a deliciously cozy home.
 
 The Pralong is also a unique table that opens its doors to half-boarders but also to external visitors. Gargantuan breakfast (traditional or bio energetic), lunch on the sunny terrace with the Snow Tracs offering a 5-star buffet in Courchevel.

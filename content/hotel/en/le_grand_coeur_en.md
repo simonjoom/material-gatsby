@@ -11,7 +11,7 @@ description: "The Grand Coeur in Meribel is a luxury 4-star hotel located in Mer
 date: "2018-07-03"
 --- 
  
-# Description of the Grand-Coeur:
+<!-- # Description of the Grand-Coeur: -->
 A 6-minute walk from the village of Méribel, this upscale, chalet-style hotel is 19.4 km from Moûtiers-Salins-Brides-les-Bains Train Station.
 
 The sleek, rustic rooms come with free Wi-Fi, flat-screen TVs, iPod docks and minibars, plus terraces or balconies with mountain views. Suites feature contemporary decor, separate living areas and Blu-ray players.

@@ -11,7 +11,7 @@ description: "Manali is located in Courchevel 1650 immediately seduces with tone
 date: "2018-07-03"
 --- 
  
-# Description of Manali:
+<!-- # Description of Manali: -->
 
 The Manali Hotel does not go unnoticed. Even before entering, one is caught by its imposing dark wood facade that contrasts magnificently with the snowy Courchevel environment.
 

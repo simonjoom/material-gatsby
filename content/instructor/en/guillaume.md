@@ -11,7 +11,7 @@ tags:
 date: "2018-07-06"
 ---
 
-### Guillaume's description
+<!-- ### Guillaume's description -->
 Guillaume is a competent ski instructor, he speaks fluently english, Skiscool hired him at many time and his customers was everytime satisfied of their journey.
 
 * English, French speaking.

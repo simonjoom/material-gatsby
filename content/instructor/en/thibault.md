@@ -11,7 +11,7 @@ tags:
 date: "2018-07-06"
 ---
 
-### Thibault's description
+<!-- ### Thibault's description -->
 Thibault is a competent ski instructor, he speaks fluently russian, Skiscool hired him at many time and his customers was everytimes satisfied of their journey with him 
 
 * English, Russian, French speaking.

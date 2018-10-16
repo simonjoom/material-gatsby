@@ -34,13 +34,23 @@ class LanguageSwitcher extends Component {
   renderRow(label, lng) {
     const Flag = Localetosrc[lng];
     return (
-      <View style={styles.dropdown_2_row}>
+      <View style={[styles.dropdown_2_row, {height:"20px"}]}>
         <Text style={[styles.dropdown_2_row_text]}>
-          <Flag style={{ height: "2em" }} /> {`${label}`}
+          <Flag style={{ height: "1.5em" }} /> 
         </Text>
       </View>
     );
   }
+  renderNavRow(label, lng) {
+    const Flag = Localetosrc[lng];
+    return (
+      <View style={styles.dropdown_2_row}>
+        <Text style={[styles.dropdown_2_row_text]}>
+          <Flag style={{ height: "1.5em" }} /> {`${label}`}
+        </Text>
+      </View>
+    );
+  } 
   buildhref(code, lng) {
     let href = "";
     let path = this.props.route
@@ -101,7 +111,7 @@ class LanguageSwitcher extends Component {
                   external={process.env.NODE_ENV === "production"}
                   waves="light"
                 >
-                  {this.renderRow(el.label, el.code)}
+                  {this.renderNavRow(el.label, el.code)}
                 </NavItem>
               );
             }
@@ -123,11 +133,12 @@ const styles = StyleSheet.create({
     textAlignVertical: "center"
   },
   dropdown_2_row_text: {
-    flex: 1
+    flex: 1,
   },
   dropdown_2_row: {
     flexDirection: "row",
-    height: 20,
+    height: 30,
+    width:'2em',
     // width: 'auto',
     margin: 5
   },

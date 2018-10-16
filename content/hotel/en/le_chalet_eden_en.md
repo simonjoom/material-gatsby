@@ -11,7 +11,7 @@ description: "The chalet Eden in Courchevel offers its services, The Royal Suite
 date: "2018-07-03"
 --- 
  
-# Description of the cottage:
+<!-- # Description of the cottage: -->
 Services included:
 
 * Reception on site

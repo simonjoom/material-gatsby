@@ -11,6 +11,8 @@ tags:
 date: "2018-07-06"
 ---
 
+<h1 class="visuallyhidden">About SkiScool</h1>
+
 ### About SkiScool
 
 The instructors behind it's creation want a different system. 

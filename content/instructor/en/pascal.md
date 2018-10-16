@@ -12,7 +12,7 @@ date: "2018-07-06"
 ---
 
 
-### Pascal's description
+<!-- ### Pascal's description -->
 Pascal is a Ski Instructor, Moutain Guide, Coachings
 
 One of the first Freerider in France, Pascal will guide you through the Alps with passion, professionnalism and perfect knowledges of the biodiversity, the environnement and training technics. 

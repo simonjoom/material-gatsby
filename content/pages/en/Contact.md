@@ -10,6 +10,7 @@ tags:
     - valthorens
 date: "2018-07-06"
 ---
+<h1 class="visuallyhidden">Contact SkiScool</h1>
 
 ## Contact Us
 

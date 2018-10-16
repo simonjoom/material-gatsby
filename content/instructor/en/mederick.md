@@ -11,7 +11,7 @@ tags:
 date: "2018-07-06"
 ---
 
-### Mederick's description
+<!-- ### Mederick's description -->
 Mederick is a competent ski instructor, he speaks a bit of russian, Skiscool hired him at many time and his customers was everytimes satisfied of their journey.
 
 * English, French speaking.

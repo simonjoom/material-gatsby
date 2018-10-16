@@ -48,6 +48,7 @@ class Hotel extends React.Component {
         location={this.props.location}
       >
         <div className="index-container">
+        <h2 class="md-grid md-cell">Hotels</h2>
           <SEO
             postNode={postNode}
             postPath={slug}

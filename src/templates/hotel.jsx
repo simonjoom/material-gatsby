@@ -35,7 +35,7 @@ class HotelTemplate extends React.Component {
           SkiScool <i className="fa fa-copyright" />
         </span>
         <div>
-          {Array.from(new Array(star), a => (
+          {Array.from(new Array(+star), a => (
             <i className="yellow-text fa fa-star" />
           ))}
         </div>
@@ -94,22 +94,22 @@ class HotelTemplate extends React.Component {
               </div>
             }
             titlereveal={post.title} 
-            title={
-              <Link
-                className="category-link"
-                to={`/categories_${lng}/${kebabCase(post.category)}`}
-              >
-                <Avatar icon={<Icon className="folder-open" />} />
-                {post.title} In category {post.category}
-              </Link>
-            }
+            // title={
+            //   <Link
+            //     className="category-link"
+            //     to={`/categories_${lng}/${kebabCase(post.category)}`}
+            //   >
+            //     <Avatar icon={<Icon className="folder-open" />} />
+            //     {post.title} In category {post.category}
+            //   </Link>
+            // }
           >
             <div className="post-meta">
-              <div>
+              {/* <div>
                 <Avatar icon={<Icon className="calendar" />} />
                 Published on{" "}
                 {date}
-              </div>
+              </div> */}
               <PostTags tags={post.tags} />
               <SocialLinks
                 postPath={slug}
@@ -117,7 +117,7 @@ class HotelTemplate extends React.Component {
                 mobile={this.state.mobile}
               />
             </div>
-
+              <h1>{post.title}</h1>
             <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
             {post.excerpt}
           </Card>

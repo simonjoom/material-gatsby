@@ -11,7 +11,7 @@ description: "The cozy Kaila Hotel is a prestigious establishment located in the
 date: "2018-07-03"
 --- 
  
-# Description:
+<!-- # Description: -->
 With a very high standard and exceptional qualities of comfort, this place completes the offer very upscale domain three valleys between Chabichou and Bergerie in Meribel.
 The authentic character of this unique place cultivates luxury nature version. At the heart of the family resort of Méribel, at the foot of the slopes of the largest ski area in the world, the incomparable charm of Kaila is a temple of serenity.
 

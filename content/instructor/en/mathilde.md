@@ -11,7 +11,7 @@ tags:
 date: "2018-07-06"
 ---
 
-### Mathilde's description
+<!-- ### Mathilde's description -->
 
 Instructor for 8 years, she started skiing very young.
 Very attached to her station, Courchevel is for her a unique place where she can relax.

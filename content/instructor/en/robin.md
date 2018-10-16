@@ -11,7 +11,7 @@ tags:
 date: "2018-07-06"
 ---
 
-### Robin's description
+<!-- ### Robin's description -->
 Robin is a competent ski instructor, he is working with ESF 1850 like a freelance and speaks fluently russian, Skiscool hired him at many time and his customers was everytimes satisfied of their journey with him.
 
 * English, Russian, French speaking.

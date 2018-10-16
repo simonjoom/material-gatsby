@@ -11,7 +11,7 @@ description: "Hotel Le Cheval Blanc at COURCHEVEL; Ski holidays in Courchevel in
 date: "2018-07-03"
 --- 
  
-# Description of Le Cheval Blanc:
+<!-- # Description of Le Cheval Blanc: -->
 At the foot of the slopes, the thirty-six rooms and suites provide direct access to the largest ski area in the world, the Three Valleys area. Treated in a warm and contemporary spirit, each room has a unique personality that is expressed by a range of bold colors and custom furniture. All rooms are spacious, have a lounge area and offer, depending on their exposure, a terrace or balcony. They all offer a separate dressing room, a large bathroom equipped with a bath and a shower-hammam with light therapy and a separate toilet.
 The 5 interconnecting rooms and suites of the House are ideal for stays with family or friends. Cheval Blanc Courchevel also offers 2 rooms accessible to people with reduced mobility.
 Two Duplex Suites of 70 m² and 105 m² offer generous living spaces and can be connected to accommodate a large family or a group of friends.

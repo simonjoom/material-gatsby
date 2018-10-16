@@ -13,7 +13,7 @@ date: "2018-07-03"
 ---  
 
 
-# Description of the Drinking Bowl:
+<!-- # Description of the Drinking Bowl: -->
 On the garden level are the chalet entrance hall with ski room (shoe dryers, clothes, gloves and ski racks, WC) and the indoor lift to the upper levels. Also at this level: the room n ° 1, the home cinema and the wellness area.
 The 1st floor is divided between two rooms (n ° 2 and n ° 3).
 The 2nd floor is dedicated to common rooms: hall, kitchen, dining area, living room with fireplace (outdoor freight elevator for logs). The large south-facing terrace offers a spectacular view of the Meribel valley, the summit of the Saulire (2700m) and Mount Vallon culminating at 3000m.

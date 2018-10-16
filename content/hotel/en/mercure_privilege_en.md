@@ -12,7 +12,7 @@ date: "2018-07-03"
 --- 
  
  
-# Description:
+<!-- # Description: -->
 Comfort and conviviality are the hallmarks that characterize the Courchevel 1850 Mercure hotel. At the foot of the ski slopes and close to the resort center, you will find all the activities and shops at your fingertips. The rooms proposed have a typical style with beautiful woodwork while associating a touch of modernism perfectly dosed. A warm bar and a swimming pool and a gym will satisfy your desire for relaxation to spend an excellent stay.
 
 Equipped with 127 spacious rooms with balcony and woodland interior, the Mercure Courchevel has 2 traditional restaurants, 1 bar, an outdoor summer heated pool and a congress center including 13 rooms equipped for the organization of events.

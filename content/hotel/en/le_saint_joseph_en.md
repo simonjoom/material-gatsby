@@ -11,7 +11,7 @@ description: "Hôtel le Saint Joseph, Located in the Courchevel 1850 Ski Resort,
 date: "2018-07-03"
 --- 
 
-# Description of Saint Joseph:
+<!-- # Description of Saint Joseph: -->
 In the center of Courchevel, a few steps from the ski lift of the Loze and luxury shops, the fourteen rooms and suites, and two apartments of Saint Joseph open to you on a world of luxury discreet, refined, elegant.
 Non smoking hotel with restaurant, bar, spa, sauna and jacuzzi
 Saint Joseph is located in Courchevel 1850 Ski Resort, a 7-minute walk from the nearest ski lift. Le Saint Joseph has a spa where you can enjoy a selection of beauty treatments. , a tanning booth and a steam room. Rooms come with free Wi-Fi.

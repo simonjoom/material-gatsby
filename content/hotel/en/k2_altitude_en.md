@@ -11,7 +11,7 @@ description: "At the foot of the Pralong slope, facing one of the most majestic 
 date: "2018-07-03"
 --- 
  
-# Description of %User%:
+<!-- # Description of %User%: -->
 
 #### Le K2 Altitude Base Kamp
 At the foot of the Pralong slope, facing one of the most majestic panoramas of Courchevel, facing south, the terrace rustles with the conversation of the guests hurrying to the lounge chairs. A fire pit (outdoor fireplace), real breathing place, welcomes guests for lunch or a gourmet break in the beautiful hours of the day.

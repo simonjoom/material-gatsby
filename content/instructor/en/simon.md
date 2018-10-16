@@ -11,7 +11,7 @@ tags:
 date: "2018-07-06"
 ---
 
-### Simon's description
+<!-- ### Simon's description -->
 Simon is a competent ski instructor, he speaks fluently russian, Skiscool hired him at many time and his customers was everytimes satisfied of their journey with him.
 
 * English, Russian, French speaking.

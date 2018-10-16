@@ -11,7 +11,7 @@ description: "The hotel is one of the largest resort of Courchevel, located at t
 date: "2018-07-03"
 --- 
  
-# The description
+<!-- # The description -->
 This luxurious hotel, located at the foot of the slopes, in a vast alpine-style building, is 9 km from Courchevel golf course and the Saulire summit.
 
 Featuring chic furnishings and rustic-chic wood paneling, the refined rooms come with free Wi-Fi, flat-screen TVs and mountain views. Most offer a balcony. The suites also have a living room. Elegant 5 and 6-bedroom chalets offer private pools, kitchens, whirlpools and steam rooms, as well as chef and butler services.

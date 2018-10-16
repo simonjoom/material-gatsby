@@ -12,7 +12,7 @@ date: "2018-07-03"
 --- 
  
  
-# Description:
+<!-- # Description: -->
 The Saint Roch is the last born of Eric Tournier and Noëlle Bonnemaison. With this hotel *****, the duo erects the act of receiving the rank of art. A French way of life, pushed to its climax, which blends with happiness, modernity and conviviality, luxury and relaxation, in a privileged environment where the mountain spirit reigns.
 
 ### Room rates

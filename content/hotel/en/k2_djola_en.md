@@ -12,7 +12,7 @@ Djola means «little brother» in Tibetan and, drawing on the style of its older
 date: "2018-07-03"
 --- 
 
-# K2 Djola's description
+<!-- # K2 Djola's description -->
 “The love of a family, the centre around which everything revolves, and
 everything shines.” Victor Hugo could, without doubt, have written these words for Le K2 Collections. To this flamboyant constellation, a new star has been added. The newest member of our family, Le K2 Djola is perfectly in keeping with his elder brothers. A 4-star boutique-hotel, in the image of Le K2 Palace and the K2 Altitude. A cocoon that claims its own identity, based on luxury and simplicity. 
 A project we put our heart and soul into.

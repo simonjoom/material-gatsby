@@ -11,7 +11,7 @@ tags:
 date: "2018-07-06"
 ---
 
-### Julie's Description
+<!-- ### Julie's Description -->
 Julie is a competent ski instructor, she was working with ESF 1650. She speaks fluently english, skiscool worked with her many time and his customers was everytimes satisfied of their journey with her.
 
 Snowboard World champion, I began to ski at the age of 18 months in Meribel.  

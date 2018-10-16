@@ -11,7 +11,7 @@ description: "The Chabichou is a 4-star hotel located in Courchevel 1850, in Sav
 date: "2018-07-03"
 ---
 
-# Description:
+<!-- # Description: -->
 At the heart of Courchevel and at the foot of the ski slopes, Le Chabichou displays an original style from the outside with its 2 white wooden chalets.
 At choice, large sun terrace, or elegant dining room.
 

@@ -11,7 +11,7 @@ tags:
 date: "2018-07-06"
 ---
 
-### Laure's Description
+<!-- ### Laure's Description -->
 Laure is a competent ski instructor, he was working with ESF 1650 . She speaks fluently english, skiscool hired him at many time and his customers was everytimes satisfied of their journey with her.
 
 In the 3 Valleys, (Courchevel, Meribel or Val Thorens) I request for a minimum of 3 full days.
