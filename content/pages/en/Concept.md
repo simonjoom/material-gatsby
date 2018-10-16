@@ -1,6 +1,6 @@
 ---
 title: "Concept"
-cover: "snowboard.jpg"
+cover: "pages/spa.jpg"
 category: "concept"
 slug: "/concept/"
 tags:
@@ -44,9 +44,9 @@ date: "2018-07-06"
 <br/>
 ---
 
-### Prices ski school 2016/2017
+### Prices ski school 2017/2018
 
 |                       	| Low Season 	| Average Season 	| High Season 	|
 |-----------------------	|--------------	|----------------	|--------------	|
-| Full day Prices:         	|   400e/Day  	|    450e/Day   	|   500e/Day  	|
-| Prices hours:         	|     45e/h    	|      50e/h     	|     55e/h    	|
+| Full day Prices:         	|   400e/Day  	|    450e/Day   	|   550e/Day  	|
+| Prices hours:         	|     45e/h    	|      50e/h     	|     65e/h    	|
