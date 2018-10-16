@@ -41,7 +41,10 @@ export class Login extends Component {
       <div className="paperOut">
         <Card>
           <h4 className="mv3">Login</h4>
-          <form className="md-grid" style={{ width: "100%", marginTop: 20 }}>
+          <form
+            className="md-grid md-cell"
+            style={{ width: "100%", marginTop: 20 }}
+          >
             <Input
               id="email"
               label="Email"
@@ -65,41 +68,29 @@ export class Login extends Component {
               onChange={e => {
                 console.log(e.target);
                 this.setState({ password: e.target.value });
-              }} 
+              }}
               success={this.validatePassword()}
               required
               s={12}
             />
           </form>
-          <div
-            className="flex"
-            style={{ display: "flex", justifyContent: "center" }}
-          >
+          <div className="md-grid md-cell md-cell--12">
             <Button
-              className="btn btn-small"
+              className="md-cell btn btn-small"
               id="ok"
               onClick={() => this._confirm()}
-              style={{ margin: "5%" }}
             >
               Signin
             </Button>
-
             <Button
-              className="btn btn-small"
-              onClick={() => navigate("/z/signup")}
-              style={{ margin: "5%" }}
+              className="md-cell btn btn-small"
+              onClick={() => navigate("/signup")}
             >
               signup
             </Button>
-          </div>
-          <div
-            className="flex"
-            style={{ display: "flex", justifyContent: "center" }}
-          >
             <Button
-              className="btn btn-small"
-              onClick={() => navigate("/z/forgetPassword")}
-              style={{ margin: "2%" }}
+              className="md-cell btn btn-small"
+              onClick={() => navigate("/forgetPassword")}
             >
               Forgot Password
             </Button>
