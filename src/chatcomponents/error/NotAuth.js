@@ -5,8 +5,8 @@ import { Link } from "@reach/router";
 class NotAuth extends Component {
   render() {
     return (
-      <div className="paperOut">
-        <Card className="paperIn">
+      <div className="md-cell md-cell--12">
+        <Card>
           Not authentificated!
           <br />
           <br />
