@@ -1,6 +1,6 @@
 ---
 title: "Concept"
-cover: "snowboard.jpg"
+cover: "pages/spa.jpg"
 category: "concept"
 slug: "/concept/"
 tags:
@@ -43,10 +43,10 @@ date: "2018-07-06"
 <br/>
 ---
 
-### Preços escola de esqui 2016/2017
+### Preços escola de esqui 2017/2018
 
 
 |                       	| baixa temporada	|   mid temporada	| alta temporada 	|
 |-----------------------	|------------------ |-------------------|-------------------|
-| Preços dia inteiro     	|   400e/jour  	    |    450e/jour   	|   500e/jour   	|
-| Preços horas          	|     45e/h    	    |      50e/h     	|     55e/h     	|
+| Preços dia inteiro     	|   400e/jour  	    |    450e/jour   	|   550e/jour   	|
+| Preços horas          	|     45e/h    	    |      50e/h     	|     65e/h     	|

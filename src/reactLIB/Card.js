@@ -16,7 +16,7 @@ class Card extends Component {
   renderTitle(Tag, title, reveal) {
     return (
       <Tag
-        className={cx('card-title', 'grey-text', 'md-cell md-cell--12','text-darken-4', {
+        className={cx('card-title', 'grey-text','text-darken-4', {
           activator: reveal
         })}
       >
@@ -44,7 +44,7 @@ class Card extends Component {
 
   renderContent(Tag, title, reveal, textClassName, children) {
     return (
-      <div className={cx('card-content','md-grid', textClassName)}>
+      <div className={cx('card-content', textClassName)} style={{padding:"8px"}}>
         {title && this.renderTitle(Tag, title, reveal)}
         {children}
       </div>
