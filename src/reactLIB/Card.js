@@ -46,7 +46,7 @@ class Card extends Component {
     return (
       <div className={cx('card-content','md-grid', textClassName)}>
         {title && this.renderTitle(Tag, title, reveal)}
-        <div>{children}</div>
+        {children}
       </div>
     );
   }

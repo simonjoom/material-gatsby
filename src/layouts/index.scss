@@ -196,9 +196,9 @@ $bp-sizes: (
     scale: 1.4
   ),
   large: (
-    base-font-size: 20px,
-    base-line-height: 1.5,
-    scale: 1.4
+    base-font-size: 18px,
+    base-line-height: 1.4,
+    scale: 1.2
   )
 );
 
@@ -3658,7 +3658,7 @@ button.btn-floating {
 .btn-flat {
   -webkit-box-shadow: none;
   box-shadow: none;
-  background-color: transparent;
+  background-color: #039be5;
   color: #343434;
   cursor: pointer;
   -webkit-transition: background-color 0.2s;
@@ -3667,7 +3667,7 @@ button.btn-floating {
 
 .btn-flat:focus,
 .btn-flat:hover {
-  background-color: transparent;
+  background-color: #039be5;
   -webkit-box-shadow: none;
   box-shadow: none;
 }

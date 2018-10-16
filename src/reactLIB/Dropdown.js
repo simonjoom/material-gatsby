@@ -61,12 +61,12 @@ class Dropdown extends Component {
     delete props.options;
 
     return (
-      <div>
+      <>
         {this.el}
         <ul {...props} className={cx(classes, className)} id={this.idx}>
           {children}
         </ul>
-      </div>
+      </>
     );
   }
 }

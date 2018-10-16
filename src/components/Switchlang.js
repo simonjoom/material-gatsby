@@ -31,16 +31,17 @@ class LanguageSwitcher extends Component {
       "en"
     );
   }
-  renderRow(label, lng) {
+  renderRow(label, lng, parent) {
     const Flag = Localetosrc[lng];
     return (
       <View style={styles.dropdown_2_row}>
         <Text style={[styles.dropdown_2_row_text]}>
-          <Flag style={{ height: "2em" }} /> {`${label}`}
+          <Flag style={{ height: parent ? "2em" : "1.5em" }} /> {`${label}`}
         </Text>
       </View>
     );
   }
+
   buildhref(code, lng) {
     let href = "";
     let path = this.props.route
@@ -66,8 +67,8 @@ class LanguageSwitcher extends Component {
   handleClick = e => {
     e.preventDefault();
     e.stopPropagation();
-      var $al = $(e.target).closest("a");
-      if (!!$al.length) window.location.replace($al[0].href);
+    var $al = $(e.target).closest("a");
+    if (!!$al.length) window.location.replace($al[0].href);
   };
 
   render() {
@@ -85,8 +86,8 @@ class LanguageSwitcher extends Component {
       <div className="md-cell md-cell--1 md-cell--1-phone">
         <Dropdown
           trigger={
-            <div className="btn btn-medium btn-flags">
-              {this.renderRow(label, lng)}
+            <div className="btn btn-flat btn-flags dropdown-trigger" style={{display:"table"}}>
+              {this.renderRow(label, lng, true)}
             </div>
           }
         >
@@ -121,6 +122,13 @@ const styles = StyleSheet.create({
     color: "white",
     textAlign: "center",
     textAlignVertical: "center"
+  },
+  dropdown_2_row: {
+    display: "table-row",
+    height: 30,
+    width: "2em",
+    // width: 'auto',
+    margin: 5
   },
   dropdown_2_row_text: {
     flex: 1
