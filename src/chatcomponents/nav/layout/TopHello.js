@@ -1,20 +1,15 @@
 import React, { Component } from "react";
 import { AUTH_TOKEN } from "../../../constants/constants";
-import { Link } from "@reach/router"; 
-import MenuAvatar from "./MenuAvatar"; 
+import { Link } from "@reach/router";
+import MenuAvatar from "./MenuAvatar";
 
-const TopHello = ({me}) => {
-  const authToken = localStorage.getItem(AUTH_TOKEN);
+const TopHello = ({ me }) => {
+  const authToken = localStorage.getItem(AUTH_TOKEN); 
+  const connected = authToken && me.me;
   return (
     <>
-      {authToken &&
-        me.me && (
-          <MenuAvatar
-            user={me.me}
-            nameFile={me.me.nameFile}
-          />
-        )}
-      {!authToken && (
+      {connected && <MenuAvatar user={me.me} nameFile={me.me.nameFile} />}
+      {!connected && (
         <Link to="login" className="ml1 no-underline black">
           login
         </Link>
@@ -22,7 +17,7 @@ const TopHello = ({me}) => {
     </>
   );
 };
-export default TopHello
+export default TopHello;
 /*
 const USER_QUERY = gql`
   query Me {

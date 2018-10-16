@@ -16,8 +16,7 @@ import { WebSocketLink } from "apollo-link-ws";
 import { getMainDefinition } from "apollo-utilities";
 //import CSSTransition from "react-transition-group/CSSTransition";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import Loading from "./chatcomponents/error/Loading";
-import NotAuth from "./chatcomponents/error/NotAuth";
+import Loading from "./chatcomponents/error/Loading"; 
 import EmailValidated from "./chatcomponents/nav/EmailValidated";
 import Header from "./chatcomponents/nav/layout/Header";
 import NotFound from "./chatcomponents/error/NotFound";
@@ -114,7 +113,7 @@ const Page = props => {
 };
 class ChatLayoutJSX extends Component {
   state = {
-    isSideBarOpen: true,
+    isSideBarOpen: false,
     variant: "permanent",
     isMobile: false
   };
@@ -228,19 +227,17 @@ resize = () => {
               <Button
                 onClick={() => this.closeChat()}
                 icon="close"
-                style={{ padding: "0 10px" }}
-                className="right btn-large"
-                flat
+                style={{ borderRadius: "10%" }}
+                className="right right bar"
+                floating
                 type="material"
               />
-              <div className="md-grid">
+              <div className="md-grid md-grid--no-spacing">
                 <SideBar />
                 <div
                   className={`md-cell md-cell--${size} md-cell--${sizet}-tablet md-cell--${sizem}-phone`}
                 >
-                  {Me.loading && <Loading />}
-                  {Me.error && <NotAuth />}
-
+                  {Me.loading && <Loading />} 
                   <Location>
                     {({ location }) => <Header location={location} me={Me} />}
                   </Location>
@@ -249,7 +246,10 @@ resize = () => {
                     validation && (
                       <EmailValidated emailvalidated={Me.me.emailvalidated} />
                     )}
-
+                </div>
+              </div>
+              <div className="md-grid">
+                <div className="md-cell md-cell--12">
                   <FadeTransitionRouter>
                     <Page path="/users" page={<UsersPage />} />
                     <Page path="/user/create" page={<UserPageCreate />} />

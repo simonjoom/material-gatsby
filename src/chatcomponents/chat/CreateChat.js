@@ -12,8 +12,7 @@ class CreateChat extends React.Component {
 
   render() {
     return (
-      <div style={{ backgroundColor: "#F9FAFD", height: '80px' }}>
-        <div className="paperIn">
+      <div style={{ backgroundColor: "#F9FAFD", height: '80px' }} className="md-cell md-cell--12"> 
           <form onSubmit={this.handleChat}>
             <div className="md-grid">
               <Input 
@@ -37,8 +36,7 @@ class CreateChat extends React.Component {
                 }
               />
             </div>
-          </form>
-        </div>
+          </form> 
       </div>
     );
   }

@@ -20,8 +20,8 @@ class ChatsPage extends Component {
     }
     return (
       <div style={{ margin: 0, padding:0, backgroundColor: 'white' }}>
-        <div className="paperIn" style={{margin:0, padding:0, marginTop: 5}}>
-          <p style={{fontSize:'1.4em', margin:10}}>{this.props.startChat}</p> 
+        <div className="md-grid" style={{margin:0, padding:0, marginTop: 5}}>
+          <p className="md-cell md-cell--12">{this.props.startChat}</p> 
             <ChatsPageList orderBy={this.state.orderBy} /> 
           <CreateChat />
         </div>

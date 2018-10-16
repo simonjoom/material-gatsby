@@ -6,12 +6,12 @@ import BackButton from "./BackButton";
 
 const Header = ({location,me}) => {
   return (
-    <div className="flexGrow md-grid md-grid--stacked">
+    <div className="flexGrow">
       <header className="headerchat md-grid md-grid--no-spacing">
-        <div className="md-cell md-cell-4">
+        <div className="md-cell md-cell--2-tablet md-cell-4">
           <BackButton location={location}/>
         </div>
-        <div className="md-cell md-cell-4">
+        <div className="md-cell md-cell--2-tablet md-cell-4">
           <Button
             onClick={() => {
               navigate("/");
