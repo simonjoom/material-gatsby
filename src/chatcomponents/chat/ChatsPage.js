@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import ChatsPageList from "./ChatsPageList";
-import CreateChat from "./CreateChat";
 import NotAuth from "../error/NotAuth";
 import { AUTH_TOKEN } from "../../constants/constants";
 
@@ -21,9 +20,7 @@ class ChatsPage extends Component {
     return (
       <div style={{ margin: 0, padding:0, backgroundColor: 'white' }}>
         <div className="md-grid" style={{margin:0, padding:0, marginTop: 5}}>
-          <p className="md-cell md-cell--12">{this.props.startChat}</p> 
             <ChatsPageList orderBy={this.state.orderBy} /> 
-          <CreateChat />
         </div>
       </div>
     );
