@@ -32,7 +32,7 @@ class ChatsPageList extends React.Component {
       return <Loading />;
     }
 
-    //const { edges } = this.props.chatsQueryConnection.chatsConnection;
+    const { edges } = this.props.chatsQueryConnection.chatsConnection;
     return (
       <div
         style={{ height: "350px", overflow: "scroll" }}
