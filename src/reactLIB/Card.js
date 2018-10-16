@@ -1,4 +1,4 @@
-import React, { Component,Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Icon from './Icon';
@@ -10,19 +10,19 @@ class Card extends Component {
     this.renderReveal = this.renderReveal.bind(this);
     this.renderAction = this.renderAction.bind(this);
     this.renderContent = this.renderContent.bind(this);
-    this.renderAll = this.renderAll.bind(this);
+    //  this.renderAll = this.renderAll.bind(this);
   }
 
-  renderTitle(title, reveal) {
+  renderTitle(Tag, title, reveal) {
     return (
-      <span
-        className={cx('card-title', 'grey-text', 'text-darken-4', {
+      <Tag
+        className={cx('card-title', 'grey-text', 'md-cell md-cell--12','text-darken-4', {
           activator: reveal
         })}
       >
         {title}
         {reveal && <Icon className="ellipsis-v" right />}
-      </span>
+      </Tag>
     );
   }
 
@@ -42,11 +42,11 @@ class Card extends Component {
     return <div className="card-action">{actions}</div>;
   }
 
-  renderContent(title, reveal, textClassName, children) {
+  renderContent(Tag, title, reveal, textClassName, children) {
     return (
-      <div className={cx('card-content', textClassName)}>
-        {title && this.renderTitle(title, reveal)}
-        <div>{children}</div>
+      <div className={cx('card-content','md-grid', textClassName)}>
+        {title && this.renderTitle(Tag, title, reveal)}
+        {children}
       </div>
     );
   }
@@ -64,15 +64,12 @@ class Card extends Component {
       </div>
     );
   }
-  renderAll(title, titlereveal, reveal, textClassName, children, actions) {
+  /* renderAll(title, titlereveal, reveal, textClassName, children, actions) {
     return (
       <>
-        {this.renderContent(title, reveal, textClassName, children)}
-        {this.renderReveal(titlereveal, reveal)}
-        {actions && this.renderAction(actions)}
       </>
     );
-  }
+  }*/
 
   render() {
     const {
@@ -88,8 +85,9 @@ class Card extends Component {
       children,
       horizontal,
       waves,
+      titleTag: Tag = 'span',
       ...other
-    } = this.props; 
+    } = this.props;
     const classes = {
       card: true,
       horizontal: horizontal
@@ -108,26 +106,16 @@ class Card extends Component {
             )}
           {horizontal ? (
             <div className="card-stacked">
-              {this.renderAll(
-                title,
-                titlereveal,
-                reveal,
-                textClassName,
-                children,
-                actions
-              )}
+              {this.renderContent(Tag, title, reveal, textClassName, children)}
+              {this.renderReveal(titlereveal, reveal)}
+              {actions && this.renderAction(actions)}
             </div>
           ) : (
-            <div>
-              {this.renderAll(
-                title,
-                titlereveal,
-                reveal,
-                textClassName,
-                children,
-                actions
-              )}
-            </div>
+            <>
+              {this.renderContent(Tag, title, reveal, textClassName, children)}
+              {this.renderReveal(titlereveal, reveal)}
+              {actions && this.renderAction(actions)}
+            </>
           )}
         </div>
       </div>

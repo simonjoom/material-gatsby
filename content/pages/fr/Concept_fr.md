@@ -1,6 +1,6 @@
 ---
 title: "Concept"
-cover: "snowboard.jpg"
+cover: "pages/spa.jpg"
 category: "concept"
 slug: "/concept/"
 tags:
@@ -44,10 +44,10 @@ date: "2018-07-06"
 <br/>
 ---
 
-### Tarifs de l'école de ski 2016/2017
+### Tarifs de l'école de ski 2017/2018
 
 
 |                       	| Basse Saison 	| Moyenne Saison 	| Haute Saison 	|
 |-----------------------	|--------------	|----------------	|--------------	|
-| Tarifs pleine journée 	|   400e/jour  	|    450e/jour   	|   500e/jour  	|
-| Tarifs heures         	|     45e/h    	|      50e/h     	|     55e/h    	|
+| Tarifs pleine journée 	|   400e/jour  	|    450e/jour   	|   550e/jour  	|
+| Tarifs heures         	|     45e/h    	|      50e/h     	|     65e/h    	|

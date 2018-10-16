@@ -14,6 +14,9 @@ div .mobile-fix {
 .nolineheight {
   line-height: 0;
 }
+.expertise__container .md-grid .md-grid{
+  word-break: break-word;
+}
 
 #listChats .card.horizontal .btn-floating {
   width: 22px;
@@ -38,7 +41,7 @@ div .mobile-fix {
   left: 60px;
 }
 .menubars {
-  background-color: black;
+  background-color: transparent;
 }
 .fbpost{
   margin:auto;

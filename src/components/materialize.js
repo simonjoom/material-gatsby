@@ -166,11 +166,11 @@ document.addEventListener('blur', docHandleBlur, true);
  * Automatically initialize components
  * @param {Element} context  DOM Element to search within for components
  */
-M.AutoInit = function (context) {
+/*M.AutoInit = function (context) {
   // Use document.body if no context is given
   var root = !!context ? context : document.body;
   var registry = {
-    Autocomplete: root.querySelectorAll('.autocomplete:not(.no-autoinit)'),
+ //   Autocomplete: root.querySelectorAll('.autocomplete:not(.no-autoinit)'),
     Carousel: root.querySelectorAll('.carousel:not(.no-autoinit)'),
     Chips: root.querySelectorAll('.chips:not(.no-autoinit)'),
     Collapsible: root.querySelectorAll('.collapsible:not(.no-autoinit)'),
@@ -194,7 +194,7 @@ M.AutoInit = function (context) {
     var plugin = M[pluginName];
     plugin.init(registry[pluginName]);
   }
-};
+}*/
 
 /**
  * Generate approximated selector string for a jQuery object
@@ -1397,9 +1397,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "_handleMouseLeave",
       value: function _handleMouseLeave(e) {
-        var toEl = e.toElement || e.relatedTarget;
-        console.log("simdebug",$(toEl))
-         console.log("simdebug",$(toEl).closest('.dropdown-content'))
+        var toEl = e.toElement || e.relatedTarget; 
          var el=$(toEl).closest('.dropdown-content')
         var leaveToDropdownContent = !!el.length;
         var leaveToActiveDropdownTrigger = false;
@@ -7000,6 +6998,9 @@ $jscomp.polyfill = function (e, r, p, m) {
     });
  // });
 })(cash);
+  /**
+   * @class
+   * 
 ;(function ($) {
   'use strict';
 
@@ -7010,31 +7011,18 @@ $jscomp.polyfill = function (e, r, p, m) {
     onPositionChange: null
   };
 
-  /**
-   * @class
-   *
-   */
+
 
   var Pushpin = function (_Component13) {
     _inherits(Pushpin, _Component13);
-
-    /**
-     * Construct Pushpin instance
-     * @constructor
-     * @param {Element} el
-     * @param {Object} options
-     */
+ 
     function Pushpin(el, options) {
       _classCallCheck(this, Pushpin);
 
       var _this47 = _possibleConstructorReturn(this, (Pushpin.__proto__ || Object.getPrototypeOf(Pushpin)).call(this, Pushpin, el, options));
 
       _this47.el.M_Pushpin = _this47;
-
-      /**
-       * Options for the modal
-       * @member Pushpin#options
-       */
+ 
       _this47.options = $.extend({}, Pushpin.defaults, options);
 
       _this47.originalOffset = _this47.el.offsetTop;
@@ -7047,10 +7035,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     _createClass(Pushpin, [{
       key: "destroy",
 
-
-      /**
-       * Teardown component
-       */
+ 
       value: function destroy() {
         this.el.style.top = null;
         this._removePinClasses();
@@ -7123,10 +7108,7 @@ $jscomp.polyfill = function (e, r, p, m) {
       value: function init(els, options) {
         return _get(Pushpin.__proto__ || Object.getPrototypeOf(Pushpin), "init", this).call(this, this, els, options);
       }
-
-      /**
-       * Get Instance
-       */
+ 
 
     }, {
       key: "getInstance",
@@ -7151,11 +7133,7 @@ $jscomp.polyfill = function (e, r, p, m) {
 
     return Pushpin;
   }(Component);
-
-  /**
-   * @static
-   * @memberof Pushpin
-   */
+ 
 
 
   Pushpin._pushpins = [];
@@ -7163,6 +7141,7 @@ $jscomp.polyfill = function (e, r, p, m) {
   M.Pushpin = Pushpin;
 
 })(cash);
+*/
 ;(function ($, anim) {
   'use strict';
 
@@ -9281,6 +9260,10 @@ $jscomp.polyfill = function (e, r, p, m) {
   M.CharacterCounter = CharacterCounter;
 
 })(cash);
+
+  /**
+   * @class
+   *
 ;(function ($) {
   'use strict';
 
@@ -9296,20 +9279,10 @@ $jscomp.polyfill = function (e, r, p, m) {
     onCycleTo: null // Callback for when a new slide is cycled to.
   };
 
-  /**
-   * @class
-   *
-   */
 
   var Carousel = function (_Component18) {
     _inherits(Carousel, _Component18);
-
-    /**
-     * Construct Carousel instance
-     * @constructor
-     * @param {Element} el
-     * @param {Object} options
-     */
+ 
     function Carousel(el, options) {
       _classCallCheck(this, Carousel);
 
@@ -9317,19 +9290,6 @@ $jscomp.polyfill = function (e, r, p, m) {
 
       _this62.el.M_Carousel = _this62;
 
-      /**
-       * Options for the carousel
-       * @member Carousel#options
-       * @prop {Number} duration
-       * @prop {Number} dist
-       * @prop {Number} shift
-       * @prop {Number} padding
-       * @prop {Number} numVisible
-       * @prop {Boolean} fullWidth
-       * @prop {Boolean} indicators
-       * @prop {Boolean} noWrap
-       * @prop {Function} onCycleTo
-       */
       _this62.options = $.extend({}, Carousel.defaults, options);
 
       // Setup
@@ -9400,17 +9360,10 @@ $jscomp.polyfill = function (e, r, p, m) {
       key: "destroy",
 
 
-      /**
-       * Teardown component
-       */
       value: function destroy() {
         this._removeEventHandlers();
         this.el.M_Carousel = undefined;
       }
-
-      /**
-       * Setup Event Handlers
-       */
 
     }, {
       key: "_setupEventHandlers",
@@ -9448,9 +9401,6 @@ $jscomp.polyfill = function (e, r, p, m) {
         window.addEventListener('resize', this._handleThrottledResizeBound);
       }
 
-      /**
-       * Remove Event Handlers
-       */
 
     }, {
       key: "_removeEventHandlers",
@@ -9477,10 +9427,6 @@ $jscomp.polyfill = function (e, r, p, m) {
         window.removeEventListener('resize', this._handleThrottledResizeBound);
       }
 
-      /**
-       * Handle Carousel Tap
-       * @param {Event} e
-       */
 
     }, {
       key: "_handleCarouselTap",
@@ -9501,11 +9447,6 @@ $jscomp.polyfill = function (e, r, p, m) {
         clearInterval(this.ticker);
         this.ticker = setInterval(this._trackBound, 100);
       }
-
-      /**
-       * Handle Carousel Drag
-       * @param {Event} e
-       */
 
     }, {
       key: "_handleCarouselDrag",
@@ -9545,10 +9486,6 @@ $jscomp.polyfill = function (e, r, p, m) {
         }
       }
 
-      /**
-       * Handle Carousel Release
-       * @param {Event} e
-       */
 
     }, {
       key: "_handleCarouselRelease",
@@ -9585,11 +9522,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         }
         return false;
       }
-
-      /**
-       * Handle Carousel CLick
-       * @param {Event} e
-       */
+ 
 
     }, {
       key: "_handleCarouselClick",
@@ -9611,11 +9544,7 @@ $jscomp.polyfill = function (e, r, p, m) {
           this._cycleTo(clickedIndex);
         }
       }
-
-      /**
-       * Handle Indicator CLick
-       * @param {Event} e
-       */
+ 
 
     }, {
       key: "_handleIndicatorClick",
@@ -9627,11 +9556,7 @@ $jscomp.polyfill = function (e, r, p, m) {
           this._cycleTo(indicator.index());
         }
       }
-
-      /**
-       * Handle Throttle Resize
-       * @param {Event} e
-       */
+ 
 
     }, {
       key: "_handleResize",
@@ -9647,11 +9572,7 @@ $jscomp.polyfill = function (e, r, p, m) {
           this._scroll();
         }
       }
-
-      /**
-       * Set carousel height based on first slide
-       * @param {Booleam} imageOnly - true for image slides
-       */
+ 
 
     }, {
       key: "_setCarouselHeight",
@@ -9684,12 +9605,7 @@ $jscomp.polyfill = function (e, r, p, m) {
           this.$el.css('height', slideHeight + 'px');
         }
       }
-
-      /**
-       * Get x position from event
-       * @param {Event} e
-       */
-
+ 
     }, {
       key: "_xpos",
       value: function _xpos(e) {
@@ -9701,11 +9617,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         // mouse event
         return e.clientX;
       }
-
-      /**
-       * Get y position from event
-       * @param {Event} e
-       */
+ 
 
     }, {
       key: "_ypos",
@@ -9718,22 +9630,14 @@ $jscomp.polyfill = function (e, r, p, m) {
         // mouse event
         return e.clientY;
       }
-
-      /**
-       * Wrap index
-       * @param {Number} x
-       */
+ 
 
     }, {
       key: "_wrap",
       value: function _wrap(x) {
         return x >= this.count ? x % this.count : x < 0 ? this._wrap(this.count + x % this.count) : x;
       }
-
-      /**
-       * Tracks scrolling information
-       */
-
+ 
     }, {
       key: "_track",
       value: function _track() {
@@ -9751,10 +9655,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         v = 1000 * delta / (1 + elapsed);
         this.velocity = 0.8 * v + 0.2 * this.velocity;
       }
-
-      /**
-       * Auto scrolls to nearest carousel item.
-       */
+ 
 
     }, {
       key: "_autoScroll",
@@ -9773,11 +9674,7 @@ $jscomp.polyfill = function (e, r, p, m) {
           }
         }
       }
-
-      /**
-       * Scroll to target
-       * @param {Number} x
-       */
+ 
 
     }, {
       key: "_scroll",
@@ -9901,14 +9798,7 @@ $jscomp.polyfill = function (e, r, p, m) {
           this.oneTimeCallback = null;
         }
       }
-
-      /**
-       * Cycle to target
-       * @param {Element} el
-       * @param {Number} opacity
-       * @param {Number} zIndex
-       * @param {String} transform
-       */
+ 
 
     }, {
       key: "_updateItemStyle",
@@ -9918,12 +9808,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         el.style.opacity = opacity;
         el.style.visibility = 'visible';
       }
-
-      /**
-       * Cycle to target
-       * @param {Number} n
-       * @param {Function} callback
-       */
+ 
 
     }, {
       key: "_cycleTo",
@@ -9965,11 +9850,7 @@ $jscomp.polyfill = function (e, r, p, m) {
           requestAnimationFrame(this._autoScrollBound);
         }
       }
-
-      /**
-       * Cycle to next item
-       * @param {Number} [n]
-       */
+ 
 
     }, {
       key: "next",
@@ -9988,11 +9869,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         }
         this._cycleTo(index);
       }
-
-      /**
-       * Cycle to previous item
-       * @param {Number} [n]
-       */
+ 
 
     }, {
       key: "prev",
@@ -10012,13 +9889,7 @@ $jscomp.polyfill = function (e, r, p, m) {
 
         this._cycleTo(index);
       }
-
-      /**
-       * Cycle to nth item
-       * @param {Number} [n]
-       * @param {Function} callback
-       */
-
+ 
     }, {
       key: "set",
       value: function set(n, callback) {
@@ -10041,10 +9912,7 @@ $jscomp.polyfill = function (e, r, p, m) {
       value: function init(els, options) {
         return _get(Carousel.__proto__ || Object.getPrototypeOf(Carousel), "init", this).call(this, this, els, options);
       }
-
-      /**
-       * Get Instance
-       */
+ 
 
     }, {
       key: "getInstance",
@@ -10065,6 +9933,7 @@ $jscomp.polyfill = function (e, r, p, m) {
   M.Carousel = Carousel;
 
 })(cash);
+*/
 ;(function ($) {
   'use strict';
 
@@ -10888,36 +10757,24 @@ $jscomp.polyfill = function (e, r, p, m) {
   M.FormSelect = FormSelect;
 
 })(cash);
+
+  /** 
 ;(function ($, anim) {
   'use strict';
 
   var _defaults = {};
 
-  /**
-   * @class
-   *
-   */
 
   var Range = function (_Component21) {
     _inherits(Range, _Component21);
-
-    /**
-     * Construct Range instance
-     * @constructor
-     * @param {Element} el
-     * @param {Object} options
-     */
+ 
     function Range(el, options) {
       _classCallCheck(this, Range);
 
       var _this72 = _possibleConstructorReturn(this, (Range.__proto__ || Object.getPrototypeOf(Range)).call(this, Range, el, options));
 
       _this72.el.M_Range = _this72;
-
-      /**
-       * Options for the range
-       * @member Range#options
-       */
+ 
       _this72.options = $.extend({}, Range.defaults, options);
 
       _this72._mousedown = false;
@@ -10932,19 +10789,13 @@ $jscomp.polyfill = function (e, r, p, m) {
     _createClass(Range, [{
       key: "destroy",
 
-
-      /**
-       * Teardown component
-       */
+ 
       value: function destroy() {
         this._removeEventHandlers();
         this._removeThumb();
         this.el.M_Range = undefined;
       }
 
-      /**
-       * Setup Event Handlers
-       */
 
     }, {
       key: "_setupEventHandlers",
@@ -10972,9 +10823,6 @@ $jscomp.polyfill = function (e, r, p, m) {
         this.el.addEventListener('touchleave', this._handleRangeBlurMouseoutTouchleaveBound);
       }
 
-      /**
-       * Remove Event Handlers
-       */
 
     }, {
       key: "_removeEventHandlers",
@@ -10996,10 +10844,6 @@ $jscomp.polyfill = function (e, r, p, m) {
         this.el.removeEventListener('touchleave', this._handleRangeBlurMouseoutTouchleaveBound);
       }
 
-      /**
-       * Handle Range Change
-       * @param {Event} e
-       */
 
     }, {
       key: "_handleRangeChange",
@@ -11014,10 +10858,6 @@ $jscomp.polyfill = function (e, r, p, m) {
         $(this.thumb).addClass('active').css('left', offsetLeft + 'px');
       }
 
-      /**
-       * Handle Range Mousedown and Touchstart
-       * @param {Event} e
-       */
 
     }, {
       key: "_handleRangeMousedownTouchstart",
@@ -11038,10 +10878,6 @@ $jscomp.polyfill = function (e, r, p, m) {
         }
       }
 
-      /**
-       * Handle Range Input, Mousemove and Touchmove
-       */
-
     }, {
       key: "_handleRangeInputMousemoveTouchmove",
       value: function _handleRangeInputMousemoveTouchmove() {
@@ -11056,9 +10892,6 @@ $jscomp.polyfill = function (e, r, p, m) {
         }
       }
 
-      /**
-       * Handle Range Mouseup and Touchend
-       */
 
     }, {
       key: "_handleRangeMouseupTouchend",
@@ -11067,9 +10900,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         this.$el.removeClass('active');
       }
 
-      /**
-       * Handle Range Blur, Mouseout and Touchleave
-       */
+    
 
     }, {
       key: "_handleRangeBlurMouseoutTouchleave",
@@ -11094,10 +10925,6 @@ $jscomp.polyfill = function (e, r, p, m) {
         }
       }
 
-      /**
-       * Setup dropdown
-       */
-
     }, {
       key: "_setupThumb",
       value: function _setupThumb() {
@@ -11109,9 +10936,6 @@ $jscomp.polyfill = function (e, r, p, m) {
         this.$el.after(this.thumb);
       }
 
-      /**
-       * Remove dropdown
-       */
 
     }, {
       key: "_removeThumb",
@@ -11119,9 +10943,6 @@ $jscomp.polyfill = function (e, r, p, m) {
         $(this.thumb).remove();
       }
 
-      /**
-       * morph thumb into bubble
-       */
 
     }, {
       key: "_showRangeBubble",
@@ -11140,10 +10961,6 @@ $jscomp.polyfill = function (e, r, p, m) {
         });
       }
 
-      /**
-       * Calculate the offset of the thumb
-       * @return {Number}  offset in pixels
-       */
 
     }, {
       key: "_calcRangeOffset",
@@ -11160,9 +10977,6 @@ $jscomp.polyfill = function (e, r, p, m) {
         return _get(Range.__proto__ || Object.getPrototypeOf(Range), "init", this).call(this, this, els, options);
       }
 
-      /**
-       * Get Instance
-       */
 
     }, {
       key: "getInstance",
@@ -11182,7 +10996,7 @@ $jscomp.polyfill = function (e, r, p, m) {
 
   M.Range = Range;
   Range.init($('input[type=range]'));
-})(cash, M.anime);
+})(cash, M.anime);*/
 
 export default M;
 //export default Zepto

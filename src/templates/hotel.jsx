@@ -2,7 +2,7 @@ import React from "react";
 import { graphql, Link } from "gatsby";
 import { kebabCase } from "lodash";
 import parse from "date-fns/parse";
-import format from "date-fns/format"
+import format from "date-fns/format";
 import Avatar from "../components/Avatars";
 import withTheme from "../withContext";
 import Card from "../reactLIB/Card";
@@ -13,7 +13,7 @@ import SocialLinks from "../components/SocialLinks";
 import Layout from "../components/Layout";
 import PostSuggestions from "../components/PostSuggestions";
 import SEO from "../components/SEO";
-import config from "../data/SiteConfig"; 
+const config = require("../data/SiteConfig" + process.env.LANG);
 
 class HotelTemplate extends React.Component {
   constructor(props) {
@@ -47,7 +47,7 @@ class HotelTemplate extends React.Component {
     const { mobile } = this.state;
     const { translate: t } = this.props;
     const { slug, lng, route, slugbase, files } = this.props.pageContext;
-    global.filesQuery = files; 
+    global.filesQuery = files;
     const postNode = this.props.data.markdownRemark;
     const post = postNode.frontmatter;
     if (!post.id) {
@@ -56,7 +56,7 @@ class HotelTemplate extends React.Component {
     if (!post.category_id) {
       post.category_id = config.postDefaultCategoryID;
     }
-    const date=format(parse(postNode.fields.date), config.dateFormat);
+    const date = format(parse(postNode.fields.date), config.dateFormat);
     const directory = postNode.fields.type;
     const carouselList = post.cover ? [post.cover] : [];
     return (
@@ -78,6 +78,8 @@ class HotelTemplate extends React.Component {
           <Card
             className="md-cell md-cell--4-phone md-cell--12 md-cell--8-tablet mobile-fix"
             waves="light"
+            titleTag="h1"
+            title={post.title}
             contentImage={
               <div>
                 {postNode.fields.star && (
@@ -87,29 +89,18 @@ class HotelTemplate extends React.Component {
                   <FrontCarousel
                     data={carouselList}
                     directory={directory}
-                    height="0"
                     maxwidth="600px"
                   />
                 )}
               </div>
             }
-            titlereveal={post.title} 
-            // title={
-            //   <Link
-            //     className="category-link"
-            //     to={`/categories_${lng}/${kebabCase(post.category)}`}
-            //   >
-            //     <Avatar icon={<Icon className="folder-open" />} />
-            //     {post.title} In category {post.category}
-            //   </Link>
-            // }
+            titlereveal={post.title}
           >
             <div className="post-meta">
-              {/* <div>
+              <div>
                 <Avatar icon={<Icon className="calendar" />} />
-                Published on{" "}
-                {date}
-              </div> */}
+                Published on {date}
+              </div>
               <PostTags tags={post.tags} />
               <SocialLinks
                 postPath={slug}
@@ -120,6 +111,14 @@ class HotelTemplate extends React.Component {
               <h1>{post.title}</h1>
             <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
             {post.excerpt}
+
+            <Link
+              className="category-link"
+              to={`/categories_${lng}/${kebabCase(post.category)}`}
+            >
+              <Avatar icon={<Icon className="folder-open" />} />
+              {post.title} In category {post.category}
+            </Link>
           </Card>
 
           <PostSuggestions postNode={postNode} />
@@ -132,8 +131,8 @@ class HotelTemplate extends React.Component {
 export default withTheme(HotelTemplate);
 
 export const pageQuery = graphql`
-  query HotelPostBySlug($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+  query HotelPostBySlug($slug: String!, $lng: String!) {
+    markdownRemark(fields: { slug: { eq: $slug }, lng: { eq: $lng } }) {
       html
       timeToRead
       excerpt

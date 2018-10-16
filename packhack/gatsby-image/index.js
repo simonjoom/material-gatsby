@@ -94,6 +94,89 @@ Img.propTypes = {
   onLoad: PropTypes.func,
 }*/
 
+var calculImg=function srcset(image, mxW, mxH, aspectRatio,maxWidth) {
+    var maxW, maxHeight, bigW, bigH,images; 
+    if (image.srcWebp && image.srcSetWebp && isWebpSupported()) {
+      images=image.srcSet;
+      }else{
+      images=image.srcSetWebp;
+      }
+      
+var fullscreen=false;
+    if (typeof window !== 'undefined') {
+      bigW = window.innerWidth > 0 ? window.innerWidth : screen.width;
+      bigH = window.innerHeight > 0 ? window.innerHeight : screen.height;
+    } else {
+      bigW = 800;
+      bigH = 600;
+    }
+
+    if (mxW) {
+      if (typeof mxW == "string" && mxW.indexOf("%") !== -1) maxW = bigW * (parseInt(mxW) / 100);else maxW = parseInt(mxW, 10);
+    } else {
+      maxW = bigW;
+    }
+
+    if (mxH) {
+      if (typeof mxH == "string" && mxH.indexOf("%") !== -1) maxHeight = bigH * (parseInt(mxH) / 100);else maxHeight = parseInt(mxH, 10);
+    } else {
+      maxHeight = bigH;
+    }
+    maxW = maxWidth && parseInt(maxWidth) < maxW ? parseInt(maxWidth) : maxW;
+    var maxDensity = 1;
+    var ratio = 1 / aspectRatio;
+     
+if(maxW * ratio>maxHeight){
+maxW=maxHeight/ratio
+} 
+
+    if (typeof window !== 'undefined') {
+      maxDensity = window.devicePixelRatio;
+    } 
+    
+    var filename, density, height, width, widthresult, widthresultabs, filenameresult;
+    var candidates = images.split(',');  
+    if (candidates.length == 0) return false;
+    var widthresultabs = 10000;
+
+    for (var i = 0; i < candidates.length; i++) {
+      // The following regular expression was created based on the rules
+      // in the srcset W3C specification available at:
+      // http://www.w3.org/html/wg/drafts/srcset/w3c-srcset/
+      var descriptors = candidates[i].match(/^\s*([^\s]+)\s*(\s(\d+)w)?\s*(\s(\d+)h)?\s*(\s(\d+)x)?\s*$/);
+      filename = descriptors[1];
+      width = parseInt(descriptors[3], 10) || false; //if (width) height = width * ratio;
+
+      density = descriptors[7] || 1;  
+      if (width && Math.abs(width - maxW*maxDensity) < widthresultabs) {
+        widthresult = width;
+        height = widthresult * ratio;
+        filenameresult = filename;
+        widthresultabs = Math.abs(width - maxW*maxDensity);
+        continue;
+      }
+
+      if (density && density > maxDensity) {
+        continue;
+      }   
+      break;
+    /*  widthresult=widthresult>maxW?maxW:widthresult
+      height=height>maxHeight/2?maxHeight/2.2:height/1.2
+      return {
+        result: filenameresult,
+        width: widthresult,
+         height : fullscreen?maxHeight:height,
+      };*/
+    }
+        
+      widthresult=widthresult>maxW?maxW:widthresult
+      height=height>maxHeight/2?maxHeight/2.2:height/1.2
+    return {
+      result: filenameresult,
+        width: widthresult,
+         height : fullscreen?maxHeight:height,
+    };
+}
 
 var GatsbyImage =
 /*#__PURE__*/
@@ -138,11 +221,11 @@ if(false){
    var width = _convertProps.width; 
     var  height = _convertProps.height;
     var image = _convertProps.fluid;
+ _this.srcImage = calculImg(image, width, height,image.aspectRatio,_this.props.maxWidth);
+     
       if (image.srcWebp && image.srcSetWebp && isWebpSupported()) {
-        _this.srcImage = this.srcset(image.srcSetWebp, width, height, image.aspectRatio);
         _this.srcSet = image.srcSetWebp;
       } else {
-        _this.srcImage = this.srcset(image.srcSet, width, height, image.aspectRatio);
         _this.srcSet = image.srcSet;
       } 
       
@@ -151,83 +234,7 @@ if(false){
 
 
   var _proto = GatsbyImage.prototype;
-
-  _proto.srcset = function srcset(images, mxW, mxH, aspectRatio) {
-    var maxWidth, maxHeight, bigW, bigH;
-
-    if (typeof window !== 'undefined') {
-      bigW = window.innerWidth > 0 ? window.innerWidth : screen.width;
-      bigH = window.innerHeight > 0 ? window.innerHeight : screen.height;
-    } else {
-      bigW = 800;
-      bigH = 600;
-    }
-
-    if (mxW) {
-      if (typeof mxW == "string" && mxW.indexOf("%") !== -1) maxWidth = bigW * (parseInt(mxW) / 100);else maxWidth = parseInt(mxW, 10);
-    } else {
-      maxWidth = bigW;
-    }
-
-    if (mxH) {
-      if (typeof mxH == "string" && mxH.indexOf("%") !== -1) maxHeight = bigH * (parseInt(mxH) / 100);else maxHeight = parseInt(mxH, 10);
-    } else {
-      maxHeight = bigH;
-    }
-
-    maxWidth = this.props.maxWidth && parseInt(this.props.maxWidth) < maxWidth ? parseInt(this.props.maxWidth) : maxWidth;
-    var maxDensity = 1;
-    var ratio = 1 / aspectRatio;
-    
-if(maxWidth * ratio>maxHeight){
-maxWidth=maxHeight/ratio
-} 
-
-    if (typeof window !== 'undefined') {
-      maxDensity = window.devicePixelRatio;
-    }
-
-    var filename, density, height, width, widthresult, widthresultabs, filenameresult;
-    var candidates = images.split(',');
-    if (candidates.length == 0) return false;
-    var widthresultabs = 10000;
-
-    for (var i = 0; i < candidates.length; i++) {
-      // The following regular expression was created based on the rules
-      // in the srcset W3C specification available at:
-      // http://www.w3.org/html/wg/drafts/srcset/w3c-srcset/
-      var descriptors = candidates[i].match(/^\s*([^\s]+)\s*(\s(\d+)w)?\s*(\s(\d+)h)?\s*(\s(\d+)x)?\s*$/);
-      filename = descriptors[1];
-      width = parseInt(descriptors[3], 10) || false; //if (width) height = width * ratio;
-
-      density = descriptors[7] || 1;
-
-      if (width && Math.abs(width - maxWidth) < widthresultabs) {
-        widthresult = width;
-        height = width * ratio;
-        filenameresult = filename;
-        widthresultabs = Math.abs(width - maxWidth);
-        continue;
-      }
-
-      if (density && density > maxDensity) {
-        continue;
-      }
-
-      return {
-        result: filenameresult,
-        width: widthresult,
-        height: height
-      };
-    }
-
-    return {
-      result: filenameresult,
-      width: widthresult,
-      height: height
-    };
-  };
-
+ 
   _proto.handleRef = function handleRef(ref) {
     var _this2 = this;
     if (_this2.state.IOSupported && ref) {
@@ -274,7 +281,7 @@ maxWidth=maxHeight/ratio
       var image = fluid; // var Pattern = /\(max-width: (.*)px\).*vw, (.*)px/
 
       var srcImage, src, srcSet, presentationHeight, Pattern, match;
-		presentationHeight = height?height:"50%"
+	
  
 
       var imagePlaceholderStyle = babelHelpers.extends({
@@ -299,8 +306,10 @@ maxWidth=maxHeight/ratio
       }*/
  
       src = this.srcImage.result;
-      image.width = this.srcImage.width;
-      image.height = this.srcImage.height;
+   //   image.width = this.srcImage.width;
+   //   image.height = this.srcImage.height;
+      	presentationHeight = height?height:this.srcImage.height
+      	
       var srcFront = image.tracedSVG; //|| image.base64 not good 
       var bgStyle = {
         backgroundColor: bgColor,
@@ -344,7 +353,7 @@ var stylecontainer=babelHelpers.extends({
         styleAccessibilityImage: imagePlaceholderStyle,
         styleImage: imageStyle,
         style: {
-          paddingBottom: presentationHeight,
+           paddingBottom: presentationHeight,
           maxWidth: '100%',
           opacity: 1,
           transitionDelay: "0.35s"
@@ -415,5 +424,7 @@ Image.propTypes = {
                // maxWidth: '100%',
               }}
 }*/
+
+export {calculImg};
 
 export default GatsbyImage;

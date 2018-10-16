@@ -1,5 +1,5 @@
 import React from "react";
-import Img from "gatsby-image";
+import Img, { calculImg } from "gatsby-image";
 import withTheme from "../../withContext";
 import ReactFB from "../ReactFB";
 import Button from "../../reactLIB/Button";
@@ -15,106 +15,109 @@ const GetImage = ({
   coverclassname,
   width,
   page,
-  height = "50%", 
+  height,
   t,
   maxWidth = "1024px",
   directory = "",
   ...other
 }) => {
   const isContact = page === "/contact/";
-  console.log("CarouselQuery",CarouselQuery)
-  const ismain = page === "/"; 
+  console.log("CarouselQuery", CarouselQuery);
+  const ismain = page === "/";
   const lng = t("lang");
   const dir = directory !== "" ? "/" + directory : "";
-  const MapImg = dataList
-    .map((el, ind) => {
-      const FileNode = CarouselQuery.find(function(element) { 
-        return (
-          element.node.absolutePath &&
-          element.node.absolutePath.indexOf(
-            "/static/assets" + dir + "/" + el
-          ) !== -1
-        );
-      });
-      if (FileNode)
-        return (
-          <Img
-            className={coverclassname}
-            key={ind} 
-            content={
-              ismain ? (
-                <div
-                  style={{
-                    zIndex: 8,
-                    position: "absolute",
-                    top: "50%",
-                    transform: "translateY(-50%)",
-                    padding: "5px",
-                    flexDirection: "column"
-                  }}
-                  className="md-grid"
+  let heightCarousel = height ? height : 100;
+  const Maptofetch = [];
+  dataList.forEach(el => {
+    const FileNode = CarouselQuery.find(function(element) {
+      return (
+        element.node.absolutePath &&
+        element.node.absolutePath.indexOf("/static/assets" + dir + "/" + el) !==
+          -1
+      );
+    });
+    if (FileNode) {
+      const fluid = FileNode.node.childImageSharp.fluid;
+      Maptofetch.push({ fluid });
+    }
+  });
+  if (Maptofetch.length > 1) {
+    Maptofetch.forEach(el => {
+      let car = calculImg(
+        el.fluid,
+        width,
+        height,
+        el.fluid.aspectRatio,
+        maxWidth
+      );
+      heightCarousel =
+        car.height > heightCarousel ? car.height : heightCarousel;
+    });
+  }
+  const MapImg = Maptofetch.map((el, ind) => (
+    <Img
+      className={coverclassname}
+      key={"I" + ind}
+      content={
+        ismain ? (
+          <div
+            style={{
+              zIndex: 8,
+              position: "absolute",
+              top: "50%",
+              transform: "translateY(-50%)",
+              padding: "5px",
+              flexDirection: "column"
+            }}
+            className="md-grid"
+          >
+            <span
+              style={{
+                color: "#b2ff59",
+                fontStyle: "italic",
+                fontWeight: 900,
+                letterSpacing: ".01em",
+                textTransform: "uppercase",
+                wordSpacing: "5px"
+              }}
+              className="h3"
+            >
+              {t("main1")}
+            </span>
+            <div className="h4">
+              {t("main2")}
+              <Button
+                className="bgsecondary md-cell"
+                icontoend
+                icon="thumbs-up black"
+                type="awesome"
+              >
+                <a
+                  tabIndex="0"
+                  href={route.router["/instructor/"][lng]}
+                  className="h4 primary"
                 >
-                  <span
-                    style={{
-                      color: "#b2ff59",
-                      fontStyle: "italic",
-                      fontWeight: 900,
-                      letterSpacing: ".01em",
-                      textTransform: "uppercase",
-                      wordSpacing: "5px"
-                    }}
-                    className="h3"
-                  >
-                    {t("main1")}
-                  </span>
-                  <div className="h4">
-                    {t("main2")}
-                    <div className="md-cell">
-                      {/* <a
-                        tabIndex="0"
-                        href={route.router["/instructor/"][lng]}
-                        className="h4 primary"
-                      >
-                        {" "}
-                        Get Started
-                      </a> */}
-                      <Button
-                        node="a"
-                        href="/instructors_skischool/"
-                        waves= "light"
-                        style={{
-                          color: "#5c6bc0",
-                          fontWeight: 'bold',
-                          backgroundColor: "#ccff90",
-                          // padding: '0 10%',
-                          fontSize: '0.5em',
-                          // width: '200px',
-                          // height: 'auto'
-                        }}
-                        className="btn-large white-text"
-                      >
-                      Get Started
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              ) : isContact ? (
-                <ReactFB />
-              ) : (
-                ""
-              )
-            }
-            resizeMode={ismain ? "contain" : "center"}
-            positionImage={ismain ? "right" : null}
-            fluid={FileNode.node.childImageSharp.fluid}
-            height={height}
-            width={width}
-            maxWidth={maxWidth}
-            {...other}
-          />
-        );
-    })
-    .filter(n => n);
+                  {" "}
+                  Get Started{" "}
+                </a>
+              </Button>
+            </div>
+          </div>
+        ) : isContact ? (
+          <ReactFB />
+        ) : (
+          ""
+        )
+      }
+      resizeMode={ismain ? "contain" : "center"}
+      positionImage={ismain ? "right" : null}
+      fluid={el.fluid}
+      height={heightCarousel}
+      width={width}
+      maxWidth={maxWidth}
+      {...other}
+    />
+  ));
 
   if (MapImg.length > 1)
     return (
@@ -134,9 +137,9 @@ const FrontCarousel = ({
   width,
   maxwidth = "1024px",
   directory,
-  height = "50%",
+  height,
   page,
-  translate, 
+  translate,
   ...other
 }) => {
   if (!data) return null;
@@ -155,7 +158,7 @@ const FrontCarousel = ({
         maxWidth={maxwidth}
         page={page}
         t={translate("Index")}
-        coverclassname={coverclassname} 
+        coverclassname={coverclassname}
         {...other}
       />
     );

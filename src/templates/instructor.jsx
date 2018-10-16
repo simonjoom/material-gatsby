@@ -11,11 +11,11 @@ import SocialLinks from "../components/SocialLinks";
 import Layout from "../components/Layout";
 import PostSuggestions from "../components/PostSuggestions";
 import SEO from "../components/SEO";
-import config from "../data/SiteConfig";
+const config = require("../data/SiteConfig" + process.env.LANG);
 import parse from "date-fns/parse";
 import format from "date-fns/format";
 
-class PostTemplate extends React.Component {
+class InstTemplate extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -70,21 +70,9 @@ class PostTemplate extends React.Component {
                   maxwidth="600px"
                 />
               )
-            }
-            titlereveal={post.title}
-            title={
-              <Link
-                className="category-link"
-                to={
-                  lng == "en"
-                    ? `/${kebabCase(post.category)}`
-                    : `/${lng}/${kebabCase(post.category)}`
-                }
-              >
-                {/* <Avatar icon={<Icon className="folder-open" />} />
-                {post.title} In category {post.category} */}
-              </Link>
-            }
+            } 
+            titleTag="h1"
+            title={post.title}
           >
             <div className="post-meta">
               {/* <div>
@@ -98,9 +86,12 @@ class PostTemplate extends React.Component {
                 mobile={this.state.mobile}
               />
             </div>
-            <h2>{post.title}</h2>
             <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
             {post.excerpt}
+            <Link className="category-link" to={`/${kebabCase(post.category)}`}>
+              <Avatar icon={<Icon className="folder-open" />} />
+              {post.title} In category {post.category}
+            </Link>
           </Card>
 
           <PostSuggestions postNode={postNode} />
@@ -110,11 +101,11 @@ class PostTemplate extends React.Component {
   }
 }
 
-export default withTheme(PostTemplate);
+export default withTheme(InstTemplate);
 
 export const pageQuery = graphql`
-  query InstructorPostBySlug($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+  query InstructorPostBySlug($slug: String!, $lng: String!) {
+    markdownRemark(fields: { slug: { eq: $slug }, lng: { eq: $lng } }) {
       html
       timeToRead
       excerpt

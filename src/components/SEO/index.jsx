@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
 import urljoin from "url-join";
-import config from "../../data/SiteConfig";
+const config = require("../../data/SiteConfig" + process.env.LANG);
 
 const siteUrlfr = "https://www.skiscool.fr";
 const siteUrlen = "https://www.ski-courchevel.deals";
 const siteUrlpt = "https://pt.skiscool.com";
 const siteUrluk = "https://uk.skiscool.com";
-const siteUrlru = "https://ru.skiscool.com";
+const siteUrlru = "https://www.skiscool.com";
 const siteUrlch = "https://cn.skiscool.com";
 const pathPrefix = "";
 class SEO extends Component {
@@ -19,22 +19,22 @@ class SEO extends Component {
       translate,
       route,
       title: titleprop
-    } = this.props; 
+    } = this.props;
     let description;
     let image;
     let title;
     let postURL;
-    let routefr, routeen, routeuk, routept, routeru, routech;
+    /* let routefr, routeen, routeuk, routept, routeru, routech;
     if (route && route.fr) {
       routefr = route.fr.replace("/fr", "");
       routeen = route.en.replace("/en", "");
       routeuk = route.uk.replace("/uk", "");
       routept = route.pt.replace("/pt", "");
       routeru = route.ru.replace("/ru", "");
-      routech = route.ch.replace("/cn", "");
+      routech = route.cn.replace("/cn", "");
     } else {
       console.warn("noroute", postNode);
-    }
+    } */
     if (postSEO) {
       const postMeta = postNode.frontmatter;
       if (!titleprop) ({ title } = postMeta);
@@ -91,16 +91,16 @@ class SEO extends Component {
           description
         }
       ]);
-    } 
+    }
     return (
       <Helmet>
         <title>{`${translate(title)} | ${config.siteTitle}`}</title>
-        <link rel="canonical" href={`${siteUrlfr}${routefr}`} />
-        <link rel="canonical" href={`${siteUrlen}${routeen}`} />
-        <link rel="canonical" href={`${siteUrlpt}${routept}`} />
-        <link rel="canonical" href={`${siteUrluk}${routeuk}`} />
-        <link rel="canonical" href={`${siteUrlru}${routeru}`} />
-        <link rel="canonical" href={`${siteUrlch}${routech}`} />
+        <link rel="canonical" href={`${siteUrlfr}${route.fr}`} />
+        <link rel="canonical" href={`${siteUrlen}${route.en}`} />
+        <link rel="canonical" href={`${siteUrlpt}${route.pt}`} />
+        <link rel="canonical" href={`${siteUrluk}${route.uk}`} />
+        <link rel="canonical" href={`${siteUrlru}${route.ru}`} />
+        <link rel="canonical" href={`${siteUrlch}${route.cn}`} />
         {/* General tags */}
         <meta name="description" content={description} />
         <meta name="image" content={image} />

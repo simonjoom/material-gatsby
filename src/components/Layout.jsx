@@ -34,7 +34,7 @@ class Layout extends Component {
               <FrontCarousel
                 data={carouselList}
                 page={page}
-                height={carouselList.length > 1 ? "400px" : "50%"}
+                height={carouselList.length > 1 ? null : "50%"}
               />
             )}
         </div>
