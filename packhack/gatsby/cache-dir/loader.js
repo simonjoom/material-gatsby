@@ -5,7 +5,6 @@ import prefetchHelper from "./prefetch"
 
 const preferDefault = m => (m && m.default) || m
 
-let prefetcher
 let devGetPageData
 let inInitialRender = true
 let hasFetched = Object.create(null)
@@ -16,6 +15,7 @@ let fetchHistory = []
 let fetchingPageResourceMapPromise = null
 let fetchedPageResourceMap = false
 let apiRunner
+  let site="https://www.ski-courchevel.deals"
 const failedPaths = {}
 const failedResources = {}
 const MAX_HISTORY = 5
@@ -47,7 +47,18 @@ const fetchPageResourceMap = () => {
   return fetchingPageResourceMapPromise
 }
 
-const createJsonURL = jsonName => `${__PATH_PREFIX__}/static/d/${jsonName}.json`
+  if(process.env.LANG=="fr")
+  site="https://www.skiscool.fr"
+  if(process.env.LANG=="pt")
+  site="https://pt.skiscool.com"
+  if(process.env.LANG=="ru")
+  site="https://www.skiscool.com"
+  if(process.env.LANG=="uk")
+  site="https://uk.skiscool.com"
+  if(process.env.LANG=="cn")
+  site="https://cn.skiscool.com"
+  
+const createJsonURL = jsonName => `${site}/static/d/${jsonName}.json`
 const createComponentUrls = componentChunkName =>
   window.___chunkMapping[componentChunkName].map(
     chunk => __PATH_PREFIX__ + chunk
@@ -147,6 +158,20 @@ const handleResourceLoadError = (path, message) => {
   }
 }
 
+const onPrefetchPathname = pathname => {
+  if (!prefetchTriggered[pathname]) {
+    apiRunner(`onPrefetchPathname`, { pathname: pathname })
+    prefetchTriggered[pathname] = true
+  }
+}
+
+const onPostPrefetchPathname = pathname => {
+  if (!prefetchCompleted[pathname]) {
+    apiRunner(`onPostPrefetchPathname`, { pathname: pathname })
+    prefetchCompleted[pathname] = true
+  }
+}
+
 // Note we're not actively using the path data atm. There
 // could be future optimizations however around trying to ensure
 // we load all resources for likely-to-be-visited paths.
@@ -163,6 +188,7 @@ const sortResourcesByCount = (a, b) => {
 let findPage
 let pathScriptsCache = {}
 let prefetchTriggered = {}
+let prefetchCompleted = {}
 let disableCorePrefetching = false
 
 const queue = {
@@ -192,12 +218,7 @@ const queue = {
 
     // Tell plugins with custom prefetching logic that they should start
     // prefetching this path.
-    if (!prefetchTriggered[path]) {
-      apiRunner(`onPrefetchPathname`, {
-        pathname: path,
-      })
-      prefetchTriggered[path] = true
-    }
+    onPrefetchPathname(path)
 
     // If a plugin has disabled core prefetching, stop now.
     if (disableCorePrefetching.some(a => a)) {
@@ -235,6 +256,9 @@ const queue = {
       prefetchResource(page.jsonName)
       prefetchResource(page.componentChunkName)
     }
+
+    // Tell plugins the path has been successfully prefetched
+    onPostPrefetchPathname(path)
 
     return true
   },
@@ -375,6 +399,9 @@ const queue = {
           }
         })
       }
+
+      // Tell plugins the path has been successfully prefetched
+      onPostPrefetchPathname(path)
     }),
 }
 
