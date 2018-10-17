@@ -270,19 +270,8 @@ export default (pagePath, callback) => {
     })
 
   if (page.jsonName in dataPaths) {
-  let site="https://www.ski-courchevel.deals"   
-  if(process.env.LANG=="fr")
-  site="https://www.skiscool.fr"
-  if(process.env.LANG=="pt")
-  site="https://pt.skiscool.com"
-  if(process.env.LANG=="ru")
-  site="https://www.skiscool.com"
-  if(process.env.LANG=="uk")
-  site="https://uk.skiscool.com"
-  if(process.env.LANG=="cn")
-  site="https://cn.skiscool.com"
   
-    const dataPath = `${site}/static/d/${
+    const dataPath = `/static/d/${
       dataPaths[page.jsonName]
     }.json`
     headComponents.push(
