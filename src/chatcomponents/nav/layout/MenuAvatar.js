@@ -1,39 +1,25 @@
 import React, { Component } from "react";
-import { navigate } from "gatsby";
 import { AUTH_TOKEN } from "../../../constants/constants";
-
 import Dropdown from "../../../reactLIB/Dropdown";
 import NavItem from "../../../reactLIB/NavItem";
 import Logo from "../../../components/logo";
 
-class MenuAvatar extends Component { 
-
-  handleClose = page => {
-    // this.setState({ anchorEl: null });
-    if (page === "profile") {
-      navigate("/user/" + this.props.user.id);
-    }
-    if (page === "logout") {
-      localStorage.removeItem(AUTH_TOKEN);
-      navigate(`/login`);
-    }
-    //  this.setState({ open: false });
-  };
-
+class MenuAvatar extends Component {
   render() {
-    console.log("Menuavatar")
+    const tt="/user/" + this.props.user.id;
     return (
-      <Dropdown
-        trigger={
-          <div className="">
-            <Logo width={30} height={30} style={{marginTop: '3px'}} />
-          </div>
-        }
-      >
-        <NavItem key="Profile" onClick={() => this.handleClose("profile")}>
+      <Dropdown trigger={<Logo width={30} height={30} />}>
+        <NavItem
+          key="Profile"
+          href={tt}
+        >
           Profile
         </NavItem>
-        <NavItem key="Logout" onClick={() => this.handleClose("logout")}>
+        <NavItem
+          key="Logout"
+          href="/login"
+          onClick={() => localStorage.removeItem(AUTH_TOKEN)}
+        >
           Logout
         </NavItem>
       </Dropdown>

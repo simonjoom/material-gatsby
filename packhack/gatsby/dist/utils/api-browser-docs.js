@@ -185,6 +185,7 @@ exports.onServiceWorkerUpdateFound = true;
  */
 
 exports.onServiceWorkerActive = true;
+exports.onPostPrefetchPathname = true;
 /**
  * Inform plugins when a service worker is redundant.
  * @param {object} $0

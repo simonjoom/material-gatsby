@@ -239,53 +239,62 @@ resize = () => {
                 >
                   {Me.loading && <Loading />}
                   <Location>
-                    {({ location }) => (
-                      <>
-                        <Header
-                          location={location}
-                          me={Me}
-                          startChat={global.tr("Index")("startChat")}
-                        />
-                        <FadeTransitionRouter location={location}>
-                          <Page path="/users" page={<UsersPage />} />
-                          <Page path="/user/create" page={<UserPageCreate />} />
-                          <Page
-                            path="/user/:id"
-                            page={<UserPage path="/user/:id" />}
+                    {({ location }) => {
+                      return (
+                        <>
+                          <Header
+                            location={location}
+                            me={Me}
+                            key="first"
+                            startChat={global.tr("Index")("startChat")}
                           />
-                          <Page path="/chats" page={<ChatsPage />} />
-                          <Page path="/login" page={<Login />} />
-                          <Page path="/signup" page={<Signup />} />
-                          <Page
-                            path="/forgetPassword"
-                            page={<ForgetPassword />}
-                          />
-                          <Page
-                            path="/resetPassword"
-                            page={<ResetPassword />}
-                          />
-                          <Page
-                            path="/updatePassword"
-                            page={<UpdatePassword />}
-                          />
-                          <Page
-                            path="/validateEmail"
-                            page={<ValidateEmail />}
-                          />
-                          <Page
-                            path="/"
-                            default
-                            page={
-                              !authToken ? (
-                                <Login path="/" />
-                              ) : (
-                                <ChatsPage path="/" />
-                              )
-                            }
-                          />
-                        </FadeTransitionRouter>
-                      </>
-                    )}
+                          <FadeTransitionRouter
+                            location={location}
+                            key="second"
+                          >
+                            <Page path="/users" page={<UsersPage />} />
+                            <Page
+                              path="/user/create"
+                              page={<UserPageCreate />}
+                            />
+                            <Page
+                              path="/user/:id"
+                              page={<UserPage path="/user/:id" />}
+                            />
+                            <Page path="/chats" page={<ChatsPage />} />
+                            <Page path="/login" page={<Login />} />
+                            <Page path="/signup" page={<Signup />} />
+                            <Page
+                              path="/forgetPassword"
+                              page={<ForgetPassword />}
+                            />
+                            <Page
+                              path="/resetPassword"
+                              page={<ResetPassword />}
+                            />
+                            <Page
+                              path="/updatePassword"
+                              page={<UpdatePassword />}
+                            />
+                            <Page
+                              path="/validateEmail"
+                              page={<ValidateEmail />}
+                            />
+                            <Page
+                              path="/"
+                              default
+                              page={
+                                !authToken ? (
+                                  <Login path="/" />
+                                ) : (
+                                  <ChatsPage path="/" />
+                                )
+                              }
+                            />
+                          </FadeTransitionRouter>
+                        </>
+                      );
+                    }}
                   </Location>
                   {!Me.loading &&
                     !Me.error &&
@@ -333,7 +342,7 @@ resize = () => {
 
 const FadeTransitionRouter = ({ children, location }) => {
   // const childrenpass = React.cloneElement(children, propstoshare);
-  console.log("startFadeTransitionRouter");
+  console.log("startFadeTransitionRouter", location);
   return (
     <TransitionGroup className="transition-group">
       <CSSTransition key={location.key} classNames="fade" timeout={400}>

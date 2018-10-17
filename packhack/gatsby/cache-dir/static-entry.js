@@ -270,7 +270,8 @@ export default (pagePath, callback) => {
     })
 
   if (page.jsonName in dataPaths) {
-    const dataPath = `${__PATH_PREFIX__}/static/d/${
+  
+    const dataPath = `/static/d/${
       dataPaths[page.jsonName]
     }.json`
     headComponents.push(
