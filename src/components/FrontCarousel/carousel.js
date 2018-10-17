@@ -538,7 +538,7 @@ export default class Carousel extends Component {
               className={klass.DOT(index === this.state.selectedItem)}
               onClick={this.changeItem}
               value={index}
-              key={index}
+              key={"ol"+index}
             />
           );
         })}
