@@ -137,7 +137,7 @@ class Navigation extends Component {
           className='footer__main'
         >
           <div className="footer__content white-text">
-            <img src="/assets/baton.png" />
+            <img src="/assets/baton.png" alt="Ski Baton"/>
             <h5 className="footer__title">Need a Lesson Today? Contact Us</h5>
             <p className="white-text">Email Us: <a href="mailto:simon@skiscool.com" className="footer__link">simon@skiscool.com</a></p>
             <p className="white-text">Call Us: +33675505209</p>

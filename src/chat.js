@@ -227,8 +227,8 @@ resize = () => {
               <Button
                 onClick={() => this.closeChat()}
                 icon="close"
-                style={{ borderRadius: "10%" }}
-                className="right right bar"
+                style={{ borderRadius: "10%", width:30, height: 30 }}
+                className="right"
                 floating
                 type="material"
               />

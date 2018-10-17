@@ -6,15 +6,16 @@ import { AUTH_TOKEN } from "../../../constants/constants";
 
 class EmulateItem extends Component {
   render() {
-    const liClass = {};
+    const liClass = {
+      marginTop: '1.5em'
+    };
     const subHeading = {
       color: "rgba(0, 0, 0, 0.87)",
-      fontSize: "1rem",
+      fontSize: "1em",
       fontWeight: 400,
       fontFamily: "Roboto, Helvetica, Arial, sans-serif",
-      lineHeight: "1.5em"
     };
-    const { icon, to, children, className } = this.props;
+    const { icon, to, children, className, onClick, onMouseEnter } = this.props;
     return (
       <li style={liClass}>
         <Button
@@ -25,8 +26,12 @@ class EmulateItem extends Component {
           iconStyle={{
             color: "rgba(0, 0, 0, 0.54)",
             flexShrink: 0,
-            marginRight: "16px"
+            marginRight: "16px",
+            verticalAlign:"middle"
+            
           }}
+          onClick={onClick}
+          onMouseEnter={onMouseEnter}
           icon={icon}
         >
           <span style={subHeading}>{children}</span>
@@ -73,27 +78,28 @@ class ListSideBar extends Component {
         <EmulateItem icon="view_quilt" to="/">
           Blog
         </EmulateItem>
+
         {this.props.role &&
           this.props.role !== "CUSTOMER" && (
-            <>
-              <Button
-                icon="mail"
-                flat
-                type="mat"
-                onClick={() => this.onClick()}
-                onMouseEnter={() => this.onMouseEnter("simon_skiscoolO0Ocom")}
+            <EmulateItem 
+              icon="mail"
+              to=""
+              onClick={() => this.onClick()}
+              onMouseEnter={() => this.onMouseEnter("simon_skiscoolO0Ocom")} 
               >
                 Mail us
-              </Button>
-            </>
+            </EmulateItem>
           )}
 
         <EmulateItem icon="chat" to="/chats">
           Chat
         </EmulateItem>
-        <EmulateItem icon="group" to="/users">
+        {authToken && (
+          <EmulateItem icon="group" to="/users">
           Users
         </EmulateItem>
+        )}
+        
 
         {!authToken && (
           <EmulateItem icon="account_circle" to="/login">
