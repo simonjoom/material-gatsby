@@ -241,3 +241,14 @@ a:link {
   color: $md-primary-color;
   text-decoration: none;
 }
+.strictly-desktop{
+  @media screen and (max-width: 480px){
+    display: none;
+  }
+}
+// .btn-left{
+//   @media screen and (max-width: 480px){
+//     display: flex;
+//     align-items:left;
+//   }
+// }

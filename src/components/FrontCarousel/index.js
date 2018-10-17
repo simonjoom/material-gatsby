@@ -80,14 +80,14 @@ const GetImage = ({
                 textTransform: "uppercase",
                 wordSpacing: "5px"
               }}
-              className="h3"
+              className="h3 md-grid md-cell md-cell--12 md-cell--6-tablet md-cell--3-phone"
             >
               {t("main1")}
             </span>
             <div className="h4 md-grid">
-              {t("main2")}
+              <span className="strictly-desktop">{t("main2")}</span>
               <Button
-                className="bgsecondary md-cell md-cell--5 md-cell--5-tablet md-cell--2-phone"
+                className="bgsecondary md-cell md-cell--5 md-cell--4-tablet md-cell--4-phone btn-left"
                 icontoend
                 icon="thumbs-up black"
                 type="awesome"
