@@ -14,13 +14,13 @@ class EmulateItem extends Component {
       fontFamily: "Roboto, Helvetica, Arial, sans-serif",
       lineHeight: "1.5em"
     };
-    const { icon, to } = this.props;
+    const { icon, to, children, className } = this.props;
     return (
       <li style={liClass}>
         <Button
           to={to}
           node={Link}
-          className={cx(this.props.className, "link btn-flat")}
+          className={cx(className, "link btn-flat")}
           type="mat"
           iconStyle={{
             color: "rgba(0, 0, 0, 0.54)",
@@ -29,7 +29,7 @@ class EmulateItem extends Component {
           }}
           icon={icon}
         >
-          <span style={subHeading}>{this.props.children}</span>
+          <span style={subHeading}>{children}</span>
         </Button>
       </li>
     );
@@ -88,15 +88,15 @@ class ListSideBar extends Component {
             </>
           )}
 
-        <EmulateItem icon="chat" to="/z/chats">
+        <EmulateItem icon="chat" to="/chats">
           Chat
         </EmulateItem>
-        <EmulateItem icon="group" to="/z/users">
+        <EmulateItem icon="group" to="/users">
           Users
         </EmulateItem>
 
         {!authToken && (
-          <EmulateItem icon="account_circle" to="/z/login">
+          <EmulateItem icon="account_circle" to="/login">
             Users
           </EmulateItem>
         )}
@@ -109,9 +109,9 @@ export default ListSideBar;
 
 /*
 
-            <EmulateItem icon="mode_edit" to="/z/drafts">
+            <EmulateItem icon="mode_edit" to="/drafts">
               Drafts
             </EmulateItem>
-            <EmulateItem icon="cloud_queue" to="/z/api">
+            <EmulateItem icon="cloud_queue" to="/api">
               API
             </EmulateItem>*/

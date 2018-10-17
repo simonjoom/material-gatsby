@@ -19,12 +19,11 @@ const GetImage = ({
   directory = "",
   ...other
 }) => {
-  const isContact = page === "/contact/";
-  console.log("CarouselQuery", CarouselQuery);
+  const isContact = page === "/contact/"; 
   const ismain = page === "/";
   const lng = t("lang");
-  const dir = directory !== "" ? "/" + directory : "";
-  let heightCarousel = height ? height : 100;
+  const dir = directory !== "" ? "/" + directory : ""; 
+  let heightCarousel = height ? height : "50%";
   const Maptofetch = [];
   dataList.forEach(el => {
     const FileNode = CarouselQuery.find(function(element) {
