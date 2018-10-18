@@ -124,7 +124,7 @@ const GetImage = ({
     );
   else {
     if (MapImg.length == 1) return MapImg[0];
-    else return <div></div>;
+    else return process.env.NODE_ENV === "development" ? "NOCOVER" : (<div></div>)
   }
 };
 const FrontCarousel = ({
