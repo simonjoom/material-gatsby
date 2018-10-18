@@ -246,13 +246,11 @@ resize = () => {
                         <>
                           <Header
                             location={location}
-                            me={Me}
-                            key="first"
+                            me={Me} 
                             startChat={global.tr("Index")("startChat")}
                           />
                           <FadeTransitionRouter
-                            location={location}
-                            key="second"
+                            location={location} 
                           >
                             <Page path="/users" page={<UsersPage />} />
                             <Page

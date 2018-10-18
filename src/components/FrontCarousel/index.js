@@ -1,5 +1,6 @@
 import React from "react";
 import Img, { calculImg } from "gatsby-image";
+import { Link, navigate } from "gatsby";
 import withTheme from "../../withContext";
 import ReactFB from "../ReactFB";
 import Button from "../../reactLIB/Button";
@@ -21,10 +22,10 @@ const GetImage = ({
   directory = "",
   ...other
 }) => {
-  const isContact = page === "/contact/"; 
+  const isContact = page === "/contact/";
   const ismain = page === "/";
   const lng = t("lang");
-  const dir = directory !== "" ? "/" + directory : ""; 
+  const dir = directory !== "" ? "/" + directory : "";
   let heightCarousel = height ? height : "50%";
   const Maptofetch = [];
   dataList.forEach(el => {
@@ -53,6 +54,7 @@ const GetImage = ({
         car.height > heightCarousel ? car.height : heightCarousel;
     });
   }
+  const linkPrimary = route.router["/instructor/"][lng];
   const MapImg = Maptofetch.map((el, ind) => (
     <Img
       className={coverclassname}
@@ -83,23 +85,18 @@ const GetImage = ({
             >
               {t("main1")}
             </span>
-            <div className="h4 md-grid">
+            <div className="h4">
               <span className="strictly-desktop">{t("main2")}</span>
               <Button
-                className="bgsecondary md-cell md-cell--5 md-cell--4-tablet md-cell--4-phone btn-left"
+                className="bgsecondary md-cell md-cell--5 md-cell--4-tablet md-cell--4-phone btn-left" 
                 icontoend
                 icon="thumbs-up black"
                 type="awesome"
-                style={{padding:'1em'}}
+                onClick={() => navigate(linkPrimary)}
               >
-                <a
-                  tabIndex="0"
-                  href={route.router["/instructor/"][lng]}
-                  className="h4 primary"
-                >
-                  {" "}
+                <Link to={linkPrimary} className="h4 primary">
                   Get Started{" "}
-                </a>
+                </Link>
               </Button>
             </div>
           </div>

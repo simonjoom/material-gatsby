@@ -7,7 +7,7 @@ import { AUTH_TOKEN } from "../../../constants/constants";
 class EmulateItem extends Component {
   render() {
     const liClass = {
-      marginTop: '1.5em'
+      marginTop: "1.5em"
     };
     const subHeading = {
       color: "rgba(0, 0, 0, 0.87)",
@@ -115,9 +115,14 @@ export default ListSideBar;
 
 /*
 
+
+        {this.props.role &&
+          this.props.role !== "CUSTOMER" && (
             <EmulateItem icon="mode_edit" to="/drafts">
               Drafts
             </EmulateItem>
+            )
+          }
             <EmulateItem icon="cloud_queue" to="/api">
               API
             </EmulateItem>*/
