@@ -3777,6 +3777,9 @@ button.btn-floating {
 body.keyboard-focused .dropdown-content li:focus {
   background-color: #dadada;
 }
+body.keyboard-focused{
+  overflow: hidden
+}
 
 .input-field.col .dropdown-content [type="checkbox"] + label {
   top: 1px;

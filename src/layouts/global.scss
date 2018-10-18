@@ -246,9 +246,6 @@ a:link {
     display: none;
   }
 }
-// .btn-left{
-//   @media screen and (max-width: 480px){
-//     display: flex;
-//     align-items:left;
-//   }
-// }
+.stop-scroll{
+  overflow:hidden
+}

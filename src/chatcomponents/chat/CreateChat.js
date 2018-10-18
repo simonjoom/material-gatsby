@@ -12,17 +12,17 @@ class CreateChat extends React.Component {
 
   render() {
     return (
-      <div style={{ backgroundColor: "#F9FAFD", height: '80px' }} className="right"> 
+      <div style={{ backgroundColor: "#F9FAFD", height: '80px' }} className=""> 
           <form onSubmit={this.handleChat}>
-            <div className="md-grid">
+            <div className="md-grid md-cell md-cell--12 md-cell--middle">
               <Input 
                 id="message"
                 label="message"
                 autoComplete="off"
                 onChange={e => this.setState({ message: e.target.value })}
                 value={this.state.message}
-                style={{ width: "80%" }}
-                s={12}
+                // style={{ margin:"0px auto" }}
+                // s={12}
                 inline
                 buttonIcon={
                   <Button

@@ -130,6 +130,7 @@ class ChatLayoutJSX extends Component {
       onOpenStart: () => {
         that.clickonCollaps = true;
         that.instanceTap && that.instanceTap.close();
+        $("body").addClass("stop-scroll")
       },
       onOpenEnd: () => {
         var objDiv = $("#listChats");
@@ -171,6 +172,7 @@ class ChatLayoutJSX extends Component {
   }
   closeChat = () => {
     this.instCollaps[0].close();
+    $("body").removeClass("stop-scroll")
   };
   componentWillUnmount() {
     if (this.instCollaps) {
