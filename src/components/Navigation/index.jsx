@@ -36,28 +36,38 @@ class Navigation extends Component {
               className="right menubars"
               large
             >
-              <Button
+              <a href="#">
+                <Button
                 key="B1"
                 floating
+                tooltip="zuck us!"
                 type="mat"
-                icon="attach_file"
+                icon="facebook"
+                type="awesome"
                 className="bgblue"
-              />
-              <Button
-                key="B2"
-                floating
-                type="mat"
-                icon="format_quote"
-                className="bgwhite"
-              />
-              <Button
-                key="B3"
-                floating
-                tooltip="open"
-                icon="publish"
-                type="mat"
-                className="bgred"
-              />
+                />
+              </a>
+              <a href="#">
+                <Button
+                  key="B2"
+                  floating
+                  tooltip="chirp us!"
+                  type="awesome"
+                  icon="twitter"
+                  className="bgblue"
+                />
+              </a>
+              <a href="mailto:simon@skiscool.com">
+                <Button
+                  key="B3"
+                  floating
+                  icon="envelope"
+                  type="awesome"
+                  className="bgblue"
+                  tooltip="mail us!"
+                />
+              </a>
+              
             </Button>
           }
         >
