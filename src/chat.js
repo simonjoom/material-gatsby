@@ -238,6 +238,7 @@ resize = () => {
                 <SideBar />
                 <div
                   className={`md-cell md-cell--${size} md-cell--${sizet}-tablet md-cell--${sizem}-phone`}
+                  style={{overflow:'scroll'}}
                 >
                   {Me.loading && <Loading />}
                   <Location>
@@ -250,7 +251,7 @@ resize = () => {
                             startChat={global.tr("Index")("startChat")}
                           />
                           <FadeTransitionRouter
-                            location={location} 
+                            location={location}
                           >
                             <Page path="/users" page={<UsersPage />} />
                             <Page

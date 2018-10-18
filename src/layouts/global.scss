@@ -218,6 +218,7 @@ li {
 } 
 
 #myChat {
+  overflow:scroll;
   max-height: 80vh;
   min-width: 60vw;
   position: fixed;

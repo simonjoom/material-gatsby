@@ -6,7 +6,7 @@ import BackButton from "./BackButton";
 
 const Header = ({ location, me, startChat }) => {
   return (
-    <div className="flexGrow">
+    <div className="flexGrow" style={{paddingLeft:'1.5em'}}>
       <header className="headerchat md-grid md-grid--no-spacing">
         <div className="md-cell md-cell--2-tablet md-cell-4">
           <BackButton location={location} />
