@@ -227,7 +227,7 @@ resize = () => {
               <Button
                 onClick={() => this.closeChat()}
                 icon="close"
-                style={{ borderRadius: "10%" }}
+                style={{ borderRadius: "10%", width:30, height: 30 }}
                 className="right right bar"
                 floating
                 type="material"
@@ -244,13 +244,11 @@ resize = () => {
                         <>
                           <Header
                             location={location}
-                            me={Me}
-                            key="first"
+                            me={Me} 
                             startChat={global.tr("Index")("startChat")}
                           />
                           <FadeTransitionRouter
-                            location={location}
-                            key="second"
+                            location={location} 
                           >
                             <Page path="/users" page={<UsersPage />} />
                             <Page

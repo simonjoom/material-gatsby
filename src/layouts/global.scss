@@ -180,6 +180,12 @@ h3,
 li {
   margin:0;
 }
+.strictly-desktop{
+  @media screen and (max-width: 480px){
+    display: none;
+  }
+}
+
 .listChats .card-content{
   padding:0;
 }
@@ -207,13 +213,20 @@ li {
 } 
 
 #myChat {
-  max-height: 80vh!important;
+  max-height: 80vh;
   min-width: 60vw;
   position: fixed;
   z-index: 1111;
   right: 0;
   bottom: 0;
 }
+
+#myChat{
+  @media screen and (max-width: 480px){
+    max-height: 100vh!important;
+  }
+}
+
 .bgg {
   background-color: #f9f9f9;
 }
