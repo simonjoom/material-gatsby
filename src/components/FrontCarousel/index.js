@@ -124,7 +124,7 @@ const GetImage = ({
     );
   else {
     if (MapImg.length == 1) return MapImg[0];
-    else return <div>NOCOVER</div>;
+    else return <div></div>;
   }
 };
 const FrontCarousel = ({
