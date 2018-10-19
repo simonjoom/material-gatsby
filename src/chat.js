@@ -20,7 +20,6 @@ import Loading from "./chatcomponents/error/Loading";
 import EmailValidated from "./chatcomponents/nav/EmailValidated";
 import Header from "./chatcomponents/nav/layout/Header";
 import NotFound from "./chatcomponents/error/NotFound";
-import SideBar from "./chatcomponents/nav/layout/SideBar";
 import { SideBarContext } from "./chatcomponents/SideBarContext";
 
 import UsersPage from "./chatcomponents/user/UsersPage";
@@ -155,9 +154,9 @@ const Page = ({ page, Teader, startChat }) => {
 };
 class ChatLayoutJSX extends Component {
   state = {
-    isSideBarOpen: !isMobile(),
     variant: "permanent",
-    isMobile: false
+    isMobile: isMobile(),
+    chatisrunnable: false
   };
   componentDidMount() {
     console.log("mountLayout");
@@ -178,6 +177,9 @@ class ChatLayoutJSX extends Component {
           var t = objDiv[0].scrollHeight;
           objDiv[0].scrollTop = t;
         }
+        that.setState({
+          chatisrunnable: true
+        });
       }
     });
 
@@ -212,6 +214,9 @@ class ChatLayoutJSX extends Component {
   closeChat = () => {
     $("body").removeClass("stop-scroll");
     this.instCollaps[0].close();
+    this.setState({
+      chatisrunnable: false
+    });
   };
   componentWillUnmount() {
     if (this.instCollaps) {
@@ -221,11 +226,7 @@ class ChatLayoutJSX extends Component {
       this.instance.destroy();
     }
   }
-  toggleDrawer = () => {
-    this.setState({
-      isSideBarOpen: !this.state.isSideBarOpen
-    });
-  };
+
   /*
 */
   /*
@@ -251,10 +252,7 @@ resize = () => {
     const { me: Mep, validation } = this.props;
     const authToken = localStorage.getItem(AUTH_TOKEN);
     const startChat = global.tr("Index")("startChat");
-    const size = this.state.isSideBarOpen ? "11" : "12";
-    const sizet = this.state.isSideBarOpen ? "7" : "8";
-    const sizem = this.state.isSideBarOpen ? "3" : "4";
-    console.log("Mep",Mep.me)
+    console.log("Mep", Mep.me);
     let Me = Mep.me;
     return (
       <ul className="collapsible popout">
@@ -266,7 +264,6 @@ resize = () => {
                 Teader: () => (
                   <SideBarContext.Provider
                     value={{
-                      toggleDrawer: this.toggleDrawer,
                       state: this.state,
                       Me: !Mep.loading && !Mep.error && Me
                     }}
@@ -285,17 +282,8 @@ resize = () => {
                       className="md-grid md-grid--no-spacing"
                       style={{ height: "100%" }}
                     >
-                      {!Mep.loading &&
-                        !Mep.error &&
-                        Me && (
-                          <SideBar
-                            Me={Me}
-                            isSideBarOpen={this.state.isSideBarOpen}
-                            isMobile={this.state.isMobile}
-                          />
-                        )}
                       <div
-                        className={`md-grid md-grid--no-spacing md-grid--stacked md-cell md-cell--${size} md-cell--${sizet}-tablet md-cell--${sizem}-phone`}
+                        className={`md-grid md-grid--no-spacing md-grid--stacked md-cell md-cell--12`}
                       >
                         {Mep.loading && <Loading />}
 
@@ -311,7 +299,13 @@ resize = () => {
                             page={<UserPage path="/user/:id" />}
                             {...other}
                           />
-                          <Page path="/chats" page={<ChatsPage />} {...other} />
+                          <Page
+                            path="/chats"
+                            page={
+                              <ChatsPage chatisrunnable={this.state.chatisrunnable} />
+                            }
+                            {...other}
+                          />
                           <Page path="/login" page={<Login />} {...other} />
                           <Page path="/signup" page={<Signup />} {...other} />
                           <Page
@@ -342,7 +336,10 @@ resize = () => {
                               !authToken ? (
                                 <Login path="/" />
                               ) : (
-                                <ChatsPage path="/" />
+                                <ChatsPage
+                                  path="/"
+                                  chatisrunnable={this.state.chatisrunnable}
+                                />
                               )
                             }
                           />
@@ -377,7 +374,7 @@ resize = () => {
                         {global.tr("Index")("chatwith")}
                       </h6>
                     </div>
-                  </div> 
+                  </div>
                 </>
               );
             }}

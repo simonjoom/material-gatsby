@@ -9,13 +9,28 @@ class ChatsPage extends Component {
     orderBy: "createdAt_ASC",
     addcss: ""
   };
-  componentDidMount(props) {
-    this.setState({ addcss: " itc-cvs itc-messenger-body-view-enter-done" });
+  componentDidMount() {
+    if (this.props.chatisrunnable) {
+      setTimeout(() => {
+        this.setState({
+          addcss: " itc-cvs itc-messenger-body-view-enter-done"
+        });
+      }, 50);
+    }
   }
+  componentWillReceiveProps = nextprops => {
+    if (nextprops.chatisrunnable) {
+      setTimeout(() => {
+        this.setState({
+          addcss: " itc-cvs itc-messenger-body-view-enter-done"
+        });
+      }, 250);
+    }
+  };
 
   render() {
     const authToken = localStorage.getItem(AUTH_TOKEN);
-    console.log("ChatsPage");
+    console.log("ChatsPage", this.state.addcss);
     if (!authToken) {
       return <NotAuth />;
     }

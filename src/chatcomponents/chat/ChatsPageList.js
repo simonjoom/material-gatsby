@@ -12,18 +12,14 @@ class ChatsPageList extends React.Component {
   constructor(props) {
     super(props);
     this.arrSSR = [];
-  }
-
-  componentDidMount() {
-    var that = this;
+    var that=this;
     this.props.chatsQueryConnection.subscribeToMore({
       document: CHAT_SUBSCRIPTION,
       updateQuery: (prev, { subscriptionData }) => {
         if (!subscriptionData) {
           return prev;
         }
-        const edge = subscriptionData.data.chat;
-        console.log("edge", edge);
+        const edge = subscriptionData.data.chat; 
         that.arrSSR.push(<Chat key={edge.node.id} chat={edge.node} />);
         setTimeout(() => {
           that.setState({ arr: [...this.state.arr, this.arrSSR.shift()] });
@@ -45,19 +41,32 @@ class ChatsPageList extends React.Component {
     });
   }
 
-  componentWillReceiveProps = nextprops => {
-    if (nextprops.chatsQueryConnection.chatsConnection && !this.running) {
-      const { edges } = nextprops.chatsQueryConnection.chatsConnection;
-      console.log("this.arrSSR", this.arrSSR);
+  componentDidMount() {
+  //  console.log("ChatsPageListmount")
+    this.running = false;
+    if (this.props.chatsQueryConnection.chatsConnection && !this.running) {
+      const { edges } = this.props.chatsQueryConnection.chatsConnection; 
       edges.forEach((chat, index) => {
         this.arrSSR.push(<Chat key={chat.node.id} chat={chat.node} />);
       });
-      !(process.env.GATSBY_BUILD_STAGE == "build-html") && this.runAnim();
+      this.runAnim();
+    }
+  }
+
+  componentWillReceiveProps = nextprops => {
+ //   console.log("ChatsPageListReceiveProps",nextprops,!this.running)
+    if (nextprops.chatsQueryConnection.chatsConnection && !this.running) {
+      const { edges } = nextprops.chatsQueryConnection.chatsConnection;
+   //   console.log("this.arrSSR", this.arrSSR);
+      edges.forEach((chat, index) => {
+        this.arrSSR.push(<Chat key={chat.node.id} chat={chat.node} />);
+      });
+      this.runAnim();
     }
   };
 
   componentWillUnmount() {
-    this.running = false;
+    this.running = false; 
   }
 
   componentDidUpdate() {
@@ -67,7 +76,7 @@ class ChatsPageList extends React.Component {
           this.running = true;
           return { arr: [...this.state.arr, this.arrSSR.shift()] };
         });
-      }, 500);
+      }, 100);
       this.running = false;
     }
     var objDiv = $("#listChats");
@@ -81,11 +90,11 @@ class ChatsPageList extends React.Component {
     this.running = true;
     setTimeout(() => {
       this.setState({ arr: [...this.state.arr, this.arrSSR.shift()] });
-    }, 1000);
+    }, 600);
   };
 
   render() {
-    console.log("ChatsPageList", this.props.chatsQueryConnection);
+ //   console.log("ChatsPageList", this.props.chatsQueryConnection);
     if (this.props.chatsQueryConnection.error) {
       return <NotAuth />;
     }
@@ -98,9 +107,7 @@ class ChatsPageList extends React.Component {
 
     return (
       <div>
-        {!(process.env.GATSBY_BUILD_STAGE == "build-html")
-          ? this.state.arr
-          : this.arrSSR}
+        { this.state.arr}
       </div>
     );
   }
