@@ -293,12 +293,6 @@ margin: 0;  max-height: none;
   fill: rgba(0, 0, 0, 0.87);
 }
 
-#listChats .card.horizontal .btn-floating {
-  width: 22px;
-  height: 24px;
-  min-height: 20px;
-}
-
 #listChats .card.horizontal .card-image img {
   width: 100%;
 }
@@ -607,7 +601,7 @@ section {
 
 #itc-ctr .itc-comment-ctr-admin .itc-comment:not(.itc-comment-with-body) {
   color: #000;
-  background-color: #f5f5f5;
+  background-color: #fffdfd;
 }
 #itc-ctr .itc-chat-card-borderless-single .itc-block,
 #itc-ctr .itc-chat-card .itc-block,
@@ -625,7 +619,7 @@ section {
 }
 
 #itc-ctr .itc-comment-ctr-user .itc-comment:not(.itc-comment-with-body) {
-  background-color: #003cff;
+  background-color: #4865c6;
   float: right;
 }
 #itc-ctr .itc-comment-ctr-user .itc-comment {

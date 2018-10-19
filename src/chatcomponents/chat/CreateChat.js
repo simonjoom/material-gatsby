@@ -17,7 +17,7 @@ class CreateChat extends React.Component {
           <form onSubmit={this.handleChat} className="formcompose"> 
               <Input
                 id="message"
-                label="message"
+                placeholder="Message"
                 autoComplete="off"
                 onChange={e => this.setState({ message: e.target.value })}
                 value={this.state.message} 

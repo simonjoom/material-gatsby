@@ -179,6 +179,9 @@ class ChatLayoutJSX extends Component {
         $("body").addClass("stop-scroll");
         that.instanceTap && that.instanceTap.close();
       },
+      onCloseStart: () => {
+        $("body").removeClass("stop-scroll");
+      },
       onOpenEnd: () => {
         var objDiv = $("#listChats");
         if (objDiv[0]) {
