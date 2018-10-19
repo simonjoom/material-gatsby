@@ -20,26 +20,29 @@ class Chat extends Component {
     navigate("/user/" + author.id);
   }
   render() {
-    // for testing
-    const isadmin = Math.random() > 0.5;
+    // for testing 
+    const { author } = this.props.chat;
+    const isadmin = author.role == "ADMIN";
+
     const extracls = {
       "itc-comment-ctr": true,
       "itc-comment-ctr-admin": isadmin,
       "itc-comment-ctr-user": !isadmin,
-      "itc-comment-ctr-admin-avatar": !!this.props.chat.author
-    };
-    console.log("createdAt", this.props.chat.createdAt);
+      "itc-comment-ctr-admin-avatar": !!author
+    }; 
     return (
       <Card
         horizontal
         extracls={extracls}
-        className={`itc-cvs-part itc-cvs-part-user itc-cvs-part-enter ${this.state.addcss}`}
+        className={`itc-cvs-part itc-cvs-part-user itc-cvs-part-enter ${
+          this.state.addcss
+        }`}
         contentImage={
-          this.props.chat.author && (
+          author && (
             <Button
               floating
-              tooltip={this.props.chat.author.name}
-              onClick={() => this.openProfile(this.props.chat.author)}
+              tooltip={author.name}
+              onClick={() => this.openProfile(author)}
             >
               <Logo width={20} height={20} />
             </Button>

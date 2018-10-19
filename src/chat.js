@@ -154,9 +154,17 @@ const Page = ({ page, Teader, startChat }) => {
 };
 class ChatLayoutJSX extends Component {
   state = {
+    newmessage: 0,
     variant: "permanent",
     isMobile: isMobile(),
     chatisrunnable: false
+  };
+
+  addnewmessage = () => {
+    const t = this.state.newmessage;
+    this.setState({
+      newmessage: t + 1
+    });
   };
   componentDidMount() {
     console.log("mountLayout");
@@ -177,6 +185,15 @@ class ChatLayoutJSX extends Component {
           var t = objDiv[0].scrollHeight;
           objDiv[0].scrollTop = t;
         }
+        $("#myChat .collapsible-header").css({
+          width: "150px",
+          height: "80px",
+          float: "right",
+          "padding-left": "20px",
+          "border-radius": "50%"
+        });
+
+        $("#chat").addClass("runned");
         that.setState({
           chatisrunnable: true
         });
@@ -252,7 +269,7 @@ resize = () => {
     const { me: Mep, validation } = this.props;
     const authToken = localStorage.getItem(AUTH_TOKEN);
     const startChat = global.tr("Index")("startChat");
-    console.log("Mep", Mep.me);
+    console.log("Mep", Mep.me, this.state);
     let Me = Mep.me;
     return (
       <ul className="collapsible popout">
@@ -302,7 +319,16 @@ resize = () => {
                           <Page
                             path="/chats"
                             page={
-                              <ChatsPage chatisrunnable={this.state.chatisrunnable} />
+                              <ChatsPage
+                                Me={Me}
+                                addnewmessage={this.addnewmessage}
+                                chatisrunnable={
+                                  !Mep.loading &&
+                                  !Mep.error &&
+                                  Me &&
+                                  this.state.chatisrunnable
+                                }
+                              />
                             }
                             {...other}
                           />
@@ -338,7 +364,14 @@ resize = () => {
                               ) : (
                                 <ChatsPage
                                   path="/"
-                                  chatisrunnable={this.state.chatisrunnable}
+                                  addnewmessage={this.addnewmessage}
+                                  Me={Me}
+                                  chatisrunnable={
+                                    !Mep.loading &&
+                                    !Mep.error &&
+                                    Me &&
+                                    this.state.chatisrunnable
+                                  }
                                 />
                               )
                             }
@@ -359,11 +392,13 @@ resize = () => {
                     className="collapsible-header waves-effect waves-light btn"
                     style={{ display: "flex", alignItems: "center" }}
                   >
-                    <Logo id="chat" width={40} height={40} />
+                    <Button id="chat" flat tooltip="Chat with us">
+                      <Logo width={40} height={40} />
+                    </Button>
                     <p style={{ marginLeft: 20 }}>
                       {global.tr("Index")("Chathello")}?
                     </p>
-                    <Badge newIcon>4</Badge>
+                    <Badge newIcon children={this.state.newmessage} />
                   </div>
                   <div className="tap-target bgprimary" data-target="chat">
                     <div className="tap-target-content white">

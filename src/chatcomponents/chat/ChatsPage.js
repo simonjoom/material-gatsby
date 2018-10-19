@@ -30,7 +30,8 @@ class ChatsPage extends Component {
 
   render() {
     const authToken = localStorage.getItem(AUTH_TOKEN);
-    console.log("ChatsPage", this.state.addcss);
+    const { addnewmessage } = this.props;
+    console.log("ChatsPage", this.addnewmessage);
     if (!authToken) {
       return <NotAuth />;
     }
@@ -44,7 +45,11 @@ class ChatsPage extends Component {
                 style={{ margin: 0, padding: 0, marginTop: 5 }}
               >
                 {this.state.addcss !== "" && (
-                  <ChatsPageList orderBy={this.state.orderBy} />
+                  <ChatsPageList
+                    orderBy={this.state.orderBy}
+                    addnewmessage={addnewmessage}
+                    Me={this.props.Me}
+                  />
                 )}
               </div>
             </div>

@@ -12,22 +12,26 @@ class ChatsPageList extends React.Component {
   constructor(props) {
     super(props);
     this.arrSSR = [];
-    var that=this;
-    this.props.chatsQueryConnection.subscribeToMore({
+    var that = this;
+    props.chatsQueryConnection.subscribeToMore({
       document: CHAT_SUBSCRIPTION,
       updateQuery: (prev, { subscriptionData }) => {
         if (!subscriptionData) {
           return prev;
         }
-        const edge = subscriptionData.data.chat; 
-        that.arrSSR.push(<Chat key={edge.node.id} chat={edge.node} />);
-        setTimeout(() => {
-          that.setState({ arr: [...this.state.arr, this.arrSSR.shift()] });
-        }, 1000);
-
+        const edge = subscriptionData.data.chat;
         if (
           !prev.chatsConnection.edges.find(ed => ed.node.id === edge.node.id)
-        ) {
+        ) { 
+          if (edge.node.author.id !== this.props.Me.id) { 
+            props.addnewmessage(); 
+          }else{
+          that.arrSSR.push(<Chat key={edge.node.id} chat={edge.node} />);
+          setTimeout(() => {
+            this.running = true;
+            that.setState({ arr: [...this.state.arr, this.arrSSR.shift()] });
+          }, 1000);
+        }
           return Object.assign({}, prev, {
             chatsConnection: {
               __typename: "ChatConnection",
@@ -41,32 +45,32 @@ class ChatsPageList extends React.Component {
     });
   }
 
-  componentDidMount() {
-  //  console.log("ChatsPageListmount")
-    this.running = false;
-    if (this.props.chatsQueryConnection.chatsConnection && !this.running) {
-      const { edges } = this.props.chatsQueryConnection.chatsConnection; 
+  runAnim = chatsConnection => {
+    if (!this.running && chatsConnection) {
+      const { edges } = chatsConnection;
       edges.forEach((chat, index) => {
         this.arrSSR.push(<Chat key={chat.node.id} chat={chat.node} />);
       });
-      this.runAnim();
-    }
-  }
 
-  componentWillReceiveProps = nextprops => {
- //   console.log("ChatsPageListReceiveProps",nextprops,!this.running)
-    if (nextprops.chatsQueryConnection.chatsConnection && !this.running) {
-      const { edges } = nextprops.chatsQueryConnection.chatsConnection;
-   //   console.log("this.arrSSR", this.arrSSR);
-      edges.forEach((chat, index) => {
-        this.arrSSR.push(<Chat key={chat.node.id} chat={chat.node} />);
-      });
-      this.runAnim();
+      this.running = true;
+      setTimeout(() => {
+        this.setState({ arr: [...this.state.arr, this.arrSSR.shift()] });
+      }, 600);
     }
   };
 
+  componentDidMount() {
+    //  console.log("ChatsPageListmount")
+    this.running = false;
+    this.runAnim(this.props.chatsQueryConnection.chatsConnection);
+  }
+
+  componentWillReceiveProps = nextprops => {
+    this.runAnim(nextprops.chatsQueryConnection.chatsConnection);
+  };
+
   componentWillUnmount() {
-    this.running = false; 
+    this.running = false;
   }
 
   componentDidUpdate() {
@@ -86,15 +90,8 @@ class ChatsPageList extends React.Component {
     }
   }
 
-  runAnim = () => {
-    this.running = true;
-    setTimeout(() => {
-      this.setState({ arr: [...this.state.arr, this.arrSSR.shift()] });
-    }, 600);
-  };
-
   render() {
- //   console.log("ChatsPageList", this.props.chatsQueryConnection);
+    //   console.log("ChatsPageList", this.props.chatsQueryConnection);
     if (this.props.chatsQueryConnection.error) {
       return <NotAuth />;
     }
@@ -105,11 +102,7 @@ class ChatsPageList extends React.Component {
 
     // const { edges } = this.props.chatsQueryConnection.chatsConnection;
 
-    return (
-      <div>
-        { this.state.arr}
-      </div>
-    );
+    return <div>{this.state.arr}</div>;
   }
 }
 
@@ -136,6 +129,7 @@ const CHATS_QUERY = gql`
             id
             name
             nameFile
+            role
           }
         }
       }
@@ -154,6 +148,7 @@ const CHAT_SUBSCRIPTION = gql`
           id
           name
           nameFile
+          role
         }
       }
     }
