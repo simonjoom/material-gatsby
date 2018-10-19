@@ -6,24 +6,86 @@ import NotAuth from "../error/NotAuth";
 import Loading from "../error/Loading";
 
 class ChatsPageList extends React.Component {
+  state = {
+    arr: []
+  };
+  constructor(props) {
+    super(props);
+    this.arrSSR = [];
+  }
+
   componentDidMount() {
+    var that = this;
     this.props.chatsQueryConnection.subscribeToMore({
       document: CHAT_SUBSCRIPTION,
       updateQuery: (prev, { subscriptionData }) => {
         if (!subscriptionData) {
           return prev;
         }
-        return Object.assign({}, prev, {
-          chatsConnection: {
-            __typename: "ChatConnection",
-            edges: [...prev.chatsConnection.edges, subscriptionData.data.chat]
-          }
-        });
+        const edge = subscriptionData.data.chat;
+        console.log("edge", edge);
+        that.arrSSR.push(<Chat key={edge.node.id} chat={edge.node} />);
+        setTimeout(() => {
+          that.setState({ arr: [...this.state.arr, this.arrSSR.shift()] });
+        }, 1000);
+
+        if (
+          !prev.chatsConnection.edges.find(ed => ed.node.id === edge.node.id)
+        ) {
+          return Object.assign({}, prev, {
+            chatsConnection: {
+              __typename: "ChatConnection",
+              edges: [...prev.chatsConnection.edges, edge]
+            }
+          });
+        } else {
+          return prev;
+        }
       }
     });
   }
+
+  componentWillReceiveProps = nextprops => {
+    if (nextprops.chatsQueryConnection.chatsConnection && !this.running) {
+      const { edges } = nextprops.chatsQueryConnection.chatsConnection;
+      console.log("this.arrSSR", this.arrSSR);
+      edges.forEach((chat, index) => {
+        this.arrSSR.push(<Chat key={chat.node.id} chat={chat.node} />);
+      });
+      !(process.env.GATSBY_BUILD_STAGE == "build-html") && this.runAnim();
+    }
+  };
+
+  componentWillUnmount() {
+    this.running = false;
+  }
+
+  componentDidUpdate() {
+    if (this.running && this.arrSSR.length > 0) {
+      setTimeout(() => {
+        this.setState(() => {
+          this.running = true;
+          return { arr: [...this.state.arr, this.arrSSR.shift()] };
+        });
+      }, 500);
+      this.running = false;
+    }
+    var objDiv = $("#listChats");
+    if (objDiv[0]) {
+      var t = objDiv[0].scrollHeight;
+      objDiv[0].scrollTop = t;
+    }
+  }
+
+  runAnim = () => {
+    this.running = true;
+    setTimeout(() => {
+      this.setState({ arr: [...this.state.arr, this.arrSSR.shift()] });
+    }, 1000);
+  };
+
   render() {
-    console.log("ChatsPageList",this.props.chatsQueryConnection)
+    console.log("ChatsPageList", this.props.chatsQueryConnection);
     if (this.props.chatsQueryConnection.error) {
       return <NotAuth />;
     }
@@ -32,12 +94,13 @@ class ChatsPageList extends React.Component {
       return <Loading />;
     }
 
-    const { edges } = this.props.chatsQueryConnection.chatsConnection;
+    // const { edges } = this.props.chatsQueryConnection.chatsConnection;
 
     return (
       <div>
-        {edges &&
-          edges.map(chat => <Chat key={chat.node.id} chat={chat.node} />)}
+        {!(process.env.GATSBY_BUILD_STAGE == "build-html")
+          ? this.state.arr
+          : this.arrSSR}
       </div>
     );
   }
@@ -101,7 +164,6 @@ export default compose(
     })
   })
 )(ChatsPageList);
-
 
 /*
       <div

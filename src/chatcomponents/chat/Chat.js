@@ -9,6 +9,13 @@ var parse = require("date-fns/parse");
 var format = require("date-fns/format");
 
 class Chat extends Component {
+  state = {
+    orderBy: "createdAt_ASC",
+    addcss: ""
+  };
+  componentDidMount(props) {
+    this.setState({ addcss: " itc-cvs-part-enter-active" });
+  }
   openProfile(author) {
     navigate("/user/" + author.id);
   }
@@ -26,7 +33,7 @@ class Chat extends Component {
       <Card
         horizontal
         extracls={extracls}
-        className="itc-cvs-part itc-cvs-part-user"
+        className={`itc-cvs-part itc-cvs-part-user itc-cvs-part-enter ${this.state.addcss}`}
         contentImage={
           this.props.chat.author && (
             <Button
