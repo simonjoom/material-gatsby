@@ -156,7 +156,7 @@ class ChatLayoutJSX extends Component {
   state = {
     variant: "permanent",
     isMobile: isMobile(),
-    chatisrunnable: true
+    chatisrunnable: true,
   };
   componentDidMount() {
     console.log("mountLayout");
@@ -168,7 +168,8 @@ class ChatLayoutJSX extends Component {
     this.instCollaps = M.Collapsible.init(elems, {
       onOpenStart: () => {
         that.clickonCollaps = true;
-        $("body").addClass("stop-scroll");
+        // $("body").addClass("stop-scroll");
+        // this.setState({scrollBody:false})
         that.instanceTap && that.instanceTap.close();
       },
       onOpenEnd: () => {
@@ -213,9 +214,11 @@ class ChatLayoutJSX extends Component {
   }
   closeChat = () => {
     $("body").removeClass("stop-scroll");
+
     this.instCollaps[0].close();
     this.setState({
-      chatisrunnable: false
+      chatisrunnable: false,
+      // scrollBody:true
     });
   };
   componentWillUnmount() {
@@ -360,6 +363,10 @@ resize = () => {
                   <div
                     className="collapsible-header waves-effect waves-light btn"
                     style={{ display: "flex", alignItems: "center" }}
+                    // onClick={
+                    //   this.state.s4crollBody 
+                    //   ? this.setState({scrollBody:false}, ()=>$("body").addClass('stop-scroll'))
+                    //   : this.setState({scrollBody:true}, ()=>$("body").removeClass('stop-scroll'))}
                   >
                     <Logo id="chat" width={40} height={40} />
                     <p style={{ marginLeft: 20 }}>
