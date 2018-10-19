@@ -1,22 +1,32 @@
-import React, { Component } from "react"; 
+import React, { Component } from "react";
 import Card from "../../reactLIB/Card";
 import Button from "../../reactLIB/Button";
 import Logo from "../../components/logo";
 import { navigate } from "gatsby";
+import "../../layouts/chat.scss";
 
 var parse = require("date-fns/parse");
 var format = require("date-fns/format");
 
 class Chat extends Component {
   openProfile(author) {
-    navigate("/z/user/" + author.id);
+    navigate("/user/" + author.id);
   }
   render() {
+    // for testing
+    const isadmin = Math.random() > 0.5;
+    const extracls = {
+      "itc-comment-container": true,
+      "itc-comment-container-admin": isadmin,
+      "itc-comment-container-user": !isadmin,
+      "itc-comment-container-admin-avatar": !!this.props.chat.author
+    };
     console.log("createdAt", this.props.chat.createdAt);
     return (
       <Card
         horizontal
-        style={cardStyle}
+        extracls={extracls}
+        className="itc-cvs-part itc-cvs-part-user"
         contentImage={
           this.props.chat.author && (
             <Button
@@ -28,28 +38,26 @@ class Chat extends Component {
             </Button>
           )
         }
-      //  title={<b>{this.props.chat.message}</b>}
-        children={format(parse(this.props.chat.createdAt), "MM/DD/YYYY hh:mma")}
+        //  title={<b>{this.props.chat.message}</b>}
       >
-        <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-        <p style={{fontSize: '1.2em', textAlign: 'left'}}>{this.props.chat.message}</p>
-        <p style={{fontSize:'0.8em', color: 'grey'}}>{format(parse(this.props.chat.createdAt), "MM/DD/YYYY hh:mma")}</p>
-      </div>
-      
+        <p>{this.props.chat.message}</p>
+        <p style={{ fontSize: "0.8em", color: "grey" }}>
+          {format(parse(this.props.chat.createdAt), "MM/DD/YYYY hh:mma")}
+        </p>
       </Card>
     );
   }
 }
-const cardStyle = { 
+export default Chat;
+/*
+const cardStyle = {
   margin: 30,
-  backgroundColor: '#F9FAFD',
+  backgroundColor: "#F9FAFD",
   borderRadius: "10px",
-  height: 'auto',
-  minHeight: '70px'
-
+  height: "auto",
+  minHeight: "70px"
 };
 
-export default Chat;
 
-/*
+
 <ImageTemplate format={'avatar'} nameFile={this.props.chat.author.nameFile}/> */

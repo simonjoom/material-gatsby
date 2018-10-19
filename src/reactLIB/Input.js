@@ -116,15 +116,24 @@ class Input extends Component {
     } = this.props;
     let sizes = { s, m, l };
     this._id = this._id || this.props.id || `input${idgen()}`;
+    const sizeinline =
+      'md-cell md-cell--' +
+      (size - 1) +
+      ' md-cell--' +
+      (size - 8 - 1) +
+      '-phone md-cell--' +
+      (size - 4 - 1) +
+      '-tablet';
+
     let classes = {
-      //  col: true,
-      ['md-cell md-cell--' + size]: true,
+      [inline ? sizeinline : 'md-cell md-cell--' + size]: true,
       inline: type !== 'checkbox' && type !== 'radio' && inline,
       'input-field': type !== 'checkbox' && type !== 'radio' && type !== 'file',
       'file-field': type === 'file'
     };
-
-    if (inline && style) style.width = '70%';
+    let classes2 = {
+      ['md-cell md-cell--1']: true
+    };
 
     constants.SIZES.forEach(size => {
       classes[size + sizes[size]] = sizes[size];
@@ -309,26 +318,48 @@ class Input extends Component {
           </div>
         );
       }*/
-
-    return (
-      <div className={cx(classes)}>
-        {this.renderIcon()}
-        <C
-          {...other}
-          style={style}
-          className={cx(className, inputClasses)}
-          defaultValue={defaultVal}
-          id={this._id}
-          ref={setRef}
-          onChange={this._onChange}
-          placeholder={placeholder}
-          type={inputType}
-          required={this.props.required}
-        />
-        {inline && buttonIcon}
-        {htmlLabel}
-      </div>
-    );
+    if (inline)
+      return (
+        <div className="md-grid">
+          <div className={cx(classes)}>
+            {this.renderIcon()}
+            <C
+              {...other}
+              style={style}
+              className={cx(className, inputClasses)}
+              defaultValue={defaultVal}
+              id={this._id}
+              ref={setRef}
+              onChange={this._onChange}
+              placeholder={placeholder}
+              type={inputType}
+              required={this.props.required}
+            />
+            {htmlLabel}
+          </div>
+          <div className={cx(classes2)}>{buttonIcon}</div>
+        </div>
+      );
+    else
+      return (
+        <div className={cx(classes)}>
+          {this.renderIcon()}
+          <C
+            {...other}
+            style={style}
+            className={cx(className, inputClasses)}
+            defaultValue={defaultVal}
+            id={this._id}
+            ref={setRef}
+            onChange={this._onChange}
+            placeholder={placeholder}
+            type={inputType}
+            required={this.props.required}
+          />
+          {buttonIcon}
+          {htmlLabel}
+        </div>
+      );
     // }
   }
   /*

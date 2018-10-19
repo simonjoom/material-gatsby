@@ -5,7 +5,9 @@ div .mobile-fix {
     padding-left: 0;
     padding-right: 0;
   }
-}
+} 
+
+
 .btn-flags {
   background-color: transparent;
   padding-top:0.2em;
@@ -14,19 +16,9 @@ div .mobile-fix {
 .nolineheight {
   line-height: 0;
 }
-.expertise__container .md-grid .md-grid{
+.expertise__container .md-grid .md-grid {
   word-break: break-word;
-}
-
-#listChats .card.horizontal .btn-floating {
-  width: 22px;
-  height: 24px;
-  min-height: 20px;
-}
-
-#listChats .card.horizontal .card-image img {
-  width: 100%;
-}
+} 
 .visuallyhidden {
   position: absolute;
   overflow: hidden;
@@ -43,21 +35,21 @@ div .mobile-fix {
 .menubars {
   background-color: transparent;
 }
-.fbpost{
-  margin:auto;
+.fbpost {
+  margin: auto;
 }
-.fb_iframe_widget span{
-  width:auto !important;
+.fb_iframe_widget span {
+  width: auto !important;
 }
-.fb_iframe_widget iframe{
-  width:auto !important;
+.fb_iframe_widget iframe {
+  width: auto !important;
 }
-.fixed-action-btn{
+.fixed-action-btn {
   position: absolute;
   top: 0;
   bottom: 0;
   right: 14px;
-  height: 50px; 
+  height: 50px;
 }
 i.fa-stack-4x,
 i.fa-stack-8x {
@@ -118,24 +110,22 @@ h3,
 .bgsecondary {
   background-color: $md-secondary-color;
 }
+/* 
 
-.headerchat {
-  text-align: center;
-  background-color: $md-primary-color;
-  margin: 0;
-}
-.page {
-  font-style: italic;
-  font-family: Times;
-}
+.sidechat {
+background-color: $md-primary-color;
+  
+} 
+/*  
 
-.page {
   /*
    color: white;
-   font-size: 100px;*/
-  text-align: center;
-  font-style: italic;
-  font-family: Times; 
+   font-size: 100px; 
+   */
+
+.page {
+  text-align: center; 
+
 }
 
 .fade-exit .page {
@@ -176,49 +166,44 @@ h3,
   opacity: 1;
   transition: opacity 450ms ease-in;
 }
-.fa.fa-phone-square.h1{
-  font-size: 3em  ;  
+.fa.fa-phone-square.h1 {
+  font-size: 3em;
 }
 li {
-  margin:0;
+  margin: 0;
 }
-.strictly-desktop{
-  @media screen and (max-width: 480px){
+.strictly-desktop {
+  @media screen and (max-width: 480px) {
     display: none;
   }
 }
 
-.listChats .card-content{
-  padding:0;
+.listChats .card-content {
+  padding: 0;
 }
-.paperOut,.px2 {
+.paperOut,
+.px2 {
   margin: 10px;
 }
-.collapsible-body{
-  overflow: hidden;
-  background-color: white;
-}
-.container .md-grid--stacked{
-  a:link{
-    color: wheat
-  }
-} 
-#myChat .active {
-  width:100%;
-  @media screen and (min-width: 1400px){
-    width:500px;
+.container .md-grid--stacked {
+  a:link {
+    color: wheat;
   }
 }
+
 #myChat .popout {
 }
+.stop-scroll {
+  overflow: hidden;
+}
 
-.collapsible li:not(.active) .collapsible-header{  
+.collapsible li:not(.active) .collapsible-header {
   max-width: 320px;
   float: right;
-} 
+}
 
 #myChat {
-  overflow:scroll;
+  overflow: scroll;
   max-height: 80vh;
   min-width: 60vw;
   position: fixed;
@@ -227,9 +212,9 @@ li {
   bottom: 0;
 }
 
-#myChat{
-  @media screen and (max-width: 480px){
-    max-height: 100vh!important;
+#myChat {
+  @media screen and (max-width: 480px) {
+    max-height: 100vh !important;
   }
 }
 
@@ -239,9 +224,9 @@ li {
 .white {
   color: white;
 }
-.black{
+.black {
   color: black;
-} 
+}
 
 .expertise__container {
   margin-top: 5%;
@@ -249,7 +234,6 @@ li {
 
 .contact__simon__main {
 }
-
 
 a:link {
   color: $md-primary-color;

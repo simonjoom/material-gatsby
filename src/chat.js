@@ -107,11 +107,51 @@ const USER_QUERY = gql`
 `;
 
 const isMobile = () => window && (window.innerWidth < 600 ? true : false);
-const Page = props => {
-  // const p = props.page ? 1 : 0;
-
+const Page = ({ page, Teader, startChat }) => {
+  // const p = props.page ? 1 : 0; 
   // style={{ background: `hsl(${p * 75}, 60%, 60%)` }}
-  return <div className="page">{props.page}</div>;
+  return (
+    <div className="page" id="itc-container">
+      <div className="itc-messenger itc-messenger-cvs itc-messenger-from-home-screen">
+        <div className="itc-messenger-header">
+          <div
+            aria-label="Expand cvs"
+            role="button"
+            tabIndex="0"
+            className="md-grid md-grid--stacked"
+          >
+            {Teader()}
+            <div
+              className="md-cell md-cell--6 md-cell--center md-cell--middle"
+              aria-hidden="false"
+              style={{ opacity: 1 }}
+            >
+              <div className="itc-admin-profile-compact-contents">
+                <div className="itc-admin-profile-compact-avatar-container">
+                  <div className="itc-admin-profile-compact-avatar">
+                    <div className="itc-avatar">
+                      <img
+                        src="https://static.intercomassets.com/avatars/1422586/square_128/myAvatar-2-270x250-1509093775.png?1509093775"
+                        alt="E-Residency profile"
+                      />
+                    </div>
+                    <div className="itc-active-state" />
+                  </div>
+                </div>
+                <div className="itc-admin-profile-compact-body md-grid md-grid--stacked">
+                  <div className="md-cell md-cell--12">Valentina</div>
+                  <div className="md-cell md-cell--12">Active</div>
+                  <h4 className="md-cell md-cell--12">{startChat}</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {page}
+      </div>
+    </div>
+  );
 };
 class ChatLayoutJSX extends Component {
   state = {
@@ -125,16 +165,16 @@ class ChatLayoutJSX extends Component {
     // this.closeChat = this.closeChat.bind(this);
     var that = this;
     this.manualclose = true;
-    var elems = document.querySelectorAll(".collapsible");
+    var elems = document.querySelectorAll("#myChat .collapsible");
     this.instCollaps = M.Collapsible.init(elems, {
       onOpenStart: () => {
         that.clickonCollaps = true;
+        $("body").addClass("stop-scroll");
         that.instanceTap && that.instanceTap.close();
         $("body").addClass("stop-scroll")
       },
       onOpenEnd: () => {
         var objDiv = $("#listChats");
-        console.log("objDiv", objDiv);
         if (objDiv[0]) {
           var t = objDiv[0].scrollHeight;
           objDiv[0].scrollTop = t;
@@ -171,6 +211,7 @@ class ChatLayoutJSX extends Component {
       }, 4800);
   }
   closeChat = () => {
+    $("body").removeClass("stop-scroll");
     this.instCollaps[0].close();
     $("body").removeClass("stop-scroll")
   };
@@ -211,8 +252,8 @@ resize = () => {
     // const propstoshare = this.props.children ? this.props.children.props : {};
     const { me: Me, validation } = this.props;
     const authToken = localStorage.getItem(AUTH_TOKEN);
-
-    const size = this.state.isSideBarOpen ? "10" : "12";
+    const startChat = global.tr("Index")("startChat");
+    const size = this.state.isSideBarOpen ? "11" : "12";
     const sizet = this.state.isSideBarOpen ? "7" : "8";
     const sizem = this.state.isSideBarOpen ? "3" : "4";
     return (
@@ -225,65 +266,74 @@ resize = () => {
       >
         <ul className="collapsible popout">
           <li>
-            <div className="collapsible-body">
-              <Button
-                onClick={() => this.closeChat()}
-                icon="close"
-                style={{ borderRadius: "10%", width:30, height: 30 }}
-                className="right"
-                floating
-                type="material"
-              />
-              <div className="md-grid md-grid--no-spacing">
-                <SideBar />
-                <div
-                  className={`md-cell md-cell--${size} md-cell--${sizet}-tablet md-cell--${sizem}-phone`}
-                  style={{overflow:'scroll'}}
-                >
-                  {Me.loading && <Loading />}
-                  <Location>
-                    {({ location }) => {
-                      return (
-                        <>
-                          <Header
-                            location={location}
-                            me={Me} 
-                            startChat={global.tr("Index")("startChat")}
-                          />
-                          <FadeTransitionRouter
-                            location={location}
-                          >
-                            <Page path="/users" page={<UsersPage />} />
+            <Location>
+              {({ location }) => {
+                const other = {
+                  startChat,
+                  Teader: () => <Header location={location} me={Me}  onClose={() => this.closeChat()} />
+                };
+                console.log("other", other);
+                return (
+                  <>
+                    <div className="collapsible-body itc-messenger-frame itc-messenger-frame-enter-done">
+                      
+                      <div
+                        className="md-grid md-grid--no-spacing"
+                        style={{ height: "100%" }}
+                      >
+                      <SideBar/>
+                        <div
+                          className={`md-grid md-grid--no-spacing md-grid--stacked md-cell md-cell--${size} md-cell--${sizet}-tablet md-cell--${sizem}-phone`}
+                        >
+                          {Me.loading && <Loading />}
+
+                          <FadeTransitionRouter location={location}>
+                            <Page
+                              path="/users"
+                              page={<UsersPage />}
+                              {...other}
+                            />
                             <Page
                               path="/user/create"
                               page={<UserPageCreate />}
+                              {...other}
                             />
                             <Page
                               path="/user/:id"
                               page={<UserPage path="/user/:id" />}
+                              {...other}
                             />
-                            <Page path="/chats" page={<ChatsPage />} />
-                            <Page path="/login" page={<Login />} />
-                            <Page path="/signup" page={<Signup />} />
+                            <Page
+                              path="/chats"
+                              page={<ChatsPage />}
+                              {...other}
+                            />
+                            <Page path="/login" page={<Login />} {...other} />
+                            <Page path="/signup" page={<Signup />} {...other} />
                             <Page
                               path="/forgetPassword"
                               page={<ForgetPassword />}
+                              {...other}
                             />
                             <Page
                               path="/resetPassword"
                               page={<ResetPassword />}
+                              {...other}
                             />
                             <Page
                               path="/updatePassword"
                               page={<UpdatePassword />}
+                              {...other}
                             />
                             <Page
                               path="/validateEmail"
                               page={<ValidateEmail />}
+                              {...other}
                             />
                             <Page
                               path="/"
                               default
+                              {...other}
                               page={
                                 !authToken ? (
                                   <Login path="/" />
@@ -293,23 +343,17 @@ resize = () => {
                               }
                             />
                           </FadeTransitionRouter>
-                        </>
-                      );
-                    }}
-                  </Location>
-                  {!Me.loading &&
-                    !Me.error &&
-                    validation && (
-                      <EmailValidated emailvalidated={Me.me.emailvalidated} />
-                    )}
-                </div>
-              </div>
-            </div>
+                          {!Me.loading &&
+                            !Me.error &&
+                            validation && (
+                              <EmailValidated
+                                emailvalidated={Me.me.emailvalidated}
+                              />
+                            )}
+                        </div>
+                      </div>
+                    </div>
 
-            <Location>
-              {({ location }) => {
-                return (
-                  <>
                     <div
                       className="collapsible-header waves-effect waves-light btn"
                       style={{ display: "flex", alignItems: "center" }}
