@@ -20,7 +20,6 @@ import Loading from "./chatcomponents/error/Loading";
 import EmailValidated from "./chatcomponents/nav/EmailValidated";
 import Header from "./chatcomponents/nav/layout/Header";
 import NotFound from "./chatcomponents/error/NotFound";
-import SideBar from "./chatcomponents/nav/layout/SideBar";
 import { SideBarContext } from "./chatcomponents/SideBarContext";
 
 import UsersPage from "./chatcomponents/user/UsersPage";
@@ -276,6 +275,8 @@ resize = () => {
                     <Header
                       location={location}
                       onClose={() => this.closeChat()}
+                      isSideBarOpen={this.state.isSideBarOpen}
+                      isMobile={this.state.isMobile}
                     />
                   </SideBarContext.Provider>
                 )
@@ -287,7 +288,7 @@ resize = () => {
                       className="md-grid md-grid--no-spacing"
                       style={{ height: "100%" }}
                     >
-                      {!Mep.loading &&
+                      {/* {!Mep.loading &&
                         !Mep.error &&
                         Me && (
                           <SideBar
@@ -295,7 +296,7 @@ resize = () => {
                             isSideBarOpen={this.state.isSideBarOpen}
                             isMobile={this.state.isMobile}
                           />
-                        )}
+                        )} */}
                       <div
                         className={`md-grid md-grid--no-spacing md-grid--stacked md-cell md-cell--${size} md-cell--${sizet}-tablet md-cell--${sizem}-phone`}
                       >

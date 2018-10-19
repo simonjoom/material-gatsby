@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 import Button from "../../../reactLIB/Button";
 import { SideBarContext } from "../../SideBarContext";
+import Dropdown from "../../../reactLIB/Dropdown";
+import ListSideBar from "./ListSideBar"
 
 class BackButton extends Component {
-  render() { 
+  
+  render() {
+  const {location, isSideBarOpen, isMobile} = this.props
     return (
       <div>
         {this.props.location.action === "PUSH" ? (
@@ -15,14 +19,19 @@ class BackButton extends Component {
           />
         ) : (
           <SideBarContext.Consumer>
-            {context => (
-              <Button
-                onClick={() => context.toggleDrawer()}
-                icon="menu"
-                flat
-                type="material"
-              />
-            )}
+            {
+              context=>(
+                <Dropdown trigger={
+                  <Button
+                    icon="menu"
+                    flat
+                    type="material"
+                  />
+                }>
+                  <ListSideBar isMobile={isMobile} role={context.Me.role}/>
+                </Dropdown>
+              )
+            }
           </SideBarContext.Consumer>
         )}
       </div>
