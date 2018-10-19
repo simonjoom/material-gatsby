@@ -85,12 +85,12 @@ class ReactFB extends PureComponent {
     }
   }
   handleRef = ref => {
-    console.log("handleRef", ref);
     var _this2 = this;
+    console.log("handleRef", _this2.props);
     if (ref) {
+      const { language, appId } = _this2.props;
       if (this.IOSupported) {
         listenToIntersections(ref, function() {
-          const { language, appId } = _this2.props;
           if (
             !global.FB &&
             document &&
@@ -99,7 +99,7 @@ class ReactFB extends PureComponent {
             insertFB(language, appId, () => {
               _this2.setState({
                 isVisible: true
-              }); 
+              });
             });
             global.doneFB = true;
           } else {
@@ -146,16 +146,12 @@ class ReactFB extends PureComponent {
     let mpost = postId + "?" + Math.floor(Math.random() * 10000 + 1) + "";
     if (this.props.type == "page")
       return (
-        <div
-          className="fbpage"
-          id={this.newDivName} 
-          ref={this.handleRef}
-        >
+        <div className="fbpage" id={this.newDivName} ref={this.handleRef}>
           {this.state.isVisible && (
             <div
-              className="fb-page" 
+              className="fb-page"
               data-href="https://www.facebook.com/Skicckool/"
-              data-tabs="timeline" 
+              data-tabs="timeline"
               data-small-header="false"
               data-adapt-container-width="true"
               data-hide-cover="false"
@@ -182,9 +178,9 @@ class ReactFB extends PureComponent {
         >
           {this.state.isVisible && (
             <div
-              className="fb-post" 
+              className="fb-post"
               data-href={`https://www.facebook.com/Skicckool/posts/${mpost}`}
-              data-show-text="true" 
+              data-show-text="true"
               data-height="500px"
             >
               <blockquote

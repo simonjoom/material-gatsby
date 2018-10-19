@@ -221,14 +221,17 @@ class ChatLayoutJSX extends Component {
     if (run !== "run")
       setTimeout(function() {
         // only show the tip after 4sec if the chat Collapsible was never activated on a click
-        if (!that.clickonCollaps) {
-          that.instanceTap = M.TapTarget.getInstance(instancestap[0].el);
-          that.instanceTap.open();
-          localStorage.setItem("Tapinstance", "run");
-          setTimeout(function() {
-            that.manualclose = false;
-            that.instanceTap.close();
-          }, 5000);
+        if (!that.clickonCollaps && instancestap) {
+          console.log("instancestap[0]", instancestap);
+          if (instancestap[0]) {
+            that.instanceTap = M.TapTarget.getInstance(instancestap[0].el);
+            that.instanceTap.open();
+            localStorage.setItem("Tapinstance", "run");
+            setTimeout(function() {
+              that.manualclose = false;
+              that.instanceTap.close();
+            }, 5000);
+          }
         }
       }, 4800);
   }
