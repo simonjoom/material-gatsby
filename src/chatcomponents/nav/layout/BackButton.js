@@ -4,13 +4,13 @@ import { SideBarContext } from "../../SideBarContext";
 import Dropdown from "../../../reactLIB/Dropdown";
 import ListSideBar from "./ListSideBar"
 
+
 class BackButton extends Component {
-  
   render() {
-  const {location, isSideBarOpen, isMobile} = this.props
+    const { location } = this.props;
     return (
       <div>
-        {this.props.location.action === "PUSH" ? (
+        {location.action === "PUSH" ? (
           <Button
             onClick={() => window.history.back()}
             icon="arrow_back"
@@ -19,19 +19,11 @@ class BackButton extends Component {
           />
         ) : (
           <SideBarContext.Consumer>
-            {
-              context=>(
-                <Dropdown trigger={
-                  <Button
-                    icon="menu"
-                    flat
-                    type="material"
-                  />
-                }>
-                  <ListSideBar isMobile={isMobile} role={context.Me.role}/>
-                </Dropdown>
-              )
-            }
+            {context => (
+              <Dropdown trigger={<Button icon="menu" flat type="material" />}>
+                <ListSideBar isMobile={context.state.isMobile} role={context.Me.role} />
+              </Dropdown>
+            )}
           </SideBarContext.Consumer>
         )}
       </div>
