@@ -16,7 +16,7 @@ class Card extends Component {
   renderTitle(Tag, title, reveal) {
     return (
       <Tag
-        className={cx('card-title', 'grey-text','text-darken-4', {
+        className={cx('card-title', 'grey-text', 'text-darken-4', {
           activator: reveal
         })}
       >
@@ -42,9 +42,12 @@ class Card extends Component {
     return <div className="card-action">{actions}</div>;
   }
 
-  renderContent(Tag, title, reveal, textClassName, children) {
+  renderContent(Tag, title, reveal, textClassName, children, extracls = false) {
     return (
-      <div className={cx('card-content', textClassName)} style={{padding:"8px"}}>
+      <div
+        className={cx('card-content', textClassName)}
+        style={{ padding: extracls ? '0px' : '8px' }}
+      >
         {title && this.renderTitle(Tag, title, reveal)}
         {children}
       </div>
@@ -58,7 +61,7 @@ class Card extends Component {
       [`waves-${waves}`]: waves
     });
     return (
-      <div className={cx(classes, imgClassName)}>
+      <div className={cx('itc-avatar', classes, imgClassName)}>
         {contentImage}
         <span className="card-title">{imgtitle}</span>
       </div>
@@ -85,6 +88,7 @@ class Card extends Component {
       children,
       horizontal,
       waves,
+      extracls = '',
       titleTag: Tag = 'span',
       ...other
     } = this.props;
@@ -95,7 +99,7 @@ class Card extends Component {
 
     return (
       <div className={className}>
-        <div className={cx(classes)} {...other}>
+        <div className={cx(extracls, classes)} {...other}>
           {contentImage &&
             this.renderImage(
               imgClassName,
@@ -105,15 +109,22 @@ class Card extends Component {
               waves
             )}
           {horizontal ? (
-            <div className="card-stacked">
-              {this.renderContent(Tag, title, reveal, textClassName, children)}
-              {this.renderReveal(titlereveal, reveal)}
+            <div className="itc-comment card-stacked">
+              {this.renderContent(
+                Tag,
+                title,
+                reveal,
+                textClassName,
+                children,
+                extracls
+              )}
+              {reveal && this.renderReveal(titlereveal, reveal)}
               {actions && this.renderAction(actions)}
             </div>
           ) : (
             <>
               {this.renderContent(Tag, title, reveal, textClassName, children)}
-              {this.renderReveal(titlereveal, reveal)}
+              {reveal && this.renderReveal(titlereveal, reveal)}
               {actions && this.renderAction(actions)}
             </>
           )}

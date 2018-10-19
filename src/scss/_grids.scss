@@ -150,8 +150,12 @@ $md-grid-max-columns: $md-grid-desktop-columns !default;
     &--stacked {
       flex-direction: column;
     }
-  }
-
+  } 
+  
+  @if $include-media {
+    @include react-md-grid-media;
+  }  
+  
   .md-cell {
     &--top {
       align-self: flex-start;
@@ -177,11 +181,6 @@ $md-grid-max-columns: $md-grid-desktop-columns !default;
     &--right {
       @extend %md-cell--right;
     }
-  }
-
-
-  @if $include-media {
-    @include react-md-grid-media;
   }
 }
 

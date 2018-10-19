@@ -74,10 +74,11 @@ class ListSideBar extends Component {
     const authToken = localStorage.getItem(AUTH_TOKEN);
     return (
       <ul>
-        <EmulateItem icon="view_quilt" to="/">
+        <EmulateItem key="fzez" icon="view_quilt" to="/">
           Blog
         </EmulateItem>
         <EmulateItem
+          key="fez"
           icon="mail"
           to=""
           onClick={() => this.onClick()}
@@ -86,17 +87,17 @@ class ListSideBar extends Component {
           Mail us
         </EmulateItem>
 
-        <EmulateItem icon="chat" to="/chats">
+        <EmulateItem key="fz" icon="chat" to="/chats">
           Chat
         </EmulateItem>
         {authToken && (
-          <EmulateItem icon="group" to="/users">
+          <EmulateItem key="faaz" icon="group" to="/users">
             Users
           </EmulateItem>
         )}
 
         {!authToken && (
-          <EmulateItem icon="account_circle" to="/login">
+          <EmulateItem key="fd" icon="account_circle" to="/login">
             Users
           </EmulateItem>
         )}
