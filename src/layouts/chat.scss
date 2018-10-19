@@ -1073,20 +1073,7 @@ div#itc-ctr #itc-ctr {
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
-#itc-ctr
-  .itc-cvs.itc-cvs-fetching
-  .itc-cvs-footer,
-#itc-ctr
-  .itc-cvs.itc-cvs-fetching
-  .itc-cvs-parts,
-#itc-ctr .itc-cvs.itc-cvs-fetching,
-#itc-ctr
-  .itc-cvs.itc-cvs-fetching
-  .intercom-quick-replies {
-  opacity: 0;
-  -webkit-animation: none;
-  animation: none;
-}
+
 #itc-ctr
   .itc-cvs-part-user.itc-cvs-part-enter {
   opacity: 0;
