@@ -139,7 +139,7 @@
   clear: none;
   clip: auto;
   color: inherit;
- 
+
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
   -webkit-column-break-after: auto;
@@ -164,7 +164,7 @@
   column-width: auto;
   -webkit-columns: auto auto;
   columns: auto auto;
- /* 
+  /* 
   -webkit-box-shadow: none;
   box-shadow: none;
     content: normal;
@@ -282,8 +282,8 @@ margin: 0;  max-height: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-*{
-clear:none;
+* {
+  clear: none;
 }
 .absolute.right {
   position: absolute;
@@ -347,7 +347,11 @@ li {
   height: auto;
   position: relative !important;
 }
-
+.sidechath .md-cell button,.sidechath button{
+  margin: 0;
+  padding: 0;
+  min-height: 8px;
+}
 .headerchat {
   width: 100%;
   text-align: center;
@@ -590,11 +594,11 @@ section {
 }
 #itc-container .itc-comment-container-user {
   float: right;
-  margin-left: 48px; 
+  margin-left: 48px;
 }
 #itc-container .itc-comment-container-admin {
   float: left;
-  margin-left: 48px; 
+  margin-left: 48px;
 }
 #itc-container .itc-comment-container-admin-avatar .itc-avatar {
   width: 32px;
@@ -818,10 +822,7 @@ div#itc-container #itc-container {
   font-size: 16px;
 }
 
-#itc-container
-  .itc-admin-profile-compact-avatar
-  .itc-avatar
-  img {
+#itc-container .itc-admin-profile-compact-avatar .itc-avatar img {
   width: 32px;
   height: 32px;
   line-height: 32px;
@@ -1000,7 +1001,7 @@ div#itc-container #itc-container {
   display: table;
 }
 
-#itc-container .itc-cvs-parts>* {
+#itc-container .itc-cvs-parts > * {
   -webkit-box-flex: 1;
   -ms-flex: 1 100%;
   flex: 1 100%;

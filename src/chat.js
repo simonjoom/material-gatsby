@@ -268,24 +268,18 @@ resize = () => {
               {({ location }) => {
                 const other = {
                   startChat,
-                  Teader: () => <Header location={location} me={Me} />
+                  Teader: () => <Header location={location} me={Me}  onClose={() => this.closeChat()} />
                 };
                 console.log("other", other);
                 return (
                   <>
                     <div className="collapsible-body itc-messenger-frame itc-messenger-frame-enter-done">
-                      <Button
-                        onClick={() => this.closeChat()}
-                        icon="close"
-                        className="butclose absolute right"
-                        floating
-                        type="mat"
-                      />
+                      
                       <div
                         className="md-grid md-grid--no-spacing"
                         style={{ height: "100%" }}
                       >
-                      <SideBar />
+                      <SideBar/>
                         <div
                           className={`md-grid md-grid--no-spacing md-grid--stacked md-cell md-cell--${size} md-cell--${sizet}-tablet md-cell--${sizem}-phone`}
                         >
