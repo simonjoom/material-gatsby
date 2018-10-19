@@ -373,7 +373,7 @@ li {
 #myChat {
   overflow: scroll;
   max-height: 80vh;
-  min-width: 60vw;
+  min-width: 33vw;
   position: fixed;
   z-index: 1111;
   right: 0;
@@ -385,7 +385,9 @@ li {
     max-height: 100vh !important;
   }
 }
-
+.chat-card{
+  margin-top: 0.5em;
+}
 .bgg {
   background-color: #f9f9f9;
 }
@@ -472,7 +474,7 @@ li {
   font-style: italic;
 }
 #myChat > ul > li.active {
-  width: 100%;
+  // width: 100%;
 }
 
 #itc-ctr .itc-admin-profile-compact-contents {
@@ -597,7 +599,7 @@ section {
   .itc-comment-ctr-admin
   .itc-comment:not(.itc-comment-with-body) {
   color: #000;
-  background-color: #f5f5f5;
+  background-color: #fffdfd;
 }
 #itc-ctr .itc-chat-card-borderless-single .itc-block,
 #itc-ctr .itc-chat-card .itc-block,
@@ -617,7 +619,7 @@ section {
 #itc-ctr
   .itc-comment-ctr-user
   .itc-comment:not(.itc-comment-with-body) {
-  background-color: #003cff;
+  background-color: #4865c6;
   float: right;
 }
 #itc-ctr .itc-comment-ctr-user .itc-comment {
@@ -900,7 +902,7 @@ div#itc-ctr #itc-ctr {
 .formcompose {
   box-sizing: border-box;
   /* padding: 18px; */
-  padding-right: 100px;
+  padding-right: 8em;
   padding-left: 29px;
   /* width: 100%; */
   /* height: 100%; */

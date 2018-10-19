@@ -156,7 +156,7 @@ class ChatLayoutJSX extends Component {
   state = {
     variant: "permanent",
     isMobile: isMobile(),
-    chatisrunnable: false
+    chatisrunnable: true
   };
   componentDidMount() {
     console.log("mountLayout");
@@ -170,7 +170,6 @@ class ChatLayoutJSX extends Component {
         that.clickonCollaps = true;
         $("body").addClass("stop-scroll");
         that.instanceTap && that.instanceTap.close();
-        $("body").addClass("stop-scroll")
       },
       onOpenEnd: () => {
         var objDiv = $("#listChats");
@@ -280,7 +279,7 @@ resize = () => {
               };
               return (
                 <>
-                  <div className="collapsible-body md-cell--8-desktop md-cell--7-tablet md-cell--4-phone itc-messenger-frame itc-messenger-frame-enter-done">
+                  <div className="collapsible-body md-cell--4-desktop md-cell--7-tablet md-cell--4-phone itc-messenger-frame itc-messenger-frame-enter-done">
                     <div
                       className="md-grid md-grid--no-spacing"
                       style={{ height: "100%" }}

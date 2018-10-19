@@ -33,7 +33,7 @@ class Chat extends Component {
       <Card
         horizontal
         extracls={extracls}
-        className={`itc-cvs-part itc-cvs-part-user itc-cvs-part-enter ${this.state.addcss}`}
+        className={`itc-cvs-part itc-cvs-part-user itc-cvs-part-enter ${this.state.addcss} chat-card`}
         contentImage={
           this.props.chat.author && (
             <Button
@@ -41,14 +41,14 @@ class Chat extends Component {
               tooltip={this.props.chat.author.name}
               onClick={() => this.openProfile(this.props.chat.author)}
             >
-              <Logo width={20} height={20} />
+              <Logo width={20} height={20}/>
             </Button>
           )
         }
         //  title={<b>{this.props.chat.message}</b>}
       >
         <p>{this.props.chat.message}</p>
-        <p style={{ fontSize: "0.8em", color: "grey" }}>
+        <p style={{ fontSize: "0.8em", color: "#D5D5D5" }}>
           {format(parse(this.props.chat.createdAt), "MM/DD/YYYY hh:mma")}
         </p>
       </Card>
