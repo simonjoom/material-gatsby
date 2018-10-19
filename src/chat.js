@@ -121,7 +121,7 @@ const Page = ({ page, Teader, startChat }) => {
           >
             {Teader()}
             <div
-              className="md-cell md-cell--6 md-cell--center md-cell--middle"
+              className="md-cell md-cell--8 md-cell--center md-cell--middle"
               aria-hidden="false"
               style={{ opacity: 1 }}
             >
@@ -271,8 +271,8 @@ resize = () => {
                     <Header
                       location={location}
                       onClose={() => this.closeChat()}
-                      isSideBarOpen={this.state.isSideBarOpen}
-                      isMobile={this.state.isMobile}
+                      // isSideBarOpen={this.state.isSideBarOpen}
+                      // isMobile={this.state.isMobile}
                     />
                   </SideBarContext.Provider>
                 )

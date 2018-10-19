@@ -8,7 +8,7 @@ class MenuAvatar extends Component {
   render() {
     const tt="/user/" + this.props.user.id;
     return (
-      <Dropdown trigger={<Logo width={30} height={30} />}>
+      <Dropdown trigger={<Logo width={23} height={23} />}>
         <NavItem
           key="Profile"
           href={tt}
