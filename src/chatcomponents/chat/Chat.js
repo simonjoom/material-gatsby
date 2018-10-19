@@ -16,10 +16,10 @@ class Chat extends Component {
     // for testing
     const isadmin = Math.random() > 0.5;
     const extracls = {
-      "itc-comment-container": true,
-      "itc-comment-container-admin": isadmin,
-      "itc-comment-container-user": !isadmin,
-      "itc-comment-container-admin-avatar": !!this.props.chat.author
+      "itc-comment-ctr": true,
+      "itc-comment-ctr-admin": isadmin,
+      "itc-comment-ctr-user": !isadmin,
+      "itc-comment-ctr-admin-avatar": !!this.props.chat.author
     };
     console.log("createdAt", this.props.chat.createdAt);
     return (
