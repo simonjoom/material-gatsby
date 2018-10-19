@@ -88,7 +88,7 @@ const GetImage = ({
             <div className="h4">
               <span className="strictly-desktop">{t("main2")}</span>
               <Button
-                className="bgsecondary md-cell md-cell--5 md-cell--4-tablet md-cell--4-phone btn-left" 
+                className="bgsecondary md-cell md-cell--5 md-cell--4-tablet md-cell--4-phone btn-left"
                 icontoend
                 icon="thumbs-up black"
                 type="awesome"
@@ -124,7 +124,7 @@ const GetImage = ({
     );
   else {
     if (MapImg.length == 1) return MapImg[0];
-    else return process.env.NODE_ENV === "development" ? "NOCOVER" : (<div></div>)
+    else return process.env.NODE_ENV === "development" ? "NOCOVER" : "";
   }
 };
 const FrontCarousel = ({
