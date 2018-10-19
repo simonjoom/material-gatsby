@@ -421,9 +421,9 @@ li {
 #myChat .itc-messenger-frame {
   position: fixed !important;
   bottom: 20px;
-  right: 20px;
-  height: calc(100% - 20px - 20px);
-  width: 376px !important;
+  right: 8px;
+  max-width:660px;
+  height: calc(100% - 20px - 20px); 
   min-height: 250px !important;
   max-height: 704px !important;
   -webkit-box-shadow: 0 5px 40px rgba(0, 0, 0, 0.16) !important;

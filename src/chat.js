@@ -277,7 +277,7 @@ resize = () => {
               };
               return (
                 <>
-                  <div className="collapsible-body itc-messenger-frame itc-messenger-frame-enter-done">
+                  <div className="collapsible-body md-cell--8-desktop md-cell--7-tablet md-cell--4-phone itc-messenger-frame itc-messenger-frame-enter-done">
                     <div
                       className="md-grid md-grid--no-spacing"
                       style={{ height: "100%" }}
