@@ -13,7 +13,8 @@ class Chat extends Component {
     navigate("/user/" + author.id);
   }
   render() {
-    const isadmin = true;
+    // for testing
+    const isadmin = Math.random() > 0.5;
     const extracls = {
       "itc-comment-container": true,
       "itc-comment-container-admin": isadmin,
@@ -23,7 +24,7 @@ class Chat extends Component {
     console.log("createdAt", this.props.chat.createdAt);
     return (
       <Card
-        horizontal 
+        horizontal
         extracls={extracls}
         className="itc-cvs-part itc-cvs-part-user"
         contentImage={
@@ -37,11 +38,9 @@ class Chat extends Component {
             </Button>
           )
         }
-        //  title={<b>{this.props.chat.message}</b>} 
+        //  title={<b>{this.props.chat.message}</b>}
       >
-        <p>
-          {this.props.chat.message}
-        </p>
+        <p>{this.props.chat.message}</p>
         <p style={{ fontSize: "0.8em", color: "grey" }}>
           {format(parse(this.props.chat.createdAt), "MM/DD/YYYY hh:mma")}
         </p>
