@@ -108,10 +108,10 @@ const USER_QUERY = gql`
 
 const isMobile = () => window && (window.innerWidth < 600 ? true : false);
 const Page = ({ page, Teader, startChat }) => {
-  // const p = props.page ? 1 : 0; 
+  // const p = props.page ? 1 : 0;
   // style={{ background: `hsl(${p * 75}, 60%, 60%)` }}
   return (
-    <div className="page" id="itc-container">
+    <div className="page" id="itc-ctr">
       <div className="itc-messenger itc-messenger-cvs itc-messenger-from-home-screen">
         <div className="itc-messenger-header">
           <div
@@ -127,7 +127,7 @@ const Page = ({ page, Teader, startChat }) => {
               style={{ opacity: 1 }}
             >
               <div className="itc-admin-profile-compact-contents">
-                <div className="itc-admin-profile-compact-avatar-container">
+                <div className="itc-admin-profile-compact-avatar-ctr">
                   <div className="itc-admin-profile-compact-avatar">
                     <div className="itc-avatar">
                       <img
@@ -248,137 +248,142 @@ resize = () => {
 
   render() {
     // const propstoshare = this.props.children ? this.props.children.props : {};
-    const { me: Me, validation } = this.props;
+    const { me: Mep, validation } = this.props;
     const authToken = localStorage.getItem(AUTH_TOKEN);
     const startChat = global.tr("Index")("startChat");
     const size = this.state.isSideBarOpen ? "11" : "12";
     const sizet = this.state.isSideBarOpen ? "7" : "8";
     const sizem = this.state.isSideBarOpen ? "3" : "4";
+    console.log("Mep",Mep.me)
+    let Me = Mep.me;
     return (
-      <SideBarContext.Provider
-        value={{
-          toggleDrawer: this.toggleDrawer,
-          state: this.state,
-          Me: !Me.loading && !Me.error && Me.me
-        }}
-      >
-        <ul className="collapsible popout">
-          <li>
-            <Location>
-              {({ location }) => {
-                const other = {
-                  startChat,
-                  Teader: () => <Header location={location} me={Me}  onClose={() => this.closeChat()} />
-                };
-                console.log("other", other);
-                return (
-                  <>
-                    <div className="collapsible-body itc-messenger-frame itc-messenger-frame-enter-done">
-                      
-                      <div
-                        className="md-grid md-grid--no-spacing"
-                        style={{ height: "100%" }}
-                      >
-                      <SideBar/>
-                        <div
-                          className={`md-grid md-grid--no-spacing md-grid--stacked md-cell md-cell--${size} md-cell--${sizet}-tablet md-cell--${sizem}-phone`}
-                        >
-                          {Me.loading && <Loading />}
-
-                          <FadeTransitionRouter location={location}>
-                            <Page
-                              path="/users"
-                              page={<UsersPage />}
-                              {...other}
-                            />
-                            <Page
-                              path="/user/create"
-                              page={<UserPageCreate />}
-                              {...other}
-                            />
-                            <Page
-                              path="/user/:id"
-                              page={<UserPage path="/user/:id" />}
-                              {...other}
-                            />
-                            <Page
-                              path="/chats"
-                              page={<ChatsPage />}
-                              {...other}
-                            />
-                            <Page path="/login" page={<Login />} {...other} />
-                            <Page path="/signup" page={<Signup />} {...other} />
-                            <Page
-                              path="/forgetPassword"
-                              page={<ForgetPassword />}
-                              {...other}
-                            />
-                            <Page
-                              path="/resetPassword"
-                              page={<ResetPassword />}
-                              {...other}
-                            />
-                            <Page
-                              path="/updatePassword"
-                              page={<UpdatePassword />}
-                              {...other}
-                            />
-                            <Page
-                              path="/validateEmail"
-                              page={<ValidateEmail />}
-                              {...other}
-                            />
-                            <Page
-                              path="/"
-                              default
-                              {...other}
-                              page={
-                                !authToken ? (
-                                  <Login path="/" />
-                                ) : (
-                                  <ChatsPage path="/" />
-                                )
-                              }
-                            />
-                          </FadeTransitionRouter>
-                          {!Me.loading &&
-                            !Me.error &&
-                            validation && (
-                              <EmailValidated
-                                emailvalidated={Me.me.emailvalidated}
-                              />
-                            )}
-                        </div>
-                      </div>
-                    </div>
-
+      <ul className="collapsible popout">
+        <li>
+          <Location>
+            {({ location }) => {
+              const other = {
+                startChat,
+                Teader: () => (
+                  <SideBarContext.Provider
+                    value={{
+                      toggleDrawer: this.toggleDrawer,
+                      state: this.state,
+                      Me: !Mep.loading && !Mep.error && Me
+                    }}
+                  >
+                    <Header
+                      location={location}
+                      onClose={() => this.closeChat()}
+                    />
+                  </SideBarContext.Provider>
+                )
+              };
+              return (
+                <>
+                  <div className="collapsible-body itc-messenger-frame itc-messenger-frame-enter-done">
                     <div
-                      className="collapsible-header waves-effect waves-light btn"
-                      style={{ display: "flex", alignItems: "center" }}
+                      className="md-grid md-grid--no-spacing"
+                      style={{ height: "100%" }}
                     >
-                      <Logo id="chat" width={40} height={40} />
-                      <p style={{ marginLeft: 20 }}>
-                        {global.tr("Index")("Chathello")}?
-                      </p>
-                      <Badge newIcon>4</Badge>
-                    </div>
-                    <div className="tap-target bgprimary" data-target="chat">
-                      <div className="tap-target-content white">
-                        <h5 className="h2 nolineheight">
-                          {global.tr("Index")("hello")}
-                        </h5>
-                        <h6 className="h3 nolineheight">
-                          {global.tr("Index")("chatwith")}
-                        </h6>
+                      {!Mep.loading &&
+                        !Mep.error &&
+                        Me && (
+                          <SideBar
+                            Me={Me}
+                            isSideBarOpen={this.state.isSideBarOpen}
+                            isMobile={this.state.isMobile}
+                          />
+                        )}
+                      <div
+                        className={`md-grid md-grid--no-spacing md-grid--stacked md-cell md-cell--${size} md-cell--${sizet}-tablet md-cell--${sizem}-phone`}
+                      >
+                        {Mep.loading && <Loading />}
+
+                        <FadeTransitionRouter location={location}>
+                          <Page path="/users" page={<UsersPage />} {...other} />
+                          <Page
+                            path="/user/create"
+                            page={<UserPageCreate />}
+                            {...other}
+                          />
+                          <Page
+                            path="/user/:id"
+                            page={<UserPage path="/user/:id" />}
+                            {...other}
+                          />
+                          <Page path="/chats" page={<ChatsPage />} {...other} />
+                          <Page path="/login" page={<Login />} {...other} />
+                          <Page path="/signup" page={<Signup />} {...other} />
+                          <Page
+                            path="/forgetPassword"
+                            page={<ForgetPassword />}
+                            {...other}
+                          />
+                          <Page
+                            path="/resetPassword"
+                            page={<ResetPassword />}
+                            {...other}
+                          />
+                          <Page
+                            path="/updatePassword"
+                            page={<UpdatePassword />}
+                            {...other}
+                          />
+                          <Page
+                            path="/validateEmail"
+                            page={<ValidateEmail />}
+                            {...other}
+                          />
+                          <Page
+                            path="/"
+                            default
+                            {...other}
+                            page={
+                              !authToken ? (
+                                <Login path="/" />
+                              ) : (
+                                <ChatsPage path="/" />
+                              )
+                            }
+                          />
+                        </FadeTransitionRouter>
+                        {!Mep.loading &&
+                          !Mep.error &&
+                          validation && (
+                            <EmailValidated
+                              emailvalidated={Me.emailvalidated}
+                            />
+                          )}
                       </div>
                     </div>
-                  </>
-                );
-              }}
-            </Location>
-          </li>
-        </ul>
-      </SideBarContext.Provider>
+                  </div>
+
+                  <div
+                    className="collapsible-header waves-effect waves-light btn"
+                    style={{ display: "flex", alignItems: "center" }}
+                  >
+                    <Logo id="chat" width={40} height={40} />
+                    <p style={{ marginLeft: 20 }}>
+                      {global.tr("Index")("Chathello")}?
+                    </p>
+                    <Badge newIcon>4</Badge>
+                  </div>
+                  <div className="tap-target bgprimary" data-target="chat">
+                    <div className="tap-target-content white">
+                      <h5 className="h2 nolineheight">
+                        {global.tr("Index")("hello")}
+                      </h5>
+                      <h6 className="h3 nolineheight">
+                        {global.tr("Index")("chatwith")}
+                      </h6>
+                    </div>
+                  </div> 
+                </>
+              );
+            }}
+          </Location>
+        </li>
+      </ul>
     );
   }
 }
