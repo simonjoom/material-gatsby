@@ -7,7 +7,7 @@ import { AUTH_TOKEN } from "../../../constants/constants";
 class EmulateItem extends Component {
   render() {
     const liClass = {
-      marginTop: "1.5em"
+      marginTop: "0em",
     };
     const subHeading = {
       color: "rgba(0, 0, 0, 0.87)",
