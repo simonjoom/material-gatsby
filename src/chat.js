@@ -192,6 +192,7 @@ class ChatLayoutJSX extends Component {
           "padding-left": "20px",
           "border-radius": "50%"
         });
+        $("#myChat .collapsible-header p").addClass("hide");
 
         $("#chat").addClass("runned");
         that.setState({
