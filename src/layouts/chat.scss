@@ -1110,3 +1110,15 @@ div#itc-ctr #itc-ctr {
   -ms-flex: 1 100%;
   flex: 1 100%;
 }
+
+.userspage{
+  background-color: white;
+  padding: 1em;
+  overflow: auto;
+
+  &__header{
+    font-size: 1.2em !important;
+    text-align: center !important;
+    font-weight:bold !important;
+  }
+}

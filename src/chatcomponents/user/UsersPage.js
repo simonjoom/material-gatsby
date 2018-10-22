@@ -11,21 +11,22 @@ class UsersPage extends React.Component {
   };
 
   elemClicked(elem) {
-    navigate("/z/user/" + elem.id);
+    navigate("/user/" + elem.id);
   }
 
   render() {
     return (
-      <Card className="paperOut">
-        <div className="flex justify-between items-center">
-          <h1>Users</h1>
+      <Card className="userspage">
+        <div className="">
+          <h1 className="userspage__header">Users</h1>
         </div>
         <Input
           onChange={e => this.setState({ query: e.target.value })}
           value={this.state.query}
           type="text"
-          label="Search"
+          placeholder="Search"
         />
+        <hr />
         <UsersPageList
           showWhenQueryEmpty={true}
           query={this.state.query}

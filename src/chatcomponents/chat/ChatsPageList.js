@@ -28,6 +28,7 @@ class ChatsPageList extends React.Component {
           that.arrSSR.push(<Chat key={edge.node.id} chat={edge.node} />);
           if (edge.node.author.id !== that.props.Me.id) {
             setTimeout(() => {
+              if (ion) ion.sound.play("mess");
               that.props.addnewmessage();
             }, 500);
           } else {

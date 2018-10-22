@@ -6,13 +6,13 @@ import Logo from "../../../components/logo";
 
 class MenuAvatar extends Component {
   render() {
-    const tt="/user/" + this.props.user.id;
+    const tt = "/user/" + this.props.user.id;
     return (
-      <Dropdown trigger={<Logo width={30} height={30} />}>
-        <NavItem
-          key="Profile"
-          href={tt}
-        >
+      <Dropdown
+        trigger={<Logo width={30} height={30} />}
+        options={{ coverTrigger: false }}
+      >
+        <NavItem key="Profile" href={tt}>
           Profile
         </NavItem>
         <NavItem
