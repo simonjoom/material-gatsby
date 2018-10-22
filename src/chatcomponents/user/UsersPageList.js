@@ -38,6 +38,7 @@ class UsersPageList extends React.Component {
               Email: {user.node.email}
               <br />
               Role: {user.node.role}
+              <hr/>
             </div>
           ))}
         {this.props.children}
