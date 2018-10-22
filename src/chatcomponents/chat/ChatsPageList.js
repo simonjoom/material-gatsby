@@ -12,8 +12,10 @@ class ChatsPageList extends React.Component {
   constructor(props) {
     super(props);
     this.arrSSR = [];
+  }
+  componentWillMount() {
     var that = this;
-    props.chatsQueryConnection.subscribeToMore({
+    this.props.chatsQueryConnection.subscribeToMore({
       document: CHAT_SUBSCRIPTION,
       updateQuery: (prev, { subscriptionData }) => {
         if (!subscriptionData) {
@@ -22,16 +24,18 @@ class ChatsPageList extends React.Component {
         const edge = subscriptionData.data.chat;
         if (
           !prev.chatsConnection.edges.find(ed => ed.node.id === edge.node.id)
-        ) { 
-          if (edge.node.author.id !== this.props.Me.id) { 
-            props.addnewmessage(); 
-          }else{
+        ) {
           that.arrSSR.push(<Chat key={edge.node.id} chat={edge.node} />);
-          setTimeout(() => {
-            this.running = true;
-            that.setState({ arr: [...this.state.arr, this.arrSSR.shift()] });
-          }, 1000);
-        }
+          if (edge.node.author.id !== that.props.Me.id) {
+            setTimeout(() => {
+              that.props.addnewmessage();
+            }, 500);
+          } else {
+            setTimeout(() => {
+              that.running = true;
+              that.setState({ arr: [...that.state.arr, that.arrSSR.shift()] });
+            }, 1000);
+          }
           return Object.assign({}, prev, {
             chatsConnection: {
               __typename: "ChatConnection",
@@ -44,7 +48,6 @@ class ChatsPageList extends React.Component {
       }
     });
   }
-
   runAnim = chatsConnection => {
     if (!this.running && chatsConnection) {
       const { edges } = chatsConnection;
@@ -61,7 +64,6 @@ class ChatsPageList extends React.Component {
 
   componentDidMount() {
     //  console.log("ChatsPageListmount")
-    this.running = false;
     this.runAnim(this.props.chatsQueryConnection.chatsConnection);
   }
 

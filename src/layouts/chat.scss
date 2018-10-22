@@ -363,25 +363,7 @@ li {
   max-width: 320px;
   float: right;
 }
-
-#myChat {
-  overflow: scroll;
-  max-height: 80vh;
-  min-width: 33vw;
-  position: fixed;
-  z-index: 1111;
-  right: 0;
-  bottom: 0;
-}
-
-#myChat {
-  @media screen and (max-width: 480px) {
-    max-height: 100vh !important;
-  }
-}
-.chat-card{
-  margin-top: 0.5em;
-}
+ 
 .bgg {
   background-color: #f9f9f9;
 }
@@ -396,6 +378,13 @@ li {
   margin-top: 5%;
 }
 
+#myChat { 
+  position: fixed !important; 
+bottom: 0px;
+right: 0px; 
+z-index: 1111;
+}
+
 #myChat .itc-sticker-native {
   font-size: 96px;
   line-height: 96px;
@@ -405,6 +394,22 @@ li {
   height: calc(100% - 20px - 80px - 20px);
   bottom: calc(20px + 80px);
 }
+
+#myChat .itc-messenger-frame {
+  position: fixed !important;
+  bottom: 20px;
+  right: 8px;
+  max-width: 660px;
+  height: calc(100% - 20px - 20px);
+  min-height: 250px !important;
+  max-height: 704px !important;
+  -webkit-box-shadow: 0 5px 40px rgba(0, 0, 0, 0.16) !important;
+  box-shadow: 0 5px 40px rgba(0, 0, 0, 0.16) !important;
+  border-radius: 8px !important;
+  overflow: scroll !important;
+  opacity: 1 !important;
+}
+
 .sidechath,
 .sidechat {
   z-index: 4;
@@ -426,20 +431,6 @@ li {
   padding: 0px;
 }
 
-#myChat .itc-messenger-frame {
-  position: fixed !important;
-  bottom: 20px;
-  right: 8px;
-  max-width: 660px;
-  height: calc(100% - 20px - 20px);
-  min-height: 250px !important;
-  max-height: 704px !important;
-  -webkit-box-shadow: 0 5px 40px rgba(0, 0, 0, 0.16) !important;
-  box-shadow: 0 5px 40px rgba(0, 0, 0, 0.16) !important;
-  border-radius: 8px !important;
-  overflow: scroll !important;
-  opacity: 1 !important;
-}
 .itc-mobile-messenger-active {
   overflow: visible !important;
 }
