@@ -12,66 +12,56 @@ export default class Password extends Component {
     // hasNumber: true,
     // hasSpecialChar: true,
     password: "",
-    passwordMinimumLength: 8
+    passwordMinimumLength: 6
   };
 
   UNSAFE_componentWillReceiveProps() {
     if (!this.state.inputValidation2) this.inputRef.focus();
   }
-  onChange(e) {
+  onChange = e => {
     let inputValidation2 = false;
     if (
       this.isPasswordLongEnough(e.target.value) &&
-      this.hasLowerCase(e.target.value) &&
-      this.hasUpperCase(e.target.value)
-      //  this.hasNumber(e.target.value) &&
-      //  this.hasSpecialChar(e.target.value)
+      this.hasLowerCase(e.target.value)
+      //  &&   this.hasUpperCase(e.target.value)
     ) {
       inputValidation2 = true;
     }
-
+    //  this.hasNumber(e.target.value) &&
+    //  this.hasSpecialChar(e.target.value)
+    //  hasNumber: this.hasNumber(e.target.value),
+    //  hasSpecialChar: this.hasSpecialChar(e.target.value),
     this.setState(
-      {
+      (state, props) => ({
         password: e.target.value,
         inputValidation2: inputValidation2,
-        //  hasNumber: this.hasNumber(e.target.value),
-        //  hasSpecialChar: this.hasSpecialChar(e.target.value),
-        hasUpperCase: this.hasUpperCase(e.target.value),
+        //    hasUpperCase: this.hasUpperCase(e.target.value),
         hasLowerCase: this.hasLowerCase(e.target.value),
         isPasswordLongEnough: this.isPasswordLongEnough(e.target.value)
-      },
+      }),
       () => {
         this.props.onChange(this.state);
       }
     );
-  }
+  };
 
   hasLowerCase(str) {
     return str.toUpperCase() !== str;
   }
-  hasUpperCase(str) {
+  /* hasUpperCase(str) {
     return str.toLowerCase() !== str;
-  }
+  }*/
   hasNumber(string) {
     return /\d/.test(string);
   }
-
+  /*
   hasSpecialChar(str) {
     var format = /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]+/;
-    if (format.test(str)) {
-      return true;
-    } else {
-      return false;
-    }
+    return (format.test(str))
   }
-
+*/
   isPasswordLongEnough(password) {
-    if (password.length > this.state.passwordMinimumLength) {
-      this.setState({ isPasswordLongEnough: true });
-      return true;
-    }
-    this.setState({ isPasswordLongEnough: false });
-    return false;
+    return password.length > this.state.passwordMinimumLength;
   }
 
   handleNext = () => {
@@ -92,7 +82,7 @@ export default class Password extends Component {
       <Button
         onClick={() => this.showPassword()}
         type="material"
-        icon={this.state.showPassword ? "visibility_off" : "visibility"}
+        icon={!this.state.showPassword ? "visibility_off" : "visibility"}
         flat
       />
     );
@@ -116,7 +106,7 @@ export default class Password extends Component {
           placeholder={placeholder}
           errormessage={errormessage}
           success={this.state.inputValidation2}
-          onChange={this.onChange.bind(this)}
+          onChange={this.onChange}
           type={this.state.showPassword ? "text" : "password"}
           setRef={ref => {
             this.inputRef = ref;
