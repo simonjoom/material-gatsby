@@ -3030,9 +3030,11 @@ small {
 }
 
 .card .card-content p {
-  margin: 0;
+  margin: 1em;
 }
-
+.card .card-content ul {
+  margin: 1.2em;
+}
 .card .card-content .card-title {
   display: block;
   line-height: 32px;

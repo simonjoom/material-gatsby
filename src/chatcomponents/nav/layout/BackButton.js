@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import Button from "../../../reactLIB/Button";
 import { SideBarContext } from "../../SideBarContext";
 import Dropdown from "../../../reactLIB/Dropdown";
-import ListSideBar from "./ListSideBar"
-
+import ListSideBar from "./ListSideBar";
 
 class BackButton extends Component {
   render() {
@@ -20,8 +19,14 @@ class BackButton extends Component {
         ) : (
           <SideBarContext.Consumer>
             {context => (
-              <Dropdown trigger={<Button icon="menu" flat type="material" />}>
-                <ListSideBar isMobile={context.state.isMobile} role={context.Me.role} />
+              <Dropdown
+                trigger={<Button icon="menu" flat type="material" />}
+                options={{ coverTrigger: false }}
+              >
+                <ListSideBar
+                  isMobile={context.state.isMobile}
+                  role={context.Me.role}
+                />
               </Dropdown>
             )}
           </SideBarContext.Consumer>

@@ -11,12 +11,12 @@ class UsersPage extends React.Component {
   };
 
   elemClicked(elem) {
-    navigate("/z/user/" + elem.id);
+    navigate("/user/" + elem.id);
   }
 
   render() {
     return (
-      <div className="userspage">
+      <Card className="userspage">
         <div className="">
           <h1 className="userspage__header">Users</h1>
         </div>
@@ -26,7 +26,7 @@ class UsersPage extends React.Component {
           type="text"
           placeholder="Search"
         />
-        <hr/>
+        <hr />
         <UsersPageList
           showWhenQueryEmpty={true}
           query={this.state.query}
@@ -35,7 +35,7 @@ class UsersPage extends React.Component {
           elemClicked={this.elemClicked.bind(this)}
           orderBy={this.state.orderBy}
         />
-      </div>
+      </Card>
     );
   }
 }
