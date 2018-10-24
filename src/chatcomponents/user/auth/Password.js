@@ -61,7 +61,7 @@ export default class Password extends Component {
   }
 */
   isPasswordLongEnough(password) {
-    return password.length > this.state.passwordMinimumLength;
+    return password.length >= this.state.passwordMinimumLength;
   }
 
   handleNext = () => {

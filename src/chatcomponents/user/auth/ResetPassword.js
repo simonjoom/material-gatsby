@@ -123,6 +123,7 @@ const RESET_PASSWORD_MUTATION = gql`
       user {
         name
         id
+        role
       }
     }
   }

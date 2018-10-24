@@ -8,8 +8,8 @@ import NotAuth from "../error/NotAuth";
 import { getIdfromRegexPath } from "../../utils";
 import { AUTH_TOKEN } from "../../constants/constants";
 import Card from "../../reactLIB/Card";
-import Button from "../../reactLIB/Button"; 
-import NotFound from "../error/NotFound";  
+import Button from "../../reactLIB/Button";
+import NotFound from "../error/NotFound";
 import { withApollo } from "react-apollo";
 import Loading from "../error/Loading";
 import UserPageForm from "./UserPageForm";
@@ -23,6 +23,11 @@ class UserPage extends React.Component {
   isUserMyself = () => {
     const userToken = JSON.parse(localStorage.getItem("userToken"));
     return userToken.id === this.props.userQuery.user.id;
+  };
+  isAdmin = () => {
+    const userToken = JSON.parse(localStorage.getItem("userToken"));
+    return userToken.role == "ADMIN";
+    //const isadmin = author.role == "ADMIN";
   };
 
   updateUserData(user) {
@@ -44,28 +49,29 @@ class UserPage extends React.Component {
       return <Loading />;
     }
 
-    const authToken = localStorage.getItem(AUTH_TOKEN);
-
+    const isAdmin = this.isAdmin();
     return (
       <div className="paperOut">
         <Card className="paperIn">
           <div className="flex justify-between items-center">
             <h1 className="f3 black-80 fw4 lh-solid">
               {this.props.userQuery.user.name}{" "}
-              <Button
-                onClick={() =>
-                  this.setState({ isEditMode: !this.state.isEditMode })
-                }
-                tooltip="Edit mode"
-                icon="border_color"
-                type="material"
-              >
-                set mode
-              </Button>
+              {isAdmin && (
+                <Button
+                  onClick={() =>
+                    this.setState({ isEditMode: !this.state.isEditMode })
+                  }
+                  tooltip="Edit mode"
+                  icon="border_color"
+                  type="mat"
+                >
+                  set mode
+                </Button>
+              )}
             </h1>
             {this.isUserMyself() && (
               <Button
-                onClick={() => navigate("/z/updatePassword")}
+                onClick={() => navigate("/updatePassword")}
                 tooltip="Change your password"
                 icon="security"
                 type="material"
@@ -93,7 +99,7 @@ class UserPage extends React.Component {
               />*/}
             </div>
           )}
-          <div>
+          <>
             {this.state.isEditMode && (
               <div>
                 <a
@@ -112,7 +118,7 @@ class UserPage extends React.Component {
                 )}
               </div>
             )}
-          </div>
+          </>
           {/*authToken && (
             <div className="f6 ba ph3 pv2 mb2 black">
               <h1>Posts from {this.props.userQuery.user.name}</h1>
@@ -144,7 +150,7 @@ class UserPage extends React.Component {
       variables: { id }
     });
     this.props.client.resetStore().then(() => {
-      navigate("/z/users");
+      navigate("/users");
     });
   };
 }
@@ -192,14 +198,14 @@ const DELETE_MUTATION = gql`
 
 export default compose(
   graphql(USER_QUERY, {
-    name: "userQuery",  
+    name: "userQuery",
     options: props => {
       let id;
       const pathname = globalHistory.location.pathname;
       const matchPath = props.path;
-      console.log("matchPath",matchPath)
-      if(matchPath)
-       id = getIdfromRegexPath(pathname, matchPath);
+      console.log("matchPath", matchPath);
+      const trest = getIdfromRegexPath(pathname, matchPath);
+      if (matchPath) id = trest ? trest : "0";
       return {
         fetchPolicy: "cache-and-network",
         ssr: false,
