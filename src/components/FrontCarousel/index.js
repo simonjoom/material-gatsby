@@ -75,11 +75,12 @@ const GetImage = ({
             <span
               style={{
                 color: "#b2ff59",
-                fontStyle: "italic",
+                // fontStyle: "italic",
                 fontWeight: 900,
                 letterSpacing: ".01em",
                 textTransform: "uppercase",
-                wordSpacing: "5px"
+                wordSpacing: "5px",
+                fontSize: "1.5em"
               }}
               className="h3 md-grid md-cell md-cell--12 md-cell--6-tablet md-cell--3-phone"
             >
