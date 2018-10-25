@@ -25,7 +25,7 @@ date: "2018-07-06"
 <div class="md-cell md-cell--4 md-cell--8-tablet">
 <imgtest data="guide.png" height="125" width="200px" directory="pages" alt="Courchevel"></imgtest>
 <div class="md-grid md-cell--6-tablet">
-<h3 class="h3">Seleção de perfil e reserva:</h3>
+<h2 class="h2">Seleção de perfil e reserva:</h2>
  <p>Encontrar um monitor adequado não é uma questão de um clique do mouse;</p>
  <p>O SkiScool não é uma equipe nerd.<br><b>Conhecemos nossos treinadores,</b> bem como sua experiência de ensino nos 3 vales <b>desde 10 anos</b>. <br> A melhor maneira de obter uma resposta adaptada à sua situação ainda é nos chamar.</p>
  </div>
@@ -35,7 +35,7 @@ date: "2018-07-06"
 <div class="md-cell md-cell--4 md-cell--8-tablet">
  <imgtest data="certified.png" height="125" width="200px" directory="pages" alt="Courchevel"></imgtest>
  <div class="md-grid md-cell--6-tablet">
-<h3 class="h3">Profissionais de pós-graduação, preço de serviço de qualidade</h3>
+<h2 class="h2">Profissionais de pós-graduação, preço de serviço de qualidade</h2>
 <p>Todos os instrutores de esqui oferecidos em nossa plataforma são <b>profissionais graduados</b> do estado.<br><p> Aqui, nenhum estagiário ou monitor sem experiência não conhecendo a área dos 3 vales. (Courchevel, Méribel e Val-thorens)</p>
 </div>
 </div>
@@ -43,7 +43,7 @@ date: "2018-07-06"
 <div class="md-cell md-cell--4 md-cell--8-tablet">
   <imgtest data="years-experience.png" height="125" width="200px" directory="pages" alt="Courchevel"></imgtest>
  <div class="md-grid md-cell--6-tablet">
-<h3 class="h3">Tire partido da nossa experiência nos 3 vales </h3>
+<h2 class="h2">Tire partido da nossa experiência nos 3 vales </h2>
   <p> A Skiscool é uma plataforma reconhecida pela sua selecção de instrutores de esqui nos três vales há mais de 10 anos. <b>ofertas exclusivas</b>! :<br>Transferências gratuitas </b> para uma semana de reserva com um treinador.</p>
   </div>
 </div>
@@ -53,19 +53,19 @@ date: "2018-07-06"
 <div class="md-cell md-cell--12 md-grid md-grid--stacked md-grid--no-spacing">
 <!-- Start Call  stacked section -->
 <buttontest type="awesome" icon="phone-square h1 md-cell md-cell--12" cls="md-cell--3 md-cell--2-tablet md-cell--2-phone md-cell--middle" style="margin: 1em;border-radius: 5%;">
-<a href="tel:France+33675505209" class="md-grid md-grid--stacked h3" style="line-height: 1;">Ligue para Simon</a>
+<a href="tel:France+33675505209" class="md-grid md-grid--stacked h2" style="line-height: 1;">Ligue para Simon</a>
 </buttontest>
  
 
-<h3 style="text-align:center;">Teaching quality</h3>
-<div class="md-cell md-cell--12 md-cell--8-tablet md-cell--4-phone" style="margin-bottom: 5%;padding: 5%">
+<h2 style="text-align:center;">Teaching quality</h2>
+<div class="md-cell md-cell--12 md-cell--8-tablet md-cell--4-phone" style="margin-bottom: 3%;">
 <p>Diploma de instrutor de esqui = BEES
 <span classname="h6">Emitido pela organização oficial francesa: <em>ENSA</em>
 </span></p>
 </div>
 
-<h3 style="text-align:center;">Qualidade de ensino</h3>
-<div class="md-grid md-cell md-cell--12" style="margin-bottom: 10%;">
+<h2 style="text-align:center;">Qualidade de ensino</h2>
+<div class="md-grid md-cell md-cell--12" style="margin-bottom: 3%;">
 <div class="md-cell md-cell--6-tablet md-cell--9">
 <ul style="padding: 5px;"><li>Aprenda mais rápido com mais confiança !!</li> </ul>
 <ul style="padding: 10px 0px;">
@@ -81,8 +81,8 @@ Nossos instrutores são escolhidos seguindo três critérios importantes:
 </div>
 
 
-<h3 style="text-align:center;">Para você Serviços de qualidade</h3>
-<div class="md-grid md-cell md-cell--12" style="margin-bottom: 10%;">
+<h2 style="text-align:center;">Para você Serviços de qualidade</h2>
+<div class="md-grid md-cell md-cell--12" style="margin-bottom: 3%;">
 <div class="md-grid md-cell md-cell--2-tablet md-cell--3 md-cell--4-phone">
 <imgtest data="lm-pistes.jpg" height="125" width="300px" directory="pages" alt="service client"></imgtest>
 </div>
@@ -94,16 +94,16 @@ Nossos instrutores são escolhidos seguindo três critérios importantes:
 </div> 
 
 
-<div style="margin:10% 5%;" class="md-grid md-cell--12 md-cell--middle">
-<p class="h3">
+<div style="margin:3% 5%;" class="md-grid md-cell--12 md-cell--middle">
+<p class="h2">
 <i class="fa fa-quote-left"></i>
 Bom preço /qualidade.<br> Nossa comissão é no mínimo para garantir o melhor preço.<b> Dependendo do período escolhido e o tempo de lições você pode beneficiar até 15% de desconto!</b>
 <i class="fa fa-quote-right"></i>
 </p>
 </div>
 
-<h3 style="text-align:center;">Segurança</h3>
-<div class="md-grid md-cell md-cell--12" style="margin-bottom: 10%;">
+<h2 style="text-align:center;">Segurança</h2>
+<div class="md-grid md-cell md-cell--12" style="margin-bottom: 3%;">
 <div class="md-grid md-cell md-cell--2-tablet md-cell--3 md-cell--4-phone">
 <imgtest data="helico.jpg" height="125" width="300px" directory="pages" alt="service client"></imgtest>
 </div>
@@ -116,8 +116,8 @@ Bom preço /qualidade.<br> Nossa comissão é no mínimo para garantir o melhor 
 
 
 <!-- Start Section -->
-<h3 style="text-align:center;">Agradável e legal</h3>
-<div class="md-grid md-cell md-cell--12" style="margin-bottom: 10%;">
+<h2 style="text-align:center;">Agradável e legal</h2>
+<div class="md-grid md-cell md-cell--12" style="margin-bottom: 5%;">
 <div class="md-cell md-cell--6-tablet md-cell--9"> 
 <p>Seu treinador reserva restaurantes, ele é bilíngüe,<b>el fala Inglês e Português</b> e dedicado a la práctica del esquí fora de pistas (off - piste)</p>
 </div>
@@ -138,19 +138,19 @@ Bom preço /qualidade.<br> Nossa comissão é no mínimo para garantir o melhor 
 <div class="md-grid md-cell md-cell--12 md-cell--middle">
 <div id="questions" style="background-color: rgb(66, 88, 161);flex:1;" class="md-paper md-paper--1 md-grid md-grid--stacked md-cell md-cell--4">
 <imgtest data="envelope.jpg" maxwidth="200px" class="boxshad rounded bg-white"  height="125" directory="pages" alt="Courchevel"></imgtest>
-<h3 style="color: #fff; text-align:center;">Perguntas?</h3>
+<h2 style="color: #fff; text-align:center;">Perguntas?</h2>
 <p style="color: #fff;">Conversar com o seu instrutor</p>
 </div>
 
 <div id="topQualification" style="flex:1;" class="md-paper md-paper--1 md-grid md-grid--stacked md-cell md-cell--4">
   <imgtest data="shield.png" maxwidth="200px" class="boxshad rounded bg-white"  height="125" directory="pages" alt="Courchevel"></imgtest>
-<h3 style="color: black; text-align:center;">Top Qualified:</h3>
+<h2 style="color: black; text-align:center;">Top Qualified:</h2>
 <p>Apenas instrutores licenciados at SkiScool</p>
 </div>
 
 <div id="thumbsUp" style="background-color: rgb(66, 88, 161);flex:1;" class="md-grid--stacked md-paper md-paper--1 md-grid md-cell md-cell--4">
   <imgtest data="thumbs.jpg" maxwidth="200px" class="boxshad rounded bg-white"  height="125" directory="pages" alt="Courchevel"></imgtest>
-<h3 style="color: #fff; text-align:center;">Você escolhe:</h3>
+<h2 style="color: #fff; text-align:center;">Você escolhe:</h2>
 <p style="color: #fff;">É importante ter um instrutor que combina com você</p>
 </div>
 </div>

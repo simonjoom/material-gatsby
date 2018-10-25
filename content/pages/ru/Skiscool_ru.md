@@ -26,7 +26,7 @@ date: "2018-07-06"
    <div class="md-cell md-cell--4 md-cell--8-tablet">
 <imgtest data="guide.png" height="125" width="200px" directory="pages" alt="Courchevel"></imgtest>
 <div class="md-cell--6-tablet">
- <h3>Подбор инструктора и бронь</h3>
+ <h2>Подбор инструктора и бронь</h2>
   <p>В нашей работе по подбору подходящего для Вас инструктора мы не ограничиваемся несколькими кликами компьютерной мыши.</p> <p>SkiScool is not a geek team.<br><b>Мы знаем</b> наших инструкторов а также их опыт в обучении катанию на лыжах в Трех Долинах на протяжении <b>10ти лет</b>. <br>
 Позвоните нам, чтобы мы подобрали наилучший вариант по Вашему запросу.</p>
   </div>
@@ -37,7 +37,7 @@ date: "2018-07-06"
 <div class="md-cell md-cell--4 md-cell--8-tablet">
  <imgtest data="certified.png" height="125" width="200px" directory="pages" alt="Courchevel"></imgtest>
 <div class="md-grid md-cell--6-tablet">
-  <h3 class="h3">Дипломированные специалисты, наилучшее соотношение «цена/качество»</h3>
+  <h2 class="h2">Дипломированные специалисты, наилучшее соотношение «цена/качество»</h2>
  <p>Все инструкторы, предлагаемые на нашей платформе, 
 специалисты <br><b>с дипломом государственного образц</b></p>
  <p>Мы не работаем ни <b>со стажерами,</b> ни с начинающими инструкторами, которые не знают специфики Трех Долин. (Куршевель, Мерибель и Валь-Торенс)
@@ -48,7 +48,7 @@ date: "2018-07-06"
 <div class="md-cell md-cell--4 md-cell--8-tablet">
   <imgtest data="years-experience.png" height="125" width="200px" directory="pages" alt="Courchevel"></imgtest>
 <div class="md-grid md-cell--6-tablet">
-  <h3 class="h3">Опыт работы в Трех Долинах</h3>
+  <h2 class="h2">Опыт работы в Трех Долинах</h2>
   <p>Skiscool  признанная платформа по бронированию лыжных инструкторов в Трех Долинах с 10-тилетним опытом работы.<br> Воспользуйтесь <b>нашими специальным предложением</b>! :<br> <b>Бесплатный трансфер</b> при бронировании 1 недели занятий с нашим инструктором..</p>
   </div>
 </div> 
@@ -57,19 +57,19 @@ date: "2018-07-06"
 <div class="md-cell md-cell--12 md-grid md-grid--stacked md-grid--no-spacing">
 <!-- Start Call  stacked section -->
 <buttontest type="awesome" icon="phone-square h1 md-cell md-cell--12" cls="md-grid btn md-cell md-cell--3 md-cell--2-tablet md-cell--2-phone md-cell--middle" style="margin: 1em;border-radius: 5%;">
-<a href="tel:France+33675505209" class="md-grid md-grid--stacked h3" style="line-height: 1;"> Call Simon</a>
+<a href="tel:France+33675505209" class="md-grid md-grid--stacked h2" style="line-height: 1;"> Call Simon</a>
 </buttontest>
 
 
 
-<h3 style="text-align:center;">Teaching quality</h3>
-<div class="md-cell md-cell--12 md-cell--8-tablet md-cell--4-phone" style="margin-bottom: 5%;padding: 5%">
+<h2 style="text-align:center;">Teaching quality</h2>
+<div class="md-cell md-cell--12 md-cell--8-tablet md-cell--4-phone" style="margin-bottom: 3%;">
 <p>Государственный диплом:  <br>Французский государственный диплом инструкторa :  <br>
 <span classname="h6"><em>ENSA</em></span></p>
 </div>
 
-<h3 style="text-align:center;">Professionals</h3>
-<div class="md-grid md-cell md-cell--12" style="margin-bottom: 10%;">
+<h2 style="text-align:center;">Professionals</h2>
+<div class="md-grid md-cell md-cell--12" style="margin-bottom: 3%;">
 <div class="md-cell md-cell--6-tablet md-cell--9"> 
 <h4>Our instructors are chosen following three important criterias</h4>
 <ul style="padding: 5px;"><li>Professionnels: Learn faster with more confidence!!</li> </ul>
@@ -85,10 +85,10 @@ date: "2018-07-06"
 </div>
 </div>
 
-<h3 style="text-align:center;">ваш тренер</h3>
+<h2 style="text-align:center;">ваш тренер</h2>
 
 
-<div class="md-grid md-cell md-cell--12" style="margin-bottom: 10%;">
+<div class="md-grid md-cell md-cell--12" style="margin-bottom: 3%;">
 <div class="md-grid md-cell md-cell--2-tablet md-cell--3 md-cell--4-phone">
 <imgtest data="lm-pistes.jpg" height="125" width="300px" directory="pages" alt="ваш тренер"></imgtest>
 </div>
@@ -104,16 +104,16 @@ date: "2018-07-06"
 </div> 
 
 
-<div style="margin:10% 5%;" class="md-grid md-cell--12 md-cell--middle">
-<p class="h3">
+<div style="margin:3% 5%;" class="md-grid md-cell--12 md-cell--middle">
+<p class="h2">
 <i class="fa fa-quote-left"></i>
 <b>Цена:</b><br>Многолетний опыт работы наших инструкторов в Трех Долинах (Куршевель) позволил достигнуть идеального соотношения цены и качества: <br/>- вы знаете за что платите, а инструктор работает оправданно. В зависимости от выбранного периода и количества уроков вы можете получить скидку до 15%.
 <i class="fa fa-quote-right"></i>
 </p>
 </div>
 
-<h3 style="text-align:center;">Безопасность</h3>
-<div class="md-grid md-cell md-cell--12" style="margin-bottom: 10%;">
+<h2 style="text-align:center;">Безопасность</h2>
+<div class="md-grid md-cell md-cell--12" style="margin-bottom: 3%;">
 <div class="md-grid md-cell md-cell--2-tablet md-cell--3 md-cell--4-phone">
 <imgtest data="helico.jpg" height="125" width="300px" directory="pages" alt="service client"></imgtest>
 </div>
@@ -131,8 +131,8 @@ date: "2018-07-06"
 </div>
 
 <!-- Start Section -->
-<h3 style="text-align:center;">Отсутствие языкового барьера</h3>
-<div class="md-grid md-cell md-cell--12" style="margin-bottom: 10%;">
+<h2 style="text-align:center;">Отсутствие языкового барьера</h2>
+<div class="md-grid md-cell md-cell--12" style="margin-bottom: 5%;">
 <div class="md-cell md-cell--6-tablet md-cell--9">
 
 <p>Русскоязычный инструктаж клиентов из России и Украины ориентирован на необходимость взаимопонимания и отсутствия 'пробелов' в тренировках. Все специалисты SkiScool прошли обучение русскому языку в языковой среде.</p>
@@ -156,19 +156,19 @@ date: "2018-07-06"
 <div class="md-grid md-cell md-cell--12 md-cell--middle">
 <div id="questions" style="background-color: rgb(66, 88, 161);flex:1;" class="md-paper md-paper--1 md-grid md-grid--stacked md-cell md-cell--4">
 <imgtest data="envelope.jpg" maxwidth="200px" class="boxshad rounded bg-white"  height="125" directory="pages" alt="Courchevel"></imgtest>
-<h3 style="color: #fff; text-align:center;">Вопрос?</h3>
+<h2 style="color: #fff; text-align:center;">Вопрос?</h2>
 <p style="color: #fff;">Чат с инструктором</p>
 </div>
  
 <div id="topQualification" style="flex:1;" class="md-paper md-paper--1 md-grid md-grid--stacked md-cell md-cell--4">
   <imgtest data="shield.png" maxwidth="200px" class="boxshad rounded bg-white"  height="125" directory="pages" alt="Courchevel"></imgtest>
-<h3 style="color: black; text-align:center;">Top Qualified:</h3>
+<h2 style="color: black; text-align:center;">Top Qualified:</h2>
 <p>Только лицензированные инструкторы в SkiScool</p>
 </div>
 
 <div id="thumbsUp" style="background-color: rgb(66, 88, 161);flex:1;" class="md-grid--stacked md-paper md-paper--1 md-grid md-cell md-cell--4">
   <imgtest data="thumbs.jpg" maxwidth="200px" class="boxshad rounded bg-white"  height="125" directory="pages" alt="Courchevel"></imgtest>
-<h3 style="color: #fff; text-align:center;">Твой выбор:</h3>
+<h2 style="color: #fff; text-align:center;">Твой выбор:</h2>
 <p style="color: #fff;">Важно иметь инструктора, который вам подходит</p>
 </div>
 </div>
