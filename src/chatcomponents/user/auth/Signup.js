@@ -62,6 +62,14 @@ class Signup extends Component {
     let maxValue = data.length / 10 > 1 ? 1 : data.length / 10;
     return ((this.state.activeStep + maxValue) * 100) / this.state.maxStep;
   }
+  scrolldown = () => {
+    var objDiv = $("#listChats");
+    console.log("objDiv", objDiv);
+    if (objDiv[0]) {
+      var t = objDiv[0].scrollHeight;
+      objDiv[0].scrollTop = t;
+    }
+  };
   handleNext = () => {
     if (this.state.name) {
       if (this.state.activeStep === 0) {
@@ -70,30 +78,31 @@ class Signup extends Component {
             activeStep: this.state.activeStep + 1
           },
           () => {
+            this.scrolldown();
             this.inputRef.focus();
           }
         );
-      }
-      if (this.state.activeStep === 1) {
+      } else if (this.state.activeStep === 1) {
         if (this.state.emailValidation) {
           this.setState(
             {
               activeStep: this.state.activeStep + 1
             },
             () => {
+              this.scrolldown();
               this.inputRef.focus();
-              this.setState({ isPasswordActiveStep: true });
+              //  this.setState({ isPasswordActiveStep: true });
             }
           );
         }
-      }
-      if (this.state.activeStep === 2) {
+      } else if (this.state.activeStep === 2) {
         if (this.state.inputValidation2) {
           this.setState(
             {
               activeStep: this.state.activeStep + 1
             },
             () => {
+              console.log("confirm", this.state);
               this._confirm();
             }
           );
@@ -104,6 +113,7 @@ class Signup extends Component {
 
   handleKey = data => {
     if (data.charCode === 13 && this.pass) {
+      console.log("handleKeyhandleNext");
       //keyPress enter
       this.handleNext();
     }
@@ -113,79 +123,84 @@ class Signup extends Component {
   };
   render() {
     const ButtonNext = ({ index, icon = "navigate_next" }) => (
-      <Button onClick={this.handleNext} type="material" icon={icon} floating />
+      <Button
+        onClick={() => this.handleNext()}
+        type="material"
+        icon={icon}
+        floating
+      />
     );
     return (
-      <div className="paperOut">
-        <Card>
+      <div className="itc-messenger-body paperOut">
+        <Card className="itc-cvs-body-parts" id="listChats">
           <h4 className="mv3">Sign Up</h4>
-          <div className="flex flex-column">
-            <ProgressBar
-              variant="buffer"
-              progress={(this.state.activeStep * 100) / this.state.maxStep}
-              valueBuffer={this.calculateBuffer()}
-            />
+          <ProgressBar
+            variant="buffer"
+            progress={(this.state.activeStep * 100) / this.state.maxStep}
+            valueBuffer={this.calculateBuffer()}
+          />
+          <br />
+          <div className="tac">
+            <div
+              className={
+                "wrapperAnimate " +
+                (this.state.activeStep === 0 ? "focusField" : "notFocusField")
+              }
+            >
+              <Input
+                id="name"
+                label="Your name"
+                placeholder="Your name"
+                value={this.state.name}
+                success={this.validateName(this.state.name)}
+                setRef={this.setRef}
+                onChange={e => {
+                  this.setState({ activeStep: 0, name: e.target.value });
+                }}
+                type="text"
+                onKeyPress={this.handleKey}
+                inline
+                buttonIcon={<ButtonNext index={0} />}
+                s={12}
+              />
+            </div>
+
             <br />
-            <div className="tac">
+            {this.state.activeStep >= 1 && (
               <div
                 className={
                   "wrapperAnimate " +
-                  (this.state.activeStep === 0 ? "focusField" : "notFocusField")
+                  (this.state.activeStep === 1 ? "focusField" : "notFocusField")
                 }
               >
                 <Input
-                  id="name"
-                  label="Your name"
-                  placeholder="Your name"
-                  value={this.state.name}
-                  success={this.validateName(this.state.name)}
+                  id="email"
+                  label="Email"
+                  placeholder="Your email address"
+                  value={this.state.email}
+                  success={this.validateEmail(this.state.email)}
+                  onChange={e => {
+                    this.setState({ activeStep: 1, email: e.target.value });
+                  }}
                   setRef={this.setRef}
-                  onChange={e => this.setState({ name: e.target.value })}
-                  type="text"
+                  type="email"
                   onKeyPress={this.handleKey}
                   inline
-                  buttonIcon={<ButtonNext index={0} />}
+                  buttonIcon={<ButtonNext index={1} />}
                   s={12}
                 />
               </div>
+            )}
 
-              <br />
-              {this.state.activeStep >= 1 && (
-                <div
-                  className={
-                    "wrapperAnimate " +
-                    (this.state.activeStep === 1
-                      ? "focusField"
-                      : "notFocusField")
-                  }
-                >
-                  <Input
-                    id="email"
-                    label="Email"
-                    placeholder="Your email address"
-                    value={this.state.email}
-                    success={this.validateEmail(this.state.email)}
-                    onChange={e => this.setState({ email: e.target.value })}
-                    setRef={this.setRef}
-                    type="email"
-                    onKeyPress={this.handleKey}
-                    inline
-                    buttonIcon={<ButtonNext index={1} />}
-                    s={12}
-                  />
-                </div>
-              )}
-
-              <br />
-              <br />
-              {this.state.activeStep >= 2 && (
-                <Password
-                  handleNext={this.handleNext.bind(this)}
-                  onChange={this.onChange.bind(this)}
-                  ButtonNext={ButtonNext}
-                />
-              )}
-            </div>
+            <br />
+            <br />
+            {this.state.activeStep >= 2 && (
+              <Password
+                handleNext={this.handleNext.bind(this)}
+                onChange={this.onChange.bind(this)}
+                ButtonNext={ButtonNext}
+              />
+            )}
           </div>
         </Card>
       </div>
@@ -240,6 +255,7 @@ const SIGNUP_MUTATION = gql`
       user {
         name
         id
+        role
       }
     }
   }

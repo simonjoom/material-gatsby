@@ -90,6 +90,7 @@ class Card extends Component {
       waves,
       extracls = '',
       titleTag: Tag = 'span',
+      id,
       ...other
     } = this.props;
     const classes = {
@@ -98,7 +99,7 @@ class Card extends Component {
     };
 
     return (
-      <div className={className}>
+      <div className={className} id={id}>
         <div className={cx(extracls, classes)} {...other}>
           {contentImage &&
             this.renderImage(
