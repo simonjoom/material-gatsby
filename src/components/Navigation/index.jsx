@@ -20,7 +20,7 @@ class Navigation extends Component {
       LocalTitle,
       translate,
       postNode,
-      lng = "en"
+      lng
     } = this.props;
     const footerLinks = LocalTitle !== "About";
     // console.log("this is the menulist" + global.menuList)

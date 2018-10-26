@@ -18,8 +18,8 @@ class Layout extends Component {
     } = this.props;
     if (route && Object.keys(route).length === 0)
       console.log("route", lng, this.props);
-    const isMobile = window ? (window.innerWidth < 600 ? true: false) : false
-    console.log("isMobile in Layout.jsx is " + isMobile)
+    const isMobile = window ? (window.innerWidth < 600 ? true: false) : false;
+    console.log(global.menuList[lng].filter((menu)=> menu.title == "Contact" || menu.title == "Instructors"))
     return (
       <>
         <div
@@ -59,6 +59,23 @@ class Layout extends Component {
                     {post.title}
                   </Link>
                 ))}
+                {
+                  isMobile &&
+                  global.menuList &&
+                  global.menuList[lng] &&
+                  global.menuList[lng].length > 0 &&
+                  global.menuList[lng].filter(menu=> menu.title == "Instructors" || menu.title == "Contact")
+                  .map(post=>(
+                    <Link
+                      key={post.path}
+                      style={{ textDecoration: "none" }}
+                      to={post.path}
+                      className="Menulink toolbar-link"
+                    >
+                      {post.title}
+                    </Link>
+                  ))
+                }
             </div>
             {((route && Object.keys(route).length !== 0) || path) && (
               <LanguageSwitcher path={path} route={route} />

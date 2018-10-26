@@ -131,7 +131,7 @@ export const wrapPageElement = ({ element, props }) => {
   return (
     <div>
       <Red />
-      <Layout>{element}</Layout>
+      <Layout lng ={lng}>{element}</Layout>
     </div>
   );
 };
