@@ -64,7 +64,22 @@ class Layout extends Component {
                   global.menuList &&
                   global.menuList[lng] &&
                   global.menuList[lng].length > 0 &&
-                  global.menuList[lng].filter(menu=> menu.title == "Instructors" || menu.title == "Contact")
+                  global.menuList[lng].filter(menu=> {
+                    switch(lng){
+                      case "en":
+                        return menu.title == "Instructors" || menu.title == "Contact"
+                      case "fr":
+                        return menu.title == "Moniteur" || menu.title == "Contact"
+                      case "pt":
+                        return menu.title == "Ski Instructors" || menu.title == "Contato"
+                      case "uk":
+                        return menu.title == "Інструктори" || menu.title == "Связаться с нами"
+                      case "ru":
+                        return menu.title == "Инструкторы" || menu.title == "Связаться с нами"
+                      case "ch":
+                        return menu.title == "Instructors" || menu.title == "Contact"
+                    }
+                  })
                   .map(post=>(
                     <Link
                       key={post.path}
