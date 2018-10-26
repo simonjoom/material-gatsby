@@ -67,15 +67,15 @@ class Layout extends Component {
                   global.menuList[lng].filter(menu=> {
                     switch(lng){
                       case "en":
-                        return menu.title == "Instructors" || menu.title == "Contact"
+                        return menu.path == "/Instructors_skischool/" || menu.path == "/contact/"
                       case "fr":
-                        return menu.title == "Moniteur" || menu.title == "Contact"
+                        return menu.path == "/fr/Moniteurs_skischool/" || menu.path == "/fr/contact"
                       case "pt":
-                        return menu.title == "Ski Instructors" || menu.title == "Contato"
+                        return menu.path == "/pt/instructors_skischool/" || menu.path == "/pt/contato/"
                       case "uk":
-                        return menu.title == "Інструктори" || menu.title == "Связаться с нами"
+                        return menu.path == "/uk/інструкторів_skischool/" || menu.path == "/uk/дотик/"
                       case "ru":
-                        return menu.title == "Инструкторы" || menu.title == "Связаться с нами"
+                        return menu.path == "/ru/Инструкторы_skischool/" || menu.path == "/ru/контакт/"
                       case "ch":
                         return menu.title == "Instructors" || menu.title == "Contact"
                     }
