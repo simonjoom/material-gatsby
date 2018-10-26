@@ -22,6 +22,7 @@ async function sleep(fn, ...args) {
 }
 
 global.M = undefined;
+global.lng = undefined
 const getLanguage = () =>
   i18n.language ||
   (typeof window !== "undefined" && window.localStorage.i18nextLng);

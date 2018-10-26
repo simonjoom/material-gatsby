@@ -20,10 +20,18 @@ class Navigation extends Component {
       LocalTitle,
       translate,
       postNode,
-      lng
+      lng = "en"
     } = this.props;
     const footerLinks = LocalTitle !== "About";
-    console.log("this is the menulist" + global.menuList)
+    // console.log("this is the menulist" + global.menuList)
+    
+    const isMobile = window ? (window.innerWidth < 600 ? true: false) : false
+    console.log("Mobile is " + isMobile)
+    console.log("MenuList is " + JSON.stringify(global.menuList))
+    console.log(lng)
+    console.log(global.lng)
+    // console.log(global.menuList[lng])
+    // global.menuList[lng].map(post=> console.log(post.path))
     return (
       <>
         <SideNav
@@ -77,18 +85,36 @@ class Navigation extends Component {
           </Button>{" "}
           {SideNavItem && (
             <>
-              <SideNavItem href={route.router["/"][lng]} icon="home">
-                HOME
-              </SideNavItem>
-              <SideNavItem
-                href={route.router["/instructor/"][lng]}
-                icon="group"
-              >
-                INSTRUCTORS
-              </SideNavItem>
-              <SideNavItem href={route.router["/about/"][lng]} icon="group">
-                About Us
-              </SideNavItem>
+              { 
+                !isMobile && (
+                  <>
+                    <SideNavItem href={route.router["/"][lng]} icon="home">
+                    HOME
+                    </SideNavItem>
+                    <SideNavItem
+                      href={route.router["/instructor/"][lng]}
+                      icon="group"
+                    >
+                      INSTRUCTORS
+                    </SideNavItem>
+                    <SideNavItem href={route.router["/about/"][lng]} icon="group">
+                      About Us
+                    </SideNavItem>
+                  </>
+                )
+              }
+              
+              {
+                isMobile &&
+                global.menuList[lng] &&
+                global.menuList[lng] &&
+                global.menuList[lng].length > 0 &&
+                global.menuList[lng].map(post=> 
+                  (<SideNavItem href={post.path}>
+                    {post.title}
+                  </SideNavItem>)
+                )
+              }
               <SideNavItem divider />
               <SideNavItem subheader>Social</SideNavItem>
               <SideNavItem waves href="#">

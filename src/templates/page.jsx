@@ -45,6 +45,8 @@ class PageTemplate extends React.Component {
       files
     } = this.props.pageContext;
     global.filesQuery = files;
+    global.lng = lng;
+    console.log("global.lng as in page.js is " +  global.lng)
     let carouselList = [];
     let background;
     //render current markdownRemark

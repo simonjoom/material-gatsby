@@ -15,7 +15,7 @@ import trch from "./src/layouts/translate_ch";
 global.M = undefined;
 const getLanguage = () => i18n.language;
 
-global.lng="en";
+global.lng= "en";
 global.menuList = { en: [], ru: [], pt: [], uk: [], ch: [], fr: [] };
 global.filesQuery = [];
 global.locale = { en: [], ru: [], pt: [], uk: [], ch: [], fr: [] };

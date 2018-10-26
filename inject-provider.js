@@ -6,6 +6,7 @@ import { ThemeContext } from "./src/withContext";
 const renderFn = process.env.NODE_ENV !== "production" ? render : hydrate;
  
 global.filesQuery = [];
+global.lng = undefined
 global.menuList = window.__INITIAL_STATE__.menuList;
 global.locale = window.__INITIAL_STATE__.locale;
 function timeout(ms) {

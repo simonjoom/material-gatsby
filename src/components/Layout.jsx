@@ -18,6 +18,8 @@ class Layout extends Component {
     } = this.props;
     if (route && Object.keys(route).length === 0)
       console.log("route", lng, this.props);
+    const isMobile = window ? (window.innerWidth < 600 ? true: false) : false
+    console.log("isMobile in Layout.jsx is " + isMobile)
     return (
       <>
         <div
@@ -42,7 +44,9 @@ class Layout extends Component {
         <div className="toolbar-main md-paper md-paper--1">
           <div className="md-grid md-grid--no-spacing toolbar-container">
             <div className="md-grid md-grid--no-spacing md-cell md-cell--11 md-cell--6-tablet md-cell--3-phone toolbar-menu toolbar-menu">
-              {global.menuList &&
+              {
+                !isMobile &&
+                global.menuList &&
                 global.menuList[lng] &&
                 global.menuList[lng].length > 0 &&
                 global.menuList[lng].map(post => (

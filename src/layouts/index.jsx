@@ -12,6 +12,8 @@ else require("font-awesome/scss/font-awesome.scss");
 export default class MainNavLayout extends React.Component {
   render() {
     const { children, lng, location } = this.props;
+    console.log(this.props, this.pageContext)
+    console.log("LNG from layouts (father of navigation) is " + lng)
     const postNode = children.props.data && children.props.data.markdownRemark;
     return (
       <Navigation
