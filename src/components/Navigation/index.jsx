@@ -23,6 +23,7 @@ class Navigation extends Component {
       lng
     } = this.props;
     const footerLinks = LocalTitle !== "About";
+    console.log("this is the menulist" + global.menuList)
     return (
       <>
         <SideNav

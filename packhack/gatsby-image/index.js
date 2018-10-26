@@ -62,7 +62,7 @@ var isWebpSupported = function isWebpSupported() {
   } else {
     isWebpSupportedCache = false;
   }
-
+  
   return isWebpSupportedCache;
 };
 /*
@@ -97,9 +97,9 @@ Img.propTypes = {
 var calculImg=function srcset(image, mxW, mxH, aspectRatio,maxWidth) {
     var maxW, maxHeight, bigW, bigH,images; 
     if (image.srcWebp && image.srcSetWebp && isWebpSupported()) {
-      images=image.srcSet;
-      }else{
       images=image.srcSetWebp;
+      }else{
+      images=image.srcSet;
       }
       
 var fullscreen=false;
@@ -425,6 +425,6 @@ Image.propTypes = {
               }}
 }*/
 
-export {calculImg};
+export {calculImg,listenToIntersections};
 
 export default GatsbyImage;
