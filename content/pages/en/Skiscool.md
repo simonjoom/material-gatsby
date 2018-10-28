@@ -53,15 +53,15 @@ date: "2018-07-06"
 <a href="tel:France+33675505209" class="md-grid md-grid--stacked h2" style="line-height: 1;">Call Simon</a>
 </buttontest>
 
-
+<hr class="body-divider"/>
 <h2 style="text-align:center;">Teaching quality</h2>
-<div class="md-cell md-cell--12 md-cell--8-tablet md-cell--4-phone" style="margin-bottom: 3%;">
+<div class="md-cell md-cell--12 md-cell--8-tablet md-cell--4-phone">
 <p>Ski instructor's diploma = BEES <br/></p>
 <p> Issued by the Official French organisation :  <em>ENSA</em></p>
 </div>
-
+<hr class="body-divider"/>
 <h2 style="text-align:center;">Professionals</h2>
-<div class="md-grid md-cell md-cell--12" style="margin-bottom: 3%;">
+<div class="md-grid md-cell md-cell--12">
 <div class="md-cell md-cell--6-tablet md-cell--9">
 <p>Learn faster with more confidence!!</p>
 <p>Our instructors are chosen following three important criterias</p>
@@ -75,10 +75,9 @@ date: "2018-07-06"
 <imgtest data="certified.png" height="75" width="70px" directory="pages" alt="Courchevel" ></imgtest>
 </div>
 </div>
-
-
+<hr class="body-divider"/>
 <h2 style="text-align:center;">Best Service</h2>
-<div class="md-grid md-cell md-cell--12" style="margin-bottom: 3%;">
+<div class="md-grid md-cell md-cell--12">
 <div class="md-grid md-cell md-cell--2-tablet md-cell--3 md-cell--4-phone">
 <imgtest data="lm-pistes.jpg" height="125" width="300px" directory="pages" alt="service client"></imgtest>
 </div>
@@ -90,7 +89,7 @@ date: "2018-07-06"
 <p> - Your coach is a passionate instructor: he will be taking the time needed to provide you with any advice, uses demonstration and repetition to thoroughly improve your skills.</p>
 </div> 
 </div> 
-
+<hr class="body-divider"/>
 <div style="margin:3% 5%;" class="md-grid md-cell--12 md-cell--middle">
 <p class="h2">
 <i class="fa fa-quote-left"></i>
@@ -98,9 +97,10 @@ date: "2018-07-06"
 <i class="fa fa-quote-right"></i>
 </p>
 </div>
+<hr class="body-divider"/>
 
 <h2 style="text-align:center;">Safety First</h2>
-<div class="md-grid md-cell md-cell--12" style="margin-bottom: 3%;">
+<div class="md-grid md-cell md-cell--12">
 <div class="md-grid md-cell md-cell--2-tablet md-cell--3 md-cell--4-phone">
 <imgtest data="helico.jpg" height="125" width="300px" directory="pages" alt="service client"></imgtest>
 </div>
@@ -111,10 +111,11 @@ date: "2018-07-06"
 </div>
 </div>
 <!-- End Section-->
+<hr class="body-divider"/>
 
 <!-- Start Section -->
 <h2 style="text-align:center;">Friendly</h2>
-<div class="md-grid md-cell md-cell--12" style="margin-bottom: 5%;">
+<div class="md-grid md-cell md-cell--12">
 <div class="md-cell md-cell--9 md-cell--6-tablet md-cell--9">
 <p>Your coach books restaurants, he is bilingual, he speaks English and is dedicated to the practice of ski racing and off track skiing.</p>
 </div>
@@ -123,14 +124,14 @@ date: "2018-07-06"
 </div>
 </div>
 <!-- End Section -->
-
+<hr class="body-divider"/>
 
 <!-- Start FB Section -->
 <div class="md-cell md-cell--middle" style="height: 600px; max-width: 280px;overflow: hidden;">
 <reactfb language="fr" newDivName="sel" appId="562112907171338" type="post" desc="Private ski instructor courchevel 1850 Dubai - courchevel"/></reactfb>
 </div>
 <!-- End FB Section -->
-
+<hr class="body-divider"/>
 <div class="md-grid md-cell md-cell--middle md-cell--12">
 <div id="questions" style="background-color: rgb(66, 88, 161);flex:1;" class="md-paper md-paper--1 md-grid md-grid--stacked md-cell md-cell--4">
 <imgtest data="envelope.jpg" maxwidth="200px" class="boxshad rounded bg-white"  height="125" directory="pages" alt="Courchevel"></imgtest>
@@ -154,8 +155,8 @@ date: "2018-07-06"
 
 <div style="justify-content:space-around;align-items: center;margin-top: 5%" class="md-paper md-paper--1 md-grid md-cell--middle"><email href="simon_skiscoolO0Ocom?subject=question">Request</email><span class="px2">|</span><email href="simon_skiscoolO0Ocom?subject=question">Contact us</email>
 </div>
-
-<div class="md-paper" style="margin-bottom: 5%; margin-top:5%;">
+<hr class="body-divider"/>
+<div class="md-paper" >
 <h2 style="text-align:center;">Your Experience</h2>
 <p>SkiScool is not just an online platform like most of what you find on the internet. It is a full-fledged Ski school created by a Ski instructor in order to help clients find the ideal private coach. On Skiscool, you can find many local's profiles selected from their experiences and skills.</p>
 <br>
@@ -164,6 +165,7 @@ date: "2018-07-06"
 We provide a personalised and luxury experience to your stay at Courchevel and Meribel.
 </div>
 
+<hr class="body-divider"/>
 <div style="margin-bottom: 4%;">
 <h2 style="text-align:center;">Courchevel Meribel Val-thorens</h2>
 <p>Skiscool is located at <a href='Map/Courchevel' title='Courchevel'>Courchevel</a> and <a href='Map/Meribel' title='Meribel'>Meribel</a> in the heart of the 3 valleys, one of the largest ski areas in the world. We give ski lessons to your friends and all your family, from beginners, intermediates to advanced skiers.  
